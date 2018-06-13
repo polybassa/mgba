@@ -1,0 +1,139 @@
+\hypertarget{gb_2serialize_8c}{}\section{src/gb/serialize.c File Reference}
+\label{gb_2serialize_8c}\index{src/gb/serialize.\+c@{src/gb/serialize.\+c}}
+{\ttfamily \#include $<$mgba/internal/gb/serialize.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/io.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/timer.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/lr35902/lr35902.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/memory.\+h$>$}\newline
+Include dependency graph for serialize.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2serialize_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gb_2serialize_8c_aa8abe7ec31f149b8fa0291a1ef7c8c4b}{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}} (G\+B\+\_\+\+S\+T\+A\+TE, \char`\"{}GB Savestate\char`\"{}, \char`\"{}gb.\+serialize\char`\"{})
+\item 
+static void \mbox{\hyperlink{gb_2serialize_8c_a643fb1b5d66c4bc52a0fc976d5b30215}{G\+B\+S\+G\+B\+Serialize}} (struct GB $\ast$gb, struct G\+B\+Serialized\+State $\ast$state)
+\item 
+static void \mbox{\hyperlink{gb_2serialize_8c_a5bca64f6ebe30bb48a22c5d3ba04ed76}{G\+B\+S\+G\+B\+Deserialize}} (struct GB $\ast$gb, const struct G\+B\+Serialized\+State $\ast$state)
+\item 
+void \mbox{\hyperlink{gb_2serialize_8c_a64f0057433e51b7fc8b3e7e57fd3233f}{G\+B\+Serialize}} (struct GB $\ast$gb, struct G\+B\+Serialized\+State $\ast$state)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{gb_2serialize_8c_aa2ffe51b1c2c813d01c6ecf1640bb1b2}{G\+B\+Deserialize}} (struct GB $\ast$gb, const struct G\+B\+Serialized\+State $\ast$state)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const uint32\+\_\+t \mbox{\hyperlink{gb_2serialize_8c_af35bcd6cd6af67df13b347f89a023e7a}{G\+B\+\_\+\+S\+A\+V\+E\+S\+T\+A\+T\+E\+\_\+\+M\+A\+G\+IC}} = 0x00400000
+\item 
+const uint32\+\_\+t \mbox{\hyperlink{gb_2serialize_8c_a11eb0c9bb5c49f3facecc2b2bd828dc7}{G\+B\+\_\+\+S\+A\+V\+E\+S\+T\+A\+T\+E\+\_\+\+V\+E\+R\+S\+I\+ON}} = 0x00000002
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{gb_2serialize_8c_aa2ffe51b1c2c813d01c6ecf1640bb1b2}\label{gb_2serialize_8c_aa2ffe51b1c2c813d01c6ecf1640bb1b2}} 
+\index{gb/serialize.\+c@{gb/serialize.\+c}!G\+B\+Deserialize@{G\+B\+Deserialize}}
+\index{G\+B\+Deserialize@{G\+B\+Deserialize}!gb/serialize.\+c@{gb/serialize.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Deserialize()}{GBDeserialize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+Deserialize (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb,  }\item[{const struct G\+B\+Serialized\+State $\ast$}]{state }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2serialize_8c_aa2ffe51b1c2c813d01c6ecf1640bb1b2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2serialize_8c_aa2ffe51b1c2c813d01c6ecf1640bb1b2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2serialize_8c_a64f0057433e51b7fc8b3e7e57fd3233f}\label{gb_2serialize_8c_a64f0057433e51b7fc8b3e7e57fd3233f}} 
+\index{gb/serialize.\+c@{gb/serialize.\+c}!G\+B\+Serialize@{G\+B\+Serialize}}
+\index{G\+B\+Serialize@{G\+B\+Serialize}!gb/serialize.\+c@{gb/serialize.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Serialize()}{GBSerialize()}}
+{\footnotesize\ttfamily void G\+B\+Serialize (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb,  }\item[{struct G\+B\+Serialized\+State $\ast$}]{state }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2serialize_8c_a64f0057433e51b7fc8b3e7e57fd3233f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2serialize_8c_a64f0057433e51b7fc8b3e7e57fd3233f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2serialize_8c_a5bca64f6ebe30bb48a22c5d3ba04ed76}\label{gb_2serialize_8c_a5bca64f6ebe30bb48a22c5d3ba04ed76}} 
+\index{gb/serialize.\+c@{gb/serialize.\+c}!G\+B\+S\+G\+B\+Deserialize@{G\+B\+S\+G\+B\+Deserialize}}
+\index{G\+B\+S\+G\+B\+Deserialize@{G\+B\+S\+G\+B\+Deserialize}!gb/serialize.\+c@{gb/serialize.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+S\+G\+B\+Deserialize()}{GBSGBDeserialize()}}
+{\footnotesize\ttfamily void G\+B\+S\+G\+B\+Deserialize (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb,  }\item[{const struct G\+B\+Serialized\+State $\ast$}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2serialize_8c_a5bca64f6ebe30bb48a22c5d3ba04ed76_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2serialize_8c_a5bca64f6ebe30bb48a22c5d3ba04ed76_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2serialize_8c_a643fb1b5d66c4bc52a0fc976d5b30215}\label{gb_2serialize_8c_a643fb1b5d66c4bc52a0fc976d5b30215}} 
+\index{gb/serialize.\+c@{gb/serialize.\+c}!G\+B\+S\+G\+B\+Serialize@{G\+B\+S\+G\+B\+Serialize}}
+\index{G\+B\+S\+G\+B\+Serialize@{G\+B\+S\+G\+B\+Serialize}!gb/serialize.\+c@{gb/serialize.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+S\+G\+B\+Serialize()}{GBSGBSerialize()}}
+{\footnotesize\ttfamily void G\+B\+S\+G\+B\+Serialize (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb,  }\item[{struct G\+B\+Serialized\+State $\ast$}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2serialize_8c_a643fb1b5d66c4bc52a0fc976d5b30215_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2serialize_8c_aa8abe7ec31f149b8fa0291a1ef7c8c4b}\label{gb_2serialize_8c_aa8abe7ec31f149b8fa0291a1ef7c8c4b}} 
+\index{gb/serialize.\+c@{gb/serialize.\+c}!m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}}
+\index{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}!gb/serialize.\+c@{gb/serialize.\+c}}
+\subsubsection{\texorpdfstring{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+R\+Y()}{mLOG\_DEFINE\_CATEGORY()}}
+{\footnotesize\ttfamily m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY (\begin{DoxyParamCaption}\item[{G\+B\+\_\+\+S\+T\+A\+TE}]{,  }\item[{\char`\"{}GB Savestate\char`\"{}}]{,  }\item[{\char`\"{}gb.\+serialize\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{gb_2serialize_8c_af35bcd6cd6af67df13b347f89a023e7a}\label{gb_2serialize_8c_af35bcd6cd6af67df13b347f89a023e7a}} 
+\index{gb/serialize.\+c@{gb/serialize.\+c}!G\+B\+\_\+\+S\+A\+V\+E\+S\+T\+A\+T\+E\+\_\+\+M\+A\+G\+IC@{G\+B\+\_\+\+S\+A\+V\+E\+S\+T\+A\+T\+E\+\_\+\+M\+A\+G\+IC}}
+\index{G\+B\+\_\+\+S\+A\+V\+E\+S\+T\+A\+T\+E\+\_\+\+M\+A\+G\+IC@{G\+B\+\_\+\+S\+A\+V\+E\+S\+T\+A\+T\+E\+\_\+\+M\+A\+G\+IC}!gb/serialize.\+c@{gb/serialize.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+\_\+\+S\+A\+V\+E\+S\+T\+A\+T\+E\+\_\+\+M\+A\+G\+IC}{GB\_SAVESTATE\_MAGIC}}
+{\footnotesize\ttfamily const uint32\+\_\+t G\+B\+\_\+\+S\+A\+V\+E\+S\+T\+A\+T\+E\+\_\+\+M\+A\+G\+IC = 0x00400000}
+
+\mbox{\Hypertarget{gb_2serialize_8c_a11eb0c9bb5c49f3facecc2b2bd828dc7}\label{gb_2serialize_8c_a11eb0c9bb5c49f3facecc2b2bd828dc7}} 
+\index{gb/serialize.\+c@{gb/serialize.\+c}!G\+B\+\_\+\+S\+A\+V\+E\+S\+T\+A\+T\+E\+\_\+\+V\+E\+R\+S\+I\+ON@{G\+B\+\_\+\+S\+A\+V\+E\+S\+T\+A\+T\+E\+\_\+\+V\+E\+R\+S\+I\+ON}}
+\index{G\+B\+\_\+\+S\+A\+V\+E\+S\+T\+A\+T\+E\+\_\+\+V\+E\+R\+S\+I\+ON@{G\+B\+\_\+\+S\+A\+V\+E\+S\+T\+A\+T\+E\+\_\+\+V\+E\+R\+S\+I\+ON}!gb/serialize.\+c@{gb/serialize.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+\_\+\+S\+A\+V\+E\+S\+T\+A\+T\+E\+\_\+\+V\+E\+R\+S\+I\+ON}{GB\_SAVESTATE\_VERSION}}
+{\footnotesize\ttfamily const uint32\+\_\+t G\+B\+\_\+\+S\+A\+V\+E\+S\+T\+A\+T\+E\+\_\+\+V\+E\+R\+S\+I\+ON = 0x00000002}
+

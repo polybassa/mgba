@@ -1,0 +1,185 @@
+\hypertarget{gb_2sio_8c}{}\section{src/gb/sio.c File Reference}
+\label{gb_2sio_8c}\index{src/gb/sio.\+c@{src/gb/sio.\+c}}
+{\ttfamily \#include $<$mgba/internal/gb/sio.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/gb.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/io.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/serialize.\+h$>$}\newline
+Include dependency graph for sio.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gb_2sio_8c_a28b0f6ca593588dfd13ca46d9f0f5edd}{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}} (G\+B\+\_\+\+S\+IO, \char`\"{}GB Serial I/O\char`\"{}, \char`\"{}gb.\+sio\char`\"{})
+\item 
+void \mbox{\hyperlink{gb_2sio_8c_a5dde5614190ede7a21df9ee7792e5bb3}{\+\_\+\+G\+B\+S\+I\+O\+Process\+Events}} (struct m\+Timing $\ast$timing, void $\ast$context, uint32\+\_\+t cycles\+Late)
+\item 
+void \mbox{\hyperlink{gb_2sio_8c_ad4852295457b07cc5313a02ac5c9c63c}{G\+B\+S\+I\+O\+Init}} (struct G\+B\+S\+IO $\ast$sio)
+\item 
+void \mbox{\hyperlink{gb_2sio_8c_af7c02f14cad654b1616c4645061d3ec9}{G\+B\+S\+I\+O\+Reset}} (struct G\+B\+S\+IO $\ast$sio)
+\item 
+void \mbox{\hyperlink{gb_2sio_8c_a40b24628d07ab893161259fd3047f50a}{G\+B\+S\+I\+O\+Deinit}} (struct G\+B\+S\+IO $\ast$sio)
+\item 
+void \mbox{\hyperlink{gb_2sio_8c_ac2677db9d40a36c8e02f0c4adb461b3b}{G\+B\+S\+I\+O\+Set\+Driver}} (struct G\+B\+S\+IO $\ast$sio, struct G\+B\+S\+I\+O\+Driver $\ast$driver)
+\item 
+void \mbox{\hyperlink{gb_2sio_8c_a719cede3d7ad7507145abcbaf9f01840}{G\+B\+S\+I\+O\+Write\+SB}} (struct G\+B\+S\+IO $\ast$sio, uint8\+\_\+t sb)
+\item 
+void \mbox{\hyperlink{gb_2sio_8c_a128bbe3ed230974c0ebd5dc159e2abd6}{G\+B\+S\+I\+O\+Write\+SC}} (struct G\+B\+S\+IO $\ast$sio, uint8\+\_\+t sc)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gb_2sio_8c_a84b7a75a1701f0db5d6c778329839787}{G\+B\+S\+I\+O\+Cycles\+Per\+Transfer}} \mbox{[}2\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{gb_2sio_8c_a5dde5614190ede7a21df9ee7792e5bb3}\label{gb_2sio_8c_a5dde5614190ede7a21df9ee7792e5bb3}} 
+\index{gb/sio.\+c@{gb/sio.\+c}!\+\_\+\+G\+B\+S\+I\+O\+Process\+Events@{\+\_\+\+G\+B\+S\+I\+O\+Process\+Events}}
+\index{\+\_\+\+G\+B\+S\+I\+O\+Process\+Events@{\+\_\+\+G\+B\+S\+I\+O\+Process\+Events}!gb/sio.\+c@{gb/sio.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+S\+I\+O\+Process\+Events()}{\_GBSIOProcessEvents()}}
+{\footnotesize\ttfamily void \+\_\+\+G\+B\+S\+I\+O\+Process\+Events (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing,  }\item[{void $\ast$}]{context,  }\item[{uint32\+\_\+t}]{cycles\+Late }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_8c_a5dde5614190ede7a21df9ee7792e5bb3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_8c_a5dde5614190ede7a21df9ee7792e5bb3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2sio_8c_a40b24628d07ab893161259fd3047f50a}\label{gb_2sio_8c_a40b24628d07ab893161259fd3047f50a}} 
+\index{gb/sio.\+c@{gb/sio.\+c}!G\+B\+S\+I\+O\+Deinit@{G\+B\+S\+I\+O\+Deinit}}
+\index{G\+B\+S\+I\+O\+Deinit@{G\+B\+S\+I\+O\+Deinit}!gb/sio.\+c@{gb/sio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+S\+I\+O\+Deinit()}{GBSIODeinit()}}
+{\footnotesize\ttfamily void G\+B\+S\+I\+O\+Deinit (\begin{DoxyParamCaption}\item[{struct G\+B\+S\+IO $\ast$}]{sio }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_8c_a40b24628d07ab893161259fd3047f50a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2sio_8c_ad4852295457b07cc5313a02ac5c9c63c}\label{gb_2sio_8c_ad4852295457b07cc5313a02ac5c9c63c}} 
+\index{gb/sio.\+c@{gb/sio.\+c}!G\+B\+S\+I\+O\+Init@{G\+B\+S\+I\+O\+Init}}
+\index{G\+B\+S\+I\+O\+Init@{G\+B\+S\+I\+O\+Init}!gb/sio.\+c@{gb/sio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+S\+I\+O\+Init()}{GBSIOInit()}}
+{\footnotesize\ttfamily void G\+B\+S\+I\+O\+Init (\begin{DoxyParamCaption}\item[{struct G\+B\+S\+IO $\ast$}]{sio }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_8c_ad4852295457b07cc5313a02ac5c9c63c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_8c_ad4852295457b07cc5313a02ac5c9c63c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2sio_8c_af7c02f14cad654b1616c4645061d3ec9}\label{gb_2sio_8c_af7c02f14cad654b1616c4645061d3ec9}} 
+\index{gb/sio.\+c@{gb/sio.\+c}!G\+B\+S\+I\+O\+Reset@{G\+B\+S\+I\+O\+Reset}}
+\index{G\+B\+S\+I\+O\+Reset@{G\+B\+S\+I\+O\+Reset}!gb/sio.\+c@{gb/sio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+S\+I\+O\+Reset()}{GBSIOReset()}}
+{\footnotesize\ttfamily void G\+B\+S\+I\+O\+Reset (\begin{DoxyParamCaption}\item[{struct G\+B\+S\+IO $\ast$}]{sio }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_8c_af7c02f14cad654b1616c4645061d3ec9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2sio_8c_ac2677db9d40a36c8e02f0c4adb461b3b}\label{gb_2sio_8c_ac2677db9d40a36c8e02f0c4adb461b3b}} 
+\index{gb/sio.\+c@{gb/sio.\+c}!G\+B\+S\+I\+O\+Set\+Driver@{G\+B\+S\+I\+O\+Set\+Driver}}
+\index{G\+B\+S\+I\+O\+Set\+Driver@{G\+B\+S\+I\+O\+Set\+Driver}!gb/sio.\+c@{gb/sio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+S\+I\+O\+Set\+Driver()}{GBSIOSetDriver()}}
+{\footnotesize\ttfamily void G\+B\+S\+I\+O\+Set\+Driver (\begin{DoxyParamCaption}\item[{struct G\+B\+S\+IO $\ast$}]{sio,  }\item[{struct G\+B\+S\+I\+O\+Driver $\ast$}]{driver }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_8c_ac2677db9d40a36c8e02f0c4adb461b3b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2sio_8c_a719cede3d7ad7507145abcbaf9f01840}\label{gb_2sio_8c_a719cede3d7ad7507145abcbaf9f01840}} 
+\index{gb/sio.\+c@{gb/sio.\+c}!G\+B\+S\+I\+O\+Write\+SB@{G\+B\+S\+I\+O\+Write\+SB}}
+\index{G\+B\+S\+I\+O\+Write\+SB@{G\+B\+S\+I\+O\+Write\+SB}!gb/sio.\+c@{gb/sio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+S\+I\+O\+Write\+S\+B()}{GBSIOWriteSB()}}
+{\footnotesize\ttfamily void G\+B\+S\+I\+O\+Write\+SB (\begin{DoxyParamCaption}\item[{struct G\+B\+S\+IO $\ast$}]{sio,  }\item[{uint8\+\_\+t}]{sb }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_8c_a719cede3d7ad7507145abcbaf9f01840_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2sio_8c_a128bbe3ed230974c0ebd5dc159e2abd6}\label{gb_2sio_8c_a128bbe3ed230974c0ebd5dc159e2abd6}} 
+\index{gb/sio.\+c@{gb/sio.\+c}!G\+B\+S\+I\+O\+Write\+SC@{G\+B\+S\+I\+O\+Write\+SC}}
+\index{G\+B\+S\+I\+O\+Write\+SC@{G\+B\+S\+I\+O\+Write\+SC}!gb/sio.\+c@{gb/sio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+S\+I\+O\+Write\+S\+C()}{GBSIOWriteSC()}}
+{\footnotesize\ttfamily void G\+B\+S\+I\+O\+Write\+SC (\begin{DoxyParamCaption}\item[{struct G\+B\+S\+IO $\ast$}]{sio,  }\item[{uint8\+\_\+t}]{sc }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{gb_2sio_8c_a128bbe3ed230974c0ebd5dc159e2abd6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_8c_a128bbe3ed230974c0ebd5dc159e2abd6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2sio_8c_a28b0f6ca593588dfd13ca46d9f0f5edd}\label{gb_2sio_8c_a28b0f6ca593588dfd13ca46d9f0f5edd}} 
+\index{gb/sio.\+c@{gb/sio.\+c}!m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}}
+\index{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}!gb/sio.\+c@{gb/sio.\+c}}
+\subsubsection{\texorpdfstring{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+R\+Y()}{mLOG\_DEFINE\_CATEGORY()}}
+{\footnotesize\ttfamily m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY (\begin{DoxyParamCaption}\item[{G\+B\+\_\+\+S\+IO}]{,  }\item[{\char`\"{}GB Serial I/O\char`\"{}}]{,  }\item[{\char`\"{}gb.\+sio\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{gb_2sio_8c_a84b7a75a1701f0db5d6c778329839787}\label{gb_2sio_8c_a84b7a75a1701f0db5d6c778329839787}} 
+\index{gb/sio.\+c@{gb/sio.\+c}!G\+B\+S\+I\+O\+Cycles\+Per\+Transfer@{G\+B\+S\+I\+O\+Cycles\+Per\+Transfer}}
+\index{G\+B\+S\+I\+O\+Cycles\+Per\+Transfer@{G\+B\+S\+I\+O\+Cycles\+Per\+Transfer}!gb/sio.\+c@{gb/sio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+S\+I\+O\+Cycles\+Per\+Transfer}{GBSIOCyclesPerTransfer}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} G\+B\+S\+I\+O\+Cycles\+Per\+Transfer\mbox{[}2\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    512,
+    16
+\}
+\end{DoxyCode}

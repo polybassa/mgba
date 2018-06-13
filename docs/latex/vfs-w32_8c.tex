@@ -1,0 +1,219 @@
+\hypertarget{vfs-w32_8c}{}\section{src/platform/windows/vfs-\/w32.c File Reference}
+\label{vfs-w32_8c}\index{src/platform/windows/vfs-\/w32.\+c@{src/platform/windows/vfs-\/w32.\+c}}
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+{\ttfamily \#include $<$strsafe.\+h$>$}\newline
+Include dependency graph for vfs-\/w32.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-w32_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{vfs-w32_8c_a6296f276728439eb045fc677652fc5f9}{\+\_\+vdw\+Close}} (struct V\+Dir $\ast$vd)
+\item 
+static void \mbox{\hyperlink{vfs-w32_8c_aa13a5e3490d91a1207db9f34666b12a1}{\+\_\+vdw\+Rewind}} (struct V\+Dir $\ast$vd)
+\item 
+static struct V\+Dir\+Entry $\ast$ \mbox{\hyperlink{vfs-w32_8c_a65c8ce6577ea3b8a6300f2c95ad372ad}{\+\_\+vdw\+List\+Next}} (struct V\+Dir $\ast$vd)
+\item 
+static struct V\+File $\ast$ \mbox{\hyperlink{vfs-w32_8c_a748986f90f041704959b73a453216e4f}{\+\_\+vdw\+Open\+File}} (struct V\+Dir $\ast$vd, const char $\ast$path, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})
+\item 
+static struct V\+Dir $\ast$ \mbox{\hyperlink{vfs-w32_8c_a602c5a9cb86c217774922a5e150e640c}{\+\_\+vdw\+Open\+Dir}} (struct V\+Dir $\ast$vd, const char $\ast$path)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{vfs-w32_8c_a2d2d07ef2c4dd06024930003a76dbf33}{\+\_\+vdw\+Delete\+File}} (struct V\+Dir $\ast$vd, const char $\ast$path)
+\item 
+static const char $\ast$ \mbox{\hyperlink{vfs-w32_8c_a1934e51aba094c34fa52f1fc7ed8505b}{\+\_\+vdwe\+Name}} (struct V\+Dir\+Entry $\ast$vde)
+\item 
+static enum V\+F\+S\+Type \mbox{\hyperlink{vfs-w32_8c_a70662c6113d4ab96de82bb863ef01d87}{\+\_\+vdwe\+Type}} (struct V\+Dir\+Entry $\ast$vde)
+\item 
+struct V\+Dir $\ast$ \mbox{\hyperlink{vfs-w32_8c_a2966065604f0fcfa278b5246d4d653b9}{V\+Dir\+Open}} (const char $\ast$path)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{vfs-w32_8c_a6296f276728439eb045fc677652fc5f9}\label{vfs-w32_8c_a6296f276728439eb045fc677652fc5f9}} 
+\index{vfs-\/w32.\+c@{vfs-\/w32.\+c}!\+\_\+vdw\+Close@{\+\_\+vdw\+Close}}
+\index{\+\_\+vdw\+Close@{\+\_\+vdw\+Close}!vfs-\/w32.\+c@{vfs-\/w32.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdw\+Close()}{\_vdwClose()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+vdw\+Close (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{vfs-w32_8c_a6296f276728439eb045fc677652fc5f9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-w32_8c_a6296f276728439eb045fc677652fc5f9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-w32_8c_a2d2d07ef2c4dd06024930003a76dbf33}\label{vfs-w32_8c_a2d2d07ef2c4dd06024930003a76dbf33}} 
+\index{vfs-\/w32.\+c@{vfs-\/w32.\+c}!\+\_\+vdw\+Delete\+File@{\+\_\+vdw\+Delete\+File}}
+\index{\+\_\+vdw\+Delete\+File@{\+\_\+vdw\+Delete\+File}!vfs-\/w32.\+c@{vfs-\/w32.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdw\+Delete\+File()}{\_vdwDeleteFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+vdw\+Delete\+File (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd,  }\item[{const char $\ast$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{vfs-w32_8c_a2d2d07ef2c4dd06024930003a76dbf33_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-w32_8c_a2d2d07ef2c4dd06024930003a76dbf33_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-w32_8c_a1934e51aba094c34fa52f1fc7ed8505b}\label{vfs-w32_8c_a1934e51aba094c34fa52f1fc7ed8505b}} 
+\index{vfs-\/w32.\+c@{vfs-\/w32.\+c}!\+\_\+vdwe\+Name@{\+\_\+vdwe\+Name}}
+\index{\+\_\+vdwe\+Name@{\+\_\+vdwe\+Name}!vfs-\/w32.\+c@{vfs-\/w32.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdwe\+Name()}{\_vdweName()}}
+{\footnotesize\ttfamily const char $\ast$ \+\_\+vdwe\+Name (\begin{DoxyParamCaption}\item[{struct V\+Dir\+Entry $\ast$}]{vde }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-w32_8c_a1934e51aba094c34fa52f1fc7ed8505b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-w32_8c_a70662c6113d4ab96de82bb863ef01d87}\label{vfs-w32_8c_a70662c6113d4ab96de82bb863ef01d87}} 
+\index{vfs-\/w32.\+c@{vfs-\/w32.\+c}!\+\_\+vdwe\+Type@{\+\_\+vdwe\+Type}}
+\index{\+\_\+vdwe\+Type@{\+\_\+vdwe\+Type}!vfs-\/w32.\+c@{vfs-\/w32.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdwe\+Type()}{\_vdweType()}}
+{\footnotesize\ttfamily static enum V\+F\+S\+Type \+\_\+vdwe\+Type (\begin{DoxyParamCaption}\item[{struct V\+Dir\+Entry $\ast$}]{vde }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-w32_8c_a70662c6113d4ab96de82bb863ef01d87_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-w32_8c_a65c8ce6577ea3b8a6300f2c95ad372ad}\label{vfs-w32_8c_a65c8ce6577ea3b8a6300f2c95ad372ad}} 
+\index{vfs-\/w32.\+c@{vfs-\/w32.\+c}!\+\_\+vdw\+List\+Next@{\+\_\+vdw\+List\+Next}}
+\index{\+\_\+vdw\+List\+Next@{\+\_\+vdw\+List\+Next}!vfs-\/w32.\+c@{vfs-\/w32.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdw\+List\+Next()}{\_vdwListNext()}}
+{\footnotesize\ttfamily struct V\+Dir\+Entry $\ast$ \+\_\+vdw\+List\+Next (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{vfs-w32_8c_a65c8ce6577ea3b8a6300f2c95ad372ad_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-w32_8c_a65c8ce6577ea3b8a6300f2c95ad372ad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-w32_8c_a602c5a9cb86c217774922a5e150e640c}\label{vfs-w32_8c_a602c5a9cb86c217774922a5e150e640c}} 
+\index{vfs-\/w32.\+c@{vfs-\/w32.\+c}!\+\_\+vdw\+Open\+Dir@{\+\_\+vdw\+Open\+Dir}}
+\index{\+\_\+vdw\+Open\+Dir@{\+\_\+vdw\+Open\+Dir}!vfs-\/w32.\+c@{vfs-\/w32.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdw\+Open\+Dir()}{\_vdwOpenDir()}}
+{\footnotesize\ttfamily struct V\+Dir $\ast$ \+\_\+vdw\+Open\+Dir (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd,  }\item[{const char $\ast$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-w32_8c_a602c5a9cb86c217774922a5e150e640c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{vfs-w32_8c_a602c5a9cb86c217774922a5e150e640c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-w32_8c_a748986f90f041704959b73a453216e4f}\label{vfs-w32_8c_a748986f90f041704959b73a453216e4f}} 
+\index{vfs-\/w32.\+c@{vfs-\/w32.\+c}!\+\_\+vdw\+Open\+File@{\+\_\+vdw\+Open\+File}}
+\index{\+\_\+vdw\+Open\+File@{\+\_\+vdw\+Open\+File}!vfs-\/w32.\+c@{vfs-\/w32.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdw\+Open\+File()}{\_vdwOpenFile()}}
+{\footnotesize\ttfamily struct V\+File $\ast$ \+\_\+vdw\+Open\+File (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd,  }\item[{const char $\ast$}]{path,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-w32_8c_a748986f90f041704959b73a453216e4f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-w32_8c_a748986f90f041704959b73a453216e4f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-w32_8c_aa13a5e3490d91a1207db9f34666b12a1}\label{vfs-w32_8c_aa13a5e3490d91a1207db9f34666b12a1}} 
+\index{vfs-\/w32.\+c@{vfs-\/w32.\+c}!\+\_\+vdw\+Rewind@{\+\_\+vdw\+Rewind}}
+\index{\+\_\+vdw\+Rewind@{\+\_\+vdw\+Rewind}!vfs-\/w32.\+c@{vfs-\/w32.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdw\+Rewind()}{\_vdwRewind()}}
+{\footnotesize\ttfamily void \+\_\+vdw\+Rewind (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{vfs-w32_8c_aa13a5e3490d91a1207db9f34666b12a1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-w32_8c_aa13a5e3490d91a1207db9f34666b12a1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-w32_8c_a2966065604f0fcfa278b5246d4d653b9}\label{vfs-w32_8c_a2966065604f0fcfa278b5246d4d653b9}} 
+\index{vfs-\/w32.\+c@{vfs-\/w32.\+c}!V\+Dir\+Open@{V\+Dir\+Open}}
+\index{V\+Dir\+Open@{V\+Dir\+Open}!vfs-\/w32.\+c@{vfs-\/w32.\+c}}
+\subsubsection{\texorpdfstring{V\+Dir\+Open()}{VDirOpen()}}
+{\footnotesize\ttfamily struct V\+Dir$\ast$ V\+Dir\+Open (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-w32_8c_a2966065604f0fcfa278b5246d4d653b9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{vfs-w32_8c_a2966065604f0fcfa278b5246d4d653b9_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,132 @@
+\hypertarget{sdl-audio_8c}{}\section{src/platform/sdl/sdl-\/audio.c File Reference}
+\label{sdl-audio_8c}\index{src/platform/sdl/sdl-\/audio.\+c@{src/platform/sdl/sdl-\/audio.\+c}}
+{\ttfamily \#include \char`\"{}sdl-\/audio.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/thread.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/audio.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/gba.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/blip\+\_\+buf.\+h$>$}\newline
+Include dependency graph for sdl-\/audio.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-audio_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{sdl-audio_8c_a6b20d41d6252e9871430c242cb1a56e7}{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}~(\mbox{\hyperlink{_2audio_8c_a422895065f1256e720e761567d0b443e}{G\+B\+A\+\_\+\+A\+U\+D\+I\+O\+\_\+\+S\+A\+M\+P\+L\+ES}} $>$$>$ 2)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{sdl-audio_8c_a0cb1f00b3f80d1efe5dd621df6aa101e}{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}} (S\+D\+L\+\_\+\+A\+U\+D\+IO, \char`\"{}S\+DL Audio\char`\"{}, \char`\"{}platform.\+sdl.\+audio\char`\"{})
+\item 
+static void \mbox{\hyperlink{sdl-audio_8c_a1ab36538916d6aebaea28162cb4e35a4}{\+\_\+m\+S\+D\+L\+Audio\+Callback}} (void $\ast$context, Uint8 $\ast$\mbox{\hyperlink{libretro_8c_a735984d41155bc1032e09bece8f8d66d}{data}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} len)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{sdl-audio_8c_aa58bb1fe9aa1e3a8eaac9b81fdb4c5b6}{m\+S\+D\+L\+Init\+Audio}} (struct \mbox{\hyperlink{sdl-audio_8h_structm_s_d_l_audio}{m\+S\+D\+L\+Audio}} $\ast$context, struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+void \mbox{\hyperlink{sdl-audio_8c_adadf9e93127f15bd0b8f6910f1b64628}{m\+S\+D\+L\+Deinit\+Audio}} (struct \mbox{\hyperlink{sdl-audio_8h_structm_s_d_l_audio}{m\+S\+D\+L\+Audio}} $\ast$context)
+\item 
+void \mbox{\hyperlink{sdl-audio_8c_a6fd4770ab1d4825f5f3231ce155d4696}{m\+S\+D\+L\+Pause\+Audio}} (struct \mbox{\hyperlink{sdl-audio_8h_structm_s_d_l_audio}{m\+S\+D\+L\+Audio}} $\ast$context)
+\item 
+void \mbox{\hyperlink{sdl-audio_8c_aec2e6fbd9b73db60bf1dee6113caeb03}{m\+S\+D\+L\+Resume\+Audio}} (struct \mbox{\hyperlink{sdl-audio_8h_structm_s_d_l_audio}{m\+S\+D\+L\+Audio}} $\ast$context)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{sdl-audio_8c_a6b20d41d6252e9871430c242cb1a56e7}\label{sdl-audio_8c_a6b20d41d6252e9871430c242cb1a56e7}} 
+\index{sdl-\/audio.\+c@{sdl-\/audio.\+c}!B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}
+\index{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}!sdl-\/audio.\+c@{sdl-\/audio.\+c}}
+\subsubsection{\texorpdfstring{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}{BUFFER\_SIZE}}
+{\footnotesize\ttfamily \#define B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE~(\mbox{\hyperlink{_2audio_8c_a422895065f1256e720e761567d0b443e}{G\+B\+A\+\_\+\+A\+U\+D\+I\+O\+\_\+\+S\+A\+M\+P\+L\+ES}} $>$$>$ 2)}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{sdl-audio_8c_a1ab36538916d6aebaea28162cb4e35a4}\label{sdl-audio_8c_a1ab36538916d6aebaea28162cb4e35a4}} 
+\index{sdl-\/audio.\+c@{sdl-\/audio.\+c}!\+\_\+m\+S\+D\+L\+Audio\+Callback@{\+\_\+m\+S\+D\+L\+Audio\+Callback}}
+\index{\+\_\+m\+S\+D\+L\+Audio\+Callback@{\+\_\+m\+S\+D\+L\+Audio\+Callback}!sdl-\/audio.\+c@{sdl-\/audio.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+m\+S\+D\+L\+Audio\+Callback()}{\_mSDLAudioCallback()}}
+{\footnotesize\ttfamily static void \+\_\+m\+S\+D\+L\+Audio\+Callback (\begin{DoxyParamCaption}\item[{void $\ast$}]{context,  }\item[{Uint8 $\ast$}]{data,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-audio_8c_a1ab36538916d6aebaea28162cb4e35a4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-audio_8c_a1ab36538916d6aebaea28162cb4e35a4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-audio_8c_a0cb1f00b3f80d1efe5dd621df6aa101e}\label{sdl-audio_8c_a0cb1f00b3f80d1efe5dd621df6aa101e}} 
+\index{sdl-\/audio.\+c@{sdl-\/audio.\+c}!m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}}
+\index{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}!sdl-\/audio.\+c@{sdl-\/audio.\+c}}
+\subsubsection{\texorpdfstring{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+R\+Y()}{mLOG\_DEFINE\_CATEGORY()}}
+{\footnotesize\ttfamily m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+A\+U\+D\+IO}]{,  }\item[{\char`\"{}S\+DL Audio\char`\"{}}]{,  }\item[{\char`\"{}platform.\+sdl.\+audio\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sdl-audio_8c_adadf9e93127f15bd0b8f6910f1b64628}\label{sdl-audio_8c_adadf9e93127f15bd0b8f6910f1b64628}} 
+\index{sdl-\/audio.\+c@{sdl-\/audio.\+c}!m\+S\+D\+L\+Deinit\+Audio@{m\+S\+D\+L\+Deinit\+Audio}}
+\index{m\+S\+D\+L\+Deinit\+Audio@{m\+S\+D\+L\+Deinit\+Audio}!sdl-\/audio.\+c@{sdl-\/audio.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Deinit\+Audio()}{mSDLDeinitAudio()}}
+{\footnotesize\ttfamily void m\+S\+D\+L\+Deinit\+Audio (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sdl-audio_8h_structm_s_d_l_audio}{m\+S\+D\+L\+Audio}} $\ast$}]{context }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-audio_8c_adadf9e93127f15bd0b8f6910f1b64628_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-audio_8c_aa58bb1fe9aa1e3a8eaac9b81fdb4c5b6}\label{sdl-audio_8c_aa58bb1fe9aa1e3a8eaac9b81fdb4c5b6}} 
+\index{sdl-\/audio.\+c@{sdl-\/audio.\+c}!m\+S\+D\+L\+Init\+Audio@{m\+S\+D\+L\+Init\+Audio}}
+\index{m\+S\+D\+L\+Init\+Audio@{m\+S\+D\+L\+Init\+Audio}!sdl-\/audio.\+c@{sdl-\/audio.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Init\+Audio()}{mSDLInitAudio()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+S\+D\+L\+Init\+Audio (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sdl-audio_8h_structm_s_d_l_audio}{m\+S\+D\+L\+Audio}} $\ast$}]{context,  }\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-audio_8c_aa58bb1fe9aa1e3a8eaac9b81fdb4c5b6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{sdl-audio_8c_aa58bb1fe9aa1e3a8eaac9b81fdb4c5b6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-audio_8c_a6fd4770ab1d4825f5f3231ce155d4696}\label{sdl-audio_8c_a6fd4770ab1d4825f5f3231ce155d4696}} 
+\index{sdl-\/audio.\+c@{sdl-\/audio.\+c}!m\+S\+D\+L\+Pause\+Audio@{m\+S\+D\+L\+Pause\+Audio}}
+\index{m\+S\+D\+L\+Pause\+Audio@{m\+S\+D\+L\+Pause\+Audio}!sdl-\/audio.\+c@{sdl-\/audio.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Pause\+Audio()}{mSDLPauseAudio()}}
+{\footnotesize\ttfamily void m\+S\+D\+L\+Pause\+Audio (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sdl-audio_8h_structm_s_d_l_audio}{m\+S\+D\+L\+Audio}} $\ast$}]{context }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-audio_8c_a6fd4770ab1d4825f5f3231ce155d4696_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-audio_8c_aec2e6fbd9b73db60bf1dee6113caeb03}\label{sdl-audio_8c_aec2e6fbd9b73db60bf1dee6113caeb03}} 
+\index{sdl-\/audio.\+c@{sdl-\/audio.\+c}!m\+S\+D\+L\+Resume\+Audio@{m\+S\+D\+L\+Resume\+Audio}}
+\index{m\+S\+D\+L\+Resume\+Audio@{m\+S\+D\+L\+Resume\+Audio}!sdl-\/audio.\+c@{sdl-\/audio.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Resume\+Audio()}{mSDLResumeAudio()}}
+{\footnotesize\ttfamily void m\+S\+D\+L\+Resume\+Audio (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sdl-audio_8h_structm_s_d_l_audio}{m\+S\+D\+L\+Audio}} $\ast$}]{context }\end{DoxyParamCaption})}
+

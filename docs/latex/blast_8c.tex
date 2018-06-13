@@ -1,0 +1,152 @@
+\hypertarget{blast_8c}{}\section{src/third-\/party/zlib/contrib/blast/blast.c File Reference}
+\label{blast_8c}\index{src/third-\/party/zlib/contrib/blast/blast.\+c@{src/third-\/party/zlib/contrib/blast/blast.\+c}}
+{\ttfamily \#include $<$setjmp.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}blast.\+h\char`\"{}}\newline
+Include dependency graph for blast.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{blast_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{blast_8c_a08023ea6765c99d60a6a3840cd07156e}{local}}~static            /$\ast$ for local function definitions $\ast$/
+\item 
+\#define \mbox{\hyperlink{blast_8c_a6fcad31e688110d9d61bdcc99b2a59d7}{M\+A\+X\+B\+I\+TS}}~13              /$\ast$ maximum \mbox{\hyperlink{inftrees_8h_structcode}{code}} length $\ast$/
+\item 
+\#define \mbox{\hyperlink{blast_8c_a0882b20213d1ebf14d860e611d06cf36}{M\+A\+X\+W\+IN}}~4096             /$\ast$ maximum \mbox{\hyperlink{rpng2-x_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}} \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}} $\ast$/
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{blast_8c_af23433d9d58fb31d4a1ac224e3bc46e8}{bits}} (struct state $\ast$s, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} need)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{blast_8c_a25b79328579a3f00f9d7baf16b9d49e9}{decode}} (struct state $\ast$s, struct huffman $\ast$\mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{blast_8c_a4d4f9c52f4847bde319c97b848671902}{construct}} (struct huffman $\ast$\mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}}, const unsigned char $\ast$rep, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{blast_8c_aec6d15fc43b475febf2cfe5de5b9250a}{decomp}} (struct state $\ast$s)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{blast_8c_a206e4a55641e1ae17006aebb2302879d}{blast}} (\mbox{\hyperlink{blast_8h_aa7df5c33252c5230f1829e6274222468}{blast\+\_\+in}} infun, void $\ast$inhow, \mbox{\hyperlink{blast_8h_a5e9b892cd56af623f4d663d862f65d76}{blast\+\_\+out}} outfun, void $\ast$outhow)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{blast_8c_a08023ea6765c99d60a6a3840cd07156e}\label{blast_8c_a08023ea6765c99d60a6a3840cd07156e}} 
+\index{blast.\+c@{blast.\+c}!local@{local}}
+\index{local@{local}!blast.\+c@{blast.\+c}}
+\subsubsection{\texorpdfstring{local}{local}}
+{\footnotesize\ttfamily \#define local~static            /$\ast$ for local function definitions $\ast$/}
+
+\mbox{\Hypertarget{blast_8c_a6fcad31e688110d9d61bdcc99b2a59d7}\label{blast_8c_a6fcad31e688110d9d61bdcc99b2a59d7}} 
+\index{blast.\+c@{blast.\+c}!M\+A\+X\+B\+I\+TS@{M\+A\+X\+B\+I\+TS}}
+\index{M\+A\+X\+B\+I\+TS@{M\+A\+X\+B\+I\+TS}!blast.\+c@{blast.\+c}}
+\subsubsection{\texorpdfstring{M\+A\+X\+B\+I\+TS}{MAXBITS}}
+{\footnotesize\ttfamily \#define M\+A\+X\+B\+I\+TS~13              /$\ast$ maximum \mbox{\hyperlink{inftrees_8h_structcode}{code}} length $\ast$/}
+
+\mbox{\Hypertarget{blast_8c_a0882b20213d1ebf14d860e611d06cf36}\label{blast_8c_a0882b20213d1ebf14d860e611d06cf36}} 
+\index{blast.\+c@{blast.\+c}!M\+A\+X\+W\+IN@{M\+A\+X\+W\+IN}}
+\index{M\+A\+X\+W\+IN@{M\+A\+X\+W\+IN}!blast.\+c@{blast.\+c}}
+\subsubsection{\texorpdfstring{M\+A\+X\+W\+IN}{MAXWIN}}
+{\footnotesize\ttfamily \#define M\+A\+X\+W\+IN~4096             /$\ast$ maximum \mbox{\hyperlink{rpng2-x_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}} \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}} $\ast$/}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{blast_8c_af23433d9d58fb31d4a1ac224e3bc46e8}\label{blast_8c_af23433d9d58fb31d4a1ac224e3bc46e8}} 
+\index{blast.\+c@{blast.\+c}!bits@{bits}}
+\index{bits@{bits}!blast.\+c@{blast.\+c}}
+\subsubsection{\texorpdfstring{bits()}{bits()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} bits (\begin{DoxyParamCaption}\item[{struct state $\ast$}]{s,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{need }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{blast_8c_af23433d9d58fb31d4a1ac224e3bc46e8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{blast_8c_af23433d9d58fb31d4a1ac224e3bc46e8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{blast_8c_a206e4a55641e1ae17006aebb2302879d}\label{blast_8c_a206e4a55641e1ae17006aebb2302879d}} 
+\index{blast.\+c@{blast.\+c}!blast@{blast}}
+\index{blast@{blast}!blast.\+c@{blast.\+c}}
+\subsubsection{\texorpdfstring{blast()}{blast()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} blast (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{blast_8h_aa7df5c33252c5230f1829e6274222468}{blast\+\_\+in}}}]{infun,  }\item[{void $\ast$}]{inhow,  }\item[{\mbox{\hyperlink{blast_8h_a5e9b892cd56af623f4d663d862f65d76}{blast\+\_\+out}}}]{outfun,  }\item[{void $\ast$}]{outhow }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{blast_8c_a206e4a55641e1ae17006aebb2302879d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{blast_8c_a4d4f9c52f4847bde319c97b848671902}\label{blast_8c_a4d4f9c52f4847bde319c97b848671902}} 
+\index{blast.\+c@{blast.\+c}!construct@{construct}}
+\index{construct@{construct}!blast.\+c@{blast.\+c}}
+\subsubsection{\texorpdfstring{construct()}{construct()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} construct (\begin{DoxyParamCaption}\item[{struct huffman $\ast$}]{h,  }\item[{const unsigned char $\ast$}]{rep,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{n }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{blast_8c_a4d4f9c52f4847bde319c97b848671902_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{blast_8c_a25b79328579a3f00f9d7baf16b9d49e9}\label{blast_8c_a25b79328579a3f00f9d7baf16b9d49e9}} 
+\index{blast.\+c@{blast.\+c}!decode@{decode}}
+\index{decode@{decode}!blast.\+c@{blast.\+c}}
+\subsubsection{\texorpdfstring{decode()}{decode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} decode (\begin{DoxyParamCaption}\item[{struct state $\ast$}]{s,  }\item[{struct huffman $\ast$}]{h }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{blast_8c_a25b79328579a3f00f9d7baf16b9d49e9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=301pt]{blast_8c_a25b79328579a3f00f9d7baf16b9d49e9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{blast_8c_aec6d15fc43b475febf2cfe5de5b9250a}\label{blast_8c_aec6d15fc43b475febf2cfe5de5b9250a}} 
+\index{blast.\+c@{blast.\+c}!decomp@{decomp}}
+\index{decomp@{decomp}!blast.\+c@{blast.\+c}}
+\subsubsection{\texorpdfstring{decomp()}{decomp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} decomp (\begin{DoxyParamCaption}\item[{struct state $\ast$}]{s }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{blast_8c_aec6d15fc43b475febf2cfe5de5b9250a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{blast_8c_aec6d15fc43b475febf2cfe5de5b9250a_icgraph}
+\end{center}
+\end{figure}

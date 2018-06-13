@@ -1,0 +1,436 @@
+\hypertarget{gba_2cheats_8c}{}\section{src/gba/cheats.c File Reference}
+\label{gba_2cheats_8c}\index{src/gba/cheats.\+c@{src/gba/cheats.\+c}}
+{\ttfamily \#include $<$mgba/internal/gba/cheats.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/gba.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}gba/cheats/gameshark.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gba/cheats/parv3.\+h\char`\"{}}\newline
+Include dependency graph for cheats.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gba_2cheats_8c_af0f2173e3b202ddf5756531b4471dcb2}{M\+A\+X\+\_\+\+L\+I\+N\+E\+\_\+\+L\+E\+N\+G\+TH}}~128
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{gba_2cheats_8c_a85b9aa2cb7c7f4331bf160118c610263}{\+\_\+add\+Breakpoint}} (struct m\+Cheat\+Device $\ast$device, struct G\+B\+A\+Cheat\+Set $\ast$cheats)
+\item 
+static void \mbox{\hyperlink{gba_2cheats_8c_a420b6aa0271d4c8c4c346418d1bb5bcf}{\+\_\+remove\+Breakpoint}} (struct m\+Cheat\+Device $\ast$device, struct G\+B\+A\+Cheat\+Set $\ast$cheats)
+\item 
+static void \mbox{\hyperlink{gba_2cheats_8c_acc0800533a21ae537085098e22193f20}{\+\_\+patch\+R\+OM}} (struct m\+Cheat\+Device $\ast$device, struct G\+B\+A\+Cheat\+Set $\ast$cheats)
+\item 
+static void \mbox{\hyperlink{gba_2cheats_8c_acdbd615d1c43d050e3356138c2d10138}{\+\_\+unpatch\+R\+OM}} (struct m\+Cheat\+Device $\ast$device, struct G\+B\+A\+Cheat\+Set $\ast$cheats)
+\item 
+static void \mbox{\hyperlink{gba_2cheats_8c_a0d1546f291d31fb08dce28883abd4de9}{G\+B\+A\+Cheat\+Set\+Deinit}} (struct m\+Cheat\+Set $\ast$set)
+\item 
+static void \mbox{\hyperlink{gba_2cheats_8c_a270b8624874651ef8670b875b75a2ad3}{G\+B\+A\+Cheat\+Add\+Set}} (struct m\+Cheat\+Set $\ast$cheats, struct m\+Cheat\+Device $\ast$device)
+\item 
+static void \mbox{\hyperlink{gba_2cheats_8c_a93a9b2ebec20f68b70064c9e7fccc1ee}{G\+B\+A\+Cheat\+Remove\+Set}} (struct m\+Cheat\+Set $\ast$cheats, struct m\+Cheat\+Device $\ast$device)
+\item 
+static void \mbox{\hyperlink{gba_2cheats_8c_a072ca331f36fb167a4142ed253a7213e}{G\+B\+A\+Cheat\+Refresh}} (struct m\+Cheat\+Set $\ast$cheats, struct m\+Cheat\+Device $\ast$device)
+\item 
+static void \mbox{\hyperlink{gba_2cheats_8c_aa8d212607162aceb01cad16130259071}{G\+B\+A\+Cheat\+Set\+Copy\+Properties}} (struct m\+Cheat\+Set $\ast$set, struct m\+Cheat\+Set $\ast$old\+Set)
+\item 
+static void \mbox{\hyperlink{gba_2cheats_8c_abac318cd8d65efd66f5dbb6659c1cb85}{G\+B\+A\+Cheat\+Parse\+Directives}} (struct m\+Cheat\+Set $\ast$, const struct String\+List $\ast$directives)
+\item 
+static void \mbox{\hyperlink{gba_2cheats_8c_a09c573c81515d797f01ee2c6f054e29a}{G\+B\+A\+Cheat\+Dump\+Directives}} (struct m\+Cheat\+Set $\ast$, struct String\+List $\ast$directives)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{gba_2cheats_8c_ad5f1f7ded9443de99b5f6988a55f017d}{G\+B\+A\+Cheat\+Add\+Line}} (struct m\+Cheat\+Set $\ast$, const char $\ast$line, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} type)
+\item 
+static struct m\+Cheat\+Set $\ast$ \mbox{\hyperlink{gba_2cheats_8c_a73679622aff480f96b2c725d78703b25}{G\+B\+A\+Cheat\+Set\+Create}} (struct m\+Cheat\+Device $\ast$device, const char $\ast$name)
+\item 
+struct m\+Cheat\+Device $\ast$ \mbox{\hyperlink{gba_2cheats_8c_ab9af1420989e4eb5d471889dccd85806}{G\+B\+A\+Cheat\+Device\+Create}} (void)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{gba_2cheats_8c_a9d9f0650a4627e4c3496ec108fbfc14d}{G\+B\+A\+Cheat\+Add\+Autodetect}} (struct G\+B\+A\+Cheat\+Set $\ast$set, uint32\+\_\+t op1, uint32\+\_\+t op2)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{gba_2cheats_8c_a4f2228266033c6e8f03562cd2bc5ecc3}{G\+B\+A\+Cheat\+Add\+V\+B\+A\+Line}} (struct G\+B\+A\+Cheat\+Set $\ast$cheats, const char $\ast$line)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gba_2cheats_8c_ab9e938121803fe640dcda104d2cd8a0b}{G\+B\+A\+Cheat\+Address\+Is\+Real}} (uint32\+\_\+t address)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{gba_2cheats_8c_af0f2173e3b202ddf5756531b4471dcb2}\label{gba_2cheats_8c_af0f2173e3b202ddf5756531b4471dcb2}} 
+\index{gba/cheats.\+c@{gba/cheats.\+c}!M\+A\+X\+\_\+\+L\+I\+N\+E\+\_\+\+L\+E\+N\+G\+TH@{M\+A\+X\+\_\+\+L\+I\+N\+E\+\_\+\+L\+E\+N\+G\+TH}}
+\index{M\+A\+X\+\_\+\+L\+I\+N\+E\+\_\+\+L\+E\+N\+G\+TH@{M\+A\+X\+\_\+\+L\+I\+N\+E\+\_\+\+L\+E\+N\+G\+TH}!gba/cheats.\+c@{gba/cheats.\+c}}
+\subsubsection{\texorpdfstring{M\+A\+X\+\_\+\+L\+I\+N\+E\+\_\+\+L\+E\+N\+G\+TH}{MAX\_LINE\_LENGTH}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+L\+I\+N\+E\+\_\+\+L\+E\+N\+G\+TH~128}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{gba_2cheats_8c_a85b9aa2cb7c7f4331bf160118c610263}\label{gba_2cheats_8c_a85b9aa2cb7c7f4331bf160118c610263}} 
+\index{gba/cheats.\+c@{gba/cheats.\+c}!\+\_\+add\+Breakpoint@{\+\_\+add\+Breakpoint}}
+\index{\+\_\+add\+Breakpoint@{\+\_\+add\+Breakpoint}!gba/cheats.\+c@{gba/cheats.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+add\+Breakpoint()}{\_addBreakpoint()}}
+{\footnotesize\ttfamily static void \+\_\+add\+Breakpoint (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Device $\ast$}]{device,  }\item[{struct G\+B\+A\+Cheat\+Set $\ast$}]{cheats }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_a85b9aa2cb7c7f4331bf160118c610263_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_a85b9aa2cb7c7f4331bf160118c610263_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gba_2cheats_8c_acc0800533a21ae537085098e22193f20}\label{gba_2cheats_8c_acc0800533a21ae537085098e22193f20}} 
+\index{gba/cheats.\+c@{gba/cheats.\+c}!\+\_\+patch\+R\+OM@{\+\_\+patch\+R\+OM}}
+\index{\+\_\+patch\+R\+OM@{\+\_\+patch\+R\+OM}!gba/cheats.\+c@{gba/cheats.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+patch\+R\+O\+M()}{\_patchROM()}}
+{\footnotesize\ttfamily static void \+\_\+patch\+R\+OM (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Device $\ast$}]{device,  }\item[{struct G\+B\+A\+Cheat\+Set $\ast$}]{cheats }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_acc0800533a21ae537085098e22193f20_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_acc0800533a21ae537085098e22193f20_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gba_2cheats_8c_a420b6aa0271d4c8c4c346418d1bb5bcf}\label{gba_2cheats_8c_a420b6aa0271d4c8c4c346418d1bb5bcf}} 
+\index{gba/cheats.\+c@{gba/cheats.\+c}!\+\_\+remove\+Breakpoint@{\+\_\+remove\+Breakpoint}}
+\index{\+\_\+remove\+Breakpoint@{\+\_\+remove\+Breakpoint}!gba/cheats.\+c@{gba/cheats.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+remove\+Breakpoint()}{\_removeBreakpoint()}}
+{\footnotesize\ttfamily static void \+\_\+remove\+Breakpoint (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Device $\ast$}]{device,  }\item[{struct G\+B\+A\+Cheat\+Set $\ast$}]{cheats }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_a420b6aa0271d4c8c4c346418d1bb5bcf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_a420b6aa0271d4c8c4c346418d1bb5bcf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gba_2cheats_8c_acdbd615d1c43d050e3356138c2d10138}\label{gba_2cheats_8c_acdbd615d1c43d050e3356138c2d10138}} 
+\index{gba/cheats.\+c@{gba/cheats.\+c}!\+\_\+unpatch\+R\+OM@{\+\_\+unpatch\+R\+OM}}
+\index{\+\_\+unpatch\+R\+OM@{\+\_\+unpatch\+R\+OM}!gba/cheats.\+c@{gba/cheats.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+unpatch\+R\+O\+M()}{\_unpatchROM()}}
+{\footnotesize\ttfamily static void \+\_\+unpatch\+R\+OM (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Device $\ast$}]{device,  }\item[{struct G\+B\+A\+Cheat\+Set $\ast$}]{cheats }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_acdbd615d1c43d050e3356138c2d10138_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_acdbd615d1c43d050e3356138c2d10138_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gba_2cheats_8c_a9d9f0650a4627e4c3496ec108fbfc14d}\label{gba_2cheats_8c_a9d9f0650a4627e4c3496ec108fbfc14d}} 
+\index{gba/cheats.\+c@{gba/cheats.\+c}!G\+B\+A\+Cheat\+Add\+Autodetect@{G\+B\+A\+Cheat\+Add\+Autodetect}}
+\index{G\+B\+A\+Cheat\+Add\+Autodetect@{G\+B\+A\+Cheat\+Add\+Autodetect}!gba/cheats.\+c@{gba/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Cheat\+Add\+Autodetect()}{GBACheatAddAutodetect()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+A\+Cheat\+Add\+Autodetect (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cheat\+Set $\ast$}]{set,  }\item[{uint32\+\_\+t}]{op1,  }\item[{uint32\+\_\+t}]{op2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_a9d9f0650a4627e4c3496ec108fbfc14d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_a9d9f0650a4627e4c3496ec108fbfc14d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gba_2cheats_8c_ad5f1f7ded9443de99b5f6988a55f017d}\label{gba_2cheats_8c_ad5f1f7ded9443de99b5f6988a55f017d}} 
+\index{gba/cheats.\+c@{gba/cheats.\+c}!G\+B\+A\+Cheat\+Add\+Line@{G\+B\+A\+Cheat\+Add\+Line}}
+\index{G\+B\+A\+Cheat\+Add\+Line@{G\+B\+A\+Cheat\+Add\+Line}!gba/cheats.\+c@{gba/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Cheat\+Add\+Line()}{GBACheatAddLine()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+A\+Cheat\+Add\+Line (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Set $\ast$}]{set,  }\item[{const char $\ast$}]{line,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_ad5f1f7ded9443de99b5f6988a55f017d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_ad5f1f7ded9443de99b5f6988a55f017d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gba_2cheats_8c_ab9e938121803fe640dcda104d2cd8a0b}\label{gba_2cheats_8c_ab9e938121803fe640dcda104d2cd8a0b}} 
+\index{gba/cheats.\+c@{gba/cheats.\+c}!G\+B\+A\+Cheat\+Address\+Is\+Real@{G\+B\+A\+Cheat\+Address\+Is\+Real}}
+\index{G\+B\+A\+Cheat\+Address\+Is\+Real@{G\+B\+A\+Cheat\+Address\+Is\+Real}!gba/cheats.\+c@{gba/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Cheat\+Address\+Is\+Real()}{GBACheatAddressIsReal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} G\+B\+A\+Cheat\+Address\+Is\+Real (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_ab9e938121803fe640dcda104d2cd8a0b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gba_2cheats_8c_a270b8624874651ef8670b875b75a2ad3}\label{gba_2cheats_8c_a270b8624874651ef8670b875b75a2ad3}} 
+\index{gba/cheats.\+c@{gba/cheats.\+c}!G\+B\+A\+Cheat\+Add\+Set@{G\+B\+A\+Cheat\+Add\+Set}}
+\index{G\+B\+A\+Cheat\+Add\+Set@{G\+B\+A\+Cheat\+Add\+Set}!gba/cheats.\+c@{gba/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Cheat\+Add\+Set()}{GBACheatAddSet()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Cheat\+Add\+Set (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Set $\ast$}]{cheats,  }\item[{struct m\+Cheat\+Device $\ast$}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_a270b8624874651ef8670b875b75a2ad3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_a270b8624874651ef8670b875b75a2ad3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gba_2cheats_8c_a4f2228266033c6e8f03562cd2bc5ecc3}\label{gba_2cheats_8c_a4f2228266033c6e8f03562cd2bc5ecc3}} 
+\index{gba/cheats.\+c@{gba/cheats.\+c}!G\+B\+A\+Cheat\+Add\+V\+B\+A\+Line@{G\+B\+A\+Cheat\+Add\+V\+B\+A\+Line}}
+\index{G\+B\+A\+Cheat\+Add\+V\+B\+A\+Line@{G\+B\+A\+Cheat\+Add\+V\+B\+A\+Line}!gba/cheats.\+c@{gba/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Cheat\+Add\+V\+B\+A\+Line()}{GBACheatAddVBALine()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+A\+Cheat\+Add\+V\+B\+A\+Line (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cheat\+Set $\ast$}]{cheats,  }\item[{const char $\ast$}]{line }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_a4f2228266033c6e8f03562cd2bc5ecc3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_a4f2228266033c6e8f03562cd2bc5ecc3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gba_2cheats_8c_ab9af1420989e4eb5d471889dccd85806}\label{gba_2cheats_8c_ab9af1420989e4eb5d471889dccd85806}} 
+\index{gba/cheats.\+c@{gba/cheats.\+c}!G\+B\+A\+Cheat\+Device\+Create@{G\+B\+A\+Cheat\+Device\+Create}}
+\index{G\+B\+A\+Cheat\+Device\+Create@{G\+B\+A\+Cheat\+Device\+Create}!gba/cheats.\+c@{gba/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Cheat\+Device\+Create()}{GBACheatDeviceCreate()}}
+{\footnotesize\ttfamily struct m\+Cheat\+Device$\ast$ G\+B\+A\+Cheat\+Device\+Create (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_ab9af1420989e4eb5d471889dccd85806_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_ab9af1420989e4eb5d471889dccd85806_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gba_2cheats_8c_a09c573c81515d797f01ee2c6f054e29a}\label{gba_2cheats_8c_a09c573c81515d797f01ee2c6f054e29a}} 
+\index{gba/cheats.\+c@{gba/cheats.\+c}!G\+B\+A\+Cheat\+Dump\+Directives@{G\+B\+A\+Cheat\+Dump\+Directives}}
+\index{G\+B\+A\+Cheat\+Dump\+Directives@{G\+B\+A\+Cheat\+Dump\+Directives}!gba/cheats.\+c@{gba/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Cheat\+Dump\+Directives()}{GBACheatDumpDirectives()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Cheat\+Dump\+Directives (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Set $\ast$}]{set,  }\item[{struct String\+List $\ast$}]{directives }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_a09c573c81515d797f01ee2c6f054e29a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_a09c573c81515d797f01ee2c6f054e29a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gba_2cheats_8c_abac318cd8d65efd66f5dbb6659c1cb85}\label{gba_2cheats_8c_abac318cd8d65efd66f5dbb6659c1cb85}} 
+\index{gba/cheats.\+c@{gba/cheats.\+c}!G\+B\+A\+Cheat\+Parse\+Directives@{G\+B\+A\+Cheat\+Parse\+Directives}}
+\index{G\+B\+A\+Cheat\+Parse\+Directives@{G\+B\+A\+Cheat\+Parse\+Directives}!gba/cheats.\+c@{gba/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Cheat\+Parse\+Directives()}{GBACheatParseDirectives()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Cheat\+Parse\+Directives (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Set $\ast$}]{set,  }\item[{const struct String\+List $\ast$}]{directives }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_abac318cd8d65efd66f5dbb6659c1cb85_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_abac318cd8d65efd66f5dbb6659c1cb85_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gba_2cheats_8c_a072ca331f36fb167a4142ed253a7213e}\label{gba_2cheats_8c_a072ca331f36fb167a4142ed253a7213e}} 
+\index{gba/cheats.\+c@{gba/cheats.\+c}!G\+B\+A\+Cheat\+Refresh@{G\+B\+A\+Cheat\+Refresh}}
+\index{G\+B\+A\+Cheat\+Refresh@{G\+B\+A\+Cheat\+Refresh}!gba/cheats.\+c@{gba/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Cheat\+Refresh()}{GBACheatRefresh()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Cheat\+Refresh (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Set $\ast$}]{cheats,  }\item[{struct m\+Cheat\+Device $\ast$}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_a072ca331f36fb167a4142ed253a7213e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_a072ca331f36fb167a4142ed253a7213e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gba_2cheats_8c_a93a9b2ebec20f68b70064c9e7fccc1ee}\label{gba_2cheats_8c_a93a9b2ebec20f68b70064c9e7fccc1ee}} 
+\index{gba/cheats.\+c@{gba/cheats.\+c}!G\+B\+A\+Cheat\+Remove\+Set@{G\+B\+A\+Cheat\+Remove\+Set}}
+\index{G\+B\+A\+Cheat\+Remove\+Set@{G\+B\+A\+Cheat\+Remove\+Set}!gba/cheats.\+c@{gba/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Cheat\+Remove\+Set()}{GBACheatRemoveSet()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Cheat\+Remove\+Set (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Set $\ast$}]{cheats,  }\item[{struct m\+Cheat\+Device $\ast$}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_a93a9b2ebec20f68b70064c9e7fccc1ee_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_a93a9b2ebec20f68b70064c9e7fccc1ee_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gba_2cheats_8c_aa8d212607162aceb01cad16130259071}\label{gba_2cheats_8c_aa8d212607162aceb01cad16130259071}} 
+\index{gba/cheats.\+c@{gba/cheats.\+c}!G\+B\+A\+Cheat\+Set\+Copy\+Properties@{G\+B\+A\+Cheat\+Set\+Copy\+Properties}}
+\index{G\+B\+A\+Cheat\+Set\+Copy\+Properties@{G\+B\+A\+Cheat\+Set\+Copy\+Properties}!gba/cheats.\+c@{gba/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Cheat\+Set\+Copy\+Properties()}{GBACheatSetCopyProperties()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Cheat\+Set\+Copy\+Properties (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Set $\ast$}]{set,  }\item[{struct m\+Cheat\+Set $\ast$}]{old\+Set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{gba_2cheats_8c_aa8d212607162aceb01cad16130259071_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_aa8d212607162aceb01cad16130259071_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gba_2cheats_8c_a73679622aff480f96b2c725d78703b25}\label{gba_2cheats_8c_a73679622aff480f96b2c725d78703b25}} 
+\index{gba/cheats.\+c@{gba/cheats.\+c}!G\+B\+A\+Cheat\+Set\+Create@{G\+B\+A\+Cheat\+Set\+Create}}
+\index{G\+B\+A\+Cheat\+Set\+Create@{G\+B\+A\+Cheat\+Set\+Create}!gba/cheats.\+c@{gba/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Cheat\+Set\+Create()}{GBACheatSetCreate()}}
+{\footnotesize\ttfamily static struct m\+Cheat\+Set$\ast$ G\+B\+A\+Cheat\+Set\+Create (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Device $\ast$}]{device,  }\item[{const char $\ast$}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_a73679622aff480f96b2c725d78703b25_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_a73679622aff480f96b2c725d78703b25_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gba_2cheats_8c_a0d1546f291d31fb08dce28883abd4de9}\label{gba_2cheats_8c_a0d1546f291d31fb08dce28883abd4de9}} 
+\index{gba/cheats.\+c@{gba/cheats.\+c}!G\+B\+A\+Cheat\+Set\+Deinit@{G\+B\+A\+Cheat\+Set\+Deinit}}
+\index{G\+B\+A\+Cheat\+Set\+Deinit@{G\+B\+A\+Cheat\+Set\+Deinit}!gba/cheats.\+c@{gba/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Cheat\+Set\+Deinit()}{GBACheatSetDeinit()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Cheat\+Set\+Deinit (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Set $\ast$}]{set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{gba_2cheats_8c_a0d1546f291d31fb08dce28883abd4de9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gba_2cheats_8c_a0d1546f291d31fb08dce28883abd4de9_icgraph}
+\end{center}
+\end{figure}

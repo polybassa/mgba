@@ -1,0 +1,194 @@
+\hypertarget{vfs-devlist_8c}{}\section{src/util/vfs/vfs-\/devlist.c File Reference}
+\label{vfs-devlist_8c}\index{src/util/vfs/vfs-\/devlist.\+c@{src/util/vfs/vfs-\/devlist.\+c}}
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+{\ttfamily \#include $<$sys/iosupport.\+h$>$}\newline
+Include dependency graph for vfs-\/devlist.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{vfs-devlist_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{vfs-devlist_8c_acdb47b8fbd74f17be9a1d73d41e5dbcd}{\+\_\+vdl\+Close}} (struct V\+Dir $\ast$vd)
+\item 
+static void \mbox{\hyperlink{vfs-devlist_8c_a0b42c631e426ff8d4ca9610a378e1668}{\+\_\+vdl\+Rewind}} (struct V\+Dir $\ast$vd)
+\item 
+static struct V\+Dir\+Entry $\ast$ \mbox{\hyperlink{vfs-devlist_8c_a2d13d4980fd85b4714d37e3d53a6aff8}{\+\_\+vdl\+List\+Next}} (struct V\+Dir $\ast$vd)
+\item 
+static struct V\+File $\ast$ \mbox{\hyperlink{vfs-devlist_8c_acb6e731f02f207723fe2d49f597c8e30}{\+\_\+vdl\+Open\+File}} (struct V\+Dir $\ast$vd, const char $\ast$path, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})
+\item 
+static struct V\+Dir $\ast$ \mbox{\hyperlink{vfs-devlist_8c_aaf038c5fba8a9f2f2f8c10b67ee85a2d}{\+\_\+vdl\+Open\+Dir}} (struct V\+Dir $\ast$vd, const char $\ast$path)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{vfs-devlist_8c_a0b475104106edfb663b7e7e34b997acd}{\+\_\+vdl\+Delete\+File}} (struct V\+Dir $\ast$vd, const char $\ast$path)
+\item 
+static const char $\ast$ \mbox{\hyperlink{vfs-devlist_8c_addf63a1aab1d6a14f8c00f3a4d9e5d6f}{\+\_\+vdle\+Name}} (struct V\+Dir\+Entry $\ast$vde)
+\item 
+static enum V\+F\+S\+Type \mbox{\hyperlink{vfs-devlist_8c_a243a40bbeeef820785783e97ab9db277}{\+\_\+vdle\+Type}} (struct V\+Dir\+Entry $\ast$vde)
+\item 
+struct V\+Dir $\ast$ \mbox{\hyperlink{vfs-devlist_8c_a36b1aed5737fa71dced20925de25a143}{V\+Device\+List}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{vfs-devlist_8c_acdb47b8fbd74f17be9a1d73d41e5dbcd}\label{vfs-devlist_8c_acdb47b8fbd74f17be9a1d73d41e5dbcd}} 
+\index{vfs-\/devlist.\+c@{vfs-\/devlist.\+c}!\+\_\+vdl\+Close@{\+\_\+vdl\+Close}}
+\index{\+\_\+vdl\+Close@{\+\_\+vdl\+Close}!vfs-\/devlist.\+c@{vfs-\/devlist.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdl\+Close()}{\_vdlClose()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+vdl\+Close (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{vfs-devlist_8c_acdb47b8fbd74f17be9a1d73d41e5dbcd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=254pt]{vfs-devlist_8c_acdb47b8fbd74f17be9a1d73d41e5dbcd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-devlist_8c_a0b475104106edfb663b7e7e34b997acd}\label{vfs-devlist_8c_a0b475104106edfb663b7e7e34b997acd}} 
+\index{vfs-\/devlist.\+c@{vfs-\/devlist.\+c}!\+\_\+vdl\+Delete\+File@{\+\_\+vdl\+Delete\+File}}
+\index{\+\_\+vdl\+Delete\+File@{\+\_\+vdl\+Delete\+File}!vfs-\/devlist.\+c@{vfs-\/devlist.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdl\+Delete\+File()}{\_vdlDeleteFile()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+vdl\+Delete\+File (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd,  }\item[{const char $\ast$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{vfs-devlist_8c_a0b475104106edfb663b7e7e34b997acd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-devlist_8c_addf63a1aab1d6a14f8c00f3a4d9e5d6f}\label{vfs-devlist_8c_addf63a1aab1d6a14f8c00f3a4d9e5d6f}} 
+\index{vfs-\/devlist.\+c@{vfs-\/devlist.\+c}!\+\_\+vdle\+Name@{\+\_\+vdle\+Name}}
+\index{\+\_\+vdle\+Name@{\+\_\+vdle\+Name}!vfs-\/devlist.\+c@{vfs-\/devlist.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdle\+Name()}{\_vdleName()}}
+{\footnotesize\ttfamily static const char $\ast$ \+\_\+vdle\+Name (\begin{DoxyParamCaption}\item[{struct V\+Dir\+Entry $\ast$}]{vde }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{vfs-devlist_8c_addf63a1aab1d6a14f8c00f3a4d9e5d6f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-devlist_8c_a243a40bbeeef820785783e97ab9db277}\label{vfs-devlist_8c_a243a40bbeeef820785783e97ab9db277}} 
+\index{vfs-\/devlist.\+c@{vfs-\/devlist.\+c}!\+\_\+vdle\+Type@{\+\_\+vdle\+Type}}
+\index{\+\_\+vdle\+Type@{\+\_\+vdle\+Type}!vfs-\/devlist.\+c@{vfs-\/devlist.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdle\+Type()}{\_vdleType()}}
+{\footnotesize\ttfamily static enum V\+F\+S\+Type \+\_\+vdle\+Type (\begin{DoxyParamCaption}\item[{struct V\+Dir\+Entry $\ast$}]{vde }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{vfs-devlist_8c_a243a40bbeeef820785783e97ab9db277_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-devlist_8c_a2d13d4980fd85b4714d37e3d53a6aff8}\label{vfs-devlist_8c_a2d13d4980fd85b4714d37e3d53a6aff8}} 
+\index{vfs-\/devlist.\+c@{vfs-\/devlist.\+c}!\+\_\+vdl\+List\+Next@{\+\_\+vdl\+List\+Next}}
+\index{\+\_\+vdl\+List\+Next@{\+\_\+vdl\+List\+Next}!vfs-\/devlist.\+c@{vfs-\/devlist.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdl\+List\+Next()}{\_vdlListNext()}}
+{\footnotesize\ttfamily static struct V\+Dir\+Entry $\ast$ \+\_\+vdl\+List\+Next (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{vfs-devlist_8c_a2d13d4980fd85b4714d37e3d53a6aff8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{vfs-devlist_8c_a2d13d4980fd85b4714d37e3d53a6aff8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-devlist_8c_aaf038c5fba8a9f2f2f8c10b67ee85a2d}\label{vfs-devlist_8c_aaf038c5fba8a9f2f2f8c10b67ee85a2d}} 
+\index{vfs-\/devlist.\+c@{vfs-\/devlist.\+c}!\+\_\+vdl\+Open\+Dir@{\+\_\+vdl\+Open\+Dir}}
+\index{\+\_\+vdl\+Open\+Dir@{\+\_\+vdl\+Open\+Dir}!vfs-\/devlist.\+c@{vfs-\/devlist.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdl\+Open\+Dir()}{\_vdlOpenDir()}}
+{\footnotesize\ttfamily static struct V\+Dir $\ast$ \+\_\+vdl\+Open\+Dir (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd,  }\item[{const char $\ast$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-devlist_8c_aaf038c5fba8a9f2f2f8c10b67ee85a2d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{vfs-devlist_8c_aaf038c5fba8a9f2f2f8c10b67ee85a2d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-devlist_8c_acb6e731f02f207723fe2d49f597c8e30}\label{vfs-devlist_8c_acb6e731f02f207723fe2d49f597c8e30}} 
+\index{vfs-\/devlist.\+c@{vfs-\/devlist.\+c}!\+\_\+vdl\+Open\+File@{\+\_\+vdl\+Open\+File}}
+\index{\+\_\+vdl\+Open\+File@{\+\_\+vdl\+Open\+File}!vfs-\/devlist.\+c@{vfs-\/devlist.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdl\+Open\+File()}{\_vdlOpenFile()}}
+{\footnotesize\ttfamily static struct V\+File $\ast$ \+\_\+vdl\+Open\+File (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd,  }\item[{const char $\ast$}]{path,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{vfs-devlist_8c_acb6e731f02f207723fe2d49f597c8e30_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-devlist_8c_a0b42c631e426ff8d4ca9610a378e1668}\label{vfs-devlist_8c_a0b42c631e426ff8d4ca9610a378e1668}} 
+\index{vfs-\/devlist.\+c@{vfs-\/devlist.\+c}!\+\_\+vdl\+Rewind@{\+\_\+vdl\+Rewind}}
+\index{\+\_\+vdl\+Rewind@{\+\_\+vdl\+Rewind}!vfs-\/devlist.\+c@{vfs-\/devlist.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdl\+Rewind()}{\_vdlRewind()}}
+{\footnotesize\ttfamily static void \+\_\+vdl\+Rewind (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{vfs-devlist_8c_a0b42c631e426ff8d4ca9610a378e1668_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{vfs-devlist_8c_a0b42c631e426ff8d4ca9610a378e1668_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-devlist_8c_a36b1aed5737fa71dced20925de25a143}\label{vfs-devlist_8c_a36b1aed5737fa71dced20925de25a143}} 
+\index{vfs-\/devlist.\+c@{vfs-\/devlist.\+c}!V\+Device\+List@{V\+Device\+List}}
+\index{V\+Device\+List@{V\+Device\+List}!vfs-\/devlist.\+c@{vfs-\/devlist.\+c}}
+\subsubsection{\texorpdfstring{V\+Device\+List()}{VDeviceList()}}
+{\footnotesize\ttfamily struct V\+Dir$\ast$ V\+Device\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-devlist_8c_a36b1aed5737fa71dced20925de25a143_cgraph}
+\end{center}
+\end{figure}

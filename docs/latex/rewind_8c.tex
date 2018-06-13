@@ -1,0 +1,173 @@
+\hypertarget{rewind_8c}{}\section{src/core/rewind.c File Reference}
+\label{rewind_8c}\index{src/core/rewind.\+c@{src/core/rewind.\+c}}
+{\ttfamily \#include $<$mgba/core/rewind.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/serialize.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/patch/fast.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+Include dependency graph for rewind.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rewind_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{rewind_8c_a20381f246974e253148af45a14ccb764}{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}} (m\+Core\+Rewind\+Patches, struct Patch\+Fast)
+\item 
+void \mbox{\hyperlink{rewind_8c_a167d7a61ef06cb3a95a23f5151445e31}{\+\_\+rewind\+Diff}} (struct m\+Core\+Rewind\+Context $\ast$context)
+\item 
+T\+H\+R\+E\+A\+D\+\_\+\+E\+N\+T\+RY \mbox{\hyperlink{rewind_8c_ab584a5f13a42df04365dceed049617a7}{\+\_\+rewind\+Thread}} (void $\ast$context)
+\item 
+void \mbox{\hyperlink{rewind_8c_a05d9db4c011170b587101afdf86cec6c}{m\+Core\+Rewind\+Context\+Init}} (struct m\+Core\+Rewind\+Context $\ast$context, size\+\_\+t entries, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} on\+Thread)
+\item 
+void \mbox{\hyperlink{rewind_8c_a6ecef9485a97d935d8e735bd19417b11}{m\+Core\+Rewind\+Context\+Deinit}} (struct m\+Core\+Rewind\+Context $\ast$context)
+\item 
+void \mbox{\hyperlink{rewind_8c_a1dc31a0118f64e8f7f4215c65395611b}{m\+Core\+Rewind\+Append}} (struct m\+Core\+Rewind\+Context $\ast$context, struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}})
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{rewind_8c_ac3f2838a32e1192d2e2b2f0fcc5fbe7e}{m\+Core\+Rewind\+Restore}} (struct m\+Core\+Rewind\+Context $\ast$context, struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{rewind_8c_a167d7a61ef06cb3a95a23f5151445e31}\label{rewind_8c_a167d7a61ef06cb3a95a23f5151445e31}} 
+\index{rewind.\+c@{rewind.\+c}!\+\_\+rewind\+Diff@{\+\_\+rewind\+Diff}}
+\index{\+\_\+rewind\+Diff@{\+\_\+rewind\+Diff}!rewind.\+c@{rewind.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+rewind\+Diff()}{\_rewindDiff()}}
+{\footnotesize\ttfamily void \+\_\+rewind\+Diff (\begin{DoxyParamCaption}\item[{struct m\+Core\+Rewind\+Context $\ast$}]{context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rewind_8c_a167d7a61ef06cb3a95a23f5151445e31_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rewind_8c_a167d7a61ef06cb3a95a23f5151445e31_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rewind_8c_ab584a5f13a42df04365dceed049617a7}\label{rewind_8c_ab584a5f13a42df04365dceed049617a7}} 
+\index{rewind.\+c@{rewind.\+c}!\+\_\+rewind\+Thread@{\+\_\+rewind\+Thread}}
+\index{\+\_\+rewind\+Thread@{\+\_\+rewind\+Thread}!rewind.\+c@{rewind.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+rewind\+Thread()}{\_rewindThread()}}
+{\footnotesize\ttfamily T\+H\+R\+E\+A\+D\+\_\+\+E\+N\+T\+RY \+\_\+rewind\+Thread (\begin{DoxyParamCaption}\item[{void $\ast$}]{context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rewind_8c_ab584a5f13a42df04365dceed049617a7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rewind_8c_ab584a5f13a42df04365dceed049617a7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rewind_8c_a20381f246974e253148af45a14ccb764}\label{rewind_8c_a20381f246974e253148af45a14ccb764}} 
+\index{rewind.\+c@{rewind.\+c}!D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}}
+\index{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}!rewind.\+c@{rewind.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+O\+R()}{DEFINE\_VECTOR()}}
+{\footnotesize\ttfamily D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR (\begin{DoxyParamCaption}\item[{m\+Core\+Rewind\+Patches}]{,  }\item[{struct Patch\+Fast}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{rewind_8c_a1dc31a0118f64e8f7f4215c65395611b}\label{rewind_8c_a1dc31a0118f64e8f7f4215c65395611b}} 
+\index{rewind.\+c@{rewind.\+c}!m\+Core\+Rewind\+Append@{m\+Core\+Rewind\+Append}}
+\index{m\+Core\+Rewind\+Append@{m\+Core\+Rewind\+Append}!rewind.\+c@{rewind.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Rewind\+Append()}{mCoreRewindAppend()}}
+{\footnotesize\ttfamily void m\+Core\+Rewind\+Append (\begin{DoxyParamCaption}\item[{struct m\+Core\+Rewind\+Context $\ast$}]{context,  }\item[{struct m\+Core $\ast$}]{core }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rewind_8c_a1dc31a0118f64e8f7f4215c65395611b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rewind_8c_a1dc31a0118f64e8f7f4215c65395611b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rewind_8c_a6ecef9485a97d935d8e735bd19417b11}\label{rewind_8c_a6ecef9485a97d935d8e735bd19417b11}} 
+\index{rewind.\+c@{rewind.\+c}!m\+Core\+Rewind\+Context\+Deinit@{m\+Core\+Rewind\+Context\+Deinit}}
+\index{m\+Core\+Rewind\+Context\+Deinit@{m\+Core\+Rewind\+Context\+Deinit}!rewind.\+c@{rewind.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Rewind\+Context\+Deinit()}{mCoreRewindContextDeinit()}}
+{\footnotesize\ttfamily void m\+Core\+Rewind\+Context\+Deinit (\begin{DoxyParamCaption}\item[{struct m\+Core\+Rewind\+Context $\ast$}]{context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rewind_8c_a6ecef9485a97d935d8e735bd19417b11_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rewind_8c_a6ecef9485a97d935d8e735bd19417b11_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rewind_8c_a05d9db4c011170b587101afdf86cec6c}\label{rewind_8c_a05d9db4c011170b587101afdf86cec6c}} 
+\index{rewind.\+c@{rewind.\+c}!m\+Core\+Rewind\+Context\+Init@{m\+Core\+Rewind\+Context\+Init}}
+\index{m\+Core\+Rewind\+Context\+Init@{m\+Core\+Rewind\+Context\+Init}!rewind.\+c@{rewind.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Rewind\+Context\+Init()}{mCoreRewindContextInit()}}
+{\footnotesize\ttfamily void m\+Core\+Rewind\+Context\+Init (\begin{DoxyParamCaption}\item[{struct m\+Core\+Rewind\+Context $\ast$}]{context,  }\item[{size\+\_\+t}]{entries,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{on\+Thread }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rewind_8c_a05d9db4c011170b587101afdf86cec6c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rewind_8c_a05d9db4c011170b587101afdf86cec6c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rewind_8c_ac3f2838a32e1192d2e2b2f0fcc5fbe7e}\label{rewind_8c_ac3f2838a32e1192d2e2b2f0fcc5fbe7e}} 
+\index{rewind.\+c@{rewind.\+c}!m\+Core\+Rewind\+Restore@{m\+Core\+Rewind\+Restore}}
+\index{m\+Core\+Rewind\+Restore@{m\+Core\+Rewind\+Restore}!rewind.\+c@{rewind.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Rewind\+Restore()}{mCoreRewindRestore()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Rewind\+Restore (\begin{DoxyParamCaption}\item[{struct m\+Core\+Rewind\+Context $\ast$}]{context,  }\item[{struct m\+Core $\ast$}]{core }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rewind_8c_ac3f2838a32e1192d2e2b2f0fcc5fbe7e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rewind_8c_ac3f2838a32e1192d2e2b2f0fcc5fbe7e_icgraph}
+\end{center}
+\end{figure}

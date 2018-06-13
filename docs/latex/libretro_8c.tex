@@ -1,0 +1,662 @@
+\hypertarget{libretro_8c}{}\section{src/platform/libretro/libretro.c File Reference}
+\label{libretro_8c}\index{src/platform/libretro/libretro.\+c@{src/platform/libretro/libretro.\+c}}
+{\ttfamily \#include \char`\"{}libretro.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba-\/util/common.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/blip\+\_\+buf.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/cheats.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/log.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/version.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/circle-\/buffer.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/memory.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+Include dependency graph for libretro.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libretro_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{libretro_8c_ad0c329adebc27917fc0a4f51079acf6a}{S\+A\+M\+P\+L\+ES}}~1024
+\item 
+\#define \mbox{\hyperlink{libretro_8c_a78991a7c3d24f2e9931a9a40efe5e878}{R\+U\+M\+B\+L\+E\+\_\+\+P\+WM}}~35
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{libretro_8c_a015d12e8dd83a2ee6ca9470f83fa8ed1}{G\+B\+A\+Retro\+Log}} (struct m\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} category, enum m\+Log\+Level level, const char $\ast$format, \mbox{\hyperlink{__builder_8h_a2b7adf9b9fd4a58a693dc7cfba5b9006}{va\+\_\+list}} args)
+\item 
+static void \mbox{\hyperlink{libretro_8c_adde8b82aa314272f20a1a69da95fd9d4}{\+\_\+post\+Audio\+Buffer}} (struct m\+A\+V\+Stream $\ast$, blip\+\_\+t $\ast$left, blip\+\_\+t $\ast$right)
+\item 
+static void \mbox{\hyperlink{libretro_8c_abe465042960ed009cbdeb9c410df5339}{\+\_\+set\+Rumble}} (struct m\+Rumble $\ast$\mbox{\hyperlink{wii_2main_8c_a0be8203c70a7aa4a9c0029361e5d907b}{rumble}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} enable)
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{libretro_8c_af64856302df899dfbfabdc3d70ab87bf}{\+\_\+read\+Lux}} (struct G\+B\+A\+Luminance\+Source $\ast$\mbox{\hyperlink{libretro_8c_ac900fbc81aae58456e1bd917614ec9b9}{lux}})
+\item 
+static void \mbox{\hyperlink{libretro_8c_a1a8cb97eac74d065473cb0b7554c72ca}{\+\_\+update\+Lux}} (struct G\+B\+A\+Luminance\+Source $\ast$\mbox{\hyperlink{libretro_8c_ac900fbc81aae58456e1bd917614ec9b9}{lux}})
+\item 
+static void \mbox{\hyperlink{libretro_8c_a4d9fa2fcdff97018c7b6cf99076259d3}{\+\_\+reload\+Settings}} (void)
+\item 
+unsigned \mbox{\hyperlink{libretro_8c_a75a964861cb9df49b7dd30dae91b1c16}{retro\+\_\+api\+\_\+version}} (void)
+\item 
+void \mbox{\hyperlink{libretro_8c_a4d7801c555b243f7b2ff09ffe749d01d}{retro\+\_\+set\+\_\+environment}} (\mbox{\hyperlink{libretro_8h_a2bd387d32e002a4539907d166195d34d}{retro\+\_\+environment\+\_\+t}} env)
+\item 
+void \mbox{\hyperlink{libretro_8c_a6b5c60e82f7b02c7464dcdff238010c4}{retro\+\_\+set\+\_\+video\+\_\+refresh}} (\mbox{\hyperlink{libretro_8h_ae50b93e95d00894b8e3643a957534e64}{retro\+\_\+video\+\_\+refresh\+\_\+t}} video)
+\item 
+void \mbox{\hyperlink{libretro_8c_afa3110f80161cb9b929174f0f40a0008}{retro\+\_\+set\+\_\+audio\+\_\+sample}} (\mbox{\hyperlink{libretro_8h_a216e65854811ba05b703e017eb978a4a}{retro\+\_\+audio\+\_\+sample\+\_\+t}} audio)
+\item 
+void \mbox{\hyperlink{libretro_8c_a3c7698e098e5f1dee7dcd5ff9a0d5f42}{retro\+\_\+set\+\_\+audio\+\_\+sample\+\_\+batch}} (\mbox{\hyperlink{libretro_8h_a24afda5dfb1ab5eb3ee97fbf85a22dd7}{retro\+\_\+audio\+\_\+sample\+\_\+batch\+\_\+t}} audio\+Batch)
+\item 
+void \mbox{\hyperlink{libretro_8c_a28c210647ff6897ddfdf804545d6f87f}{retro\+\_\+set\+\_\+input\+\_\+poll}} (\mbox{\hyperlink{libretro_8h_a38a4a1d401bcfe013e5c6cc2c0cf3e55}{retro\+\_\+input\+\_\+poll\+\_\+t}} input\+Poll)
+\item 
+void \mbox{\hyperlink{libretro_8c_a1616c8b625eccc510617279c23a93395}{retro\+\_\+set\+\_\+input\+\_\+state}} (\mbox{\hyperlink{libretro_8h_ac774c0970b8702c7c247d7945f9072a6}{retro\+\_\+input\+\_\+state\+\_\+t}} input)
+\item 
+void \mbox{\hyperlink{libretro_8c_af538e57ac369df15997679fd205cbfc9}{retro\+\_\+get\+\_\+system\+\_\+info}} (struct \mbox{\hyperlink{libretro_8h_structretro__system__info}{retro\+\_\+system\+\_\+info}} $\ast$\mbox{\hyperlink{libretro_8h_a283ad41e4809f9c0ebe736a9861d8a91}{info}})
+\item 
+void \mbox{\hyperlink{libretro_8c_a1cccf624f61fd82c9626f0f18b66f04d}{retro\+\_\+get\+\_\+system\+\_\+av\+\_\+info}} (struct \mbox{\hyperlink{libretro_8h_structretro__system__av__info}{retro\+\_\+system\+\_\+av\+\_\+info}} $\ast$\mbox{\hyperlink{libretro_8h_a283ad41e4809f9c0ebe736a9861d8a91}{info}})
+\item 
+void \mbox{\hyperlink{libretro_8c_ab0f5bbae812194b9214ea2ea48519b3a}{retro\+\_\+init}} (void)
+\item 
+void \mbox{\hyperlink{libretro_8c_ac5474fa732c4a2baf7238c0047fd6f8b}{retro\+\_\+deinit}} (void)
+\item 
+void \mbox{\hyperlink{libretro_8c_a0f0126a315e953331faec047a3a8f756}{retro\+\_\+run}} (void)
+\item 
+static void \mbox{\hyperlink{libretro_8c_a53d4c660264fd4d9eda5dd5fc1da91ad}{\+\_\+setup\+Maps}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}})
+\item 
+void \mbox{\hyperlink{libretro_8c_a7a4f2a584d7f02f9eae38d0a06dda692}{retro\+\_\+reset}} (void)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{libretro_8c_a9c7839ccf223dd0c6ca028d3dec7c56f}{retro\+\_\+load\+\_\+game}} (const struct \mbox{\hyperlink{libretro_8h_structretro__game__info}{retro\+\_\+game\+\_\+info}} $\ast$game)
+\item 
+void \mbox{\hyperlink{libretro_8c_a9b50e60159accca8b8a1c4b251875d30}{retro\+\_\+unload\+\_\+game}} (void)
+\item 
+size\+\_\+t \mbox{\hyperlink{libretro_8c_a7aab6cac3da1790147697a655454a0b6}{retro\+\_\+serialize\+\_\+size}} (void)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{libretro_8c_a57e8d97e4b88fd026085efe56689d3af}{retro\+\_\+serialize}} (void $\ast$\mbox{\hyperlink{libretro_8c_a735984d41155bc1032e09bece8f8d66d}{data}}, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{libretro_8c_aee00b7ee63fa1227dae46c2427335a30}{retro\+\_\+unserialize}} (const void $\ast$\mbox{\hyperlink{libretro_8c_a735984d41155bc1032e09bece8f8d66d}{data}}, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+void \mbox{\hyperlink{libretro_8c_a384223ce2f43c5c72db65cf7ba00edee}{retro\+\_\+cheat\+\_\+reset}} (void)
+\item 
+void \mbox{\hyperlink{libretro_8c_a734cac7be283c50507f724c0c43f7653}{retro\+\_\+cheat\+\_\+set}} (unsigned \mbox{\hyperlink{isa-lr35902_8c_ac9ee548085af12859cb52a6c757cf73a}{index}}, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} enabled, const char $\ast$\mbox{\hyperlink{inftrees_8h_structcode}{code}})
+\item 
+unsigned \mbox{\hyperlink{libretro_8c_aa352860c1c36d08a5b43763d849c11a9}{retro\+\_\+get\+\_\+region}} (void)
+\item 
+void \mbox{\hyperlink{libretro_8c_aeb75ffe6e9a1558879f7231dfa24047e}{retro\+\_\+set\+\_\+controller\+\_\+port\+\_\+device}} (unsigned port, unsigned device)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{libretro_8c_a50359de5a84092bcb604055f73634268}{retro\+\_\+load\+\_\+game\+\_\+special}} (unsigned game\+\_\+type, const struct \mbox{\hyperlink{libretro_8h_structretro__game__info}{retro\+\_\+game\+\_\+info}} $\ast$\mbox{\hyperlink{libretro_8h_a283ad41e4809f9c0ebe736a9861d8a91}{info}}, size\+\_\+t num\+\_\+info)
+\item 
+void $\ast$ \mbox{\hyperlink{libretro_8c_add36c9791a5a914eabe4e1948d8226d4}{retro\+\_\+get\+\_\+memory\+\_\+data}} (unsigned id)
+\item 
+size\+\_\+t \mbox{\hyperlink{libretro_8c_a9fc26759e85dcbda2e21e850f24da445}{retro\+\_\+get\+\_\+memory\+\_\+size}} (unsigned id)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{libretro_8h_a2bd387d32e002a4539907d166195d34d}{retro\+\_\+environment\+\_\+t}} \mbox{\hyperlink{libretro_8c_abe0081b83a34504b4c5b2268b949f565}{environ\+Callback}}
+\item 
+static \mbox{\hyperlink{libretro_8h_ae50b93e95d00894b8e3643a957534e64}{retro\+\_\+video\+\_\+refresh\+\_\+t}} \mbox{\hyperlink{libretro_8c_a79d11d90bbde1ac25a3ff3df124d6483}{video\+Callback}}
+\item 
+static \mbox{\hyperlink{libretro_8h_a24afda5dfb1ab5eb3ee97fbf85a22dd7}{retro\+\_\+audio\+\_\+sample\+\_\+batch\+\_\+t}} \mbox{\hyperlink{libretro_8c_aad944d42ddef53acee9dedeb214ebad7}{audio\+Callback}}
+\item 
+static \mbox{\hyperlink{libretro_8h_a38a4a1d401bcfe013e5c6cc2c0cf3e55}{retro\+\_\+input\+\_\+poll\+\_\+t}} \mbox{\hyperlink{libretro_8c_a4bb9c56aece715624319f662dea8c4e4}{input\+Poll\+Callback}}
+\item 
+static \mbox{\hyperlink{libretro_8h_ac774c0970b8702c7c247d7945f9072a6}{retro\+\_\+input\+\_\+state\+\_\+t}} \mbox{\hyperlink{libretro_8c_af70a527eb1b86ff1729dcae66640d512}{input\+Callback}}
+\item 
+static \mbox{\hyperlink{libretro_8h_a4f9d7853f3beeee33dd775d302922311}{retro\+\_\+log\+\_\+printf\+\_\+t}} \mbox{\hyperlink{libretro_8c_aeffb2cac232cc6e5bd0b3ac99a9dfbed}{log\+Callback}}
+\item 
+static \mbox{\hyperlink{libretro_8h_a72a5f584f106758ef609ae3e3014039a}{retro\+\_\+set\+\_\+rumble\+\_\+state\+\_\+t}} \mbox{\hyperlink{libretro_8c_aae778ecd289af4f6c405dabc2b85f9d5}{rumble\+Callback}}
+\item 
+static struct m\+Core $\ast$ \mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}
+\item 
+static void $\ast$ \mbox{\hyperlink{libretro_8c_a0779122b7156629157afcf1a35c372ef}{output\+Buffer}}
+\item 
+static void $\ast$ \mbox{\hyperlink{libretro_8c_a735984d41155bc1032e09bece8f8d66d}{data}}
+\item 
+static size\+\_\+t \mbox{\hyperlink{libretro_8c_a78f9703861dd365a513c2c5aab9f9239}{data\+Size}}
+\item 
+static void $\ast$ \mbox{\hyperlink{libretro_8c_a977c2dbb4436e86e1b51c1bb35afeb8c}{savedata}}
+\item 
+static struct m\+A\+V\+Stream \mbox{\hyperlink{libretro_8c_afcb178a8ee7853c424423b8601eeaa78}{stream}}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{libretro_8c_aa3e2494538962bdf5a845ce347c339d2}{rumble\+Level}}
+\item 
+static struct Circle\+Buffer \mbox{\hyperlink{libretro_8c_aa8f2a8eee188a5cfcfdba55275733767}{rumble\+History}}
+\item 
+static struct m\+Rumble \mbox{\hyperlink{libretro_8c_a0be8203c70a7aa4a9c0029361e5d907b}{rumble}}
+\item 
+static struct G\+B\+A\+Luminance\+Source \mbox{\hyperlink{libretro_8c_ac900fbc81aae58456e1bd917614ec9b9}{lux}}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{libretro_8c_adc713fcfb4765b7da3538ec2bcddc1c8}{lux\+Level}}
+\item 
+static struct m\+Logger \mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{libretro_8c_a78991a7c3d24f2e9931a9a40efe5e878}\label{libretro_8c_a78991a7c3d24f2e9931a9a40efe5e878}} 
+\index{libretro.\+c@{libretro.\+c}!R\+U\+M\+B\+L\+E\+\_\+\+P\+WM@{R\+U\+M\+B\+L\+E\+\_\+\+P\+WM}}
+\index{R\+U\+M\+B\+L\+E\+\_\+\+P\+WM@{R\+U\+M\+B\+L\+E\+\_\+\+P\+WM}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{R\+U\+M\+B\+L\+E\+\_\+\+P\+WM}{RUMBLE\_PWM}}
+{\footnotesize\ttfamily \#define R\+U\+M\+B\+L\+E\+\_\+\+P\+WM~35}
+
+\mbox{\Hypertarget{libretro_8c_ad0c329adebc27917fc0a4f51079acf6a}\label{libretro_8c_ad0c329adebc27917fc0a4f51079acf6a}} 
+\index{libretro.\+c@{libretro.\+c}!S\+A\+M\+P\+L\+ES@{S\+A\+M\+P\+L\+ES}}
+\index{S\+A\+M\+P\+L\+ES@{S\+A\+M\+P\+L\+ES}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{S\+A\+M\+P\+L\+ES}{SAMPLES}}
+{\footnotesize\ttfamily \#define S\+A\+M\+P\+L\+ES~1024}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{libretro_8c_adde8b82aa314272f20a1a69da95fd9d4}\label{libretro_8c_adde8b82aa314272f20a1a69da95fd9d4}} 
+\index{libretro.\+c@{libretro.\+c}!\+\_\+post\+Audio\+Buffer@{\+\_\+post\+Audio\+Buffer}}
+\index{\+\_\+post\+Audio\+Buffer@{\+\_\+post\+Audio\+Buffer}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+post\+Audio\+Buffer()}{\_postAudioBuffer()}}
+{\footnotesize\ttfamily static void \+\_\+post\+Audio\+Buffer (\begin{DoxyParamCaption}\item[{struct m\+A\+V\+Stream $\ast$}]{stream,  }\item[{blip\+\_\+t $\ast$}]{left,  }\item[{blip\+\_\+t $\ast$}]{right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libretro_8c_adde8b82aa314272f20a1a69da95fd9d4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{libretro_8c_adde8b82aa314272f20a1a69da95fd9d4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libretro_8c_af64856302df899dfbfabdc3d70ab87bf}\label{libretro_8c_af64856302df899dfbfabdc3d70ab87bf}} 
+\index{libretro.\+c@{libretro.\+c}!\+\_\+read\+Lux@{\+\_\+read\+Lux}}
+\index{\+\_\+read\+Lux@{\+\_\+read\+Lux}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Lux()}{\_readLux()}}
+{\footnotesize\ttfamily static uint8\+\_\+t \+\_\+read\+Lux (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Luminance\+Source $\ast$}]{lux }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{libretro_8c_af64856302df899dfbfabdc3d70ab87bf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libretro_8c_a4d9fa2fcdff97018c7b6cf99076259d3}\label{libretro_8c_a4d9fa2fcdff97018c7b6cf99076259d3}} 
+\index{libretro.\+c@{libretro.\+c}!\+\_\+reload\+Settings@{\+\_\+reload\+Settings}}
+\index{\+\_\+reload\+Settings@{\+\_\+reload\+Settings}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+reload\+Settings()}{\_reloadSettings()}}
+{\footnotesize\ttfamily static void \+\_\+reload\+Settings (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libretro_8c_a4d9fa2fcdff97018c7b6cf99076259d3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{libretro_8c_a4d9fa2fcdff97018c7b6cf99076259d3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libretro_8c_abe465042960ed009cbdeb9c410df5339}\label{libretro_8c_abe465042960ed009cbdeb9c410df5339}} 
+\index{libretro.\+c@{libretro.\+c}!\+\_\+set\+Rumble@{\+\_\+set\+Rumble}}
+\index{\+\_\+set\+Rumble@{\+\_\+set\+Rumble}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+set\+Rumble()}{\_setRumble()}}
+{\footnotesize\ttfamily static void \+\_\+set\+Rumble (\begin{DoxyParamCaption}\item[{struct m\+Rumble $\ast$}]{rumble,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{enable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libretro_8c_abe465042960ed009cbdeb9c410df5339_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=251pt]{libretro_8c_abe465042960ed009cbdeb9c410df5339_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libretro_8c_a53d4c660264fd4d9eda5dd5fc1da91ad}\label{libretro_8c_a53d4c660264fd4d9eda5dd5fc1da91ad}} 
+\index{libretro.\+c@{libretro.\+c}!\+\_\+setup\+Maps@{\+\_\+setup\+Maps}}
+\index{\+\_\+setup\+Maps@{\+\_\+setup\+Maps}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+setup\+Maps()}{\_setupMaps()}}
+{\footnotesize\ttfamily static void \+\_\+setup\+Maps (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libretro_8c_a53d4c660264fd4d9eda5dd5fc1da91ad_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{libretro_8c_a53d4c660264fd4d9eda5dd5fc1da91ad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libretro_8c_a1a8cb97eac74d065473cb0b7554c72ca}\label{libretro_8c_a1a8cb97eac74d065473cb0b7554c72ca}} 
+\index{libretro.\+c@{libretro.\+c}!\+\_\+update\+Lux@{\+\_\+update\+Lux}}
+\index{\+\_\+update\+Lux@{\+\_\+update\+Lux}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+update\+Lux()}{\_updateLux()}}
+{\footnotesize\ttfamily static void \+\_\+update\+Lux (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Luminance\+Source $\ast$}]{lux }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=250pt]{libretro_8c_a1a8cb97eac74d065473cb0b7554c72ca_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libretro_8c_a015d12e8dd83a2ee6ca9470f83fa8ed1}\label{libretro_8c_a015d12e8dd83a2ee6ca9470f83fa8ed1}} 
+\index{libretro.\+c@{libretro.\+c}!G\+B\+A\+Retro\+Log@{G\+B\+A\+Retro\+Log}}
+\index{G\+B\+A\+Retro\+Log@{G\+B\+A\+Retro\+Log}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Retro\+Log()}{GBARetroLog()}}
+{\footnotesize\ttfamily void G\+B\+A\+Retro\+Log (\begin{DoxyParamCaption}\item[{struct m\+Logger $\ast$}]{logger,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{category,  }\item[{enum m\+Log\+Level}]{level,  }\item[{const char $\ast$}]{format,  }\item[{\mbox{\hyperlink{__builder_8h_a2b7adf9b9fd4a58a693dc7cfba5b9006}{va\+\_\+list}}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{libretro_8c_a015d12e8dd83a2ee6ca9470f83fa8ed1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{libretro_8c_a015d12e8dd83a2ee6ca9470f83fa8ed1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libretro_8c_a75a964861cb9df49b7dd30dae91b1c16}\label{libretro_8c_a75a964861cb9df49b7dd30dae91b1c16}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+api\+\_\+version@{retro\+\_\+api\+\_\+version}}
+\index{retro\+\_\+api\+\_\+version@{retro\+\_\+api\+\_\+version}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+api\+\_\+version()}{retro\_api\_version()}}
+{\footnotesize\ttfamily unsigned retro\+\_\+api\+\_\+version (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{libretro_8c_a384223ce2f43c5c72db65cf7ba00edee}\label{libretro_8c_a384223ce2f43c5c72db65cf7ba00edee}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+cheat\+\_\+reset@{retro\+\_\+cheat\+\_\+reset}}
+\index{retro\+\_\+cheat\+\_\+reset@{retro\+\_\+cheat\+\_\+reset}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+cheat\+\_\+reset()}{retro\_cheat\_reset()}}
+{\footnotesize\ttfamily void retro\+\_\+cheat\+\_\+reset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libretro_8c_a384223ce2f43c5c72db65cf7ba00edee_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libretro_8c_a734cac7be283c50507f724c0c43f7653}\label{libretro_8c_a734cac7be283c50507f724c0c43f7653}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+cheat\+\_\+set@{retro\+\_\+cheat\+\_\+set}}
+\index{retro\+\_\+cheat\+\_\+set@{retro\+\_\+cheat\+\_\+set}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+cheat\+\_\+set()}{retro\_cheat\_set()}}
+{\footnotesize\ttfamily void retro\+\_\+cheat\+\_\+set (\begin{DoxyParamCaption}\item[{unsigned}]{index,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{enabled,  }\item[{const char $\ast$}]{code }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libretro_8c_a734cac7be283c50507f724c0c43f7653_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libretro_8c_ac5474fa732c4a2baf7238c0047fd6f8b}\label{libretro_8c_ac5474fa732c4a2baf7238c0047fd6f8b}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+deinit@{retro\+\_\+deinit}}
+\index{retro\+\_\+deinit@{retro\+\_\+deinit}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+deinit()}{retro\_deinit()}}
+{\footnotesize\ttfamily void retro\+\_\+deinit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{libretro_8c_ac5474fa732c4a2baf7238c0047fd6f8b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libretro_8c_add36c9791a5a914eabe4e1948d8226d4}\label{libretro_8c_add36c9791a5a914eabe4e1948d8226d4}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+get\+\_\+memory\+\_\+data@{retro\+\_\+get\+\_\+memory\+\_\+data}}
+\index{retro\+\_\+get\+\_\+memory\+\_\+data@{retro\+\_\+get\+\_\+memory\+\_\+data}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+get\+\_\+memory\+\_\+data()}{retro\_get\_memory\_data()}}
+{\footnotesize\ttfamily void$\ast$ retro\+\_\+get\+\_\+memory\+\_\+data (\begin{DoxyParamCaption}\item[{unsigned}]{id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{libretro_8c_a9fc26759e85dcbda2e21e850f24da445}\label{libretro_8c_a9fc26759e85dcbda2e21e850f24da445}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+get\+\_\+memory\+\_\+size@{retro\+\_\+get\+\_\+memory\+\_\+size}}
+\index{retro\+\_\+get\+\_\+memory\+\_\+size@{retro\+\_\+get\+\_\+memory\+\_\+size}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+get\+\_\+memory\+\_\+size()}{retro\_get\_memory\_size()}}
+{\footnotesize\ttfamily size\+\_\+t retro\+\_\+get\+\_\+memory\+\_\+size (\begin{DoxyParamCaption}\item[{unsigned}]{id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libretro_8c_a9fc26759e85dcbda2e21e850f24da445_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libretro_8c_a9fc26759e85dcbda2e21e850f24da445_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libretro_8c_aa352860c1c36d08a5b43763d849c11a9}\label{libretro_8c_aa352860c1c36d08a5b43763d849c11a9}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+get\+\_\+region@{retro\+\_\+get\+\_\+region}}
+\index{retro\+\_\+get\+\_\+region@{retro\+\_\+get\+\_\+region}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+get\+\_\+region()}{retro\_get\_region()}}
+{\footnotesize\ttfamily unsigned retro\+\_\+get\+\_\+region (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{libretro_8c_a1cccf624f61fd82c9626f0f18b66f04d}\label{libretro_8c_a1cccf624f61fd82c9626f0f18b66f04d}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+get\+\_\+system\+\_\+av\+\_\+info@{retro\+\_\+get\+\_\+system\+\_\+av\+\_\+info}}
+\index{retro\+\_\+get\+\_\+system\+\_\+av\+\_\+info@{retro\+\_\+get\+\_\+system\+\_\+av\+\_\+info}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+get\+\_\+system\+\_\+av\+\_\+info()}{retro\_get\_system\_av\_info()}}
+{\footnotesize\ttfamily void retro\+\_\+get\+\_\+system\+\_\+av\+\_\+info (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{libretro_8h_structretro__system__av__info}{retro\+\_\+system\+\_\+av\+\_\+info}} $\ast$}]{info }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{libretro_8c_af538e57ac369df15997679fd205cbfc9}\label{libretro_8c_af538e57ac369df15997679fd205cbfc9}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+get\+\_\+system\+\_\+info@{retro\+\_\+get\+\_\+system\+\_\+info}}
+\index{retro\+\_\+get\+\_\+system\+\_\+info@{retro\+\_\+get\+\_\+system\+\_\+info}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+get\+\_\+system\+\_\+info()}{retro\_get\_system\_info()}}
+{\footnotesize\ttfamily void retro\+\_\+get\+\_\+system\+\_\+info (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{libretro_8h_structretro__system__info}{retro\+\_\+system\+\_\+info}} $\ast$}]{info }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{libretro_8c_ab0f5bbae812194b9214ea2ea48519b3a}\label{libretro_8c_ab0f5bbae812194b9214ea2ea48519b3a}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+init@{retro\+\_\+init}}
+\index{retro\+\_\+init@{retro\+\_\+init}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+init()}{retro\_init()}}
+{\footnotesize\ttfamily void retro\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libretro_8c_ab0f5bbae812194b9214ea2ea48519b3a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libretro_8c_a9c7839ccf223dd0c6ca028d3dec7c56f}\label{libretro_8c_a9c7839ccf223dd0c6ca028d3dec7c56f}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+load\+\_\+game@{retro\+\_\+load\+\_\+game}}
+\index{retro\+\_\+load\+\_\+game@{retro\+\_\+load\+\_\+game}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+load\+\_\+game()}{retro\_load\_game()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} retro\+\_\+load\+\_\+game (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{libretro_8h_structretro__game__info}{retro\+\_\+game\+\_\+info}} $\ast$}]{game }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libretro_8c_a9c7839ccf223dd0c6ca028d3dec7c56f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libretro_8c_a50359de5a84092bcb604055f73634268}\label{libretro_8c_a50359de5a84092bcb604055f73634268}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+load\+\_\+game\+\_\+special@{retro\+\_\+load\+\_\+game\+\_\+special}}
+\index{retro\+\_\+load\+\_\+game\+\_\+special@{retro\+\_\+load\+\_\+game\+\_\+special}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+load\+\_\+game\+\_\+special()}{retro\_load\_game\_special()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} retro\+\_\+load\+\_\+game\+\_\+special (\begin{DoxyParamCaption}\item[{unsigned}]{game\+\_\+type,  }\item[{const struct \mbox{\hyperlink{libretro_8h_structretro__game__info}{retro\+\_\+game\+\_\+info}} $\ast$}]{info,  }\item[{size\+\_\+t}]{num\+\_\+info }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{libretro_8c_a7a4f2a584d7f02f9eae38d0a06dda692}\label{libretro_8c_a7a4f2a584d7f02f9eae38d0a06dda692}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+reset@{retro\+\_\+reset}}
+\index{retro\+\_\+reset@{retro\+\_\+reset}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+reset()}{retro\_reset()}}
+{\footnotesize\ttfamily void retro\+\_\+reset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libretro_8c_a7a4f2a584d7f02f9eae38d0a06dda692_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libretro_8c_a0f0126a315e953331faec047a3a8f756}\label{libretro_8c_a0f0126a315e953331faec047a3a8f756}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+run@{retro\+\_\+run}}
+\index{retro\+\_\+run@{retro\+\_\+run}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+run()}{retro\_run()}}
+{\footnotesize\ttfamily void retro\+\_\+run (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libretro_8c_a0f0126a315e953331faec047a3a8f756_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libretro_8c_a57e8d97e4b88fd026085efe56689d3af}\label{libretro_8c_a57e8d97e4b88fd026085efe56689d3af}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+serialize@{retro\+\_\+serialize}}
+\index{retro\+\_\+serialize@{retro\+\_\+serialize}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+serialize()}{retro\_serialize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} retro\+\_\+serialize (\begin{DoxyParamCaption}\item[{void $\ast$}]{data,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{libretro_8c_a57e8d97e4b88fd026085efe56689d3af_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libretro_8c_a7aab6cac3da1790147697a655454a0b6}\label{libretro_8c_a7aab6cac3da1790147697a655454a0b6}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+serialize\+\_\+size@{retro\+\_\+serialize\+\_\+size}}
+\index{retro\+\_\+serialize\+\_\+size@{retro\+\_\+serialize\+\_\+size}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+serialize\+\_\+size()}{retro\_serialize\_size()}}
+{\footnotesize\ttfamily size\+\_\+t retro\+\_\+serialize\+\_\+size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{libretro_8c_a7aab6cac3da1790147697a655454a0b6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libretro_8c_afa3110f80161cb9b929174f0f40a0008}\label{libretro_8c_afa3110f80161cb9b929174f0f40a0008}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+set\+\_\+audio\+\_\+sample@{retro\+\_\+set\+\_\+audio\+\_\+sample}}
+\index{retro\+\_\+set\+\_\+audio\+\_\+sample@{retro\+\_\+set\+\_\+audio\+\_\+sample}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+set\+\_\+audio\+\_\+sample()}{retro\_set\_audio\_sample()}}
+{\footnotesize\ttfamily void retro\+\_\+set\+\_\+audio\+\_\+sample (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libretro_8h_a216e65854811ba05b703e017eb978a4a}{retro\+\_\+audio\+\_\+sample\+\_\+t}}}]{audio }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{libretro_8c_a3c7698e098e5f1dee7dcd5ff9a0d5f42}\label{libretro_8c_a3c7698e098e5f1dee7dcd5ff9a0d5f42}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+set\+\_\+audio\+\_\+sample\+\_\+batch@{retro\+\_\+set\+\_\+audio\+\_\+sample\+\_\+batch}}
+\index{retro\+\_\+set\+\_\+audio\+\_\+sample\+\_\+batch@{retro\+\_\+set\+\_\+audio\+\_\+sample\+\_\+batch}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+set\+\_\+audio\+\_\+sample\+\_\+batch()}{retro\_set\_audio\_sample\_batch()}}
+{\footnotesize\ttfamily void retro\+\_\+set\+\_\+audio\+\_\+sample\+\_\+batch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libretro_8h_a24afda5dfb1ab5eb3ee97fbf85a22dd7}{retro\+\_\+audio\+\_\+sample\+\_\+batch\+\_\+t}}}]{audio\+Batch }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{libretro_8c_aeb75ffe6e9a1558879f7231dfa24047e}\label{libretro_8c_aeb75ffe6e9a1558879f7231dfa24047e}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+set\+\_\+controller\+\_\+port\+\_\+device@{retro\+\_\+set\+\_\+controller\+\_\+port\+\_\+device}}
+\index{retro\+\_\+set\+\_\+controller\+\_\+port\+\_\+device@{retro\+\_\+set\+\_\+controller\+\_\+port\+\_\+device}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+set\+\_\+controller\+\_\+port\+\_\+device()}{retro\_set\_controller\_port\_device()}}
+{\footnotesize\ttfamily void retro\+\_\+set\+\_\+controller\+\_\+port\+\_\+device (\begin{DoxyParamCaption}\item[{unsigned}]{port,  }\item[{unsigned}]{device }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{libretro_8c_a4d7801c555b243f7b2ff09ffe749d01d}\label{libretro_8c_a4d7801c555b243f7b2ff09ffe749d01d}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+set\+\_\+environment@{retro\+\_\+set\+\_\+environment}}
+\index{retro\+\_\+set\+\_\+environment@{retro\+\_\+set\+\_\+environment}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+set\+\_\+environment()}{retro\_set\_environment()}}
+{\footnotesize\ttfamily void retro\+\_\+set\+\_\+environment (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libretro_8h_a2bd387d32e002a4539907d166195d34d}{retro\+\_\+environment\+\_\+t}}}]{env }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{libretro_8c_a28c210647ff6897ddfdf804545d6f87f}\label{libretro_8c_a28c210647ff6897ddfdf804545d6f87f}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+set\+\_\+input\+\_\+poll@{retro\+\_\+set\+\_\+input\+\_\+poll}}
+\index{retro\+\_\+set\+\_\+input\+\_\+poll@{retro\+\_\+set\+\_\+input\+\_\+poll}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+set\+\_\+input\+\_\+poll()}{retro\_set\_input\_poll()}}
+{\footnotesize\ttfamily void retro\+\_\+set\+\_\+input\+\_\+poll (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libretro_8h_a38a4a1d401bcfe013e5c6cc2c0cf3e55}{retro\+\_\+input\+\_\+poll\+\_\+t}}}]{input\+Poll }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{libretro_8c_a1616c8b625eccc510617279c23a93395}\label{libretro_8c_a1616c8b625eccc510617279c23a93395}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+set\+\_\+input\+\_\+state@{retro\+\_\+set\+\_\+input\+\_\+state}}
+\index{retro\+\_\+set\+\_\+input\+\_\+state@{retro\+\_\+set\+\_\+input\+\_\+state}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+set\+\_\+input\+\_\+state()}{retro\_set\_input\_state()}}
+{\footnotesize\ttfamily void retro\+\_\+set\+\_\+input\+\_\+state (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libretro_8h_ac774c0970b8702c7c247d7945f9072a6}{retro\+\_\+input\+\_\+state\+\_\+t}}}]{input }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{libretro_8c_a6b5c60e82f7b02c7464dcdff238010c4}\label{libretro_8c_a6b5c60e82f7b02c7464dcdff238010c4}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+set\+\_\+video\+\_\+refresh@{retro\+\_\+set\+\_\+video\+\_\+refresh}}
+\index{retro\+\_\+set\+\_\+video\+\_\+refresh@{retro\+\_\+set\+\_\+video\+\_\+refresh}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+set\+\_\+video\+\_\+refresh()}{retro\_set\_video\_refresh()}}
+{\footnotesize\ttfamily void retro\+\_\+set\+\_\+video\+\_\+refresh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libretro_8h_ae50b93e95d00894b8e3643a957534e64}{retro\+\_\+video\+\_\+refresh\+\_\+t}}}]{video }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{libretro_8c_a9b50e60159accca8b8a1c4b251875d30}\label{libretro_8c_a9b50e60159accca8b8a1c4b251875d30}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+unload\+\_\+game@{retro\+\_\+unload\+\_\+game}}
+\index{retro\+\_\+unload\+\_\+game@{retro\+\_\+unload\+\_\+game}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+unload\+\_\+game()}{retro\_unload\_game()}}
+{\footnotesize\ttfamily void retro\+\_\+unload\+\_\+game (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libretro_8c_a9b50e60159accca8b8a1c4b251875d30_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libretro_8c_aee00b7ee63fa1227dae46c2427335a30}\label{libretro_8c_aee00b7ee63fa1227dae46c2427335a30}} 
+\index{libretro.\+c@{libretro.\+c}!retro\+\_\+unserialize@{retro\+\_\+unserialize}}
+\index{retro\+\_\+unserialize@{retro\+\_\+unserialize}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{retro\+\_\+unserialize()}{retro\_unserialize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} retro\+\_\+unserialize (\begin{DoxyParamCaption}\item[{const void $\ast$}]{data,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{libretro_8c_aee00b7ee63fa1227dae46c2427335a30_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{libretro_8c_aad944d42ddef53acee9dedeb214ebad7}\label{libretro_8c_aad944d42ddef53acee9dedeb214ebad7}} 
+\index{libretro.\+c@{libretro.\+c}!audio\+Callback@{audio\+Callback}}
+\index{audio\+Callback@{audio\+Callback}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{audio\+Callback}{audioCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a24afda5dfb1ab5eb3ee97fbf85a22dd7}{retro\+\_\+audio\+\_\+sample\+\_\+batch\+\_\+t}} audio\+Callback\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}\label{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}} 
+\index{libretro.\+c@{libretro.\+c}!core@{core}}
+\index{core@{core}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{core}{core}}
+{\footnotesize\ttfamily struct m\+Core$\ast$ core\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{libretro_8c_a735984d41155bc1032e09bece8f8d66d}\label{libretro_8c_a735984d41155bc1032e09bece8f8d66d}} 
+\index{libretro.\+c@{libretro.\+c}!data@{data}}
+\index{data@{data}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily void$\ast$ data\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{libretro_8c_a78f9703861dd365a513c2c5aab9f9239}\label{libretro_8c_a78f9703861dd365a513c2c5aab9f9239}} 
+\index{libretro.\+c@{libretro.\+c}!data\+Size@{data\+Size}}
+\index{data\+Size@{data\+Size}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{data\+Size}{dataSize}}
+{\footnotesize\ttfamily size\+\_\+t data\+Size\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{libretro_8c_abe0081b83a34504b4c5b2268b949f565}\label{libretro_8c_abe0081b83a34504b4c5b2268b949f565}} 
+\index{libretro.\+c@{libretro.\+c}!environ\+Callback@{environ\+Callback}}
+\index{environ\+Callback@{environ\+Callback}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{environ\+Callback}{environCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a2bd387d32e002a4539907d166195d34d}{retro\+\_\+environment\+\_\+t}} environ\+Callback\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{libretro_8c_af70a527eb1b86ff1729dcae66640d512}\label{libretro_8c_af70a527eb1b86ff1729dcae66640d512}} 
+\index{libretro.\+c@{libretro.\+c}!input\+Callback@{input\+Callback}}
+\index{input\+Callback@{input\+Callback}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{input\+Callback}{inputCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_ac774c0970b8702c7c247d7945f9072a6}{retro\+\_\+input\+\_\+state\+\_\+t}} input\+Callback\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{libretro_8c_a4bb9c56aece715624319f662dea8c4e4}\label{libretro_8c_a4bb9c56aece715624319f662dea8c4e4}} 
+\index{libretro.\+c@{libretro.\+c}!input\+Poll\+Callback@{input\+Poll\+Callback}}
+\index{input\+Poll\+Callback@{input\+Poll\+Callback}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{input\+Poll\+Callback}{inputPollCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a38a4a1d401bcfe013e5c6cc2c0cf3e55}{retro\+\_\+input\+\_\+poll\+\_\+t}} input\+Poll\+Callback\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{libretro_8c_aeffb2cac232cc6e5bd0b3ac99a9dfbed}\label{libretro_8c_aeffb2cac232cc6e5bd0b3ac99a9dfbed}} 
+\index{libretro.\+c@{libretro.\+c}!log\+Callback@{log\+Callback}}
+\index{log\+Callback@{log\+Callback}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{log\+Callback}{logCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4f9d7853f3beeee33dd775d302922311}{retro\+\_\+log\+\_\+printf\+\_\+t}} log\+Callback\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{libretro_8c_a370b093d59813e9620a3b73b831162c2}\label{libretro_8c_a370b093d59813e9620a3b73b831162c2}} 
+\index{libretro.\+c@{libretro.\+c}!logger@{logger}}
+\index{logger@{logger}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{logger}{logger}}
+{\footnotesize\ttfamily struct m\+Logger logger\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{libretro_8c_ac900fbc81aae58456e1bd917614ec9b9}\label{libretro_8c_ac900fbc81aae58456e1bd917614ec9b9}} 
+\index{libretro.\+c@{libretro.\+c}!lux@{lux}}
+\index{lux@{lux}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{lux}{lux}}
+{\footnotesize\ttfamily struct G\+B\+A\+Luminance\+Source lux\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{libretro_8c_adc713fcfb4765b7da3538ec2bcddc1c8}\label{libretro_8c_adc713fcfb4765b7da3538ec2bcddc1c8}} 
+\index{libretro.\+c@{libretro.\+c}!lux\+Level@{lux\+Level}}
+\index{lux\+Level@{lux\+Level}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{lux\+Level}{luxLevel}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} lux\+Level\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{libretro_8c_a0779122b7156629157afcf1a35c372ef}\label{libretro_8c_a0779122b7156629157afcf1a35c372ef}} 
+\index{libretro.\+c@{libretro.\+c}!output\+Buffer@{output\+Buffer}}
+\index{output\+Buffer@{output\+Buffer}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{output\+Buffer}{outputBuffer}}
+{\footnotesize\ttfamily void$\ast$ output\+Buffer\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{libretro_8c_a0be8203c70a7aa4a9c0029361e5d907b}\label{libretro_8c_a0be8203c70a7aa4a9c0029361e5d907b}} 
+\index{libretro.\+c@{libretro.\+c}!rumble@{rumble}}
+\index{rumble@{rumble}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{rumble}{rumble}}
+{\footnotesize\ttfamily struct m\+Rumble rumble\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{libretro_8c_aae778ecd289af4f6c405dabc2b85f9d5}\label{libretro_8c_aae778ecd289af4f6c405dabc2b85f9d5}} 
+\index{libretro.\+c@{libretro.\+c}!rumble\+Callback@{rumble\+Callback}}
+\index{rumble\+Callback@{rumble\+Callback}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{rumble\+Callback}{rumbleCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a72a5f584f106758ef609ae3e3014039a}{retro\+\_\+set\+\_\+rumble\+\_\+state\+\_\+t}} rumble\+Callback\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{libretro_8c_aa8f2a8eee188a5cfcfdba55275733767}\label{libretro_8c_aa8f2a8eee188a5cfcfdba55275733767}} 
+\index{libretro.\+c@{libretro.\+c}!rumble\+History@{rumble\+History}}
+\index{rumble\+History@{rumble\+History}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{rumble\+History}{rumbleHistory}}
+{\footnotesize\ttfamily struct Circle\+Buffer rumble\+History\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{libretro_8c_aa3e2494538962bdf5a845ce347c339d2}\label{libretro_8c_aa3e2494538962bdf5a845ce347c339d2}} 
+\index{libretro.\+c@{libretro.\+c}!rumble\+Level@{rumble\+Level}}
+\index{rumble\+Level@{rumble\+Level}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{rumble\+Level}{rumbleLevel}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} rumble\+Level\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{libretro_8c_a977c2dbb4436e86e1b51c1bb35afeb8c}\label{libretro_8c_a977c2dbb4436e86e1b51c1bb35afeb8c}} 
+\index{libretro.\+c@{libretro.\+c}!savedata@{savedata}}
+\index{savedata@{savedata}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{savedata}{savedata}}
+{\footnotesize\ttfamily void$\ast$ savedata\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{libretro_8c_afcb178a8ee7853c424423b8601eeaa78}\label{libretro_8c_afcb178a8ee7853c424423b8601eeaa78}} 
+\index{libretro.\+c@{libretro.\+c}!stream@{stream}}
+\index{stream@{stream}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{stream}{stream}}
+{\footnotesize\ttfamily struct m\+A\+V\+Stream \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{libretro_8c_a79d11d90bbde1ac25a3ff3df124d6483}\label{libretro_8c_a79d11d90bbde1ac25a3ff3df124d6483}} 
+\index{libretro.\+c@{libretro.\+c}!video\+Callback@{video\+Callback}}
+\index{video\+Callback@{video\+Callback}!libretro.\+c@{libretro.\+c}}
+\subsubsection{\texorpdfstring{video\+Callback}{videoCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_ae50b93e95d00894b8e3643a957534e64}{retro\+\_\+video\+\_\+refresh\+\_\+t}} video\+Callback\hspace{0.3cm}{\ttfamily [static]}}
+

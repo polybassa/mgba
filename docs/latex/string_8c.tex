@@ -1,0 +1,363 @@
+\hypertarget{string_8c}{}\section{src/util/string.c File Reference}
+\label{string_8c}\index{src/util/string.\+c@{src/util/string.\+c}}
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vector.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for string.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{string_8c_a2c023f6451b279cffc5b15234b7ca352}{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}} (String\+List, char $\ast$)
+\item 
+char $\ast$ \mbox{\hyperlink{string_8c_ae9860cafef813085cf59c451cfc150d3}{strndup}} (const char $\ast$\mbox{\hyperlink{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2a0e97c69c73117f6c0109b2d7d1d9cedc}{start}}, size\+\_\+t len)
+\item 
+char $\ast$ \mbox{\hyperlink{string_8c_a2c4f14c424a31db9c57fd046c3b9f0df}{strdup}} (const char $\ast$str)
+\item 
+char $\ast$ \mbox{\hyperlink{string_8c_a97673652b8639fc28e7dd3f74805fb20}{strnrstr}} (const char $\ast$restrict haystack, const char $\ast$restrict needle, size\+\_\+t len)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{string_8c_a8beccdc5c67d1c3fc80b6cd1664518c3}{endswith}} (const char $\ast$restrict \mbox{\hyperlink{_sha256_8c_ac1e4ed4e56436a432900cad5a1225731}{s1}}, const char $\ast$restrict end)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{string_8c_aed9d13dacc3f3449c82e0011bd624fbb}{startswith}} (const char $\ast$restrict \mbox{\hyperlink{_sha256_8c_ac1e4ed4e56436a432900cad5a1225731}{s1}}, const char $\ast$restrict \mbox{\hyperlink{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2a0e97c69c73117f6c0109b2d7d1d9cedc}{start}})
+\item 
+uint32\+\_\+t \mbox{\hyperlink{string_8c_ac652442f47f206f30b69418d4ff291d6}{utf16\+Char}} (const uint16\+\_\+t $\ast$$\ast$unicode, size\+\_\+t $\ast$length)
+\item 
+uint32\+\_\+t \mbox{\hyperlink{string_8c_ace844ca144af77dd585f39670f9257a9}{utf8\+Char}} (const char $\ast$$\ast$unicode, size\+\_\+t $\ast$length)
+\item 
+size\+\_\+t \mbox{\hyperlink{string_8c_a2815736887868450a40f03cf6508012c}{to\+Utf8}} (uint32\+\_\+t unichar, char $\ast$buffer)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{string_8c_a0acae19eecd2017ec574fd80777954a5}{utfcmp}} (const uint16\+\_\+t $\ast$utf16, const char $\ast$utf8, size\+\_\+t utf16\+Length, size\+\_\+t utf8\+Length)
+\item 
+char $\ast$ \mbox{\hyperlink{string_8c_a0f9ea6655acabf69986898ab579015da}{utf16to8}} (const uint16\+\_\+t $\ast$utf16, size\+\_\+t length)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{string_8c_aac1a6654222dec40ec87118d5fba2955}{hex\+Digit}} (char digit)
+\item 
+const char $\ast$ \mbox{\hyperlink{string_8c_a6e5dbdf4ff3dbd48941a6be538a1067c}{hex32}} (const char $\ast$line, uint32\+\_\+t $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\item 
+const char $\ast$ \mbox{\hyperlink{string_8c_a1b13418f8b950cd36b12040d86e79efc}{hex24}} (const char $\ast$line, uint32\+\_\+t $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\item 
+const char $\ast$ \mbox{\hyperlink{string_8c_a31c511866f657d73c63600ac6176ddba}{hex16}} (const char $\ast$line, uint16\+\_\+t $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\item 
+const char $\ast$ \mbox{\hyperlink{string_8c_a2fda439c0968a493bb9328f610b64b48}{hex12}} (const char $\ast$line, uint16\+\_\+t $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\item 
+const char $\ast$ \mbox{\hyperlink{string_8c_a6355b3ccd41388c2055f1a7c3e4ae5cf}{hex8}} (const char $\ast$line, uint8\+\_\+t $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\item 
+const char $\ast$ \mbox{\hyperlink{string_8c_a3c49415a09adf0ff584f9fa44f756fd7}{hex4}} (const char $\ast$line, uint8\+\_\+t $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\item 
+void \mbox{\hyperlink{string_8c_afba461a6431c891f929f50921b1a6d4b}{rtrim}} (char $\ast$string)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{string_8c_a2c023f6451b279cffc5b15234b7ca352}\label{string_8c_a2c023f6451b279cffc5b15234b7ca352}} 
+\index{string.\+c@{string.\+c}!D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}}
+\index{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+O\+R()}{DEFINE\_VECTOR()}}
+{\footnotesize\ttfamily D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR (\begin{DoxyParamCaption}\item[{String\+List}]{,  }\item[{char $\ast$}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{string_8c_a8beccdc5c67d1c3fc80b6cd1664518c3}\label{string_8c_a8beccdc5c67d1c3fc80b6cd1664518c3}} 
+\index{string.\+c@{string.\+c}!endswith@{endswith}}
+\index{endswith@{endswith}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{endswith()}{endswith()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} endswith (\begin{DoxyParamCaption}\item[{const char $\ast$restrict}]{s1,  }\item[{const char $\ast$restrict}]{end }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_a8beccdc5c67d1c3fc80b6cd1664518c3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{string_8c_a2fda439c0968a493bb9328f610b64b48}\label{string_8c_a2fda439c0968a493bb9328f610b64b48}} 
+\index{string.\+c@{string.\+c}!hex12@{hex12}}
+\index{hex12@{hex12}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{hex12()}{hex12()}}
+{\footnotesize\ttfamily const char$\ast$ hex12 (\begin{DoxyParamCaption}\item[{const char $\ast$}]{line,  }\item[{uint16\+\_\+t $\ast$}]{out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_a2fda439c0968a493bb9328f610b64b48_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_a2fda439c0968a493bb9328f610b64b48_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{string_8c_a31c511866f657d73c63600ac6176ddba}\label{string_8c_a31c511866f657d73c63600ac6176ddba}} 
+\index{string.\+c@{string.\+c}!hex16@{hex16}}
+\index{hex16@{hex16}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{hex16()}{hex16()}}
+{\footnotesize\ttfamily const char$\ast$ hex16 (\begin{DoxyParamCaption}\item[{const char $\ast$}]{line,  }\item[{uint16\+\_\+t $\ast$}]{out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_a31c511866f657d73c63600ac6176ddba_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_a31c511866f657d73c63600ac6176ddba_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{string_8c_a1b13418f8b950cd36b12040d86e79efc}\label{string_8c_a1b13418f8b950cd36b12040d86e79efc}} 
+\index{string.\+c@{string.\+c}!hex24@{hex24}}
+\index{hex24@{hex24}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{hex24()}{hex24()}}
+{\footnotesize\ttfamily const char$\ast$ hex24 (\begin{DoxyParamCaption}\item[{const char $\ast$}]{line,  }\item[{uint32\+\_\+t $\ast$}]{out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_a1b13418f8b950cd36b12040d86e79efc_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{string_8c_a6e5dbdf4ff3dbd48941a6be538a1067c}\label{string_8c_a6e5dbdf4ff3dbd48941a6be538a1067c}} 
+\index{string.\+c@{string.\+c}!hex32@{hex32}}
+\index{hex32@{hex32}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{hex32()}{hex32()}}
+{\footnotesize\ttfamily const char$\ast$ hex32 (\begin{DoxyParamCaption}\item[{const char $\ast$}]{line,  }\item[{uint32\+\_\+t $\ast$}]{out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_a6e5dbdf4ff3dbd48941a6be538a1067c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_a6e5dbdf4ff3dbd48941a6be538a1067c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{string_8c_a3c49415a09adf0ff584f9fa44f756fd7}\label{string_8c_a3c49415a09adf0ff584f9fa44f756fd7}} 
+\index{string.\+c@{string.\+c}!hex4@{hex4}}
+\index{hex4@{hex4}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{hex4()}{hex4()}}
+{\footnotesize\ttfamily const char$\ast$ hex4 (\begin{DoxyParamCaption}\item[{const char $\ast$}]{line,  }\item[{uint8\+\_\+t $\ast$}]{out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_a3c49415a09adf0ff584f9fa44f756fd7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{string_8c_a6355b3ccd41388c2055f1a7c3e4ae5cf}\label{string_8c_a6355b3ccd41388c2055f1a7c3e4ae5cf}} 
+\index{string.\+c@{string.\+c}!hex8@{hex8}}
+\index{hex8@{hex8}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{hex8()}{hex8()}}
+{\footnotesize\ttfamily const char$\ast$ hex8 (\begin{DoxyParamCaption}\item[{const char $\ast$}]{line,  }\item[{uint8\+\_\+t $\ast$}]{out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_a6355b3ccd41388c2055f1a7c3e4ae5cf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_a6355b3ccd41388c2055f1a7c3e4ae5cf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{string_8c_aac1a6654222dec40ec87118d5fba2955}\label{string_8c_aac1a6654222dec40ec87118d5fba2955}} 
+\index{string.\+c@{string.\+c}!hex\+Digit@{hex\+Digit}}
+\index{hex\+Digit@{hex\+Digit}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{hex\+Digit()}{hexDigit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} hex\+Digit (\begin{DoxyParamCaption}\item[{char}]{digit }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_aac1a6654222dec40ec87118d5fba2955_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{string_8c_afba461a6431c891f929f50921b1a6d4b}\label{string_8c_afba461a6431c891f929f50921b1a6d4b}} 
+\index{string.\+c@{string.\+c}!rtrim@{rtrim}}
+\index{rtrim@{rtrim}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{rtrim()}{rtrim()}}
+{\footnotesize\ttfamily void rtrim (\begin{DoxyParamCaption}\item[{char $\ast$}]{string }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_afba461a6431c891f929f50921b1a6d4b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{string_8c_aed9d13dacc3f3449c82e0011bd624fbb}\label{string_8c_aed9d13dacc3f3449c82e0011bd624fbb}} 
+\index{string.\+c@{string.\+c}!startswith@{startswith}}
+\index{startswith@{startswith}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{startswith()}{startswith()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} startswith (\begin{DoxyParamCaption}\item[{const char $\ast$restrict}]{s1,  }\item[{const char $\ast$restrict}]{start }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_aed9d13dacc3f3449c82e0011bd624fbb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{string_8c_a2c4f14c424a31db9c57fd046c3b9f0df}\label{string_8c_a2c4f14c424a31db9c57fd046c3b9f0df}} 
+\index{string.\+c@{string.\+c}!strdup@{strdup}}
+\index{strdup@{strdup}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strdup()}{strdup()}}
+{\footnotesize\ttfamily char$\ast$ strdup (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_a2c4f14c424a31db9c57fd046c3b9f0df_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_a2c4f14c424a31db9c57fd046c3b9f0df_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{string_8c_ae9860cafef813085cf59c451cfc150d3}\label{string_8c_ae9860cafef813085cf59c451cfc150d3}} 
+\index{string.\+c@{string.\+c}!strndup@{strndup}}
+\index{strndup@{strndup}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strndup()}{strndup()}}
+{\footnotesize\ttfamily char$\ast$ strndup (\begin{DoxyParamCaption}\item[{const char $\ast$}]{start,  }\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_ae9860cafef813085cf59c451cfc150d3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_ae9860cafef813085cf59c451cfc150d3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{string_8c_a97673652b8639fc28e7dd3f74805fb20}\label{string_8c_a97673652b8639fc28e7dd3f74805fb20}} 
+\index{string.\+c@{string.\+c}!strnrstr@{strnrstr}}
+\index{strnrstr@{strnrstr}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{strnrstr()}{strnrstr()}}
+{\footnotesize\ttfamily char$\ast$ strnrstr (\begin{DoxyParamCaption}\item[{const char $\ast$restrict}]{haystack,  }\item[{const char $\ast$restrict}]{needle,  }\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_a97673652b8639fc28e7dd3f74805fb20_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{string_8c_a2815736887868450a40f03cf6508012c}\label{string_8c_a2815736887868450a40f03cf6508012c}} 
+\index{string.\+c@{string.\+c}!to\+Utf8@{to\+Utf8}}
+\index{to\+Utf8@{to\+Utf8}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{to\+Utf8()}{toUtf8()}}
+{\footnotesize\ttfamily size\+\_\+t to\+Utf8 (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{unichar,  }\item[{char $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_a2815736887868450a40f03cf6508012c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{string_8c_ac652442f47f206f30b69418d4ff291d6}\label{string_8c_ac652442f47f206f30b69418d4ff291d6}} 
+\index{string.\+c@{string.\+c}!utf16\+Char@{utf16\+Char}}
+\index{utf16\+Char@{utf16\+Char}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{utf16\+Char()}{utf16Char()}}
+{\footnotesize\ttfamily uint32\+\_\+t utf16\+Char (\begin{DoxyParamCaption}\item[{const uint16\+\_\+t $\ast$$\ast$}]{unicode,  }\item[{size\+\_\+t $\ast$}]{length }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=239pt]{string_8c_ac652442f47f206f30b69418d4ff291d6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{string_8c_a0f9ea6655acabf69986898ab579015da}\label{string_8c_a0f9ea6655acabf69986898ab579015da}} 
+\index{string.\+c@{string.\+c}!utf16to8@{utf16to8}}
+\index{utf16to8@{utf16to8}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{utf16to8()}{utf16to8()}}
+{\footnotesize\ttfamily char$\ast$ utf16to8 (\begin{DoxyParamCaption}\item[{const uint16\+\_\+t $\ast$}]{utf16,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=239pt]{string_8c_a0f9ea6655acabf69986898ab579015da_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{string_8c_ace844ca144af77dd585f39670f9257a9}\label{string_8c_ace844ca144af77dd585f39670f9257a9}} 
+\index{string.\+c@{string.\+c}!utf8\+Char@{utf8\+Char}}
+\index{utf8\+Char@{utf8\+Char}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{utf8\+Char()}{utf8Char()}}
+{\footnotesize\ttfamily uint32\+\_\+t utf8\+Char (\begin{DoxyParamCaption}\item[{const char $\ast$$\ast$}]{unicode,  }\item[{size\+\_\+t $\ast$}]{length }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{string_8c_ace844ca144af77dd585f39670f9257a9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{string_8c_a0acae19eecd2017ec574fd80777954a5}\label{string_8c_a0acae19eecd2017ec574fd80777954a5}} 
+\index{string.\+c@{string.\+c}!utfcmp@{utfcmp}}
+\index{utfcmp@{utfcmp}!string.\+c@{string.\+c}}
+\subsubsection{\texorpdfstring{utfcmp()}{utfcmp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} utfcmp (\begin{DoxyParamCaption}\item[{const uint16\+\_\+t $\ast$}]{utf16,  }\item[{const char $\ast$}]{utf8,  }\item[{size\+\_\+t}]{utf16\+Length,  }\item[{size\+\_\+t}]{utf8\+Length }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{string_8c_a0acae19eecd2017ec574fd80777954a5_cgraph}
+\end{center}
+\end{figure}

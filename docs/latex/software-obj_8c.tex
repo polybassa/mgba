@@ -1,0 +1,313 @@
+\hypertarget{software-obj_8c}{}\section{src/gba/renderers/software-\/obj.c File Reference}
+\label{software-obj_8c}\index{src/gba/renderers/software-\/obj.\+c@{src/gba/renderers/software-\/obj.\+c}}
+{\ttfamily \#include \char`\"{}gba/renderers/software-\/private.\+h\char`\"{}}\newline
+Include dependency graph for software-\/obj.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{software-obj_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{software-obj_8c_ae8f834900ccb77f932ffc98dc17e0375}{S\+P\+R\+I\+T\+E\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+L\+O\+OP}}(D\+E\+P\+TH,  \mbox{\hyperlink{inflate_8h_a164ea0159d5f0b5f12a646f25f99eceaab47ea8bb955afd0adc0ef98517dd6084}{T\+Y\+PE}})
+\item 
+\#define \mbox{\hyperlink{software-obj_8c_aaefd49556ffb9bf95e066a59b135c7e7}{S\+P\+R\+I\+T\+E\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+\+L\+O\+OP}}(D\+E\+P\+TH,  \mbox{\hyperlink{inflate_8h_a164ea0159d5f0b5f12a646f25f99eceaab47ea8bb955afd0adc0ef98517dd6084}{T\+Y\+PE}})
+\item 
+\#define \mbox{\hyperlink{software-obj_8c_a52211ae275735bbf560e757280a1333a}{S\+P\+R\+I\+T\+E\+\_\+\+T\+R\+A\+N\+S\+F\+O\+R\+M\+E\+D\+\_\+\+L\+O\+OP}}(D\+E\+P\+TH,  \mbox{\hyperlink{inflate_8h_a164ea0159d5f0b5f12a646f25f99eceaab47ea8bb955afd0adc0ef98517dd6084}{T\+Y\+PE}})
+\item 
+\#define \mbox{\hyperlink{software-obj_8c_a3d841add7f051a581ae5adc380199c1e}{S\+P\+R\+I\+T\+E\+\_\+\+X\+B\+A\+S\+E\+\_\+16}}(localX)~unsigned x\+Base = (localX \& $\sim$0x7) $\ast$ 4 + ((local\+X $>$$>$ 1) \& 2);
+\item 
+\#define \mbox{\hyperlink{software-obj_8c_a5fe7924604b217e2a8468b277c365f95}{S\+P\+R\+I\+T\+E\+\_\+\+Y\+B\+A\+S\+E\+\_\+16}}(localY)~unsigned y\+Base = (localY \& $\sim$0x7) $\ast$ stride + (local\+Y \& 0x7) $\ast$ 4;
+\item 
+\#define \mbox{\hyperlink{software-obj_8c_aac77b52568fd9946f71fb29ec06bcfda}{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+N\+O\+R\+M\+AL}}(localX)
+\item 
+\#define \mbox{\hyperlink{software-obj_8c_a0c23d6dcd315efefa9605c43ebc0aa13}{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+O\+B\+J\+W\+IN}}(localX)
+\item 
+\#define \mbox{\hyperlink{software-obj_8c_a7209290253a5783ebacce01ce9519508}{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+O\+B\+J\+W\+IN}}(localX)
+\item 
+\#define \mbox{\hyperlink{software-obj_8c_aa93d2a8af73713a8b0febc3c5da1f0cf}{S\+P\+R\+I\+T\+E\+\_\+\+X\+B\+A\+S\+E\+\_\+256}}(localX)~unsigned x\+Base = (localX \& $\sim$0x7) $\ast$ 8 + (local\+X \& 6);
+\item 
+\#define \mbox{\hyperlink{software-obj_8c_a273213e4255613f44d5995cd57065600}{S\+P\+R\+I\+T\+E\+\_\+\+Y\+B\+A\+S\+E\+\_\+256}}(localY)~unsigned y\+Base = (localY \& $\sim$0x7) $\ast$ stride + (local\+Y \& 0x7) $\ast$ 8;
+\item 
+\#define \mbox{\hyperlink{software-obj_8c_a8d32eb985c0e830c427cede1675b6be2}{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+N\+O\+R\+M\+AL}}(localX)
+\item 
+\#define \mbox{\hyperlink{software-obj_8c_a535415ad5ac53efd197e489850f4c3e4}{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+O\+B\+J\+W\+IN}}(localX)
+\item 
+\#define \mbox{\hyperlink{software-obj_8c_a68233a273978fa0c7f6fc75aa43443ee}{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+O\+B\+J\+W\+IN}}(localX)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{software-obj_8c_a1f995eed921e1b4e0963fab4daf5e2da}{G\+B\+A\+Video\+Software\+Renderer\+Preprocess\+Sprite}} (struct G\+B\+A\+Video\+Software\+Renderer $\ast$renderer, struct G\+B\+A\+Obj $\ast$sprite, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} y)
+\item 
+void \mbox{\hyperlink{software-obj_8c_a47b212d8fd0ffc36105a78d71946516b}{G\+B\+A\+Video\+Software\+Renderer\+Postprocess\+Sprite}} (struct G\+B\+A\+Video\+Software\+Renderer $\ast$renderer, unsigned priority)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{software-obj_8c_aac77b52568fd9946f71fb29ec06bcfda}\label{software-obj_8c_aac77b52568fd9946f71fb29ec06bcfda}} 
+\index{software-\/obj.\+c@{software-\/obj.\+c}!S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+N\+O\+R\+M\+AL@{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+N\+O\+R\+M\+AL}}
+\index{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+N\+O\+R\+M\+AL@{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+N\+O\+R\+M\+AL}!software-\/obj.\+c@{software-\/obj.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+N\+O\+R\+M\+AL}{SPRITE\_DRAW\_PIXEL\_16\_NORMAL}}
+{\footnotesize\ttfamily \#define S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+N\+O\+R\+M\+AL(\begin{DoxyParamCaption}\item[{}]{localX }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+LOAD\_16(tileData, ((yBase + charBase + xBase) & 0x7FFE), vramBase); \(\backslash\)
+    tileData = (tileData >> ((localX & 3) << 2)) & 0xF; \(\backslash\)
+    current = renderer->spriteLayer[outX]; \(\backslash\)
+    if ((current & FLAG\_ORDER\_MASK) > \mbox{\hyperlink{lr35902_2decoder_8c_a11f29eea941556f0630cfd3285f565c0}{flags}}) \{ \(\backslash\)
+        if (tileData) \{ \(\backslash\)
+            renderer->spriteLayer[outX] = palette[tileData] | \mbox{\hyperlink{lr35902_2decoder_8c_a11f29eea941556f0630cfd3285f565c0}{flags}}; \(\backslash\)
+        \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (current != FLAG\_UNWRITTEN) \{ \(\backslash\)
+            renderer->spriteLayer[outX] = (current & ~FLAG\_ORDER\_MASK) | GBAObjAttributesCGetPriority(
+      sprite->c) << OFFSET\_PRIORITY; \(\backslash\)
+        \} \(\backslash\)
+    \}
+\end{DoxyCode}
+\mbox{\Hypertarget{software-obj_8c_a0c23d6dcd315efefa9605c43ebc0aa13}\label{software-obj_8c_a0c23d6dcd315efefa9605c43ebc0aa13}} 
+\index{software-\/obj.\+c@{software-\/obj.\+c}!S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+O\+B\+J\+W\+IN@{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+O\+B\+J\+W\+IN}}
+\index{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+O\+B\+J\+W\+IN@{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+O\+B\+J\+W\+IN}!software-\/obj.\+c@{software-\/obj.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+O\+B\+J\+W\+IN}{SPRITE\_DRAW\_PIXEL\_16\_NORMAL\_OBJWIN}}
+{\footnotesize\ttfamily \#define S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+O\+B\+J\+W\+IN(\begin{DoxyParamCaption}\item[{}]{localX }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+LOAD\_16(tileData, ((yBase + charBase + xBase) & 0x7FFE), vramBase); \(\backslash\)
+    tileData = (tileData >> ((localX & 3) << 2)) & 0xF; \(\backslash\)
+    current = renderer->spriteLayer[outX]; \(\backslash\)
+    if ((current & FLAG\_ORDER\_MASK) > \mbox{\hyperlink{lr35902_2decoder_8c_a11f29eea941556f0630cfd3285f565c0}{flags}}) \{ \(\backslash\)
+        if (tileData) \{ \(\backslash\)
+            unsigned color = (renderer->row[outX] & FLAG\_OBJWIN) ? objwinPalette[tileData] : palette[
+      tileData]; \(\backslash\)
+            renderer->spriteLayer[outX] = color | \mbox{\hyperlink{lr35902_2decoder_8c_a11f29eea941556f0630cfd3285f565c0}{flags}}; \(\backslash\)
+        \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (current != FLAG\_UNWRITTEN) \{ \(\backslash\)
+            renderer->spriteLayer[outX] = (current & ~FLAG\_ORDER\_MASK) | GBAObjAttributesCGetPriority(
+      sprite->c) << OFFSET\_PRIORITY; \(\backslash\)
+        \} \(\backslash\)
+    \}
+\end{DoxyCode}
+\mbox{\Hypertarget{software-obj_8c_a7209290253a5783ebacce01ce9519508}\label{software-obj_8c_a7209290253a5783ebacce01ce9519508}} 
+\index{software-\/obj.\+c@{software-\/obj.\+c}!S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+O\+B\+J\+W\+IN@{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+O\+B\+J\+W\+IN}}
+\index{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+O\+B\+J\+W\+IN@{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+O\+B\+J\+W\+IN}!software-\/obj.\+c@{software-\/obj.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+O\+B\+J\+W\+IN}{SPRITE\_DRAW\_PIXEL\_16\_OBJWIN}}
+{\footnotesize\ttfamily \#define S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+16\+\_\+\+O\+B\+J\+W\+IN(\begin{DoxyParamCaption}\item[{}]{localX }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+LOAD\_16(tileData, ((yBase + charBase + xBase) & 0x7FFE), vramBase); \(\backslash\)
+    tileData = (tileData >> ((localX & 3) << 2)) & 0xF; \(\backslash\)
+    if (tileData) \{ \(\backslash\)
+        renderer->row[outX] |= FLAG\_OBJWIN; \(\backslash\)
+    \}
+\end{DoxyCode}
+\mbox{\Hypertarget{software-obj_8c_a8d32eb985c0e830c427cede1675b6be2}\label{software-obj_8c_a8d32eb985c0e830c427cede1675b6be2}} 
+\index{software-\/obj.\+c@{software-\/obj.\+c}!S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+N\+O\+R\+M\+AL@{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+N\+O\+R\+M\+AL}}
+\index{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+N\+O\+R\+M\+AL@{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+N\+O\+R\+M\+AL}!software-\/obj.\+c@{software-\/obj.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+N\+O\+R\+M\+AL}{SPRITE\_DRAW\_PIXEL\_256\_NORMAL}}
+{\footnotesize\ttfamily \#define S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+N\+O\+R\+M\+AL(\begin{DoxyParamCaption}\item[{}]{localX }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+LOAD\_16(tileData, ((yBase + charBase + xBase) & 0x7FFE), vramBase); \(\backslash\)
+    tileData = (tileData >> ((localX & 1) << 3)) & 0xFF; \(\backslash\)
+    current = renderer->spriteLayer[outX]; \(\backslash\)
+    if ((current & FLAG\_ORDER\_MASK) > \mbox{\hyperlink{lr35902_2decoder_8c_a11f29eea941556f0630cfd3285f565c0}{flags}}) \{ \(\backslash\)
+        if (tileData) \{ \(\backslash\)
+            renderer->spriteLayer[outX] = palette[tileData] | \mbox{\hyperlink{lr35902_2decoder_8c_a11f29eea941556f0630cfd3285f565c0}{flags}}; \(\backslash\)
+        \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (current != FLAG\_UNWRITTEN) \{ \(\backslash\)
+            renderer->spriteLayer[outX] = (current & ~FLAG\_ORDER\_MASK) | GBAObjAttributesCGetPriority(
+      sprite->c) << OFFSET\_PRIORITY; \(\backslash\)
+        \} \(\backslash\)
+    \}
+\end{DoxyCode}
+\mbox{\Hypertarget{software-obj_8c_a535415ad5ac53efd197e489850f4c3e4}\label{software-obj_8c_a535415ad5ac53efd197e489850f4c3e4}} 
+\index{software-\/obj.\+c@{software-\/obj.\+c}!S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+O\+B\+J\+W\+IN@{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+O\+B\+J\+W\+IN}}
+\index{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+O\+B\+J\+W\+IN@{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+O\+B\+J\+W\+IN}!software-\/obj.\+c@{software-\/obj.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+O\+B\+J\+W\+IN}{SPRITE\_DRAW\_PIXEL\_256\_NORMAL\_OBJWIN}}
+{\footnotesize\ttfamily \#define S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+O\+B\+J\+W\+IN(\begin{DoxyParamCaption}\item[{}]{localX }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+LOAD\_16(tileData, ((yBase + charBase + xBase) & 0x7FFE), vramBase);  \(\backslash\)
+    tileData = (tileData >> ((localX & 1) << 3)) & 0xFF; \(\backslash\)
+    current = renderer->spriteLayer[outX]; \(\backslash\)
+    if ((current & FLAG\_ORDER\_MASK) > \mbox{\hyperlink{lr35902_2decoder_8c_a11f29eea941556f0630cfd3285f565c0}{flags}}) \{ \(\backslash\)
+        if (tileData) \{ \(\backslash\)
+            unsigned color = (renderer->row[outX] & FLAG\_OBJWIN) ? objwinPalette[tileData] : palette[
+      tileData]; \(\backslash\)
+            renderer->spriteLayer[outX] = color | \mbox{\hyperlink{lr35902_2decoder_8c_a11f29eea941556f0630cfd3285f565c0}{flags}}; \(\backslash\)
+        \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (current != FLAG\_UNWRITTEN) \{ \(\backslash\)
+            renderer->spriteLayer[outX] = (current & ~FLAG\_ORDER\_MASK) | GBAObjAttributesCGetPriority(
+      sprite->c) << OFFSET\_PRIORITY; \(\backslash\)
+        \} \(\backslash\)
+    \}
+\end{DoxyCode}
+\mbox{\Hypertarget{software-obj_8c_a68233a273978fa0c7f6fc75aa43443ee}\label{software-obj_8c_a68233a273978fa0c7f6fc75aa43443ee}} 
+\index{software-\/obj.\+c@{software-\/obj.\+c}!S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+O\+B\+J\+W\+IN@{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+O\+B\+J\+W\+IN}}
+\index{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+O\+B\+J\+W\+IN@{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+O\+B\+J\+W\+IN}!software-\/obj.\+c@{software-\/obj.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+O\+B\+J\+W\+IN}{SPRITE\_DRAW\_PIXEL\_256\_OBJWIN}}
+{\footnotesize\ttfamily \#define S\+P\+R\+I\+T\+E\+\_\+\+D\+R\+A\+W\+\_\+\+P\+I\+X\+E\+L\+\_\+256\+\_\+\+O\+B\+J\+W\+IN(\begin{DoxyParamCaption}\item[{}]{localX }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+LOAD\_16(tileData, ((yBase + charBase + xBase) & 0x7FFE), vramBase); \(\backslash\)
+    tileData = (tileData >> ((localX & 1) << 3)) & 0xFF; \(\backslash\)
+    if (tileData) \{ \(\backslash\)
+        renderer->row[outX] |= FLAG\_OBJWIN; \(\backslash\)
+    \}
+\end{DoxyCode}
+\mbox{\Hypertarget{software-obj_8c_aaefd49556ffb9bf95e066a59b135c7e7}\label{software-obj_8c_aaefd49556ffb9bf95e066a59b135c7e7}} 
+\index{software-\/obj.\+c@{software-\/obj.\+c}!S\+P\+R\+I\+T\+E\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+\+L\+O\+OP@{S\+P\+R\+I\+T\+E\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+\+L\+O\+OP}}
+\index{S\+P\+R\+I\+T\+E\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+\+L\+O\+OP@{S\+P\+R\+I\+T\+E\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+\+L\+O\+OP}!software-\/obj.\+c@{software-\/obj.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+R\+I\+T\+E\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+\+L\+O\+OP}{SPRITE\_MOSAIC\_LOOP}}
+{\footnotesize\ttfamily \#define S\+P\+R\+I\+T\+E\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+\+L\+O\+OP(\begin{DoxyParamCaption}\item[{}]{D\+E\+P\+TH,  }\item[{}]{\mbox{\hyperlink{inflate_8h_a164ea0159d5f0b5f12a646f25f99eceaab47ea8bb955afd0adc0ef98517dd6084}{T\+Y\+PE}} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+SPRITE\_YBASE\_ ## DEPTH(inY); \(\backslash\)
+    unsigned tileData; \(\backslash\)
+    if (outX % mosaicH) \{ \(\backslash\)
+        if (!inX && xOffset > 0) \{ \(\backslash\)
+            inX = mosaicH - (outX % mosaicH); \(\backslash\)
+            outX += mosaicH - (outX % mosaicH); \(\backslash\)
+        \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (inX == \mbox{\hyperlink{gregbook_2readpng_8c_ad02cd220028343ea4b1943ff4aedc38d}{width}} - xOffset) \{ \(\backslash\)
+            inX = mosaicH + (outX % mosaicH); \(\backslash\)
+            outX += mosaicH - (outX % mosaicH); \(\backslash\)
+        \} \(\backslash\)
+    \} \(\backslash\)
+    for (; outX < \mbox{\hyperlink{isa-lr35902_8c_a9cc5e499f71726f3a653debd7bf9ccc7}{condition}}; ++outX, inX += xOffset) \{ \(\backslash\)
+        if (!(renderer->row[outX] & FLAG\_UNWRITTEN)) \{ \(\backslash\)
+            continue; \(\backslash\)
+        \} \(\backslash\)
+        int localX = inX - xOffset * (outX % mosaicH); \(\backslash\)
+        if (localX < 0 || localX > \mbox{\hyperlink{gregbook_2readpng_8c_ad02cd220028343ea4b1943ff4aedc38d}{width}} - 1) \{ \(\backslash\)
+            continue; \(\backslash\)
+        \} \(\backslash\)
+        SPRITE\_XBASE\_ ## DEPTH(localX); \(\backslash\)
+        SPRITE\_DRAW\_PIXEL\_ ## DEPTH ## \_ ## \mbox{\hyperlink{inflate9_8h_a164ea0159d5f0b5f12a646f25f99eceaab47ea8bb955afd0adc0ef98517dd6084}{TYPE}}(localX); \(\backslash\)
+    \}
+\end{DoxyCode}
+\mbox{\Hypertarget{software-obj_8c_ae8f834900ccb77f932ffc98dc17e0375}\label{software-obj_8c_ae8f834900ccb77f932ffc98dc17e0375}} 
+\index{software-\/obj.\+c@{software-\/obj.\+c}!S\+P\+R\+I\+T\+E\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+L\+O\+OP@{S\+P\+R\+I\+T\+E\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+L\+O\+OP}}
+\index{S\+P\+R\+I\+T\+E\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+L\+O\+OP@{S\+P\+R\+I\+T\+E\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+L\+O\+OP}!software-\/obj.\+c@{software-\/obj.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+R\+I\+T\+E\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+L\+O\+OP}{SPRITE\_NORMAL\_LOOP}}
+{\footnotesize\ttfamily \#define S\+P\+R\+I\+T\+E\+\_\+\+N\+O\+R\+M\+A\+L\+\_\+\+L\+O\+OP(\begin{DoxyParamCaption}\item[{}]{D\+E\+P\+TH,  }\item[{}]{\mbox{\hyperlink{inflate_8h_a164ea0159d5f0b5f12a646f25f99eceaab47ea8bb955afd0adc0ef98517dd6084}{T\+Y\+PE}} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+SPRITE\_YBASE\_ ## DEPTH(inY); \(\backslash\)
+    unsigned tileData; \(\backslash\)
+    for (; outX < \mbox{\hyperlink{isa-lr35902_8c_a9cc5e499f71726f3a653debd7bf9ccc7}{condition}}; ++outX, inX += xOffset) \{ \(\backslash\)
+        if (!(renderer->row[outX] & FLAG\_UNWRITTEN)) \{ \(\backslash\)
+            continue; \(\backslash\)
+        \} \(\backslash\)
+        renderer->spriteCyclesRemaining -= 1; \(\backslash\)
+        SPRITE\_XBASE\_ ## DEPTH(inX); \(\backslash\)
+        SPRITE\_DRAW\_PIXEL\_ ## DEPTH ## \_ ## \mbox{\hyperlink{inflate9_8h_a164ea0159d5f0b5f12a646f25f99eceaab47ea8bb955afd0adc0ef98517dd6084}{TYPE}}(inX); \(\backslash\)
+    \}
+\end{DoxyCode}
+\mbox{\Hypertarget{software-obj_8c_a52211ae275735bbf560e757280a1333a}\label{software-obj_8c_a52211ae275735bbf560e757280a1333a}} 
+\index{software-\/obj.\+c@{software-\/obj.\+c}!S\+P\+R\+I\+T\+E\+\_\+\+T\+R\+A\+N\+S\+F\+O\+R\+M\+E\+D\+\_\+\+L\+O\+OP@{S\+P\+R\+I\+T\+E\+\_\+\+T\+R\+A\+N\+S\+F\+O\+R\+M\+E\+D\+\_\+\+L\+O\+OP}}
+\index{S\+P\+R\+I\+T\+E\+\_\+\+T\+R\+A\+N\+S\+F\+O\+R\+M\+E\+D\+\_\+\+L\+O\+OP@{S\+P\+R\+I\+T\+E\+\_\+\+T\+R\+A\+N\+S\+F\+O\+R\+M\+E\+D\+\_\+\+L\+O\+OP}!software-\/obj.\+c@{software-\/obj.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+R\+I\+T\+E\+\_\+\+T\+R\+A\+N\+S\+F\+O\+R\+M\+E\+D\+\_\+\+L\+O\+OP}{SPRITE\_TRANSFORMED\_LOOP}}
+{\footnotesize\ttfamily \#define S\+P\+R\+I\+T\+E\+\_\+\+T\+R\+A\+N\+S\+F\+O\+R\+M\+E\+D\+\_\+\+L\+O\+OP(\begin{DoxyParamCaption}\item[{}]{D\+E\+P\+TH,  }\item[{}]{\mbox{\hyperlink{inflate_8h_a164ea0159d5f0b5f12a646f25f99eceaab47ea8bb955afd0adc0ef98517dd6084}{T\+Y\+PE}} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordtype}{unsigned} tileData; \(\backslash\)
+    unsigned widthMask = ~(\mbox{\hyperlink{gregbook_2readpng_8c_ad02cd220028343ea4b1943ff4aedc38d}{width}} - 1); \(\backslash\)
+    unsigned heightMask = ~(\mbox{\hyperlink{gregbook_2readpng_8c_ad35d10a175726c3e46ffb65e8d6e4703}{height}} - 1); \(\backslash\)
+    for (; outX < \mbox{\hyperlink{isa-lr35902_8c_a9cc5e499f71726f3a653debd7bf9ccc7}{condition}}; ++outX, ++inX) \{ \(\backslash\)
+        if (!(renderer->row[outX] & FLAG\_UNWRITTEN)) \{ \(\backslash\)
+            continue; \(\backslash\)
+        \} \(\backslash\)
+        renderer->spriteCyclesRemaining -= 2; \(\backslash\)
+        xAccum += mat.a; \(\backslash\)
+        yAccum += mat.c; \(\backslash\)
+        int localX = xAccum >> 8; \(\backslash\)
+        int localY = yAccum >> 8; \mbox{\hyperlink{isa-arm_8c_a0736bf8f9c6b829a423d7d7a43b781e8}{\(\backslash\)}}
+\mbox{\hyperlink{isa-arm_8c_a0736bf8f9c6b829a423d7d7a43b781e8}{        \(\backslash\)}}
+\mbox{\hyperlink{isa-arm_8c_a0736bf8f9c6b829a423d7d7a43b781e8}{        if}} (localX & widthMask || localY & heightMask) \{ \(\backslash\)
+            break; \(\backslash\)
+        \} \(\backslash\)
+        \(\backslash\)
+        SPRITE\_YBASE\_ ## DEPTH(localY); \(\backslash\)
+        SPRITE\_XBASE\_ ## DEPTH(localX); \(\backslash\)
+        SPRITE\_DRAW\_PIXEL\_ ## DEPTH ## \_ ## \mbox{\hyperlink{inflate9_8h_a164ea0159d5f0b5f12a646f25f99eceaab47ea8bb955afd0adc0ef98517dd6084}{TYPE}}(localX); \(\backslash\)
+    \}
+\end{DoxyCode}
+\mbox{\Hypertarget{software-obj_8c_a3d841add7f051a581ae5adc380199c1e}\label{software-obj_8c_a3d841add7f051a581ae5adc380199c1e}} 
+\index{software-\/obj.\+c@{software-\/obj.\+c}!S\+P\+R\+I\+T\+E\+\_\+\+X\+B\+A\+S\+E\+\_\+16@{S\+P\+R\+I\+T\+E\+\_\+\+X\+B\+A\+S\+E\+\_\+16}}
+\index{S\+P\+R\+I\+T\+E\+\_\+\+X\+B\+A\+S\+E\+\_\+16@{S\+P\+R\+I\+T\+E\+\_\+\+X\+B\+A\+S\+E\+\_\+16}!software-\/obj.\+c@{software-\/obj.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+R\+I\+T\+E\+\_\+\+X\+B\+A\+S\+E\+\_\+16}{SPRITE\_XBASE\_16}}
+{\footnotesize\ttfamily \#define S\+P\+R\+I\+T\+E\+\_\+\+X\+B\+A\+S\+E\+\_\+16(\begin{DoxyParamCaption}\item[{}]{localX }\end{DoxyParamCaption})~unsigned x\+Base = (localX \& $\sim$0x7) $\ast$ 4 + ((local\+X $>$$>$ 1) \& 2);}
+
+\mbox{\Hypertarget{software-obj_8c_aa93d2a8af73713a8b0febc3c5da1f0cf}\label{software-obj_8c_aa93d2a8af73713a8b0febc3c5da1f0cf}} 
+\index{software-\/obj.\+c@{software-\/obj.\+c}!S\+P\+R\+I\+T\+E\+\_\+\+X\+B\+A\+S\+E\+\_\+256@{S\+P\+R\+I\+T\+E\+\_\+\+X\+B\+A\+S\+E\+\_\+256}}
+\index{S\+P\+R\+I\+T\+E\+\_\+\+X\+B\+A\+S\+E\+\_\+256@{S\+P\+R\+I\+T\+E\+\_\+\+X\+B\+A\+S\+E\+\_\+256}!software-\/obj.\+c@{software-\/obj.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+R\+I\+T\+E\+\_\+\+X\+B\+A\+S\+E\+\_\+256}{SPRITE\_XBASE\_256}}
+{\footnotesize\ttfamily \#define S\+P\+R\+I\+T\+E\+\_\+\+X\+B\+A\+S\+E\+\_\+256(\begin{DoxyParamCaption}\item[{}]{localX }\end{DoxyParamCaption})~unsigned x\+Base = (localX \& $\sim$0x7) $\ast$ 8 + (local\+X \& 6);}
+
+\mbox{\Hypertarget{software-obj_8c_a5fe7924604b217e2a8468b277c365f95}\label{software-obj_8c_a5fe7924604b217e2a8468b277c365f95}} 
+\index{software-\/obj.\+c@{software-\/obj.\+c}!S\+P\+R\+I\+T\+E\+\_\+\+Y\+B\+A\+S\+E\+\_\+16@{S\+P\+R\+I\+T\+E\+\_\+\+Y\+B\+A\+S\+E\+\_\+16}}
+\index{S\+P\+R\+I\+T\+E\+\_\+\+Y\+B\+A\+S\+E\+\_\+16@{S\+P\+R\+I\+T\+E\+\_\+\+Y\+B\+A\+S\+E\+\_\+16}!software-\/obj.\+c@{software-\/obj.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+R\+I\+T\+E\+\_\+\+Y\+B\+A\+S\+E\+\_\+16}{SPRITE\_YBASE\_16}}
+{\footnotesize\ttfamily \#define S\+P\+R\+I\+T\+E\+\_\+\+Y\+B\+A\+S\+E\+\_\+16(\begin{DoxyParamCaption}\item[{}]{localY }\end{DoxyParamCaption})~unsigned y\+Base = (localY \& $\sim$0x7) $\ast$ stride + (local\+Y \& 0x7) $\ast$ 4;}
+
+\mbox{\Hypertarget{software-obj_8c_a273213e4255613f44d5995cd57065600}\label{software-obj_8c_a273213e4255613f44d5995cd57065600}} 
+\index{software-\/obj.\+c@{software-\/obj.\+c}!S\+P\+R\+I\+T\+E\+\_\+\+Y\+B\+A\+S\+E\+\_\+256@{S\+P\+R\+I\+T\+E\+\_\+\+Y\+B\+A\+S\+E\+\_\+256}}
+\index{S\+P\+R\+I\+T\+E\+\_\+\+Y\+B\+A\+S\+E\+\_\+256@{S\+P\+R\+I\+T\+E\+\_\+\+Y\+B\+A\+S\+E\+\_\+256}!software-\/obj.\+c@{software-\/obj.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+R\+I\+T\+E\+\_\+\+Y\+B\+A\+S\+E\+\_\+256}{SPRITE\_YBASE\_256}}
+{\footnotesize\ttfamily \#define S\+P\+R\+I\+T\+E\+\_\+\+Y\+B\+A\+S\+E\+\_\+256(\begin{DoxyParamCaption}\item[{}]{localY }\end{DoxyParamCaption})~unsigned y\+Base = (localY \& $\sim$0x7) $\ast$ stride + (local\+Y \& 0x7) $\ast$ 8;}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{software-obj_8c_a47b212d8fd0ffc36105a78d71946516b}\label{software-obj_8c_a47b212d8fd0ffc36105a78d71946516b}} 
+\index{software-\/obj.\+c@{software-\/obj.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Postprocess\+Sprite@{G\+B\+A\+Video\+Software\+Renderer\+Postprocess\+Sprite}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Postprocess\+Sprite@{G\+B\+A\+Video\+Software\+Renderer\+Postprocess\+Sprite}!software-\/obj.\+c@{software-\/obj.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Postprocess\+Sprite()}{GBAVideoSoftwareRendererPostprocessSprite()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Software\+Renderer\+Postprocess\+Sprite (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Renderer $\ast$}]{renderer,  }\item[{unsigned}]{priority }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{software-obj_8c_a47b212d8fd0ffc36105a78d71946516b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{software-obj_8c_a47b212d8fd0ffc36105a78d71946516b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{software-obj_8c_a1f995eed921e1b4e0963fab4daf5e2da}\label{software-obj_8c_a1f995eed921e1b4e0963fab4daf5e2da}} 
+\index{software-\/obj.\+c@{software-\/obj.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Preprocess\+Sprite@{G\+B\+A\+Video\+Software\+Renderer\+Preprocess\+Sprite}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Preprocess\+Sprite@{G\+B\+A\+Video\+Software\+Renderer\+Preprocess\+Sprite}!software-\/obj.\+c@{software-\/obj.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Preprocess\+Sprite()}{GBAVideoSoftwareRendererPreprocessSprite()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} G\+B\+A\+Video\+Software\+Renderer\+Preprocess\+Sprite (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Renderer $\ast$}]{renderer,  }\item[{struct G\+B\+A\+Obj $\ast$}]{sprite,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{y }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{software-obj_8c_a1f995eed921e1b4e0963fab4daf5e2da_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{software-obj_8c_a1f995eed921e1b4e0963fab4daf5e2da_icgraph}
+\end{center}
+\end{figure}

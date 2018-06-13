@@ -1,0 +1,103 @@
+\hypertarget{hash_8c}{}\section{src/util/hash.c File Reference}
+\label{hash_8c}\index{src/util/hash.\+c@{src/util/hash.\+c}}
+{\ttfamily \#include $<$mgba-\/util/hash.\+h$>$}\newline
+Include dependency graph for hash.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=179pt]{hash_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{hash_8c_ac032d233a8ebfcd82fd49d0824eefb18}{F\+O\+R\+C\+E\+\_\+\+I\+N\+L\+I\+NE}}~inline \mbox{\hyperlink{wii_2main_8c_a18d6965ee82574c6a6f58e9fc197102d}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}((always\+\_\+inline))
+\item 
+\#define \mbox{\hyperlink{hash_8c_ab32bb365c62dcb0da675e248b7e814a9}{R\+O\+T\+L32}}(x,  y)~\mbox{\hyperlink{hash_8c_a773c5f9ea23b0cc10fbb505676f51f8c}{rotl32}}(x,y)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{hash_8c_a773c5f9ea23b0cc10fbb505676f51f8c}{rotl32}} (uint32\+\_\+t x, int8\+\_\+t \mbox{\hyperlink{isa-arm_8c_ad0156306be8fa0a12414e0da384f986a}{r}})
+\item 
+static \mbox{\hyperlink{hash_8c_ac032d233a8ebfcd82fd49d0824eefb18}{F\+O\+R\+C\+E\+\_\+\+I\+N\+L\+I\+NE}} uint32\+\_\+t \mbox{\hyperlink{hash_8c_a039b867df735b0f6ebd04829a9e88c14}{getblock32}} (const uint32\+\_\+t $\ast$p, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} i)
+\item 
+static \mbox{\hyperlink{hash_8c_ac032d233a8ebfcd82fd49d0824eefb18}{F\+O\+R\+C\+E\+\_\+\+I\+N\+L\+I\+NE}} uint32\+\_\+t \mbox{\hyperlink{hash_8c_abdab255e21a13fc1b2986e02fda0367a}{fmix32}} (uint32\+\_\+t \mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}})
+\item 
+uint32\+\_\+t \mbox{\hyperlink{hash_8c_a2bd30e26a48b29c5309b7b8bb959dc9d}{hash32}} (const void $\ast$key, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} len, uint32\+\_\+t seed)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{hash_8c_ac032d233a8ebfcd82fd49d0824eefb18}\label{hash_8c_ac032d233a8ebfcd82fd49d0824eefb18}} 
+\index{hash.\+c@{hash.\+c}!F\+O\+R\+C\+E\+\_\+\+I\+N\+L\+I\+NE@{F\+O\+R\+C\+E\+\_\+\+I\+N\+L\+I\+NE}}
+\index{F\+O\+R\+C\+E\+\_\+\+I\+N\+L\+I\+NE@{F\+O\+R\+C\+E\+\_\+\+I\+N\+L\+I\+NE}!hash.\+c@{hash.\+c}}
+\subsubsection{\texorpdfstring{F\+O\+R\+C\+E\+\_\+\+I\+N\+L\+I\+NE}{FORCE\_INLINE}}
+{\footnotesize\ttfamily \#define F\+O\+R\+C\+E\+\_\+\+I\+N\+L\+I\+NE~inline \mbox{\hyperlink{wii_2main_8c_a18d6965ee82574c6a6f58e9fc197102d}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}((always\+\_\+inline))}
+
+\mbox{\Hypertarget{hash_8c_ab32bb365c62dcb0da675e248b7e814a9}\label{hash_8c_ab32bb365c62dcb0da675e248b7e814a9}} 
+\index{hash.\+c@{hash.\+c}!R\+O\+T\+L32@{R\+O\+T\+L32}}
+\index{R\+O\+T\+L32@{R\+O\+T\+L32}!hash.\+c@{hash.\+c}}
+\subsubsection{\texorpdfstring{R\+O\+T\+L32}{ROTL32}}
+{\footnotesize\ttfamily \#define R\+O\+T\+L32(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})~\mbox{\hyperlink{hash_8c_a773c5f9ea23b0cc10fbb505676f51f8c}{rotl32}}(x,y)}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{hash_8c_abdab255e21a13fc1b2986e02fda0367a}\label{hash_8c_abdab255e21a13fc1b2986e02fda0367a}} 
+\index{hash.\+c@{hash.\+c}!fmix32@{fmix32}}
+\index{fmix32@{fmix32}!hash.\+c@{hash.\+c}}
+\subsubsection{\texorpdfstring{fmix32()}{fmix32()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{hash_8c_ac032d233a8ebfcd82fd49d0824eefb18}{F\+O\+R\+C\+E\+\_\+\+I\+N\+L\+I\+NE}} uint32\+\_\+t fmix32 (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{h }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hash_8c_abdab255e21a13fc1b2986e02fda0367a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hash_8c_a039b867df735b0f6ebd04829a9e88c14}\label{hash_8c_a039b867df735b0f6ebd04829a9e88c14}} 
+\index{hash.\+c@{hash.\+c}!getblock32@{getblock32}}
+\index{getblock32@{getblock32}!hash.\+c@{hash.\+c}}
+\subsubsection{\texorpdfstring{getblock32()}{getblock32()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{hash_8c_ac032d233a8ebfcd82fd49d0824eefb18}{F\+O\+R\+C\+E\+\_\+\+I\+N\+L\+I\+NE}} uint32\+\_\+t getblock32 (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t $\ast$}]{p,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hash_8c_a039b867df735b0f6ebd04829a9e88c14_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hash_8c_a2bd30e26a48b29c5309b7b8bb959dc9d}\label{hash_8c_a2bd30e26a48b29c5309b7b8bb959dc9d}} 
+\index{hash.\+c@{hash.\+c}!hash32@{hash32}}
+\index{hash32@{hash32}!hash.\+c@{hash.\+c}}
+\subsubsection{\texorpdfstring{hash32()}{hash32()}}
+{\footnotesize\ttfamily uint32\+\_\+t hash32 (\begin{DoxyParamCaption}\item[{const void $\ast$}]{key,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{len,  }\item[{uint32\+\_\+t}]{seed }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=239pt]{hash_8c_a2bd30e26a48b29c5309b7b8bb959dc9d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hash_8c_a2bd30e26a48b29c5309b7b8bb959dc9d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hash_8c_a773c5f9ea23b0cc10fbb505676f51f8c}\label{hash_8c_a773c5f9ea23b0cc10fbb505676f51f8c}} 
+\index{hash.\+c@{hash.\+c}!rotl32@{rotl32}}
+\index{rotl32@{rotl32}!hash.\+c@{hash.\+c}}
+\subsubsection{\texorpdfstring{rotl32()}{rotl32()}}
+{\footnotesize\ttfamily static uint32\+\_\+t rotl32 (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{x,  }\item[{int8\+\_\+t}]{r }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+

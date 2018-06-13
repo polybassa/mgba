@@ -1,0 +1,129 @@
+\hypertarget{_alloc_8c}{}\section{src/third-\/party/lzma/\+Alloc.c File Reference}
+\label{_alloc_8c}\index{src/third-\/party/lzma/\+Alloc.\+c@{src/third-\/party/lzma/\+Alloc.\+c}}
+{\ttfamily \#include \char`\"{}Precomp.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Alloc.\+h\char`\"{}}\newline
+Include dependency graph for Alloc.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{_alloc_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \mbox{\hyperlink{_alloc_8c_a21b0fb4a9be7b667985100e15bb13b09}{My\+Alloc}} (size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+void \mbox{\hyperlink{_alloc_8c_af49e8e238d13b4be3309a182bbed6b96}{My\+Free}} (void $\ast$address)
+\item 
+static void $\ast$ \mbox{\hyperlink{_alloc_8c_aa5eb67bbaed541a0795a758720369b7e}{Sz\+Alloc}} (void $\ast$p, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+static void \mbox{\hyperlink{_alloc_8c_a8c236bdc930def0eed59b90777a2bab3}{Sz\+Free}} (void $\ast$p, void $\ast$address)
+\item 
+static void $\ast$ \mbox{\hyperlink{_alloc_8c_a36b326de96cf3b0c4575ab4c328ac01e}{Sz\+Big\+Alloc}} (void $\ast$p, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+static void \mbox{\hyperlink{_alloc_8c_acc2dc06faac708b870cc5b147aa8ad39}{Sz\+Big\+Free}} (void $\ast$p, void $\ast$address)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} \mbox{\hyperlink{_alloc_8c_aa11f90dfcd0c973a632dead6c4a76140}{g\+\_\+\+Alloc}} = \{ \mbox{\hyperlink{_lzma86_enc_8c_aa5eb67bbaed541a0795a758720369b7e}{Sz\+Alloc}}, \mbox{\hyperlink{_lzma86_enc_8c_a8c236bdc930def0eed59b90777a2bab3}{Sz\+Free}} \}
+\item 
+\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} \mbox{\hyperlink{_alloc_8c_a4b004261c541f3aacc4027114a5fbb8b}{g\+\_\+\+Big\+Alloc}} = \{ \mbox{\hyperlink{_alloc_8c_a36b326de96cf3b0c4575ab4c328ac01e}{Sz\+Big\+Alloc}}, \mbox{\hyperlink{_alloc_8c_acc2dc06faac708b870cc5b147aa8ad39}{Sz\+Big\+Free}} \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_alloc_8c_a21b0fb4a9be7b667985100e15bb13b09}\label{_alloc_8c_a21b0fb4a9be7b667985100e15bb13b09}} 
+\index{Alloc.\+c@{Alloc.\+c}!My\+Alloc@{My\+Alloc}}
+\index{My\+Alloc@{My\+Alloc}!Alloc.\+c@{Alloc.\+c}}
+\subsubsection{\texorpdfstring{My\+Alloc()}{MyAlloc()}}
+{\footnotesize\ttfamily void$\ast$ My\+Alloc (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{_alloc_8c_a21b0fb4a9be7b667985100e15bb13b09_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_alloc_8c_af49e8e238d13b4be3309a182bbed6b96}\label{_alloc_8c_af49e8e238d13b4be3309a182bbed6b96}} 
+\index{Alloc.\+c@{Alloc.\+c}!My\+Free@{My\+Free}}
+\index{My\+Free@{My\+Free}!Alloc.\+c@{Alloc.\+c}}
+\subsubsection{\texorpdfstring{My\+Free()}{MyFree()}}
+{\footnotesize\ttfamily void My\+Free (\begin{DoxyParamCaption}\item[{void $\ast$}]{address }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{_alloc_8c_af49e8e238d13b4be3309a182bbed6b96_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{_alloc_8c_af49e8e238d13b4be3309a182bbed6b96_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_alloc_8c_aa5eb67bbaed541a0795a758720369b7e}\label{_alloc_8c_aa5eb67bbaed541a0795a758720369b7e}} 
+\index{Alloc.\+c@{Alloc.\+c}!Sz\+Alloc@{Sz\+Alloc}}
+\index{Sz\+Alloc@{Sz\+Alloc}!Alloc.\+c@{Alloc.\+c}}
+\subsubsection{\texorpdfstring{Sz\+Alloc()}{SzAlloc()}}
+{\footnotesize\ttfamily static void$\ast$ Sz\+Alloc (\begin{DoxyParamCaption}\item[{void $\ast$}]{p,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{_alloc_8c_aa5eb67bbaed541a0795a758720369b7e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_alloc_8c_a36b326de96cf3b0c4575ab4c328ac01e}\label{_alloc_8c_a36b326de96cf3b0c4575ab4c328ac01e}} 
+\index{Alloc.\+c@{Alloc.\+c}!Sz\+Big\+Alloc@{Sz\+Big\+Alloc}}
+\index{Sz\+Big\+Alloc@{Sz\+Big\+Alloc}!Alloc.\+c@{Alloc.\+c}}
+\subsubsection{\texorpdfstring{Sz\+Big\+Alloc()}{SzBigAlloc()}}
+{\footnotesize\ttfamily static void$\ast$ Sz\+Big\+Alloc (\begin{DoxyParamCaption}\item[{void $\ast$}]{p,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{_alloc_8c_acc2dc06faac708b870cc5b147aa8ad39}\label{_alloc_8c_acc2dc06faac708b870cc5b147aa8ad39}} 
+\index{Alloc.\+c@{Alloc.\+c}!Sz\+Big\+Free@{Sz\+Big\+Free}}
+\index{Sz\+Big\+Free@{Sz\+Big\+Free}!Alloc.\+c@{Alloc.\+c}}
+\subsubsection{\texorpdfstring{Sz\+Big\+Free()}{SzBigFree()}}
+{\footnotesize\ttfamily static void Sz\+Big\+Free (\begin{DoxyParamCaption}\item[{void $\ast$}]{p,  }\item[{void $\ast$}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{_alloc_8c_a8c236bdc930def0eed59b90777a2bab3}\label{_alloc_8c_a8c236bdc930def0eed59b90777a2bab3}} 
+\index{Alloc.\+c@{Alloc.\+c}!Sz\+Free@{Sz\+Free}}
+\index{Sz\+Free@{Sz\+Free}!Alloc.\+c@{Alloc.\+c}}
+\subsubsection{\texorpdfstring{Sz\+Free()}{SzFree()}}
+{\footnotesize\ttfamily static void Sz\+Free (\begin{DoxyParamCaption}\item[{void $\ast$}]{p,  }\item[{void $\ast$}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{_alloc_8c_a8c236bdc930def0eed59b90777a2bab3_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_alloc_8c_aa11f90dfcd0c973a632dead6c4a76140}\label{_alloc_8c_aa11f90dfcd0c973a632dead6c4a76140}} 
+\index{Alloc.\+c@{Alloc.\+c}!g\+\_\+\+Alloc@{g\+\_\+\+Alloc}}
+\index{g\+\_\+\+Alloc@{g\+\_\+\+Alloc}!Alloc.\+c@{Alloc.\+c}}
+\subsubsection{\texorpdfstring{g\+\_\+\+Alloc}{g\_Alloc}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} g\+\_\+\+Alloc = \{ \mbox{\hyperlink{_lzma86_enc_8c_aa5eb67bbaed541a0795a758720369b7e}{Sz\+Alloc}}, \mbox{\hyperlink{_lzma86_enc_8c_a8c236bdc930def0eed59b90777a2bab3}{Sz\+Free}} \}}
+
+\mbox{\Hypertarget{_alloc_8c_a4b004261c541f3aacc4027114a5fbb8b}\label{_alloc_8c_a4b004261c541f3aacc4027114a5fbb8b}} 
+\index{Alloc.\+c@{Alloc.\+c}!g\+\_\+\+Big\+Alloc@{g\+\_\+\+Big\+Alloc}}
+\index{g\+\_\+\+Big\+Alloc@{g\+\_\+\+Big\+Alloc}!Alloc.\+c@{Alloc.\+c}}
+\subsubsection{\texorpdfstring{g\+\_\+\+Big\+Alloc}{g\_BigAlloc}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} g\+\_\+\+Big\+Alloc = \{ \mbox{\hyperlink{_alloc_8c_a36b326de96cf3b0c4575ab4c328ac01e}{Sz\+Big\+Alloc}}, \mbox{\hyperlink{_alloc_8c_acc2dc06faac708b870cc5b147aa8ad39}{Sz\+Big\+Free}} \}}
+

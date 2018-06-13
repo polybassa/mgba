@@ -1,0 +1,1083 @@
+\hypertarget{audio_8c}{}\section{src/gb/audio.c File Reference}
+\label{audio_8c}\index{src/gb/audio.\+c@{src/gb/audio.\+c}}
+{\ttfamily \#include $<$mgba/internal/gb/audio.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/blip\+\_\+buf.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/interface.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/sync.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/gb.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/serialize.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/io.\+h$>$}\newline
+Include dependency graph for audio.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{audio_8c_a608923d16f3893787d6659bad2e27cfb}{F\+R\+A\+M\+E\+\_\+\+C\+Y\+C\+L\+ES}}~(\mbox{\hyperlink{audio_8c_ab407440563e61a353d7275ecfcfc9f8e}{D\+M\+G\+\_\+\+L\+R35902\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY}} $>$$>$ 9)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{audio_8c_a33be791b63a245712e4f84f86ce3e9a2}{\+\_\+write\+Sweep}} (struct G\+B\+Audio\+Sweep $\ast$sweep, uint8\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{audio_8c_a802573d763cd66e969cd568039c696aa}{\+\_\+write\+Duty}} (struct G\+B\+Audio\+Envelope $\ast$envelope, uint8\+\_\+t value)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{audio_8c_aec802dd4dc7c7e2b7b4e4eb1184b9b22}{\+\_\+write\+Envelope}} (struct G\+B\+Audio\+Envelope $\ast$envelope, uint8\+\_\+t value, enum G\+B\+Audio\+Style style)
+\item 
+static void \mbox{\hyperlink{audio_8c_a56120aba52c0d41e569b4ae5304fab2d}{\+\_\+reset\+Sweep}} (struct G\+B\+Audio\+Sweep $\ast$sweep)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{audio_8c_a1828bfa6741b7aa9f194d3473009ff3c}{\+\_\+reset\+Envelope}} (struct G\+B\+Audio\+Envelope $\ast$sweep)
+\item 
+static void \mbox{\hyperlink{audio_8c_ac5789e7c06bb96c0892b9fc132e57839}{\+\_\+update\+Envelope}} (struct G\+B\+Audio\+Envelope $\ast$envelope)
+\item 
+static void \mbox{\hyperlink{audio_8c_a00d35d323c04d6df0a4b84821cc334ed}{\+\_\+update\+Envelope\+Dead}} (struct G\+B\+Audio\+Envelope $\ast$envelope)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{audio_8c_ac408c3e7058f50d91218862e92099569}{\+\_\+update\+Sweep}} (struct G\+B\+Audio\+Square\+Channel $\ast$sweep, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} initial)
+\item 
+static void \mbox{\hyperlink{audio_8c_a59743addc326bb14e38587e3229e8ca2}{\+\_\+update\+Square\+Sample}} (struct G\+B\+Audio\+Square\+Channel $\ast$ch)
+\item 
+static int32\+\_\+t \mbox{\hyperlink{audio_8c_a2e8de863312bed7997ae7c9dc46cc806}{\+\_\+update\+Square\+Channel}} (struct G\+B\+Audio\+Square\+Channel $\ast$ch)
+\item 
+static void \mbox{\hyperlink{audio_8c_ad4bf1b91bab143f16bbcad6223151518}{\+\_\+update\+Frame}} (struct m\+Timing $\ast$timing, void $\ast$user, uint32\+\_\+t cycles\+Late)
+\item 
+static void \mbox{\hyperlink{audio_8c_a5e53af22257ce57388ab1a428d2f101f}{\+\_\+update\+Channel1}} (struct m\+Timing $\ast$timing, void $\ast$user, uint32\+\_\+t cycles\+Late)
+\item 
+static void \mbox{\hyperlink{audio_8c_a812375827776b061d48c1bcac57f5e75}{\+\_\+update\+Channel2}} (struct m\+Timing $\ast$timing, void $\ast$user, uint32\+\_\+t cycles\+Late)
+\item 
+static void \mbox{\hyperlink{audio_8c_a6e140ba16403066b2d5ddea39f920e61}{\+\_\+update\+Channel3}} (struct m\+Timing $\ast$timing, void $\ast$user, uint32\+\_\+t cycles\+Late)
+\item 
+static void \mbox{\hyperlink{audio_8c_a22357c014dc88f9bae79f36ac32dd899}{\+\_\+fade\+Channel3}} (struct m\+Timing $\ast$timing, void $\ast$user, uint32\+\_\+t cycles\+Late)
+\item 
+static void \mbox{\hyperlink{audio_8c_a6a134bbe2203c15ba11fffe5e997393a}{\+\_\+update\+Channel4}} (struct m\+Timing $\ast$timing, void $\ast$user, uint32\+\_\+t cycles\+Late)
+\item 
+static void \mbox{\hyperlink{audio_8c_a728ea54bfb1cbe715fde0fc66ce9b4e4}{\+\_\+sample}} (struct m\+Timing $\ast$timing, void $\ast$user, uint32\+\_\+t cycles\+Late)
+\item 
+void \mbox{\hyperlink{audio_8c_a40d4cdd3e103b8cc2f0210c5b17b8953}{G\+B\+Audio\+Init}} (struct G\+B\+Audio $\ast$audio, size\+\_\+t samples, uint8\+\_\+t $\ast$nr52, enum G\+B\+Audio\+Style style)
+\item 
+void \mbox{\hyperlink{audio_8c_a3e2a3cc73a4111ff3f88894269541407}{G\+B\+Audio\+Deinit}} (struct G\+B\+Audio $\ast$audio)
+\item 
+void \mbox{\hyperlink{audio_8c_a1efad13924d6ee148383c1c70de22e7f}{G\+B\+Audio\+Reset}} (struct G\+B\+Audio $\ast$audio)
+\item 
+void \mbox{\hyperlink{audio_8c_af657b3dbc0053e0b82973243271332b1}{G\+B\+Audio\+Resize\+Buffer}} (struct G\+B\+Audio $\ast$audio, size\+\_\+t samples)
+\item 
+void \mbox{\hyperlink{audio_8c_a92e3eb306d62c5eee7e5b17d3ac04784}{G\+B\+Audio\+Write\+N\+R10}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_aab62aa088a54a650c5f4a9f15e11d60c}{G\+B\+Audio\+Write\+N\+R11}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_a3fa8669698ebe3b6f436a6a0ac2b02e5}{G\+B\+Audio\+Write\+N\+R12}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_ad1e82c7d6dde9edb0d6c4ab0be0fe566}{G\+B\+Audio\+Write\+N\+R13}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_af6a2452133e2fae4014fa38fa7743e08}{G\+B\+Audio\+Write\+N\+R14}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_ae098d9fa0b0d146535f6715271ef6fea}{G\+B\+Audio\+Write\+N\+R21}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_abbd77078bdffff71f7163a5b9d286f50}{G\+B\+Audio\+Write\+N\+R22}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_ad1fd788366522e1d983ff053c54b4907}{G\+B\+Audio\+Write\+N\+R23}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_ac8ef5bcf7485de54c91ff1d26827e76d}{G\+B\+Audio\+Write\+N\+R24}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_abb7dae17cc02feea780f869249402d6b}{G\+B\+Audio\+Write\+N\+R30}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_a7f4fffaac69c59c13e580a7a29b0f4fb}{G\+B\+Audio\+Write\+N\+R31}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_a6a8f3b8752bcdb5be663a97349ffcf59}{G\+B\+Audio\+Write\+N\+R32}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_a4fdf82a3ccb66704cb5b68ecf8015c7d}{G\+B\+Audio\+Write\+N\+R33}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_a67c67fef71bf5123c008f843777d4c14}{G\+B\+Audio\+Write\+N\+R34}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_a3ca814f0e9fc7ab921537d7acd4f6e3a}{G\+B\+Audio\+Write\+N\+R41}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_ad58b4a6b4c7840bccc42b07cbe5d99f9}{G\+B\+Audio\+Write\+N\+R42}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_a435da640b4ae67d6ec1b41056adbc847}{G\+B\+Audio\+Write\+N\+R43}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_ab97bb9c372d682cc08ec146cd97510de}{G\+B\+Audio\+Write\+N\+R44}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_a681c128908da256806970369d55b3ba9}{G\+B\+Audio\+Write\+N\+R50}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_a84457ba267bb527ed836e00e9e649bf6}{G\+B\+Audio\+Write\+N\+R51}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_af2e66ed0dc70809773468a790426f268}{G\+B\+Audio\+Write\+N\+R52}} (struct G\+B\+Audio $\ast$audio, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{audio_8c_a6b215ae53b410aa3aa7ac37eeba5ddc9}{G\+B\+Audio\+Update\+Frame}} (struct G\+B\+Audio $\ast$audio, struct m\+Timing $\ast$timing)
+\item 
+void \mbox{\hyperlink{audio_8c_a1b03ab35a8ce81c161fddff3b8f415a0}{G\+B\+Audio\+Sample\+P\+SG}} (struct G\+B\+Audio $\ast$audio, int16\+\_\+t $\ast$left, int16\+\_\+t $\ast$right)
+\item 
+void \mbox{\hyperlink{audio_8c_a179c593a372e374ac3d883845d6b0c13}{G\+B\+Audio\+P\+S\+G\+Serialize}} (const struct G\+B\+Audio $\ast$audio, struct G\+B\+Serialized\+P\+S\+G\+State $\ast$state, uint32\+\_\+t $\ast$flags\+Out)
+\item 
+void \mbox{\hyperlink{audio_8c_ac5fe35e6b9bdb96cefeb053cf063ef2b}{G\+B\+Audio\+P\+S\+G\+Deserialize}} (struct G\+B\+Audio $\ast$audio, const struct G\+B\+Serialized\+P\+S\+G\+State $\ast$state, const uint32\+\_\+t $\ast$flags\+In)
+\item 
+void \mbox{\hyperlink{audio_8c_a56dc165ee78dcd79c77dbd6a7d977541}{G\+B\+Audio\+Serialize}} (const struct G\+B\+Audio $\ast$audio, struct G\+B\+Serialized\+State $\ast$state)
+\item 
+void \mbox{\hyperlink{audio_8c_acac1143ebf5594ebee75278cf2174949}{G\+B\+Audio\+Deserialize}} (struct G\+B\+Audio $\ast$audio, const struct G\+B\+Serialized\+State $\ast$state)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const uint32\+\_\+t \mbox{\hyperlink{audio_8c_ab407440563e61a353d7275ecfcfc9f8e}{D\+M\+G\+\_\+\+L\+R35902\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY}} = 0x400000
+\item 
+static const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{audio_8c_aa3964be152dfc37c6ccc4de66ef61c56}{C\+L\+O\+C\+K\+S\+\_\+\+P\+E\+R\+\_\+\+B\+L\+I\+P\+\_\+\+F\+R\+A\+ME}} = 0x1000
+\item 
+static const unsigned \mbox{\hyperlink{audio_8c_abd9ef8fe9fa5bcea4cbf6f5a10cda12d}{B\+L\+I\+P\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}} = 0x4000
+\item 
+const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{audio_8c_aa56621a9f6874e1d4b7abb74a9b3f519}{G\+B\+\_\+\+A\+U\+D\+I\+O\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+M\+AX}} = 0x100
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{audio_8c_a608923d16f3893787d6659bad2e27cfb}\label{audio_8c_a608923d16f3893787d6659bad2e27cfb}} 
+\index{audio.\+c@{audio.\+c}!F\+R\+A\+M\+E\+\_\+\+C\+Y\+C\+L\+ES@{F\+R\+A\+M\+E\+\_\+\+C\+Y\+C\+L\+ES}}
+\index{F\+R\+A\+M\+E\+\_\+\+C\+Y\+C\+L\+ES@{F\+R\+A\+M\+E\+\_\+\+C\+Y\+C\+L\+ES}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{F\+R\+A\+M\+E\+\_\+\+C\+Y\+C\+L\+ES}{FRAME\_CYCLES}}
+{\footnotesize\ttfamily \#define F\+R\+A\+M\+E\+\_\+\+C\+Y\+C\+L\+ES~(\mbox{\hyperlink{audio_8c_ab407440563e61a353d7275ecfcfc9f8e}{D\+M\+G\+\_\+\+L\+R35902\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY}} $>$$>$ 9)}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{audio_8c_a22357c014dc88f9bae79f36ac32dd899}\label{audio_8c_a22357c014dc88f9bae79f36ac32dd899}} 
+\index{audio.\+c@{audio.\+c}!\+\_\+fade\+Channel3@{\+\_\+fade\+Channel3}}
+\index{\+\_\+fade\+Channel3@{\+\_\+fade\+Channel3}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+fade\+Channel3()}{\_fadeChannel3()}}
+{\footnotesize\ttfamily static void \+\_\+fade\+Channel3 (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing,  }\item[{void $\ast$}]{user,  }\item[{uint32\+\_\+t}]{cycles\+Late }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a22357c014dc88f9bae79f36ac32dd899_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a1828bfa6741b7aa9f194d3473009ff3c}\label{audio_8c_a1828bfa6741b7aa9f194d3473009ff3c}} 
+\index{audio.\+c@{audio.\+c}!\+\_\+reset\+Envelope@{\+\_\+reset\+Envelope}}
+\index{\+\_\+reset\+Envelope@{\+\_\+reset\+Envelope}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+reset\+Envelope()}{\_resetEnvelope()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+reset\+Envelope (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio\+Envelope $\ast$}]{sweep }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{audio_8c_a1828bfa6741b7aa9f194d3473009ff3c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a1828bfa6741b7aa9f194d3473009ff3c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a56120aba52c0d41e569b4ae5304fab2d}\label{audio_8c_a56120aba52c0d41e569b4ae5304fab2d}} 
+\index{audio.\+c@{audio.\+c}!\+\_\+reset\+Sweep@{\+\_\+reset\+Sweep}}
+\index{\+\_\+reset\+Sweep@{\+\_\+reset\+Sweep}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+reset\+Sweep()}{\_resetSweep()}}
+{\footnotesize\ttfamily void \+\_\+reset\+Sweep (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio\+Sweep $\ast$}]{sweep }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a56120aba52c0d41e569b4ae5304fab2d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a728ea54bfb1cbe715fde0fc66ce9b4e4}\label{audio_8c_a728ea54bfb1cbe715fde0fc66ce9b4e4}} 
+\index{audio.\+c@{audio.\+c}!\+\_\+sample@{\+\_\+sample}}
+\index{\+\_\+sample@{\+\_\+sample}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+sample()}{\_sample()}}
+{\footnotesize\ttfamily static void \+\_\+sample (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing,  }\item[{void $\ast$}]{user,  }\item[{uint32\+\_\+t}]{cycles\+Late }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a728ea54bfb1cbe715fde0fc66ce9b4e4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a728ea54bfb1cbe715fde0fc66ce9b4e4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a5e53af22257ce57388ab1a428d2f101f}\label{audio_8c_a5e53af22257ce57388ab1a428d2f101f}} 
+\index{audio.\+c@{audio.\+c}!\+\_\+update\+Channel1@{\+\_\+update\+Channel1}}
+\index{\+\_\+update\+Channel1@{\+\_\+update\+Channel1}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+update\+Channel1()}{\_updateChannel1()}}
+{\footnotesize\ttfamily static void \+\_\+update\+Channel1 (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing,  }\item[{void $\ast$}]{user,  }\item[{uint32\+\_\+t}]{cycles\+Late }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a5e53af22257ce57388ab1a428d2f101f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a5e53af22257ce57388ab1a428d2f101f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a812375827776b061d48c1bcac57f5e75}\label{audio_8c_a812375827776b061d48c1bcac57f5e75}} 
+\index{audio.\+c@{audio.\+c}!\+\_\+update\+Channel2@{\+\_\+update\+Channel2}}
+\index{\+\_\+update\+Channel2@{\+\_\+update\+Channel2}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+update\+Channel2()}{\_updateChannel2()}}
+{\footnotesize\ttfamily static void \+\_\+update\+Channel2 (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing,  }\item[{void $\ast$}]{user,  }\item[{uint32\+\_\+t}]{cycles\+Late }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a812375827776b061d48c1bcac57f5e75_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a812375827776b061d48c1bcac57f5e75_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a6e140ba16403066b2d5ddea39f920e61}\label{audio_8c_a6e140ba16403066b2d5ddea39f920e61}} 
+\index{audio.\+c@{audio.\+c}!\+\_\+update\+Channel3@{\+\_\+update\+Channel3}}
+\index{\+\_\+update\+Channel3@{\+\_\+update\+Channel3}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+update\+Channel3()}{\_updateChannel3()}}
+{\footnotesize\ttfamily static void \+\_\+update\+Channel3 (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing,  }\item[{void $\ast$}]{user,  }\item[{uint32\+\_\+t}]{cycles\+Late }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a6e140ba16403066b2d5ddea39f920e61_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a6e140ba16403066b2d5ddea39f920e61_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a6a134bbe2203c15ba11fffe5e997393a}\label{audio_8c_a6a134bbe2203c15ba11fffe5e997393a}} 
+\index{audio.\+c@{audio.\+c}!\+\_\+update\+Channel4@{\+\_\+update\+Channel4}}
+\index{\+\_\+update\+Channel4@{\+\_\+update\+Channel4}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+update\+Channel4()}{\_updateChannel4()}}
+{\footnotesize\ttfamily static void \+\_\+update\+Channel4 (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing,  }\item[{void $\ast$}]{user,  }\item[{uint32\+\_\+t}]{cycles\+Late }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{audio_8c_a6a134bbe2203c15ba11fffe5e997393a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a6a134bbe2203c15ba11fffe5e997393a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_ac5789e7c06bb96c0892b9fc132e57839}\label{audio_8c_ac5789e7c06bb96c0892b9fc132e57839}} 
+\index{audio.\+c@{audio.\+c}!\+\_\+update\+Envelope@{\+\_\+update\+Envelope}}
+\index{\+\_\+update\+Envelope@{\+\_\+update\+Envelope}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+update\+Envelope()}{\_updateEnvelope()}}
+{\footnotesize\ttfamily static void \+\_\+update\+Envelope (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio\+Envelope $\ast$}]{envelope }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_ac5789e7c06bb96c0892b9fc132e57839_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a00d35d323c04d6df0a4b84821cc334ed}\label{audio_8c_a00d35d323c04d6df0a4b84821cc334ed}} 
+\index{audio.\+c@{audio.\+c}!\+\_\+update\+Envelope\+Dead@{\+\_\+update\+Envelope\+Dead}}
+\index{\+\_\+update\+Envelope\+Dead@{\+\_\+update\+Envelope\+Dead}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+update\+Envelope\+Dead()}{\_updateEnvelopeDead()}}
+{\footnotesize\ttfamily static void \+\_\+update\+Envelope\+Dead (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio\+Envelope $\ast$}]{envelope }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a00d35d323c04d6df0a4b84821cc334ed_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_ad4bf1b91bab143f16bbcad6223151518}\label{audio_8c_ad4bf1b91bab143f16bbcad6223151518}} 
+\index{audio.\+c@{audio.\+c}!\+\_\+update\+Frame@{\+\_\+update\+Frame}}
+\index{\+\_\+update\+Frame@{\+\_\+update\+Frame}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+update\+Frame()}{\_updateFrame()}}
+{\footnotesize\ttfamily void \+\_\+update\+Frame (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing,  }\item[{void $\ast$}]{user,  }\item[{uint32\+\_\+t}]{cycles\+Late }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_ad4bf1b91bab143f16bbcad6223151518_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_ad4bf1b91bab143f16bbcad6223151518_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a2e8de863312bed7997ae7c9dc46cc806}\label{audio_8c_a2e8de863312bed7997ae7c9dc46cc806}} 
+\index{audio.\+c@{audio.\+c}!\+\_\+update\+Square\+Channel@{\+\_\+update\+Square\+Channel}}
+\index{\+\_\+update\+Square\+Channel@{\+\_\+update\+Square\+Channel}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+update\+Square\+Channel()}{\_updateSquareChannel()}}
+{\footnotesize\ttfamily static int32\+\_\+t \+\_\+update\+Square\+Channel (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio\+Square\+Channel $\ast$}]{ch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a2e8de863312bed7997ae7c9dc46cc806_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a2e8de863312bed7997ae7c9dc46cc806_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a59743addc326bb14e38587e3229e8ca2}\label{audio_8c_a59743addc326bb14e38587e3229e8ca2}} 
+\index{audio.\+c@{audio.\+c}!\+\_\+update\+Square\+Sample@{\+\_\+update\+Square\+Sample}}
+\index{\+\_\+update\+Square\+Sample@{\+\_\+update\+Square\+Sample}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+update\+Square\+Sample()}{\_updateSquareSample()}}
+{\footnotesize\ttfamily static void \+\_\+update\+Square\+Sample (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio\+Square\+Channel $\ast$}]{ch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a59743addc326bb14e38587e3229e8ca2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_ac408c3e7058f50d91218862e92099569}\label{audio_8c_ac408c3e7058f50d91218862e92099569}} 
+\index{audio.\+c@{audio.\+c}!\+\_\+update\+Sweep@{\+\_\+update\+Sweep}}
+\index{\+\_\+update\+Sweep@{\+\_\+update\+Sweep}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+update\+Sweep()}{\_updateSweep()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+update\+Sweep (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio\+Square\+Channel $\ast$}]{sweep,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{initial }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_ac408c3e7058f50d91218862e92099569_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a802573d763cd66e969cd568039c696aa}\label{audio_8c_a802573d763cd66e969cd568039c696aa}} 
+\index{audio.\+c@{audio.\+c}!\+\_\+write\+Duty@{\+\_\+write\+Duty}}
+\index{\+\_\+write\+Duty@{\+\_\+write\+Duty}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+write\+Duty()}{\_writeDuty()}}
+{\footnotesize\ttfamily void \+\_\+write\+Duty (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio\+Envelope $\ast$}]{envelope,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a802573d763cd66e969cd568039c696aa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_aec802dd4dc7c7e2b7b4e4eb1184b9b22}\label{audio_8c_aec802dd4dc7c7e2b7b4e4eb1184b9b22}} 
+\index{audio.\+c@{audio.\+c}!\+\_\+write\+Envelope@{\+\_\+write\+Envelope}}
+\index{\+\_\+write\+Envelope@{\+\_\+write\+Envelope}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+write\+Envelope()}{\_writeEnvelope()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+write\+Envelope (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio\+Envelope $\ast$}]{envelope,  }\item[{uint8\+\_\+t}]{value,  }\item[{enum G\+B\+Audio\+Style}]{style }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{audio_8c_aec802dd4dc7c7e2b7b4e4eb1184b9b22_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_aec802dd4dc7c7e2b7b4e4eb1184b9b22_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a33be791b63a245712e4f84f86ce3e9a2}\label{audio_8c_a33be791b63a245712e4f84f86ce3e9a2}} 
+\index{audio.\+c@{audio.\+c}!\+\_\+write\+Sweep@{\+\_\+write\+Sweep}}
+\index{\+\_\+write\+Sweep@{\+\_\+write\+Sweep}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+write\+Sweep()}{\_writeSweep()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+write\+Sweep (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio\+Sweep $\ast$}]{sweep,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a33be791b63a245712e4f84f86ce3e9a2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a3e2a3cc73a4111ff3f88894269541407}\label{audio_8c_a3e2a3cc73a4111ff3f88894269541407}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Deinit@{G\+B\+Audio\+Deinit}}
+\index{G\+B\+Audio\+Deinit@{G\+B\+Audio\+Deinit}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Deinit()}{GBAudioDeinit()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Deinit (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{audio_8c_a3e2a3cc73a4111ff3f88894269541407_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a3e2a3cc73a4111ff3f88894269541407_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_acac1143ebf5594ebee75278cf2174949}\label{audio_8c_acac1143ebf5594ebee75278cf2174949}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Deserialize@{G\+B\+Audio\+Deserialize}}
+\index{G\+B\+Audio\+Deserialize@{G\+B\+Audio\+Deserialize}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Deserialize()}{GBAudioDeserialize()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Deserialize (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{const struct G\+B\+Serialized\+State $\ast$}]{state }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_acac1143ebf5594ebee75278cf2174949_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_acac1143ebf5594ebee75278cf2174949_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a40d4cdd3e103b8cc2f0210c5b17b8953}\label{audio_8c_a40d4cdd3e103b8cc2f0210c5b17b8953}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Init@{G\+B\+Audio\+Init}}
+\index{G\+B\+Audio\+Init@{G\+B\+Audio\+Init}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Init()}{GBAudioInit()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Init (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{size\+\_\+t}]{samples,  }\item[{uint8\+\_\+t $\ast$}]{nr52,  }\item[{enum G\+B\+Audio\+Style}]{style }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a40d4cdd3e103b8cc2f0210c5b17b8953_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a40d4cdd3e103b8cc2f0210c5b17b8953_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_ac5fe35e6b9bdb96cefeb053cf063ef2b}\label{audio_8c_ac5fe35e6b9bdb96cefeb053cf063ef2b}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+P\+S\+G\+Deserialize@{G\+B\+Audio\+P\+S\+G\+Deserialize}}
+\index{G\+B\+Audio\+P\+S\+G\+Deserialize@{G\+B\+Audio\+P\+S\+G\+Deserialize}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+P\+S\+G\+Deserialize()}{GBAudioPSGDeserialize()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+P\+S\+G\+Deserialize (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{const struct G\+B\+Serialized\+P\+S\+G\+State $\ast$}]{state,  }\item[{const uint32\+\_\+t $\ast$}]{flags\+In }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_ac5fe35e6b9bdb96cefeb053cf063ef2b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_ac5fe35e6b9bdb96cefeb053cf063ef2b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a179c593a372e374ac3d883845d6b0c13}\label{audio_8c_a179c593a372e374ac3d883845d6b0c13}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+P\+S\+G\+Serialize@{G\+B\+Audio\+P\+S\+G\+Serialize}}
+\index{G\+B\+Audio\+P\+S\+G\+Serialize@{G\+B\+Audio\+P\+S\+G\+Serialize}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+P\+S\+G\+Serialize()}{GBAudioPSGSerialize()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+P\+S\+G\+Serialize (\begin{DoxyParamCaption}\item[{const struct G\+B\+Audio $\ast$}]{audio,  }\item[{struct G\+B\+Serialized\+P\+S\+G\+State $\ast$}]{state,  }\item[{uint32\+\_\+t $\ast$}]{flags\+Out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a179c593a372e374ac3d883845d6b0c13_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a179c593a372e374ac3d883845d6b0c13_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a1efad13924d6ee148383c1c70de22e7f}\label{audio_8c_a1efad13924d6ee148383c1c70de22e7f}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Reset@{G\+B\+Audio\+Reset}}
+\index{G\+B\+Audio\+Reset@{G\+B\+Audio\+Reset}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Reset()}{GBAudioReset()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Reset (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{audio_8c_a1efad13924d6ee148383c1c70de22e7f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a1efad13924d6ee148383c1c70de22e7f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_af657b3dbc0053e0b82973243271332b1}\label{audio_8c_af657b3dbc0053e0b82973243271332b1}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Resize\+Buffer@{G\+B\+Audio\+Resize\+Buffer}}
+\index{G\+B\+Audio\+Resize\+Buffer@{G\+B\+Audio\+Resize\+Buffer}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Resize\+Buffer()}{GBAudioResizeBuffer()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Resize\+Buffer (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{size\+\_\+t}]{samples }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_af657b3dbc0053e0b82973243271332b1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_af657b3dbc0053e0b82973243271332b1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a1b03ab35a8ce81c161fddff3b8f415a0}\label{audio_8c_a1b03ab35a8ce81c161fddff3b8f415a0}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Sample\+P\+SG@{G\+B\+Audio\+Sample\+P\+SG}}
+\index{G\+B\+Audio\+Sample\+P\+SG@{G\+B\+Audio\+Sample\+P\+SG}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Sample\+P\+S\+G()}{GBAudioSamplePSG()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Sample\+P\+SG (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{int16\+\_\+t $\ast$}]{left,  }\item[{int16\+\_\+t $\ast$}]{right }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a1b03ab35a8ce81c161fddff3b8f415a0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a56dc165ee78dcd79c77dbd6a7d977541}\label{audio_8c_a56dc165ee78dcd79c77dbd6a7d977541}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Serialize@{G\+B\+Audio\+Serialize}}
+\index{G\+B\+Audio\+Serialize@{G\+B\+Audio\+Serialize}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Serialize()}{GBAudioSerialize()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Serialize (\begin{DoxyParamCaption}\item[{const struct G\+B\+Audio $\ast$}]{audio,  }\item[{struct G\+B\+Serialized\+State $\ast$}]{state }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a56dc165ee78dcd79c77dbd6a7d977541_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a56dc165ee78dcd79c77dbd6a7d977541_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a6b215ae53b410aa3aa7ac37eeba5ddc9}\label{audio_8c_a6b215ae53b410aa3aa7ac37eeba5ddc9}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Update\+Frame@{G\+B\+Audio\+Update\+Frame}}
+\index{G\+B\+Audio\+Update\+Frame@{G\+B\+Audio\+Update\+Frame}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Update\+Frame()}{GBAudioUpdateFrame()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Update\+Frame (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{struct m\+Timing $\ast$}]{timing }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a6b215ae53b410aa3aa7ac37eeba5ddc9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a6b215ae53b410aa3aa7ac37eeba5ddc9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a92e3eb306d62c5eee7e5b17d3ac04784}\label{audio_8c_a92e3eb306d62c5eee7e5b17d3ac04784}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R10@{G\+B\+Audio\+Write\+N\+R10}}
+\index{G\+B\+Audio\+Write\+N\+R10@{G\+B\+Audio\+Write\+N\+R10}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R10()}{GBAudioWriteNR10()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R10 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{audio_8c_a92e3eb306d62c5eee7e5b17d3ac04784_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a92e3eb306d62c5eee7e5b17d3ac04784_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_aab62aa088a54a650c5f4a9f15e11d60c}\label{audio_8c_aab62aa088a54a650c5f4a9f15e11d60c}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R11@{G\+B\+Audio\+Write\+N\+R11}}
+\index{G\+B\+Audio\+Write\+N\+R11@{G\+B\+Audio\+Write\+N\+R11}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R11()}{GBAudioWriteNR11()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R11 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{audio_8c_aab62aa088a54a650c5f4a9f15e11d60c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_aab62aa088a54a650c5f4a9f15e11d60c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a3fa8669698ebe3b6f436a6a0ac2b02e5}\label{audio_8c_a3fa8669698ebe3b6f436a6a0ac2b02e5}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R12@{G\+B\+Audio\+Write\+N\+R12}}
+\index{G\+B\+Audio\+Write\+N\+R12@{G\+B\+Audio\+Write\+N\+R12}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R12()}{GBAudioWriteNR12()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R12 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a3fa8669698ebe3b6f436a6a0ac2b02e5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a3fa8669698ebe3b6f436a6a0ac2b02e5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_ad1e82c7d6dde9edb0d6c4ab0be0fe566}\label{audio_8c_ad1e82c7d6dde9edb0d6c4ab0be0fe566}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R13@{G\+B\+Audio\+Write\+N\+R13}}
+\index{G\+B\+Audio\+Write\+N\+R13@{G\+B\+Audio\+Write\+N\+R13}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R13()}{GBAudioWriteNR13()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R13 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_ad1e82c7d6dde9edb0d6c4ab0be0fe566_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_af6a2452133e2fae4014fa38fa7743e08}\label{audio_8c_af6a2452133e2fae4014fa38fa7743e08}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R14@{G\+B\+Audio\+Write\+N\+R14}}
+\index{G\+B\+Audio\+Write\+N\+R14@{G\+B\+Audio\+Write\+N\+R14}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R14()}{GBAudioWriteNR14()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R14 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_af6a2452133e2fae4014fa38fa7743e08_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_af6a2452133e2fae4014fa38fa7743e08_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_ae098d9fa0b0d146535f6715271ef6fea}\label{audio_8c_ae098d9fa0b0d146535f6715271ef6fea}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R21@{G\+B\+Audio\+Write\+N\+R21}}
+\index{G\+B\+Audio\+Write\+N\+R21@{G\+B\+Audio\+Write\+N\+R21}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R21()}{GBAudioWriteNR21()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R21 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{audio_8c_ae098d9fa0b0d146535f6715271ef6fea_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_ae098d9fa0b0d146535f6715271ef6fea_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_abbd77078bdffff71f7163a5b9d286f50}\label{audio_8c_abbd77078bdffff71f7163a5b9d286f50}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R22@{G\+B\+Audio\+Write\+N\+R22}}
+\index{G\+B\+Audio\+Write\+N\+R22@{G\+B\+Audio\+Write\+N\+R22}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R22()}{GBAudioWriteNR22()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R22 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_abbd77078bdffff71f7163a5b9d286f50_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_abbd77078bdffff71f7163a5b9d286f50_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_ad1fd788366522e1d983ff053c54b4907}\label{audio_8c_ad1fd788366522e1d983ff053c54b4907}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R23@{G\+B\+Audio\+Write\+N\+R23}}
+\index{G\+B\+Audio\+Write\+N\+R23@{G\+B\+Audio\+Write\+N\+R23}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R23()}{GBAudioWriteNR23()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R23 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_ad1fd788366522e1d983ff053c54b4907_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_ac8ef5bcf7485de54c91ff1d26827e76d}\label{audio_8c_ac8ef5bcf7485de54c91ff1d26827e76d}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R24@{G\+B\+Audio\+Write\+N\+R24}}
+\index{G\+B\+Audio\+Write\+N\+R24@{G\+B\+Audio\+Write\+N\+R24}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R24()}{GBAudioWriteNR24()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R24 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_ac8ef5bcf7485de54c91ff1d26827e76d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_ac8ef5bcf7485de54c91ff1d26827e76d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_abb7dae17cc02feea780f869249402d6b}\label{audio_8c_abb7dae17cc02feea780f869249402d6b}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R30@{G\+B\+Audio\+Write\+N\+R30}}
+\index{G\+B\+Audio\+Write\+N\+R30@{G\+B\+Audio\+Write\+N\+R30}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R30()}{GBAudioWriteNR30()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R30 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_abb7dae17cc02feea780f869249402d6b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a7f4fffaac69c59c13e580a7a29b0f4fb}\label{audio_8c_a7f4fffaac69c59c13e580a7a29b0f4fb}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R31@{G\+B\+Audio\+Write\+N\+R31}}
+\index{G\+B\+Audio\+Write\+N\+R31@{G\+B\+Audio\+Write\+N\+R31}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R31()}{GBAudioWriteNR31()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R31 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a7f4fffaac69c59c13e580a7a29b0f4fb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a6a8f3b8752bcdb5be663a97349ffcf59}\label{audio_8c_a6a8f3b8752bcdb5be663a97349ffcf59}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R32@{G\+B\+Audio\+Write\+N\+R32}}
+\index{G\+B\+Audio\+Write\+N\+R32@{G\+B\+Audio\+Write\+N\+R32}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R32()}{GBAudioWriteNR32()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R32 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a6a8f3b8752bcdb5be663a97349ffcf59_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a4fdf82a3ccb66704cb5b68ecf8015c7d}\label{audio_8c_a4fdf82a3ccb66704cb5b68ecf8015c7d}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R33@{G\+B\+Audio\+Write\+N\+R33}}
+\index{G\+B\+Audio\+Write\+N\+R33@{G\+B\+Audio\+Write\+N\+R33}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R33()}{GBAudioWriteNR33()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R33 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a4fdf82a3ccb66704cb5b68ecf8015c7d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a67c67fef71bf5123c008f843777d4c14}\label{audio_8c_a67c67fef71bf5123c008f843777d4c14}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R34@{G\+B\+Audio\+Write\+N\+R34}}
+\index{G\+B\+Audio\+Write\+N\+R34@{G\+B\+Audio\+Write\+N\+R34}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R34()}{GBAudioWriteNR34()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R34 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{audio_8c_a67c67fef71bf5123c008f843777d4c14_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a67c67fef71bf5123c008f843777d4c14_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a3ca814f0e9fc7ab921537d7acd4f6e3a}\label{audio_8c_a3ca814f0e9fc7ab921537d7acd4f6e3a}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R41@{G\+B\+Audio\+Write\+N\+R41}}
+\index{G\+B\+Audio\+Write\+N\+R41@{G\+B\+Audio\+Write\+N\+R41}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R41()}{GBAudioWriteNR41()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R41 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{audio_8c_a3ca814f0e9fc7ab921537d7acd4f6e3a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a3ca814f0e9fc7ab921537d7acd4f6e3a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_ad58b4a6b4c7840bccc42b07cbe5d99f9}\label{audio_8c_ad58b4a6b4c7840bccc42b07cbe5d99f9}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R42@{G\+B\+Audio\+Write\+N\+R42}}
+\index{G\+B\+Audio\+Write\+N\+R42@{G\+B\+Audio\+Write\+N\+R42}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R42()}{GBAudioWriteNR42()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R42 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_ad58b4a6b4c7840bccc42b07cbe5d99f9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_ad58b4a6b4c7840bccc42b07cbe5d99f9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a435da640b4ae67d6ec1b41056adbc847}\label{audio_8c_a435da640b4ae67d6ec1b41056adbc847}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R43@{G\+B\+Audio\+Write\+N\+R43}}
+\index{G\+B\+Audio\+Write\+N\+R43@{G\+B\+Audio\+Write\+N\+R43}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R43()}{GBAudioWriteNR43()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R43 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a435da640b4ae67d6ec1b41056adbc847_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_ab97bb9c372d682cc08ec146cd97510de}\label{audio_8c_ab97bb9c372d682cc08ec146cd97510de}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R44@{G\+B\+Audio\+Write\+N\+R44}}
+\index{G\+B\+Audio\+Write\+N\+R44@{G\+B\+Audio\+Write\+N\+R44}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R44()}{GBAudioWriteNR44()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R44 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_ab97bb9c372d682cc08ec146cd97510de_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_ab97bb9c372d682cc08ec146cd97510de_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a681c128908da256806970369d55b3ba9}\label{audio_8c_a681c128908da256806970369d55b3ba9}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R50@{G\+B\+Audio\+Write\+N\+R50}}
+\index{G\+B\+Audio\+Write\+N\+R50@{G\+B\+Audio\+Write\+N\+R50}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R50()}{GBAudioWriteNR50()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R50 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a681c128908da256806970369d55b3ba9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_a84457ba267bb527ed836e00e9e649bf6}\label{audio_8c_a84457ba267bb527ed836e00e9e649bf6}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R51@{G\+B\+Audio\+Write\+N\+R51}}
+\index{G\+B\+Audio\+Write\+N\+R51@{G\+B\+Audio\+Write\+N\+R51}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R51()}{GBAudioWriteNR51()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R51 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_a84457ba267bb527ed836e00e9e649bf6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{audio_8c_af2e66ed0dc70809773468a790426f268}\label{audio_8c_af2e66ed0dc70809773468a790426f268}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+Audio\+Write\+N\+R52@{G\+B\+Audio\+Write\+N\+R52}}
+\index{G\+B\+Audio\+Write\+N\+R52@{G\+B\+Audio\+Write\+N\+R52}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Audio\+Write\+N\+R52()}{GBAudioWriteNR52()}}
+{\footnotesize\ttfamily void G\+B\+Audio\+Write\+N\+R52 (\begin{DoxyParamCaption}\item[{struct G\+B\+Audio $\ast$}]{audio,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_af2e66ed0dc70809773468a790426f268_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{audio_8c_af2e66ed0dc70809773468a790426f268_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{audio_8c_abd9ef8fe9fa5bcea4cbf6f5a10cda12d}\label{audio_8c_abd9ef8fe9fa5bcea4cbf6f5a10cda12d}} 
+\index{audio.\+c@{audio.\+c}!B\+L\+I\+P\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{B\+L\+I\+P\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}
+\index{B\+L\+I\+P\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{B\+L\+I\+P\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{B\+L\+I\+P\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}{BLIP\_BUFFER\_SIZE}}
+{\footnotesize\ttfamily const unsigned B\+L\+I\+P\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE = 0x4000\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{audio_8c_aa3964be152dfc37c6ccc4de66ef61c56}\label{audio_8c_aa3964be152dfc37c6ccc4de66ef61c56}} 
+\index{audio.\+c@{audio.\+c}!C\+L\+O\+C\+K\+S\+\_\+\+P\+E\+R\+\_\+\+B\+L\+I\+P\+\_\+\+F\+R\+A\+ME@{C\+L\+O\+C\+K\+S\+\_\+\+P\+E\+R\+\_\+\+B\+L\+I\+P\+\_\+\+F\+R\+A\+ME}}
+\index{C\+L\+O\+C\+K\+S\+\_\+\+P\+E\+R\+\_\+\+B\+L\+I\+P\+\_\+\+F\+R\+A\+ME@{C\+L\+O\+C\+K\+S\+\_\+\+P\+E\+R\+\_\+\+B\+L\+I\+P\+\_\+\+F\+R\+A\+ME}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{C\+L\+O\+C\+K\+S\+\_\+\+P\+E\+R\+\_\+\+B\+L\+I\+P\+\_\+\+F\+R\+A\+ME}{CLOCKS\_PER\_BLIP\_FRAME}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} C\+L\+O\+C\+K\+S\+\_\+\+P\+E\+R\+\_\+\+B\+L\+I\+P\+\_\+\+F\+R\+A\+ME = 0x1000\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{audio_8c_ab407440563e61a353d7275ecfcfc9f8e}\label{audio_8c_ab407440563e61a353d7275ecfcfc9f8e}} 
+\index{audio.\+c@{audio.\+c}!D\+M\+G\+\_\+\+L\+R35902\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY@{D\+M\+G\+\_\+\+L\+R35902\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY}}
+\index{D\+M\+G\+\_\+\+L\+R35902\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY@{D\+M\+G\+\_\+\+L\+R35902\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{D\+M\+G\+\_\+\+L\+R35902\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY}{DMG\_LR35902\_FREQUENCY}}
+{\footnotesize\ttfamily const uint32\+\_\+t D\+M\+G\+\_\+\+L\+R35902\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+CY = 0x400000}
+
+\mbox{\Hypertarget{audio_8c_aa56621a9f6874e1d4b7abb74a9b3f519}\label{audio_8c_aa56621a9f6874e1d4b7abb74a9b3f519}} 
+\index{audio.\+c@{audio.\+c}!G\+B\+\_\+\+A\+U\+D\+I\+O\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+M\+AX@{G\+B\+\_\+\+A\+U\+D\+I\+O\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+M\+AX}}
+\index{G\+B\+\_\+\+A\+U\+D\+I\+O\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+M\+AX@{G\+B\+\_\+\+A\+U\+D\+I\+O\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+M\+AX}!audio.\+c@{audio.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+\_\+\+A\+U\+D\+I\+O\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+M\+AX}{GB\_AUDIO\_VOLUME\_MAX}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} G\+B\+\_\+\+A\+U\+D\+I\+O\+\_\+\+V\+O\+L\+U\+M\+E\+\_\+\+M\+AX = 0x100}
+

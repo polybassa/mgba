@@ -1,0 +1,494 @@
+\hypertarget{tarith_8c}{}\section{src/third-\/party/libpng/contrib/libtests/tarith.c File Reference}
+\label{tarith_8c}\index{src/third-\/party/libpng/contrib/libtests/tarith.\+c@{src/third-\/party/libpng/contrib/libtests/tarith.\+c}}
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../../pngpriv.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../png.\+c\char`\"{}}\newline
+Include dependency graph for tarith.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tarith_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{tarith_8c_ac3d144aa01e765a1fae62ab5491c7cc1}{\+\_\+\+P\+O\+S\+I\+X\+\_\+\+S\+O\+U\+R\+CE}}~1
+\item 
+\#define \mbox{\hyperlink{tarith_8c_a04ec2c53aa9fcdb5b58dc8e9d552dec0}{\+\_\+\+I\+S\+O\+C99\+\_\+\+S\+O\+U\+R\+CE}}~1
+\item 
+\#define \mbox{\hyperlink{tarith_8c_af58ec22a7497e5259242b9e19d5ef117}{png\+\_\+error}}~\mbox{\hyperlink{tarith_8c_afea7baadf43ed406d9f835688c9dc267}{png\+\_\+warning}}
+\item 
+\#define \mbox{\hyperlink{tarith_8c_a4c73efef947963123e58910ef22820ab}{png\+\_\+fixed\+\_\+error}}~\mbox{\hyperlink{tarith_8c_a052bcc1d84950717caf163ee6accdb6a}{png\+\_\+fixed\+\_\+warning}}
+\item 
+\#define \mbox{\hyperlink{tarith_8c_a0f2f83efc466d0ff85774eae6cf1c068}{png\+\_\+set\+\_\+error\+\_\+fn}}(pp,  ep,  efp,  wfp)~((void)0)
+\item 
+\#define \mbox{\hyperlink{tarith_8c_a5ccde932a54cfdc8a53781b3dbab96b3}{png\+\_\+malloc}}(pp,  s)~malloc(s)
+\item 
+\#define \mbox{\hyperlink{tarith_8c_aa039ed239af710c613cc1dc1937106ea}{png\+\_\+malloc\+\_\+warn}}(pp,  s)~malloc(s)
+\item 
+\#define \mbox{\hyperlink{tarith_8c_a94347f4c8a3a2a0d74e6edcfac966a91}{png\+\_\+malloc\+\_\+base}}(pp,  s)~malloc(s)
+\item 
+\#define \mbox{\hyperlink{tarith_8c_a956df08ad5aba38b1e270e7f6739afaa}{png\+\_\+calloc}}(pp,  s)~calloc(1, (s))
+\item 
+\#define \mbox{\hyperlink{tarith_8c_ae86f382ffd2af0d9756fdf81a71ff9bd}{png\+\_\+free}}(pp,  s)~\mbox{\hyperlink{__builder_8h_af07d89f5ceaea0c7c8252cc41fd75f37}{free}}(s)
+\item 
+\#define \mbox{\hyperlink{tarith_8c_acc1cc38af16cde181ccae613b63a455d}{png\+\_\+safecat}}(b,  sb,  pos,  str)~(pos)
+\item 
+\#define \mbox{\hyperlink{tarith_8c_a8ff421bad54dbeaac4070bc235f1a2e9}{png\+\_\+format\+\_\+number}}(\mbox{\hyperlink{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2a0e97c69c73117f6c0109b2d7d1d9cedc}{start}},  end,  format,  number)~(\mbox{\hyperlink{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2a0e97c69c73117f6c0109b2d7d1d9cedc}{start}})
+\item 
+\#define \mbox{\hyperlink{tarith_8c_a7524302ed2b89b736707053a56247a0f}{crc32}}(crc,  pp,  s)~(crc)
+\item 
+\#define \mbox{\hyperlink{tarith_8c_ad25185167dffb95b2a430a87be94c33b}{inflate\+Reset}}(zs)~\mbox{\hyperlink{zlib_8h_a8cb802b6a11e926478dc6547c514c65c}{Z\+\_\+\+OK}}
+\item 
+\#define \mbox{\hyperlink{tarith_8c_a2c916b31a638b04d0771a7923b051600}{png\+\_\+create\+\_\+struct}}(type)~(0)
+\item 
+\#define \mbox{\hyperlink{tarith_8c_abe65fa765f88bab98ea0611f163271e0}{png\+\_\+destroy\+\_\+struct}}(pp)~((void)0)
+\item 
+\#define \mbox{\hyperlink{tarith_8c_a74b4a34f6c4386ca5dafb6a59bca28e4}{png\+\_\+create\+\_\+struct\+\_\+2}}(type,  m,  mm)~(0)
+\item 
+\#define \mbox{\hyperlink{tarith_8c_a24222ee887c415e37788474220a5a2f9}{png\+\_\+destroy\+\_\+struct\+\_\+2}}(pp,  \mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}},  mm)~((void)0)
+\item 
+\#define \mbox{\hyperlink{tarith_8c_a698c124f1c293f98840449d6c5b9d984}{C\+O\+U\+NT}}~1000000000
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2}{checkfp\+\_\+state}} \mbox{\hyperlink{tarith_8c_a935a3db52b21fa16eb06a1346979e8e6}{checkfp\+\_\+state}}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2}{checkfp\+\_\+state}} \{ \mbox{\hyperlink{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2a0e97c69c73117f6c0109b2d7d1d9cedc}{start}}, 
+\mbox{\hyperlink{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2ab10366ecc76133a0a4a4712a5ee26f65}{fraction}}, 
+\mbox{\hyperlink{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2ad87b2a1f151053978825ca89942e3f08}{exponent}}, 
+\mbox{\hyperlink{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2a01d608ec22f441f90ab3bf3f1becc273}{states}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{tarith_8c_afea7baadf43ed406d9f835688c9dc267}{png\+\_\+warning}} (\mbox{\hyperlink{png_8h_ad21074dd8cb2466bcf2d187b29d3a91f}{png\+\_\+const\+\_\+structrp}} \mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}}, \mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}} \mbox{\hyperlink{_png_file_8c_a4e8f3041f859c6e44551174061b83012}{msg}})
+\item 
+void \mbox{\hyperlink{tarith_8c_a052bcc1d84950717caf163ee6accdb6a}{png\+\_\+fixed\+\_\+warning}} (\mbox{\hyperlink{png_8h_ad21074dd8cb2466bcf2d187b29d3a91f}{png\+\_\+const\+\_\+structrp}} \mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}}, \mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}} \mbox{\hyperlink{_png_file_8c_a4e8f3041f859c6e44551174061b83012}{msg}})
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{tarith_8c_a494da8f50d077fa0a91f923fe35e6648}{validation\+\_\+ascii\+\_\+to\+\_\+fp}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{enough_8c_ab25137bc309ccde185e2628bf4403ec7}{count}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, char $\ast$$\ast$argv)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{tarith_8c_afdcbd7c9937e6268adbe18bbebf35dca}{check\+\_\+all\+\_\+characters}} (checkfp\+\_\+command $\ast$co, checkfp\+\_\+control \mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}})
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{tarith_8c_a0682daacf63246f295283b6db0c68be9}{check\+\_\+some\+\_\+characters}} (checkfp\+\_\+command $\ast$co, checkfp\+\_\+control \mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}}, const char $\ast$tests)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{tarith_8c_a5c7fe98c9cd960d36d512efb559cb8b1}{check\+\_\+one\+\_\+character}} (checkfp\+\_\+command $\ast$co, checkfp\+\_\+control \mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} ch)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{tarith_8c_a916d6e49eed20c465ec4232346756271}{validation\+\_\+checkfp}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{enough_8c_ab25137bc309ccde185e2628bf4403ec7}{count}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, char $\ast$$\ast$argv)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{tarith_8c_a15783f196dbf8110e8a63ec60d5b3f8c}{validation\+\_\+muldiv}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{enough_8c_ab25137bc309ccde185e2628bf4403ec7}{count}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, char $\ast$$\ast$argv)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{tarith_8c_a16e10f773487849ea4528f15d31096ad}{validation\+\_\+gamma}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, char $\ast$$\ast$argv)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{tarith_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{tarith_8c_a0b2caeb4b6f130be43e5a2f0267dd453}{verbose}} = 0
+\item 
+static const char \mbox{\hyperlink{tarith_8c_af922a39cbb5845d58fad3d8e3652304c}{none}} \mbox{[}$\,$\mbox{]} = \char`\"{}\char`\"{}
+\item 
+static const char \mbox{\hyperlink{tarith_8c_a3d44db51fe0827bf273836757968e0cf}{hexdigits}} \mbox{[}16\mbox{]} = \char`\"{}0123456789\+A\+B\+C\+D\+E\+F\char`\"{}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+const char $\ast$ {\bfseries start}\\
+const char $\ast$ {\bfseries end}\\
+const char $\ast$ {\bfseries tests}\\
+\} \mbox{\hyperlink{tarith_8c_ac5642b2b9feaca314845949c233a88ec}{state\_characters}} \mbox{[}\mbox{\hyperlink{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2a01d608ec22f441f90ab3bf3f1becc273}{states}}\mbox{]}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{tarith_8c_a04ec2c53aa9fcdb5b58dc8e9d552dec0}\label{tarith_8c_a04ec2c53aa9fcdb5b58dc8e9d552dec0}} 
+\index{tarith.\+c@{tarith.\+c}!\+\_\+\+I\+S\+O\+C99\+\_\+\+S\+O\+U\+R\+CE@{\+\_\+\+I\+S\+O\+C99\+\_\+\+S\+O\+U\+R\+CE}}
+\index{\+\_\+\+I\+S\+O\+C99\+\_\+\+S\+O\+U\+R\+CE@{\+\_\+\+I\+S\+O\+C99\+\_\+\+S\+O\+U\+R\+CE}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+I\+S\+O\+C99\+\_\+\+S\+O\+U\+R\+CE}{\_ISOC99\_SOURCE}}
+{\footnotesize\ttfamily \#define \+\_\+\+I\+S\+O\+C99\+\_\+\+S\+O\+U\+R\+CE~1}
+
+\mbox{\Hypertarget{tarith_8c_ac3d144aa01e765a1fae62ab5491c7cc1}\label{tarith_8c_ac3d144aa01e765a1fae62ab5491c7cc1}} 
+\index{tarith.\+c@{tarith.\+c}!\+\_\+\+P\+O\+S\+I\+X\+\_\+\+S\+O\+U\+R\+CE@{\+\_\+\+P\+O\+S\+I\+X\+\_\+\+S\+O\+U\+R\+CE}}
+\index{\+\_\+\+P\+O\+S\+I\+X\+\_\+\+S\+O\+U\+R\+CE@{\+\_\+\+P\+O\+S\+I\+X\+\_\+\+S\+O\+U\+R\+CE}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+P\+O\+S\+I\+X\+\_\+\+S\+O\+U\+R\+CE}{\_POSIX\_SOURCE}}
+{\footnotesize\ttfamily \#define \+\_\+\+P\+O\+S\+I\+X\+\_\+\+S\+O\+U\+R\+CE~1}
+
+\mbox{\Hypertarget{tarith_8c_a698c124f1c293f98840449d6c5b9d984}\label{tarith_8c_a698c124f1c293f98840449d6c5b9d984}} 
+\index{tarith.\+c@{tarith.\+c}!C\+O\+U\+NT@{C\+O\+U\+NT}}
+\index{C\+O\+U\+NT@{C\+O\+U\+NT}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{C\+O\+U\+NT}{COUNT}}
+{\footnotesize\ttfamily \#define C\+O\+U\+NT~1000000000}
+
+\mbox{\Hypertarget{tarith_8c_a7524302ed2b89b736707053a56247a0f}\label{tarith_8c_a7524302ed2b89b736707053a56247a0f}} 
+\index{tarith.\+c@{tarith.\+c}!crc32@{crc32}}
+\index{crc32@{crc32}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{crc32}{crc32}}
+{\footnotesize\ttfamily \#define crc32(\begin{DoxyParamCaption}\item[{}]{crc,  }\item[{}]{pp,  }\item[{}]{s }\end{DoxyParamCaption})~(crc)}
+
+\mbox{\Hypertarget{tarith_8c_ad25185167dffb95b2a430a87be94c33b}\label{tarith_8c_ad25185167dffb95b2a430a87be94c33b}} 
+\index{tarith.\+c@{tarith.\+c}!inflate\+Reset@{inflate\+Reset}}
+\index{inflate\+Reset@{inflate\+Reset}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{inflate\+Reset}{inflateReset}}
+{\footnotesize\ttfamily \#define inflate\+Reset(\begin{DoxyParamCaption}\item[{}]{zs }\end{DoxyParamCaption})~\mbox{\hyperlink{zlib_8h_a8cb802b6a11e926478dc6547c514c65c}{Z\+\_\+\+OK}}}
+
+\mbox{\Hypertarget{tarith_8c_a956df08ad5aba38b1e270e7f6739afaa}\label{tarith_8c_a956df08ad5aba38b1e270e7f6739afaa}} 
+\index{tarith.\+c@{tarith.\+c}!png\+\_\+calloc@{png\+\_\+calloc}}
+\index{png\+\_\+calloc@{png\+\_\+calloc}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+calloc}{png\_calloc}}
+{\footnotesize\ttfamily \#define png\+\_\+calloc(\begin{DoxyParamCaption}\item[{}]{pp,  }\item[{}]{s }\end{DoxyParamCaption})~calloc(1, (s))}
+
+\mbox{\Hypertarget{tarith_8c_a2c916b31a638b04d0771a7923b051600}\label{tarith_8c_a2c916b31a638b04d0771a7923b051600}} 
+\index{tarith.\+c@{tarith.\+c}!png\+\_\+create\+\_\+struct@{png\+\_\+create\+\_\+struct}}
+\index{png\+\_\+create\+\_\+struct@{png\+\_\+create\+\_\+struct}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+create\+\_\+struct}{png\_create\_struct}}
+{\footnotesize\ttfamily \#define png\+\_\+create\+\_\+struct(\begin{DoxyParamCaption}\item[{}]{type }\end{DoxyParamCaption})~(0)}
+
+\mbox{\Hypertarget{tarith_8c_a74b4a34f6c4386ca5dafb6a59bca28e4}\label{tarith_8c_a74b4a34f6c4386ca5dafb6a59bca28e4}} 
+\index{tarith.\+c@{tarith.\+c}!png\+\_\+create\+\_\+struct\+\_\+2@{png\+\_\+create\+\_\+struct\+\_\+2}}
+\index{png\+\_\+create\+\_\+struct\+\_\+2@{png\+\_\+create\+\_\+struct\+\_\+2}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+create\+\_\+struct\+\_\+2}{png\_create\_struct\_2}}
+{\footnotesize\ttfamily \#define png\+\_\+create\+\_\+struct\+\_\+2(\begin{DoxyParamCaption}\item[{}]{type,  }\item[{}]{m,  }\item[{}]{mm }\end{DoxyParamCaption})~(0)}
+
+\mbox{\Hypertarget{tarith_8c_abe65fa765f88bab98ea0611f163271e0}\label{tarith_8c_abe65fa765f88bab98ea0611f163271e0}} 
+\index{tarith.\+c@{tarith.\+c}!png\+\_\+destroy\+\_\+struct@{png\+\_\+destroy\+\_\+struct}}
+\index{png\+\_\+destroy\+\_\+struct@{png\+\_\+destroy\+\_\+struct}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+destroy\+\_\+struct}{png\_destroy\_struct}}
+{\footnotesize\ttfamily \#define png\+\_\+destroy\+\_\+struct(\begin{DoxyParamCaption}\item[{}]{pp }\end{DoxyParamCaption})~((void)0)}
+
+\mbox{\Hypertarget{tarith_8c_a24222ee887c415e37788474220a5a2f9}\label{tarith_8c_a24222ee887c415e37788474220a5a2f9}} 
+\index{tarith.\+c@{tarith.\+c}!png\+\_\+destroy\+\_\+struct\+\_\+2@{png\+\_\+destroy\+\_\+struct\+\_\+2}}
+\index{png\+\_\+destroy\+\_\+struct\+\_\+2@{png\+\_\+destroy\+\_\+struct\+\_\+2}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+destroy\+\_\+struct\+\_\+2}{png\_destroy\_struct\_2}}
+{\footnotesize\ttfamily \#define png\+\_\+destroy\+\_\+struct\+\_\+2(\begin{DoxyParamCaption}\item[{}]{pp,  }\item[{}]{\mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}},  }\item[{}]{mm }\end{DoxyParamCaption})~((void)0)}
+
+\mbox{\Hypertarget{tarith_8c_af58ec22a7497e5259242b9e19d5ef117}\label{tarith_8c_af58ec22a7497e5259242b9e19d5ef117}} 
+\index{tarith.\+c@{tarith.\+c}!png\+\_\+error@{png\+\_\+error}}
+\index{png\+\_\+error@{png\+\_\+error}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+error}{png\_error}}
+{\footnotesize\ttfamily \#define png\+\_\+error~\mbox{\hyperlink{tarith_8c_afea7baadf43ed406d9f835688c9dc267}{png\+\_\+warning}}}
+
+\mbox{\Hypertarget{tarith_8c_a4c73efef947963123e58910ef22820ab}\label{tarith_8c_a4c73efef947963123e58910ef22820ab}} 
+\index{tarith.\+c@{tarith.\+c}!png\+\_\+fixed\+\_\+error@{png\+\_\+fixed\+\_\+error}}
+\index{png\+\_\+fixed\+\_\+error@{png\+\_\+fixed\+\_\+error}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+fixed\+\_\+error}{png\_fixed\_error}}
+{\footnotesize\ttfamily \#define png\+\_\+fixed\+\_\+error~\mbox{\hyperlink{tarith_8c_a052bcc1d84950717caf163ee6accdb6a}{png\+\_\+fixed\+\_\+warning}}}
+
+\mbox{\Hypertarget{tarith_8c_a8ff421bad54dbeaac4070bc235f1a2e9}\label{tarith_8c_a8ff421bad54dbeaac4070bc235f1a2e9}} 
+\index{tarith.\+c@{tarith.\+c}!png\+\_\+format\+\_\+number@{png\+\_\+format\+\_\+number}}
+\index{png\+\_\+format\+\_\+number@{png\+\_\+format\+\_\+number}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+format\+\_\+number}{png\_format\_number}}
+{\footnotesize\ttfamily \#define png\+\_\+format\+\_\+number(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2a0e97c69c73117f6c0109b2d7d1d9cedc}{start}},  }\item[{}]{end,  }\item[{}]{format,  }\item[{}]{number }\end{DoxyParamCaption})~(\mbox{\hyperlink{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2a0e97c69c73117f6c0109b2d7d1d9cedc}{start}})}
+
+\mbox{\Hypertarget{tarith_8c_ae86f382ffd2af0d9756fdf81a71ff9bd}\label{tarith_8c_ae86f382ffd2af0d9756fdf81a71ff9bd}} 
+\index{tarith.\+c@{tarith.\+c}!png\+\_\+free@{png\+\_\+free}}
+\index{png\+\_\+free@{png\+\_\+free}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+free}{png\_free}}
+{\footnotesize\ttfamily \#define png\+\_\+free(\begin{DoxyParamCaption}\item[{}]{pp,  }\item[{}]{s }\end{DoxyParamCaption})~\mbox{\hyperlink{__builder_8h_af07d89f5ceaea0c7c8252cc41fd75f37}{free}}(s)}
+
+\mbox{\Hypertarget{tarith_8c_a5ccde932a54cfdc8a53781b3dbab96b3}\label{tarith_8c_a5ccde932a54cfdc8a53781b3dbab96b3}} 
+\index{tarith.\+c@{tarith.\+c}!png\+\_\+malloc@{png\+\_\+malloc}}
+\index{png\+\_\+malloc@{png\+\_\+malloc}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+malloc}{png\_malloc}}
+{\footnotesize\ttfamily \#define png\+\_\+malloc(\begin{DoxyParamCaption}\item[{}]{pp,  }\item[{}]{s }\end{DoxyParamCaption})~malloc(s)}
+
+\mbox{\Hypertarget{tarith_8c_a94347f4c8a3a2a0d74e6edcfac966a91}\label{tarith_8c_a94347f4c8a3a2a0d74e6edcfac966a91}} 
+\index{tarith.\+c@{tarith.\+c}!png\+\_\+malloc\+\_\+base@{png\+\_\+malloc\+\_\+base}}
+\index{png\+\_\+malloc\+\_\+base@{png\+\_\+malloc\+\_\+base}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+malloc\+\_\+base}{png\_malloc\_base}}
+{\footnotesize\ttfamily \#define png\+\_\+malloc\+\_\+base(\begin{DoxyParamCaption}\item[{}]{pp,  }\item[{}]{s }\end{DoxyParamCaption})~malloc(s)}
+
+\mbox{\Hypertarget{tarith_8c_aa039ed239af710c613cc1dc1937106ea}\label{tarith_8c_aa039ed239af710c613cc1dc1937106ea}} 
+\index{tarith.\+c@{tarith.\+c}!png\+\_\+malloc\+\_\+warn@{png\+\_\+malloc\+\_\+warn}}
+\index{png\+\_\+malloc\+\_\+warn@{png\+\_\+malloc\+\_\+warn}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+malloc\+\_\+warn}{png\_malloc\_warn}}
+{\footnotesize\ttfamily \#define png\+\_\+malloc\+\_\+warn(\begin{DoxyParamCaption}\item[{}]{pp,  }\item[{}]{s }\end{DoxyParamCaption})~malloc(s)}
+
+\mbox{\Hypertarget{tarith_8c_acc1cc38af16cde181ccae613b63a455d}\label{tarith_8c_acc1cc38af16cde181ccae613b63a455d}} 
+\index{tarith.\+c@{tarith.\+c}!png\+\_\+safecat@{png\+\_\+safecat}}
+\index{png\+\_\+safecat@{png\+\_\+safecat}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+safecat}{png\_safecat}}
+{\footnotesize\ttfamily \#define png\+\_\+safecat(\begin{DoxyParamCaption}\item[{}]{b,  }\item[{}]{sb,  }\item[{}]{pos,  }\item[{}]{str }\end{DoxyParamCaption})~(pos)}
+
+\mbox{\Hypertarget{tarith_8c_a0f2f83efc466d0ff85774eae6cf1c068}\label{tarith_8c_a0f2f83efc466d0ff85774eae6cf1c068}} 
+\index{tarith.\+c@{tarith.\+c}!png\+\_\+set\+\_\+error\+\_\+fn@{png\+\_\+set\+\_\+error\+\_\+fn}}
+\index{png\+\_\+set\+\_\+error\+\_\+fn@{png\+\_\+set\+\_\+error\+\_\+fn}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+set\+\_\+error\+\_\+fn}{png\_set\_error\_fn}}
+{\footnotesize\ttfamily \#define png\+\_\+set\+\_\+error\+\_\+fn(\begin{DoxyParamCaption}\item[{}]{pp,  }\item[{}]{ep,  }\item[{}]{efp,  }\item[{}]{wfp }\end{DoxyParamCaption})~((void)0)}
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{tarith_8c_a935a3db52b21fa16eb06a1346979e8e6}\label{tarith_8c_a935a3db52b21fa16eb06a1346979e8e6}} 
+\index{tarith.\+c@{tarith.\+c}!checkfp\+\_\+state@{checkfp\+\_\+state}}
+\index{checkfp\+\_\+state@{checkfp\+\_\+state}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{checkfp\+\_\+state}{checkfp\_state}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2}{checkfp\+\_\+state}}  \mbox{\hyperlink{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2}{checkfp\+\_\+state}}}
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2}\label{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2}} 
+\index{tarith.\+c@{tarith.\+c}!checkfp\+\_\+state@{checkfp\+\_\+state}}
+\index{checkfp\+\_\+state@{checkfp\+\_\+state}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{checkfp\+\_\+state}{checkfp\_state}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2}{checkfp\+\_\+state}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{start@{start}!tarith.\+c@{tarith.\+c}}\index{tarith.\+c@{tarith.\+c}!start@{start}}}\mbox{\Hypertarget{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2a0e97c69c73117f6c0109b2d7d1d9cedc}\label{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2a0e97c69c73117f6c0109b2d7d1d9cedc}} 
+start&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{fraction@{fraction}!tarith.\+c@{tarith.\+c}}\index{tarith.\+c@{tarith.\+c}!fraction@{fraction}}}\mbox{\Hypertarget{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2ab10366ecc76133a0a4a4712a5ee26f65}\label{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2ab10366ecc76133a0a4a4712a5ee26f65}} 
+fraction&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{exponent@{exponent}!tarith.\+c@{tarith.\+c}}\index{tarith.\+c@{tarith.\+c}!exponent@{exponent}}}\mbox{\Hypertarget{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2ad87b2a1f151053978825ca89942e3f08}\label{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2ad87b2a1f151053978825ca89942e3f08}} 
+exponent&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{states@{states}!tarith.\+c@{tarith.\+c}}\index{tarith.\+c@{tarith.\+c}!states@{states}}}\mbox{\Hypertarget{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2a01d608ec22f441f90ab3bf3f1becc273}\label{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2a01d608ec22f441f90ab3bf3f1becc273}} 
+states&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{tarith_8c_afdcbd7c9937e6268adbe18bbebf35dca}\label{tarith_8c_afdcbd7c9937e6268adbe18bbebf35dca}} 
+\index{tarith.\+c@{tarith.\+c}!check\+\_\+all\+\_\+characters@{check\+\_\+all\+\_\+characters}}
+\index{check\+\_\+all\+\_\+characters@{check\+\_\+all\+\_\+characters}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{check\+\_\+all\+\_\+characters()}{check\_all\_characters()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} check\+\_\+all\+\_\+characters (\begin{DoxyParamCaption}\item[{checkfp\+\_\+command $\ast$}]{co,  }\item[{checkfp\+\_\+control}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tarith_8c_afdcbd7c9937e6268adbe18bbebf35dca_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tarith_8c_afdcbd7c9937e6268adbe18bbebf35dca_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tarith_8c_a5c7fe98c9cd960d36d512efb559cb8b1}\label{tarith_8c_a5c7fe98c9cd960d36d512efb559cb8b1}} 
+\index{tarith.\+c@{tarith.\+c}!check\+\_\+one\+\_\+character@{check\+\_\+one\+\_\+character}}
+\index{check\+\_\+one\+\_\+character@{check\+\_\+one\+\_\+character}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{check\+\_\+one\+\_\+character()}{check\_one\_character()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} check\+\_\+one\+\_\+character (\begin{DoxyParamCaption}\item[{checkfp\+\_\+command $\ast$}]{co,  }\item[{checkfp\+\_\+control}]{c,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{ch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tarith_8c_a5c7fe98c9cd960d36d512efb559cb8b1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tarith_8c_a5c7fe98c9cd960d36d512efb559cb8b1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tarith_8c_a0682daacf63246f295283b6db0c68be9}\label{tarith_8c_a0682daacf63246f295283b6db0c68be9}} 
+\index{tarith.\+c@{tarith.\+c}!check\+\_\+some\+\_\+characters@{check\+\_\+some\+\_\+characters}}
+\index{check\+\_\+some\+\_\+characters@{check\+\_\+some\+\_\+characters}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{check\+\_\+some\+\_\+characters()}{check\_some\_characters()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} check\+\_\+some\+\_\+characters (\begin{DoxyParamCaption}\item[{checkfp\+\_\+command $\ast$}]{co,  }\item[{checkfp\+\_\+control}]{c,  }\item[{const char $\ast$}]{tests }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tarith_8c_a0682daacf63246f295283b6db0c68be9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tarith_8c_a0682daacf63246f295283b6db0c68be9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tarith_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{tarith_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{tarith.\+c@{tarith.\+c}!main@{main}}
+\index{main@{main}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tarith_8c_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tarith_8c_a052bcc1d84950717caf163ee6accdb6a}\label{tarith_8c_a052bcc1d84950717caf163ee6accdb6a}} 
+\index{tarith.\+c@{tarith.\+c}!png\+\_\+fixed\+\_\+warning@{png\+\_\+fixed\+\_\+warning}}
+\index{png\+\_\+fixed\+\_\+warning@{png\+\_\+fixed\+\_\+warning}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+fixed\+\_\+warning()}{png\_fixed\_warning()}}
+{\footnotesize\ttfamily void png\+\_\+fixed\+\_\+warning (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{png_8h_ad21074dd8cb2466bcf2d187b29d3a91f}{png\+\_\+const\+\_\+structrp}}}]{png\+\_\+ptr,  }\item[{\mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}}}]{msg }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tarith_8c_afea7baadf43ed406d9f835688c9dc267}\label{tarith_8c_afea7baadf43ed406d9f835688c9dc267}} 
+\index{tarith.\+c@{tarith.\+c}!png\+\_\+warning@{png\+\_\+warning}}
+\index{png\+\_\+warning@{png\+\_\+warning}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+warning()}{png\_warning()}}
+{\footnotesize\ttfamily void png\+\_\+warning (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{png_8h_ad21074dd8cb2466bcf2d187b29d3a91f}{png\+\_\+const\+\_\+structrp}}}]{png\+\_\+ptr,  }\item[{\mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}}}]{msg }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tarith_8c_afea7baadf43ed406d9f835688c9dc267_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tarith_8c_a494da8f50d077fa0a91f923fe35e6648}\label{tarith_8c_a494da8f50d077fa0a91f923fe35e6648}} 
+\index{tarith.\+c@{tarith.\+c}!validation\+\_\+ascii\+\_\+to\+\_\+fp@{validation\+\_\+ascii\+\_\+to\+\_\+fp}}
+\index{validation\+\_\+ascii\+\_\+to\+\_\+fp@{validation\+\_\+ascii\+\_\+to\+\_\+fp}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{validation\+\_\+ascii\+\_\+to\+\_\+fp()}{validation\_ascii\_to\_fp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} validation\+\_\+ascii\+\_\+to\+\_\+fp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{count,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tarith_8c_a494da8f50d077fa0a91f923fe35e6648_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{tarith_8c_a494da8f50d077fa0a91f923fe35e6648_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tarith_8c_a916d6e49eed20c465ec4232346756271}\label{tarith_8c_a916d6e49eed20c465ec4232346756271}} 
+\index{tarith.\+c@{tarith.\+c}!validation\+\_\+checkfp@{validation\+\_\+checkfp}}
+\index{validation\+\_\+checkfp@{validation\+\_\+checkfp}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{validation\+\_\+checkfp()}{validation\_checkfp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} validation\+\_\+checkfp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{count,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tarith_8c_a916d6e49eed20c465ec4232346756271_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{tarith_8c_a916d6e49eed20c465ec4232346756271_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tarith_8c_a16e10f773487849ea4528f15d31096ad}\label{tarith_8c_a16e10f773487849ea4528f15d31096ad}} 
+\index{tarith.\+c@{tarith.\+c}!validation\+\_\+gamma@{validation\+\_\+gamma}}
+\index{validation\+\_\+gamma@{validation\+\_\+gamma}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{validation\+\_\+gamma()}{validation\_gamma()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} validation\+\_\+gamma (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tarith_8c_a16e10f773487849ea4528f15d31096ad_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{tarith_8c_a16e10f773487849ea4528f15d31096ad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tarith_8c_a15783f196dbf8110e8a63ec60d5b3f8c}\label{tarith_8c_a15783f196dbf8110e8a63ec60d5b3f8c}} 
+\index{tarith.\+c@{tarith.\+c}!validation\+\_\+muldiv@{validation\+\_\+muldiv}}
+\index{validation\+\_\+muldiv@{validation\+\_\+muldiv}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{validation\+\_\+muldiv()}{validation\_muldiv()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} validation\+\_\+muldiv (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{count,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{tarith_8c_a15783f196dbf8110e8a63ec60d5b3f8c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{tarith_8c_a15783f196dbf8110e8a63ec60d5b3f8c_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{tarith_8c_a3d44db51fe0827bf273836757968e0cf}\label{tarith_8c_a3d44db51fe0827bf273836757968e0cf}} 
+\index{tarith.\+c@{tarith.\+c}!hexdigits@{hexdigits}}
+\index{hexdigits@{hexdigits}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{hexdigits}{hexdigits}}
+{\footnotesize\ttfamily const char hexdigits\mbox{[}16\mbox{]} = \char`\"{}0123456789\+A\+B\+C\+D\+E\+F\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{tarith_8c_af922a39cbb5845d58fad3d8e3652304c}\label{tarith_8c_af922a39cbb5845d58fad3d8e3652304c}} 
+\index{tarith.\+c@{tarith.\+c}!none@{none}}
+\index{none@{none}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{none}{none}}
+{\footnotesize\ttfamily const char none\mbox{[}$\,$\mbox{]} = \char`\"{}\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{tarith_8c_ac5642b2b9feaca314845949c233a88ec}\label{tarith_8c_ac5642b2b9feaca314845949c233a88ec}} 
+\index{tarith.\+c@{tarith.\+c}!state\+\_\+characters@{state\+\_\+characters}}
+\index{state\+\_\+characters@{state\+\_\+characters}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{state\+\_\+characters}{state\_characters}}
+{\footnotesize\ttfamily const \{ ... \} 
+ state\+\_\+characters\mbox{[}\mbox{\hyperlink{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2a01d608ec22f441f90ab3bf3f1becc273}{states}}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+\{
+    \{ \textcolor{stringliteral}{"+-."}, \textcolor{stringliteral}{".eE"}, \textcolor{stringliteral}{"+-.e*0369"} \},
+    \{ \mbox{\hyperlink{tarith_8c_af922a39cbb5845d58fad3d8e3652304c}{none}}, \textcolor{stringliteral}{"eE"},  \textcolor{stringliteral}{"+-.E#0147"} \},
+    \{ \textcolor{stringliteral}{"+-"}, \mbox{\hyperlink{tarith_8c_af922a39cbb5845d58fad3d8e3652304c}{none}},  \textcolor{stringliteral}{"+-.eE^0258"} \}
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{tarith_8c_a0b2caeb4b6f130be43e5a2f0267dd453}\label{tarith_8c_a0b2caeb4b6f130be43e5a2f0267dd453}} 
+\index{tarith.\+c@{tarith.\+c}!verbose@{verbose}}
+\index{verbose@{verbose}!tarith.\+c@{tarith.\+c}}
+\subsubsection{\texorpdfstring{verbose}{verbose}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} verbose = 0\hspace{0.3cm}{\ttfamily [static]}}
+

@@ -1,0 +1,558 @@
+\hypertarget{mbc_8c}{}\section{src/gb/mbc.c File Reference}
+\label{mbc_8c}\index{src/gb/mbc.\+c@{src/gb/mbc.\+c}}
+{\ttfamily \#include $<$mgba/internal/gb/mbc.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/interface.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/lr35902/lr35902.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/gb.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/memory.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+Include dependency graph for mbc.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mbc_8c_a3bb4ee4f65d69428a96eb32bbc8b39ee}{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}} (G\+B\+\_\+\+M\+BC, \char`\"{}GB M\+BC\char`\"{}, \char`\"{}gb.\+mbc\char`\"{})
+\item 
+static void \mbox{\hyperlink{mbc_8c_afc7adfd0bbe2b9ce23b77274916aaa5c}{\+\_\+\+G\+B\+M\+B\+C\+None}} (struct GB $\ast$gb, uint16\+\_\+t address, uint8\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{mbc_8c_a0a145ecb19702c920e059643a6d93014}{\+\_\+\+G\+B\+M\+B\+C1}} (struct GB $\ast$, uint16\+\_\+t address, uint8\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{mbc_8c_a592f5f612b9bf106ef05cbcc7d11fd86}{\+\_\+\+G\+B\+M\+B\+C2}} (struct GB $\ast$, uint16\+\_\+t address, uint8\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{mbc_8c_a2c86828b39867343a1d7ed07c355d4f2}{\+\_\+\+G\+B\+M\+B\+C3}} (struct GB $\ast$, uint16\+\_\+t address, uint8\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{mbc_8c_aad862a05a30eb5e036dddf1f4a603cde}{\+\_\+\+G\+B\+M\+B\+C5}} (struct GB $\ast$, uint16\+\_\+t address, uint8\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{mbc_8c_ad3c0400b775d0ed13c5efc728a824f32}{\+\_\+\+G\+B\+M\+B\+C6}} (struct GB $\ast$, uint16\+\_\+t address, uint8\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{mbc_8c_a1d8386e348283fa470627b38383727e6}{\+\_\+\+G\+B\+M\+B\+C7}} (struct GB $\ast$, uint16\+\_\+t address, uint8\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{mbc_8c_a3d21bda05bcf93485c761043ac76292f}{\+\_\+\+G\+B\+Hu\+C3}} (struct GB $\ast$, uint16\+\_\+t address, uint8\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{mbc_8c_a6a86d4395e10011190086ecc4cba1a9b}{\+\_\+\+G\+B\+Pocket\+Cam}} (struct GB $\ast$gb, uint16\+\_\+t address, uint8\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{mbc_8c_aea176011d0a9191e2063b411884710de}{\+\_\+\+G\+B\+T\+A\+M\+A5}} (struct GB $\ast$gb, uint16\+\_\+t address, uint8\+\_\+t value)
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{mbc_8c_aa822be9eb309a5a17ea6fa1766d8a99c}{\+\_\+\+G\+B\+M\+B\+C2\+Read}} (struct G\+B\+Memory $\ast$, uint16\+\_\+t address)
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{mbc_8c_a325761a1cf8e6ebf2d85c3637e667d08}{\+\_\+\+G\+B\+M\+B\+C6\+Read}} (struct G\+B\+Memory $\ast$, uint16\+\_\+t address)
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{mbc_8c_a715a0ee0c07366284ed00d12aae78e8a}{\+\_\+\+G\+B\+M\+B\+C7\+Read}} (struct G\+B\+Memory $\ast$, uint16\+\_\+t address)
+\item 
+static void \mbox{\hyperlink{mbc_8c_adc0064b148929f93190c09fe6b1ea5fb}{\+\_\+\+G\+B\+M\+B\+C7\+Write}} (struct G\+B\+Memory $\ast$memory, uint16\+\_\+t address, uint8\+\_\+t value)
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{mbc_8c_a4c69c0da5e3712c5a94e8dc6742b1e31}{\+\_\+\+G\+B\+T\+A\+M\+A5\+Read}} (struct G\+B\+Memory $\ast$, uint16\+\_\+t address)
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{mbc_8c_a3c58f93ca7be795ab6189d923bd2c70a}{\+\_\+\+G\+B\+Pocket\+Cam\+Read}} (struct G\+B\+Memory $\ast$, uint16\+\_\+t address)
+\item 
+static void \mbox{\hyperlink{mbc_8c_ac8c5416511a97a06fdc55f5685de07d7}{\+\_\+\+G\+B\+Pocket\+Cam\+Capture}} (struct G\+B\+Memory $\ast$)
+\item 
+void \mbox{\hyperlink{mbc_8c_a2b505e001c5f5e7b687c453f7c2b1667}{G\+B\+M\+B\+C\+Switch\+Bank}} (struct GB $\ast$gb, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} bank)
+\item 
+void \mbox{\hyperlink{mbc_8c_a6b705fdecdfe5b66146d4d161cd465b9}{G\+B\+M\+B\+C\+Switch\+Bank0}} (struct GB $\ast$gb, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} bank)
+\item 
+void \mbox{\hyperlink{mbc_8c_aa706d95aef432a37aa5b21f75d9fcbd1}{G\+B\+M\+B\+C\+Switch\+Half\+Bank}} (struct GB $\ast$gb, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} half, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} bank)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mbc_8c_aaef9ee492b0cfcc2cc77d4cccad0886a}{\+\_\+is\+Multicart}} (const uint8\+\_\+t $\ast$mem)
+\item 
+void \mbox{\hyperlink{mbc_8c_aec7c56d23f97c4047cb82c03965dd52d}{G\+B\+M\+B\+C\+Switch\+Sram\+Bank}} (struct GB $\ast$gb, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} bank)
+\item 
+void \mbox{\hyperlink{mbc_8c_ab6755fbd2fb2bbbc9c02169aeb5fa1dc}{G\+B\+M\+B\+C\+Switch\+Sram\+Half\+Bank}} (struct GB $\ast$gb, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} half, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} bank)
+\item 
+void \mbox{\hyperlink{mbc_8c_af2a936ff662d971e1c2316be20a6bb74}{G\+B\+M\+B\+C\+Init}} (struct GB $\ast$gb)
+\item 
+static void \mbox{\hyperlink{mbc_8c_a50756d7c75e302346b1aca7f9da330d3}{\+\_\+latch\+Rtc}} (struct m\+R\+T\+C\+Source $\ast$rtc, uint8\+\_\+t $\ast$rtc\+Regs, \mbox{\hyperlink{__builder_8h_afbab2fa83a411ded31f77ed022c20218}{time\+\_\+t}} $\ast$rtc\+Last\+Latch)
+\item 
+void \mbox{\hyperlink{mbc_8c_a3e19952f07edaed34af87e0ced4abcf2}{G\+B\+M\+B\+C\+R\+T\+C\+Read}} (struct GB $\ast$gb)
+\item 
+void \mbox{\hyperlink{mbc_8c_a62c8767c00dccfb2286e68982d81cf3d}{G\+B\+M\+B\+C\+R\+T\+C\+Write}} (struct GB $\ast$gb)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{mbc_8c_a3d21bda05bcf93485c761043ac76292f}\label{mbc_8c_a3d21bda05bcf93485c761043ac76292f}} 
+\index{mbc.\+c@{mbc.\+c}!\+\_\+\+G\+B\+Hu\+C3@{\+\_\+\+G\+B\+Hu\+C3}}
+\index{\+\_\+\+G\+B\+Hu\+C3@{\+\_\+\+G\+B\+Hu\+C3}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+Hu\+C3()}{\_GBHuC3()}}
+{\footnotesize\ttfamily void \+\_\+\+G\+B\+Hu\+C3 (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb,  }\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{mbc_8c_a3d21bda05bcf93485c761043ac76292f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_a3d21bda05bcf93485c761043ac76292f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_a0a145ecb19702c920e059643a6d93014}\label{mbc_8c_a0a145ecb19702c920e059643a6d93014}} 
+\index{mbc.\+c@{mbc.\+c}!\+\_\+\+G\+B\+M\+B\+C1@{\+\_\+\+G\+B\+M\+B\+C1}}
+\index{\+\_\+\+G\+B\+M\+B\+C1@{\+\_\+\+G\+B\+M\+B\+C1}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+M\+B\+C1()}{\_GBMBC1()}}
+{\footnotesize\ttfamily void \+\_\+\+G\+B\+M\+B\+C1 (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb,  }\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{mbc_8c_a0a145ecb19702c920e059643a6d93014_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_a0a145ecb19702c920e059643a6d93014_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_a592f5f612b9bf106ef05cbcc7d11fd86}\label{mbc_8c_a592f5f612b9bf106ef05cbcc7d11fd86}} 
+\index{mbc.\+c@{mbc.\+c}!\+\_\+\+G\+B\+M\+B\+C2@{\+\_\+\+G\+B\+M\+B\+C2}}
+\index{\+\_\+\+G\+B\+M\+B\+C2@{\+\_\+\+G\+B\+M\+B\+C2}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+M\+B\+C2()}{\_GBMBC2()}}
+{\footnotesize\ttfamily void \+\_\+\+G\+B\+M\+B\+C2 (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb,  }\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{mbc_8c_a592f5f612b9bf106ef05cbcc7d11fd86_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_a592f5f612b9bf106ef05cbcc7d11fd86_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_aa822be9eb309a5a17ea6fa1766d8a99c}\label{mbc_8c_aa822be9eb309a5a17ea6fa1766d8a99c}} 
+\index{mbc.\+c@{mbc.\+c}!\+\_\+\+G\+B\+M\+B\+C2\+Read@{\+\_\+\+G\+B\+M\+B\+C2\+Read}}
+\index{\+\_\+\+G\+B\+M\+B\+C2\+Read@{\+\_\+\+G\+B\+M\+B\+C2\+Read}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+M\+B\+C2\+Read()}{\_GBMBC2Read()}}
+{\footnotesize\ttfamily static uint8\+\_\+t \+\_\+\+G\+B\+M\+B\+C2\+Read (\begin{DoxyParamCaption}\item[{struct G\+B\+Memory $\ast$}]{memory,  }\item[{uint16\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_aa822be9eb309a5a17ea6fa1766d8a99c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_a2c86828b39867343a1d7ed07c355d4f2}\label{mbc_8c_a2c86828b39867343a1d7ed07c355d4f2}} 
+\index{mbc.\+c@{mbc.\+c}!\+\_\+\+G\+B\+M\+B\+C3@{\+\_\+\+G\+B\+M\+B\+C3}}
+\index{\+\_\+\+G\+B\+M\+B\+C3@{\+\_\+\+G\+B\+M\+B\+C3}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+M\+B\+C3()}{\_GBMBC3()}}
+{\footnotesize\ttfamily void \+\_\+\+G\+B\+M\+B\+C3 (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb,  }\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{mbc_8c_a2c86828b39867343a1d7ed07c355d4f2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_a2c86828b39867343a1d7ed07c355d4f2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_aad862a05a30eb5e036dddf1f4a603cde}\label{mbc_8c_aad862a05a30eb5e036dddf1f4a603cde}} 
+\index{mbc.\+c@{mbc.\+c}!\+\_\+\+G\+B\+M\+B\+C5@{\+\_\+\+G\+B\+M\+B\+C5}}
+\index{\+\_\+\+G\+B\+M\+B\+C5@{\+\_\+\+G\+B\+M\+B\+C5}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+M\+B\+C5()}{\_GBMBC5()}}
+{\footnotesize\ttfamily void \+\_\+\+G\+B\+M\+B\+C5 (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb,  }\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{mbc_8c_aad862a05a30eb5e036dddf1f4a603cde_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_aad862a05a30eb5e036dddf1f4a603cde_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_ad3c0400b775d0ed13c5efc728a824f32}\label{mbc_8c_ad3c0400b775d0ed13c5efc728a824f32}} 
+\index{mbc.\+c@{mbc.\+c}!\+\_\+\+G\+B\+M\+B\+C6@{\+\_\+\+G\+B\+M\+B\+C6}}
+\index{\+\_\+\+G\+B\+M\+B\+C6@{\+\_\+\+G\+B\+M\+B\+C6}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+M\+B\+C6()}{\_GBMBC6()}}
+{\footnotesize\ttfamily void \+\_\+\+G\+B\+M\+B\+C6 (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb,  }\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{mbc_8c_ad3c0400b775d0ed13c5efc728a824f32_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_ad3c0400b775d0ed13c5efc728a824f32_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_a325761a1cf8e6ebf2d85c3637e667d08}\label{mbc_8c_a325761a1cf8e6ebf2d85c3637e667d08}} 
+\index{mbc.\+c@{mbc.\+c}!\+\_\+\+G\+B\+M\+B\+C6\+Read@{\+\_\+\+G\+B\+M\+B\+C6\+Read}}
+\index{\+\_\+\+G\+B\+M\+B\+C6\+Read@{\+\_\+\+G\+B\+M\+B\+C6\+Read}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+M\+B\+C6\+Read()}{\_GBMBC6Read()}}
+{\footnotesize\ttfamily uint8\+\_\+t \+\_\+\+G\+B\+M\+B\+C6\+Read (\begin{DoxyParamCaption}\item[{struct G\+B\+Memory $\ast$}]{memory,  }\item[{uint16\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_a325761a1cf8e6ebf2d85c3637e667d08_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_a1d8386e348283fa470627b38383727e6}\label{mbc_8c_a1d8386e348283fa470627b38383727e6}} 
+\index{mbc.\+c@{mbc.\+c}!\+\_\+\+G\+B\+M\+B\+C7@{\+\_\+\+G\+B\+M\+B\+C7}}
+\index{\+\_\+\+G\+B\+M\+B\+C7@{\+\_\+\+G\+B\+M\+B\+C7}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+M\+B\+C7()}{\_GBMBC7()}}
+{\footnotesize\ttfamily void \+\_\+\+G\+B\+M\+B\+C7 (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb,  }\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{mbc_8c_a1d8386e348283fa470627b38383727e6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_a1d8386e348283fa470627b38383727e6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_a715a0ee0c07366284ed00d12aae78e8a}\label{mbc_8c_a715a0ee0c07366284ed00d12aae78e8a}} 
+\index{mbc.\+c@{mbc.\+c}!\+\_\+\+G\+B\+M\+B\+C7\+Read@{\+\_\+\+G\+B\+M\+B\+C7\+Read}}
+\index{\+\_\+\+G\+B\+M\+B\+C7\+Read@{\+\_\+\+G\+B\+M\+B\+C7\+Read}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+M\+B\+C7\+Read()}{\_GBMBC7Read()}}
+{\footnotesize\ttfamily uint8\+\_\+t \+\_\+\+G\+B\+M\+B\+C7\+Read (\begin{DoxyParamCaption}\item[{struct G\+B\+Memory $\ast$}]{memory,  }\item[{uint16\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_a715a0ee0c07366284ed00d12aae78e8a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_adc0064b148929f93190c09fe6b1ea5fb}\label{mbc_8c_adc0064b148929f93190c09fe6b1ea5fb}} 
+\index{mbc.\+c@{mbc.\+c}!\+\_\+\+G\+B\+M\+B\+C7\+Write@{\+\_\+\+G\+B\+M\+B\+C7\+Write}}
+\index{\+\_\+\+G\+B\+M\+B\+C7\+Write@{\+\_\+\+G\+B\+M\+B\+C7\+Write}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+M\+B\+C7\+Write()}{\_GBMBC7Write()}}
+{\footnotesize\ttfamily static void \+\_\+\+G\+B\+M\+B\+C7\+Write (\begin{DoxyParamCaption}\item[{struct G\+B\+Memory $\ast$}]{memory,  }\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_adc0064b148929f93190c09fe6b1ea5fb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_afc7adfd0bbe2b9ce23b77274916aaa5c}\label{mbc_8c_afc7adfd0bbe2b9ce23b77274916aaa5c}} 
+\index{mbc.\+c@{mbc.\+c}!\+\_\+\+G\+B\+M\+B\+C\+None@{\+\_\+\+G\+B\+M\+B\+C\+None}}
+\index{\+\_\+\+G\+B\+M\+B\+C\+None@{\+\_\+\+G\+B\+M\+B\+C\+None}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+M\+B\+C\+None()}{\_GBMBCNone()}}
+{\footnotesize\ttfamily static void \+\_\+\+G\+B\+M\+B\+C\+None (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb,  }\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_afc7adfd0bbe2b9ce23b77274916aaa5c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_a6a86d4395e10011190086ecc4cba1a9b}\label{mbc_8c_a6a86d4395e10011190086ecc4cba1a9b}} 
+\index{mbc.\+c@{mbc.\+c}!\+\_\+\+G\+B\+Pocket\+Cam@{\+\_\+\+G\+B\+Pocket\+Cam}}
+\index{\+\_\+\+G\+B\+Pocket\+Cam@{\+\_\+\+G\+B\+Pocket\+Cam}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+Pocket\+Cam()}{\_GBPocketCam()}}
+{\footnotesize\ttfamily void \+\_\+\+G\+B\+Pocket\+Cam (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb,  }\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{mbc_8c_a6a86d4395e10011190086ecc4cba1a9b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_a6a86d4395e10011190086ecc4cba1a9b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_ac8c5416511a97a06fdc55f5685de07d7}\label{mbc_8c_ac8c5416511a97a06fdc55f5685de07d7}} 
+\index{mbc.\+c@{mbc.\+c}!\+\_\+\+G\+B\+Pocket\+Cam\+Capture@{\+\_\+\+G\+B\+Pocket\+Cam\+Capture}}
+\index{\+\_\+\+G\+B\+Pocket\+Cam\+Capture@{\+\_\+\+G\+B\+Pocket\+Cam\+Capture}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+Pocket\+Cam\+Capture()}{\_GBPocketCamCapture()}}
+{\footnotesize\ttfamily void \+\_\+\+G\+B\+Pocket\+Cam\+Capture (\begin{DoxyParamCaption}\item[{struct G\+B\+Memory $\ast$}]{memory }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_ac8c5416511a97a06fdc55f5685de07d7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_a3c58f93ca7be795ab6189d923bd2c70a}\label{mbc_8c_a3c58f93ca7be795ab6189d923bd2c70a}} 
+\index{mbc.\+c@{mbc.\+c}!\+\_\+\+G\+B\+Pocket\+Cam\+Read@{\+\_\+\+G\+B\+Pocket\+Cam\+Read}}
+\index{\+\_\+\+G\+B\+Pocket\+Cam\+Read@{\+\_\+\+G\+B\+Pocket\+Cam\+Read}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+Pocket\+Cam\+Read()}{\_GBPocketCamRead()}}
+{\footnotesize\ttfamily uint8\+\_\+t \+\_\+\+G\+B\+Pocket\+Cam\+Read (\begin{DoxyParamCaption}\item[{struct G\+B\+Memory $\ast$}]{memory,  }\item[{uint16\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_a3c58f93ca7be795ab6189d923bd2c70a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_aea176011d0a9191e2063b411884710de}\label{mbc_8c_aea176011d0a9191e2063b411884710de}} 
+\index{mbc.\+c@{mbc.\+c}!\+\_\+\+G\+B\+T\+A\+M\+A5@{\+\_\+\+G\+B\+T\+A\+M\+A5}}
+\index{\+\_\+\+G\+B\+T\+A\+M\+A5@{\+\_\+\+G\+B\+T\+A\+M\+A5}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+T\+A\+M\+A5()}{\_GBTAMA5()}}
+{\footnotesize\ttfamily void \+\_\+\+G\+B\+T\+A\+M\+A5 (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb,  }\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_aea176011d0a9191e2063b411884710de_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_aea176011d0a9191e2063b411884710de_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_a4c69c0da5e3712c5a94e8dc6742b1e31}\label{mbc_8c_a4c69c0da5e3712c5a94e8dc6742b1e31}} 
+\index{mbc.\+c@{mbc.\+c}!\+\_\+\+G\+B\+T\+A\+M\+A5\+Read@{\+\_\+\+G\+B\+T\+A\+M\+A5\+Read}}
+\index{\+\_\+\+G\+B\+T\+A\+M\+A5\+Read@{\+\_\+\+G\+B\+T\+A\+M\+A5\+Read}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+T\+A\+M\+A5\+Read()}{\_GBTAMA5Read()}}
+{\footnotesize\ttfamily uint8\+\_\+t \+\_\+\+G\+B\+T\+A\+M\+A5\+Read (\begin{DoxyParamCaption}\item[{struct G\+B\+Memory $\ast$}]{memory,  }\item[{uint16\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_a4c69c0da5e3712c5a94e8dc6742b1e31_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_aaef9ee492b0cfcc2cc77d4cccad0886a}\label{mbc_8c_aaef9ee492b0cfcc2cc77d4cccad0886a}} 
+\index{mbc.\+c@{mbc.\+c}!\+\_\+is\+Multicart@{\+\_\+is\+Multicart}}
+\index{\+\_\+is\+Multicart@{\+\_\+is\+Multicart}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+is\+Multicart()}{\_isMulticart()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+is\+Multicart (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t $\ast$}]{mem }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_aaef9ee492b0cfcc2cc77d4cccad0886a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_aaef9ee492b0cfcc2cc77d4cccad0886a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_a50756d7c75e302346b1aca7f9da330d3}\label{mbc_8c_a50756d7c75e302346b1aca7f9da330d3}} 
+\index{mbc.\+c@{mbc.\+c}!\+\_\+latch\+Rtc@{\+\_\+latch\+Rtc}}
+\index{\+\_\+latch\+Rtc@{\+\_\+latch\+Rtc}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+latch\+Rtc()}{\_latchRtc()}}
+{\footnotesize\ttfamily static void \+\_\+latch\+Rtc (\begin{DoxyParamCaption}\item[{struct m\+R\+T\+C\+Source $\ast$}]{rtc,  }\item[{uint8\+\_\+t $\ast$}]{rtc\+Regs,  }\item[{\mbox{\hyperlink{__builder_8h_afbab2fa83a411ded31f77ed022c20218}{time\+\_\+t}} $\ast$}]{rtc\+Last\+Latch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_a50756d7c75e302346b1aca7f9da330d3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_af2a936ff662d971e1c2316be20a6bb74}\label{mbc_8c_af2a936ff662d971e1c2316be20a6bb74}} 
+\index{mbc.\+c@{mbc.\+c}!G\+B\+M\+B\+C\+Init@{G\+B\+M\+B\+C\+Init}}
+\index{G\+B\+M\+B\+C\+Init@{G\+B\+M\+B\+C\+Init}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+M\+B\+C\+Init()}{GBMBCInit()}}
+{\footnotesize\ttfamily void G\+B\+M\+B\+C\+Init (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_af2a936ff662d971e1c2316be20a6bb74_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_af2a936ff662d971e1c2316be20a6bb74_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_a3e19952f07edaed34af87e0ced4abcf2}\label{mbc_8c_a3e19952f07edaed34af87e0ced4abcf2}} 
+\index{mbc.\+c@{mbc.\+c}!G\+B\+M\+B\+C\+R\+T\+C\+Read@{G\+B\+M\+B\+C\+R\+T\+C\+Read}}
+\index{G\+B\+M\+B\+C\+R\+T\+C\+Read@{G\+B\+M\+B\+C\+R\+T\+C\+Read}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+M\+B\+C\+R\+T\+C\+Read()}{GBMBCRTCRead()}}
+{\footnotesize\ttfamily void G\+B\+M\+B\+C\+R\+T\+C\+Read (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_a3e19952f07edaed34af87e0ced4abcf2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_a62c8767c00dccfb2286e68982d81cf3d}\label{mbc_8c_a62c8767c00dccfb2286e68982d81cf3d}} 
+\index{mbc.\+c@{mbc.\+c}!G\+B\+M\+B\+C\+R\+T\+C\+Write@{G\+B\+M\+B\+C\+R\+T\+C\+Write}}
+\index{G\+B\+M\+B\+C\+R\+T\+C\+Write@{G\+B\+M\+B\+C\+R\+T\+C\+Write}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+M\+B\+C\+R\+T\+C\+Write()}{GBMBCRTCWrite()}}
+{\footnotesize\ttfamily void G\+B\+M\+B\+C\+R\+T\+C\+Write (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{mbc_8c_a62c8767c00dccfb2286e68982d81cf3d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_a62c8767c00dccfb2286e68982d81cf3d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_a2b505e001c5f5e7b687c453f7c2b1667}\label{mbc_8c_a2b505e001c5f5e7b687c453f7c2b1667}} 
+\index{mbc.\+c@{mbc.\+c}!G\+B\+M\+B\+C\+Switch\+Bank@{G\+B\+M\+B\+C\+Switch\+Bank}}
+\index{G\+B\+M\+B\+C\+Switch\+Bank@{G\+B\+M\+B\+C\+Switch\+Bank}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+M\+B\+C\+Switch\+Bank()}{GBMBCSwitchBank()}}
+{\footnotesize\ttfamily void G\+B\+M\+B\+C\+Switch\+Bank (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{bank }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_a2b505e001c5f5e7b687c453f7c2b1667_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_a6b705fdecdfe5b66146d4d161cd465b9}\label{mbc_8c_a6b705fdecdfe5b66146d4d161cd465b9}} 
+\index{mbc.\+c@{mbc.\+c}!G\+B\+M\+B\+C\+Switch\+Bank0@{G\+B\+M\+B\+C\+Switch\+Bank0}}
+\index{G\+B\+M\+B\+C\+Switch\+Bank0@{G\+B\+M\+B\+C\+Switch\+Bank0}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+M\+B\+C\+Switch\+Bank0()}{GBMBCSwitchBank0()}}
+{\footnotesize\ttfamily void G\+B\+M\+B\+C\+Switch\+Bank0 (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{bank }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_a6b705fdecdfe5b66146d4d161cd465b9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_aa706d95aef432a37aa5b21f75d9fcbd1}\label{mbc_8c_aa706d95aef432a37aa5b21f75d9fcbd1}} 
+\index{mbc.\+c@{mbc.\+c}!G\+B\+M\+B\+C\+Switch\+Half\+Bank@{G\+B\+M\+B\+C\+Switch\+Half\+Bank}}
+\index{G\+B\+M\+B\+C\+Switch\+Half\+Bank@{G\+B\+M\+B\+C\+Switch\+Half\+Bank}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+M\+B\+C\+Switch\+Half\+Bank()}{GBMBCSwitchHalfBank()}}
+{\footnotesize\ttfamily void G\+B\+M\+B\+C\+Switch\+Half\+Bank (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{half,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{bank }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_aa706d95aef432a37aa5b21f75d9fcbd1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_aec7c56d23f97c4047cb82c03965dd52d}\label{mbc_8c_aec7c56d23f97c4047cb82c03965dd52d}} 
+\index{mbc.\+c@{mbc.\+c}!G\+B\+M\+B\+C\+Switch\+Sram\+Bank@{G\+B\+M\+B\+C\+Switch\+Sram\+Bank}}
+\index{G\+B\+M\+B\+C\+Switch\+Sram\+Bank@{G\+B\+M\+B\+C\+Switch\+Sram\+Bank}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+M\+B\+C\+Switch\+Sram\+Bank()}{GBMBCSwitchSramBank()}}
+{\footnotesize\ttfamily void G\+B\+M\+B\+C\+Switch\+Sram\+Bank (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{bank }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_aec7c56d23f97c4047cb82c03965dd52d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_ab6755fbd2fb2bbbc9c02169aeb5fa1dc}\label{mbc_8c_ab6755fbd2fb2bbbc9c02169aeb5fa1dc}} 
+\index{mbc.\+c@{mbc.\+c}!G\+B\+M\+B\+C\+Switch\+Sram\+Half\+Bank@{G\+B\+M\+B\+C\+Switch\+Sram\+Half\+Bank}}
+\index{G\+B\+M\+B\+C\+Switch\+Sram\+Half\+Bank@{G\+B\+M\+B\+C\+Switch\+Sram\+Half\+Bank}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+M\+B\+C\+Switch\+Sram\+Half\+Bank()}{GBMBCSwitchSramHalfBank()}}
+{\footnotesize\ttfamily void G\+B\+M\+B\+C\+Switch\+Sram\+Half\+Bank (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{half,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{bank }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mbc_8c_ab6755fbd2fb2bbbc9c02169aeb5fa1dc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mbc_8c_a3bb4ee4f65d69428a96eb32bbc8b39ee}\label{mbc_8c_a3bb4ee4f65d69428a96eb32bbc8b39ee}} 
+\index{mbc.\+c@{mbc.\+c}!m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}}
+\index{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}!mbc.\+c@{mbc.\+c}}
+\subsubsection{\texorpdfstring{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+R\+Y()}{mLOG\_DEFINE\_CATEGORY()}}
+{\footnotesize\ttfamily m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY (\begin{DoxyParamCaption}\item[{G\+B\+\_\+\+M\+BC}]{,  }\item[{\char`\"{}GB M\+BC\char`\"{}}]{,  }\item[{\char`\"{}gb.\+mbc\char`\"{}}]{ }\end{DoxyParamCaption})}
+

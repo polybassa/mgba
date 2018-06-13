@@ -1,0 +1,102 @@
+\hypertarget{crypt_8h}{}\section{src/third-\/party/zlib/contrib/minizip/crypt.h File Reference}
+\label{crypt_8h}\index{src/third-\/party/zlib/contrib/minizip/crypt.\+h@{src/third-\/party/zlib/contrib/minizip/crypt.\+h}}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{crypt_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{crypt_8h_a9f548005c00fa0754e9c23b7726bf741}{C\+R\+C32}}(\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}},  b)~(($\ast$(pcrc\+\_\+32\+\_\+tab+(((\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}})(\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}}) $^\wedge$ (b)) \& 0xff))) $^\wedge$ ((c) $>$$>$ 8))
+\item 
+\#define \mbox{\hyperlink{crypt_8h_a2ac0d8ec3c867c44d730a188d8b0418e}{zdecode}}(pkeys,  pcrc\+\_\+32\+\_\+tab,  \mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}})~(\mbox{\hyperlink{crypt_8h_a4924d589565ac1cc6aad02c29fd263f1}{update\+\_\+keys}}(pkeys,pcrc\+\_\+32\+\_\+tab,\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}} $^\wedge$= \mbox{\hyperlink{crypt_8h_ab57d540793cee83093400a136e6905ce}{decrypt\+\_\+byte}}(pkeys,pcrc\+\_\+32\+\_\+tab)))
+\item 
+\#define \mbox{\hyperlink{crypt_8h_ab9d6a91abe3a1127f8b5476ba9ee9316}{zencode}}(pkeys,  pcrc\+\_\+32\+\_\+tab,  \mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}},  t)~(t=\mbox{\hyperlink{crypt_8h_ab57d540793cee83093400a136e6905ce}{decrypt\+\_\+byte}}(pkeys,pcrc\+\_\+32\+\_\+tab), \mbox{\hyperlink{crypt_8h_a4924d589565ac1cc6aad02c29fd263f1}{update\+\_\+keys}}(pkeys,pcrc\+\_\+32\+\_\+tab,\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}}), t$^\wedge$(\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}}))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{crypt_8h_ab57d540793cee83093400a136e6905ce}{decrypt\+\_\+byte}} (unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} $\ast$pkeys, const z\+\_\+crc\+\_\+t $\ast$pcrc\+\_\+32\+\_\+tab)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{crypt_8h_a4924d589565ac1cc6aad02c29fd263f1}{update\+\_\+keys}} (unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} $\ast$pkeys, const z\+\_\+crc\+\_\+t $\ast$pcrc\+\_\+32\+\_\+tab, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}})
+\item 
+static void \mbox{\hyperlink{crypt_8h_a8ecea0e614a00242525588a4dc1ccf34}{init\+\_\+keys}} (const char $\ast$passwd, unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} $\ast$pkeys, const z\+\_\+crc\+\_\+t $\ast$pcrc\+\_\+32\+\_\+tab)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{crypt_8h_a9f548005c00fa0754e9c23b7726bf741}\label{crypt_8h_a9f548005c00fa0754e9c23b7726bf741}} 
+\index{crypt.\+h@{crypt.\+h}!C\+R\+C32@{C\+R\+C32}}
+\index{C\+R\+C32@{C\+R\+C32}!crypt.\+h@{crypt.\+h}}
+\subsubsection{\texorpdfstring{C\+R\+C32}{CRC32}}
+{\footnotesize\ttfamily \#define C\+R\+C32(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}},  }\item[{}]{b }\end{DoxyParamCaption})~(($\ast$(pcrc\+\_\+32\+\_\+tab+(((\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}})(\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}}) $^\wedge$ (b)) \& 0xff))) $^\wedge$ ((c) $>$$>$ 8))}
+
+\mbox{\Hypertarget{crypt_8h_a2ac0d8ec3c867c44d730a188d8b0418e}\label{crypt_8h_a2ac0d8ec3c867c44d730a188d8b0418e}} 
+\index{crypt.\+h@{crypt.\+h}!zdecode@{zdecode}}
+\index{zdecode@{zdecode}!crypt.\+h@{crypt.\+h}}
+\subsubsection{\texorpdfstring{zdecode}{zdecode}}
+{\footnotesize\ttfamily \#define zdecode(\begin{DoxyParamCaption}\item[{}]{pkeys,  }\item[{}]{pcrc\+\_\+32\+\_\+tab,  }\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}} }\end{DoxyParamCaption})~(\mbox{\hyperlink{crypt_8h_a4924d589565ac1cc6aad02c29fd263f1}{update\+\_\+keys}}(pkeys,pcrc\+\_\+32\+\_\+tab,\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}} $^\wedge$= \mbox{\hyperlink{crypt_8h_ab57d540793cee83093400a136e6905ce}{decrypt\+\_\+byte}}(pkeys,pcrc\+\_\+32\+\_\+tab)))}
+
+\mbox{\Hypertarget{crypt_8h_ab9d6a91abe3a1127f8b5476ba9ee9316}\label{crypt_8h_ab9d6a91abe3a1127f8b5476ba9ee9316}} 
+\index{crypt.\+h@{crypt.\+h}!zencode@{zencode}}
+\index{zencode@{zencode}!crypt.\+h@{crypt.\+h}}
+\subsubsection{\texorpdfstring{zencode}{zencode}}
+{\footnotesize\ttfamily \#define zencode(\begin{DoxyParamCaption}\item[{}]{pkeys,  }\item[{}]{pcrc\+\_\+32\+\_\+tab,  }\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}},  }\item[{}]{t }\end{DoxyParamCaption})~(t=\mbox{\hyperlink{crypt_8h_ab57d540793cee83093400a136e6905ce}{decrypt\+\_\+byte}}(pkeys,pcrc\+\_\+32\+\_\+tab), \mbox{\hyperlink{crypt_8h_a4924d589565ac1cc6aad02c29fd263f1}{update\+\_\+keys}}(pkeys,pcrc\+\_\+32\+\_\+tab,\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}}), t$^\wedge$(\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}}))}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{crypt_8h_ab57d540793cee83093400a136e6905ce}\label{crypt_8h_ab57d540793cee83093400a136e6905ce}} 
+\index{crypt.\+h@{crypt.\+h}!decrypt\+\_\+byte@{decrypt\+\_\+byte}}
+\index{decrypt\+\_\+byte@{decrypt\+\_\+byte}!crypt.\+h@{crypt.\+h}}
+\subsubsection{\texorpdfstring{decrypt\+\_\+byte()}{decrypt\_byte()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} decrypt\+\_\+byte (\begin{DoxyParamCaption}\item[{unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} $\ast$}]{pkeys,  }\item[{const z\+\_\+crc\+\_\+t $\ast$}]{pcrc\+\_\+32\+\_\+tab }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{crypt_8h_a8ecea0e614a00242525588a4dc1ccf34}\label{crypt_8h_a8ecea0e614a00242525588a4dc1ccf34}} 
+\index{crypt.\+h@{crypt.\+h}!init\+\_\+keys@{init\+\_\+keys}}
+\index{init\+\_\+keys@{init\+\_\+keys}!crypt.\+h@{crypt.\+h}}
+\subsubsection{\texorpdfstring{init\+\_\+keys()}{init\_keys()}}
+{\footnotesize\ttfamily static void init\+\_\+keys (\begin{DoxyParamCaption}\item[{const char $\ast$}]{passwd,  }\item[{unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} $\ast$}]{pkeys,  }\item[{const z\+\_\+crc\+\_\+t $\ast$}]{pcrc\+\_\+32\+\_\+tab }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{crypt_8h_a8ecea0e614a00242525588a4dc1ccf34_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{crypt_8h_a8ecea0e614a00242525588a4dc1ccf34_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{crypt_8h_a4924d589565ac1cc6aad02c29fd263f1}\label{crypt_8h_a4924d589565ac1cc6aad02c29fd263f1}} 
+\index{crypt.\+h@{crypt.\+h}!update\+\_\+keys@{update\+\_\+keys}}
+\index{update\+\_\+keys@{update\+\_\+keys}!crypt.\+h@{crypt.\+h}}
+\subsubsection{\texorpdfstring{update\+\_\+keys()}{update\_keys()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} update\+\_\+keys (\begin{DoxyParamCaption}\item[{unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} $\ast$}]{pkeys,  }\item[{const z\+\_\+crc\+\_\+t $\ast$}]{pcrc\+\_\+32\+\_\+tab,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{crypt_8h_a4924d589565ac1cc6aad02c29fd263f1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{crypt_8h_a4924d589565ac1cc6aad02c29fd263f1_icgraph}
+\end{center}
+\end{figure}

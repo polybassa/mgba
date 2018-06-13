@@ -1,0 +1,269 @@
+\hypertarget{class_q_g_b_a_1_1_audio_processor}{}\section{Q\+G\+BA\+:\+:Audio\+Processor Class Reference}
+\label{class_q_g_b_a_1_1_audio_processor}\index{Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}}
+
+
+{\ttfamily \#include $<$Audio\+Processor.\+h$>$}
+
+
+
+Inheritance diagram for Q\+G\+BA\+:\+:Audio\+Processor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_q_g_b_a_1_1_audio_processor__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Q\+G\+BA\+:\+:Audio\+Processor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=239pt]{class_q_g_b_a_1_1_audio_processor__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_a49108637a6edef1b593f66701eb9b4bc}{Driver}} 
+\end{DoxyCompactItemize}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_ab391c472b41b7e301b780e687c00ee8c}{set\+Input}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_q_g_b_a_1_1_core_controller}{Core\+Controller}} $>$)
+\item 
+virtual void \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_a0a4f015fcc73aedc7fd158758bb725f1}{stop}} ()
+\item 
+virtual \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_a213f98cc7d626a4f41522d58c14792fb}{start}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_a85818cf03baf5c2ff4c3f4d4ba250100}{pause}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_a49ea31dd2330727d83651f49746517c9}{set\+Buffer\+Samples}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} samples)=0
+\item 
+virtual void \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_a2df53cfcd968ab9333d0f5eb9b88dba6}{input\+Parameters\+Changed}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_ad0a393ef520d75af916ab6178c38e05d}{request\+Sample\+Rate}} (unsigned)=0
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_a925e9472818e6d647bb5ae7bf8005204}{Audio\+Processor}} (Q\+Object $\ast$parent=nullptr)
+\item 
+\mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_a3f4e00da5cea8cd62f0325abc050a0d2}{$\sim$\+Audio\+Processor}} ()
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_a44a16d22abaa070f9c7234b540287719}{get\+Buffer\+Samples}} () const
+\item 
+virtual unsigned \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_af9fcd827f2447cca613deb3bbe50a1de}{sample\+Rate}} () const =0
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor}{Audio\+Processor}} $\ast$ \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_a699614d282aa9cf042df8d23b9b5923a}{create}} ()
+\item 
+static void \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_a7bc53e5c2ced8444d55706e449f4a6b1}{set\+Driver}} (\mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_a49108637a6edef1b593f66701eb9b4bc}{Driver}} driver)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+m\+Core\+Thread $\ast$ \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_ad9001a38e63be82cbb2e582ac4162db9}{input}} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_q_g_b_a_1_1_core_controller}{Core\+Controller}} $>$ \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_a81ac781505b28492c01b34a6f54e80c8}{m\+\_\+context}}
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_a7a112ba2bbdcb4a963b310dc78b60175}{m\+\_\+samples}} = 2048
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_a49108637a6edef1b593f66701eb9b4bc}{Driver}} \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_a5540cf3b98137028dec413f4bb669e59}{s\+\_\+driver}} = Audio\+Processor\+::\+Driver\+::\+Q\+T\+\_\+\+M\+U\+L\+T\+I\+M\+E\+D\+IA
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_audio_processor_a49108637a6edef1b593f66701eb9b4bc}\label{class_q_g_b_a_1_1_audio_processor_a49108637a6edef1b593f66701eb9b4bc}} 
+\index{Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}!Driver@{Driver}}
+\index{Driver@{Driver}!Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}}
+\subsubsection{\texorpdfstring{Driver}{Driver}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_a49108637a6edef1b593f66701eb9b4bc}{Q\+G\+B\+A\+::\+Audio\+Processor\+::\+Driver}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_audio_processor_a925e9472818e6d647bb5ae7bf8005204}\label{class_q_g_b_a_1_1_audio_processor_a925e9472818e6d647bb5ae7bf8005204}} 
+\index{Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}!Audio\+Processor@{Audio\+Processor}}
+\index{Audio\+Processor@{Audio\+Processor}!Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}}
+\subsubsection{\texorpdfstring{Audio\+Processor()}{AudioProcessor()}}
+{\footnotesize\ttfamily Audio\+Processor\+::\+Audio\+Processor (\begin{DoxyParamCaption}\item[{Q\+Object $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_audio_processor_a3f4e00da5cea8cd62f0325abc050a0d2}\label{class_q_g_b_a_1_1_audio_processor_a3f4e00da5cea8cd62f0325abc050a0d2}} 
+\index{Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}!````~Audio\+Processor@{$\sim$\+Audio\+Processor}}
+\index{````~Audio\+Processor@{$\sim$\+Audio\+Processor}!Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}}
+\subsubsection{\texorpdfstring{$\sim$\+Audio\+Processor()}{~AudioProcessor()}}
+{\footnotesize\ttfamily Audio\+Processor\+::$\sim$\+Audio\+Processor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_audio_processor_a3f4e00da5cea8cd62f0325abc050a0d2_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_audio_processor_a699614d282aa9cf042df8d23b9b5923a}\label{class_q_g_b_a_1_1_audio_processor_a699614d282aa9cf042df8d23b9b5923a}} 
+\index{Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}!create@{create}}
+\index{create@{create}!Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}}
+\subsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor}{Audio\+Processor}} $\ast$ Audio\+Processor\+::create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_audio_processor_a699614d282aa9cf042df8d23b9b5923a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_audio_processor_a44a16d22abaa070f9c7234b540287719}\label{class_q_g_b_a_1_1_audio_processor_a44a16d22abaa070f9c7234b540287719}} 
+\index{Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}!get\+Buffer\+Samples@{get\+Buffer\+Samples}}
+\index{get\+Buffer\+Samples@{get\+Buffer\+Samples}!Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}}
+\subsubsection{\texorpdfstring{get\+Buffer\+Samples()}{getBufferSamples()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Q\+G\+B\+A\+::\+Audio\+Processor\+::get\+Buffer\+Samples (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_audio_processor_ad9001a38e63be82cbb2e582ac4162db9}\label{class_q_g_b_a_1_1_audio_processor_ad9001a38e63be82cbb2e582ac4162db9}} 
+\index{Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}!input@{input}}
+\index{input@{input}!Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}}
+\subsubsection{\texorpdfstring{input()}{input()}}
+{\footnotesize\ttfamily m\+Core\+Thread$\ast$ Q\+G\+B\+A\+::\+Audio\+Processor\+::input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_audio_processor_ad9001a38e63be82cbb2e582ac4162db9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_audio_processor_a2df53cfcd968ab9333d0f5eb9b88dba6}\label{class_q_g_b_a_1_1_audio_processor_a2df53cfcd968ab9333d0f5eb9b88dba6}} 
+\index{Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}!input\+Parameters\+Changed@{input\+Parameters\+Changed}}
+\index{input\+Parameters\+Changed@{input\+Parameters\+Changed}!Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}}
+\subsubsection{\texorpdfstring{input\+Parameters\+Changed}{inputParametersChanged}}
+{\footnotesize\ttfamily virtual void Q\+G\+B\+A\+::\+Audio\+Processor\+::input\+Parameters\+Changed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [slot]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_audio_processor_a85818cf03baf5c2ff4c3f4d4ba250100}\label{class_q_g_b_a_1_1_audio_processor_a85818cf03baf5c2ff4c3f4d4ba250100}} 
+\index{Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}!pause@{pause}}
+\index{pause@{pause}!Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}}
+\subsubsection{\texorpdfstring{pause}{pause}}
+{\footnotesize\ttfamily virtual void Q\+G\+B\+A\+::\+Audio\+Processor\+::pause (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [slot]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_audio_processor_ad0a393ef520d75af916ab6178c38e05d}\label{class_q_g_b_a_1_1_audio_processor_ad0a393ef520d75af916ab6178c38e05d}} 
+\index{Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}!request\+Sample\+Rate@{request\+Sample\+Rate}}
+\index{request\+Sample\+Rate@{request\+Sample\+Rate}!Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}}
+\subsubsection{\texorpdfstring{request\+Sample\+Rate}{requestSampleRate}}
+{\footnotesize\ttfamily virtual void Q\+G\+B\+A\+::\+Audio\+Processor\+::request\+Sample\+Rate (\begin{DoxyParamCaption}\item[{unsigned}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [slot]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_audio_processor_af9fcd827f2447cca613deb3bbe50a1de}\label{class_q_g_b_a_1_1_audio_processor_af9fcd827f2447cca613deb3bbe50a1de}} 
+\index{Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}!sample\+Rate@{sample\+Rate}}
+\index{sample\+Rate@{sample\+Rate}!Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}}
+\subsubsection{\texorpdfstring{sample\+Rate()}{sampleRate()}}
+{\footnotesize\ttfamily virtual unsigned Q\+G\+B\+A\+::\+Audio\+Processor\+::sample\+Rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_qt_afe2bf3efb15330553d552a62265061ba}{Q\+G\+B\+A\+::\+Audio\+Processor\+Qt}}.
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_audio_processor_a49ea31dd2330727d83651f49746517c9}\label{class_q_g_b_a_1_1_audio_processor_a49ea31dd2330727d83651f49746517c9}} 
+\index{Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}!set\+Buffer\+Samples@{set\+Buffer\+Samples}}
+\index{set\+Buffer\+Samples@{set\+Buffer\+Samples}!Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}}
+\subsubsection{\texorpdfstring{set\+Buffer\+Samples}{setBufferSamples}}
+{\footnotesize\ttfamily void Audio\+Processor\+::set\+Buffer\+Samples (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{samples }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [slot]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_audio_processor_a7bc53e5c2ced8444d55706e449f4a6b1}\label{class_q_g_b_a_1_1_audio_processor_a7bc53e5c2ced8444d55706e449f4a6b1}} 
+\index{Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}!set\+Driver@{set\+Driver}}
+\index{set\+Driver@{set\+Driver}!Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}}
+\subsubsection{\texorpdfstring{set\+Driver()}{setDriver()}}
+{\footnotesize\ttfamily static void Q\+G\+B\+A\+::\+Audio\+Processor\+::set\+Driver (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_a49108637a6edef1b593f66701eb9b4bc}{Driver}}}]{driver }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_audio_processor_a7bc53e5c2ced8444d55706e449f4a6b1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_audio_processor_ab391c472b41b7e301b780e687c00ee8c}\label{class_q_g_b_a_1_1_audio_processor_ab391c472b41b7e301b780e687c00ee8c}} 
+\index{Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}!set\+Input@{set\+Input}}
+\index{set\+Input@{set\+Input}!Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}}
+\subsubsection{\texorpdfstring{set\+Input}{setInput}}
+{\footnotesize\ttfamily void Audio\+Processor\+::set\+Input (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_q_g_b_a_1_1_core_controller}{Core\+Controller}} $>$}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_audio_processor_ab391c472b41b7e301b780e687c00ee8c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_audio_processor_ab391c472b41b7e301b780e687c00ee8c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_audio_processor_a213f98cc7d626a4f41522d58c14792fb}\label{class_q_g_b_a_1_1_audio_processor_a213f98cc7d626a4f41522d58c14792fb}} 
+\index{Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}!start@{start}}
+\index{start@{start}!Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}}
+\subsubsection{\texorpdfstring{start}{start}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} Q\+G\+B\+A\+::\+Audio\+Processor\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [slot]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_audio_processor_a0a4f015fcc73aedc7fd158758bb725f1}\label{class_q_g_b_a_1_1_audio_processor_a0a4f015fcc73aedc7fd158758bb725f1}} 
+\index{Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}!stop@{stop}}
+\index{stop@{stop}!Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}}
+\subsubsection{\texorpdfstring{stop}{stop}}
+{\footnotesize\ttfamily void Audio\+Processor\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_audio_processor_a0a4f015fcc73aedc7fd158758bb725f1_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_audio_processor_a81ac781505b28492c01b34a6f54e80c8}\label{class_q_g_b_a_1_1_audio_processor_a81ac781505b28492c01b34a6f54e80c8}} 
+\index{Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}!m\+\_\+context@{m\+\_\+context}}
+\index{m\+\_\+context@{m\+\_\+context}!Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}}
+\subsubsection{\texorpdfstring{m\+\_\+context}{m\_context}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_q_g_b_a_1_1_core_controller}{Core\+Controller}}$>$ Q\+G\+B\+A\+::\+Audio\+Processor\+::m\+\_\+context\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_audio_processor_a7a112ba2bbdcb4a963b310dc78b60175}\label{class_q_g_b_a_1_1_audio_processor_a7a112ba2bbdcb4a963b310dc78b60175}} 
+\index{Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}!m\+\_\+samples@{m\+\_\+samples}}
+\index{m\+\_\+samples@{m\+\_\+samples}!Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}}
+\subsubsection{\texorpdfstring{m\+\_\+samples}{m\_samples}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Q\+G\+B\+A\+::\+Audio\+Processor\+::m\+\_\+samples = 2048\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_audio_processor_a5540cf3b98137028dec413f4bb669e59}\label{class_q_g_b_a_1_1_audio_processor_a5540cf3b98137028dec413f4bb669e59}} 
+\index{Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}!s\+\_\+driver@{s\+\_\+driver}}
+\index{s\+\_\+driver@{s\+\_\+driver}!Q\+G\+B\+A\+::\+Audio\+Processor@{Q\+G\+B\+A\+::\+Audio\+Processor}}
+\subsubsection{\texorpdfstring{s\+\_\+driver}{s\_driver}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_q_g_b_a_1_1_audio_processor_a49108637a6edef1b593f66701eb9b4bc}{Audio\+Processor\+::\+Driver}} Audio\+Processor\+::s\+\_\+driver = Audio\+Processor\+::\+Driver\+::\+Q\+T\+\_\+\+M\+U\+L\+T\+I\+M\+E\+D\+IA\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/platform/qt/\mbox{\hyperlink{_audio_processor_8h}{Audio\+Processor.\+h}}\item 
+src/platform/qt/\mbox{\hyperlink{_audio_processor_8cpp}{Audio\+Processor.\+cpp}}\end{DoxyCompactItemize}

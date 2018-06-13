@@ -1,0 +1,626 @@
+\hypertarget{makepng_8c}{}\section{src/third-\/party/libpng/contrib/libtests/makepng.c File Reference}
+\label{makepng_8c}\index{src/third-\/party/libpng/contrib/libtests/makepng.\+c@{src/third-\/party/libpng/contrib/libtests/makepng.\+c}}
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../../png.\+h\char`\"{}}\newline
+Include dependency graph for makepng.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{makepng_8c_a04ec2c53aa9fcdb5b58dc8e9d552dec0}{\+\_\+\+I\+S\+O\+C99\+\_\+\+S\+O\+U\+R\+CE}}~/$\ast$ for strtoull $\ast$/
+\item 
+\#define \mbox{\hyperlink{makepng_8c_a6b0674c46c4ee102c81a7407348a2818}{interp}}(pos,  c1,  c2)~((pos $\ast$ c1) + ((\mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}-\/pos) $\ast$ c2))
+\item 
+\#define \mbox{\hyperlink{makepng_8c_a3b4fec26df7a82ff2f4ba3f049838945}{xyinterp}}(x,  y,  c1,  c2,  c3,  c4)
+\item 
+\#define \mbox{\hyperlink{makepng_8c_a6567c1994e74aa487d40962cc969b8cd}{C\+H\+U\+NK}}(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}},  b,  \mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}},  \mbox{\hyperlink{isa-thumb_8c_a6f364afbe132c4ecfea48bde1b0618ba}{d}})~(((\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}})$<$$<$24)+((b)$<$$<$16)+((\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}})$<$$<$8)+(\mbox{\hyperlink{isa-thumb_8c_a6f364afbe132c4ecfea48bde1b0618ba}{d}}))
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct chunk\+\_\+insert \mbox{\hyperlink{makepng_8c_a97e92439acf17ed29cecb67c0ceeadba}{chunk\+\_\+insert}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{makepng_8c_abb80005b21cd39eff4121dc25bd6d9eb}{channels\+\_\+of\+\_\+type}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_ae179b4e193ca0afef9aa3c2ddb7270fc}{color\+\_\+type}})
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{makepng_8c_aaebb5e5c923bc0ddcc3185fa957d7953}{pixel\+\_\+depth\+\_\+of\+\_\+type}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_ae179b4e193ca0afef9aa3c2ddb7270fc}{color\+\_\+type}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_a06ec7298e38952fe9572e828d37d8d93}{bit\+\_\+depth}})
+\item 
+static unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{makepng_8c_af03ccb45b0b24048c347c9a0d586e2fc}{image\+\_\+size\+\_\+of\+\_\+type}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_ae179b4e193ca0afef9aa3c2ddb7270fc}{color\+\_\+type}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_a06ec7298e38952fe9572e828d37d8d93}{bit\+\_\+depth}}, unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$colors)
+\item 
+static void \mbox{\hyperlink{makepng_8c_a600e114687b3f93776fd980cfd420af1}{set\+\_\+color}} (\mbox{\hyperlink{png_8h_a0fffc4de82c4f4a2211026316653b03c}{png\+\_\+colorp}} color, \mbox{\hyperlink{pngconf_8h_a759e1c893f977ec7b67820bc3ca37524}{png\+\_\+bytep}} trans, unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} red, unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} green, unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} blue, unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} alpha, \mbox{\hyperlink{pngconf_8h_a2e608af822427492832d11909c2f3fee}{png\+\_\+const\+\_\+bytep}} gamma\+\_\+table)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{makepng_8c_a66f602d4070c62885ea77271cee24fd7}{generate\+\_\+palette}} (\mbox{\hyperlink{png_8h_a0fffc4de82c4f4a2211026316653b03c}{png\+\_\+colorp}} palette, \mbox{\hyperlink{pngconf_8h_a759e1c893f977ec7b67820bc3ca37524}{png\+\_\+bytep}} trans, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_a06ec7298e38952fe9572e828d37d8d93}{bit\+\_\+depth}}, \mbox{\hyperlink{pngconf_8h_a2e608af822427492832d11909c2f3fee}{png\+\_\+const\+\_\+bytep}} gamma\+\_\+table, unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$colors)
+\item 
+static void \mbox{\hyperlink{makepng_8c_a4a3f53d8af9e90c5a1bc438637c6b15f}{set\+\_\+value}} (\mbox{\hyperlink{pngconf_8h_a759e1c893f977ec7b67820bc3ca37524}{png\+\_\+bytep}} row, size\+\_\+t rowbytes, png\+\_\+uint\+\_\+32 x, unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_a06ec7298e38952fe9572e828d37d8d93}{bit\+\_\+depth}}, png\+\_\+uint\+\_\+32 value, \mbox{\hyperlink{pngconf_8h_a2e608af822427492832d11909c2f3fee}{png\+\_\+const\+\_\+bytep}} gamma\+\_\+table, double conv)
+\item 
+static void \mbox{\hyperlink{makepng_8c_a7a0655d68c35748ec3f6b5e723e207f8}{generate\+\_\+row}} (\mbox{\hyperlink{pngconf_8h_a759e1c893f977ec7b67820bc3ca37524}{png\+\_\+bytep}} row, size\+\_\+t rowbytes, unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} y, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_ae179b4e193ca0afef9aa3c2ddb7270fc}{color\+\_\+type}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_a06ec7298e38952fe9572e828d37d8d93}{bit\+\_\+depth}}, \mbox{\hyperlink{pngconf_8h_a2e608af822427492832d11909c2f3fee}{png\+\_\+const\+\_\+bytep}} gamma\+\_\+table, double conv, unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$colors)
+\item 
+static void \mbox{\hyperlink{pngconf_8h_a8d53312122f86549be997a84f6c26f4f}{P\+N\+G\+C\+B\+A\+PI}} \mbox{\hyperlink{makepng_8c_aa49d1a68771519bd3b73d8eb36c49042}{makepng\+\_\+warning}} (\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}} \mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}}, \mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}} message)
+\item 
+static void \mbox{\hyperlink{pngconf_8h_a8d53312122f86549be997a84f6c26f4f}{P\+N\+G\+C\+B\+A\+PI}} \mbox{\hyperlink{makepng_8c_adae4757c9e6fa6e3b9ba950924712335}{makepng\+\_\+error}} (\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}} \mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}}, \mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}} message)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{makepng_8c_a9a882e888c4e7f2fe9a6e2838c875ae5}{write\+\_\+png}} (const char $\ast$$\ast$name, F\+I\+LE $\ast$fp, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_ae179b4e193ca0afef9aa3c2ddb7270fc}{color\+\_\+type}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_a06ec7298e38952fe9572e828d37d8d93}{bit\+\_\+depth}}, volatile \mbox{\hyperlink{pngconf_8h_ad346e9127ae0a236421481b814a6a682}{png\+\_\+fixed\+\_\+point}} gamma, \mbox{\hyperlink{makepng_8c_a97e92439acf17ed29cecb67c0ceeadba}{chunk\+\_\+insert}} $\ast$volatile insert, unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} filters, unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$colors)
+\item 
+static size\+\_\+t \mbox{\hyperlink{makepng_8c_aa77811a93dd7693c278fccb84be5725c}{load\+\_\+file}} (\mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}} name, \mbox{\hyperlink{pngconf_8h_a84797ddea34868883a274e458368a63b}{png\+\_\+bytepp}} result)
+\item 
+static \mbox{\hyperlink{pngconf_8h_a975e35d0a699ea3b08b8feef90fd29eb}{png\+\_\+size\+\_\+t}} \mbox{\hyperlink{makepng_8c_a1ff4459e2b253c1ce00e984310f997bc}{load\+\_\+fake}} (\mbox{\hyperlink{pngconf_8h_a0d08bb02251d02830803ff5d2d449750}{png\+\_\+charp}} param, \mbox{\hyperlink{pngconf_8h_a84797ddea34868883a274e458368a63b}{png\+\_\+bytepp}} profile)
+\item 
+static void \mbox{\hyperlink{makepng_8c_aaf7915e51b2c527bcf6a4bd6d77d6f84}{check\+\_\+param\+\_\+count}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} nparams, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} expect)
+\item 
+static void \mbox{\hyperlink{makepng_8c_a1cfbee4e8d1d6d4617a0489b693241ba}{insert\+\_\+i\+C\+CP}} (\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}} \mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}}, \mbox{\hyperlink{png_8h_ae3fea93b4964dd221f5ef0f88690dd68}{png\+\_\+infop}} \mbox{\hyperlink{_png_file_8c_acff20584e44b8e5b6ebd0ef649fd89f9}{info\+\_\+ptr}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} nparams, \mbox{\hyperlink{pngconf_8h_a4f8968072e801b0fe68c18ba94c560a4}{png\+\_\+charpp}} params)
+\item 
+static void \mbox{\hyperlink{makepng_8c_a7ff34bfc296b529a8479c0510ec06044}{clear\+\_\+text}} (png\+\_\+text $\ast$text, \mbox{\hyperlink{pngconf_8h_a0d08bb02251d02830803ff5d2d449750}{png\+\_\+charp}} keyword)
+\item 
+static void \mbox{\hyperlink{makepng_8c_a626945ff994484cc517fc9d6c496b659}{set\+\_\+text}} (\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}} \mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}}, \mbox{\hyperlink{png_8h_ae3fea93b4964dd221f5ef0f88690dd68}{png\+\_\+infop}} \mbox{\hyperlink{_png_file_8c_acff20584e44b8e5b6ebd0ef649fd89f9}{info\+\_\+ptr}}, png\+\_\+textp text, \mbox{\hyperlink{pngconf_8h_a0d08bb02251d02830803ff5d2d449750}{png\+\_\+charp}} param)
+\item 
+static void \mbox{\hyperlink{makepng_8c_ab84685fb956457668040d81cdaa8af12}{insert\+\_\+t\+E\+Xt}} (\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}} \mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}}, \mbox{\hyperlink{png_8h_ae3fea93b4964dd221f5ef0f88690dd68}{png\+\_\+infop}} \mbox{\hyperlink{_png_file_8c_acff20584e44b8e5b6ebd0ef649fd89f9}{info\+\_\+ptr}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} nparams, \mbox{\hyperlink{pngconf_8h_a4f8968072e801b0fe68c18ba94c560a4}{png\+\_\+charpp}} params)
+\item 
+static void \mbox{\hyperlink{makepng_8c_a7d43bad36a0e97b75f79c902cc4c6b70}{insert\+\_\+z\+T\+Xt}} (\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}} \mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}}, \mbox{\hyperlink{png_8h_ae3fea93b4964dd221f5ef0f88690dd68}{png\+\_\+infop}} \mbox{\hyperlink{_png_file_8c_acff20584e44b8e5b6ebd0ef649fd89f9}{info\+\_\+ptr}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} nparams, \mbox{\hyperlink{pngconf_8h_a4f8968072e801b0fe68c18ba94c560a4}{png\+\_\+charpp}} params)
+\item 
+static void \mbox{\hyperlink{makepng_8c_ac1105cef36615bca4195e038a9cec3ed}{insert\+\_\+i\+T\+Xt}} (\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}} \mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}}, \mbox{\hyperlink{png_8h_ae3fea93b4964dd221f5ef0f88690dd68}{png\+\_\+infop}} \mbox{\hyperlink{_png_file_8c_acff20584e44b8e5b6ebd0ef649fd89f9}{info\+\_\+ptr}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} nparams, \mbox{\hyperlink{pngconf_8h_a4f8968072e801b0fe68c18ba94c560a4}{png\+\_\+charpp}} params)
+\item 
+static void \mbox{\hyperlink{makepng_8c_aedfcd45df7d38a9f44236fdcaeb62f81}{insert\+\_\+h\+I\+ST}} (\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}} \mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}}, \mbox{\hyperlink{png_8h_ae3fea93b4964dd221f5ef0f88690dd68}{png\+\_\+infop}} \mbox{\hyperlink{_png_file_8c_acff20584e44b8e5b6ebd0ef649fd89f9}{info\+\_\+ptr}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} nparams, \mbox{\hyperlink{pngconf_8h_a4f8968072e801b0fe68c18ba94c560a4}{png\+\_\+charpp}} params)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{makepng_8c_af6af551350db556b5ae247a32d6d5970}{find\+\_\+parameters}} (\mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}} what, \mbox{\hyperlink{pngconf_8h_a0d08bb02251d02830803ff5d2d449750}{png\+\_\+charp}} param, \mbox{\hyperlink{pngconf_8h_a0d08bb02251d02830803ff5d2d449750}{png\+\_\+charp}} $\ast$list, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} nparams)
+\item 
+static void \mbox{\hyperlink{makepng_8c_a26c3fe51ff5effcd773359231594012b}{bad\+\_\+parameter\+\_\+count}} (\mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}} what, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} nparams)
+\item 
+static \mbox{\hyperlink{makepng_8c_a97e92439acf17ed29cecb67c0ceeadba}{chunk\+\_\+insert}} $\ast$ \mbox{\hyperlink{makepng_8c_a471f14fca754a96af192496a6157348b}{make\+\_\+insert}} (\mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}} what, void($\ast$insert)(\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}}, \mbox{\hyperlink{png_8h_ae3fea93b4964dd221f5ef0f88690dd68}{png\+\_\+infop}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}, \mbox{\hyperlink{pngconf_8h_a4f8968072e801b0fe68c18ba94c560a4}{png\+\_\+charpp}}), \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} nparams, \mbox{\hyperlink{pngconf_8h_a4f8968072e801b0fe68c18ba94c560a4}{png\+\_\+charpp}} list)
+\item 
+static \mbox{\hyperlink{makepng_8c_a97e92439acf17ed29cecb67c0ceeadba}{chunk\+\_\+insert}} $\ast$ \mbox{\hyperlink{makepng_8c_a7582af6da1fd094ad50b479eeb0893a6}{find\+\_\+insert}} (\mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}} what, \mbox{\hyperlink{pngconf_8h_a0d08bb02251d02830803ff5d2d449750}{png\+\_\+charp}} param)
+\item 
+static void \mbox{\hyperlink{makepng_8c_af53cc15494efa1920f6253fc558b5c41}{parse\+\_\+color}} (char $\ast$arg, unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$colors)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{makepng_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{makepng_8c_a04ec2c53aa9fcdb5b58dc8e9d552dec0}\label{makepng_8c_a04ec2c53aa9fcdb5b58dc8e9d552dec0}} 
+\index{makepng.\+c@{makepng.\+c}!\+\_\+\+I\+S\+O\+C99\+\_\+\+S\+O\+U\+R\+CE@{\+\_\+\+I\+S\+O\+C99\+\_\+\+S\+O\+U\+R\+CE}}
+\index{\+\_\+\+I\+S\+O\+C99\+\_\+\+S\+O\+U\+R\+CE@{\+\_\+\+I\+S\+O\+C99\+\_\+\+S\+O\+U\+R\+CE}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+I\+S\+O\+C99\+\_\+\+S\+O\+U\+R\+CE}{\_ISOC99\_SOURCE}}
+{\footnotesize\ttfamily \#define \+\_\+\+I\+S\+O\+C99\+\_\+\+S\+O\+U\+R\+CE~/$\ast$ for strtoull $\ast$/}
+
+\mbox{\Hypertarget{makepng_8c_a6567c1994e74aa487d40962cc969b8cd}\label{makepng_8c_a6567c1994e74aa487d40962cc969b8cd}} 
+\index{makepng.\+c@{makepng.\+c}!C\+H\+U\+NK@{C\+H\+U\+NK}}
+\index{C\+H\+U\+NK@{C\+H\+U\+NK}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{C\+H\+U\+NK}{CHUNK}}
+{\footnotesize\ttfamily \#define C\+H\+U\+NK(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}},  }\item[{}]{b,  }\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}},  }\item[{}]{\mbox{\hyperlink{isa-thumb_8c_a6f364afbe132c4ecfea48bde1b0618ba}{d}} }\end{DoxyParamCaption})~(((\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}})$<$$<$24)+((b)$<$$<$16)+((\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}})$<$$<$8)+(\mbox{\hyperlink{isa-thumb_8c_a6f364afbe132c4ecfea48bde1b0618ba}{d}}))}
+
+\mbox{\Hypertarget{makepng_8c_a6b0674c46c4ee102c81a7407348a2818}\label{makepng_8c_a6b0674c46c4ee102c81a7407348a2818}} 
+\index{makepng.\+c@{makepng.\+c}!interp@{interp}}
+\index{interp@{interp}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{interp}{interp}}
+{\footnotesize\ttfamily \#define interp(\begin{DoxyParamCaption}\item[{}]{pos,  }\item[{}]{c1,  }\item[{}]{c2 }\end{DoxyParamCaption})~((pos $\ast$ c1) + ((\mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}-\/pos) $\ast$ c2))}
+
+\mbox{\Hypertarget{makepng_8c_a3b4fec26df7a82ff2f4ba3f049838945}\label{makepng_8c_a3b4fec26df7a82ff2f4ba3f049838945}} 
+\index{makepng.\+c@{makepng.\+c}!xyinterp@{xyinterp}}
+\index{xyinterp@{xyinterp}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{xyinterp}{xyinterp}}
+{\footnotesize\ttfamily \#define xyinterp(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{y,  }\item[{}]{c1,  }\item[{}]{c2,  }\item[{}]{c3,  }\item[{}]{c4 }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+(((\mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}} * \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}} / 2) +\(\backslash\)
+                  (\mbox{\hyperlink{makepng_8c_a6b0674c46c4ee102c81a7407348a2818}{interp}}(x, c1, c2) * y + (\mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}-y) * \mbox{\hyperlink{makepng_8c_a6b0674c46c4ee102c81a7407348a2818}{interp}}(x, c3, c4))) /\(\backslash\)
+                  (\mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}*\mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}))
+\end{DoxyCode}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{makepng_8c_a97e92439acf17ed29cecb67c0ceeadba}\label{makepng_8c_a97e92439acf17ed29cecb67c0ceeadba}} 
+\index{makepng.\+c@{makepng.\+c}!chunk\+\_\+insert@{chunk\+\_\+insert}}
+\index{chunk\+\_\+insert@{chunk\+\_\+insert}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{chunk\+\_\+insert}{chunk\_insert}}
+{\footnotesize\ttfamily typedef struct chunk\+\_\+insert  chunk\+\_\+insert}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{makepng_8c_a26c3fe51ff5effcd773359231594012b}\label{makepng_8c_a26c3fe51ff5effcd773359231594012b}} 
+\index{makepng.\+c@{makepng.\+c}!bad\+\_\+parameter\+\_\+count@{bad\+\_\+parameter\+\_\+count}}
+\index{bad\+\_\+parameter\+\_\+count@{bad\+\_\+parameter\+\_\+count}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{bad\+\_\+parameter\+\_\+count()}{bad\_parameter\_count()}}
+{\footnotesize\ttfamily static void bad\+\_\+parameter\+\_\+count (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}}}]{what,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{nparams }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_a26c3fe51ff5effcd773359231594012b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_abb80005b21cd39eff4121dc25bd6d9eb}\label{makepng_8c_abb80005b21cd39eff4121dc25bd6d9eb}} 
+\index{makepng.\+c@{makepng.\+c}!channels\+\_\+of\+\_\+type@{channels\+\_\+of\+\_\+type}}
+\index{channels\+\_\+of\+\_\+type@{channels\+\_\+of\+\_\+type}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{channels\+\_\+of\+\_\+type()}{channels\_of\_type()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} channels\+\_\+of\+\_\+type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{color\+\_\+type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_abb80005b21cd39eff4121dc25bd6d9eb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_aaf7915e51b2c527bcf6a4bd6d77d6f84}\label{makepng_8c_aaf7915e51b2c527bcf6a4bd6d77d6f84}} 
+\index{makepng.\+c@{makepng.\+c}!check\+\_\+param\+\_\+count@{check\+\_\+param\+\_\+count}}
+\index{check\+\_\+param\+\_\+count@{check\+\_\+param\+\_\+count}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{check\+\_\+param\+\_\+count()}{check\_param\_count()}}
+{\footnotesize\ttfamily static void check\+\_\+param\+\_\+count (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{nparams,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{expect }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_aaf7915e51b2c527bcf6a4bd6d77d6f84_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_a7ff34bfc296b529a8479c0510ec06044}\label{makepng_8c_a7ff34bfc296b529a8479c0510ec06044}} 
+\index{makepng.\+c@{makepng.\+c}!clear\+\_\+text@{clear\+\_\+text}}
+\index{clear\+\_\+text@{clear\+\_\+text}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{clear\+\_\+text()}{clear\_text()}}
+{\footnotesize\ttfamily static void clear\+\_\+text (\begin{DoxyParamCaption}\item[{png\+\_\+text $\ast$}]{text,  }\item[{\mbox{\hyperlink{pngconf_8h_a0d08bb02251d02830803ff5d2d449750}{png\+\_\+charp}}}]{keyword }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_a7ff34bfc296b529a8479c0510ec06044_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_a7582af6da1fd094ad50b479eeb0893a6}\label{makepng_8c_a7582af6da1fd094ad50b479eeb0893a6}} 
+\index{makepng.\+c@{makepng.\+c}!find\+\_\+insert@{find\+\_\+insert}}
+\index{find\+\_\+insert@{find\+\_\+insert}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{find\+\_\+insert()}{find\_insert()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{makepng_8c_a97e92439acf17ed29cecb67c0ceeadba}{chunk\+\_\+insert}}$\ast$ find\+\_\+insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}}}]{what,  }\item[{\mbox{\hyperlink{pngconf_8h_a0d08bb02251d02830803ff5d2d449750}{png\+\_\+charp}}}]{param }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_a7582af6da1fd094ad50b479eeb0893a6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{makepng_8c_a7582af6da1fd094ad50b479eeb0893a6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_af6af551350db556b5ae247a32d6d5970}\label{makepng_8c_af6af551350db556b5ae247a32d6d5970}} 
+\index{makepng.\+c@{makepng.\+c}!find\+\_\+parameters@{find\+\_\+parameters}}
+\index{find\+\_\+parameters@{find\+\_\+parameters}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{find\+\_\+parameters()}{find\_parameters()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} find\+\_\+parameters (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}}}]{what,  }\item[{\mbox{\hyperlink{pngconf_8h_a0d08bb02251d02830803ff5d2d449750}{png\+\_\+charp}}}]{param,  }\item[{\mbox{\hyperlink{pngconf_8h_a0d08bb02251d02830803ff5d2d449750}{png\+\_\+charp}} $\ast$}]{list,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{nparams }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_af6af551350db556b5ae247a32d6d5970_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_a66f602d4070c62885ea77271cee24fd7}\label{makepng_8c_a66f602d4070c62885ea77271cee24fd7}} 
+\index{makepng.\+c@{makepng.\+c}!generate\+\_\+palette@{generate\+\_\+palette}}
+\index{generate\+\_\+palette@{generate\+\_\+palette}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{generate\+\_\+palette()}{generate\_palette()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} generate\+\_\+palette (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{png_8h_a0fffc4de82c4f4a2211026316653b03c}{png\+\_\+colorp}}}]{palette,  }\item[{\mbox{\hyperlink{pngconf_8h_a759e1c893f977ec7b67820bc3ca37524}{png\+\_\+bytep}}}]{trans,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{bit\+\_\+depth,  }\item[{\mbox{\hyperlink{pngconf_8h_a2e608af822427492832d11909c2f3fee}{png\+\_\+const\+\_\+bytep}}}]{gamma\+\_\+table,  }\item[{unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{colors }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=277pt]{makepng_8c_a66f602d4070c62885ea77271cee24fd7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_a66f602d4070c62885ea77271cee24fd7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_a7a0655d68c35748ec3f6b5e723e207f8}\label{makepng_8c_a7a0655d68c35748ec3f6b5e723e207f8}} 
+\index{makepng.\+c@{makepng.\+c}!generate\+\_\+row@{generate\+\_\+row}}
+\index{generate\+\_\+row@{generate\+\_\+row}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{generate\+\_\+row()}{generate\_row()}}
+{\footnotesize\ttfamily static void generate\+\_\+row (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{pngconf_8h_a759e1c893f977ec7b67820bc3ca37524}{png\+\_\+bytep}}}]{row,  }\item[{size\+\_\+t}]{rowbytes,  }\item[{unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{y,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{color\+\_\+type,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{bit\+\_\+depth,  }\item[{\mbox{\hyperlink{pngconf_8h_a2e608af822427492832d11909c2f3fee}{png\+\_\+const\+\_\+bytep}}}]{gamma\+\_\+table,  }\item[{double}]{conv,  }\item[{unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{colors }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_a7a0655d68c35748ec3f6b5e723e207f8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{makepng_8c_a7a0655d68c35748ec3f6b5e723e207f8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_af03ccb45b0b24048c347c9a0d586e2fc}\label{makepng_8c_af03ccb45b0b24048c347c9a0d586e2fc}} 
+\index{makepng.\+c@{makepng.\+c}!image\+\_\+size\+\_\+of\+\_\+type@{image\+\_\+size\+\_\+of\+\_\+type}}
+\index{image\+\_\+size\+\_\+of\+\_\+type@{image\+\_\+size\+\_\+of\+\_\+type}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+size\+\_\+of\+\_\+type()}{image\_size\_of\_type()}}
+{\footnotesize\ttfamily static unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} image\+\_\+size\+\_\+of\+\_\+type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{color\+\_\+type,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{bit\+\_\+depth,  }\item[{unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{colors }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_af03ccb45b0b24048c347c9a0d586e2fc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_af03ccb45b0b24048c347c9a0d586e2fc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_aedfcd45df7d38a9f44236fdcaeb62f81}\label{makepng_8c_aedfcd45df7d38a9f44236fdcaeb62f81}} 
+\index{makepng.\+c@{makepng.\+c}!insert\+\_\+h\+I\+ST@{insert\+\_\+h\+I\+ST}}
+\index{insert\+\_\+h\+I\+ST@{insert\+\_\+h\+I\+ST}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{insert\+\_\+h\+I\+S\+T()}{insert\_hIST()}}
+{\footnotesize\ttfamily static void insert\+\_\+h\+I\+ST (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}}}]{png\+\_\+ptr,  }\item[{\mbox{\hyperlink{png_8h_ae3fea93b4964dd221f5ef0f88690dd68}{png\+\_\+infop}}}]{info\+\_\+ptr,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{nparams,  }\item[{\mbox{\hyperlink{pngconf_8h_a4f8968072e801b0fe68c18ba94c560a4}{png\+\_\+charpp}}}]{params }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{makepng_8c_aedfcd45df7d38a9f44236fdcaeb62f81_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_a1cfbee4e8d1d6d4617a0489b693241ba}\label{makepng_8c_a1cfbee4e8d1d6d4617a0489b693241ba}} 
+\index{makepng.\+c@{makepng.\+c}!insert\+\_\+i\+C\+CP@{insert\+\_\+i\+C\+CP}}
+\index{insert\+\_\+i\+C\+CP@{insert\+\_\+i\+C\+CP}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{insert\+\_\+i\+C\+C\+P()}{insert\_iCCP()}}
+{\footnotesize\ttfamily static void insert\+\_\+i\+C\+CP (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}}}]{png\+\_\+ptr,  }\item[{\mbox{\hyperlink{png_8h_ae3fea93b4964dd221f5ef0f88690dd68}{png\+\_\+infop}}}]{info\+\_\+ptr,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{nparams,  }\item[{\mbox{\hyperlink{pngconf_8h_a4f8968072e801b0fe68c18ba94c560a4}{png\+\_\+charpp}}}]{params }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_a1cfbee4e8d1d6d4617a0489b693241ba_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{makepng_8c_a1cfbee4e8d1d6d4617a0489b693241ba_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_ac1105cef36615bca4195e038a9cec3ed}\label{makepng_8c_ac1105cef36615bca4195e038a9cec3ed}} 
+\index{makepng.\+c@{makepng.\+c}!insert\+\_\+i\+T\+Xt@{insert\+\_\+i\+T\+Xt}}
+\index{insert\+\_\+i\+T\+Xt@{insert\+\_\+i\+T\+Xt}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{insert\+\_\+i\+T\+Xt()}{insert\_iTXt()}}
+{\footnotesize\ttfamily static void insert\+\_\+i\+T\+Xt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}}}]{png\+\_\+ptr,  }\item[{\mbox{\hyperlink{png_8h_ae3fea93b4964dd221f5ef0f88690dd68}{png\+\_\+infop}}}]{info\+\_\+ptr,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{nparams,  }\item[{\mbox{\hyperlink{pngconf_8h_a4f8968072e801b0fe68c18ba94c560a4}{png\+\_\+charpp}}}]{params }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_ac1105cef36615bca4195e038a9cec3ed_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{makepng_8c_ac1105cef36615bca4195e038a9cec3ed_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_ab84685fb956457668040d81cdaa8af12}\label{makepng_8c_ab84685fb956457668040d81cdaa8af12}} 
+\index{makepng.\+c@{makepng.\+c}!insert\+\_\+t\+E\+Xt@{insert\+\_\+t\+E\+Xt}}
+\index{insert\+\_\+t\+E\+Xt@{insert\+\_\+t\+E\+Xt}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{insert\+\_\+t\+E\+Xt()}{insert\_tEXt()}}
+{\footnotesize\ttfamily static void insert\+\_\+t\+E\+Xt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}}}]{png\+\_\+ptr,  }\item[{\mbox{\hyperlink{png_8h_ae3fea93b4964dd221f5ef0f88690dd68}{png\+\_\+infop}}}]{info\+\_\+ptr,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{nparams,  }\item[{\mbox{\hyperlink{pngconf_8h_a4f8968072e801b0fe68c18ba94c560a4}{png\+\_\+charpp}}}]{params }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_ab84685fb956457668040d81cdaa8af12_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{makepng_8c_ab84685fb956457668040d81cdaa8af12_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_a7d43bad36a0e97b75f79c902cc4c6b70}\label{makepng_8c_a7d43bad36a0e97b75f79c902cc4c6b70}} 
+\index{makepng.\+c@{makepng.\+c}!insert\+\_\+z\+T\+Xt@{insert\+\_\+z\+T\+Xt}}
+\index{insert\+\_\+z\+T\+Xt@{insert\+\_\+z\+T\+Xt}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{insert\+\_\+z\+T\+Xt()}{insert\_zTXt()}}
+{\footnotesize\ttfamily static void insert\+\_\+z\+T\+Xt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}}}]{png\+\_\+ptr,  }\item[{\mbox{\hyperlink{png_8h_ae3fea93b4964dd221f5ef0f88690dd68}{png\+\_\+infop}}}]{info\+\_\+ptr,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{nparams,  }\item[{\mbox{\hyperlink{pngconf_8h_a4f8968072e801b0fe68c18ba94c560a4}{png\+\_\+charpp}}}]{params }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_a7d43bad36a0e97b75f79c902cc4c6b70_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{makepng_8c_a7d43bad36a0e97b75f79c902cc4c6b70_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_a1ff4459e2b253c1ce00e984310f997bc}\label{makepng_8c_a1ff4459e2b253c1ce00e984310f997bc}} 
+\index{makepng.\+c@{makepng.\+c}!load\+\_\+fake@{load\+\_\+fake}}
+\index{load\+\_\+fake@{load\+\_\+fake}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{load\+\_\+fake()}{load\_fake()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{pngconf_8h_a975e35d0a699ea3b08b8feef90fd29eb}{png\+\_\+size\+\_\+t}} load\+\_\+fake (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{pngconf_8h_a0d08bb02251d02830803ff5d2d449750}{png\+\_\+charp}}}]{param,  }\item[{\mbox{\hyperlink{pngconf_8h_a84797ddea34868883a274e458368a63b}{png\+\_\+bytepp}}}]{profile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_a1ff4459e2b253c1ce00e984310f997bc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_a1ff4459e2b253c1ce00e984310f997bc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_aa77811a93dd7693c278fccb84be5725c}\label{makepng_8c_aa77811a93dd7693c278fccb84be5725c}} 
+\index{makepng.\+c@{makepng.\+c}!load\+\_\+file@{load\+\_\+file}}
+\index{load\+\_\+file@{load\+\_\+file}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{load\+\_\+file()}{load\_file()}}
+{\footnotesize\ttfamily static size\+\_\+t load\+\_\+file (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}}}]{name,  }\item[{\mbox{\hyperlink{pngconf_8h_a84797ddea34868883a274e458368a63b}{png\+\_\+bytepp}}}]{result }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{makepng_8c_aa77811a93dd7693c278fccb84be5725c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_aa77811a93dd7693c278fccb84be5725c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{makepng_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{makepng.\+c@{makepng.\+c}!main@{main}}
+\index{main@{main}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_a471f14fca754a96af192496a6157348b}\label{makepng_8c_a471f14fca754a96af192496a6157348b}} 
+\index{makepng.\+c@{makepng.\+c}!make\+\_\+insert@{make\+\_\+insert}}
+\index{make\+\_\+insert@{make\+\_\+insert}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{make\+\_\+insert()}{make\_insert()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{makepng_8c_a97e92439acf17ed29cecb67c0ceeadba}{chunk\+\_\+insert}}$\ast$ make\+\_\+insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}}}]{what,  }\item[{void($\ast$)(\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}}, \mbox{\hyperlink{png_8h_ae3fea93b4964dd221f5ef0f88690dd68}{png\+\_\+infop}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}, \mbox{\hyperlink{pngconf_8h_a4f8968072e801b0fe68c18ba94c560a4}{png\+\_\+charpp}})}]{insert,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{nparams,  }\item[{\mbox{\hyperlink{pngconf_8h_a4f8968072e801b0fe68c18ba94c560a4}{png\+\_\+charpp}}}]{list }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{makepng_8c_a471f14fca754a96af192496a6157348b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_adae4757c9e6fa6e3b9ba950924712335}\label{makepng_8c_adae4757c9e6fa6e3b9ba950924712335}} 
+\index{makepng.\+c@{makepng.\+c}!makepng\+\_\+error@{makepng\+\_\+error}}
+\index{makepng\+\_\+error@{makepng\+\_\+error}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{makepng\+\_\+error()}{makepng\_error()}}
+{\footnotesize\ttfamily static void \mbox{\hyperlink{pngconf_8h_a8d53312122f86549be997a84f6c26f4f}{P\+N\+G\+C\+B\+A\+PI}} makepng\+\_\+error (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}}}]{png\+\_\+ptr,  }\item[{\mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}}}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{makepng_8c_adae4757c9e6fa6e3b9ba950924712335_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{makepng_8c_adae4757c9e6fa6e3b9ba950924712335_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_aa49d1a68771519bd3b73d8eb36c49042}\label{makepng_8c_aa49d1a68771519bd3b73d8eb36c49042}} 
+\index{makepng.\+c@{makepng.\+c}!makepng\+\_\+warning@{makepng\+\_\+warning}}
+\index{makepng\+\_\+warning@{makepng\+\_\+warning}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{makepng\+\_\+warning()}{makepng\_warning()}}
+{\footnotesize\ttfamily static void \mbox{\hyperlink{pngconf_8h_a8d53312122f86549be997a84f6c26f4f}{P\+N\+G\+C\+B\+A\+PI}} makepng\+\_\+warning (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}}}]{png\+\_\+ptr,  }\item[{\mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}}}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_aa49d1a68771519bd3b73d8eb36c49042_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_af53cc15494efa1920f6253fc558b5c41}\label{makepng_8c_af53cc15494efa1920f6253fc558b5c41}} 
+\index{makepng.\+c@{makepng.\+c}!parse\+\_\+color@{parse\+\_\+color}}
+\index{parse\+\_\+color@{parse\+\_\+color}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{parse\+\_\+color()}{parse\_color()}}
+{\footnotesize\ttfamily static void parse\+\_\+color (\begin{DoxyParamCaption}\item[{char $\ast$}]{arg,  }\item[{unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{colors }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{makepng_8c_af53cc15494efa1920f6253fc558b5c41_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{makepng_8c_af53cc15494efa1920f6253fc558b5c41_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_aaebb5e5c923bc0ddcc3185fa957d7953}\label{makepng_8c_aaebb5e5c923bc0ddcc3185fa957d7953}} 
+\index{makepng.\+c@{makepng.\+c}!pixel\+\_\+depth\+\_\+of\+\_\+type@{pixel\+\_\+depth\+\_\+of\+\_\+type}}
+\index{pixel\+\_\+depth\+\_\+of\+\_\+type@{pixel\+\_\+depth\+\_\+of\+\_\+type}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{pixel\+\_\+depth\+\_\+of\+\_\+type()}{pixel\_depth\_of\_type()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} pixel\+\_\+depth\+\_\+of\+\_\+type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{color\+\_\+type,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{bit\+\_\+depth }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{makepng_8c_aaebb5e5c923bc0ddcc3185fa957d7953_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_aaebb5e5c923bc0ddcc3185fa957d7953_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_a600e114687b3f93776fd980cfd420af1}\label{makepng_8c_a600e114687b3f93776fd980cfd420af1}} 
+\index{makepng.\+c@{makepng.\+c}!set\+\_\+color@{set\+\_\+color}}
+\index{set\+\_\+color@{set\+\_\+color}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{set\+\_\+color()}{set\_color()}}
+{\footnotesize\ttfamily static void set\+\_\+color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{png_8h_a0fffc4de82c4f4a2211026316653b03c}{png\+\_\+colorp}}}]{color,  }\item[{\mbox{\hyperlink{pngconf_8h_a759e1c893f977ec7b67820bc3ca37524}{png\+\_\+bytep}}}]{trans,  }\item[{unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{red,  }\item[{unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{green,  }\item[{unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{blue,  }\item[{unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{alpha,  }\item[{\mbox{\hyperlink{pngconf_8h_a2e608af822427492832d11909c2f3fee}{png\+\_\+const\+\_\+bytep}}}]{gamma\+\_\+table }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_a600e114687b3f93776fd980cfd420af1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_a626945ff994484cc517fc9d6c496b659}\label{makepng_8c_a626945ff994484cc517fc9d6c496b659}} 
+\index{makepng.\+c@{makepng.\+c}!set\+\_\+text@{set\+\_\+text}}
+\index{set\+\_\+text@{set\+\_\+text}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{set\+\_\+text()}{set\_text()}}
+{\footnotesize\ttfamily static void set\+\_\+text (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}}}]{png\+\_\+ptr,  }\item[{\mbox{\hyperlink{png_8h_ae3fea93b4964dd221f5ef0f88690dd68}{png\+\_\+infop}}}]{info\+\_\+ptr,  }\item[{png\+\_\+textp}]{text,  }\item[{\mbox{\hyperlink{pngconf_8h_a0d08bb02251d02830803ff5d2d449750}{png\+\_\+charp}}}]{param }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_a626945ff994484cc517fc9d6c496b659_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_a626945ff994484cc517fc9d6c496b659_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_a4a3f53d8af9e90c5a1bc438637c6b15f}\label{makepng_8c_a4a3f53d8af9e90c5a1bc438637c6b15f}} 
+\index{makepng.\+c@{makepng.\+c}!set\+\_\+value@{set\+\_\+value}}
+\index{set\+\_\+value@{set\+\_\+value}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{set\+\_\+value()}{set\_value()}}
+{\footnotesize\ttfamily static void set\+\_\+value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{pngconf_8h_a759e1c893f977ec7b67820bc3ca37524}{png\+\_\+bytep}}}]{row,  }\item[{size\+\_\+t}]{rowbytes,  }\item[{png\+\_\+uint\+\_\+32}]{x,  }\item[{unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{bit\+\_\+depth,  }\item[{png\+\_\+uint\+\_\+32}]{value,  }\item[{\mbox{\hyperlink{pngconf_8h_a2e608af822427492832d11909c2f3fee}{png\+\_\+const\+\_\+bytep}}}]{gamma\+\_\+table,  }\item[{double}]{conv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{makepng_8c_a4a3f53d8af9e90c5a1bc438637c6b15f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_a4a3f53d8af9e90c5a1bc438637c6b15f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makepng_8c_a9a882e888c4e7f2fe9a6e2838c875ae5}\label{makepng_8c_a9a882e888c4e7f2fe9a6e2838c875ae5}} 
+\index{makepng.\+c@{makepng.\+c}!write\+\_\+png@{write\+\_\+png}}
+\index{write\+\_\+png@{write\+\_\+png}!makepng.\+c@{makepng.\+c}}
+\subsubsection{\texorpdfstring{write\+\_\+png()}{write\_png()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} write\+\_\+png (\begin{DoxyParamCaption}\item[{const char $\ast$$\ast$}]{name,  }\item[{F\+I\+LE $\ast$}]{fp,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{color\+\_\+type,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{bit\+\_\+depth,  }\item[{volatile \mbox{\hyperlink{pngconf_8h_ad346e9127ae0a236421481b814a6a682}{png\+\_\+fixed\+\_\+point}}}]{gamma,  }\item[{\mbox{\hyperlink{makepng_8c_a97e92439acf17ed29cecb67c0ceeadba}{chunk\+\_\+insert}} $\ast$volatile}]{insert,  }\item[{unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{filters,  }\item[{unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{colors }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makepng_8c_a9a882e888c4e7f2fe9a6e2838c875ae5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{makepng_8c_a9a882e888c4e7f2fe9a6e2838c875ae5_icgraph}
+\end{center}
+\end{figure}

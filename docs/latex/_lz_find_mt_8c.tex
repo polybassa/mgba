@@ -1,0 +1,705 @@
+\hypertarget{_lz_find_mt_8c}{}\section{src/third-\/party/lzma/\+Lz\+Find\+Mt.c File Reference}
+\label{_lz_find_mt_8c}\index{src/third-\/party/lzma/\+Lz\+Find\+Mt.\+c@{src/third-\/party/lzma/\+Lz\+Find\+Mt.\+c}}
+{\ttfamily \#include \char`\"{}Precomp.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Lz\+Hash.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Lz\+Find\+Mt.\+h\char`\"{}}\newline
+Include dependency graph for Lz\+Find\+Mt.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_lz_find_mt_8c_a38b19fcfccd7340d7464504c6c4ce44b}{R\+I\+N\+O\+K\+\_\+\+T\+H\+R\+E\+AD}}(x)~\{ \mbox{\hyperlink{isa-lr35902_8c_a2eb27369cb3dbac14564f95cd51effdf}{if}} ((x) != 0) \mbox{\hyperlink{lr35902_2decoder_8c_a9717e7bbecb906637e86cef6da3d83c2}{return}} \mbox{\hyperlink{7z_types_8h_aef8b898343f886dfca338f703134fb5a}{S\+Z\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+H\+R\+E\+AD}}; \}
+\item 
+\#define \mbox{\hyperlink{_lz_find_mt_8c_a2c66de5ddc15f462f1d22eaf574c6943}{k\+Mt\+Max\+Val\+For\+Normalize}}~0x\+F\+F\+F\+F\+F\+F\+FF
+\item 
+\#define \mbox{\hyperlink{_lz_find_mt_8c_ab0c1c86f55d53824e7c119fe98fad721}{D\+E\+F\+\_\+\+Get\+Heads2}}(name,  v,  action)
+\item 
+\#define \mbox{\hyperlink{_lz_find_mt_8c_a46a784deb83cd333a345b379c525f051}{D\+E\+F\+\_\+\+Get\+Heads}}(name,  v)~\mbox{\hyperlink{_lz_find_mt_8c_ad3aaa127d2846ba4bbcb17c1d9335599}{D\+E\+F\+\_\+\+Get\+Heads2}}(name, v, ;)
+\item 
+\#define \mbox{\hyperlink{_lz_find_mt_8c_a13591918363439c59d346894ec7f233c}{k\+Empty\+Hash\+Value}}~0
+\item 
+\#define \mbox{\hyperlink{_lz_find_mt_8c_a170bea6c383b702c97f61c172789d00a}{k\+Hash\+Buffer\+Size}}~(\mbox{\hyperlink{_lz_find_mt_8h_a35a59a02568d46a4ad9d821be2aaba3e}{k\+Mt\+Hash\+Block\+Size}} $\ast$ \mbox{\hyperlink{_lz_find_mt_8h_adad0e0e22e80b8ea091ca59c666e37ba}{k\+Mt\+Hash\+Num\+Blocks}})
+\item 
+\#define \mbox{\hyperlink{_lz_find_mt_8c_aa668eb47192c5f7a902d3569deef737a}{k\+Bt\+Buffer\+Size}}~(\mbox{\hyperlink{_lz_find_mt_8h_a3a6baff3ab76457dc99b1cdf749c727e}{k\+Mt\+Bt\+Block\+Size}} $\ast$ \mbox{\hyperlink{_lz_find_mt_8h_a1b4e99b1ad197057563f0e41e7dbba19}{k\+Mt\+Bt\+Num\+Blocks}})
+\item 
+\#define \mbox{\hyperlink{_lz_find_mt_8c_a0e8b72dd6cc9cdc1f20c2894462595b2}{G\+E\+T\+\_\+\+N\+E\+X\+T\+\_\+\+B\+L\+O\+C\+K\+\_\+\+I\+F\+\_\+\+R\+E\+Q\+U\+I\+R\+ED}}~\mbox{\hyperlink{isa-lr35902_8c_a2eb27369cb3dbac14564f95cd51effdf}{if}} (p-\/$>$bt\+Buf\+Pos == p-\/$>$bt\+Buf\+Pos\+Limit) \mbox{\hyperlink{_lz_find_mt_8c_a0213e04eabe80b1d424ba9dded8539b1}{Match\+Finder\+Mt\+\_\+\+Get\+Next\+Block\+\_\+\+Bt}}(p);
+\item 
+\#define \mbox{\hyperlink{_lz_find_mt_8c_aa573753e386d363a4bcedffa645b38d6}{I\+N\+C\+R\+E\+A\+S\+E\+\_\+\+L\+Z\+\_\+\+P\+OS}}~p-\/$>$lz\+Pos++; p-\/$>$pointer\+To\+Cur\+Pos++;
+\item 
+\#define \mbox{\hyperlink{_lz_find_mt_8c_af809038733ede8c6b35939f349bbce8b}{S\+K\+I\+P\+\_\+\+H\+E\+A\+D\+E\+R2\+\_\+\+MT}}~do \{ \mbox{\hyperlink{_lz_find_mt_8c_a0e8b72dd6cc9cdc1f20c2894462595b2}{G\+E\+T\+\_\+\+N\+E\+X\+T\+\_\+\+B\+L\+O\+C\+K\+\_\+\+I\+F\+\_\+\+R\+E\+Q\+U\+I\+R\+ED}}
+\item 
+\#define \mbox{\hyperlink{_lz_find_mt_8c_a3c1394bc5c36f0e5b216b22de2ac107a}{S\+K\+I\+P\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+MT}}(\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})~\mbox{\hyperlink{_lz_find_mt_8c_af809038733ede8c6b35939f349bbce8b}{S\+K\+I\+P\+\_\+\+H\+E\+A\+D\+E\+R2\+\_\+\+MT}} \mbox{\hyperlink{isa-lr35902_8c_a2eb27369cb3dbac14564f95cd51effdf}{if}} (p-\/$>$bt\+Num\+Avail\+Bytes-\/-\/ $>$= (\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})) \{ const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$cur = p-\/$>$pointer\+To\+Cur\+Pos; \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$hash = p-\/$>$hash;
+\item 
+\#define \mbox{\hyperlink{_lz_find_mt_8c_a306555d99d5500997dc0e4987e86b567}{S\+K\+I\+P\+\_\+\+F\+O\+O\+T\+E\+R\+\_\+\+MT}}~\} \mbox{\hyperlink{_lz_find_mt_8c_aa573753e386d363a4bcedffa645b38d6}{I\+N\+C\+R\+E\+A\+S\+E\+\_\+\+L\+Z\+\_\+\+P\+OS}} p-\/$>$bt\+Buf\+Pos += p-\/$>$bt\+Buf\mbox{[}p-\/$>$bt\+Buf\+Pos\mbox{]} + 1; \} while (-\/-\/\mbox{\hyperlink{enough_8c_a1fd0a5ffc280a84b0764e8ec908f814a}{num}} != 0);
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{_lz_find_mt_8c_a9ca396fc7272b553923fc84c7f79a7b3}{Mt\+Sync\+\_\+\+Construct}} (\mbox{\hyperlink{_lz_find_mt_8h_a152b688e4092bd30642f745ce011f357}{C\+Mt\+Sync}} $\ast$p)
+\item 
+static void \mbox{\hyperlink{_lz_find_mt_8c_a86b495d40c0f005954075ba0261f9c26}{Mt\+Sync\+\_\+\+Get\+Next\+Block}} (\mbox{\hyperlink{_lz_find_mt_8h_a152b688e4092bd30642f745ce011f357}{C\+Mt\+Sync}} $\ast$p)
+\item 
+static void \mbox{\hyperlink{_lz_find_mt_8c_af49694e35722aa0be5cc6067fa4824eb}{Mt\+Sync\+\_\+\+Stop\+Writing}} (\mbox{\hyperlink{_lz_find_mt_8h_a152b688e4092bd30642f745ce011f357}{C\+Mt\+Sync}} $\ast$p)
+\item 
+static void \mbox{\hyperlink{_lz_find_mt_8c_acb36bf2908ab9f05440e089328266c6a}{Mt\+Sync\+\_\+\+Destruct}} (\mbox{\hyperlink{_lz_find_mt_8h_a152b688e4092bd30642f745ce011f357}{C\+Mt\+Sync}} $\ast$p)
+\item 
+static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_lz_find_mt_8c_a3199d61a9a7ff818a6024a28af5f268c}{Mt\+Sync\+\_\+\+Create2}} (\mbox{\hyperlink{_lz_find_mt_8h_a152b688e4092bd30642f745ce011f357}{C\+Mt\+Sync}} $\ast$p, \mbox{\hyperlink{_threads_8h_abeb46eb195a92134b29761a43e542052}{T\+H\+R\+E\+A\+D\+\_\+\+F\+U\+N\+C\+\_\+\+T\+Y\+PE}} start\+Address, void $\ast$obj, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} num\+Blocks)
+\item 
+static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_lz_find_mt_8c_aee37847f57a2e503705adbc021065dd8}{Mt\+Sync\+\_\+\+Create}} (\mbox{\hyperlink{_lz_find_mt_8h_a152b688e4092bd30642f745ce011f357}{C\+Mt\+Sync}} $\ast$p, \mbox{\hyperlink{_threads_8h_abeb46eb195a92134b29761a43e542052}{T\+H\+R\+E\+A\+D\+\_\+\+F\+U\+N\+C\+\_\+\+T\+Y\+PE}} start\+Address, void $\ast$obj, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} num\+Blocks)
+\item 
+void \mbox{\hyperlink{_lz_find_mt_8c_a049ba974af1b3dacac21761ac76faf00}{Mt\+Sync\+\_\+\+Init}} (\mbox{\hyperlink{_lz_find_mt_8h_a152b688e4092bd30642f745ce011f357}{C\+Mt\+Sync}} $\ast$p)
+\item 
+\mbox{\hyperlink{_lz_find_mt_8c_ad3aaa127d2846ba4bbcb17c1d9335599}{D\+E\+F\+\_\+\+Get\+Heads2}} (2,(p\mbox{[}0\mbox{]}$\vert$((\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}) p\mbox{[}1\mbox{]}$<$$<$ 8)), \mbox{\hyperlink{_compiler_8h_a6e61b3a07893501c121343edf3bfcbd8}{U\+N\+U\+S\+E\+D\+\_\+\+V\+AR}}(hash\+Mask);\mbox{\hyperlink{_compiler_8h_a6e61b3a07893501c121343edf3bfcbd8}{U\+N\+U\+S\+E\+D\+\_\+\+V\+AR}}(crc);)
+\item 
+static void \mbox{\hyperlink{_lz_find_mt_8c_afa1f5938e2508ffceea483e7dd48dc26}{Match\+Finder\+Mt\+\_\+\+Get\+Next\+Block\+\_\+\+Hash}} (\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$p)
+\item 
+static void \mbox{\hyperlink{_lz_find_mt_8c_a215914537ca7dd10f57fde88cc3bffc7}{Bt\+Get\+Matches}} (\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$p, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$distances)
+\item 
+static void \mbox{\hyperlink{_lz_find_mt_8c_ab3964c2aa3201ae70c5c3ad5294f644a}{Bt\+Fill\+Block}} (\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$p, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} global\+Block\+Index)
+\item 
+void \mbox{\hyperlink{_lz_find_mt_8c_a9388955f0272d2954a5f7d30de7e595f}{Bt\+Thread\+Func}} (\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$mt)
+\item 
+void \mbox{\hyperlink{_lz_find_mt_8c_a12919af4249f297f157a5f862d4ea040}{Match\+Finder\+Mt\+\_\+\+Construct}} (\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$p)
+\item 
+static void \mbox{\hyperlink{_lz_find_mt_8c_ab01e620f1035adbcadf8792872eea17f}{Match\+Finder\+Mt\+\_\+\+Free\+Mem}} (\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$p, \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$alloc)
+\item 
+void \mbox{\hyperlink{_lz_find_mt_8c_a8f04458f06b00f3c982627cc01f566ce}{Match\+Finder\+Mt\+\_\+\+Destruct}} (\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$p, \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$alloc)
+\item 
+static \mbox{\hyperlink{_threads_8h_af9264da4ca787c227d6cf5a66426032b}{T\+H\+R\+E\+A\+D\+\_\+\+F\+U\+N\+C\+\_\+\+R\+E\+T\+\_\+\+T\+Y\+PE}} \mbox{\hyperlink{_threads_8h_a563e8964d90165aacba91d48c5660b6f}{T\+H\+R\+E\+A\+D\+\_\+\+F\+U\+N\+C\+\_\+\+C\+A\+L\+L\+\_\+\+T\+Y\+PE}} \mbox{\hyperlink{_lz_find_mt_8c_acd8e41b976f4d9edeabf3ed653d6e567}{Hash\+Thread\+Func2}} (void $\ast$p)
+\item 
+static \mbox{\hyperlink{_threads_8h_af9264da4ca787c227d6cf5a66426032b}{T\+H\+R\+E\+A\+D\+\_\+\+F\+U\+N\+C\+\_\+\+R\+E\+T\+\_\+\+T\+Y\+PE}} \mbox{\hyperlink{_threads_8h_a563e8964d90165aacba91d48c5660b6f}{T\+H\+R\+E\+A\+D\+\_\+\+F\+U\+N\+C\+\_\+\+C\+A\+L\+L\+\_\+\+T\+Y\+PE}} \mbox{\hyperlink{_lz_find_mt_8c_ae37b08560f1c97b4a8eaea10cf0fb433}{Bt\+Thread\+Func2}} (void $\ast$p)
+\item 
+\mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_lz_find_mt_8c_ab52655e126291dc7d704c2f36c6c2d3e}{Match\+Finder\+Mt\+\_\+\+Create}} (\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$p, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} history\+Size, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} keep\+Add\+Buffer\+Before, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} match\+Max\+Len, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} keep\+Add\+Buffer\+After, \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$alloc)
+\item 
+void \mbox{\hyperlink{_lz_find_mt_8c_ade36dd788a85b59fc3e77109d7f8a6b2}{Match\+Finder\+Mt\+\_\+\+Init}} (\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$p)
+\item 
+void \mbox{\hyperlink{_lz_find_mt_8c_ab05936f9e72c6dab29e8680102121740}{Match\+Finder\+Mt\+\_\+\+Release\+Stream}} (\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$p)
+\item 
+static void \mbox{\hyperlink{_lz_find_mt_8c_a818e5d06ad77f5af51a326b63483d12a}{Match\+Finder\+Mt\+\_\+\+Normalize}} (\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$p)
+\item 
+static void \mbox{\hyperlink{_lz_find_mt_8c_a0213e04eabe80b1d424ba9dded8539b1}{Match\+Finder\+Mt\+\_\+\+Get\+Next\+Block\+\_\+\+Bt}} (\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$p)
+\item 
+static const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$ \mbox{\hyperlink{_lz_find_mt_8c_a3b63e1639497696e73e17f6ee56951d8}{Match\+Finder\+Mt\+\_\+\+Get\+Pointer\+To\+Current\+Pos}} (\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$p)
+\item 
+static \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} \mbox{\hyperlink{_lz_find_mt_8c_a5fa101902aedf982d7385ebe74fa6ee2}{Match\+Finder\+Mt\+\_\+\+Get\+Num\+Available\+Bytes}} (\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$p)
+\item 
+static \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$ \mbox{\hyperlink{_lz_find_mt_8c_a2977064238f7eee34ac923d7db7deb7b}{Mix\+Matches2}} (\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$p, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} match\+Min\+Pos, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$distances)
+\item 
+static \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$ \mbox{\hyperlink{_lz_find_mt_8c_a1ca78a99b9074e6e0d7b551216e2ff92}{Mix\+Matches3}} (\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$p, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} match\+Min\+Pos, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$distances)
+\item 
+static \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} \mbox{\hyperlink{_lz_find_mt_8c_a552c5645c227e8393480a79295e632dd}{Match\+Finder\+Mt2\+\_\+\+Get\+Matches}} (\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$p, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$distances)
+\item 
+static \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} \mbox{\hyperlink{_lz_find_mt_8c_a68387ffa299b541eccf4ea7da4657f79}{Match\+Finder\+Mt\+\_\+\+Get\+Matches}} (\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$p, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$distances)
+\item 
+static void \mbox{\hyperlink{_lz_find_mt_8c_addd47021aca09815a85826101aee92ca}{Match\+Finder\+Mt0\+\_\+\+Skip}} (\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$p, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} \mbox{\hyperlink{enough_8c_a1fd0a5ffc280a84b0764e8ec908f814a}{num}})
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_lz_find_mt_8c_a46a784deb83cd333a345b379c525f051}\label{_lz_find_mt_8c_a46a784deb83cd333a345b379c525f051}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!D\+E\+F\+\_\+\+Get\+Heads@{D\+E\+F\+\_\+\+Get\+Heads}}
+\index{D\+E\+F\+\_\+\+Get\+Heads@{D\+E\+F\+\_\+\+Get\+Heads}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+F\+\_\+\+Get\+Heads}{DEF\_GetHeads}}
+{\footnotesize\ttfamily \#define D\+E\+F\+\_\+\+Get\+Heads(\begin{DoxyParamCaption}\item[{}]{name,  }\item[{}]{v }\end{DoxyParamCaption})~\mbox{\hyperlink{_lz_find_mt_8c_ad3aaa127d2846ba4bbcb17c1d9335599}{D\+E\+F\+\_\+\+Get\+Heads2}}(name, v, ;)}
+
+\mbox{\Hypertarget{_lz_find_mt_8c_ab0c1c86f55d53824e7c119fe98fad721}\label{_lz_find_mt_8c_ab0c1c86f55d53824e7c119fe98fad721}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!D\+E\+F\+\_\+\+Get\+Heads2@{D\+E\+F\+\_\+\+Get\+Heads2}}
+\index{D\+E\+F\+\_\+\+Get\+Heads2@{D\+E\+F\+\_\+\+Get\+Heads2}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+F\+\_\+\+Get\+Heads2}{DEF\_GetHeads2}}
+{\footnotesize\ttfamily \#define D\+E\+F\+\_\+\+Get\+Heads2(\begin{DoxyParamCaption}\item[{}]{name,  }\item[{}]{v,  }\item[{}]{action }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keyword}{static} \textcolor{keywordtype}{void} GetHeads ## name(\textcolor{keyword}{const} \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} *p, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}} pos, \(\backslash\)
+      \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}} *hash, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}} hashMask, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}} *heads, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}} numHeads, \textcolor{keyword}{const} 
+      \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}} *crc) \(\backslash\)
+    \{ action; \textcolor{keywordflow}{for} (; numHeads != 0; numHeads--) \{ \(\backslash\)
+      const \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}} value = (v); p++; *heads++ = pos - hash[value]; hash[value] = pos++;  \} \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_lz_find_mt_8c_a0e8b72dd6cc9cdc1f20c2894462595b2}\label{_lz_find_mt_8c_a0e8b72dd6cc9cdc1f20c2894462595b2}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!G\+E\+T\+\_\+\+N\+E\+X\+T\+\_\+\+B\+L\+O\+C\+K\+\_\+\+I\+F\+\_\+\+R\+E\+Q\+U\+I\+R\+ED@{G\+E\+T\+\_\+\+N\+E\+X\+T\+\_\+\+B\+L\+O\+C\+K\+\_\+\+I\+F\+\_\+\+R\+E\+Q\+U\+I\+R\+ED}}
+\index{G\+E\+T\+\_\+\+N\+E\+X\+T\+\_\+\+B\+L\+O\+C\+K\+\_\+\+I\+F\+\_\+\+R\+E\+Q\+U\+I\+R\+ED@{G\+E\+T\+\_\+\+N\+E\+X\+T\+\_\+\+B\+L\+O\+C\+K\+\_\+\+I\+F\+\_\+\+R\+E\+Q\+U\+I\+R\+ED}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{G\+E\+T\+\_\+\+N\+E\+X\+T\+\_\+\+B\+L\+O\+C\+K\+\_\+\+I\+F\+\_\+\+R\+E\+Q\+U\+I\+R\+ED}{GET\_NEXT\_BLOCK\_IF\_REQUIRED}}
+{\footnotesize\ttfamily \#define G\+E\+T\+\_\+\+N\+E\+X\+T\+\_\+\+B\+L\+O\+C\+K\+\_\+\+I\+F\+\_\+\+R\+E\+Q\+U\+I\+R\+ED~\mbox{\hyperlink{isa-lr35902_8c_a2eb27369cb3dbac14564f95cd51effdf}{if}} (p-\/$>$bt\+Buf\+Pos == p-\/$>$bt\+Buf\+Pos\+Limit) \mbox{\hyperlink{_lz_find_mt_8c_a0213e04eabe80b1d424ba9dded8539b1}{Match\+Finder\+Mt\+\_\+\+Get\+Next\+Block\+\_\+\+Bt}}(p);}
+
+\mbox{\Hypertarget{_lz_find_mt_8c_aa573753e386d363a4bcedffa645b38d6}\label{_lz_find_mt_8c_aa573753e386d363a4bcedffa645b38d6}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!I\+N\+C\+R\+E\+A\+S\+E\+\_\+\+L\+Z\+\_\+\+P\+OS@{I\+N\+C\+R\+E\+A\+S\+E\+\_\+\+L\+Z\+\_\+\+P\+OS}}
+\index{I\+N\+C\+R\+E\+A\+S\+E\+\_\+\+L\+Z\+\_\+\+P\+OS@{I\+N\+C\+R\+E\+A\+S\+E\+\_\+\+L\+Z\+\_\+\+P\+OS}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{I\+N\+C\+R\+E\+A\+S\+E\+\_\+\+L\+Z\+\_\+\+P\+OS}{INCREASE\_LZ\_POS}}
+{\footnotesize\ttfamily \#define I\+N\+C\+R\+E\+A\+S\+E\+\_\+\+L\+Z\+\_\+\+P\+OS~p-\/$>$lz\+Pos++; p-\/$>$pointer\+To\+Cur\+Pos++;}
+
+\mbox{\Hypertarget{_lz_find_mt_8c_aa668eb47192c5f7a902d3569deef737a}\label{_lz_find_mt_8c_aa668eb47192c5f7a902d3569deef737a}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!k\+Bt\+Buffer\+Size@{k\+Bt\+Buffer\+Size}}
+\index{k\+Bt\+Buffer\+Size@{k\+Bt\+Buffer\+Size}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{k\+Bt\+Buffer\+Size}{kBtBufferSize}}
+{\footnotesize\ttfamily \#define k\+Bt\+Buffer\+Size~(\mbox{\hyperlink{_lz_find_mt_8h_a3a6baff3ab76457dc99b1cdf749c727e}{k\+Mt\+Bt\+Block\+Size}} $\ast$ \mbox{\hyperlink{_lz_find_mt_8h_a1b4e99b1ad197057563f0e41e7dbba19}{k\+Mt\+Bt\+Num\+Blocks}})}
+
+\mbox{\Hypertarget{_lz_find_mt_8c_a13591918363439c59d346894ec7f233c}\label{_lz_find_mt_8c_a13591918363439c59d346894ec7f233c}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!k\+Empty\+Hash\+Value@{k\+Empty\+Hash\+Value}}
+\index{k\+Empty\+Hash\+Value@{k\+Empty\+Hash\+Value}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{k\+Empty\+Hash\+Value}{kEmptyHashValue}}
+{\footnotesize\ttfamily \#define k\+Empty\+Hash\+Value~0}
+
+\mbox{\Hypertarget{_lz_find_mt_8c_a170bea6c383b702c97f61c172789d00a}\label{_lz_find_mt_8c_a170bea6c383b702c97f61c172789d00a}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!k\+Hash\+Buffer\+Size@{k\+Hash\+Buffer\+Size}}
+\index{k\+Hash\+Buffer\+Size@{k\+Hash\+Buffer\+Size}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{k\+Hash\+Buffer\+Size}{kHashBufferSize}}
+{\footnotesize\ttfamily \#define k\+Hash\+Buffer\+Size~(\mbox{\hyperlink{_lz_find_mt_8h_a35a59a02568d46a4ad9d821be2aaba3e}{k\+Mt\+Hash\+Block\+Size}} $\ast$ \mbox{\hyperlink{_lz_find_mt_8h_adad0e0e22e80b8ea091ca59c666e37ba}{k\+Mt\+Hash\+Num\+Blocks}})}
+
+\mbox{\Hypertarget{_lz_find_mt_8c_a2c66de5ddc15f462f1d22eaf574c6943}\label{_lz_find_mt_8c_a2c66de5ddc15f462f1d22eaf574c6943}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!k\+Mt\+Max\+Val\+For\+Normalize@{k\+Mt\+Max\+Val\+For\+Normalize}}
+\index{k\+Mt\+Max\+Val\+For\+Normalize@{k\+Mt\+Max\+Val\+For\+Normalize}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{k\+Mt\+Max\+Val\+For\+Normalize}{kMtMaxValForNormalize}}
+{\footnotesize\ttfamily \#define k\+Mt\+Max\+Val\+For\+Normalize~0x\+F\+F\+F\+F\+F\+F\+FF}
+
+\mbox{\Hypertarget{_lz_find_mt_8c_a38b19fcfccd7340d7464504c6c4ce44b}\label{_lz_find_mt_8c_a38b19fcfccd7340d7464504c6c4ce44b}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!R\+I\+N\+O\+K\+\_\+\+T\+H\+R\+E\+AD@{R\+I\+N\+O\+K\+\_\+\+T\+H\+R\+E\+AD}}
+\index{R\+I\+N\+O\+K\+\_\+\+T\+H\+R\+E\+AD@{R\+I\+N\+O\+K\+\_\+\+T\+H\+R\+E\+AD}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{R\+I\+N\+O\+K\+\_\+\+T\+H\+R\+E\+AD}{RINOK\_THREAD}}
+{\footnotesize\ttfamily \#define R\+I\+N\+O\+K\+\_\+\+T\+H\+R\+E\+AD(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~\{ \mbox{\hyperlink{isa-lr35902_8c_a2eb27369cb3dbac14564f95cd51effdf}{if}} ((x) != 0) \mbox{\hyperlink{lr35902_2decoder_8c_a9717e7bbecb906637e86cef6da3d83c2}{return}} \mbox{\hyperlink{7z_types_8h_aef8b898343f886dfca338f703134fb5a}{S\+Z\+\_\+\+E\+R\+R\+O\+R\+\_\+\+T\+H\+R\+E\+AD}}; \}}
+
+\mbox{\Hypertarget{_lz_find_mt_8c_a306555d99d5500997dc0e4987e86b567}\label{_lz_find_mt_8c_a306555d99d5500997dc0e4987e86b567}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!S\+K\+I\+P\+\_\+\+F\+O\+O\+T\+E\+R\+\_\+\+MT@{S\+K\+I\+P\+\_\+\+F\+O\+O\+T\+E\+R\+\_\+\+MT}}
+\index{S\+K\+I\+P\+\_\+\+F\+O\+O\+T\+E\+R\+\_\+\+MT@{S\+K\+I\+P\+\_\+\+F\+O\+O\+T\+E\+R\+\_\+\+MT}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{S\+K\+I\+P\+\_\+\+F\+O\+O\+T\+E\+R\+\_\+\+MT}{SKIP\_FOOTER\_MT}}
+{\footnotesize\ttfamily \#define S\+K\+I\+P\+\_\+\+F\+O\+O\+T\+E\+R\+\_\+\+MT~\} \mbox{\hyperlink{_lz_find_mt_8c_aa573753e386d363a4bcedffa645b38d6}{I\+N\+C\+R\+E\+A\+S\+E\+\_\+\+L\+Z\+\_\+\+P\+OS}} p-\/$>$bt\+Buf\+Pos += p-\/$>$bt\+Buf\mbox{[}p-\/$>$bt\+Buf\+Pos\mbox{]} + 1; \} while (-\/-\/\mbox{\hyperlink{enough_8c_a1fd0a5ffc280a84b0764e8ec908f814a}{num}} != 0);}
+
+\mbox{\Hypertarget{_lz_find_mt_8c_af809038733ede8c6b35939f349bbce8b}\label{_lz_find_mt_8c_af809038733ede8c6b35939f349bbce8b}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!S\+K\+I\+P\+\_\+\+H\+E\+A\+D\+E\+R2\+\_\+\+MT@{S\+K\+I\+P\+\_\+\+H\+E\+A\+D\+E\+R2\+\_\+\+MT}}
+\index{S\+K\+I\+P\+\_\+\+H\+E\+A\+D\+E\+R2\+\_\+\+MT@{S\+K\+I\+P\+\_\+\+H\+E\+A\+D\+E\+R2\+\_\+\+MT}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{S\+K\+I\+P\+\_\+\+H\+E\+A\+D\+E\+R2\+\_\+\+MT}{SKIP\_HEADER2\_MT}}
+{\footnotesize\ttfamily \#define S\+K\+I\+P\+\_\+\+H\+E\+A\+D\+E\+R2\+\_\+\+MT~do \{ \mbox{\hyperlink{_lz_find_mt_8c_a0e8b72dd6cc9cdc1f20c2894462595b2}{G\+E\+T\+\_\+\+N\+E\+X\+T\+\_\+\+B\+L\+O\+C\+K\+\_\+\+I\+F\+\_\+\+R\+E\+Q\+U\+I\+R\+ED}}}
+
+\mbox{\Hypertarget{_lz_find_mt_8c_a3c1394bc5c36f0e5b216b22de2ac107a}\label{_lz_find_mt_8c_a3c1394bc5c36f0e5b216b22de2ac107a}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!S\+K\+I\+P\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+MT@{S\+K\+I\+P\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+MT}}
+\index{S\+K\+I\+P\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+MT@{S\+K\+I\+P\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+MT}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{S\+K\+I\+P\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+MT}{SKIP\_HEADER\_MT}}
+{\footnotesize\ttfamily \#define S\+K\+I\+P\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+MT(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}} }\end{DoxyParamCaption})~\mbox{\hyperlink{_lz_find_mt_8c_af809038733ede8c6b35939f349bbce8b}{S\+K\+I\+P\+\_\+\+H\+E\+A\+D\+E\+R2\+\_\+\+MT}} \mbox{\hyperlink{isa-lr35902_8c_a2eb27369cb3dbac14564f95cd51effdf}{if}} (p-\/$>$bt\+Num\+Avail\+Bytes-\/-\/ $>$= (\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})) \{ const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$cur = p-\/$>$pointer\+To\+Cur\+Pos; \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$hash = p-\/$>$hash;}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_lz_find_mt_8c_ab3964c2aa3201ae70c5c3ad5294f644a}\label{_lz_find_mt_8c_ab3964c2aa3201ae70c5c3ad5294f644a}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Bt\+Fill\+Block@{Bt\+Fill\+Block}}
+\index{Bt\+Fill\+Block@{Bt\+Fill\+Block}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Bt\+Fill\+Block()}{BtFillBlock()}}
+{\footnotesize\ttfamily static void Bt\+Fill\+Block (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{global\+Block\+Index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_ab3964c2aa3201ae70c5c3ad5294f644a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_ab3964c2aa3201ae70c5c3ad5294f644a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_a215914537ca7dd10f57fde88cc3bffc7}\label{_lz_find_mt_8c_a215914537ca7dd10f57fde88cc3bffc7}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Bt\+Get\+Matches@{Bt\+Get\+Matches}}
+\index{Bt\+Get\+Matches@{Bt\+Get\+Matches}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Bt\+Get\+Matches()}{BtGetMatches()}}
+{\footnotesize\ttfamily static void Bt\+Get\+Matches (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$}]{distances }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_a215914537ca7dd10f57fde88cc3bffc7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_a215914537ca7dd10f57fde88cc3bffc7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_a9388955f0272d2954a5f7d30de7e595f}\label{_lz_find_mt_8c_a9388955f0272d2954a5f7d30de7e595f}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Bt\+Thread\+Func@{Bt\+Thread\+Func}}
+\index{Bt\+Thread\+Func@{Bt\+Thread\+Func}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Bt\+Thread\+Func()}{BtThreadFunc()}}
+{\footnotesize\ttfamily void Bt\+Thread\+Func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$}]{mt }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_a9388955f0272d2954a5f7d30de7e595f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_a9388955f0272d2954a5f7d30de7e595f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_ae37b08560f1c97b4a8eaea10cf0fb433}\label{_lz_find_mt_8c_ae37b08560f1c97b4a8eaea10cf0fb433}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Bt\+Thread\+Func2@{Bt\+Thread\+Func2}}
+\index{Bt\+Thread\+Func2@{Bt\+Thread\+Func2}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Bt\+Thread\+Func2()}{BtThreadFunc2()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{_threads_8h_af9264da4ca787c227d6cf5a66426032b}{T\+H\+R\+E\+A\+D\+\_\+\+F\+U\+N\+C\+\_\+\+R\+E\+T\+\_\+\+T\+Y\+PE}} \mbox{\hyperlink{_threads_8h_a563e8964d90165aacba91d48c5660b6f}{T\+H\+R\+E\+A\+D\+\_\+\+F\+U\+N\+C\+\_\+\+C\+A\+L\+L\+\_\+\+T\+Y\+PE}} Bt\+Thread\+Func2 (\begin{DoxyParamCaption}\item[{void $\ast$}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_ae37b08560f1c97b4a8eaea10cf0fb433_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_ae37b08560f1c97b4a8eaea10cf0fb433_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_ad3aaa127d2846ba4bbcb17c1d9335599}\label{_lz_find_mt_8c_ad3aaa127d2846ba4bbcb17c1d9335599}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!D\+E\+F\+\_\+\+Get\+Heads2@{D\+E\+F\+\_\+\+Get\+Heads2}}
+\index{D\+E\+F\+\_\+\+Get\+Heads2@{D\+E\+F\+\_\+\+Get\+Heads2}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+F\+\_\+\+Get\+Heads2()}{DEF\_GetHeads2()}}
+{\footnotesize\ttfamily D\+E\+F\+\_\+\+Get\+Heads2 (\begin{DoxyParamCaption}\item[{2}]{,  }\item[{(p\mbox{[}0\mbox{]}$\vert$((\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}) p\mbox{[}1\mbox{]}$<$$<$ 8))}]{,  }\item[{\mbox{\hyperlink{_compiler_8h_a6e61b3a07893501c121343edf3bfcbd8}{U\+N\+U\+S\+E\+D\+\_\+\+V\+AR}}(hash\+Mask);\mbox{\hyperlink{_compiler_8h_a6e61b3a07893501c121343edf3bfcbd8}{U\+N\+U\+S\+E\+D\+\_\+\+V\+AR}}(crc);}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_lz_find_mt_8c_acd8e41b976f4d9edeabf3ed653d6e567}\label{_lz_find_mt_8c_acd8e41b976f4d9edeabf3ed653d6e567}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Hash\+Thread\+Func2@{Hash\+Thread\+Func2}}
+\index{Hash\+Thread\+Func2@{Hash\+Thread\+Func2}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Hash\+Thread\+Func2()}{HashThreadFunc2()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{_threads_8h_af9264da4ca787c227d6cf5a66426032b}{T\+H\+R\+E\+A\+D\+\_\+\+F\+U\+N\+C\+\_\+\+R\+E\+T\+\_\+\+T\+Y\+PE}} \mbox{\hyperlink{_threads_8h_a563e8964d90165aacba91d48c5660b6f}{T\+H\+R\+E\+A\+D\+\_\+\+F\+U\+N\+C\+\_\+\+C\+A\+L\+L\+\_\+\+T\+Y\+PE}} Hash\+Thread\+Func2 (\begin{DoxyParamCaption}\item[{void $\ast$}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_acd8e41b976f4d9edeabf3ed653d6e567_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_addd47021aca09815a85826101aee92ca}\label{_lz_find_mt_8c_addd47021aca09815a85826101aee92ca}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Match\+Finder\+Mt0\+\_\+\+Skip@{Match\+Finder\+Mt0\+\_\+\+Skip}}
+\index{Match\+Finder\+Mt0\+\_\+\+Skip@{Match\+Finder\+Mt0\+\_\+\+Skip}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Match\+Finder\+Mt0\+\_\+\+Skip()}{MatchFinderMt0\_Skip()}}
+{\footnotesize\ttfamily static void Match\+Finder\+Mt0\+\_\+\+Skip (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{num }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_addd47021aca09815a85826101aee92ca_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_a552c5645c227e8393480a79295e632dd}\label{_lz_find_mt_8c_a552c5645c227e8393480a79295e632dd}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Match\+Finder\+Mt2\+\_\+\+Get\+Matches@{Match\+Finder\+Mt2\+\_\+\+Get\+Matches}}
+\index{Match\+Finder\+Mt2\+\_\+\+Get\+Matches@{Match\+Finder\+Mt2\+\_\+\+Get\+Matches}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Match\+Finder\+Mt2\+\_\+\+Get\+Matches()}{MatchFinderMt2\_GetMatches()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} Match\+Finder\+Mt2\+\_\+\+Get\+Matches (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$}]{distances }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_a552c5645c227e8393480a79295e632dd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_a12919af4249f297f157a5f862d4ea040}\label{_lz_find_mt_8c_a12919af4249f297f157a5f862d4ea040}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Match\+Finder\+Mt\+\_\+\+Construct@{Match\+Finder\+Mt\+\_\+\+Construct}}
+\index{Match\+Finder\+Mt\+\_\+\+Construct@{Match\+Finder\+Mt\+\_\+\+Construct}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Match\+Finder\+Mt\+\_\+\+Construct()}{MatchFinderMt\_Construct()}}
+{\footnotesize\ttfamily void Match\+Finder\+Mt\+\_\+\+Construct (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_a12919af4249f297f157a5f862d4ea040_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_a12919af4249f297f157a5f862d4ea040_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_ab52655e126291dc7d704c2f36c6c2d3e}\label{_lz_find_mt_8c_ab52655e126291dc7d704c2f36c6c2d3e}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Match\+Finder\+Mt\+\_\+\+Create@{Match\+Finder\+Mt\+\_\+\+Create}}
+\index{Match\+Finder\+Mt\+\_\+\+Create@{Match\+Finder\+Mt\+\_\+\+Create}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Match\+Finder\+Mt\+\_\+\+Create()}{MatchFinderMt\_Create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Match\+Finder\+Mt\+\_\+\+Create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{history\+Size,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{keep\+Add\+Buffer\+Before,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{match\+Max\+Len,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{keep\+Add\+Buffer\+After,  }\item[{\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$}]{alloc }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_ab52655e126291dc7d704c2f36c6c2d3e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_ab52655e126291dc7d704c2f36c6c2d3e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_a8f04458f06b00f3c982627cc01f566ce}\label{_lz_find_mt_8c_a8f04458f06b00f3c982627cc01f566ce}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Match\+Finder\+Mt\+\_\+\+Destruct@{Match\+Finder\+Mt\+\_\+\+Destruct}}
+\index{Match\+Finder\+Mt\+\_\+\+Destruct@{Match\+Finder\+Mt\+\_\+\+Destruct}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Match\+Finder\+Mt\+\_\+\+Destruct()}{MatchFinderMt\_Destruct()}}
+{\footnotesize\ttfamily void Match\+Finder\+Mt\+\_\+\+Destruct (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$}]{alloc }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_a8f04458f06b00f3c982627cc01f566ce_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_a8f04458f06b00f3c982627cc01f566ce_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_ab01e620f1035adbcadf8792872eea17f}\label{_lz_find_mt_8c_ab01e620f1035adbcadf8792872eea17f}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Match\+Finder\+Mt\+\_\+\+Free\+Mem@{Match\+Finder\+Mt\+\_\+\+Free\+Mem}}
+\index{Match\+Finder\+Mt\+\_\+\+Free\+Mem@{Match\+Finder\+Mt\+\_\+\+Free\+Mem}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Match\+Finder\+Mt\+\_\+\+Free\+Mem()}{MatchFinderMt\_FreeMem()}}
+{\footnotesize\ttfamily static void Match\+Finder\+Mt\+\_\+\+Free\+Mem (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$}]{alloc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_ab01e620f1035adbcadf8792872eea17f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_a68387ffa299b541eccf4ea7da4657f79}\label{_lz_find_mt_8c_a68387ffa299b541eccf4ea7da4657f79}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Match\+Finder\+Mt\+\_\+\+Get\+Matches@{Match\+Finder\+Mt\+\_\+\+Get\+Matches}}
+\index{Match\+Finder\+Mt\+\_\+\+Get\+Matches@{Match\+Finder\+Mt\+\_\+\+Get\+Matches}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Match\+Finder\+Mt\+\_\+\+Get\+Matches()}{MatchFinderMt\_GetMatches()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} Match\+Finder\+Mt\+\_\+\+Get\+Matches (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$}]{distances }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_a68387ffa299b541eccf4ea7da4657f79_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_a0213e04eabe80b1d424ba9dded8539b1}\label{_lz_find_mt_8c_a0213e04eabe80b1d424ba9dded8539b1}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Match\+Finder\+Mt\+\_\+\+Get\+Next\+Block\+\_\+\+Bt@{Match\+Finder\+Mt\+\_\+\+Get\+Next\+Block\+\_\+\+Bt}}
+\index{Match\+Finder\+Mt\+\_\+\+Get\+Next\+Block\+\_\+\+Bt@{Match\+Finder\+Mt\+\_\+\+Get\+Next\+Block\+\_\+\+Bt}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Match\+Finder\+Mt\+\_\+\+Get\+Next\+Block\+\_\+\+Bt()}{MatchFinderMt\_GetNextBlock\_Bt()}}
+{\footnotesize\ttfamily static void Match\+Finder\+Mt\+\_\+\+Get\+Next\+Block\+\_\+\+Bt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_a0213e04eabe80b1d424ba9dded8539b1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_afa1f5938e2508ffceea483e7dd48dc26}\label{_lz_find_mt_8c_afa1f5938e2508ffceea483e7dd48dc26}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Match\+Finder\+Mt\+\_\+\+Get\+Next\+Block\+\_\+\+Hash@{Match\+Finder\+Mt\+\_\+\+Get\+Next\+Block\+\_\+\+Hash}}
+\index{Match\+Finder\+Mt\+\_\+\+Get\+Next\+Block\+\_\+\+Hash@{Match\+Finder\+Mt\+\_\+\+Get\+Next\+Block\+\_\+\+Hash}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Match\+Finder\+Mt\+\_\+\+Get\+Next\+Block\+\_\+\+Hash()}{MatchFinderMt\_GetNextBlock\_Hash()}}
+{\footnotesize\ttfamily static void Match\+Finder\+Mt\+\_\+\+Get\+Next\+Block\+\_\+\+Hash (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_afa1f5938e2508ffceea483e7dd48dc26_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_afa1f5938e2508ffceea483e7dd48dc26_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_a5fa101902aedf982d7385ebe74fa6ee2}\label{_lz_find_mt_8c_a5fa101902aedf982d7385ebe74fa6ee2}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Match\+Finder\+Mt\+\_\+\+Get\+Num\+Available\+Bytes@{Match\+Finder\+Mt\+\_\+\+Get\+Num\+Available\+Bytes}}
+\index{Match\+Finder\+Mt\+\_\+\+Get\+Num\+Available\+Bytes@{Match\+Finder\+Mt\+\_\+\+Get\+Num\+Available\+Bytes}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Match\+Finder\+Mt\+\_\+\+Get\+Num\+Available\+Bytes()}{MatchFinderMt\_GetNumAvailableBytes()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} Match\+Finder\+Mt\+\_\+\+Get\+Num\+Available\+Bytes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_a5fa101902aedf982d7385ebe74fa6ee2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_a3b63e1639497696e73e17f6ee56951d8}\label{_lz_find_mt_8c_a3b63e1639497696e73e17f6ee56951d8}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Match\+Finder\+Mt\+\_\+\+Get\+Pointer\+To\+Current\+Pos@{Match\+Finder\+Mt\+\_\+\+Get\+Pointer\+To\+Current\+Pos}}
+\index{Match\+Finder\+Mt\+\_\+\+Get\+Pointer\+To\+Current\+Pos@{Match\+Finder\+Mt\+\_\+\+Get\+Pointer\+To\+Current\+Pos}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Match\+Finder\+Mt\+\_\+\+Get\+Pointer\+To\+Current\+Pos()}{MatchFinderMt\_GetPointerToCurrentPos()}}
+{\footnotesize\ttfamily static const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}}$\ast$ Match\+Finder\+Mt\+\_\+\+Get\+Pointer\+To\+Current\+Pos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_a3b63e1639497696e73e17f6ee56951d8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_ade36dd788a85b59fc3e77109d7f8a6b2}\label{_lz_find_mt_8c_ade36dd788a85b59fc3e77109d7f8a6b2}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Match\+Finder\+Mt\+\_\+\+Init@{Match\+Finder\+Mt\+\_\+\+Init}}
+\index{Match\+Finder\+Mt\+\_\+\+Init@{Match\+Finder\+Mt\+\_\+\+Init}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Match\+Finder\+Mt\+\_\+\+Init()}{MatchFinderMt\_Init()}}
+{\footnotesize\ttfamily void Match\+Finder\+Mt\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_ade36dd788a85b59fc3e77109d7f8a6b2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{_lz_find_mt_8c_ade36dd788a85b59fc3e77109d7f8a6b2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_a818e5d06ad77f5af51a326b63483d12a}\label{_lz_find_mt_8c_a818e5d06ad77f5af51a326b63483d12a}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Match\+Finder\+Mt\+\_\+\+Normalize@{Match\+Finder\+Mt\+\_\+\+Normalize}}
+\index{Match\+Finder\+Mt\+\_\+\+Normalize@{Match\+Finder\+Mt\+\_\+\+Normalize}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Match\+Finder\+Mt\+\_\+\+Normalize()}{MatchFinderMt\_Normalize()}}
+{\footnotesize\ttfamily static void Match\+Finder\+Mt\+\_\+\+Normalize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_a818e5d06ad77f5af51a326b63483d12a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_a818e5d06ad77f5af51a326b63483d12a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_ab05936f9e72c6dab29e8680102121740}\label{_lz_find_mt_8c_ab05936f9e72c6dab29e8680102121740}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Match\+Finder\+Mt\+\_\+\+Release\+Stream@{Match\+Finder\+Mt\+\_\+\+Release\+Stream}}
+\index{Match\+Finder\+Mt\+\_\+\+Release\+Stream@{Match\+Finder\+Mt\+\_\+\+Release\+Stream}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Match\+Finder\+Mt\+\_\+\+Release\+Stream()}{MatchFinderMt\_ReleaseStream()}}
+{\footnotesize\ttfamily void Match\+Finder\+Mt\+\_\+\+Release\+Stream (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_ab05936f9e72c6dab29e8680102121740_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_ab05936f9e72c6dab29e8680102121740_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_a2977064238f7eee34ac923d7db7deb7b}\label{_lz_find_mt_8c_a2977064238f7eee34ac923d7db7deb7b}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Mix\+Matches2@{Mix\+Matches2}}
+\index{Mix\+Matches2@{Mix\+Matches2}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Mix\+Matches2()}{MixMatches2()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}$\ast$ Mix\+Matches2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{match\+Min\+Pos,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$}]{distances }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{_lz_find_mt_8c_a2977064238f7eee34ac923d7db7deb7b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_a1ca78a99b9074e6e0d7b551216e2ff92}\label{_lz_find_mt_8c_a1ca78a99b9074e6e0d7b551216e2ff92}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Mix\+Matches3@{Mix\+Matches3}}
+\index{Mix\+Matches3@{Mix\+Matches3}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Mix\+Matches3()}{MixMatches3()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}$\ast$ Mix\+Matches3 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a60757504596ae4aa378d89e89f8087f8}{C\+Match\+Finder\+Mt}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{match\+Min\+Pos,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$}]{distances }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{_lz_find_mt_8c_a1ca78a99b9074e6e0d7b551216e2ff92_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_a9ca396fc7272b553923fc84c7f79a7b3}\label{_lz_find_mt_8c_a9ca396fc7272b553923fc84c7f79a7b3}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Mt\+Sync\+\_\+\+Construct@{Mt\+Sync\+\_\+\+Construct}}
+\index{Mt\+Sync\+\_\+\+Construct@{Mt\+Sync\+\_\+\+Construct}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Mt\+Sync\+\_\+\+Construct()}{MtSync\_Construct()}}
+{\footnotesize\ttfamily static void Mt\+Sync\+\_\+\+Construct (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a152b688e4092bd30642f745ce011f357}{C\+Mt\+Sync}} $\ast$}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_a9ca396fc7272b553923fc84c7f79a7b3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_aee37847f57a2e503705adbc021065dd8}\label{_lz_find_mt_8c_aee37847f57a2e503705adbc021065dd8}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Mt\+Sync\+\_\+\+Create@{Mt\+Sync\+\_\+\+Create}}
+\index{Mt\+Sync\+\_\+\+Create@{Mt\+Sync\+\_\+\+Create}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Mt\+Sync\+\_\+\+Create()}{MtSync\_Create()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Mt\+Sync\+\_\+\+Create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a152b688e4092bd30642f745ce011f357}{C\+Mt\+Sync}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{_threads_8h_abeb46eb195a92134b29761a43e542052}{T\+H\+R\+E\+A\+D\+\_\+\+F\+U\+N\+C\+\_\+\+T\+Y\+PE}}}]{start\+Address,  }\item[{void $\ast$}]{obj,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{num\+Blocks }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_aee37847f57a2e503705adbc021065dd8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_aee37847f57a2e503705adbc021065dd8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_a3199d61a9a7ff818a6024a28af5f268c}\label{_lz_find_mt_8c_a3199d61a9a7ff818a6024a28af5f268c}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Mt\+Sync\+\_\+\+Create2@{Mt\+Sync\+\_\+\+Create2}}
+\index{Mt\+Sync\+\_\+\+Create2@{Mt\+Sync\+\_\+\+Create2}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Mt\+Sync\+\_\+\+Create2()}{MtSync\_Create2()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Mt\+Sync\+\_\+\+Create2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a152b688e4092bd30642f745ce011f357}{C\+Mt\+Sync}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{_threads_8h_abeb46eb195a92134b29761a43e542052}{T\+H\+R\+E\+A\+D\+\_\+\+F\+U\+N\+C\+\_\+\+T\+Y\+PE}}}]{start\+Address,  }\item[{void $\ast$}]{obj,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{num\+Blocks }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_a3199d61a9a7ff818a6024a28af5f268c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_a3199d61a9a7ff818a6024a28af5f268c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_acb36bf2908ab9f05440e089328266c6a}\label{_lz_find_mt_8c_acb36bf2908ab9f05440e089328266c6a}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Mt\+Sync\+\_\+\+Destruct@{Mt\+Sync\+\_\+\+Destruct}}
+\index{Mt\+Sync\+\_\+\+Destruct@{Mt\+Sync\+\_\+\+Destruct}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Mt\+Sync\+\_\+\+Destruct()}{MtSync\_Destruct()}}
+{\footnotesize\ttfamily static void Mt\+Sync\+\_\+\+Destruct (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a152b688e4092bd30642f745ce011f357}{C\+Mt\+Sync}} $\ast$}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_acb36bf2908ab9f05440e089328266c6a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_acb36bf2908ab9f05440e089328266c6a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_a86b495d40c0f005954075ba0261f9c26}\label{_lz_find_mt_8c_a86b495d40c0f005954075ba0261f9c26}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Mt\+Sync\+\_\+\+Get\+Next\+Block@{Mt\+Sync\+\_\+\+Get\+Next\+Block}}
+\index{Mt\+Sync\+\_\+\+Get\+Next\+Block@{Mt\+Sync\+\_\+\+Get\+Next\+Block}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Mt\+Sync\+\_\+\+Get\+Next\+Block()}{MtSync\_GetNextBlock()}}
+{\footnotesize\ttfamily static void Mt\+Sync\+\_\+\+Get\+Next\+Block (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a152b688e4092bd30642f745ce011f357}{C\+Mt\+Sync}} $\ast$}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_a86b495d40c0f005954075ba0261f9c26_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_a86b495d40c0f005954075ba0261f9c26_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lz_find_mt_8c_a049ba974af1b3dacac21761ac76faf00}\label{_lz_find_mt_8c_a049ba974af1b3dacac21761ac76faf00}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Mt\+Sync\+\_\+\+Init@{Mt\+Sync\+\_\+\+Init}}
+\index{Mt\+Sync\+\_\+\+Init@{Mt\+Sync\+\_\+\+Init}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Mt\+Sync\+\_\+\+Init()}{MtSync\_Init()}}
+{\footnotesize\ttfamily void Mt\+Sync\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a152b688e4092bd30642f745ce011f357}{C\+Mt\+Sync}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_lz_find_mt_8c_af49694e35722aa0be5cc6067fa4824eb}\label{_lz_find_mt_8c_af49694e35722aa0be5cc6067fa4824eb}} 
+\index{Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}!Mt\+Sync\+\_\+\+Stop\+Writing@{Mt\+Sync\+\_\+\+Stop\+Writing}}
+\index{Mt\+Sync\+\_\+\+Stop\+Writing@{Mt\+Sync\+\_\+\+Stop\+Writing}!Lz\+Find\+Mt.\+c@{Lz\+Find\+Mt.\+c}}
+\subsubsection{\texorpdfstring{Mt\+Sync\+\_\+\+Stop\+Writing()}{MtSync\_StopWriting()}}
+{\footnotesize\ttfamily static void Mt\+Sync\+\_\+\+Stop\+Writing (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lz_find_mt_8h_a152b688e4092bd30642f745ce011f357}{C\+Mt\+Sync}} $\ast$}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_af49694e35722aa0be5cc6067fa4824eb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lz_find_mt_8c_af49694e35722aa0be5cc6067fa4824eb_icgraph}
+\end{center}
+\end{figure}

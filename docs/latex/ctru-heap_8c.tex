@@ -1,0 +1,159 @@
+\hypertarget{ctru-heap_8c}{}\section{src/platform/3ds/ctru-\/heap.c File Reference}
+\label{ctru-heap_8c}\index{src/platform/3ds/ctru-\/heap.\+c@{src/platform/3ds/ctru-\/heap.\+c}}
+{\ttfamily \#include $<$3ds/types.\+h$>$}\newline
+{\ttfamily \#include $<$3ds/srv.\+h$>$}\newline
+{\ttfamily \#include $<$3ds/gfx.\+h$>$}\newline
+{\ttfamily \#include $<$3ds/sdmc.\+h$>$}\newline
+{\ttfamily \#include $<$3ds/services/apt.\+h$>$}\newline
+{\ttfamily \#include $<$3ds/services/fs.\+h$>$}\newline
+{\ttfamily \#include $<$3ds/services/hid.\+h$>$}\newline
+{\ttfamily \#include $<$3ds/svc.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/common.\+h$>$}\newline
+Include dependency graph for ctru-\/heap.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ctru-heap_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{ctru-heap_8c_a0bd24a0db1208055a4b6ab4f7c2c3aa8}{allocate\+Rom\+Buffer}} (void)
+\item 
+void \mbox{\hyperlink{ctru-heap_8c_ac8e83c882d54db69f0d13b4cf0d42a8c}{\+\_\+\+\_\+system\+\_\+allocate\+Heaps}} ()
+\item 
+void \mbox{\hyperlink{ctru-heap_8c_a014ed46e4e8f30997f14a0cf77e145a3}{\+\_\+\+\_\+app\+Init}} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \mbox{\hyperlink{ctru-heap_8c_a47629fa15ee658326bbb2252b549d4d7}{fake\+\_\+heap\+\_\+start}}
+\item 
+char $\ast$ \mbox{\hyperlink{ctru-heap_8c_ae4b1e133be8fac2c0ba1be9534186d01}{fake\+\_\+heap\+\_\+end}}
+\item 
+\mbox{\hyperlink{sqlite3_8c_a03ad5adfaeb9b7640dde78a0cc390319}{u32}} \mbox{\hyperlink{ctru-heap_8c_aa8a3e331aef7d0734d8a8bb4fad1c94e}{\+\_\+\+\_\+ctru\+\_\+linear\+\_\+heap}}
+\item 
+\mbox{\hyperlink{sqlite3_8c_a03ad5adfaeb9b7640dde78a0cc390319}{u32}} \mbox{\hyperlink{ctru-heap_8c_aeefa57d10efe46c71a4c1588782af65d}{\+\_\+\+\_\+ctru\+\_\+heap}}
+\item 
+\mbox{\hyperlink{sqlite3_8c_a03ad5adfaeb9b7640dde78a0cc390319}{u32}} \mbox{\hyperlink{ctru-heap_8c_a52a56c958076252d270d51320c8ca1b3}{\+\_\+\+\_\+ctru\+\_\+heap\+\_\+size}}
+\item 
+\mbox{\hyperlink{sqlite3_8c_a03ad5adfaeb9b7640dde78a0cc390319}{u32}} \mbox{\hyperlink{ctru-heap_8c_a87d297cc9abe017f33d43674e7d4cf27}{\+\_\+\+\_\+ctru\+\_\+linear\+\_\+heap\+\_\+size}}
+\item 
+static \mbox{\hyperlink{sqlite3_8c_a03ad5adfaeb9b7640dde78a0cc390319}{u32}} \mbox{\hyperlink{ctru-heap_8c_af7ad1e33ebf16c4f6b8e4844d99f0745}{\+\_\+\+\_\+custom\+\_\+heap\+\_\+size}} = 0x02400000
+\item 
+static \mbox{\hyperlink{sqlite3_8c_a03ad5adfaeb9b7640dde78a0cc390319}{u32}} \mbox{\hyperlink{ctru-heap_8c_a6514ba886e2b1c03775e2e3be12feac2}{\+\_\+\+\_\+custom\+\_\+linear\+\_\+heap\+\_\+size}} = 0x01400000
+\item 
+uint32\+\_\+t $\ast$ \mbox{\hyperlink{ctru-heap_8c_a9ddc2aeb88953349f8df5508a2d0409e}{rom\+Buffer}} = N\+U\+LL
+\item 
+size\+\_\+t \mbox{\hyperlink{ctru-heap_8c_ac8c80ae05c56d2d34b4029e3abde405a}{rom\+Buffer\+Size}}
+\item 
+F\+S\+\_\+\+Archive \mbox{\hyperlink{ctru-heap_8c_af77e6a8d0ef6f2844371e6b86afcfa0e}{sdmc\+Archive}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{ctru-heap_8c_a014ed46e4e8f30997f14a0cf77e145a3}\label{ctru-heap_8c_a014ed46e4e8f30997f14a0cf77e145a3}} 
+\index{ctru-\/heap.\+c@{ctru-\/heap.\+c}!\+\_\+\+\_\+app\+Init@{\+\_\+\+\_\+app\+Init}}
+\index{\+\_\+\+\_\+app\+Init@{\+\_\+\+\_\+app\+Init}!ctru-\/heap.\+c@{ctru-\/heap.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+app\+Init()}{\_\_appInit()}}
+{\footnotesize\ttfamily void \+\_\+\+\_\+app\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{ctru-heap_8c_a014ed46e4e8f30997f14a0cf77e145a3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ctru-heap_8c_ac8e83c882d54db69f0d13b4cf0d42a8c}\label{ctru-heap_8c_ac8e83c882d54db69f0d13b4cf0d42a8c}} 
+\index{ctru-\/heap.\+c@{ctru-\/heap.\+c}!\+\_\+\+\_\+system\+\_\+allocate\+Heaps@{\+\_\+\+\_\+system\+\_\+allocate\+Heaps}}
+\index{\+\_\+\+\_\+system\+\_\+allocate\+Heaps@{\+\_\+\+\_\+system\+\_\+allocate\+Heaps}!ctru-\/heap.\+c@{ctru-\/heap.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+system\+\_\+allocate\+Heaps()}{\_\_system\_allocateHeaps()}}
+{\footnotesize\ttfamily void \+\_\+\+\_\+system\+\_\+allocate\+Heaps (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ctru-heap_8c_a0bd24a0db1208055a4b6ab4f7c2c3aa8}\label{ctru-heap_8c_a0bd24a0db1208055a4b6ab4f7c2c3aa8}} 
+\index{ctru-\/heap.\+c@{ctru-\/heap.\+c}!allocate\+Rom\+Buffer@{allocate\+Rom\+Buffer}}
+\index{allocate\+Rom\+Buffer@{allocate\+Rom\+Buffer}!ctru-\/heap.\+c@{ctru-\/heap.\+c}}
+\subsubsection{\texorpdfstring{allocate\+Rom\+Buffer()}{allocateRomBuffer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} allocate\+Rom\+Buffer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{ctru-heap_8c_a0bd24a0db1208055a4b6ab4f7c2c3aa8_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{ctru-heap_8c_aeefa57d10efe46c71a4c1588782af65d}\label{ctru-heap_8c_aeefa57d10efe46c71a4c1588782af65d}} 
+\index{ctru-\/heap.\+c@{ctru-\/heap.\+c}!\+\_\+\+\_\+ctru\+\_\+heap@{\+\_\+\+\_\+ctru\+\_\+heap}}
+\index{\+\_\+\+\_\+ctru\+\_\+heap@{\+\_\+\+\_\+ctru\+\_\+heap}!ctru-\/heap.\+c@{ctru-\/heap.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+ctru\+\_\+heap}{\_\_ctru\_heap}}
+{\footnotesize\ttfamily \mbox{\hyperlink{sqlite3_8c_a03ad5adfaeb9b7640dde78a0cc390319}{u32}} \+\_\+\+\_\+ctru\+\_\+heap}
+
+\mbox{\Hypertarget{ctru-heap_8c_a52a56c958076252d270d51320c8ca1b3}\label{ctru-heap_8c_a52a56c958076252d270d51320c8ca1b3}} 
+\index{ctru-\/heap.\+c@{ctru-\/heap.\+c}!\+\_\+\+\_\+ctru\+\_\+heap\+\_\+size@{\+\_\+\+\_\+ctru\+\_\+heap\+\_\+size}}
+\index{\+\_\+\+\_\+ctru\+\_\+heap\+\_\+size@{\+\_\+\+\_\+ctru\+\_\+heap\+\_\+size}!ctru-\/heap.\+c@{ctru-\/heap.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+ctru\+\_\+heap\+\_\+size}{\_\_ctru\_heap\_size}}
+{\footnotesize\ttfamily \mbox{\hyperlink{sqlite3_8c_a03ad5adfaeb9b7640dde78a0cc390319}{u32}} \+\_\+\+\_\+ctru\+\_\+heap\+\_\+size}
+
+\mbox{\Hypertarget{ctru-heap_8c_aa8a3e331aef7d0734d8a8bb4fad1c94e}\label{ctru-heap_8c_aa8a3e331aef7d0734d8a8bb4fad1c94e}} 
+\index{ctru-\/heap.\+c@{ctru-\/heap.\+c}!\+\_\+\+\_\+ctru\+\_\+linear\+\_\+heap@{\+\_\+\+\_\+ctru\+\_\+linear\+\_\+heap}}
+\index{\+\_\+\+\_\+ctru\+\_\+linear\+\_\+heap@{\+\_\+\+\_\+ctru\+\_\+linear\+\_\+heap}!ctru-\/heap.\+c@{ctru-\/heap.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+ctru\+\_\+linear\+\_\+heap}{\_\_ctru\_linear\_heap}}
+{\footnotesize\ttfamily \mbox{\hyperlink{sqlite3_8c_a03ad5adfaeb9b7640dde78a0cc390319}{u32}} \+\_\+\+\_\+ctru\+\_\+linear\+\_\+heap}
+
+\mbox{\Hypertarget{ctru-heap_8c_a87d297cc9abe017f33d43674e7d4cf27}\label{ctru-heap_8c_a87d297cc9abe017f33d43674e7d4cf27}} 
+\index{ctru-\/heap.\+c@{ctru-\/heap.\+c}!\+\_\+\+\_\+ctru\+\_\+linear\+\_\+heap\+\_\+size@{\+\_\+\+\_\+ctru\+\_\+linear\+\_\+heap\+\_\+size}}
+\index{\+\_\+\+\_\+ctru\+\_\+linear\+\_\+heap\+\_\+size@{\+\_\+\+\_\+ctru\+\_\+linear\+\_\+heap\+\_\+size}!ctru-\/heap.\+c@{ctru-\/heap.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+ctru\+\_\+linear\+\_\+heap\+\_\+size}{\_\_ctru\_linear\_heap\_size}}
+{\footnotesize\ttfamily \mbox{\hyperlink{sqlite3_8c_a03ad5adfaeb9b7640dde78a0cc390319}{u32}} \+\_\+\+\_\+ctru\+\_\+linear\+\_\+heap\+\_\+size}
+
+\mbox{\Hypertarget{ctru-heap_8c_af7ad1e33ebf16c4f6b8e4844d99f0745}\label{ctru-heap_8c_af7ad1e33ebf16c4f6b8e4844d99f0745}} 
+\index{ctru-\/heap.\+c@{ctru-\/heap.\+c}!\+\_\+\+\_\+custom\+\_\+heap\+\_\+size@{\+\_\+\+\_\+custom\+\_\+heap\+\_\+size}}
+\index{\+\_\+\+\_\+custom\+\_\+heap\+\_\+size@{\+\_\+\+\_\+custom\+\_\+heap\+\_\+size}!ctru-\/heap.\+c@{ctru-\/heap.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+custom\+\_\+heap\+\_\+size}{\_\_custom\_heap\_size}}
+{\footnotesize\ttfamily \mbox{\hyperlink{sqlite3_8c_a03ad5adfaeb9b7640dde78a0cc390319}{u32}} \+\_\+\+\_\+custom\+\_\+heap\+\_\+size = 0x02400000\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{ctru-heap_8c_a6514ba886e2b1c03775e2e3be12feac2}\label{ctru-heap_8c_a6514ba886e2b1c03775e2e3be12feac2}} 
+\index{ctru-\/heap.\+c@{ctru-\/heap.\+c}!\+\_\+\+\_\+custom\+\_\+linear\+\_\+heap\+\_\+size@{\+\_\+\+\_\+custom\+\_\+linear\+\_\+heap\+\_\+size}}
+\index{\+\_\+\+\_\+custom\+\_\+linear\+\_\+heap\+\_\+size@{\+\_\+\+\_\+custom\+\_\+linear\+\_\+heap\+\_\+size}!ctru-\/heap.\+c@{ctru-\/heap.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+custom\+\_\+linear\+\_\+heap\+\_\+size}{\_\_custom\_linear\_heap\_size}}
+{\footnotesize\ttfamily \mbox{\hyperlink{sqlite3_8c_a03ad5adfaeb9b7640dde78a0cc390319}{u32}} \+\_\+\+\_\+custom\+\_\+linear\+\_\+heap\+\_\+size = 0x01400000\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{ctru-heap_8c_ae4b1e133be8fac2c0ba1be9534186d01}\label{ctru-heap_8c_ae4b1e133be8fac2c0ba1be9534186d01}} 
+\index{ctru-\/heap.\+c@{ctru-\/heap.\+c}!fake\+\_\+heap\+\_\+end@{fake\+\_\+heap\+\_\+end}}
+\index{fake\+\_\+heap\+\_\+end@{fake\+\_\+heap\+\_\+end}!ctru-\/heap.\+c@{ctru-\/heap.\+c}}
+\subsubsection{\texorpdfstring{fake\+\_\+heap\+\_\+end}{fake\_heap\_end}}
+{\footnotesize\ttfamily char$\ast$ fake\+\_\+heap\+\_\+end}
+
+\mbox{\Hypertarget{ctru-heap_8c_a47629fa15ee658326bbb2252b549d4d7}\label{ctru-heap_8c_a47629fa15ee658326bbb2252b549d4d7}} 
+\index{ctru-\/heap.\+c@{ctru-\/heap.\+c}!fake\+\_\+heap\+\_\+start@{fake\+\_\+heap\+\_\+start}}
+\index{fake\+\_\+heap\+\_\+start@{fake\+\_\+heap\+\_\+start}!ctru-\/heap.\+c@{ctru-\/heap.\+c}}
+\subsubsection{\texorpdfstring{fake\+\_\+heap\+\_\+start}{fake\_heap\_start}}
+{\footnotesize\ttfamily char$\ast$ fake\+\_\+heap\+\_\+start}
+
+\mbox{\Hypertarget{ctru-heap_8c_a9ddc2aeb88953349f8df5508a2d0409e}\label{ctru-heap_8c_a9ddc2aeb88953349f8df5508a2d0409e}} 
+\index{ctru-\/heap.\+c@{ctru-\/heap.\+c}!rom\+Buffer@{rom\+Buffer}}
+\index{rom\+Buffer@{rom\+Buffer}!ctru-\/heap.\+c@{ctru-\/heap.\+c}}
+\subsubsection{\texorpdfstring{rom\+Buffer}{romBuffer}}
+{\footnotesize\ttfamily uint32\+\_\+t$\ast$ rom\+Buffer = N\+U\+LL}
+
+\mbox{\Hypertarget{ctru-heap_8c_ac8c80ae05c56d2d34b4029e3abde405a}\label{ctru-heap_8c_ac8c80ae05c56d2d34b4029e3abde405a}} 
+\index{ctru-\/heap.\+c@{ctru-\/heap.\+c}!rom\+Buffer\+Size@{rom\+Buffer\+Size}}
+\index{rom\+Buffer\+Size@{rom\+Buffer\+Size}!ctru-\/heap.\+c@{ctru-\/heap.\+c}}
+\subsubsection{\texorpdfstring{rom\+Buffer\+Size}{romBufferSize}}
+{\footnotesize\ttfamily size\+\_\+t rom\+Buffer\+Size}
+
+\mbox{\Hypertarget{ctru-heap_8c_af77e6a8d0ef6f2844371e6b86afcfa0e}\label{ctru-heap_8c_af77e6a8d0ef6f2844371e6b86afcfa0e}} 
+\index{ctru-\/heap.\+c@{ctru-\/heap.\+c}!sdmc\+Archive@{sdmc\+Archive}}
+\index{sdmc\+Archive@{sdmc\+Archive}!ctru-\/heap.\+c@{ctru-\/heap.\+c}}
+\subsubsection{\texorpdfstring{sdmc\+Archive}{sdmcArchive}}
+{\footnotesize\ttfamily F\+S\+\_\+\+Archive sdmc\+Archive}
+

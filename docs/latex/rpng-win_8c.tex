@@ -1,0 +1,331 @@
+\hypertarget{rpng-win_8c}{}\section{src/third-\/party/libpng/contrib/gregbook/rpng-\/win.c File Reference}
+\label{rpng-win_8c}\index{src/third-\/party/libpng/contrib/gregbook/rpng-\/win.\+c@{src/third-\/party/libpng/contrib/gregbook/rpng-\/win.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$windows.\+h$>$}\newline
+{\ttfamily \#include $<$conio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}readpng.\+h\char`\"{}}\newline
+Include dependency graph for rpng-\/win.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rpng-win_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{rpng-win_8c_a8c9afb758de9a0355c93fc926b8ce6b1}{P\+R\+O\+G\+N\+A\+ME}}~\char`\"{}rpng-\/win\char`\"{}
+\item 
+\#define \mbox{\hyperlink{rpng-win_8c_ae8176192ea4d52bb0acbcfeaaffb3bd8}{L\+O\+N\+G\+N\+A\+ME}}~\char`\"{}Simple P\+NG Viewer for Windows\char`\"{}
+\item 
+\#define \mbox{\hyperlink{rpng-win_8c_a1c6d5de492ac61ad29aec7aa9a436bbf}{V\+E\+R\+S\+I\+ON}}~\char`\"{}2.\+01 of 16 March 2008\char`\"{}
+\item 
+\#define \mbox{\hyperlink{rpng-win_8c_af1fe887e7346a25e71f3b1527e723692}{alpha\+\_\+composite}}(composite,  fg,  alpha,  \mbox{\hyperlink{rpng2-x_8c_a808fa6d3573a86afa3ba7698a65b1ef6}{bg}})
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng-win_8c_af3efd367c6a70336925006199ab430e6}{rpng\+\_\+win\+\_\+create\+\_\+window}} (H\+I\+N\+S\+T\+A\+N\+CE h\+Inst, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} showmode)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng-win_8c_aaa8b69a6c5c9c2d35b7d67787a55e218}{rpng\+\_\+win\+\_\+display\+\_\+image}} (void)
+\item 
+static void \mbox{\hyperlink{rpng-win_8c_ae6425ba78c4398b8d03f6c9eeeecbb64}{rpng\+\_\+win\+\_\+cleanup}} (void)
+\item 
+L\+R\+E\+S\+U\+LT C\+A\+L\+L\+B\+A\+CK \mbox{\hyperlink{rpng-win_8c_a1b1b264a2d9a35661c12289f38929843}{rpng\+\_\+win\+\_\+wndproc}} (H\+W\+ND, U\+I\+NT, W\+P\+A\+R\+AM, L\+P\+A\+R\+AM)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} W\+I\+N\+A\+PI \mbox{\hyperlink{rpng-win_8c_a2db31d959abfda840605268cd8ba1d08}{Win\+Main}} (H\+I\+N\+S\+T\+A\+N\+CE h\+Inst, H\+I\+N\+S\+T\+A\+N\+CE h\+Prev\+Inst, P\+S\+TR cmd, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} showmode)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static char \mbox{\hyperlink{rpng-win_8c_a7d71fb2a6cfb5d27855f58bc7e548978}{titlebar}} \mbox{[}1024\mbox{]}
+\item 
+static char $\ast$ \mbox{\hyperlink{rpng-win_8c_ab9e1449fd00c98428516f0b41eddcb10}{progname}} = \mbox{\hyperlink{_visual_png_8c_a8c9afb758de9a0355c93fc926b8ce6b1}{P\+R\+O\+G\+N\+A\+ME}}
+\item 
+static char $\ast$ \mbox{\hyperlink{rpng-win_8c_a9db0329b02c3e8e0260939a1c680738a}{appname}} = \mbox{\hyperlink{_visual_png_8c_ae8176192ea4d52bb0acbcfeaaffb3bd8}{L\+O\+N\+G\+N\+A\+ME}}
+\item 
+static char $\ast$ \mbox{\hyperlink{rpng-win_8c_aeac90097f29f7529968697163cea5c18}{filename}}
+\item 
+static F\+I\+LE $\ast$ \mbox{\hyperlink{rpng-win_8c_af19157da745ecb3f2b088c8f3a10c0a7}{infile}}
+\item 
+static char $\ast$ \mbox{\hyperlink{rpng-win_8c_af197c1438afe61953ac3b79cdde82caa}{bgstr}}
+\item 
+static \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} \mbox{\hyperlink{rpng-win_8c_a11a1f227fa7e010da3dd91c95288d25c}{bg\+\_\+red}} =0
+\item 
+static \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} \mbox{\hyperlink{rpng-win_8c_acb75e759bae104f88e4d759ff420f01a}{bg\+\_\+green}} =0
+\item 
+static \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} \mbox{\hyperlink{rpng-win_8c_a72e59a2a673bbf5e1b2a442e846cb30f}{bg\+\_\+blue}} =0
+\item 
+static double \mbox{\hyperlink{rpng-win_8c_ad738f63cfb0d9f52281786250bd91ceb}{display\+\_\+exponent}}
+\item 
+static \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} \mbox{\hyperlink{rpng-win_8c_a3b6cf9cbad0cab3d7487c4b95eccf670}{image\+\_\+width}}
+\item 
+static \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} \mbox{\hyperlink{rpng-win_8c_a1bd99dc918f6e33880e71043b4ba3c38}{image\+\_\+height}}
+\item 
+static \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} \mbox{\hyperlink{rpng-win_8c_a140cae2e235228abcc51d57a6d6484d3}{image\+\_\+rowbytes}}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng-win_8c_a11c512948875a4297d4b6fbac58d4594}{image\+\_\+channels}}
+\item 
+static \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$ \mbox{\hyperlink{rpng-win_8c_ab11e4eabc5bd13b2fee5b43afa28cd64}{image\+\_\+data}}
+\item 
+static \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} \mbox{\hyperlink{rpng-win_8c_a833a12713a1ba96549815e6be283c60d}{wimage\+\_\+rowbytes}}
+\item 
+static \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$ \mbox{\hyperlink{rpng-win_8c_acdb146e25444af1717231691767569e6}{dib}}
+\item 
+static \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$ \mbox{\hyperlink{rpng-win_8c_affd0519131c0b49596c378a425794a73}{wimage\+\_\+data}}
+\item 
+static B\+I\+T\+M\+A\+P\+I\+N\+F\+O\+H\+E\+A\+D\+ER $\ast$ \mbox{\hyperlink{rpng-win_8c_ae1b9f23932d01edb52ba2d35517d4964}{bmih}}
+\item 
+static H\+W\+ND \mbox{\hyperlink{rpng-win_8c_a94f16b99a35a2bd832ce3081c480746d}{global\+\_\+hwnd}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{rpng-win_8c_af1fe887e7346a25e71f3b1527e723692}\label{rpng-win_8c_af1fe887e7346a25e71f3b1527e723692}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!alpha\+\_\+composite@{alpha\+\_\+composite}}
+\index{alpha\+\_\+composite@{alpha\+\_\+composite}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{alpha\+\_\+composite}{alpha\_composite}}
+{\footnotesize\ttfamily \#define alpha\+\_\+composite(\begin{DoxyParamCaption}\item[{}]{composite,  }\item[{}]{fg,  }\item[{}]{alpha,  }\item[{}]{\mbox{\hyperlink{rpng2-x_8c_a808fa6d3573a86afa3ba7698a65b1ef6}{bg}} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\{               \(\backslash\)
+    ush temp = ((\mbox{\hyperlink{readpng_8h_a3754180d606d4ed15468d15d9665aa2e}{ush}})(fg)*(\mbox{\hyperlink{readpng_8h_a3754180d606d4ed15468d15d9665aa2e}{ush}})(alpha) +                          \(\backslash\)
+                (\mbox{\hyperlink{readpng_8h_a3754180d606d4ed15468d15d9665aa2e}{ush}})(\mbox{\hyperlink{rpng2-win_8c_a808fa6d3573a86afa3ba7698a65b1ef6}{bg}})*(\mbox{\hyperlink{readpng_8h_a3754180d606d4ed15468d15d9665aa2e}{ush}})(255 - (\mbox{\hyperlink{readpng_8h_a3754180d606d4ed15468d15d9665aa2e}{ush}})(alpha)) + (\mbox{\hyperlink{readpng_8h_a3754180d606d4ed15468d15d9665aa2e}{ush}})128);  \(\backslash\)
+    (composite) = (\mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}})((temp + (temp >> 8)) >> 8);               \(\backslash\)
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{rpng-win_8c_ae8176192ea4d52bb0acbcfeaaffb3bd8}\label{rpng-win_8c_ae8176192ea4d52bb0acbcfeaaffb3bd8}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!L\+O\+N\+G\+N\+A\+ME@{L\+O\+N\+G\+N\+A\+ME}}
+\index{L\+O\+N\+G\+N\+A\+ME@{L\+O\+N\+G\+N\+A\+ME}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{L\+O\+N\+G\+N\+A\+ME}{LONGNAME}}
+{\footnotesize\ttfamily \#define L\+O\+N\+G\+N\+A\+ME~\char`\"{}Simple P\+NG Viewer for Windows\char`\"{}}
+
+\mbox{\Hypertarget{rpng-win_8c_a8c9afb758de9a0355c93fc926b8ce6b1}\label{rpng-win_8c_a8c9afb758de9a0355c93fc926b8ce6b1}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!P\+R\+O\+G\+N\+A\+ME@{P\+R\+O\+G\+N\+A\+ME}}
+\index{P\+R\+O\+G\+N\+A\+ME@{P\+R\+O\+G\+N\+A\+ME}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{P\+R\+O\+G\+N\+A\+ME}{PROGNAME}}
+{\footnotesize\ttfamily \#define P\+R\+O\+G\+N\+A\+ME~\char`\"{}rpng-\/win\char`\"{}}
+
+\mbox{\Hypertarget{rpng-win_8c_a1c6d5de492ac61ad29aec7aa9a436bbf}\label{rpng-win_8c_a1c6d5de492ac61ad29aec7aa9a436bbf}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!V\+E\+R\+S\+I\+ON@{V\+E\+R\+S\+I\+ON}}
+\index{V\+E\+R\+S\+I\+ON@{V\+E\+R\+S\+I\+ON}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{V\+E\+R\+S\+I\+ON}{VERSION}}
+{\footnotesize\ttfamily \#define V\+E\+R\+S\+I\+ON~\char`\"{}2.\+01 of 16 March 2008\char`\"{}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{rpng-win_8c_ae6425ba78c4398b8d03f6c9eeeecbb64}\label{rpng-win_8c_ae6425ba78c4398b8d03f6c9eeeecbb64}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!rpng\+\_\+win\+\_\+cleanup@{rpng\+\_\+win\+\_\+cleanup}}
+\index{rpng\+\_\+win\+\_\+cleanup@{rpng\+\_\+win\+\_\+cleanup}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{rpng\+\_\+win\+\_\+cleanup()}{rpng\_win\_cleanup()}}
+{\footnotesize\ttfamily static void rpng\+\_\+win\+\_\+cleanup (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{rpng-win_8c_ae6425ba78c4398b8d03f6c9eeeecbb64_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{rpng-win_8c_ae6425ba78c4398b8d03f6c9eeeecbb64_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rpng-win_8c_af3efd367c6a70336925006199ab430e6}\label{rpng-win_8c_af3efd367c6a70336925006199ab430e6}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!rpng\+\_\+win\+\_\+create\+\_\+window@{rpng\+\_\+win\+\_\+create\+\_\+window}}
+\index{rpng\+\_\+win\+\_\+create\+\_\+window@{rpng\+\_\+win\+\_\+create\+\_\+window}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{rpng\+\_\+win\+\_\+create\+\_\+window()}{rpng\_win\_create\_window()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} rpng\+\_\+win\+\_\+create\+\_\+window (\begin{DoxyParamCaption}\item[{H\+I\+N\+S\+T\+A\+N\+CE}]{h\+Inst,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{showmode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rpng-win_8c_af3efd367c6a70336925006199ab430e6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{rpng-win_8c_af3efd367c6a70336925006199ab430e6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rpng-win_8c_aaa8b69a6c5c9c2d35b7d67787a55e218}\label{rpng-win_8c_aaa8b69a6c5c9c2d35b7d67787a55e218}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!rpng\+\_\+win\+\_\+display\+\_\+image@{rpng\+\_\+win\+\_\+display\+\_\+image}}
+\index{rpng\+\_\+win\+\_\+display\+\_\+image@{rpng\+\_\+win\+\_\+display\+\_\+image}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{rpng\+\_\+win\+\_\+display\+\_\+image()}{rpng\_win\_display\_image()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} rpng\+\_\+win\+\_\+display\+\_\+image (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{rpng-win_8c_aaa8b69a6c5c9c2d35b7d67787a55e218_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rpng-win_8c_a1b1b264a2d9a35661c12289f38929843}\label{rpng-win_8c_a1b1b264a2d9a35661c12289f38929843}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!rpng\+\_\+win\+\_\+wndproc@{rpng\+\_\+win\+\_\+wndproc}}
+\index{rpng\+\_\+win\+\_\+wndproc@{rpng\+\_\+win\+\_\+wndproc}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{rpng\+\_\+win\+\_\+wndproc()}{rpng\_win\_wndproc()}}
+{\footnotesize\ttfamily L\+R\+E\+S\+U\+LT C\+A\+L\+L\+B\+A\+CK rpng\+\_\+win\+\_\+wndproc (\begin{DoxyParamCaption}\item[{H\+W\+ND}]{hwnd,  }\item[{U\+I\+NT}]{i\+Msg,  }\item[{W\+P\+A\+R\+AM}]{wP,  }\item[{L\+P\+A\+R\+AM}]{lP }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rpng-win_8c_a1b1b264a2d9a35661c12289f38929843_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rpng-win_8c_a2db31d959abfda840605268cd8ba1d08}\label{rpng-win_8c_a2db31d959abfda840605268cd8ba1d08}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!Win\+Main@{Win\+Main}}
+\index{Win\+Main@{Win\+Main}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{Win\+Main()}{WinMain()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} W\+I\+N\+A\+PI Win\+Main (\begin{DoxyParamCaption}\item[{H\+I\+N\+S\+T\+A\+N\+CE}]{h\+Inst,  }\item[{H\+I\+N\+S\+T\+A\+N\+CE}]{h\+Prev\+Inst,  }\item[{P\+S\+TR}]{cmd,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{showmode }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rpng-win_8c_a2db31d959abfda840605268cd8ba1d08_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{rpng-win_8c_a9db0329b02c3e8e0260939a1c680738a}\label{rpng-win_8c_a9db0329b02c3e8e0260939a1c680738a}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!appname@{appname}}
+\index{appname@{appname}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{appname}{appname}}
+{\footnotesize\ttfamily char$\ast$ appname = \mbox{\hyperlink{_visual_png_8c_ae8176192ea4d52bb0acbcfeaaffb3bd8}{L\+O\+N\+G\+N\+A\+ME}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng-win_8c_a72e59a2a673bbf5e1b2a442e846cb30f}\label{rpng-win_8c_a72e59a2a673bbf5e1b2a442e846cb30f}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!bg\+\_\+blue@{bg\+\_\+blue}}
+\index{bg\+\_\+blue@{bg\+\_\+blue}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{bg\+\_\+blue}{bg\_blue}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} bg\+\_\+blue =0\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng-win_8c_acb75e759bae104f88e4d759ff420f01a}\label{rpng-win_8c_acb75e759bae104f88e4d759ff420f01a}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!bg\+\_\+green@{bg\+\_\+green}}
+\index{bg\+\_\+green@{bg\+\_\+green}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{bg\+\_\+green}{bg\_green}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} bg\+\_\+green =0\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng-win_8c_a11a1f227fa7e010da3dd91c95288d25c}\label{rpng-win_8c_a11a1f227fa7e010da3dd91c95288d25c}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!bg\+\_\+red@{bg\+\_\+red}}
+\index{bg\+\_\+red@{bg\+\_\+red}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{bg\+\_\+red}{bg\_red}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} bg\+\_\+red =0\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng-win_8c_af197c1438afe61953ac3b79cdde82caa}\label{rpng-win_8c_af197c1438afe61953ac3b79cdde82caa}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!bgstr@{bgstr}}
+\index{bgstr@{bgstr}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{bgstr}{bgstr}}
+{\footnotesize\ttfamily char$\ast$ bgstr\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng-win_8c_ae1b9f23932d01edb52ba2d35517d4964}\label{rpng-win_8c_ae1b9f23932d01edb52ba2d35517d4964}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!bmih@{bmih}}
+\index{bmih@{bmih}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{bmih}{bmih}}
+{\footnotesize\ttfamily B\+I\+T\+M\+A\+P\+I\+N\+F\+O\+H\+E\+A\+D\+ER$\ast$ bmih\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng-win_8c_acdb146e25444af1717231691767569e6}\label{rpng-win_8c_acdb146e25444af1717231691767569e6}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!dib@{dib}}
+\index{dib@{dib}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{dib}{dib}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}}$\ast$ dib\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng-win_8c_ad738f63cfb0d9f52281786250bd91ceb}\label{rpng-win_8c_ad738f63cfb0d9f52281786250bd91ceb}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!display\+\_\+exponent@{display\+\_\+exponent}}
+\index{display\+\_\+exponent@{display\+\_\+exponent}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{display\+\_\+exponent}{display\_exponent}}
+{\footnotesize\ttfamily double display\+\_\+exponent\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng-win_8c_aeac90097f29f7529968697163cea5c18}\label{rpng-win_8c_aeac90097f29f7529968697163cea5c18}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!filename@{filename}}
+\index{filename@{filename}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{filename}{filename}}
+{\footnotesize\ttfamily char$\ast$ \mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng-win_8c_a94f16b99a35a2bd832ce3081c480746d}\label{rpng-win_8c_a94f16b99a35a2bd832ce3081c480746d}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!global\+\_\+hwnd@{global\+\_\+hwnd}}
+\index{global\+\_\+hwnd@{global\+\_\+hwnd}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{global\+\_\+hwnd}{global\_hwnd}}
+{\footnotesize\ttfamily H\+W\+ND global\+\_\+hwnd\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng-win_8c_a11c512948875a4297d4b6fbac58d4594}\label{rpng-win_8c_a11c512948875a4297d4b6fbac58d4594}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!image\+\_\+channels@{image\+\_\+channels}}
+\index{image\+\_\+channels@{image\+\_\+channels}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+channels}{image\_channels}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} image\+\_\+channels\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng-win_8c_ab11e4eabc5bd13b2fee5b43afa28cd64}\label{rpng-win_8c_ab11e4eabc5bd13b2fee5b43afa28cd64}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!image\+\_\+data@{image\+\_\+data}}
+\index{image\+\_\+data@{image\+\_\+data}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+data}{image\_data}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}}$\ast$ image\+\_\+data\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng-win_8c_a1bd99dc918f6e33880e71043b4ba3c38}\label{rpng-win_8c_a1bd99dc918f6e33880e71043b4ba3c38}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!image\+\_\+height@{image\+\_\+height}}
+\index{image\+\_\+height@{image\+\_\+height}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+height}{image\_height}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} image\+\_\+height\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng-win_8c_a140cae2e235228abcc51d57a6d6484d3}\label{rpng-win_8c_a140cae2e235228abcc51d57a6d6484d3}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!image\+\_\+rowbytes@{image\+\_\+rowbytes}}
+\index{image\+\_\+rowbytes@{image\+\_\+rowbytes}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+rowbytes}{image\_rowbytes}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} image\+\_\+rowbytes\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng-win_8c_a3b6cf9cbad0cab3d7487c4b95eccf670}\label{rpng-win_8c_a3b6cf9cbad0cab3d7487c4b95eccf670}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!image\+\_\+width@{image\+\_\+width}}
+\index{image\+\_\+width@{image\+\_\+width}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+width}{image\_width}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} image\+\_\+width\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng-win_8c_af19157da745ecb3f2b088c8f3a10c0a7}\label{rpng-win_8c_af19157da745ecb3f2b088c8f3a10c0a7}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!infile@{infile}}
+\index{infile@{infile}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{infile}{infile}}
+{\footnotesize\ttfamily F\+I\+LE$\ast$ infile\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng-win_8c_ab9e1449fd00c98428516f0b41eddcb10}\label{rpng-win_8c_ab9e1449fd00c98428516f0b41eddcb10}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!progname@{progname}}
+\index{progname@{progname}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{progname}{progname}}
+{\footnotesize\ttfamily char$\ast$ progname = \mbox{\hyperlink{_visual_png_8c_a8c9afb758de9a0355c93fc926b8ce6b1}{P\+R\+O\+G\+N\+A\+ME}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng-win_8c_a7d71fb2a6cfb5d27855f58bc7e548978}\label{rpng-win_8c_a7d71fb2a6cfb5d27855f58bc7e548978}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!titlebar@{titlebar}}
+\index{titlebar@{titlebar}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{titlebar}{titlebar}}
+{\footnotesize\ttfamily char titlebar\mbox{[}1024\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng-win_8c_affd0519131c0b49596c378a425794a73}\label{rpng-win_8c_affd0519131c0b49596c378a425794a73}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!wimage\+\_\+data@{wimage\+\_\+data}}
+\index{wimage\+\_\+data@{wimage\+\_\+data}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{wimage\+\_\+data}{wimage\_data}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}}$\ast$ wimage\+\_\+data\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng-win_8c_a833a12713a1ba96549815e6be283c60d}\label{rpng-win_8c_a833a12713a1ba96549815e6be283c60d}} 
+\index{rpng-\/win.\+c@{rpng-\/win.\+c}!wimage\+\_\+rowbytes@{wimage\+\_\+rowbytes}}
+\index{wimage\+\_\+rowbytes@{wimage\+\_\+rowbytes}!rpng-\/win.\+c@{rpng-\/win.\+c}}
+\subsubsection{\texorpdfstring{wimage\+\_\+rowbytes}{wimage\_rowbytes}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} wimage\+\_\+rowbytes\hspace{0.3cm}{\ttfamily [static]}}
+

@@ -1,0 +1,138 @@
+\hypertarget{fitblk_8c}{}\section{src/third-\/party/zlib/examples/fitblk.c File Reference}
+\label{fitblk_8c}\index{src/third-\/party/zlib/examples/fitblk.\+c@{src/third-\/party/zlib/examples/fitblk.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}zlib.\+h\char`\"{}}\newline
+Include dependency graph for fitblk.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{fitblk_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{fitblk_8c_a08023ea6765c99d60a6a3840cd07156e}{local}}~static
+\item 
+\#define \mbox{\hyperlink{fitblk_8c_a9d6c180d0b6eb924cb9ad755de8d6584}{R\+A\+W\+L\+EN}}~4096    /$\ast$ intermediate uncompressed buffer \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}} $\ast$/
+\item 
+\#define \mbox{\hyperlink{fitblk_8c_a5ce8e34830796387c57019ed0548fef1}{E\+X\+C\+E\+SS}}~256      /$\ast$ empirically determined \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}} overage $\ast$/
+\item 
+\#define \mbox{\hyperlink{fitblk_8c_ab05a798afd72aac947f417e1dab73c87}{M\+A\+R\+G\+IN}}~8        /$\ast$ amount to back off for completion $\ast$/
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{fitblk_8c_adfe304d693a8e4bb8744c7405b0889db}{quit}} (char $\ast$why)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{fitblk_8c_a5b3701500d649b362de46d1fc90553c9}{partcompress}} (F\+I\+LE $\ast$\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}, \mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} \mbox{\hyperlink{zpipe_8c_a5b4f2d3d0d6b967b564a28fa77ab1cc4}{def}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{fitblk_8c_a2197932367c707dc96d43197714db5a1}{recompress}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} \mbox{\hyperlink{infcover_8c_a3424d37b1bdf91bb4d1f6dfb71d710d1}{inf}}, \mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} \mbox{\hyperlink{zpipe_8c_a5b4f2d3d0d6b967b564a28fa77ab1cc4}{def}})
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{fitblk_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{fitblk_8c_a5ce8e34830796387c57019ed0548fef1}\label{fitblk_8c_a5ce8e34830796387c57019ed0548fef1}} 
+\index{fitblk.\+c@{fitblk.\+c}!E\+X\+C\+E\+SS@{E\+X\+C\+E\+SS}}
+\index{E\+X\+C\+E\+SS@{E\+X\+C\+E\+SS}!fitblk.\+c@{fitblk.\+c}}
+\subsubsection{\texorpdfstring{E\+X\+C\+E\+SS}{EXCESS}}
+{\footnotesize\ttfamily \#define E\+X\+C\+E\+SS~256      /$\ast$ empirically determined \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}} overage $\ast$/}
+
+\mbox{\Hypertarget{fitblk_8c_a08023ea6765c99d60a6a3840cd07156e}\label{fitblk_8c_a08023ea6765c99d60a6a3840cd07156e}} 
+\index{fitblk.\+c@{fitblk.\+c}!local@{local}}
+\index{local@{local}!fitblk.\+c@{fitblk.\+c}}
+\subsubsection{\texorpdfstring{local}{local}}
+{\footnotesize\ttfamily \#define local~static}
+
+\mbox{\Hypertarget{fitblk_8c_ab05a798afd72aac947f417e1dab73c87}\label{fitblk_8c_ab05a798afd72aac947f417e1dab73c87}} 
+\index{fitblk.\+c@{fitblk.\+c}!M\+A\+R\+G\+IN@{M\+A\+R\+G\+IN}}
+\index{M\+A\+R\+G\+IN@{M\+A\+R\+G\+IN}!fitblk.\+c@{fitblk.\+c}}
+\subsubsection{\texorpdfstring{M\+A\+R\+G\+IN}{MARGIN}}
+{\footnotesize\ttfamily \#define M\+A\+R\+G\+IN~8        /$\ast$ amount to back off for completion $\ast$/}
+
+\mbox{\Hypertarget{fitblk_8c_a9d6c180d0b6eb924cb9ad755de8d6584}\label{fitblk_8c_a9d6c180d0b6eb924cb9ad755de8d6584}} 
+\index{fitblk.\+c@{fitblk.\+c}!R\+A\+W\+L\+EN@{R\+A\+W\+L\+EN}}
+\index{R\+A\+W\+L\+EN@{R\+A\+W\+L\+EN}!fitblk.\+c@{fitblk.\+c}}
+\subsubsection{\texorpdfstring{R\+A\+W\+L\+EN}{RAWLEN}}
+{\footnotesize\ttfamily \#define R\+A\+W\+L\+EN~4096    /$\ast$ intermediate uncompressed buffer \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}} $\ast$/}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{fitblk_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{fitblk_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{fitblk.\+c@{fitblk.\+c}!main@{main}}
+\index{main@{main}!fitblk.\+c@{fitblk.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fitblk_8c_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{fitblk_8c_a5b3701500d649b362de46d1fc90553c9}\label{fitblk_8c_a5b3701500d649b362de46d1fc90553c9}} 
+\index{fitblk.\+c@{fitblk.\+c}!partcompress@{partcompress}}
+\index{partcompress@{partcompress}!fitblk.\+c@{fitblk.\+c}}
+\subsubsection{\texorpdfstring{partcompress()}{partcompress()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} partcompress (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{in,  }\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{def }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fitblk_8c_a5b3701500d649b362de46d1fc90553c9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{fitblk_8c_a5b3701500d649b362de46d1fc90553c9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{fitblk_8c_adfe304d693a8e4bb8744c7405b0889db}\label{fitblk_8c_adfe304d693a8e4bb8744c7405b0889db}} 
+\index{fitblk.\+c@{fitblk.\+c}!quit@{quit}}
+\index{quit@{quit}!fitblk.\+c@{fitblk.\+c}}
+\subsubsection{\texorpdfstring{quit()}{quit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void quit (\begin{DoxyParamCaption}\item[{char $\ast$}]{why }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{fitblk_8c_adfe304d693a8e4bb8744c7405b0889db_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{fitblk_8c_a2197932367c707dc96d43197714db5a1}\label{fitblk_8c_a2197932367c707dc96d43197714db5a1}} 
+\index{fitblk.\+c@{fitblk.\+c}!recompress@{recompress}}
+\index{recompress@{recompress}!fitblk.\+c@{fitblk.\+c}}
+\subsubsection{\texorpdfstring{recompress()}{recompress()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} recompress (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{inf,  }\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{def }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fitblk_8c_a2197932367c707dc96d43197714db5a1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{fitblk_8c_a2197932367c707dc96d43197714db5a1_icgraph}
+\end{center}
+\end{figure}

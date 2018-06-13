@@ -1,0 +1,1027 @@
+\hypertarget{core_2input_8c}{}\section{src/core/input.c File Reference}
+\label{core_2input_8c}\index{src/core/input.\+c@{src/core/input.\+c}}
+{\ttfamily \#include $<$mgba/core/input.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/configuration.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/table.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vector.\+h$>$}\newline
+{\ttfamily \#include $<$inttypes.\+h$>$}\newline
+Include dependency graph for input.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{core_2input_8c_ac85e5a3bf96f5e3c2bc022c60d373b23}{S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX}}~128
+\item 
+\#define \mbox{\hyperlink{core_2input_8c_afc51a28b65fef245b5d0f280d7ac8c37}{K\+E\+Y\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX}}~32
+\item 
+\#define \mbox{\hyperlink{core_2input_8c_a97dfec7565dda38b801a26f1bc6d02ff}{K\+E\+Y\+\_\+\+V\+A\+L\+U\+E\+\_\+\+M\+AX}}~16
+\item 
+\#define \mbox{\hyperlink{core_2input_8c_a085223d6cae4d3af8bb320060698c6ee}{A\+X\+I\+S\+\_\+\+I\+N\+F\+O\+\_\+\+M\+AX}}~12
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{core_2input_8c_aafb5d8594367c5607b7544e005e08af9}{D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+OR}} (m\+Input\+Hat\+List, struct m\+Input\+Hat\+Bindings)
+\item 
+\mbox{\hyperlink{core_2input_8c_a69edeb31265fb09dae560d7e9fc4c05d}{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}} (m\+Input\+Hat\+List, struct m\+Input\+Hat\+Bindings)
+\item 
+static void \mbox{\hyperlink{core_2input_8c_a017045d9aa38bb112f19a7e1a0dc0d1d}{\+\_\+make\+Section\+Name}} (const char $\ast$platform, char $\ast$section\+Name, size\+\_\+t len, uint32\+\_\+t type)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2input_8c_a897ef9c5fb3e44b9dd2255138bebfb31}{\+\_\+get\+Int\+Value}} (const struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$section, const char $\ast$key, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$value)
+\item 
+static struct m\+Input\+Map\+Impl $\ast$ \mbox{\hyperlink{core_2input_8c_a6ee34a73f88e542e6c91dd5667cf2d2b}{\+\_\+lookup\+Map}} (struct m\+Input\+Map $\ast$map, uint32\+\_\+t type)
+\item 
+static const struct m\+Input\+Map\+Impl $\ast$ \mbox{\hyperlink{core_2input_8c_a4f93c6a2c55e7c9e5c072c25c55ef8a7}{\+\_\+lookup\+Map\+Const}} (const struct m\+Input\+Map $\ast$map, uint32\+\_\+t type)
+\item 
+static struct m\+Input\+Map\+Impl $\ast$ \mbox{\hyperlink{core_2input_8c_af16b4029a0e4c343189c81bb4cecb5b6}{\+\_\+guarantee\+Map}} (struct m\+Input\+Map $\ast$map, uint32\+\_\+t type)
+\item 
+static void \mbox{\hyperlink{core_2input_8c_a7bb94438b0debd6475ea9ced3aef38a4}{\+\_\+load\+Key}} (struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, const char $\ast$section\+Name, const struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} key, const char $\ast$key\+Name)
+\item 
+static void \mbox{\hyperlink{core_2input_8c_aad5b4ce88eb4273fbfab48d091e0c048}{\+\_\+load\+Axis}} (struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, const char $\ast$section\+Name, const struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} direction, const char $\ast$axis\+Name)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2input_8c_a3923e51c0960c1163dda75a41e9c0608}{\+\_\+load\+Hat}} (struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, const char $\ast$section\+Name, const struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} hat\+Id)
+\item 
+static void \mbox{\hyperlink{core_2input_8c_af4432b6c25530ec4670c6e109f2cb2db}{\+\_\+save\+Key}} (const struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, const char $\ast$section\+Name, struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} key, const char $\ast$key\+Name)
+\item 
+static void \mbox{\hyperlink{core_2input_8c_acb0d65441dade555707bae54d04339b4}{\+\_\+clear\+Axis}} (const char $\ast$section\+Name, struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$axis\+Name)
+\item 
+static void \mbox{\hyperlink{core_2input_8c_a1f47c7d078c7268683db6b7906136a8e}{\+\_\+save\+Axis}} (uint32\+\_\+t axis, void $\ast$dp, void $\ast$up)
+\item 
+static void \mbox{\hyperlink{core_2input_8c_af7b787867c072d4aa7abc18f598c5b7b}{\+\_\+save\+Hat}} (const char $\ast$section\+Name, struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} hat\+Id, const struct m\+Input\+Hat\+Bindings $\ast$hat)
+\item 
+void \mbox{\hyperlink{core_2input_8c_a879eab1e2e19904120963de8f5972e24}{\+\_\+enumerate\+Axis}} (uint32\+\_\+t axis, void $\ast$dp, void $\ast$ep)
+\item 
+void \mbox{\hyperlink{core_2input_8c_a3d77ada9dd131b5b844a3d7f46272c4d}{\+\_\+unbind\+Axis}} (uint32\+\_\+t axis, void $\ast$dp, void $\ast$user)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2input_8c_ad97bbf533820f8166dffd9419f532fb9}{\+\_\+load\+All}} (struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, const char $\ast$section\+Name, const struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+static void \mbox{\hyperlink{core_2input_8c_aabfd0ec0e0ec4ee77d817690a1fe4fef}{\+\_\+save\+All}} (const struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, const char $\ast$section\+Name, struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+void \mbox{\hyperlink{core_2input_8c_a77ab55a1bb2a36a618e006892f6ba182}{m\+Input\+Map\+Init}} (struct m\+Input\+Map $\ast$map, const struct m\+Input\+Platform\+Info $\ast$\mbox{\hyperlink{libretro_8h_a283ad41e4809f9c0ebe736a9861d8a91}{info}})
+\item 
+void \mbox{\hyperlink{core_2input_8c_a0661229b301b1b5c653935ea72b8b28c}{m\+Input\+Map\+Deinit}} (struct m\+Input\+Map $\ast$map)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{core_2input_8c_a1417fc1556c3f36c48f5559c43048b6c}{m\+Input\+Map\+Key}} (const struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} key)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{core_2input_8c_a185af8ddd1cb58071a21a17a0c115a80}{m\+Input\+Map\+Key\+Bits}} (const struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, uint32\+\_\+t \mbox{\hyperlink{puff_8c_af23433d9d58fb31d4a1ac224e3bc46e8}{bits}}, unsigned \mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}})
+\item 
+void \mbox{\hyperlink{core_2input_8c_af7fb2f0bfef027ab34359004c286821d}{m\+Input\+Bind\+Key}} (struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} key, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} input)
+\item 
+void \mbox{\hyperlink{core_2input_8c_a27634a9f518fad389b863268c1258b45}{m\+Input\+Unbind\+Key}} (struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} input)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{core_2input_8c_a8f93963b72b1faf8b1614ca6f7d6b348}{m\+Input\+Query\+Binding}} (const struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} input)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{core_2input_8c_a47978e2e62b1c0cdaf969ac032f49c4b}{m\+Input\+Map\+Axis}} (const struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} axis, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} value)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{core_2input_8c_afdcd827789eed85fa331e9463cecfded}{m\+Input\+Clear\+Axis}} (const struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} axis, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} keys)
+\item 
+void \mbox{\hyperlink{core_2input_8c_ab1ae1b788007b1ad678c88dc8ce7d236}{m\+Input\+Bind\+Axis}} (struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} axis, const struct m\+Input\+Axis $\ast$description)
+\item 
+void \mbox{\hyperlink{core_2input_8c_a9f5c3ab336a1715da6c1aece2b4c7782}{m\+Input\+Unbind\+Axis}} (struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} axis)
+\item 
+void \mbox{\hyperlink{core_2input_8c_a60ea273cf4a87d0b92b98fc8af68c150}{m\+Input\+Unbind\+All\+Axes}} (struct m\+Input\+Map $\ast$map, uint32\+\_\+t type)
+\item 
+const struct m\+Input\+Axis $\ast$ \mbox{\hyperlink{core_2input_8c_a0d8fd0415624279281b21b00d0d36b6f}{m\+Input\+Query\+Axis}} (const struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} axis)
+\item 
+void \mbox{\hyperlink{core_2input_8c_a15fa27db69295c193a7fbbacc2d10b47}{m\+Input\+Enumerate\+Axes}} (const struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, void(handler(\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} axis, const struct m\+Input\+Axis $\ast$description, void $\ast$user)), void $\ast$user)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{core_2input_8c_af4c7b22c51c5ea54010200b876c7104b}{m\+Input\+Map\+Hat}} (const struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} id, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} direction)
+\item 
+void \mbox{\hyperlink{core_2input_8c_a5fe58b131fb47488d2e363d9c1da169f}{m\+Input\+Bind\+Hat}} (struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} id, const struct m\+Input\+Hat\+Bindings $\ast$bindings)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2input_8c_a6933859acd6577d422761519f9013b5b}{m\+Input\+Query\+Hat}} (const struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} id, struct m\+Input\+Hat\+Bindings $\ast$bindings)
+\item 
+void \mbox{\hyperlink{core_2input_8c_a3794b287329e1ef8837205396231b54b}{m\+Input\+Unbind\+Hat}} (struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} id)
+\item 
+void \mbox{\hyperlink{core_2input_8c_ac3a9d4a88b7178cca93b044ab3a4ea2f}{m\+Input\+Unbind\+All\+Hats}} (struct m\+Input\+Map $\ast$map, uint32\+\_\+t type)
+\item 
+void \mbox{\hyperlink{core_2input_8c_a8bee1558af0bc7105088e8ca4c64ee6c}{m\+Input\+Map\+Load}} (struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, const struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+void \mbox{\hyperlink{core_2input_8c_a372b541a2b6112db110f7d356a469c4a}{m\+Input\+Map\+Save}} (const struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2input_8c_a1360870e58c2f984202e57ceb9370a86}{m\+Input\+Profile\+Load}} (struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, const struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$profile)
+\item 
+void \mbox{\hyperlink{core_2input_8c_aef42173b60f7c8068a323746fa496f8c}{m\+Input\+Profile\+Save}} (const struct m\+Input\+Map $\ast$map, uint32\+\_\+t type, struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$profile)
+\item 
+const char $\ast$ \mbox{\hyperlink{core_2input_8c_ae2097ba3fc276b6e6be923312b405505}{m\+Input\+Get\+Preferred\+Device}} (const struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$platform\+Name, uint32\+\_\+t type, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} player\+Id)
+\item 
+void \mbox{\hyperlink{core_2input_8c_a45485122360fcc06a0207c0e98947afd}{m\+Input\+Set\+Preferred\+Device}} (struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$platform\+Name, uint32\+\_\+t type, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} player\+Id, const char $\ast$device\+Name)
+\item 
+const char $\ast$ \mbox{\hyperlink{core_2input_8c_a923d15bb23454a2fc2508cc4d1770823}{m\+Input\+Get\+Custom\+Value}} (const struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$platform\+Name, uint32\+\_\+t type, const char $\ast$key, const char $\ast$profile)
+\item 
+void \mbox{\hyperlink{core_2input_8c_a75c89e89dd6bb5bcf4910413fcb50efb}{m\+Input\+Set\+Custom\+Value}} (struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$platform\+Name, uint32\+\_\+t type, const char $\ast$key, const char $\ast$value, const char $\ast$profile)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{core_2input_8c_a085223d6cae4d3af8bb320060698c6ee}\label{core_2input_8c_a085223d6cae4d3af8bb320060698c6ee}} 
+\index{core/input.\+c@{core/input.\+c}!A\+X\+I\+S\+\_\+\+I\+N\+F\+O\+\_\+\+M\+AX@{A\+X\+I\+S\+\_\+\+I\+N\+F\+O\+\_\+\+M\+AX}}
+\index{A\+X\+I\+S\+\_\+\+I\+N\+F\+O\+\_\+\+M\+AX@{A\+X\+I\+S\+\_\+\+I\+N\+F\+O\+\_\+\+M\+AX}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{A\+X\+I\+S\+\_\+\+I\+N\+F\+O\+\_\+\+M\+AX}{AXIS\_INFO\_MAX}}
+{\footnotesize\ttfamily \#define A\+X\+I\+S\+\_\+\+I\+N\+F\+O\+\_\+\+M\+AX~12}
+
+\mbox{\Hypertarget{core_2input_8c_afc51a28b65fef245b5d0f280d7ac8c37}\label{core_2input_8c_afc51a28b65fef245b5d0f280d7ac8c37}} 
+\index{core/input.\+c@{core/input.\+c}!K\+E\+Y\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX@{K\+E\+Y\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX}}
+\index{K\+E\+Y\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX@{K\+E\+Y\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{K\+E\+Y\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX}{KEY\_NAME\_MAX}}
+{\footnotesize\ttfamily \#define K\+E\+Y\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX~32}
+
+\mbox{\Hypertarget{core_2input_8c_a97dfec7565dda38b801a26f1bc6d02ff}\label{core_2input_8c_a97dfec7565dda38b801a26f1bc6d02ff}} 
+\index{core/input.\+c@{core/input.\+c}!K\+E\+Y\+\_\+\+V\+A\+L\+U\+E\+\_\+\+M\+AX@{K\+E\+Y\+\_\+\+V\+A\+L\+U\+E\+\_\+\+M\+AX}}
+\index{K\+E\+Y\+\_\+\+V\+A\+L\+U\+E\+\_\+\+M\+AX@{K\+E\+Y\+\_\+\+V\+A\+L\+U\+E\+\_\+\+M\+AX}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{K\+E\+Y\+\_\+\+V\+A\+L\+U\+E\+\_\+\+M\+AX}{KEY\_VALUE\_MAX}}
+{\footnotesize\ttfamily \#define K\+E\+Y\+\_\+\+V\+A\+L\+U\+E\+\_\+\+M\+AX~16}
+
+\mbox{\Hypertarget{core_2input_8c_ac85e5a3bf96f5e3c2bc022c60d373b23}\label{core_2input_8c_ac85e5a3bf96f5e3c2bc022c60d373b23}} 
+\index{core/input.\+c@{core/input.\+c}!S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX@{S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX}}
+\index{S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX@{S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX}{SECTION\_NAME\_MAX}}
+{\footnotesize\ttfamily \#define S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX~128}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{core_2input_8c_acb0d65441dade555707bae54d04339b4}\label{core_2input_8c_acb0d65441dade555707bae54d04339b4}} 
+\index{core/input.\+c@{core/input.\+c}!\+\_\+clear\+Axis@{\+\_\+clear\+Axis}}
+\index{\+\_\+clear\+Axis@{\+\_\+clear\+Axis}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+clear\+Axis()}{\_clearAxis()}}
+{\footnotesize\ttfamily static void \+\_\+clear\+Axis (\begin{DoxyParamCaption}\item[{const char $\ast$}]{section\+Name,  }\item[{struct Configuration $\ast$}]{config,  }\item[{const char $\ast$}]{axis\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_acb0d65441dade555707bae54d04339b4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_acb0d65441dade555707bae54d04339b4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a879eab1e2e19904120963de8f5972e24}\label{core_2input_8c_a879eab1e2e19904120963de8f5972e24}} 
+\index{core/input.\+c@{core/input.\+c}!\+\_\+enumerate\+Axis@{\+\_\+enumerate\+Axis}}
+\index{\+\_\+enumerate\+Axis@{\+\_\+enumerate\+Axis}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+enumerate\+Axis()}{\_enumerateAxis()}}
+{\footnotesize\ttfamily void \+\_\+enumerate\+Axis (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{axis,  }\item[{void $\ast$}]{dp,  }\item[{void $\ast$}]{ep }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{core_2input_8c_a879eab1e2e19904120963de8f5972e24_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a897ef9c5fb3e44b9dd2255138bebfb31}\label{core_2input_8c_a897ef9c5fb3e44b9dd2255138bebfb31}} 
+\index{core/input.\+c@{core/input.\+c}!\+\_\+get\+Int\+Value@{\+\_\+get\+Int\+Value}}
+\index{\+\_\+get\+Int\+Value@{\+\_\+get\+Int\+Value}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+get\+Int\+Value()}{\_getIntValue()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+get\+Int\+Value (\begin{DoxyParamCaption}\item[{const struct Configuration $\ast$}]{config,  }\item[{const char $\ast$}]{section,  }\item[{const char $\ast$}]{key,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a897ef9c5fb3e44b9dd2255138bebfb31_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a897ef9c5fb3e44b9dd2255138bebfb31_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_af16b4029a0e4c343189c81bb4cecb5b6}\label{core_2input_8c_af16b4029a0e4c343189c81bb4cecb5b6}} 
+\index{core/input.\+c@{core/input.\+c}!\+\_\+guarantee\+Map@{\+\_\+guarantee\+Map}}
+\index{\+\_\+guarantee\+Map@{\+\_\+guarantee\+Map}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+guarantee\+Map()}{\_guaranteeMap()}}
+{\footnotesize\ttfamily static struct m\+Input\+Map\+Impl$\ast$ \+\_\+guarantee\+Map (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=283pt]{core_2input_8c_af16b4029a0e4c343189c81bb4cecb5b6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_af16b4029a0e4c343189c81bb4cecb5b6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_ad97bbf533820f8166dffd9419f532fb9}\label{core_2input_8c_ad97bbf533820f8166dffd9419f532fb9}} 
+\index{core/input.\+c@{core/input.\+c}!\+\_\+load\+All@{\+\_\+load\+All}}
+\index{\+\_\+load\+All@{\+\_\+load\+All}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+load\+All()}{\_loadAll()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+load\+All (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{const char $\ast$}]{section\+Name,  }\item[{const struct Configuration $\ast$}]{config }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_ad97bbf533820f8166dffd9419f532fb9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_ad97bbf533820f8166dffd9419f532fb9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_aad5b4ce88eb4273fbfab48d091e0c048}\label{core_2input_8c_aad5b4ce88eb4273fbfab48d091e0c048}} 
+\index{core/input.\+c@{core/input.\+c}!\+\_\+load\+Axis@{\+\_\+load\+Axis}}
+\index{\+\_\+load\+Axis@{\+\_\+load\+Axis}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+load\+Axis()}{\_loadAxis()}}
+{\footnotesize\ttfamily static void \+\_\+load\+Axis (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{const char $\ast$}]{section\+Name,  }\item[{const struct Configuration $\ast$}]{config,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{direction,  }\item[{const char $\ast$}]{axis\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_aad5b4ce88eb4273fbfab48d091e0c048_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_aad5b4ce88eb4273fbfab48d091e0c048_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a3923e51c0960c1163dda75a41e9c0608}\label{core_2input_8c_a3923e51c0960c1163dda75a41e9c0608}} 
+\index{core/input.\+c@{core/input.\+c}!\+\_\+load\+Hat@{\+\_\+load\+Hat}}
+\index{\+\_\+load\+Hat@{\+\_\+load\+Hat}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+load\+Hat()}{\_loadHat()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+load\+Hat (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{const char $\ast$}]{section\+Name,  }\item[{const struct Configuration $\ast$}]{config,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{hat\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a3923e51c0960c1163dda75a41e9c0608_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a3923e51c0960c1163dda75a41e9c0608_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a7bb94438b0debd6475ea9ced3aef38a4}\label{core_2input_8c_a7bb94438b0debd6475ea9ced3aef38a4}} 
+\index{core/input.\+c@{core/input.\+c}!\+\_\+load\+Key@{\+\_\+load\+Key}}
+\index{\+\_\+load\+Key@{\+\_\+load\+Key}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+load\+Key()}{\_loadKey()}}
+{\footnotesize\ttfamily static void \+\_\+load\+Key (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{const char $\ast$}]{section\+Name,  }\item[{const struct Configuration $\ast$}]{config,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{key,  }\item[{const char $\ast$}]{key\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a7bb94438b0debd6475ea9ced3aef38a4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a7bb94438b0debd6475ea9ced3aef38a4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a6ee34a73f88e542e6c91dd5667cf2d2b}\label{core_2input_8c_a6ee34a73f88e542e6c91dd5667cf2d2b}} 
+\index{core/input.\+c@{core/input.\+c}!\+\_\+lookup\+Map@{\+\_\+lookup\+Map}}
+\index{\+\_\+lookup\+Map@{\+\_\+lookup\+Map}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+lookup\+Map()}{\_lookupMap()}}
+{\footnotesize\ttfamily static struct m\+Input\+Map\+Impl$\ast$ \+\_\+lookup\+Map (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a6ee34a73f88e542e6c91dd5667cf2d2b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a4f93c6a2c55e7c9e5c072c25c55ef8a7}\label{core_2input_8c_a4f93c6a2c55e7c9e5c072c25c55ef8a7}} 
+\index{core/input.\+c@{core/input.\+c}!\+\_\+lookup\+Map\+Const@{\+\_\+lookup\+Map\+Const}}
+\index{\+\_\+lookup\+Map\+Const@{\+\_\+lookup\+Map\+Const}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+lookup\+Map\+Const()}{\_lookupMapConst()}}
+{\footnotesize\ttfamily static const struct m\+Input\+Map\+Impl$\ast$ \+\_\+lookup\+Map\+Const (\begin{DoxyParamCaption}\item[{const struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a4f93c6a2c55e7c9e5c072c25c55ef8a7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a017045d9aa38bb112f19a7e1a0dc0d1d}\label{core_2input_8c_a017045d9aa38bb112f19a7e1a0dc0d1d}} 
+\index{core/input.\+c@{core/input.\+c}!\+\_\+make\+Section\+Name@{\+\_\+make\+Section\+Name}}
+\index{\+\_\+make\+Section\+Name@{\+\_\+make\+Section\+Name}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+make\+Section\+Name()}{\_makeSectionName()}}
+{\footnotesize\ttfamily static void \+\_\+make\+Section\+Name (\begin{DoxyParamCaption}\item[{const char $\ast$}]{platform,  }\item[{char $\ast$}]{section\+Name,  }\item[{size\+\_\+t}]{len,  }\item[{uint32\+\_\+t}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a017045d9aa38bb112f19a7e1a0dc0d1d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_aabfd0ec0e0ec4ee77d817690a1fe4fef}\label{core_2input_8c_aabfd0ec0e0ec4ee77d817690a1fe4fef}} 
+\index{core/input.\+c@{core/input.\+c}!\+\_\+save\+All@{\+\_\+save\+All}}
+\index{\+\_\+save\+All@{\+\_\+save\+All}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+save\+All()}{\_saveAll()}}
+{\footnotesize\ttfamily static void \+\_\+save\+All (\begin{DoxyParamCaption}\item[{const struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{const char $\ast$}]{section\+Name,  }\item[{struct Configuration $\ast$}]{config }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_aabfd0ec0e0ec4ee77d817690a1fe4fef_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_aabfd0ec0e0ec4ee77d817690a1fe4fef_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a1f47c7d078c7268683db6b7906136a8e}\label{core_2input_8c_a1f47c7d078c7268683db6b7906136a8e}} 
+\index{core/input.\+c@{core/input.\+c}!\+\_\+save\+Axis@{\+\_\+save\+Axis}}
+\index{\+\_\+save\+Axis@{\+\_\+save\+Axis}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+save\+Axis()}{\_saveAxis()}}
+{\footnotesize\ttfamily static void \+\_\+save\+Axis (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{axis,  }\item[{void $\ast$}]{dp,  }\item[{void $\ast$}]{up }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a1f47c7d078c7268683db6b7906136a8e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a1f47c7d078c7268683db6b7906136a8e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_af7b787867c072d4aa7abc18f598c5b7b}\label{core_2input_8c_af7b787867c072d4aa7abc18f598c5b7b}} 
+\index{core/input.\+c@{core/input.\+c}!\+\_\+save\+Hat@{\+\_\+save\+Hat}}
+\index{\+\_\+save\+Hat@{\+\_\+save\+Hat}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+save\+Hat()}{\_saveHat()}}
+{\footnotesize\ttfamily static void \+\_\+save\+Hat (\begin{DoxyParamCaption}\item[{const char $\ast$}]{section\+Name,  }\item[{struct Configuration $\ast$}]{config,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{hat\+Id,  }\item[{const struct m\+Input\+Hat\+Bindings $\ast$}]{hat }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_af7b787867c072d4aa7abc18f598c5b7b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_af7b787867c072d4aa7abc18f598c5b7b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_af4432b6c25530ec4670c6e109f2cb2db}\label{core_2input_8c_af4432b6c25530ec4670c6e109f2cb2db}} 
+\index{core/input.\+c@{core/input.\+c}!\+\_\+save\+Key@{\+\_\+save\+Key}}
+\index{\+\_\+save\+Key@{\+\_\+save\+Key}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+save\+Key()}{\_saveKey()}}
+{\footnotesize\ttfamily static void \+\_\+save\+Key (\begin{DoxyParamCaption}\item[{const struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{const char $\ast$}]{section\+Name,  }\item[{struct Configuration $\ast$}]{config,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{key,  }\item[{const char $\ast$}]{key\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_af4432b6c25530ec4670c6e109f2cb2db_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_af4432b6c25530ec4670c6e109f2cb2db_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a3d77ada9dd131b5b844a3d7f46272c4d}\label{core_2input_8c_a3d77ada9dd131b5b844a3d7f46272c4d}} 
+\index{core/input.\+c@{core/input.\+c}!\+\_\+unbind\+Axis@{\+\_\+unbind\+Axis}}
+\index{\+\_\+unbind\+Axis@{\+\_\+unbind\+Axis}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+unbind\+Axis()}{\_unbindAxis()}}
+{\footnotesize\ttfamily void \+\_\+unbind\+Axis (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{axis,  }\item[{void $\ast$}]{dp,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a3d77ada9dd131b5b844a3d7f46272c4d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_aafb5d8594367c5607b7544e005e08af9}\label{core_2input_8c_aafb5d8594367c5607b7544e005e08af9}} 
+\index{core/input.\+c@{core/input.\+c}!D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+OR}}
+\index{D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+OR}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+O\+R()}{DECLARE\_VECTOR()}}
+{\footnotesize\ttfamily D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+OR (\begin{DoxyParamCaption}\item[{m\+Input\+Hat\+List}]{,  }\item[{struct m\+Input\+Hat\+Bindings}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{core_2input_8c_a69edeb31265fb09dae560d7e9fc4c05d}\label{core_2input_8c_a69edeb31265fb09dae560d7e9fc4c05d}} 
+\index{core/input.\+c@{core/input.\+c}!D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}}
+\index{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+O\+R()}{DEFINE\_VECTOR()}}
+{\footnotesize\ttfamily D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR (\begin{DoxyParamCaption}\item[{m\+Input\+Hat\+List}]{,  }\item[{struct m\+Input\+Hat\+Bindings}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{core_2input_8c_ab1ae1b788007b1ad678c88dc8ce7d236}\label{core_2input_8c_ab1ae1b788007b1ad678c88dc8ce7d236}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Bind\+Axis@{m\+Input\+Bind\+Axis}}
+\index{m\+Input\+Bind\+Axis@{m\+Input\+Bind\+Axis}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Bind\+Axis()}{mInputBindAxis()}}
+{\footnotesize\ttfamily void m\+Input\+Bind\+Axis (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{axis,  }\item[{const struct m\+Input\+Axis $\ast$}]{description }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_ab1ae1b788007b1ad678c88dc8ce7d236_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_ab1ae1b788007b1ad678c88dc8ce7d236_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a5fe58b131fb47488d2e363d9c1da169f}\label{core_2input_8c_a5fe58b131fb47488d2e363d9c1da169f}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Bind\+Hat@{m\+Input\+Bind\+Hat}}
+\index{m\+Input\+Bind\+Hat@{m\+Input\+Bind\+Hat}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Bind\+Hat()}{mInputBindHat()}}
+{\footnotesize\ttfamily void m\+Input\+Bind\+Hat (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{id,  }\item[{const struct m\+Input\+Hat\+Bindings $\ast$}]{bindings }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a5fe58b131fb47488d2e363d9c1da169f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a5fe58b131fb47488d2e363d9c1da169f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_af7fb2f0bfef027ab34359004c286821d}\label{core_2input_8c_af7fb2f0bfef027ab34359004c286821d}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Bind\+Key@{m\+Input\+Bind\+Key}}
+\index{m\+Input\+Bind\+Key@{m\+Input\+Bind\+Key}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Bind\+Key()}{mInputBindKey()}}
+{\footnotesize\ttfamily void m\+Input\+Bind\+Key (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{key,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{input }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_af7fb2f0bfef027ab34359004c286821d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_af7fb2f0bfef027ab34359004c286821d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_afdcd827789eed85fa331e9463cecfded}\label{core_2input_8c_afdcd827789eed85fa331e9463cecfded}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Clear\+Axis@{m\+Input\+Clear\+Axis}}
+\index{m\+Input\+Clear\+Axis@{m\+Input\+Clear\+Axis}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Clear\+Axis()}{mInputClearAxis()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} m\+Input\+Clear\+Axis (\begin{DoxyParamCaption}\item[{const struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{axis,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{keys }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=317pt]{core_2input_8c_afdcd827789eed85fa331e9463cecfded_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_afdcd827789eed85fa331e9463cecfded_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a15fa27db69295c193a7fbbacc2d10b47}\label{core_2input_8c_a15fa27db69295c193a7fbbacc2d10b47}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Enumerate\+Axes@{m\+Input\+Enumerate\+Axes}}
+\index{m\+Input\+Enumerate\+Axes@{m\+Input\+Enumerate\+Axes}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Enumerate\+Axes()}{mInputEnumerateAxes()}}
+{\footnotesize\ttfamily void m\+Input\+Enumerate\+Axes (\begin{DoxyParamCaption}\item[{const struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{void(handler(\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} axis, const struct m\+Input\+Axis $\ast$description, void $\ast$user))}]{,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{core_2input_8c_a15fa27db69295c193a7fbbacc2d10b47_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a923d15bb23454a2fc2508cc4d1770823}\label{core_2input_8c_a923d15bb23454a2fc2508cc4d1770823}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Get\+Custom\+Value@{m\+Input\+Get\+Custom\+Value}}
+\index{m\+Input\+Get\+Custom\+Value@{m\+Input\+Get\+Custom\+Value}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Get\+Custom\+Value()}{mInputGetCustomValue()}}
+{\footnotesize\ttfamily const char$\ast$ m\+Input\+Get\+Custom\+Value (\begin{DoxyParamCaption}\item[{const struct Configuration $\ast$}]{config,  }\item[{const char $\ast$}]{platform\+Name,  }\item[{uint32\+\_\+t}]{type,  }\item[{const char $\ast$}]{key,  }\item[{const char $\ast$}]{profile }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a923d15bb23454a2fc2508cc4d1770823_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a923d15bb23454a2fc2508cc4d1770823_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_ae2097ba3fc276b6e6be923312b405505}\label{core_2input_8c_ae2097ba3fc276b6e6be923312b405505}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Get\+Preferred\+Device@{m\+Input\+Get\+Preferred\+Device}}
+\index{m\+Input\+Get\+Preferred\+Device@{m\+Input\+Get\+Preferred\+Device}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Get\+Preferred\+Device()}{mInputGetPreferredDevice()}}
+{\footnotesize\ttfamily const char$\ast$ m\+Input\+Get\+Preferred\+Device (\begin{DoxyParamCaption}\item[{const struct Configuration $\ast$}]{config,  }\item[{const char $\ast$}]{platform\+Name,  }\item[{uint32\+\_\+t}]{type,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{player\+Id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_ae2097ba3fc276b6e6be923312b405505_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_ae2097ba3fc276b6e6be923312b405505_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a47978e2e62b1c0cdaf969ac032f49c4b}\label{core_2input_8c_a47978e2e62b1c0cdaf969ac032f49c4b}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Map\+Axis@{m\+Input\+Map\+Axis}}
+\index{m\+Input\+Map\+Axis@{m\+Input\+Map\+Axis}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Map\+Axis()}{mInputMapAxis()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} m\+Input\+Map\+Axis (\begin{DoxyParamCaption}\item[{const struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{axis,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{core_2input_8c_a47978e2e62b1c0cdaf969ac032f49c4b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a47978e2e62b1c0cdaf969ac032f49c4b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a0661229b301b1b5c653935ea72b8b28c}\label{core_2input_8c_a0661229b301b1b5c653935ea72b8b28c}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Map\+Deinit@{m\+Input\+Map\+Deinit}}
+\index{m\+Input\+Map\+Deinit@{m\+Input\+Map\+Deinit}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Map\+Deinit()}{mInputMapDeinit()}}
+{\footnotesize\ttfamily void m\+Input\+Map\+Deinit (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{map }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a0661229b301b1b5c653935ea72b8b28c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a0661229b301b1b5c653935ea72b8b28c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_af4c7b22c51c5ea54010200b876c7104b}\label{core_2input_8c_af4c7b22c51c5ea54010200b876c7104b}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Map\+Hat@{m\+Input\+Map\+Hat}}
+\index{m\+Input\+Map\+Hat@{m\+Input\+Map\+Hat}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Map\+Hat()}{mInputMapHat()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} m\+Input\+Map\+Hat (\begin{DoxyParamCaption}\item[{const struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{id,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{direction }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{core_2input_8c_af4c7b22c51c5ea54010200b876c7104b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_af4c7b22c51c5ea54010200b876c7104b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a77ab55a1bb2a36a618e006892f6ba182}\label{core_2input_8c_a77ab55a1bb2a36a618e006892f6ba182}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Map\+Init@{m\+Input\+Map\+Init}}
+\index{m\+Input\+Map\+Init@{m\+Input\+Map\+Init}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Map\+Init()}{mInputMapInit()}}
+{\footnotesize\ttfamily void m\+Input\+Map\+Init (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{map,  }\item[{const struct m\+Input\+Platform\+Info $\ast$}]{info }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a77ab55a1bb2a36a618e006892f6ba182_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a1417fc1556c3f36c48f5559c43048b6c}\label{core_2input_8c_a1417fc1556c3f36c48f5559c43048b6c}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Map\+Key@{m\+Input\+Map\+Key}}
+\index{m\+Input\+Map\+Key@{m\+Input\+Map\+Key}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Map\+Key()}{mInputMapKey()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} m\+Input\+Map\+Key (\begin{DoxyParamCaption}\item[{const struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{key }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{core_2input_8c_a1417fc1556c3f36c48f5559c43048b6c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a1417fc1556c3f36c48f5559c43048b6c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a185af8ddd1cb58071a21a17a0c115a80}\label{core_2input_8c_a185af8ddd1cb58071a21a17a0c115a80}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Map\+Key\+Bits@{m\+Input\+Map\+Key\+Bits}}
+\index{m\+Input\+Map\+Key\+Bits@{m\+Input\+Map\+Key\+Bits}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Map\+Key\+Bits()}{mInputMapKeyBits()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} m\+Input\+Map\+Key\+Bits (\begin{DoxyParamCaption}\item[{const struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{uint32\+\_\+t}]{bits,  }\item[{unsigned}]{offset }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a185af8ddd1cb58071a21a17a0c115a80_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a185af8ddd1cb58071a21a17a0c115a80_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a8bee1558af0bc7105088e8ca4c64ee6c}\label{core_2input_8c_a8bee1558af0bc7105088e8ca4c64ee6c}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Map\+Load@{m\+Input\+Map\+Load}}
+\index{m\+Input\+Map\+Load@{m\+Input\+Map\+Load}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Map\+Load()}{mInputMapLoad()}}
+{\footnotesize\ttfamily void m\+Input\+Map\+Load (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{const struct Configuration $\ast$}]{config }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a8bee1558af0bc7105088e8ca4c64ee6c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a8bee1558af0bc7105088e8ca4c64ee6c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a372b541a2b6112db110f7d356a469c4a}\label{core_2input_8c_a372b541a2b6112db110f7d356a469c4a}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Map\+Save@{m\+Input\+Map\+Save}}
+\index{m\+Input\+Map\+Save@{m\+Input\+Map\+Save}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Map\+Save()}{mInputMapSave()}}
+{\footnotesize\ttfamily void m\+Input\+Map\+Save (\begin{DoxyParamCaption}\item[{const struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{struct Configuration $\ast$}]{config }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a372b541a2b6112db110f7d356a469c4a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a372b541a2b6112db110f7d356a469c4a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a1360870e58c2f984202e57ceb9370a86}\label{core_2input_8c_a1360870e58c2f984202e57ceb9370a86}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Profile\+Load@{m\+Input\+Profile\+Load}}
+\index{m\+Input\+Profile\+Load@{m\+Input\+Profile\+Load}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Profile\+Load()}{mInputProfileLoad()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Input\+Profile\+Load (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{const struct Configuration $\ast$}]{config,  }\item[{const char $\ast$}]{profile }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a1360870e58c2f984202e57ceb9370a86_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a1360870e58c2f984202e57ceb9370a86_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_aef42173b60f7c8068a323746fa496f8c}\label{core_2input_8c_aef42173b60f7c8068a323746fa496f8c}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Profile\+Save@{m\+Input\+Profile\+Save}}
+\index{m\+Input\+Profile\+Save@{m\+Input\+Profile\+Save}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Profile\+Save()}{mInputProfileSave()}}
+{\footnotesize\ttfamily void m\+Input\+Profile\+Save (\begin{DoxyParamCaption}\item[{const struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{struct Configuration $\ast$}]{config,  }\item[{const char $\ast$}]{profile }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_aef42173b60f7c8068a323746fa496f8c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_aef42173b60f7c8068a323746fa496f8c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a0d8fd0415624279281b21b00d0d36b6f}\label{core_2input_8c_a0d8fd0415624279281b21b00d0d36b6f}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Query\+Axis@{m\+Input\+Query\+Axis}}
+\index{m\+Input\+Query\+Axis@{m\+Input\+Query\+Axis}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Query\+Axis()}{mInputQueryAxis()}}
+{\footnotesize\ttfamily const struct m\+Input\+Axis$\ast$ m\+Input\+Query\+Axis (\begin{DoxyParamCaption}\item[{const struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{axis }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{core_2input_8c_a0d8fd0415624279281b21b00d0d36b6f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a0d8fd0415624279281b21b00d0d36b6f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a8f93963b72b1faf8b1614ca6f7d6b348}\label{core_2input_8c_a8f93963b72b1faf8b1614ca6f7d6b348}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Query\+Binding@{m\+Input\+Query\+Binding}}
+\index{m\+Input\+Query\+Binding@{m\+Input\+Query\+Binding}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Query\+Binding()}{mInputQueryBinding()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} m\+Input\+Query\+Binding (\begin{DoxyParamCaption}\item[{const struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{input }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{core_2input_8c_a8f93963b72b1faf8b1614ca6f7d6b348_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a8f93963b72b1faf8b1614ca6f7d6b348_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a6933859acd6577d422761519f9013b5b}\label{core_2input_8c_a6933859acd6577d422761519f9013b5b}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Query\+Hat@{m\+Input\+Query\+Hat}}
+\index{m\+Input\+Query\+Hat@{m\+Input\+Query\+Hat}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Query\+Hat()}{mInputQueryHat()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Input\+Query\+Hat (\begin{DoxyParamCaption}\item[{const struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{id,  }\item[{struct m\+Input\+Hat\+Bindings $\ast$}]{bindings }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=317pt]{core_2input_8c_a6933859acd6577d422761519f9013b5b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a6933859acd6577d422761519f9013b5b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a75c89e89dd6bb5bcf4910413fcb50efb}\label{core_2input_8c_a75c89e89dd6bb5bcf4910413fcb50efb}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Set\+Custom\+Value@{m\+Input\+Set\+Custom\+Value}}
+\index{m\+Input\+Set\+Custom\+Value@{m\+Input\+Set\+Custom\+Value}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Set\+Custom\+Value()}{mInputSetCustomValue()}}
+{\footnotesize\ttfamily void m\+Input\+Set\+Custom\+Value (\begin{DoxyParamCaption}\item[{struct Configuration $\ast$}]{config,  }\item[{const char $\ast$}]{platform\+Name,  }\item[{uint32\+\_\+t}]{type,  }\item[{const char $\ast$}]{key,  }\item[{const char $\ast$}]{value,  }\item[{const char $\ast$}]{profile }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a75c89e89dd6bb5bcf4910413fcb50efb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a75c89e89dd6bb5bcf4910413fcb50efb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a45485122360fcc06a0207c0e98947afd}\label{core_2input_8c_a45485122360fcc06a0207c0e98947afd}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Set\+Preferred\+Device@{m\+Input\+Set\+Preferred\+Device}}
+\index{m\+Input\+Set\+Preferred\+Device@{m\+Input\+Set\+Preferred\+Device}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Set\+Preferred\+Device()}{mInputSetPreferredDevice()}}
+{\footnotesize\ttfamily void m\+Input\+Set\+Preferred\+Device (\begin{DoxyParamCaption}\item[{struct Configuration $\ast$}]{config,  }\item[{const char $\ast$}]{platform\+Name,  }\item[{uint32\+\_\+t}]{type,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{player\+Id,  }\item[{const char $\ast$}]{device\+Name }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a45485122360fcc06a0207c0e98947afd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a45485122360fcc06a0207c0e98947afd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a60ea273cf4a87d0b92b98fc8af68c150}\label{core_2input_8c_a60ea273cf4a87d0b92b98fc8af68c150}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Unbind\+All\+Axes@{m\+Input\+Unbind\+All\+Axes}}
+\index{m\+Input\+Unbind\+All\+Axes@{m\+Input\+Unbind\+All\+Axes}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Unbind\+All\+Axes()}{mInputUnbindAllAxes()}}
+{\footnotesize\ttfamily void m\+Input\+Unbind\+All\+Axes (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a60ea273cf4a87d0b92b98fc8af68c150_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a60ea273cf4a87d0b92b98fc8af68c150_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_ac3a9d4a88b7178cca93b044ab3a4ea2f}\label{core_2input_8c_ac3a9d4a88b7178cca93b044ab3a4ea2f}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Unbind\+All\+Hats@{m\+Input\+Unbind\+All\+Hats}}
+\index{m\+Input\+Unbind\+All\+Hats@{m\+Input\+Unbind\+All\+Hats}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Unbind\+All\+Hats()}{mInputUnbindAllHats()}}
+{\footnotesize\ttfamily void m\+Input\+Unbind\+All\+Hats (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{core_2input_8c_ac3a9d4a88b7178cca93b044ab3a4ea2f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a9f5c3ab336a1715da6c1aece2b4c7782}\label{core_2input_8c_a9f5c3ab336a1715da6c1aece2b4c7782}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Unbind\+Axis@{m\+Input\+Unbind\+Axis}}
+\index{m\+Input\+Unbind\+Axis@{m\+Input\+Unbind\+Axis}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Unbind\+Axis()}{mInputUnbindAxis()}}
+{\footnotesize\ttfamily void m\+Input\+Unbind\+Axis (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{axis }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a9f5c3ab336a1715da6c1aece2b4c7782_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a3794b287329e1ef8837205396231b54b}\label{core_2input_8c_a3794b287329e1ef8837205396231b54b}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Unbind\+Hat@{m\+Input\+Unbind\+Hat}}
+\index{m\+Input\+Unbind\+Hat@{m\+Input\+Unbind\+Hat}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Unbind\+Hat()}{mInputUnbindHat()}}
+{\footnotesize\ttfamily void m\+Input\+Unbind\+Hat (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{core_2input_8c_a3794b287329e1ef8837205396231b54b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2input_8c_a27634a9f518fad389b863268c1258b45}\label{core_2input_8c_a27634a9f518fad389b863268c1258b45}} 
+\index{core/input.\+c@{core/input.\+c}!m\+Input\+Unbind\+Key@{m\+Input\+Unbind\+Key}}
+\index{m\+Input\+Unbind\+Key@{m\+Input\+Unbind\+Key}!core/input.\+c@{core/input.\+c}}
+\subsubsection{\texorpdfstring{m\+Input\+Unbind\+Key()}{mInputUnbindKey()}}
+{\footnotesize\ttfamily void m\+Input\+Unbind\+Key (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{type,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{input }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=295pt]{core_2input_8c_a27634a9f518fad389b863268c1258b45_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2input_8c_a27634a9f518fad389b863268c1258b45_icgraph}
+\end{center}
+\end{figure}

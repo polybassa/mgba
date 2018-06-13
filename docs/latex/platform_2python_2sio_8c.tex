@@ -1,0 +1,49 @@
+\hypertarget{platform_2python_2sio_8c}{}\section{src/platform/python/sio.c File Reference}
+\label{platform_2python_2sio_8c}\index{src/platform/python/sio.\+c@{src/platform/python/sio.\+c}}
+{\ttfamily \#include \char`\"{}flags.\+h\char`\"{}}\newline
+Include dependency graph for sio.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{platform_2python_2sio_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{platform_2python_2sio_8c_a92f678cc46f63dd267a6a9e00cb4c33f}{C\+R\+E\+A\+T\+E\+\_\+\+S\+H\+IM}}(P\+L\+AT,  \mbox{\hyperlink{inflate_8h_a164ea0159d5f0b5f12a646f25f99eceaa67bc2ced260a8e43805d2480a785d312}{N\+A\+ME}},  R\+E\+T\+U\+RN)
+\item 
+\#define \mbox{\hyperlink{platform_2python_2sio_8c_a653abd0e0524f24579885cc5fbf923b6}{C\+R\+E\+A\+T\+E\+\_\+\+S\+H\+I\+M\+\_\+\+A\+R\+GS}}(P\+L\+AT,  \mbox{\hyperlink{inflate_8h_a164ea0159d5f0b5f12a646f25f99eceaa67bc2ced260a8e43805d2480a785d312}{N\+A\+ME}},  R\+E\+T\+U\+RN,  T\+Y\+P\+ES, ...)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{platform_2python_2sio_8c_a92f678cc46f63dd267a6a9e00cb4c33f}\label{platform_2python_2sio_8c_a92f678cc46f63dd267a6a9e00cb4c33f}} 
+\index{platform/python/sio.\+c@{platform/python/sio.\+c}!C\+R\+E\+A\+T\+E\+\_\+\+S\+H\+IM@{C\+R\+E\+A\+T\+E\+\_\+\+S\+H\+IM}}
+\index{C\+R\+E\+A\+T\+E\+\_\+\+S\+H\+IM@{C\+R\+E\+A\+T\+E\+\_\+\+S\+H\+IM}!platform/python/sio.\+c@{platform/python/sio.\+c}}
+\subsubsection{\texorpdfstring{C\+R\+E\+A\+T\+E\+\_\+\+S\+H\+IM}{CREATE\_SHIM}}
+{\footnotesize\ttfamily \#define C\+R\+E\+A\+T\+E\+\_\+\+S\+H\+IM(\begin{DoxyParamCaption}\item[{}]{P\+L\+AT,  }\item[{}]{\mbox{\hyperlink{inflate_8h_a164ea0159d5f0b5f12a646f25f99eceaa67bc2ced260a8e43805d2480a785d312}{N\+A\+ME}},  }\item[{}]{R\+E\+T\+U\+RN }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+RETURN \_py ## PLAT ## SIOPythonDriver ## \mbox{\hyperlink{inflate_8h_a164ea0159d5f0b5f12a646f25f99eceaa67bc2ced260a8e43805d2480a785d312}{NAME}} (\textcolor{keywordtype}{void}* driver); \(\backslash\)
+    static RETURN \_py ## PLAT ## SIOPythonDriver ## \mbox{\hyperlink{inflate_8h_a164ea0159d5f0b5f12a646f25f99eceaa67bc2ced260a8e43805d2480a785d312}{NAME}} ## Shim(\textcolor{keyword}{struct} PLAT ## SIODriver* driver) \{ \(\backslash\)
+        struct PLAT ## SIODriver* py = (\textcolor{keyword}{struct }PLAT ## SIODriver*) driver; \(\backslash\)
+        return \_py ## PLAT ## SIOPythonDriver ## \mbox{\hyperlink{inflate_8h_a164ea0159d5f0b5f12a646f25f99eceaa67bc2ced260a8e43805d2480a785d312}{NAME}}(py); \(\backslash\)
+    \}
+\end{DoxyCode}
+\mbox{\Hypertarget{platform_2python_2sio_8c_a653abd0e0524f24579885cc5fbf923b6}\label{platform_2python_2sio_8c_a653abd0e0524f24579885cc5fbf923b6}} 
+\index{platform/python/sio.\+c@{platform/python/sio.\+c}!C\+R\+E\+A\+T\+E\+\_\+\+S\+H\+I\+M\+\_\+\+A\+R\+GS@{C\+R\+E\+A\+T\+E\+\_\+\+S\+H\+I\+M\+\_\+\+A\+R\+GS}}
+\index{C\+R\+E\+A\+T\+E\+\_\+\+S\+H\+I\+M\+\_\+\+A\+R\+GS@{C\+R\+E\+A\+T\+E\+\_\+\+S\+H\+I\+M\+\_\+\+A\+R\+GS}!platform/python/sio.\+c@{platform/python/sio.\+c}}
+\subsubsection{\texorpdfstring{C\+R\+E\+A\+T\+E\+\_\+\+S\+H\+I\+M\+\_\+\+A\+R\+GS}{CREATE\_SHIM\_ARGS}}
+{\footnotesize\ttfamily \#define C\+R\+E\+A\+T\+E\+\_\+\+S\+H\+I\+M\+\_\+\+A\+R\+GS(\begin{DoxyParamCaption}\item[{}]{P\+L\+AT,  }\item[{}]{\mbox{\hyperlink{inflate_8h_a164ea0159d5f0b5f12a646f25f99eceaa67bc2ced260a8e43805d2480a785d312}{N\+A\+ME}},  }\item[{}]{R\+E\+T\+U\+RN,  }\item[{}]{T\+Y\+P\+ES,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+RETURN \_py ## PLAT ## SIOPythonDriver ## \mbox{\hyperlink{inflate_8h_a164ea0159d5f0b5f12a646f25f99eceaa67bc2ced260a8e43805d2480a785d312}{NAME}} TYPES; \(\backslash\)
+    static RETURN \_py ## PLAT ## SIOPythonDriver ## \mbox{\hyperlink{inflate_8h_a164ea0159d5f0b5f12a646f25f99eceaa67bc2ced260a8e43805d2480a785d312}{NAME}} ## Shim TYPES \{ \(\backslash\)
+        struct PLAT ## SIODriver* py = (\textcolor{keyword}{struct }PLAT ## SIODriver*) driver; \(\backslash\)
+        return \_py ## PLAT ## SIOPythonDriver ## \mbox{\hyperlink{inflate_8h_a164ea0159d5f0b5f12a646f25f99eceaa67bc2ced260a8e43805d2480a785d312}{NAME}}(py, \_\_VA\_ARGS\_\_); \(\backslash\)
+    \}
+\end{DoxyCode}

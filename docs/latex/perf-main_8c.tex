@@ -1,0 +1,238 @@
+\hypertarget{perf-main_8c}{}\section{src/platform/test/perf-\/main.c File Reference}
+\label{perf-main_8c}\index{src/platform/test/perf-\/main.\+c@{src/platform/test/perf-\/main.\+c}}
+{\ttfamily \#include $<$mgba/core/blip\+\_\+buf.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/cheats.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/config.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/serialize.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/gb/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/gba/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/feature/commandline.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/socket.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$inttypes.\+h$>$}\newline
+{\ttfamily \#include $<$sys/time.\+h$>$}\newline
+Include dependency graph for perf-\/main.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{perf-main_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{perf-main_8c_a10b7b15dd56a2e448bb115bca3c138ea}{P\+E\+R\+F\+\_\+\+O\+P\+T\+I\+O\+NS}}~\char`\"{}D\+F\+:\+L\+:\+N\+P\+S\+:\char`\"{}
+\item 
+\#define \mbox{\hyperlink{perf-main_8c_a397e50d8fab523d6a3f5ed6adeff6d40}{P\+E\+R\+F\+\_\+\+U\+S\+A\+GE}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{perf-main_8c_af6104bb4f19919428b0781d4c2e09e1d}{\+\_\+m\+Perf\+Runloop}} (struct m\+Core $\ast$context, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$frames, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} quiet)
+\item 
+static void \mbox{\hyperlink{perf-main_8c_ae03bb46043d38ba7457625ec193d25c9}{\+\_\+m\+Perf\+Shutdown}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} signal)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{perf-main_8c_a95bd03ff14c9138daf9f88703ab5d5f7}{\+\_\+parse\+Perf\+Opts}} (struct m\+Sub\+Parser $\ast$parser, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} option, const char $\ast$arg)
+\item 
+static void \mbox{\hyperlink{perf-main_8c_ab638d8a3b5157696f6a07239141bcd51}{\+\_\+log}} (struct m\+Logger $\ast$, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}, enum m\+Log\+Level, const char $\ast$, \mbox{\hyperlink{__builder_8h_a2b7adf9b9fd4a58a693dc7cfba5b9006}{va\+\_\+list}})
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{perf-main_8c_aa853b44038d99a0c66c0961c5c1b0d66}{\+\_\+m\+Perf\+Run\+Core}} (const char $\ast$fname, const struct m\+Arguments $\ast$, const struct Perf\+Opts $\ast$)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{perf-main_8c_afabe448ade5b82039d7a47c954faff33}{\+\_\+m\+Perf\+Run\+Server}} (const char $\ast$listen, const struct m\+Arguments $\ast$, const struct Perf\+Opts $\ast$)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{perf-main_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{perf-main_8c_a8525f6cde5f9256308f54df6d5b5ba37}{\+\_\+dispatch\+Exiting}} = false
+\item 
+static struct V\+File $\ast$ \mbox{\hyperlink{perf-main_8c_ac52719ecba19b2c4ce86134edcdcea35}{\+\_\+savestate}} = 0
+\item 
+static void $\ast$ \mbox{\hyperlink{perf-main_8c_a208165c3b883d1557b33cce53e251cb2}{\+\_\+output\+Buffer}} = N\+U\+LL
+\item 
+static Socket \mbox{\hyperlink{perf-main_8c_a19c179c3753ee778675a7eb82548f554}{\+\_\+socket}} = I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+C\+K\+ET
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{perf-main_8c_a10b7b15dd56a2e448bb115bca3c138ea}\label{perf-main_8c_a10b7b15dd56a2e448bb115bca3c138ea}} 
+\index{perf-\/main.\+c@{perf-\/main.\+c}!P\+E\+R\+F\+\_\+\+O\+P\+T\+I\+O\+NS@{P\+E\+R\+F\+\_\+\+O\+P\+T\+I\+O\+NS}}
+\index{P\+E\+R\+F\+\_\+\+O\+P\+T\+I\+O\+NS@{P\+E\+R\+F\+\_\+\+O\+P\+T\+I\+O\+NS}!perf-\/main.\+c@{perf-\/main.\+c}}
+\subsubsection{\texorpdfstring{P\+E\+R\+F\+\_\+\+O\+P\+T\+I\+O\+NS}{PERF\_OPTIONS}}
+{\footnotesize\ttfamily \#define P\+E\+R\+F\+\_\+\+O\+P\+T\+I\+O\+NS~\char`\"{}D\+F\+:\+L\+:\+N\+P\+S\+:\char`\"{}}
+
+\mbox{\Hypertarget{perf-main_8c_a397e50d8fab523d6a3f5ed6adeff6d40}\label{perf-main_8c_a397e50d8fab523d6a3f5ed6adeff6d40}} 
+\index{perf-\/main.\+c@{perf-\/main.\+c}!P\+E\+R\+F\+\_\+\+U\+S\+A\+GE@{P\+E\+R\+F\+\_\+\+U\+S\+A\+GE}}
+\index{P\+E\+R\+F\+\_\+\+U\+S\+A\+GE@{P\+E\+R\+F\+\_\+\+U\+S\+A\+GE}!perf-\/main.\+c@{perf-\/main.\+c}}
+\subsubsection{\texorpdfstring{P\+E\+R\+F\+\_\+\+U\+S\+A\+GE}{PERF\_USAGE}}
+{\footnotesize\ttfamily \#define P\+E\+R\+F\+\_\+\+U\+S\+A\+GE}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{stringliteral}{"\(\backslash\)nBenchmark options:\(\backslash\)n"} \(\backslash\)
+    \textcolor{stringliteral}{"  -F FRAMES        Run for the specified number of FRAMES before exiting\(\backslash\)n"} \(\backslash\)
+    \textcolor{stringliteral}{"  -N               Disable video rendering entirely\(\backslash\)n"} \(\backslash\)
+    \textcolor{stringliteral}{"  -P               CSV output, useful for parsing\(\backslash\)n"} \(\backslash\)
+    \textcolor{stringliteral}{"  -S SEC           Run for SEC in-game seconds before exiting\(\backslash\)n"} \(\backslash\)
+    \textcolor{stringliteral}{"  -L FILE          Load a savestate when starting the test\(\backslash\)n"} \(\backslash\)
+    \textcolor{stringliteral}{"  -D               Act as a server"}
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{perf-main_8c_ab638d8a3b5157696f6a07239141bcd51}\label{perf-main_8c_ab638d8a3b5157696f6a07239141bcd51}} 
+\index{perf-\/main.\+c@{perf-\/main.\+c}!\+\_\+log@{\+\_\+log}}
+\index{\+\_\+log@{\+\_\+log}!perf-\/main.\+c@{perf-\/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+log()}{\_log()}}
+{\footnotesize\ttfamily static void \+\_\+log (\begin{DoxyParamCaption}\item[{struct m\+Logger $\ast$}]{log,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{category,  }\item[{enum m\+Log\+Level}]{level,  }\item[{const char $\ast$}]{format,  }\item[{\mbox{\hyperlink{__builder_8h_a2b7adf9b9fd4a58a693dc7cfba5b9006}{va\+\_\+list}}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{perf-main_8c_ab638d8a3b5157696f6a07239141bcd51_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{perf-main_8c_aa853b44038d99a0c66c0961c5c1b0d66}\label{perf-main_8c_aa853b44038d99a0c66c0961c5c1b0d66}} 
+\index{perf-\/main.\+c@{perf-\/main.\+c}!\+\_\+m\+Perf\+Run\+Core@{\+\_\+m\+Perf\+Run\+Core}}
+\index{\+\_\+m\+Perf\+Run\+Core@{\+\_\+m\+Perf\+Run\+Core}!perf-\/main.\+c@{perf-\/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+m\+Perf\+Run\+Core()}{\_mPerfRunCore()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+m\+Perf\+Run\+Core (\begin{DoxyParamCaption}\item[{const char $\ast$}]{fname,  }\item[{const struct m\+Arguments $\ast$}]{args,  }\item[{const struct Perf\+Opts $\ast$}]{perf\+Opts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{perf-main_8c_aa853b44038d99a0c66c0961c5c1b0d66_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{perf-main_8c_aa853b44038d99a0c66c0961c5c1b0d66_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{perf-main_8c_af6104bb4f19919428b0781d4c2e09e1d}\label{perf-main_8c_af6104bb4f19919428b0781d4c2e09e1d}} 
+\index{perf-\/main.\+c@{perf-\/main.\+c}!\+\_\+m\+Perf\+Runloop@{\+\_\+m\+Perf\+Runloop}}
+\index{\+\_\+m\+Perf\+Runloop@{\+\_\+m\+Perf\+Runloop}!perf-\/main.\+c@{perf-\/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+m\+Perf\+Runloop()}{\_mPerfRunloop()}}
+{\footnotesize\ttfamily static void \+\_\+m\+Perf\+Runloop (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{context,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{frames,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{quiet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{perf-main_8c_af6104bb4f19919428b0781d4c2e09e1d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{perf-main_8c_afabe448ade5b82039d7a47c954faff33}\label{perf-main_8c_afabe448ade5b82039d7a47c954faff33}} 
+\index{perf-\/main.\+c@{perf-\/main.\+c}!\+\_\+m\+Perf\+Run\+Server@{\+\_\+m\+Perf\+Run\+Server}}
+\index{\+\_\+m\+Perf\+Run\+Server@{\+\_\+m\+Perf\+Run\+Server}!perf-\/main.\+c@{perf-\/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+m\+Perf\+Run\+Server()}{\_mPerfRunServer()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+m\+Perf\+Run\+Server (\begin{DoxyParamCaption}\item[{const char $\ast$}]{listen,  }\item[{const struct m\+Arguments $\ast$}]{args,  }\item[{const struct Perf\+Opts $\ast$}]{perf\+Opts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{perf-main_8c_afabe448ade5b82039d7a47c954faff33_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{perf-main_8c_afabe448ade5b82039d7a47c954faff33_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{perf-main_8c_ae03bb46043d38ba7457625ec193d25c9}\label{perf-main_8c_ae03bb46043d38ba7457625ec193d25c9}} 
+\index{perf-\/main.\+c@{perf-\/main.\+c}!\+\_\+m\+Perf\+Shutdown@{\+\_\+m\+Perf\+Shutdown}}
+\index{\+\_\+m\+Perf\+Shutdown@{\+\_\+m\+Perf\+Shutdown}!perf-\/main.\+c@{perf-\/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+m\+Perf\+Shutdown()}{\_mPerfShutdown()}}
+{\footnotesize\ttfamily static void \+\_\+m\+Perf\+Shutdown (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{signal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{perf-main_8c_ae03bb46043d38ba7457625ec193d25c9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{perf-main_8c_a95bd03ff14c9138daf9f88703ab5d5f7}\label{perf-main_8c_a95bd03ff14c9138daf9f88703ab5d5f7}} 
+\index{perf-\/main.\+c@{perf-\/main.\+c}!\+\_\+parse\+Perf\+Opts@{\+\_\+parse\+Perf\+Opts}}
+\index{\+\_\+parse\+Perf\+Opts@{\+\_\+parse\+Perf\+Opts}!perf-\/main.\+c@{perf-\/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+parse\+Perf\+Opts()}{\_parsePerfOpts()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+parse\+Perf\+Opts (\begin{DoxyParamCaption}\item[{struct m\+Sub\+Parser $\ast$}]{parser,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{option,  }\item[{const char $\ast$}]{arg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{perf-main_8c_a95bd03ff14c9138daf9f88703ab5d5f7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{perf-main_8c_a95bd03ff14c9138daf9f88703ab5d5f7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{perf-main_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{perf-main_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{perf-\/main.\+c@{perf-\/main.\+c}!main@{main}}
+\index{main@{main}!perf-\/main.\+c@{perf-\/main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{perf-main_8c_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{perf-main_8c_a8525f6cde5f9256308f54df6d5b5ba37}\label{perf-main_8c_a8525f6cde5f9256308f54df6d5b5ba37}} 
+\index{perf-\/main.\+c@{perf-\/main.\+c}!\+\_\+dispatch\+Exiting@{\+\_\+dispatch\+Exiting}}
+\index{\+\_\+dispatch\+Exiting@{\+\_\+dispatch\+Exiting}!perf-\/main.\+c@{perf-\/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+dispatch\+Exiting}{\_dispatchExiting}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+dispatch\+Exiting = false\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{perf-main_8c_a208165c3b883d1557b33cce53e251cb2}\label{perf-main_8c_a208165c3b883d1557b33cce53e251cb2}} 
+\index{perf-\/main.\+c@{perf-\/main.\+c}!\+\_\+output\+Buffer@{\+\_\+output\+Buffer}}
+\index{\+\_\+output\+Buffer@{\+\_\+output\+Buffer}!perf-\/main.\+c@{perf-\/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+output\+Buffer}{\_outputBuffer}}
+{\footnotesize\ttfamily void$\ast$ \+\_\+output\+Buffer = N\+U\+LL\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{perf-main_8c_ac52719ecba19b2c4ce86134edcdcea35}\label{perf-main_8c_ac52719ecba19b2c4ce86134edcdcea35}} 
+\index{perf-\/main.\+c@{perf-\/main.\+c}!\+\_\+savestate@{\+\_\+savestate}}
+\index{\+\_\+savestate@{\+\_\+savestate}!perf-\/main.\+c@{perf-\/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+savestate}{\_savestate}}
+{\footnotesize\ttfamily struct V\+File$\ast$ \+\_\+savestate = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{perf-main_8c_a19c179c3753ee778675a7eb82548f554}\label{perf-main_8c_a19c179c3753ee778675a7eb82548f554}} 
+\index{perf-\/main.\+c@{perf-\/main.\+c}!\+\_\+socket@{\+\_\+socket}}
+\index{\+\_\+socket@{\+\_\+socket}!perf-\/main.\+c@{perf-\/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+socket}{\_socket}}
+{\footnotesize\ttfamily Socket \+\_\+socket = I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+C\+K\+ET\hspace{0.3cm}{\ttfamily [static]}}
+

@@ -1,0 +1,107 @@
+\hypertarget{util_2crc32_8c}{}\section{src/util/crc32.c File Reference}
+\label{util_2crc32_8c}\index{src/util/crc32.\+c@{src/util/crc32.\+c}}
+{\ttfamily \#include $<$mgba-\/util/crc32.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+Include dependency graph for crc32.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{util_2crc32_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \mbox{\hyperlink{util_2crc32_8c_ae8a3b6a5d0d3244ed73924ab2421a0d0a1a63387ea87dae07937bf38548748733}{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}} = 1024
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{util_2crc32_8c_ab0c32d6c6a0dad2194c15462a3fff604}{do\+Crc32}} (const void $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+uint32\+\_\+t \mbox{\hyperlink{util_2crc32_8c_a0bdd14723a2507e6465c44ca5d9dc364}{crc32}} (uint32\+\_\+t crc, const void $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+uint32\+\_\+t \mbox{\hyperlink{util_2crc32_8c_ad32ecc90538b9cd8d177ec0e9e321931}{file\+Crc32}} (struct V\+File $\ast$vf, size\+\_\+t end\+Offset)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{util_2crc32_8c_ae64a421171b9c8a70a966980a4b6593f}{crc32\+Table}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{util_2crc32_8c_ae8a3b6a5d0d3244ed73924ab2421a0d0}\label{util_2crc32_8c_ae8a3b6a5d0d3244ed73924ab2421a0d0}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}!util/crc32.\+c@{util/crc32.\+c}}\index{util/crc32.\+c@{util/crc32.\+c}!B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}}\mbox{\Hypertarget{util_2crc32_8c_ae8a3b6a5d0d3244ed73924ab2421a0d0a1a63387ea87dae07937bf38548748733}\label{util_2crc32_8c_ae8a3b6a5d0d3244ed73924ab2421a0d0a1a63387ea87dae07937bf38548748733}} 
+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{util_2crc32_8c_a0bdd14723a2507e6465c44ca5d9dc364}\label{util_2crc32_8c_a0bdd14723a2507e6465c44ca5d9dc364}} 
+\index{util/crc32.\+c@{util/crc32.\+c}!crc32@{crc32}}
+\index{crc32@{crc32}!util/crc32.\+c@{util/crc32.\+c}}
+\subsubsection{\texorpdfstring{crc32()}{crc32()}}
+{\footnotesize\ttfamily uint32\+\_\+t crc32 (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{crc,  }\item[{const void $\ast$}]{buf,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{util_2crc32_8c_ab0c32d6c6a0dad2194c15462a3fff604}\label{util_2crc32_8c_ab0c32d6c6a0dad2194c15462a3fff604}} 
+\index{util/crc32.\+c@{util/crc32.\+c}!do\+Crc32@{do\+Crc32}}
+\index{do\+Crc32@{do\+Crc32}!util/crc32.\+c@{util/crc32.\+c}}
+\subsubsection{\texorpdfstring{do\+Crc32()}{doCrc32()}}
+{\footnotesize\ttfamily uint32\+\_\+t do\+Crc32 (\begin{DoxyParamCaption}\item[{const void $\ast$}]{buf,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{util_2crc32_8c_ab0c32d6c6a0dad2194c15462a3fff604_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{util_2crc32_8c_ab0c32d6c6a0dad2194c15462a3fff604_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{util_2crc32_8c_ad32ecc90538b9cd8d177ec0e9e321931}\label{util_2crc32_8c_ad32ecc90538b9cd8d177ec0e9e321931}} 
+\index{util/crc32.\+c@{util/crc32.\+c}!file\+Crc32@{file\+Crc32}}
+\index{file\+Crc32@{file\+Crc32}!util/crc32.\+c@{util/crc32.\+c}}
+\subsubsection{\texorpdfstring{file\+Crc32()}{fileCrc32()}}
+{\footnotesize\ttfamily uint32\+\_\+t file\+Crc32 (\begin{DoxyParamCaption}\item[{struct V\+File $\ast$}]{vf,  }\item[{size\+\_\+t}]{end\+Offset }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{util_2crc32_8c_ad32ecc90538b9cd8d177ec0e9e321931_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{util_2crc32_8c_ad32ecc90538b9cd8d177ec0e9e321931_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{util_2crc32_8c_ae64a421171b9c8a70a966980a4b6593f}\label{util_2crc32_8c_ae64a421171b9c8a70a966980a4b6593f}} 
+\index{util/crc32.\+c@{util/crc32.\+c}!crc32\+Table@{crc32\+Table}}
+\index{crc32\+Table@{crc32\+Table}!util/crc32.\+c@{util/crc32.\+c}}
+\subsubsection{\texorpdfstring{crc32\+Table}{crc32Table}}
+{\footnotesize\ttfamily uint32\+\_\+t crc32\+Table\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+

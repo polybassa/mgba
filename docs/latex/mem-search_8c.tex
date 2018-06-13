@@ -1,0 +1,283 @@
+\hypertarget{mem-search_8c}{}\section{src/core/mem-\/search.c File Reference}
+\label{mem-search_8c}\index{src/core/mem-\/search.\+c@{src/core/mem-\/search.\+c}}
+{\ttfamily \#include $<$mgba/core/mem-\/search.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/interface.\+h$>$}\newline
+Include dependency graph for mem-\/search.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mem-search_8c_a9dc0a4130b34dc202f454726953c1754}{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}} (m\+Core\+Memory\+Search\+Results, struct m\+Core\+Memory\+Search\+Result)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mem-search_8c_a0f60c5ade89ac84c9c4a44fcce11c5b3}{\+\_\+op}} (int32\+\_\+t value, int32\+\_\+t \mbox{\hyperlink{gun_8c_a3ec837ef2cea696af366fcfb455094c6}{match}}, enum m\+Core\+Memory\+Search\+Op op)
+\item 
+static size\+\_\+t \mbox{\hyperlink{mem-search_8c_aef1a36a86840034ac9b64b277a9c78b8}{\+\_\+search32}} (const void $\ast$mem, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}, const struct m\+Core\+Memory\+Block $\ast$block, uint32\+\_\+t value32, enum m\+Core\+Memory\+Search\+Op op, struct m\+Core\+Memory\+Search\+Results $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}}, size\+\_\+t limit)
+\item 
+static size\+\_\+t \mbox{\hyperlink{mem-search_8c_aa1dc9e477a1b7df5ce90e5bae240e763}{\+\_\+search16}} (const void $\ast$mem, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}, const struct m\+Core\+Memory\+Block $\ast$block, uint16\+\_\+t value16, enum m\+Core\+Memory\+Search\+Op op, struct m\+Core\+Memory\+Search\+Results $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}}, size\+\_\+t limit)
+\item 
+static size\+\_\+t \mbox{\hyperlink{mem-search_8c_a109715625d99b7db170075ecdc68363e}{\+\_\+search8}} (const void $\ast$mem, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}, const struct m\+Core\+Memory\+Block $\ast$block, uint8\+\_\+t value8, enum m\+Core\+Memory\+Search\+Op op, struct m\+Core\+Memory\+Search\+Results $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}}, size\+\_\+t limit)
+\item 
+static size\+\_\+t \mbox{\hyperlink{mem-search_8c_a1af85652c37edd16f2558ee8b15a4a9f}{\+\_\+search\+Int}} (const void $\ast$mem, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}, const struct m\+Core\+Memory\+Block $\ast$block, const struct m\+Core\+Memory\+Search\+Params $\ast$params, struct m\+Core\+Memory\+Search\+Results $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}}, size\+\_\+t limit)
+\item 
+static size\+\_\+t \mbox{\hyperlink{mem-search_8c_a3ed6b56c8b6b869abae56fc00b22fa4d}{\+\_\+search\+Str}} (const void $\ast$mem, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}, const struct m\+Core\+Memory\+Block $\ast$block, const char $\ast$value\+Str, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} len, struct m\+Core\+Memory\+Search\+Results $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}}, size\+\_\+t limit)
+\item 
+static size\+\_\+t \mbox{\hyperlink{mem-search_8c_ac36aa4ea5ca988f0991caaf901aaf916}{\+\_\+search\+Guess}} (const void $\ast$mem, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}, const struct m\+Core\+Memory\+Block $\ast$block, const struct m\+Core\+Memory\+Search\+Params $\ast$params, struct m\+Core\+Memory\+Search\+Results $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}}, size\+\_\+t limit)
+\item 
+static size\+\_\+t \mbox{\hyperlink{mem-search_8c_add108d0650bfe6f0112626eb68ad814e}{\+\_\+search}} (const void $\ast$mem, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}, const struct m\+Core\+Memory\+Block $\ast$block, const struct m\+Core\+Memory\+Search\+Params $\ast$params, struct m\+Core\+Memory\+Search\+Results $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}}, size\+\_\+t limit)
+\item 
+void \mbox{\hyperlink{mem-search_8c_ada9f367c156717a3e0f6475e27a9c970}{m\+Core\+Memory\+Search}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, const struct m\+Core\+Memory\+Search\+Params $\ast$params, struct m\+Core\+Memory\+Search\+Results $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}}, size\+\_\+t limit)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mem-search_8c_abe2e1ea41c6228bb5bcb7af4f001f543}{\+\_\+test\+Guess}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, struct m\+Core\+Memory\+Search\+Result $\ast$res, const struct m\+Core\+Memory\+Search\+Params $\ast$params)
+\item 
+void \mbox{\hyperlink{mem-search_8c_a6b178f5e5e77aaa20eb7a023ef35f2fe}{m\+Core\+Memory\+Search\+Repeat}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, const struct m\+Core\+Memory\+Search\+Params $\ast$params, struct m\+Core\+Memory\+Search\+Results $\ast$inout)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{mem-search_8c_a0f60c5ade89ac84c9c4a44fcce11c5b3}\label{mem-search_8c_a0f60c5ade89ac84c9c4a44fcce11c5b3}} 
+\index{mem-\/search.\+c@{mem-\/search.\+c}!\+\_\+op@{\+\_\+op}}
+\index{\+\_\+op@{\+\_\+op}!mem-\/search.\+c@{mem-\/search.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+op()}{\_op()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+op (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{value,  }\item[{int32\+\_\+t}]{match,  }\item[{enum m\+Core\+Memory\+Search\+Op}]{op }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c_a0f60c5ade89ac84c9c4a44fcce11c5b3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mem-search_8c_add108d0650bfe6f0112626eb68ad814e}\label{mem-search_8c_add108d0650bfe6f0112626eb68ad814e}} 
+\index{mem-\/search.\+c@{mem-\/search.\+c}!\+\_\+search@{\+\_\+search}}
+\index{\+\_\+search@{\+\_\+search}!mem-\/search.\+c@{mem-\/search.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+search()}{\_search()}}
+{\footnotesize\ttfamily static size\+\_\+t \+\_\+search (\begin{DoxyParamCaption}\item[{const void $\ast$}]{mem,  }\item[{size\+\_\+t}]{size,  }\item[{const struct m\+Core\+Memory\+Block $\ast$}]{block,  }\item[{const struct m\+Core\+Memory\+Search\+Params $\ast$}]{params,  }\item[{struct m\+Core\+Memory\+Search\+Results $\ast$}]{out,  }\item[{size\+\_\+t}]{limit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c_add108d0650bfe6f0112626eb68ad814e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c_add108d0650bfe6f0112626eb68ad814e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mem-search_8c_aa1dc9e477a1b7df5ce90e5bae240e763}\label{mem-search_8c_aa1dc9e477a1b7df5ce90e5bae240e763}} 
+\index{mem-\/search.\+c@{mem-\/search.\+c}!\+\_\+search16@{\+\_\+search16}}
+\index{\+\_\+search16@{\+\_\+search16}!mem-\/search.\+c@{mem-\/search.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+search16()}{\_search16()}}
+{\footnotesize\ttfamily static size\+\_\+t \+\_\+search16 (\begin{DoxyParamCaption}\item[{const void $\ast$}]{mem,  }\item[{size\+\_\+t}]{size,  }\item[{const struct m\+Core\+Memory\+Block $\ast$}]{block,  }\item[{uint16\+\_\+t}]{value16,  }\item[{enum m\+Core\+Memory\+Search\+Op}]{op,  }\item[{struct m\+Core\+Memory\+Search\+Results $\ast$}]{out,  }\item[{size\+\_\+t}]{limit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c_aa1dc9e477a1b7df5ce90e5bae240e763_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c_aa1dc9e477a1b7df5ce90e5bae240e763_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mem-search_8c_aef1a36a86840034ac9b64b277a9c78b8}\label{mem-search_8c_aef1a36a86840034ac9b64b277a9c78b8}} 
+\index{mem-\/search.\+c@{mem-\/search.\+c}!\+\_\+search32@{\+\_\+search32}}
+\index{\+\_\+search32@{\+\_\+search32}!mem-\/search.\+c@{mem-\/search.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+search32()}{\_search32()}}
+{\footnotesize\ttfamily static size\+\_\+t \+\_\+search32 (\begin{DoxyParamCaption}\item[{const void $\ast$}]{mem,  }\item[{size\+\_\+t}]{size,  }\item[{const struct m\+Core\+Memory\+Block $\ast$}]{block,  }\item[{uint32\+\_\+t}]{value32,  }\item[{enum m\+Core\+Memory\+Search\+Op}]{op,  }\item[{struct m\+Core\+Memory\+Search\+Results $\ast$}]{out,  }\item[{size\+\_\+t}]{limit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c_aef1a36a86840034ac9b64b277a9c78b8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c_aef1a36a86840034ac9b64b277a9c78b8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mem-search_8c_a109715625d99b7db170075ecdc68363e}\label{mem-search_8c_a109715625d99b7db170075ecdc68363e}} 
+\index{mem-\/search.\+c@{mem-\/search.\+c}!\+\_\+search8@{\+\_\+search8}}
+\index{\+\_\+search8@{\+\_\+search8}!mem-\/search.\+c@{mem-\/search.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+search8()}{\_search8()}}
+{\footnotesize\ttfamily static size\+\_\+t \+\_\+search8 (\begin{DoxyParamCaption}\item[{const void $\ast$}]{mem,  }\item[{size\+\_\+t}]{size,  }\item[{const struct m\+Core\+Memory\+Block $\ast$}]{block,  }\item[{uint8\+\_\+t}]{value8,  }\item[{enum m\+Core\+Memory\+Search\+Op}]{op,  }\item[{struct m\+Core\+Memory\+Search\+Results $\ast$}]{out,  }\item[{size\+\_\+t}]{limit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c_a109715625d99b7db170075ecdc68363e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c_a109715625d99b7db170075ecdc68363e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mem-search_8c_ac36aa4ea5ca988f0991caaf901aaf916}\label{mem-search_8c_ac36aa4ea5ca988f0991caaf901aaf916}} 
+\index{mem-\/search.\+c@{mem-\/search.\+c}!\+\_\+search\+Guess@{\+\_\+search\+Guess}}
+\index{\+\_\+search\+Guess@{\+\_\+search\+Guess}!mem-\/search.\+c@{mem-\/search.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+search\+Guess()}{\_searchGuess()}}
+{\footnotesize\ttfamily static size\+\_\+t \+\_\+search\+Guess (\begin{DoxyParamCaption}\item[{const void $\ast$}]{mem,  }\item[{size\+\_\+t}]{size,  }\item[{const struct m\+Core\+Memory\+Block $\ast$}]{block,  }\item[{const struct m\+Core\+Memory\+Search\+Params $\ast$}]{params,  }\item[{struct m\+Core\+Memory\+Search\+Results $\ast$}]{out,  }\item[{size\+\_\+t}]{limit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c_ac36aa4ea5ca988f0991caaf901aaf916_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c_ac36aa4ea5ca988f0991caaf901aaf916_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mem-search_8c_a1af85652c37edd16f2558ee8b15a4a9f}\label{mem-search_8c_a1af85652c37edd16f2558ee8b15a4a9f}} 
+\index{mem-\/search.\+c@{mem-\/search.\+c}!\+\_\+search\+Int@{\+\_\+search\+Int}}
+\index{\+\_\+search\+Int@{\+\_\+search\+Int}!mem-\/search.\+c@{mem-\/search.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+search\+Int()}{\_searchInt()}}
+{\footnotesize\ttfamily static size\+\_\+t \+\_\+search\+Int (\begin{DoxyParamCaption}\item[{const void $\ast$}]{mem,  }\item[{size\+\_\+t}]{size,  }\item[{const struct m\+Core\+Memory\+Block $\ast$}]{block,  }\item[{const struct m\+Core\+Memory\+Search\+Params $\ast$}]{params,  }\item[{struct m\+Core\+Memory\+Search\+Results $\ast$}]{out,  }\item[{size\+\_\+t}]{limit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c_a1af85652c37edd16f2558ee8b15a4a9f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c_a1af85652c37edd16f2558ee8b15a4a9f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mem-search_8c_a3ed6b56c8b6b869abae56fc00b22fa4d}\label{mem-search_8c_a3ed6b56c8b6b869abae56fc00b22fa4d}} 
+\index{mem-\/search.\+c@{mem-\/search.\+c}!\+\_\+search\+Str@{\+\_\+search\+Str}}
+\index{\+\_\+search\+Str@{\+\_\+search\+Str}!mem-\/search.\+c@{mem-\/search.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+search\+Str()}{\_searchStr()}}
+{\footnotesize\ttfamily static size\+\_\+t \+\_\+search\+Str (\begin{DoxyParamCaption}\item[{const void $\ast$}]{mem,  }\item[{size\+\_\+t}]{size,  }\item[{const struct m\+Core\+Memory\+Block $\ast$}]{block,  }\item[{const char $\ast$}]{value\+Str,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{len,  }\item[{struct m\+Core\+Memory\+Search\+Results $\ast$}]{out,  }\item[{size\+\_\+t}]{limit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c_a3ed6b56c8b6b869abae56fc00b22fa4d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c_a3ed6b56c8b6b869abae56fc00b22fa4d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mem-search_8c_abe2e1ea41c6228bb5bcb7af4f001f543}\label{mem-search_8c_abe2e1ea41c6228bb5bcb7af4f001f543}} 
+\index{mem-\/search.\+c@{mem-\/search.\+c}!\+\_\+test\+Guess@{\+\_\+test\+Guess}}
+\index{\+\_\+test\+Guess@{\+\_\+test\+Guess}!mem-\/search.\+c@{mem-\/search.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+test\+Guess()}{\_testGuess()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+test\+Guess (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{struct m\+Core\+Memory\+Search\+Result $\ast$}]{res,  }\item[{const struct m\+Core\+Memory\+Search\+Params $\ast$}]{params }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{mem-search_8c_abe2e1ea41c6228bb5bcb7af4f001f543_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c_abe2e1ea41c6228bb5bcb7af4f001f543_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mem-search_8c_a9dc0a4130b34dc202f454726953c1754}\label{mem-search_8c_a9dc0a4130b34dc202f454726953c1754}} 
+\index{mem-\/search.\+c@{mem-\/search.\+c}!D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}}
+\index{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}!mem-\/search.\+c@{mem-\/search.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+O\+R()}{DEFINE\_VECTOR()}}
+{\footnotesize\ttfamily D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR (\begin{DoxyParamCaption}\item[{m\+Core\+Memory\+Search\+Results}]{,  }\item[{struct m\+Core\+Memory\+Search\+Result}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{mem-search_8c_ada9f367c156717a3e0f6475e27a9c970}\label{mem-search_8c_ada9f367c156717a3e0f6475e27a9c970}} 
+\index{mem-\/search.\+c@{mem-\/search.\+c}!m\+Core\+Memory\+Search@{m\+Core\+Memory\+Search}}
+\index{m\+Core\+Memory\+Search@{m\+Core\+Memory\+Search}!mem-\/search.\+c@{mem-\/search.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Memory\+Search()}{mCoreMemorySearch()}}
+{\footnotesize\ttfamily void m\+Core\+Memory\+Search (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{const struct m\+Core\+Memory\+Search\+Params $\ast$}]{params,  }\item[{struct m\+Core\+Memory\+Search\+Results $\ast$}]{out,  }\item[{size\+\_\+t}]{limit }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c_ada9f367c156717a3e0f6475e27a9c970_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c_ada9f367c156717a3e0f6475e27a9c970_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mem-search_8c_a6b178f5e5e77aaa20eb7a023ef35f2fe}\label{mem-search_8c_a6b178f5e5e77aaa20eb7a023ef35f2fe}} 
+\index{mem-\/search.\+c@{mem-\/search.\+c}!m\+Core\+Memory\+Search\+Repeat@{m\+Core\+Memory\+Search\+Repeat}}
+\index{m\+Core\+Memory\+Search\+Repeat@{m\+Core\+Memory\+Search\+Repeat}!mem-\/search.\+c@{mem-\/search.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Memory\+Search\+Repeat()}{mCoreMemorySearchRepeat()}}
+{\footnotesize\ttfamily void m\+Core\+Memory\+Search\+Repeat (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{const struct m\+Core\+Memory\+Search\+Params $\ast$}]{params,  }\item[{struct m\+Core\+Memory\+Search\+Results $\ast$}]{inout }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c_a6b178f5e5e77aaa20eb7a023ef35f2fe_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mem-search_8c_a6b178f5e5e77aaa20eb7a023ef35f2fe_icgraph}
+\end{center}
+\end{figure}

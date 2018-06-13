@@ -1,0 +1,405 @@
+\hypertarget{_2video_8c}{}\section{src/gba/video.c File Reference}
+\label{_2video_8c}\index{src/gba/video.\+c@{src/gba/video.\+c}}
+{\ttfamily \#include $<$mgba/internal/gba/video.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/sync.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/cache-\/set.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/arm/macros.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/dma.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/gba.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/io.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/renderers/cache-\/set.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/serialize.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/memory.\+h$>$}\newline
+Include dependency graph for video.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2video_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_2video_8c_a9df60ee86e89af1d1d55735de18d7287}{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}} (G\+B\+A\+\_\+\+V\+I\+D\+EO, \char`\"{}G\+BA Video\char`\"{}, \char`\"{}gba.\+video\char`\"{})
+\item 
+static void \mbox{\hyperlink{_2video_8c_a875c46472cf1dcb7f0e4d25e6f0a2708}{G\+B\+A\+Video\+Dummy\+Renderer\+Init}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer)
+\item 
+static void \mbox{\hyperlink{_2video_8c_a37b93fcc9d58db71a1bca195d25a35b8}{G\+B\+A\+Video\+Dummy\+Renderer\+Reset}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer)
+\item 
+static void \mbox{\hyperlink{_2video_8c_aa3eb47080330d00361c41940f672eef8}{G\+B\+A\+Video\+Dummy\+Renderer\+Deinit}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer)
+\item 
+static uint16\+\_\+t \mbox{\hyperlink{_2video_8c_a10f4207a33470cd12fff0a541d44ad7d}{G\+B\+A\+Video\+Dummy\+Renderer\+Write\+Video\+Register}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, uint32\+\_\+t address, uint16\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{_2video_8c_a623db98e9a364bbf977fa56e19e35336}{G\+B\+A\+Video\+Dummy\+Renderer\+Write\+V\+R\+AM}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, uint32\+\_\+t address)
+\item 
+static void \mbox{\hyperlink{_2video_8c_aa71112dfb7a9094a4a671ec91735b400}{G\+B\+A\+Video\+Dummy\+Renderer\+Write\+Palette}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, uint32\+\_\+t address, uint16\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{_2video_8c_a954f052e57f6e59b52fdc33a42d13d38}{G\+B\+A\+Video\+Dummy\+Renderer\+Write\+O\+AM}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, uint32\+\_\+t oam)
+\item 
+static void \mbox{\hyperlink{_2video_8c_a53cf98eb44859f2f21567aa71078b203}{G\+B\+A\+Video\+Dummy\+Renderer\+Draw\+Scanline}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} y)
+\item 
+static void \mbox{\hyperlink{_2video_8c_a094aa8151ae20ed2094bb750dee6e667}{G\+B\+A\+Video\+Dummy\+Renderer\+Finish\+Frame}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer)
+\item 
+static void \mbox{\hyperlink{_2video_8c_aefc136397814af14f39caf3163d8112f}{G\+B\+A\+Video\+Dummy\+Renderer\+Get\+Pixels}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, size\+\_\+t $\ast$stride, const void $\ast$$\ast$pixels)
+\item 
+static void \mbox{\hyperlink{_2video_8c_ab2cb5a3df587adae813996702d700592}{G\+B\+A\+Video\+Dummy\+Renderer\+Put\+Pixels}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, size\+\_\+t stride, const void $\ast$pixels)
+\item 
+static void \mbox{\hyperlink{_2video_8c_adff3b704dd066e5bac613796e260dfa0}{\+\_\+start\+Hblank}} (struct m\+Timing $\ast$, void $\ast$context, uint32\+\_\+t cycles\+Late)
+\item 
+static void \mbox{\hyperlink{_2video_8c_a2de8bdfa08e95562b6d7f907f8ae7a1c}{\+\_\+start\+Hdraw}} (struct m\+Timing $\ast$, void $\ast$context, uint32\+\_\+t cycles\+Late)
+\item 
+void \mbox{\hyperlink{_2video_8c_a6dbd03e7417982b8db1d8926dfe2437e}{G\+B\+A\+Video\+Init}} (struct G\+B\+A\+Video $\ast$video)
+\item 
+void \mbox{\hyperlink{_2video_8c_ab7d9ecd91fd9ad41a5aec7d3482d176d}{G\+B\+A\+Video\+Reset}} (struct G\+B\+A\+Video $\ast$video)
+\item 
+void \mbox{\hyperlink{_2video_8c_a34b46930303372d637f61be79ad9e15a}{G\+B\+A\+Video\+Deinit}} (struct G\+B\+A\+Video $\ast$video)
+\item 
+void \mbox{\hyperlink{_2video_8c_aeb1332eee278c9232a5e15023b599ae5}{G\+B\+A\+Video\+Associate\+Renderer}} (struct G\+B\+A\+Video $\ast$video, struct G\+B\+A\+Video\+Renderer $\ast$renderer)
+\item 
+void \mbox{\hyperlink{_2video_8c_adb0781eb127d78f57f84a01c76b71f35}{G\+B\+A\+Video\+Write\+D\+I\+S\+P\+S\+T\+AT}} (struct G\+B\+A\+Video $\ast$video, uint16\+\_\+t value)
+\item 
+void \mbox{\hyperlink{_2video_8c_a2987fa71a751da4a9a3aacd6cfb32c9f}{G\+B\+A\+Video\+Serialize}} (const struct G\+B\+A\+Video $\ast$video, struct G\+B\+A\+Serialized\+State $\ast$state)
+\item 
+void \mbox{\hyperlink{_2video_8c_ad2dc28b5806818c6a425750b2ab49837}{G\+B\+A\+Video\+Deserialize}} (struct G\+B\+A\+Video $\ast$video, const struct G\+B\+A\+Serialized\+State $\ast$state)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{_2video_8c_a47dae7f9d9374c6739808ff029a1c117}{G\+B\+A\+Video\+Obj\+Sizes}} \mbox{[}16\mbox{]}\mbox{[}2\mbox{]}
+\item 
+static struct G\+B\+A\+Video\+Renderer \mbox{\hyperlink{_2video_8c_ae6a4cccda395fa2c32234177567954ed}{dummy\+Renderer}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_2video_8c_adff3b704dd066e5bac613796e260dfa0}\label{_2video_8c_adff3b704dd066e5bac613796e260dfa0}} 
+\index{/video.\+c@{/video.\+c}!\+\_\+start\+Hblank@{\+\_\+start\+Hblank}}
+\index{\+\_\+start\+Hblank@{\+\_\+start\+Hblank}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+start\+Hblank()}{\_startHblank()}}
+{\footnotesize\ttfamily void \+\_\+start\+Hblank (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing,  }\item[{void $\ast$}]{context,  }\item[{uint32\+\_\+t}]{cycles\+Late }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2video_8c_adff3b704dd066e5bac613796e260dfa0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2video_8c_adff3b704dd066e5bac613796e260dfa0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2video_8c_a2de8bdfa08e95562b6d7f907f8ae7a1c}\label{_2video_8c_a2de8bdfa08e95562b6d7f907f8ae7a1c}} 
+\index{/video.\+c@{/video.\+c}!\+\_\+start\+Hdraw@{\+\_\+start\+Hdraw}}
+\index{\+\_\+start\+Hdraw@{\+\_\+start\+Hdraw}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+start\+Hdraw()}{\_startHdraw()}}
+{\footnotesize\ttfamily void \+\_\+start\+Hdraw (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing,  }\item[{void $\ast$}]{context,  }\item[{uint32\+\_\+t}]{cycles\+Late }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2video_8c_a2de8bdfa08e95562b6d7f907f8ae7a1c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2video_8c_a2de8bdfa08e95562b6d7f907f8ae7a1c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2video_8c_aeb1332eee278c9232a5e15023b599ae5}\label{_2video_8c_aeb1332eee278c9232a5e15023b599ae5}} 
+\index{/video.\+c@{/video.\+c}!G\+B\+A\+Video\+Associate\+Renderer@{G\+B\+A\+Video\+Associate\+Renderer}}
+\index{G\+B\+A\+Video\+Associate\+Renderer@{G\+B\+A\+Video\+Associate\+Renderer}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Associate\+Renderer()}{GBAVideoAssociateRenderer()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Associate\+Renderer (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video $\ast$}]{video,  }\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2video_8c_aeb1332eee278c9232a5e15023b599ae5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2video_8c_a34b46930303372d637f61be79ad9e15a}\label{_2video_8c_a34b46930303372d637f61be79ad9e15a}} 
+\index{/video.\+c@{/video.\+c}!G\+B\+A\+Video\+Deinit@{G\+B\+A\+Video\+Deinit}}
+\index{G\+B\+A\+Video\+Deinit@{G\+B\+A\+Video\+Deinit}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Deinit()}{GBAVideoDeinit()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Deinit (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video $\ast$}]{video }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2video_8c_a34b46930303372d637f61be79ad9e15a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2video_8c_a34b46930303372d637f61be79ad9e15a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2video_8c_ad2dc28b5806818c6a425750b2ab49837}\label{_2video_8c_ad2dc28b5806818c6a425750b2ab49837}} 
+\index{/video.\+c@{/video.\+c}!G\+B\+A\+Video\+Deserialize@{G\+B\+A\+Video\+Deserialize}}
+\index{G\+B\+A\+Video\+Deserialize@{G\+B\+A\+Video\+Deserialize}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Deserialize()}{GBAVideoDeserialize()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Deserialize (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video $\ast$}]{video,  }\item[{const struct G\+B\+A\+Serialized\+State $\ast$}]{state }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{_2video_8c_ad2dc28b5806818c6a425750b2ab49837_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2video_8c_ad2dc28b5806818c6a425750b2ab49837_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2video_8c_aa3eb47080330d00361c41940f672eef8}\label{_2video_8c_aa3eb47080330d00361c41940f672eef8}} 
+\index{/video.\+c@{/video.\+c}!G\+B\+A\+Video\+Dummy\+Renderer\+Deinit@{G\+B\+A\+Video\+Dummy\+Renderer\+Deinit}}
+\index{G\+B\+A\+Video\+Dummy\+Renderer\+Deinit@{G\+B\+A\+Video\+Dummy\+Renderer\+Deinit}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Dummy\+Renderer\+Deinit()}{GBAVideoDummyRendererDeinit()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Dummy\+Renderer\+Deinit (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{_2video_8c_a53cf98eb44859f2f21567aa71078b203}\label{_2video_8c_a53cf98eb44859f2f21567aa71078b203}} 
+\index{/video.\+c@{/video.\+c}!G\+B\+A\+Video\+Dummy\+Renderer\+Draw\+Scanline@{G\+B\+A\+Video\+Dummy\+Renderer\+Draw\+Scanline}}
+\index{G\+B\+A\+Video\+Dummy\+Renderer\+Draw\+Scanline@{G\+B\+A\+Video\+Dummy\+Renderer\+Draw\+Scanline}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Dummy\+Renderer\+Draw\+Scanline()}{GBAVideoDummyRendererDrawScanline()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Dummy\+Renderer\+Draw\+Scanline (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{_2video_8c_a094aa8151ae20ed2094bb750dee6e667}\label{_2video_8c_a094aa8151ae20ed2094bb750dee6e667}} 
+\index{/video.\+c@{/video.\+c}!G\+B\+A\+Video\+Dummy\+Renderer\+Finish\+Frame@{G\+B\+A\+Video\+Dummy\+Renderer\+Finish\+Frame}}
+\index{G\+B\+A\+Video\+Dummy\+Renderer\+Finish\+Frame@{G\+B\+A\+Video\+Dummy\+Renderer\+Finish\+Frame}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Dummy\+Renderer\+Finish\+Frame()}{GBAVideoDummyRendererFinishFrame()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Dummy\+Renderer\+Finish\+Frame (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{_2video_8c_aefc136397814af14f39caf3163d8112f}\label{_2video_8c_aefc136397814af14f39caf3163d8112f}} 
+\index{/video.\+c@{/video.\+c}!G\+B\+A\+Video\+Dummy\+Renderer\+Get\+Pixels@{G\+B\+A\+Video\+Dummy\+Renderer\+Get\+Pixels}}
+\index{G\+B\+A\+Video\+Dummy\+Renderer\+Get\+Pixels@{G\+B\+A\+Video\+Dummy\+Renderer\+Get\+Pixels}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Dummy\+Renderer\+Get\+Pixels()}{GBAVideoDummyRendererGetPixels()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Dummy\+Renderer\+Get\+Pixels (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{size\+\_\+t $\ast$}]{stride,  }\item[{const void $\ast$$\ast$}]{pixels }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{_2video_8c_a875c46472cf1dcb7f0e4d25e6f0a2708}\label{_2video_8c_a875c46472cf1dcb7f0e4d25e6f0a2708}} 
+\index{/video.\+c@{/video.\+c}!G\+B\+A\+Video\+Dummy\+Renderer\+Init@{G\+B\+A\+Video\+Dummy\+Renderer\+Init}}
+\index{G\+B\+A\+Video\+Dummy\+Renderer\+Init@{G\+B\+A\+Video\+Dummy\+Renderer\+Init}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Dummy\+Renderer\+Init()}{GBAVideoDummyRendererInit()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Dummy\+Renderer\+Init (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{_2video_8c_ab2cb5a3df587adae813996702d700592}\label{_2video_8c_ab2cb5a3df587adae813996702d700592}} 
+\index{/video.\+c@{/video.\+c}!G\+B\+A\+Video\+Dummy\+Renderer\+Put\+Pixels@{G\+B\+A\+Video\+Dummy\+Renderer\+Put\+Pixels}}
+\index{G\+B\+A\+Video\+Dummy\+Renderer\+Put\+Pixels@{G\+B\+A\+Video\+Dummy\+Renderer\+Put\+Pixels}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Dummy\+Renderer\+Put\+Pixels()}{GBAVideoDummyRendererPutPixels()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Dummy\+Renderer\+Put\+Pixels (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{size\+\_\+t}]{stride,  }\item[{const void $\ast$}]{pixels }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{_2video_8c_a37b93fcc9d58db71a1bca195d25a35b8}\label{_2video_8c_a37b93fcc9d58db71a1bca195d25a35b8}} 
+\index{/video.\+c@{/video.\+c}!G\+B\+A\+Video\+Dummy\+Renderer\+Reset@{G\+B\+A\+Video\+Dummy\+Renderer\+Reset}}
+\index{G\+B\+A\+Video\+Dummy\+Renderer\+Reset@{G\+B\+A\+Video\+Dummy\+Renderer\+Reset}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Dummy\+Renderer\+Reset()}{GBAVideoDummyRendererReset()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Dummy\+Renderer\+Reset (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{_2video_8c_a954f052e57f6e59b52fdc33a42d13d38}\label{_2video_8c_a954f052e57f6e59b52fdc33a42d13d38}} 
+\index{/video.\+c@{/video.\+c}!G\+B\+A\+Video\+Dummy\+Renderer\+Write\+O\+AM@{G\+B\+A\+Video\+Dummy\+Renderer\+Write\+O\+AM}}
+\index{G\+B\+A\+Video\+Dummy\+Renderer\+Write\+O\+AM@{G\+B\+A\+Video\+Dummy\+Renderer\+Write\+O\+AM}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Dummy\+Renderer\+Write\+O\+A\+M()}{GBAVideoDummyRendererWriteOAM()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Dummy\+Renderer\+Write\+O\+AM (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{uint32\+\_\+t}]{oam }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{_2video_8c_aa71112dfb7a9094a4a671ec91735b400}\label{_2video_8c_aa71112dfb7a9094a4a671ec91735b400}} 
+\index{/video.\+c@{/video.\+c}!G\+B\+A\+Video\+Dummy\+Renderer\+Write\+Palette@{G\+B\+A\+Video\+Dummy\+Renderer\+Write\+Palette}}
+\index{G\+B\+A\+Video\+Dummy\+Renderer\+Write\+Palette@{G\+B\+A\+Video\+Dummy\+Renderer\+Write\+Palette}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Dummy\+Renderer\+Write\+Palette()}{GBAVideoDummyRendererWritePalette()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Dummy\+Renderer\+Write\+Palette (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{uint32\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2video_8c_aa71112dfb7a9094a4a671ec91735b400_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2video_8c_a10f4207a33470cd12fff0a541d44ad7d}\label{_2video_8c_a10f4207a33470cd12fff0a541d44ad7d}} 
+\index{/video.\+c@{/video.\+c}!G\+B\+A\+Video\+Dummy\+Renderer\+Write\+Video\+Register@{G\+B\+A\+Video\+Dummy\+Renderer\+Write\+Video\+Register}}
+\index{G\+B\+A\+Video\+Dummy\+Renderer\+Write\+Video\+Register@{G\+B\+A\+Video\+Dummy\+Renderer\+Write\+Video\+Register}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Dummy\+Renderer\+Write\+Video\+Register()}{GBAVideoDummyRendererWriteVideoRegister()}}
+{\footnotesize\ttfamily static uint16\+\_\+t G\+B\+A\+Video\+Dummy\+Renderer\+Write\+Video\+Register (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{uint32\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2video_8c_a10f4207a33470cd12fff0a541d44ad7d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2video_8c_a623db98e9a364bbf977fa56e19e35336}\label{_2video_8c_a623db98e9a364bbf977fa56e19e35336}} 
+\index{/video.\+c@{/video.\+c}!G\+B\+A\+Video\+Dummy\+Renderer\+Write\+V\+R\+AM@{G\+B\+A\+Video\+Dummy\+Renderer\+Write\+V\+R\+AM}}
+\index{G\+B\+A\+Video\+Dummy\+Renderer\+Write\+V\+R\+AM@{G\+B\+A\+Video\+Dummy\+Renderer\+Write\+V\+R\+AM}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Dummy\+Renderer\+Write\+V\+R\+A\+M()}{GBAVideoDummyRendererWriteVRAM()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Dummy\+Renderer\+Write\+V\+R\+AM (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{uint32\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2video_8c_a623db98e9a364bbf977fa56e19e35336_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2video_8c_a6dbd03e7417982b8db1d8926dfe2437e}\label{_2video_8c_a6dbd03e7417982b8db1d8926dfe2437e}} 
+\index{/video.\+c@{/video.\+c}!G\+B\+A\+Video\+Init@{G\+B\+A\+Video\+Init}}
+\index{G\+B\+A\+Video\+Init@{G\+B\+A\+Video\+Init}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Init()}{GBAVideoInit()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Init (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video $\ast$}]{video }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{_2video_8c_a6dbd03e7417982b8db1d8926dfe2437e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2video_8c_a6dbd03e7417982b8db1d8926dfe2437e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2video_8c_ab7d9ecd91fd9ad41a5aec7d3482d176d}\label{_2video_8c_ab7d9ecd91fd9ad41a5aec7d3482d176d}} 
+\index{/video.\+c@{/video.\+c}!G\+B\+A\+Video\+Reset@{G\+B\+A\+Video\+Reset}}
+\index{G\+B\+A\+Video\+Reset@{G\+B\+A\+Video\+Reset}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Reset()}{GBAVideoReset()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Reset (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video $\ast$}]{video }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2video_8c_ab7d9ecd91fd9ad41a5aec7d3482d176d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2video_8c_ab7d9ecd91fd9ad41a5aec7d3482d176d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2video_8c_a2987fa71a751da4a9a3aacd6cfb32c9f}\label{_2video_8c_a2987fa71a751da4a9a3aacd6cfb32c9f}} 
+\index{/video.\+c@{/video.\+c}!G\+B\+A\+Video\+Serialize@{G\+B\+A\+Video\+Serialize}}
+\index{G\+B\+A\+Video\+Serialize@{G\+B\+A\+Video\+Serialize}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Serialize()}{GBAVideoSerialize()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Serialize (\begin{DoxyParamCaption}\item[{const struct G\+B\+A\+Video $\ast$}]{video,  }\item[{struct G\+B\+A\+Serialized\+State $\ast$}]{state }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{_2video_8c_a2987fa71a751da4a9a3aacd6cfb32c9f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2video_8c_a2987fa71a751da4a9a3aacd6cfb32c9f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2video_8c_adb0781eb127d78f57f84a01c76b71f35}\label{_2video_8c_adb0781eb127d78f57f84a01c76b71f35}} 
+\index{/video.\+c@{/video.\+c}!G\+B\+A\+Video\+Write\+D\+I\+S\+P\+S\+T\+AT@{G\+B\+A\+Video\+Write\+D\+I\+S\+P\+S\+T\+AT}}
+\index{G\+B\+A\+Video\+Write\+D\+I\+S\+P\+S\+T\+AT@{G\+B\+A\+Video\+Write\+D\+I\+S\+P\+S\+T\+AT}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Write\+D\+I\+S\+P\+S\+T\+A\+T()}{GBAVideoWriteDISPSTAT()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Write\+D\+I\+S\+P\+S\+T\+AT (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video $\ast$}]{video,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2video_8c_adb0781eb127d78f57f84a01c76b71f35_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2video_8c_a9df60ee86e89af1d1d55735de18d7287}\label{_2video_8c_a9df60ee86e89af1d1d55735de18d7287}} 
+\index{/video.\+c@{/video.\+c}!m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}}
+\index{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+R\+Y()}{mLOG\_DEFINE\_CATEGORY()}}
+{\footnotesize\ttfamily m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY (\begin{DoxyParamCaption}\item[{G\+B\+A\+\_\+\+V\+I\+D\+EO}]{,  }\item[{\char`\"{}G\+BA Video\char`\"{}}]{,  }\item[{\char`\"{}gba.\+video\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_2video_8c_ae6a4cccda395fa2c32234177567954ed}\label{_2video_8c_ae6a4cccda395fa2c32234177567954ed}} 
+\index{/video.\+c@{/video.\+c}!dummy\+Renderer@{dummy\+Renderer}}
+\index{dummy\+Renderer@{dummy\+Renderer}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{dummy\+Renderer}{dummyRenderer}}
+{\footnotesize\ttfamily struct G\+B\+A\+Video\+Renderer dummy\+Renderer\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    .init = \mbox{\hyperlink{_2video_8c_a875c46472cf1dcb7f0e4d25e6f0a2708}{GBAVideoDummyRendererInit}},
+    .reset = \mbox{\hyperlink{_2video_8c_a37b93fcc9d58db71a1bca195d25a35b8}{GBAVideoDummyRendererReset}},
+    .deinit = \mbox{\hyperlink{_2video_8c_aa3eb47080330d00361c41940f672eef8}{GBAVideoDummyRendererDeinit}},
+    .writeVideoRegister = \mbox{\hyperlink{_2video_8c_a10f4207a33470cd12fff0a541d44ad7d}{GBAVideoDummyRendererWriteVideoRegister}},
+    .writeVRAM = \mbox{\hyperlink{_2video_8c_a623db98e9a364bbf977fa56e19e35336}{GBAVideoDummyRendererWriteVRAM}},
+    .writePalette = \mbox{\hyperlink{_2video_8c_aa71112dfb7a9094a4a671ec91735b400}{GBAVideoDummyRendererWritePalette}},
+    .writeOAM = \mbox{\hyperlink{_2video_8c_a954f052e57f6e59b52fdc33a42d13d38}{GBAVideoDummyRendererWriteOAM}},
+    .drawScanline = \mbox{\hyperlink{_2video_8c_a53cf98eb44859f2f21567aa71078b203}{GBAVideoDummyRendererDrawScanline}},
+    .finishFrame = \mbox{\hyperlink{_2video_8c_a094aa8151ae20ed2094bb750dee6e667}{GBAVideoDummyRendererFinishFrame}},
+    .getPixels = \mbox{\hyperlink{_2video_8c_aefc136397814af14f39caf3163d8112f}{GBAVideoDummyRendererGetPixels}},
+    .putPixels = \mbox{\hyperlink{_2video_8c_ab2cb5a3df587adae813996702d700592}{GBAVideoDummyRendererPutPixels}},
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{_2video_8c_a47dae7f9d9374c6739808ff029a1c117}\label{_2video_8c_a47dae7f9d9374c6739808ff029a1c117}} 
+\index{/video.\+c@{/video.\+c}!G\+B\+A\+Video\+Obj\+Sizes@{G\+B\+A\+Video\+Obj\+Sizes}}
+\index{G\+B\+A\+Video\+Obj\+Sizes@{G\+B\+A\+Video\+Obj\+Sizes}!/video.\+c@{/video.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Obj\+Sizes}{GBAVideoObjSizes}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} G\+B\+A\+Video\+Obj\+Sizes\mbox{[}16\mbox{]}\mbox{[}2\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    \{ 8, 8 \},
+    \{ 16, 16 \},
+    \{ 32, 32 \},
+    \{ 64, 64 \},
+    \{ 16, 8 \},
+    \{ 32, 8 \},
+    \{ 32, 16 \},
+    \{ 64, 32 \},
+    \{ 8, 16 \},
+    \{ 8, 32 \},
+    \{ 16, 32 \},
+    \{ 32, 64 \},
+    \{ 0, 0 \},
+    \{ 0, 0 \},
+    \{ 0, 0 \},
+    \{ 0, 0 \},
+\}
+\end{DoxyCode}

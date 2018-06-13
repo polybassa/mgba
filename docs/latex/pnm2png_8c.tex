@@ -1,0 +1,202 @@
+\hypertarget{pnm2png_8c}{}\section{src/third-\/party/libpng/contrib/pngminus/pnm2png.c File Reference}
+\label{pnm2png_8c}\index{src/third-\/party/libpng/contrib/pngminus/pnm2png.\+c@{src/third-\/party/libpng/contrib/pngminus/pnm2png.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$zlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}png.\+h\char`\"{}}\newline
+Include dependency graph for pnm2png.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pnm2png_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}}~unsigned char
+\item 
+\#define \mbox{\hyperlink{pnm2png_8c_aa8cecfc5c5c054d2875c03e77b7be15d}{T\+R\+UE}}~(\mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}}) 1
+\item 
+\#define \mbox{\hyperlink{pnm2png_8c_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}~(\mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}}) 0
+\item 
+\#define \mbox{\hyperlink{pnm2png_8c_ac00bfb46347d26fdc58568fe1ab5fa5b}{S\+T\+D\+IN}}~0
+\item 
+\#define \mbox{\hyperlink{pnm2png_8c_a8875037d0772a4fc34516f1e03d7e238}{S\+T\+D\+O\+UT}}~1
+\item 
+\#define \mbox{\hyperlink{pnm2png_8c_a3a540e3eef339eec06aff31c4ba1eb25}{S\+T\+D\+E\+RR}}~2
+\item 
+\#define \mbox{\hyperlink{pnm2png_8c_a6f9dac5522b0dd6350aeac619663c353}{P\+N\+G\+\_\+\+D\+E\+B\+UG}}~0
+\item 
+\#define \mbox{\hyperlink{pnm2png_8c_a55eebffdbcbda980a3024fc989695b74}{png\+\_\+jmpbuf}}(\mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}})~((\mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}})-\/$>$jmpbuf)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{pnm2png_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\item 
+void \mbox{\hyperlink{pnm2png_8c_a2ef30c42cbc289d899a8be5d2d8f77d0}{usage}} ()
+\item 
+\mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}} \mbox{\hyperlink{pnm2png_8c_a363ae3006d8a9c7cf81bb7c648c05a93}{pnm2png}} (F\+I\+LE $\ast$pnm\+\_\+file, F\+I\+LE $\ast$png\+\_\+file, F\+I\+LE $\ast$alpha\+\_\+file, \mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}} interlace, \mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}} alpha)
+\item 
+void \mbox{\hyperlink{pnm2png_8c_a6449aedadbcf1f576f75002cfdd4507f}{get\+\_\+token}} (F\+I\+LE $\ast$pnm\+\_\+file, char $\ast$token)
+\item 
+png\+\_\+uint\+\_\+32 \mbox{\hyperlink{pnm2png_8c_ad8a97cfc66c3540d2045f3951e23f9a6}{get\+\_\+data}} (F\+I\+LE $\ast$pnm\+\_\+file, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_acb5ba97551079e0b072c62c21d784ac5}{depth}})
+\item 
+png\+\_\+uint\+\_\+32 \mbox{\hyperlink{pnm2png_8c_a81e46a914c1b6514dd7e82938fb06707}{get\+\_\+value}} (F\+I\+LE $\ast$pnm\+\_\+file, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_acb5ba97551079e0b072c62c21d784ac5}{depth}})
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}\label{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}} 
+\index{pnm2png.\+c@{pnm2png.\+c}!B\+O\+OL@{B\+O\+OL}}
+\index{B\+O\+OL@{B\+O\+OL}!pnm2png.\+c@{pnm2png.\+c}}
+\subsubsection{\texorpdfstring{B\+O\+OL}{BOOL}}
+{\footnotesize\ttfamily \#define B\+O\+OL~unsigned char}
+
+\mbox{\Hypertarget{pnm2png_8c_aa93f0eb578d23995850d61f7d61c55c1}\label{pnm2png_8c_aa93f0eb578d23995850d61f7d61c55c1}} 
+\index{pnm2png.\+c@{pnm2png.\+c}!F\+A\+L\+SE@{F\+A\+L\+SE}}
+\index{F\+A\+L\+SE@{F\+A\+L\+SE}!pnm2png.\+c@{pnm2png.\+c}}
+\subsubsection{\texorpdfstring{F\+A\+L\+SE}{FALSE}}
+{\footnotesize\ttfamily \#define F\+A\+L\+SE~(\mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}}) 0}
+
+\mbox{\Hypertarget{pnm2png_8c_a6f9dac5522b0dd6350aeac619663c353}\label{pnm2png_8c_a6f9dac5522b0dd6350aeac619663c353}} 
+\index{pnm2png.\+c@{pnm2png.\+c}!P\+N\+G\+\_\+\+D\+E\+B\+UG@{P\+N\+G\+\_\+\+D\+E\+B\+UG}}
+\index{P\+N\+G\+\_\+\+D\+E\+B\+UG@{P\+N\+G\+\_\+\+D\+E\+B\+UG}!pnm2png.\+c@{pnm2png.\+c}}
+\subsubsection{\texorpdfstring{P\+N\+G\+\_\+\+D\+E\+B\+UG}{PNG\_DEBUG}}
+{\footnotesize\ttfamily \#define P\+N\+G\+\_\+\+D\+E\+B\+UG~0}
+
+\mbox{\Hypertarget{pnm2png_8c_a55eebffdbcbda980a3024fc989695b74}\label{pnm2png_8c_a55eebffdbcbda980a3024fc989695b74}} 
+\index{pnm2png.\+c@{pnm2png.\+c}!png\+\_\+jmpbuf@{png\+\_\+jmpbuf}}
+\index{png\+\_\+jmpbuf@{png\+\_\+jmpbuf}!pnm2png.\+c@{pnm2png.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+jmpbuf}{png\_jmpbuf}}
+{\footnotesize\ttfamily \#define png\+\_\+jmpbuf(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}} }\end{DoxyParamCaption})~((\mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}})-\/$>$jmpbuf)}
+
+\mbox{\Hypertarget{pnm2png_8c_a3a540e3eef339eec06aff31c4ba1eb25}\label{pnm2png_8c_a3a540e3eef339eec06aff31c4ba1eb25}} 
+\index{pnm2png.\+c@{pnm2png.\+c}!S\+T\+D\+E\+RR@{S\+T\+D\+E\+RR}}
+\index{S\+T\+D\+E\+RR@{S\+T\+D\+E\+RR}!pnm2png.\+c@{pnm2png.\+c}}
+\subsubsection{\texorpdfstring{S\+T\+D\+E\+RR}{STDERR}}
+{\footnotesize\ttfamily \#define S\+T\+D\+E\+RR~2}
+
+\mbox{\Hypertarget{pnm2png_8c_ac00bfb46347d26fdc58568fe1ab5fa5b}\label{pnm2png_8c_ac00bfb46347d26fdc58568fe1ab5fa5b}} 
+\index{pnm2png.\+c@{pnm2png.\+c}!S\+T\+D\+IN@{S\+T\+D\+IN}}
+\index{S\+T\+D\+IN@{S\+T\+D\+IN}!pnm2png.\+c@{pnm2png.\+c}}
+\subsubsection{\texorpdfstring{S\+T\+D\+IN}{STDIN}}
+{\footnotesize\ttfamily \#define S\+T\+D\+IN~0}
+
+\mbox{\Hypertarget{pnm2png_8c_a8875037d0772a4fc34516f1e03d7e238}\label{pnm2png_8c_a8875037d0772a4fc34516f1e03d7e238}} 
+\index{pnm2png.\+c@{pnm2png.\+c}!S\+T\+D\+O\+UT@{S\+T\+D\+O\+UT}}
+\index{S\+T\+D\+O\+UT@{S\+T\+D\+O\+UT}!pnm2png.\+c@{pnm2png.\+c}}
+\subsubsection{\texorpdfstring{S\+T\+D\+O\+UT}{STDOUT}}
+{\footnotesize\ttfamily \#define S\+T\+D\+O\+UT~1}
+
+\mbox{\Hypertarget{pnm2png_8c_aa8cecfc5c5c054d2875c03e77b7be15d}\label{pnm2png_8c_aa8cecfc5c5c054d2875c03e77b7be15d}} 
+\index{pnm2png.\+c@{pnm2png.\+c}!T\+R\+UE@{T\+R\+UE}}
+\index{T\+R\+UE@{T\+R\+UE}!pnm2png.\+c@{pnm2png.\+c}}
+\subsubsection{\texorpdfstring{T\+R\+UE}{TRUE}}
+{\footnotesize\ttfamily \#define T\+R\+UE~(\mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}}) 1}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{pnm2png_8c_ad8a97cfc66c3540d2045f3951e23f9a6}\label{pnm2png_8c_ad8a97cfc66c3540d2045f3951e23f9a6}} 
+\index{pnm2png.\+c@{pnm2png.\+c}!get\+\_\+data@{get\+\_\+data}}
+\index{get\+\_\+data@{get\+\_\+data}!pnm2png.\+c@{pnm2png.\+c}}
+\subsubsection{\texorpdfstring{get\+\_\+data()}{get\_data()}}
+{\footnotesize\ttfamily png\+\_\+uint\+\_\+32 get\+\_\+data (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{pnm\+\_\+file,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{depth }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{pnm2png_8c_ad8a97cfc66c3540d2045f3951e23f9a6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{pnm2png_8c_a6449aedadbcf1f576f75002cfdd4507f}\label{pnm2png_8c_a6449aedadbcf1f576f75002cfdd4507f}} 
+\index{pnm2png.\+c@{pnm2png.\+c}!get\+\_\+token@{get\+\_\+token}}
+\index{get\+\_\+token@{get\+\_\+token}!pnm2png.\+c@{pnm2png.\+c}}
+\subsubsection{\texorpdfstring{get\+\_\+token()}{get\_token()}}
+{\footnotesize\ttfamily void get\+\_\+token (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{pnm\+\_\+file,  }\item[{char $\ast$}]{token }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pnm2png_8c_a6449aedadbcf1f576f75002cfdd4507f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{pnm2png_8c_a81e46a914c1b6514dd7e82938fb06707}\label{pnm2png_8c_a81e46a914c1b6514dd7e82938fb06707}} 
+\index{pnm2png.\+c@{pnm2png.\+c}!get\+\_\+value@{get\+\_\+value}}
+\index{get\+\_\+value@{get\+\_\+value}!pnm2png.\+c@{pnm2png.\+c}}
+\subsubsection{\texorpdfstring{get\+\_\+value()}{get\_value()}}
+{\footnotesize\ttfamily png\+\_\+uint\+\_\+32 get\+\_\+value (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{pnm\+\_\+file,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{depth }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{pnm2png_8c_a81e46a914c1b6514dd7e82938fb06707_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{pnm2png_8c_a81e46a914c1b6514dd7e82938fb06707_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{pnm2png_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{pnm2png_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{pnm2png.\+c@{pnm2png.\+c}!main@{main}}
+\index{main@{main}!pnm2png.\+c@{pnm2png.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pnm2png_8c_a0ddf1224851353fc92bfbff6f499fa97_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{pnm2png_8c_a363ae3006d8a9c7cf81bb7c648c05a93}\label{pnm2png_8c_a363ae3006d8a9c7cf81bb7c648c05a93}} 
+\index{pnm2png.\+c@{pnm2png.\+c}!pnm2png@{pnm2png}}
+\index{pnm2png@{pnm2png}!pnm2png.\+c@{pnm2png.\+c}}
+\subsubsection{\texorpdfstring{pnm2png()}{pnm2png()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}} pnm2png (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{pnm\+\_\+file,  }\item[{F\+I\+LE $\ast$}]{png\+\_\+file,  }\item[{F\+I\+LE $\ast$}]{alpha\+\_\+file,  }\item[{\mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}}}]{interlace,  }\item[{\mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}}}]{alpha }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pnm2png_8c_a363ae3006d8a9c7cf81bb7c648c05a93_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{pnm2png_8c_a363ae3006d8a9c7cf81bb7c648c05a93_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{pnm2png_8c_a2ef30c42cbc289d899a8be5d2d8f77d0}\label{pnm2png_8c_a2ef30c42cbc289d899a8be5d2d8f77d0}} 
+\index{pnm2png.\+c@{pnm2png.\+c}!usage@{usage}}
+\index{usage@{usage}!pnm2png.\+c@{pnm2png.\+c}}
+\subsubsection{\texorpdfstring{usage()}{usage()}}
+{\footnotesize\ttfamily void usage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{pnm2png_8c_a2ef30c42cbc289d899a8be5d2d8f77d0_icgraph}
+\end{center}
+\end{figure}

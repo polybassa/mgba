@@ -1,0 +1,268 @@
+\hypertarget{thread-proxy_8c}{}\section{src/feature/thread-\/proxy.c File Reference}
+\label{thread-proxy_8c}\index{src/feature/thread-\/proxy.\+c@{src/feature/thread-\/proxy.\+c}}
+{\ttfamily \#include $<$mgba/feature/thread-\/proxy.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/tile-\/cache.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/gba.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/io.\+h$>$}\newline
+Include dependency graph for thread-\/proxy.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread-proxy_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{thread-proxy_8c_a6af434b062813108e9046e2742ef9d15}{m\+Video\+Thread\+Proxy\+Init}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}})
+\item 
+static void \mbox{\hyperlink{thread-proxy_8c_aab76cb56b20c81f5a6bc984c29af7ca8}{m\+Video\+Thread\+Proxy\+Reset}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}})
+\item 
+static void \mbox{\hyperlink{thread-proxy_8c_a7d6faab8646db46852a09b83af7216e0}{m\+Video\+Thread\+Proxy\+Deinit}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}})
+\item 
+static T\+H\+R\+E\+A\+D\+\_\+\+E\+N\+T\+RY \mbox{\hyperlink{thread-proxy_8c_a7b9189ee6a6460af05b9f19e95015c98}{\+\_\+proxy\+Thread}} (void $\ast$renderer)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{thread-proxy_8c_a163afd173e5992530065bb8ddc2b693e}{\+\_\+write\+Data}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}, const void $\ast$\mbox{\hyperlink{libretro_8c_a735984d41155bc1032e09bece8f8d66d}{data}}, size\+\_\+t length)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{thread-proxy_8c_abcbab73349348e3342c1e7255ed55ee4}{\+\_\+read\+Data}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}, void $\ast$\mbox{\hyperlink{libretro_8c_a735984d41155bc1032e09bece8f8d66d}{data}}, size\+\_\+t length, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} block)
+\item 
+static void \mbox{\hyperlink{thread-proxy_8c_a5831b9040d25c76acbdf0bc2817acd02}{\+\_\+lock}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}})
+\item 
+static void \mbox{\hyperlink{thread-proxy_8c_ade51ba82a597a9089d4e639a5fca76fa}{\+\_\+unlock}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}})
+\item 
+static void \mbox{\hyperlink{thread-proxy_8c_adbc17597459e4e98b86b4b1821d1040f}{\+\_\+wait}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}})
+\item 
+static void \mbox{\hyperlink{thread-proxy_8c_afb1377b4c16e0b5aa347a274d5323ec6}{\+\_\+wake}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} y)
+\item 
+void \mbox{\hyperlink{thread-proxy_8c_a8c023e44feda4222c0441d7bb694f546}{m\+Video\+Thread\+Proxy\+Create}} (struct m\+Video\+Thread\+Proxy $\ast$renderer)
+\item 
+void \mbox{\hyperlink{thread-proxy_8c_a9f7602077816bb1ca3bf15db67d76f17}{\+\_\+proxy\+Thread\+Recover}} (struct m\+Video\+Thread\+Proxy $\ast$proxy\+Renderer)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{thread-proxy_8c_a5831b9040d25c76acbdf0bc2817acd02}\label{thread-proxy_8c_a5831b9040d25c76acbdf0bc2817acd02}} 
+\index{thread-\/proxy.\+c@{thread-\/proxy.\+c}!\+\_\+lock@{\+\_\+lock}}
+\index{\+\_\+lock@{\+\_\+lock}!thread-\/proxy.\+c@{thread-\/proxy.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+lock()}{\_lock()}}
+{\footnotesize\ttfamily static void \+\_\+lock (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread-proxy_8c_a5831b9040d25c76acbdf0bc2817acd02_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread-proxy_8c_a7b9189ee6a6460af05b9f19e95015c98}\label{thread-proxy_8c_a7b9189ee6a6460af05b9f19e95015c98}} 
+\index{thread-\/proxy.\+c@{thread-\/proxy.\+c}!\+\_\+proxy\+Thread@{\+\_\+proxy\+Thread}}
+\index{\+\_\+proxy\+Thread@{\+\_\+proxy\+Thread}!thread-\/proxy.\+c@{thread-\/proxy.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+proxy\+Thread()}{\_proxyThread()}}
+{\footnotesize\ttfamily static T\+H\+R\+E\+A\+D\+\_\+\+E\+N\+T\+RY \+\_\+proxy\+Thread (\begin{DoxyParamCaption}\item[{void $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{thread-proxy_8c_a7b9189ee6a6460af05b9f19e95015c98_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread-proxy_8c_a7b9189ee6a6460af05b9f19e95015c98_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread-proxy_8c_a9f7602077816bb1ca3bf15db67d76f17}\label{thread-proxy_8c_a9f7602077816bb1ca3bf15db67d76f17}} 
+\index{thread-\/proxy.\+c@{thread-\/proxy.\+c}!\+\_\+proxy\+Thread\+Recover@{\+\_\+proxy\+Thread\+Recover}}
+\index{\+\_\+proxy\+Thread\+Recover@{\+\_\+proxy\+Thread\+Recover}!thread-\/proxy.\+c@{thread-\/proxy.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+proxy\+Thread\+Recover()}{\_proxyThreadRecover()}}
+{\footnotesize\ttfamily void \+\_\+proxy\+Thread\+Recover (\begin{DoxyParamCaption}\item[{struct m\+Video\+Thread\+Proxy $\ast$}]{proxy\+Renderer }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread-proxy_8c_a9f7602077816bb1ca3bf15db67d76f17_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread-proxy_8c_a9f7602077816bb1ca3bf15db67d76f17_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread-proxy_8c_abcbab73349348e3342c1e7255ed55ee4}\label{thread-proxy_8c_abcbab73349348e3342c1e7255ed55ee4}} 
+\index{thread-\/proxy.\+c@{thread-\/proxy.\+c}!\+\_\+read\+Data@{\+\_\+read\+Data}}
+\index{\+\_\+read\+Data@{\+\_\+read\+Data}!thread-\/proxy.\+c@{thread-\/proxy.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Data()}{\_readData()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+read\+Data (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger,  }\item[{void $\ast$}]{data,  }\item[{size\+\_\+t}]{length,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{block }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread-proxy_8c_abcbab73349348e3342c1e7255ed55ee4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread-proxy_8c_abcbab73349348e3342c1e7255ed55ee4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread-proxy_8c_ade51ba82a597a9089d4e639a5fca76fa}\label{thread-proxy_8c_ade51ba82a597a9089d4e639a5fca76fa}} 
+\index{thread-\/proxy.\+c@{thread-\/proxy.\+c}!\+\_\+unlock@{\+\_\+unlock}}
+\index{\+\_\+unlock@{\+\_\+unlock}!thread-\/proxy.\+c@{thread-\/proxy.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+unlock()}{\_unlock()}}
+{\footnotesize\ttfamily static void \+\_\+unlock (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread-proxy_8c_ade51ba82a597a9089d4e639a5fca76fa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread-proxy_8c_adbc17597459e4e98b86b4b1821d1040f}\label{thread-proxy_8c_adbc17597459e4e98b86b4b1821d1040f}} 
+\index{thread-\/proxy.\+c@{thread-\/proxy.\+c}!\+\_\+wait@{\+\_\+wait}}
+\index{\+\_\+wait@{\+\_\+wait}!thread-\/proxy.\+c@{thread-\/proxy.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+wait()}{\_wait()}}
+{\footnotesize\ttfamily static void \+\_\+wait (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread-proxy_8c_adbc17597459e4e98b86b4b1821d1040f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread-proxy_8c_adbc17597459e4e98b86b4b1821d1040f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread-proxy_8c_afb1377b4c16e0b5aa347a274d5323ec6}\label{thread-proxy_8c_afb1377b4c16e0b5aa347a274d5323ec6}} 
+\index{thread-\/proxy.\+c@{thread-\/proxy.\+c}!\+\_\+wake@{\+\_\+wake}}
+\index{\+\_\+wake@{\+\_\+wake}!thread-\/proxy.\+c@{thread-\/proxy.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+wake()}{\_wake()}}
+{\footnotesize\ttfamily static void \+\_\+wake (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread-proxy_8c_afb1377b4c16e0b5aa347a274d5323ec6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread-proxy_8c_a163afd173e5992530065bb8ddc2b693e}\label{thread-proxy_8c_a163afd173e5992530065bb8ddc2b693e}} 
+\index{thread-\/proxy.\+c@{thread-\/proxy.\+c}!\+\_\+write\+Data@{\+\_\+write\+Data}}
+\index{\+\_\+write\+Data@{\+\_\+write\+Data}!thread-\/proxy.\+c@{thread-\/proxy.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+write\+Data()}{\_writeData()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+write\+Data (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger,  }\item[{const void $\ast$}]{data,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{thread-proxy_8c_a163afd173e5992530065bb8ddc2b693e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread-proxy_8c_a163afd173e5992530065bb8ddc2b693e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread-proxy_8c_a8c023e44feda4222c0441d7bb694f546}\label{thread-proxy_8c_a8c023e44feda4222c0441d7bb694f546}} 
+\index{thread-\/proxy.\+c@{thread-\/proxy.\+c}!m\+Video\+Thread\+Proxy\+Create@{m\+Video\+Thread\+Proxy\+Create}}
+\index{m\+Video\+Thread\+Proxy\+Create@{m\+Video\+Thread\+Proxy\+Create}!thread-\/proxy.\+c@{thread-\/proxy.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Thread\+Proxy\+Create()}{mVideoThreadProxyCreate()}}
+{\footnotesize\ttfamily void m\+Video\+Thread\+Proxy\+Create (\begin{DoxyParamCaption}\item[{struct m\+Video\+Thread\+Proxy $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread-proxy_8c_a8c023e44feda4222c0441d7bb694f546_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread-proxy_8c_a8c023e44feda4222c0441d7bb694f546_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread-proxy_8c_a7d6faab8646db46852a09b83af7216e0}\label{thread-proxy_8c_a7d6faab8646db46852a09b83af7216e0}} 
+\index{thread-\/proxy.\+c@{thread-\/proxy.\+c}!m\+Video\+Thread\+Proxy\+Deinit@{m\+Video\+Thread\+Proxy\+Deinit}}
+\index{m\+Video\+Thread\+Proxy\+Deinit@{m\+Video\+Thread\+Proxy\+Deinit}!thread-\/proxy.\+c@{thread-\/proxy.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Thread\+Proxy\+Deinit()}{mVideoThreadProxyDeinit()}}
+{\footnotesize\ttfamily void m\+Video\+Thread\+Proxy\+Deinit (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread-proxy_8c_a7d6faab8646db46852a09b83af7216e0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread-proxy_8c_a6af434b062813108e9046e2742ef9d15}\label{thread-proxy_8c_a6af434b062813108e9046e2742ef9d15}} 
+\index{thread-\/proxy.\+c@{thread-\/proxy.\+c}!m\+Video\+Thread\+Proxy\+Init@{m\+Video\+Thread\+Proxy\+Init}}
+\index{m\+Video\+Thread\+Proxy\+Init@{m\+Video\+Thread\+Proxy\+Init}!thread-\/proxy.\+c@{thread-\/proxy.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Thread\+Proxy\+Init()}{mVideoThreadProxyInit()}}
+{\footnotesize\ttfamily void m\+Video\+Thread\+Proxy\+Init (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread-proxy_8c_a6af434b062813108e9046e2742ef9d15_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread-proxy_8c_a6af434b062813108e9046e2742ef9d15_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread-proxy_8c_aab76cb56b20c81f5a6bc984c29af7ca8}\label{thread-proxy_8c_aab76cb56b20c81f5a6bc984c29af7ca8}} 
+\index{thread-\/proxy.\+c@{thread-\/proxy.\+c}!m\+Video\+Thread\+Proxy\+Reset@{m\+Video\+Thread\+Proxy\+Reset}}
+\index{m\+Video\+Thread\+Proxy\+Reset@{m\+Video\+Thread\+Proxy\+Reset}!thread-\/proxy.\+c@{thread-\/proxy.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Thread\+Proxy\+Reset()}{mVideoThreadProxyReset()}}
+{\footnotesize\ttfamily void m\+Video\+Thread\+Proxy\+Reset (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread-proxy_8c_aab76cb56b20c81f5a6bc984c29af7ca8_icgraph}
+\end{center}
+\end{figure}

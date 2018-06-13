@@ -1,0 +1,58 @@
+\hypertarget{_sort_8c}{}\section{src/third-\/party/lzma/\+Sort.c File Reference}
+\label{_sort_8c}\index{src/third-\/party/lzma/\+Sort.\+c@{src/third-\/party/lzma/\+Sort.\+c}}
+{\ttfamily \#include \char`\"{}Precomp.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Sort.\+h\char`\"{}}\newline
+Include dependency graph for Sort.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{_sort_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_sort_8c_ab0b3a306754360aa2bd47e5033dadb05}{Heap\+Sort\+Down}}(p,  k,  \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}},  temp)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_sort_8c_a4b115c12c2980bf458f4ce9051fed80c}{Heap\+Sort}} (\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$p, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+void \mbox{\hyperlink{_sort_8c_a1d4c233fb62d4bfec487da91d350a84e}{Heap\+Sort64}} (\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} $\ast$p, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_sort_8c_ab0b3a306754360aa2bd47e5033dadb05}\label{_sort_8c_ab0b3a306754360aa2bd47e5033dadb05}} 
+\index{Sort.\+c@{Sort.\+c}!Heap\+Sort\+Down@{Heap\+Sort\+Down}}
+\index{Heap\+Sort\+Down@{Heap\+Sort\+Down}!Sort.\+c@{Sort.\+c}}
+\subsubsection{\texorpdfstring{Heap\+Sort\+Down}{HeapSortDown}}
+{\footnotesize\ttfamily \#define Heap\+Sort\+Down(\begin{DoxyParamCaption}\item[{}]{p,  }\item[{}]{k,  }\item[{}]{\mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}},  }\item[{}]{temp }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\{ \textcolor{keywordflow}{for} (;;) \{ \(\backslash\)
+    size\_t s = (k << 1); \(\backslash\)
+    if (s > \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}) \textcolor{keywordflow}{break}; \(\backslash\)
+    if (s < \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}} && p[s + 1] > p[s]) s++; \(\backslash\)
+    if (temp >= p[s]) \textcolor{keywordflow}{break}; \(\backslash\)
+    p[k] = p[s]; k = s; \(\backslash\)
+  \} p[k] = temp; \}
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_sort_8c_a4b115c12c2980bf458f4ce9051fed80c}\label{_sort_8c_a4b115c12c2980bf458f4ce9051fed80c}} 
+\index{Sort.\+c@{Sort.\+c}!Heap\+Sort@{Heap\+Sort}}
+\index{Heap\+Sort@{Heap\+Sort}!Sort.\+c@{Sort.\+c}}
+\subsubsection{\texorpdfstring{Heap\+Sort()}{HeapSort()}}
+{\footnotesize\ttfamily void Heap\+Sort (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$}]{p,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_sort_8c_a1d4c233fb62d4bfec487da91d350a84e}\label{_sort_8c_a1d4c233fb62d4bfec487da91d350a84e}} 
+\index{Sort.\+c@{Sort.\+c}!Heap\+Sort64@{Heap\+Sort64}}
+\index{Heap\+Sort64@{Heap\+Sort64}!Sort.\+c@{Sort.\+c}}
+\subsubsection{\texorpdfstring{Heap\+Sort64()}{HeapSort64()}}
+{\footnotesize\ttfamily void Heap\+Sort64 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} $\ast$}]{p,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+

@@ -1,0 +1,135 @@
+\hypertarget{overrides_8c}{}\section{src/gb/overrides.c File Reference}
+\label{overrides_8c}\index{src/gb/overrides.\+c@{src/gb/overrides.\+c}}
+{\ttfamily \#include $<$mgba/internal/gb/overrides.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/gb.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/mbc.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/configuration.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/crc32.\+h$>$}\newline
+Include dependency graph for overrides.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{overrides_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{overrides_8c_a37ca295625c9a165c55bd5c3f2a74a36}{G\+B\+Override\+Find}} (const struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, struct G\+B\+Cartridge\+Override $\ast$override)
+\item 
+void \mbox{\hyperlink{overrides_8c_a1d1fefeb5c18d2150118b60c21c2b9c2}{G\+B\+Override\+Save}} (struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const struct G\+B\+Cartridge\+Override $\ast$override)
+\item 
+void \mbox{\hyperlink{overrides_8c_af3e0ae20280bd4a359807263417254df}{G\+B\+Override\+Apply}} (struct GB $\ast$gb, const struct G\+B\+Cartridge\+Override $\ast$override)
+\item 
+void \mbox{\hyperlink{overrides_8c_a146f04e8c7318d06aa2e1948ee6b440b}{G\+B\+Override\+Apply\+Defaults}} (struct GB $\ast$gb)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const struct G\+B\+Cartridge\+Override \mbox{\hyperlink{overrides_8c_aa35ff52f5e077b3e84fe96ae669724b0}{\+\_\+overrides}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{overrides_8c_af3e0ae20280bd4a359807263417254df}\label{overrides_8c_af3e0ae20280bd4a359807263417254df}} 
+\index{overrides.\+c@{overrides.\+c}!G\+B\+Override\+Apply@{G\+B\+Override\+Apply}}
+\index{G\+B\+Override\+Apply@{G\+B\+Override\+Apply}!overrides.\+c@{overrides.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Override\+Apply()}{GBOverrideApply()}}
+{\footnotesize\ttfamily void G\+B\+Override\+Apply (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb,  }\item[{const struct G\+B\+Cartridge\+Override $\ast$}]{override }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{overrides_8c_af3e0ae20280bd4a359807263417254df_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{overrides_8c_af3e0ae20280bd4a359807263417254df_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{overrides_8c_a146f04e8c7318d06aa2e1948ee6b440b}\label{overrides_8c_a146f04e8c7318d06aa2e1948ee6b440b}} 
+\index{overrides.\+c@{overrides.\+c}!G\+B\+Override\+Apply\+Defaults@{G\+B\+Override\+Apply\+Defaults}}
+\index{G\+B\+Override\+Apply\+Defaults@{G\+B\+Override\+Apply\+Defaults}!overrides.\+c@{overrides.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Override\+Apply\+Defaults()}{GBOverrideApplyDefaults()}}
+{\footnotesize\ttfamily void G\+B\+Override\+Apply\+Defaults (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{overrides_8c_a146f04e8c7318d06aa2e1948ee6b440b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{overrides_8c_a37ca295625c9a165c55bd5c3f2a74a36}\label{overrides_8c_a37ca295625c9a165c55bd5c3f2a74a36}} 
+\index{overrides.\+c@{overrides.\+c}!G\+B\+Override\+Find@{G\+B\+Override\+Find}}
+\index{G\+B\+Override\+Find@{G\+B\+Override\+Find}!overrides.\+c@{overrides.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Override\+Find()}{GBOverrideFind()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+Override\+Find (\begin{DoxyParamCaption}\item[{const struct Configuration $\ast$}]{config,  }\item[{struct G\+B\+Cartridge\+Override $\ast$}]{override }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{overrides_8c_a37ca295625c9a165c55bd5c3f2a74a36_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{overrides_8c_a37ca295625c9a165c55bd5c3f2a74a36_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{overrides_8c_a1d1fefeb5c18d2150118b60c21c2b9c2}\label{overrides_8c_a1d1fefeb5c18d2150118b60c21c2b9c2}} 
+\index{overrides.\+c@{overrides.\+c}!G\+B\+Override\+Save@{G\+B\+Override\+Save}}
+\index{G\+B\+Override\+Save@{G\+B\+Override\+Save}!overrides.\+c@{overrides.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Override\+Save()}{GBOverrideSave()}}
+{\footnotesize\ttfamily void G\+B\+Override\+Save (\begin{DoxyParamCaption}\item[{struct Configuration $\ast$}]{config,  }\item[{const struct G\+B\+Cartridge\+Override $\ast$}]{override }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{overrides_8c_a1d1fefeb5c18d2150118b60c21c2b9c2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{overrides_8c_a1d1fefeb5c18d2150118b60c21c2b9c2_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{overrides_8c_aa35ff52f5e077b3e84fe96ae669724b0}\label{overrides_8c_aa35ff52f5e077b3e84fe96ae669724b0}} 
+\index{overrides.\+c@{overrides.\+c}!\+\_\+overrides@{\+\_\+overrides}}
+\index{\+\_\+overrides@{\+\_\+overrides}!overrides.\+c@{overrides.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+overrides}{\_overrides}}
+{\footnotesize\ttfamily const struct G\+B\+Cartridge\+Override \+\_\+overrides\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    
+    \{ 0x232a067d, GB\_MODEL\_AUTODETECT, GB\_MBC3\_RTC, \{ 0 \} \}, 
+    \{ 0x630ed957, GB\_MODEL\_AUTODETECT, GB\_MBC3\_RTC, \{ 0 \} \}, 
+    \{ 0x5aff0038, GB\_MODEL\_AUTODETECT, GB\_MBC3\_RTC, \{ 0 \} \}, 
+    \{ 0xa61856bd, GB\_MODEL\_AUTODETECT, GB\_MBC3\_RTC, \{ 0 \} \}, 
+
+    \{ 0, 0, 0, \{ 0 \} \}
+\}
+\end{DoxyCode}

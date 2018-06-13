@@ -1,0 +1,244 @@
+\hypertarget{_2io_8c}{}\section{src/gba/io.c File Reference}
+\label{_2io_8c}\index{src/gba/io.\+c@{src/gba/io.\+c}}
+{\ttfamily \#include $<$mgba/internal/gba/io.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/arm/macros.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/dma.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/gba.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/rr/rr.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/serialize.\+h$>$}\newline
+Include dependency graph for io.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2io_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_2io_8c_af2d7a7b7a6e807ada332dbc56f017cc2}{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}} (G\+B\+A\+\_\+\+IO, \char`\"{}G\+BA I/O\char`\"{}, \char`\"{}gba.\+io\char`\"{})
+\item 
+void \mbox{\hyperlink{_2io_8c_affeefc3a847b3c7f268b1248dc11e3db}{G\+B\+A\+I\+O\+Init}} (struct G\+BA $\ast$gba)
+\item 
+void \mbox{\hyperlink{_2io_8c_ac52a6092c11211339341f85d246800c3}{G\+B\+A\+I\+O\+Write}} (struct G\+BA $\ast$gba, uint32\+\_\+t address, uint16\+\_\+t value)
+\item 
+void \mbox{\hyperlink{_2io_8c_a421226b65affb1625beca695f51c0c83}{G\+B\+A\+I\+O\+Write8}} (struct G\+BA $\ast$gba, uint32\+\_\+t address, uint8\+\_\+t value)
+\item 
+void \mbox{\hyperlink{_2io_8c_a1b47b71680b5296cdfcd67371c7df54c}{G\+B\+A\+I\+O\+Write32}} (struct G\+BA $\ast$gba, uint32\+\_\+t address, uint32\+\_\+t value)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{_2io_8c_a492c708818880cc34fc083a0b4ac8801}{G\+B\+A\+I\+O\+Is\+Read\+Constant}} (uint32\+\_\+t address)
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_2io_8c_ac841c231d7256201ec5cbbb2a5fba183}{G\+B\+A\+I\+O\+Read}} (struct G\+BA $\ast$gba, uint32\+\_\+t address)
+\item 
+void \mbox{\hyperlink{_2io_8c_a109b8ea7e03b46704f2574c6c5ddce6c}{G\+B\+A\+I\+O\+Serialize}} (struct G\+BA $\ast$gba, struct G\+B\+A\+Serialized\+State $\ast$state)
+\item 
+void \mbox{\hyperlink{_2io_8c_a94b41d2793d0e486ad203a822c9acae4}{G\+B\+A\+I\+O\+Deserialize}} (struct G\+BA $\ast$gba, const struct G\+B\+A\+Serialized\+State $\ast$state)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$const \mbox{\hyperlink{_2io_8c_a8b2cc898df1fa59abcbfc2467eaac320}{G\+B\+A\+I\+O\+Register\+Names}} \mbox{[}$\,$\mbox{]}
+\item 
+static const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{_2io_8c_af407447ca7f2396053dc5553a4501f33}{\+\_\+is\+Valid\+Register}} \mbox{[}R\+E\+G\+\_\+\+M\+AX $>$$>$ 1\mbox{]}
+\item 
+static const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{_2io_8c_af60958f7ff7e3668964ee6231c3113ea}{\+\_\+is\+R\+Special\+Register}} \mbox{[}R\+E\+G\+\_\+\+M\+AX $>$$>$ 1\mbox{]}
+\item 
+static const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{_2io_8c_a8972f783f5bdd5ef55aad0857814d841}{\+\_\+is\+W\+Special\+Register}} \mbox{[}R\+E\+G\+\_\+\+M\+AX $>$$>$ 1\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_2io_8c_a94b41d2793d0e486ad203a822c9acae4}\label{_2io_8c_a94b41d2793d0e486ad203a822c9acae4}} 
+\index{/io.\+c@{/io.\+c}!G\+B\+A\+I\+O\+Deserialize@{G\+B\+A\+I\+O\+Deserialize}}
+\index{G\+B\+A\+I\+O\+Deserialize@{G\+B\+A\+I\+O\+Deserialize}!/io.\+c@{/io.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+I\+O\+Deserialize()}{GBAIODeserialize()}}
+{\footnotesize\ttfamily void G\+B\+A\+I\+O\+Deserialize (\begin{DoxyParamCaption}\item[{struct G\+BA $\ast$}]{gba,  }\item[{const struct G\+B\+A\+Serialized\+State $\ast$}]{state }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2io_8c_a94b41d2793d0e486ad203a822c9acae4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2io_8c_a94b41d2793d0e486ad203a822c9acae4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2io_8c_affeefc3a847b3c7f268b1248dc11e3db}\label{_2io_8c_affeefc3a847b3c7f268b1248dc11e3db}} 
+\index{/io.\+c@{/io.\+c}!G\+B\+A\+I\+O\+Init@{G\+B\+A\+I\+O\+Init}}
+\index{G\+B\+A\+I\+O\+Init@{G\+B\+A\+I\+O\+Init}!/io.\+c@{/io.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+I\+O\+Init()}{GBAIOInit()}}
+{\footnotesize\ttfamily void G\+B\+A\+I\+O\+Init (\begin{DoxyParamCaption}\item[{struct G\+BA $\ast$}]{gba }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2io_8c_affeefc3a847b3c7f268b1248dc11e3db_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2io_8c_a492c708818880cc34fc083a0b4ac8801}\label{_2io_8c_a492c708818880cc34fc083a0b4ac8801}} 
+\index{/io.\+c@{/io.\+c}!G\+B\+A\+I\+O\+Is\+Read\+Constant@{G\+B\+A\+I\+O\+Is\+Read\+Constant}}
+\index{G\+B\+A\+I\+O\+Is\+Read\+Constant@{G\+B\+A\+I\+O\+Is\+Read\+Constant}!/io.\+c@{/io.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+I\+O\+Is\+Read\+Constant()}{GBAIOIsReadConstant()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+A\+I\+O\+Is\+Read\+Constant (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2io_8c_a492c708818880cc34fc083a0b4ac8801_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2io_8c_ac841c231d7256201ec5cbbb2a5fba183}\label{_2io_8c_ac841c231d7256201ec5cbbb2a5fba183}} 
+\index{/io.\+c@{/io.\+c}!G\+B\+A\+I\+O\+Read@{G\+B\+A\+I\+O\+Read}}
+\index{G\+B\+A\+I\+O\+Read@{G\+B\+A\+I\+O\+Read}!/io.\+c@{/io.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+I\+O\+Read()}{GBAIORead()}}
+{\footnotesize\ttfamily uint16\+\_\+t G\+B\+A\+I\+O\+Read (\begin{DoxyParamCaption}\item[{struct G\+BA $\ast$}]{gba,  }\item[{uint32\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2io_8c_ac841c231d7256201ec5cbbb2a5fba183_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2io_8c_ac841c231d7256201ec5cbbb2a5fba183_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2io_8c_a109b8ea7e03b46704f2574c6c5ddce6c}\label{_2io_8c_a109b8ea7e03b46704f2574c6c5ddce6c}} 
+\index{/io.\+c@{/io.\+c}!G\+B\+A\+I\+O\+Serialize@{G\+B\+A\+I\+O\+Serialize}}
+\index{G\+B\+A\+I\+O\+Serialize@{G\+B\+A\+I\+O\+Serialize}!/io.\+c@{/io.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+I\+O\+Serialize()}{GBAIOSerialize()}}
+{\footnotesize\ttfamily void G\+B\+A\+I\+O\+Serialize (\begin{DoxyParamCaption}\item[{struct G\+BA $\ast$}]{gba,  }\item[{struct G\+B\+A\+Serialized\+State $\ast$}]{state }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2io_8c_a109b8ea7e03b46704f2574c6c5ddce6c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2io_8c_a109b8ea7e03b46704f2574c6c5ddce6c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2io_8c_ac52a6092c11211339341f85d246800c3}\label{_2io_8c_ac52a6092c11211339341f85d246800c3}} 
+\index{/io.\+c@{/io.\+c}!G\+B\+A\+I\+O\+Write@{G\+B\+A\+I\+O\+Write}}
+\index{G\+B\+A\+I\+O\+Write@{G\+B\+A\+I\+O\+Write}!/io.\+c@{/io.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+I\+O\+Write()}{GBAIOWrite()}}
+{\footnotesize\ttfamily void G\+B\+A\+I\+O\+Write (\begin{DoxyParamCaption}\item[{struct G\+BA $\ast$}]{gba,  }\item[{uint32\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{_2io_8c_ac52a6092c11211339341f85d246800c3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2io_8c_ac52a6092c11211339341f85d246800c3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2io_8c_a1b47b71680b5296cdfcd67371c7df54c}\label{_2io_8c_a1b47b71680b5296cdfcd67371c7df54c}} 
+\index{/io.\+c@{/io.\+c}!G\+B\+A\+I\+O\+Write32@{G\+B\+A\+I\+O\+Write32}}
+\index{G\+B\+A\+I\+O\+Write32@{G\+B\+A\+I\+O\+Write32}!/io.\+c@{/io.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+I\+O\+Write32()}{GBAIOWrite32()}}
+{\footnotesize\ttfamily void G\+B\+A\+I\+O\+Write32 (\begin{DoxyParamCaption}\item[{struct G\+BA $\ast$}]{gba,  }\item[{uint32\+\_\+t}]{address,  }\item[{uint32\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{_2io_8c_a1b47b71680b5296cdfcd67371c7df54c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2io_8c_a1b47b71680b5296cdfcd67371c7df54c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2io_8c_a421226b65affb1625beca695f51c0c83}\label{_2io_8c_a421226b65affb1625beca695f51c0c83}} 
+\index{/io.\+c@{/io.\+c}!G\+B\+A\+I\+O\+Write8@{G\+B\+A\+I\+O\+Write8}}
+\index{G\+B\+A\+I\+O\+Write8@{G\+B\+A\+I\+O\+Write8}!/io.\+c@{/io.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+I\+O\+Write8()}{GBAIOWrite8()}}
+{\footnotesize\ttfamily void G\+B\+A\+I\+O\+Write8 (\begin{DoxyParamCaption}\item[{struct G\+BA $\ast$}]{gba,  }\item[{uint32\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{_2io_8c_a421226b65affb1625beca695f51c0c83_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2io_8c_a421226b65affb1625beca695f51c0c83_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2io_8c_af2d7a7b7a6e807ada332dbc56f017cc2}\label{_2io_8c_af2d7a7b7a6e807ada332dbc56f017cc2}} 
+\index{/io.\+c@{/io.\+c}!m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}}
+\index{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}!/io.\+c@{/io.\+c}}
+\subsubsection{\texorpdfstring{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+R\+Y()}{mLOG\_DEFINE\_CATEGORY()}}
+{\footnotesize\ttfamily m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY (\begin{DoxyParamCaption}\item[{G\+B\+A\+\_\+\+IO}]{,  }\item[{\char`\"{}G\+BA I/O\char`\"{}}]{,  }\item[{\char`\"{}gba.\+io\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_2io_8c_af60958f7ff7e3668964ee6231c3113ea}\label{_2io_8c_af60958f7ff7e3668964ee6231c3113ea}} 
+\index{/io.\+c@{/io.\+c}!\+\_\+is\+R\+Special\+Register@{\+\_\+is\+R\+Special\+Register}}
+\index{\+\_\+is\+R\+Special\+Register@{\+\_\+is\+R\+Special\+Register}!/io.\+c@{/io.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+is\+R\+Special\+Register}{\_isRSpecialRegister}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \+\_\+is\+R\+Special\+Register\mbox{[}R\+E\+G\+\_\+\+M\+AX $>$$>$ 1\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{_2io_8c_af407447ca7f2396053dc5553a4501f33}\label{_2io_8c_af407447ca7f2396053dc5553a4501f33}} 
+\index{/io.\+c@{/io.\+c}!\+\_\+is\+Valid\+Register@{\+\_\+is\+Valid\+Register}}
+\index{\+\_\+is\+Valid\+Register@{\+\_\+is\+Valid\+Register}!/io.\+c@{/io.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+is\+Valid\+Register}{\_isValidRegister}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \+\_\+is\+Valid\+Register\mbox{[}R\+E\+G\+\_\+\+M\+AX $>$$>$ 1\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{_2io_8c_a8972f783f5bdd5ef55aad0857814d841}\label{_2io_8c_a8972f783f5bdd5ef55aad0857814d841}} 
+\index{/io.\+c@{/io.\+c}!\+\_\+is\+W\+Special\+Register@{\+\_\+is\+W\+Special\+Register}}
+\index{\+\_\+is\+W\+Special\+Register@{\+\_\+is\+W\+Special\+Register}!/io.\+c@{/io.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+is\+W\+Special\+Register}{\_isWSpecialRegister}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \+\_\+is\+W\+Special\+Register\mbox{[}R\+E\+G\+\_\+\+M\+AX $>$$>$ 1\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{_2io_8c_a8b2cc898df1fa59abcbfc2467eaac320}\label{_2io_8c_a8b2cc898df1fa59abcbfc2467eaac320}} 
+\index{/io.\+c@{/io.\+c}!G\+B\+A\+I\+O\+Register\+Names@{G\+B\+A\+I\+O\+Register\+Names}}
+\index{G\+B\+A\+I\+O\+Register\+Names@{G\+B\+A\+I\+O\+Register\+Names}!/io.\+c@{/io.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+I\+O\+Register\+Names}{GBAIORegisterNames}}
+{\footnotesize\ttfamily const char$\ast$ const G\+B\+A\+I\+O\+Register\+Names\mbox{[}$\,$\mbox{]}}
+

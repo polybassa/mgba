@@ -1,0 +1,500 @@
+\hypertarget{vfs-zip_8c}{}\section{src/util/vfs/vfs-\/zip.c File Reference}
+\label{vfs-zip_8c}\index{src/util/vfs/vfs-\/zip.\+c@{src/util/vfs/vfs-\/zip.\+c}}
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}third-\/party/zlib/contrib/minizip/unzip.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba-\/util/memory.\+h$>$}\newline
+Include dependency graph for vfs-\/zip.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{vfs-zip_8c_a9984b3be64824e3b860d6fcb2ce2a2a3}{\+\_\+vfz\+Close}} (struct V\+File $\ast$vf)
+\item 
+static \mbox{\hyperlink{__builder_8h_a53066be3c3a28d8b8ccb3dc95c1e49b1}{off\+\_\+t}} \mbox{\hyperlink{vfs-zip_8c_a84d781da640055a7334040e6cde4dea2}{\+\_\+vfz\+Seek}} (struct V\+File $\ast$vf, \mbox{\hyperlink{__builder_8h_a53066be3c3a28d8b8ccb3dc95c1e49b1}{off\+\_\+t}} \mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} whence)
+\item 
+static ssize\+\_\+t \mbox{\hyperlink{vfs-zip_8c_a593e9a250e3d7aa9c3b94a1f7b9a8cca}{\+\_\+vfz\+Read}} (struct V\+File $\ast$vf, void $\ast$buffer, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+static ssize\+\_\+t \mbox{\hyperlink{vfs-zip_8c_aa2e7a8e1946bc438fc2cd474533b9e56}{\+\_\+vfz\+Write}} (struct V\+File $\ast$vf, const void $\ast$buffer, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+static void $\ast$ \mbox{\hyperlink{vfs-zip_8c_a2569d7414fd035ae883a93e401f2deee}{\+\_\+vfz\+Map}} (struct V\+File $\ast$vf, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{lr35902_2decoder_8c_a11f29eea941556f0630cfd3285f565c0}{flags}})
+\item 
+static void \mbox{\hyperlink{vfs-zip_8c_a5a60c5c59fcbcaaa9d72998904f495a0}{\+\_\+vfz\+Unmap}} (struct V\+File $\ast$vf, void $\ast$memory, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+static void \mbox{\hyperlink{vfs-zip_8c_a2e1b60c1a45619a164b0d2adea1969da}{\+\_\+vfz\+Truncate}} (struct V\+File $\ast$vf, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+static ssize\+\_\+t \mbox{\hyperlink{vfs-zip_8c_a731254500de7ab9fe9d441dbe8467f77}{\+\_\+vfz\+Size}} (struct V\+File $\ast$vf)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{vfs-zip_8c_ae7abdd2e12cc8754b08365ae7544f052}{\+\_\+vfz\+Sync}} (struct V\+File $\ast$vf, const void $\ast$buffer, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{vfs-zip_8c_ab0c37e0c87dc08d24f8acda1bd6603c9}{\+\_\+vdz\+Close}} (struct V\+Dir $\ast$vd)
+\item 
+static void \mbox{\hyperlink{vfs-zip_8c_a01992145dbe331dad189be7ade324a00}{\+\_\+vdz\+Rewind}} (struct V\+Dir $\ast$vd)
+\item 
+static struct V\+Dir\+Entry $\ast$ \mbox{\hyperlink{vfs-zip_8c_a530f0797de537841abac89088d73e20a}{\+\_\+vdz\+List\+Next}} (struct V\+Dir $\ast$vd)
+\item 
+static struct V\+File $\ast$ \mbox{\hyperlink{vfs-zip_8c_ac2b71e2008abddb2b5a74914eb8fe458}{\+\_\+vdz\+Open\+File}} (struct V\+Dir $\ast$vd, const char $\ast$path, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})
+\item 
+static struct V\+Dir $\ast$ \mbox{\hyperlink{vfs-zip_8c_a69eab4c663a9a5f03f615134ef62db34}{\+\_\+vdz\+Open\+Dir}} (struct V\+Dir $\ast$vd, const char $\ast$path)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{vfs-zip_8c_a05fa3cb4db94757aeccb05240732b2dc}{\+\_\+vdz\+Delete\+File}} (struct V\+Dir $\ast$vd, const char $\ast$path)
+\item 
+static const char $\ast$ \mbox{\hyperlink{vfs-zip_8c_a8c5eb3d1849f409a7238bee594d0b139}{\+\_\+vdez\+Name}} (struct V\+Dir\+Entry $\ast$vde)
+\item 
+static enum V\+F\+S\+Type \mbox{\hyperlink{vfs-zip_8c_abefae5482409acabbad9ccb2549f1c35}{\+\_\+vdez\+Type}} (struct V\+Dir\+Entry $\ast$vde)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{vfs-zip_8c_aab51e4c401779a6979ba1574b9f4c714}{\+\_\+vfmz\+Open}} (\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, const char $\ast$\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})
+\item 
+static \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{vfs-zip_8c_a3521a7ab612e84b95da1cf213cb061ee}{\+\_\+vfmz\+Read}} (\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, void $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{vfs-zip_8c_a31fc3529104f09ba8d094ccef847d08e}{\+\_\+vfmz\+Close}} (\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}})
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{vfs-zip_8c_a76e3b8b2ab21cde2127b7a810185f221}{\+\_\+vfmz\+Error}} (\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}})
+\item 
+\mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} \mbox{\hyperlink{vfs-zip_8c_ade680b5fe0cf4d2c3c53419ebe6e5f87}{\+\_\+vfmz\+Tell}} (\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}})
+\item 
+\mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} \mbox{\hyperlink{vfs-zip_8c_a501af3b5e66d0e32bbde898125aa721d}{\+\_\+vfmz\+Seek}} (\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a5f189a59b66f135978bce54f9d0fcade}{origin}})
+\item 
+struct V\+Dir $\ast$ \mbox{\hyperlink{vfs-zip_8c_a0107bc6e3321e3c0ebf36b9a27cfa452}{V\+Dir\+Open\+Zip}} (const char $\ast$path, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{lr35902_2decoder_8c_a11f29eea941556f0630cfd3285f565c0}{flags}})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{vfs-zip_8c_a8c5eb3d1849f409a7238bee594d0b139}\label{vfs-zip_8c_a8c5eb3d1849f409a7238bee594d0b139}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vdez\+Name@{\+\_\+vdez\+Name}}
+\index{\+\_\+vdez\+Name@{\+\_\+vdez\+Name}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdez\+Name()}{\_vdezName()}}
+{\footnotesize\ttfamily const char $\ast$ \+\_\+vdez\+Name (\begin{DoxyParamCaption}\item[{struct V\+Dir\+Entry $\ast$}]{vde }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a8c5eb3d1849f409a7238bee594d0b139_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_abefae5482409acabbad9ccb2549f1c35}\label{vfs-zip_8c_abefae5482409acabbad9ccb2549f1c35}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vdez\+Type@{\+\_\+vdez\+Type}}
+\index{\+\_\+vdez\+Type@{\+\_\+vdez\+Type}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdez\+Type()}{\_vdezType()}}
+{\footnotesize\ttfamily static enum V\+F\+S\+Type \+\_\+vdez\+Type (\begin{DoxyParamCaption}\item[{struct V\+Dir\+Entry $\ast$}]{vde }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{vfs-zip_8c_abefae5482409acabbad9ccb2549f1c35_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_abefae5482409acabbad9ccb2549f1c35_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_ab0c37e0c87dc08d24f8acda1bd6603c9}\label{vfs-zip_8c_ab0c37e0c87dc08d24f8acda1bd6603c9}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vdz\+Close@{\+\_\+vdz\+Close}}
+\index{\+\_\+vdz\+Close@{\+\_\+vdz\+Close}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdz\+Close()}{\_vdzClose()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+vdz\+Close (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_ab0c37e0c87dc08d24f8acda1bd6603c9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_ab0c37e0c87dc08d24f8acda1bd6603c9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_a05fa3cb4db94757aeccb05240732b2dc}\label{vfs-zip_8c_a05fa3cb4db94757aeccb05240732b2dc}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vdz\+Delete\+File@{\+\_\+vdz\+Delete\+File}}
+\index{\+\_\+vdz\+Delete\+File@{\+\_\+vdz\+Delete\+File}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdz\+Delete\+File()}{\_vdzDeleteFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+vdz\+Delete\+File (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd,  }\item[{const char $\ast$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a05fa3cb4db94757aeccb05240732b2dc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_a530f0797de537841abac89088d73e20a}\label{vfs-zip_8c_a530f0797de537841abac89088d73e20a}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vdz\+List\+Next@{\+\_\+vdz\+List\+Next}}
+\index{\+\_\+vdz\+List\+Next@{\+\_\+vdz\+List\+Next}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdz\+List\+Next()}{\_vdzListNext()}}
+{\footnotesize\ttfamily struct V\+Dir\+Entry $\ast$ \+\_\+vdz\+List\+Next (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a530f0797de537841abac89088d73e20a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a530f0797de537841abac89088d73e20a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_a69eab4c663a9a5f03f615134ef62db34}\label{vfs-zip_8c_a69eab4c663a9a5f03f615134ef62db34}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vdz\+Open\+Dir@{\+\_\+vdz\+Open\+Dir}}
+\index{\+\_\+vdz\+Open\+Dir@{\+\_\+vdz\+Open\+Dir}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdz\+Open\+Dir()}{\_vdzOpenDir()}}
+{\footnotesize\ttfamily struct V\+Dir $\ast$ \+\_\+vdz\+Open\+Dir (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd,  }\item[{const char $\ast$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a69eab4c663a9a5f03f615134ef62db34_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_ac2b71e2008abddb2b5a74914eb8fe458}\label{vfs-zip_8c_ac2b71e2008abddb2b5a74914eb8fe458}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vdz\+Open\+File@{\+\_\+vdz\+Open\+File}}
+\index{\+\_\+vdz\+Open\+File@{\+\_\+vdz\+Open\+File}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdz\+Open\+File()}{\_vdzOpenFile()}}
+{\footnotesize\ttfamily struct V\+File $\ast$ \+\_\+vdz\+Open\+File (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd,  }\item[{const char $\ast$}]{path,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_ac2b71e2008abddb2b5a74914eb8fe458_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_ac2b71e2008abddb2b5a74914eb8fe458_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_a01992145dbe331dad189be7ade324a00}\label{vfs-zip_8c_a01992145dbe331dad189be7ade324a00}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vdz\+Rewind@{\+\_\+vdz\+Rewind}}
+\index{\+\_\+vdz\+Rewind@{\+\_\+vdz\+Rewind}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vdz\+Rewind()}{\_vdzRewind()}}
+{\footnotesize\ttfamily void \+\_\+vdz\+Rewind (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a01992145dbe331dad189be7ade324a00_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a01992145dbe331dad189be7ade324a00_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_a31fc3529104f09ba8d094ccef847d08e}\label{vfs-zip_8c_a31fc3529104f09ba8d094ccef847d08e}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vfmz\+Close@{\+\_\+vfmz\+Close}}
+\index{\+\_\+vfmz\+Close@{\+\_\+vfmz\+Close}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vfmz\+Close()}{\_vfmzClose()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \+\_\+vfmz\+Close (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{opaque,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{stream }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a31fc3529104f09ba8d094ccef847d08e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_a76e3b8b2ab21cde2127b7a810185f221}\label{vfs-zip_8c_a76e3b8b2ab21cde2127b7a810185f221}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vfmz\+Error@{\+\_\+vfmz\+Error}}
+\index{\+\_\+vfmz\+Error@{\+\_\+vfmz\+Error}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vfmz\+Error()}{\_vfmzError()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \+\_\+vfmz\+Error (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{opaque,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{stream }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a76e3b8b2ab21cde2127b7a810185f221_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_aab51e4c401779a6979ba1574b9f4c714}\label{vfs-zip_8c_aab51e4c401779a6979ba1574b9f4c714}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vfmz\+Open@{\+\_\+vfmz\+Open}}
+\index{\+\_\+vfmz\+Open@{\+\_\+vfmz\+Open}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vfmz\+Open()}{\_vfmzOpen()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \+\_\+vfmz\+Open (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{opaque,  }\item[{const char $\ast$}]{filename,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_aab51e4c401779a6979ba1574b9f4c714_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_aab51e4c401779a6979ba1574b9f4c714_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_a3521a7ab612e84b95da1cf213cb061ee}\label{vfs-zip_8c_a3521a7ab612e84b95da1cf213cb061ee}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vfmz\+Read@{\+\_\+vfmz\+Read}}
+\index{\+\_\+vfmz\+Read@{\+\_\+vfmz\+Read}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vfmz\+Read()}{\_vfmzRead()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \+\_\+vfmz\+Read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{opaque,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{stream,  }\item[{void $\ast$}]{buf,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a3521a7ab612e84b95da1cf213cb061ee_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_a501af3b5e66d0e32bbde898125aa721d}\label{vfs-zip_8c_a501af3b5e66d0e32bbde898125aa721d}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vfmz\+Seek@{\+\_\+vfmz\+Seek}}
+\index{\+\_\+vfmz\+Seek@{\+\_\+vfmz\+Seek}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vfmz\+Seek()}{\_vfmzSeek()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} \+\_\+vfmz\+Seek (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{opaque,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{stream,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{offset,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{origin }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a501af3b5e66d0e32bbde898125aa721d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_ade680b5fe0cf4d2c3c53419ebe6e5f87}\label{vfs-zip_8c_ade680b5fe0cf4d2c3c53419ebe6e5f87}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vfmz\+Tell@{\+\_\+vfmz\+Tell}}
+\index{\+\_\+vfmz\+Tell@{\+\_\+vfmz\+Tell}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vfmz\+Tell()}{\_vfmzTell()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} \+\_\+vfmz\+Tell (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{opaque,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{stream }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_ade680b5fe0cf4d2c3c53419ebe6e5f87_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_a9984b3be64824e3b860d6fcb2ce2a2a3}\label{vfs-zip_8c_a9984b3be64824e3b860d6fcb2ce2a2a3}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vfz\+Close@{\+\_\+vfz\+Close}}
+\index{\+\_\+vfz\+Close@{\+\_\+vfz\+Close}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vfz\+Close()}{\_vfzClose()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+vfz\+Close (\begin{DoxyParamCaption}\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a9984b3be64824e3b860d6fcb2ce2a2a3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a9984b3be64824e3b860d6fcb2ce2a2a3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_a2569d7414fd035ae883a93e401f2deee}\label{vfs-zip_8c_a2569d7414fd035ae883a93e401f2deee}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vfz\+Map@{\+\_\+vfz\+Map}}
+\index{\+\_\+vfz\+Map@{\+\_\+vfz\+Map}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vfz\+Map()}{\_vfzMap()}}
+{\footnotesize\ttfamily void $\ast$ \+\_\+vfz\+Map (\begin{DoxyParamCaption}\item[{struct V\+File $\ast$}]{vf,  }\item[{size\+\_\+t}]{size,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{flags }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a2569d7414fd035ae883a93e401f2deee_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a2569d7414fd035ae883a93e401f2deee_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_a593e9a250e3d7aa9c3b94a1f7b9a8cca}\label{vfs-zip_8c_a593e9a250e3d7aa9c3b94a1f7b9a8cca}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vfz\+Read@{\+\_\+vfz\+Read}}
+\index{\+\_\+vfz\+Read@{\+\_\+vfz\+Read}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vfz\+Read()}{\_vfzRead()}}
+{\footnotesize\ttfamily ssize\+\_\+t \+\_\+vfz\+Read (\begin{DoxyParamCaption}\item[{struct V\+File $\ast$}]{vf,  }\item[{void $\ast$}]{buffer,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a593e9a250e3d7aa9c3b94a1f7b9a8cca_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a593e9a250e3d7aa9c3b94a1f7b9a8cca_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_a84d781da640055a7334040e6cde4dea2}\label{vfs-zip_8c_a84d781da640055a7334040e6cde4dea2}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vfz\+Seek@{\+\_\+vfz\+Seek}}
+\index{\+\_\+vfz\+Seek@{\+\_\+vfz\+Seek}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vfz\+Seek()}{\_vfzSeek()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{__builder_8h_a53066be3c3a28d8b8ccb3dc95c1e49b1}{off\+\_\+t}} \+\_\+vfz\+Seek (\begin{DoxyParamCaption}\item[{struct V\+File $\ast$}]{vf,  }\item[{\mbox{\hyperlink{__builder_8h_a53066be3c3a28d8b8ccb3dc95c1e49b1}{off\+\_\+t}}}]{offset,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{whence }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a84d781da640055a7334040e6cde4dea2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a84d781da640055a7334040e6cde4dea2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_a731254500de7ab9fe9d441dbe8467f77}\label{vfs-zip_8c_a731254500de7ab9fe9d441dbe8467f77}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vfz\+Size@{\+\_\+vfz\+Size}}
+\index{\+\_\+vfz\+Size@{\+\_\+vfz\+Size}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vfz\+Size()}{\_vfzSize()}}
+{\footnotesize\ttfamily ssize\+\_\+t \+\_\+vfz\+Size (\begin{DoxyParamCaption}\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a731254500de7ab9fe9d441dbe8467f77_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_ae7abdd2e12cc8754b08365ae7544f052}\label{vfs-zip_8c_ae7abdd2e12cc8754b08365ae7544f052}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vfz\+Sync@{\+\_\+vfz\+Sync}}
+\index{\+\_\+vfz\+Sync@{\+\_\+vfz\+Sync}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vfz\+Sync()}{\_vfzSync()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+vfz\+Sync (\begin{DoxyParamCaption}\item[{struct V\+File $\ast$}]{vf,  }\item[{const void $\ast$}]{buffer,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_ae7abdd2e12cc8754b08365ae7544f052_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_a2e1b60c1a45619a164b0d2adea1969da}\label{vfs-zip_8c_a2e1b60c1a45619a164b0d2adea1969da}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vfz\+Truncate@{\+\_\+vfz\+Truncate}}
+\index{\+\_\+vfz\+Truncate@{\+\_\+vfz\+Truncate}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vfz\+Truncate()}{\_vfzTruncate()}}
+{\footnotesize\ttfamily void \+\_\+vfz\+Truncate (\begin{DoxyParamCaption}\item[{struct V\+File $\ast$}]{vf,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a2e1b60c1a45619a164b0d2adea1969da_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_a5a60c5c59fcbcaaa9d72998904f495a0}\label{vfs-zip_8c_a5a60c5c59fcbcaaa9d72998904f495a0}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vfz\+Unmap@{\+\_\+vfz\+Unmap}}
+\index{\+\_\+vfz\+Unmap@{\+\_\+vfz\+Unmap}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vfz\+Unmap()}{\_vfzUnmap()}}
+{\footnotesize\ttfamily void \+\_\+vfz\+Unmap (\begin{DoxyParamCaption}\item[{struct V\+File $\ast$}]{vf,  }\item[{void $\ast$}]{memory,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{vfs-zip_8c_a5a60c5c59fcbcaaa9d72998904f495a0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a5a60c5c59fcbcaaa9d72998904f495a0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_aa2e7a8e1946bc438fc2cd474533b9e56}\label{vfs-zip_8c_aa2e7a8e1946bc438fc2cd474533b9e56}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!\+\_\+vfz\+Write@{\+\_\+vfz\+Write}}
+\index{\+\_\+vfz\+Write@{\+\_\+vfz\+Write}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vfz\+Write()}{\_vfzWrite()}}
+{\footnotesize\ttfamily ssize\+\_\+t \+\_\+vfz\+Write (\begin{DoxyParamCaption}\item[{struct V\+File $\ast$}]{vf,  }\item[{const void $\ast$}]{buffer,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_aa2e7a8e1946bc438fc2cd474533b9e56_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-zip_8c_a0107bc6e3321e3c0ebf36b9a27cfa452}\label{vfs-zip_8c_a0107bc6e3321e3c0ebf36b9a27cfa452}} 
+\index{vfs-\/zip.\+c@{vfs-\/zip.\+c}!V\+Dir\+Open\+Zip@{V\+Dir\+Open\+Zip}}
+\index{V\+Dir\+Open\+Zip@{V\+Dir\+Open\+Zip}!vfs-\/zip.\+c@{vfs-\/zip.\+c}}
+\subsubsection{\texorpdfstring{V\+Dir\+Open\+Zip()}{VDirOpenZip()}}
+{\footnotesize\ttfamily struct V\+Dir$\ast$ V\+Dir\+Open\+Zip (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{flags }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a0107bc6e3321e3c0ebf36b9a27cfa452_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-zip_8c_a0107bc6e3321e3c0ebf36b9a27cfa452_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,114 @@
+\hypertarget{ring-fifo_8c}{}\section{src/util/ring-\/fifo.c File Reference}
+\label{ring-fifo_8c}\index{src/util/ring-\/fifo.\+c@{src/util/ring-\/fifo.\+c}}
+{\ttfamily \#include $<$mgba-\/util/ring-\/fifo.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/memory.\+h$>$}\newline
+Include dependency graph for ring-\/fifo.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{ring-fifo_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ring-fifo_8c_a2dc51a008dd649da7f0ceb1db622b9c3}{Ring\+F\+I\+F\+O\+Init}} (struct Ring\+F\+I\+FO $\ast$buffer, size\+\_\+t capacity)
+\item 
+void \mbox{\hyperlink{ring-fifo_8c_a19b32b736d996fac60c9812e5763391d}{Ring\+F\+I\+F\+O\+Deinit}} (struct Ring\+F\+I\+FO $\ast$buffer)
+\item 
+size\+\_\+t \mbox{\hyperlink{ring-fifo_8c_aada2ee778e9e8656a2548a9bb34c78c3}{Ring\+F\+I\+F\+O\+Capacity}} (const struct Ring\+F\+I\+FO $\ast$buffer)
+\item 
+void \mbox{\hyperlink{ring-fifo_8c_ac70debb595e481d656da835e7a5a11d9}{Ring\+F\+I\+F\+O\+Clear}} (struct Ring\+F\+I\+FO $\ast$buffer)
+\item 
+size\+\_\+t \mbox{\hyperlink{ring-fifo_8c_a1f62d2eb6ce5d30e2b8dde832b84768a}{Ring\+F\+I\+F\+O\+Write}} (struct Ring\+F\+I\+FO $\ast$buffer, const void $\ast$value, size\+\_\+t length)
+\item 
+size\+\_\+t \mbox{\hyperlink{ring-fifo_8c_a77fab9449f08873c068ca91015c0a675}{Ring\+F\+I\+F\+O\+Read}} (struct Ring\+F\+I\+FO $\ast$buffer, void $\ast$output, size\+\_\+t length)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{ring-fifo_8c_aada2ee778e9e8656a2548a9bb34c78c3}\label{ring-fifo_8c_aada2ee778e9e8656a2548a9bb34c78c3}} 
+\index{ring-\/fifo.\+c@{ring-\/fifo.\+c}!Ring\+F\+I\+F\+O\+Capacity@{Ring\+F\+I\+F\+O\+Capacity}}
+\index{Ring\+F\+I\+F\+O\+Capacity@{Ring\+F\+I\+F\+O\+Capacity}!ring-\/fifo.\+c@{ring-\/fifo.\+c}}
+\subsubsection{\texorpdfstring{Ring\+F\+I\+F\+O\+Capacity()}{RingFIFOCapacity()}}
+{\footnotesize\ttfamily size\+\_\+t Ring\+F\+I\+F\+O\+Capacity (\begin{DoxyParamCaption}\item[{const struct Ring\+F\+I\+FO $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ring-fifo_8c_ac70debb595e481d656da835e7a5a11d9}\label{ring-fifo_8c_ac70debb595e481d656da835e7a5a11d9}} 
+\index{ring-\/fifo.\+c@{ring-\/fifo.\+c}!Ring\+F\+I\+F\+O\+Clear@{Ring\+F\+I\+F\+O\+Clear}}
+\index{Ring\+F\+I\+F\+O\+Clear@{Ring\+F\+I\+F\+O\+Clear}!ring-\/fifo.\+c@{ring-\/fifo.\+c}}
+\subsubsection{\texorpdfstring{Ring\+F\+I\+F\+O\+Clear()}{RingFIFOClear()}}
+{\footnotesize\ttfamily void Ring\+F\+I\+F\+O\+Clear (\begin{DoxyParamCaption}\item[{struct Ring\+F\+I\+FO $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ring-fifo_8c_ac70debb595e481d656da835e7a5a11d9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ring-fifo_8c_a19b32b736d996fac60c9812e5763391d}\label{ring-fifo_8c_a19b32b736d996fac60c9812e5763391d}} 
+\index{ring-\/fifo.\+c@{ring-\/fifo.\+c}!Ring\+F\+I\+F\+O\+Deinit@{Ring\+F\+I\+F\+O\+Deinit}}
+\index{Ring\+F\+I\+F\+O\+Deinit@{Ring\+F\+I\+F\+O\+Deinit}!ring-\/fifo.\+c@{ring-\/fifo.\+c}}
+\subsubsection{\texorpdfstring{Ring\+F\+I\+F\+O\+Deinit()}{RingFIFODeinit()}}
+{\footnotesize\ttfamily void Ring\+F\+I\+F\+O\+Deinit (\begin{DoxyParamCaption}\item[{struct Ring\+F\+I\+FO $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{ring-fifo_8c_a19b32b736d996fac60c9812e5763391d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ring-fifo_8c_a2dc51a008dd649da7f0ceb1db622b9c3}\label{ring-fifo_8c_a2dc51a008dd649da7f0ceb1db622b9c3}} 
+\index{ring-\/fifo.\+c@{ring-\/fifo.\+c}!Ring\+F\+I\+F\+O\+Init@{Ring\+F\+I\+F\+O\+Init}}
+\index{Ring\+F\+I\+F\+O\+Init@{Ring\+F\+I\+F\+O\+Init}!ring-\/fifo.\+c@{ring-\/fifo.\+c}}
+\subsubsection{\texorpdfstring{Ring\+F\+I\+F\+O\+Init()}{RingFIFOInit()}}
+{\footnotesize\ttfamily void Ring\+F\+I\+F\+O\+Init (\begin{DoxyParamCaption}\item[{struct Ring\+F\+I\+FO $\ast$}]{buffer,  }\item[{size\+\_\+t}]{capacity }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{ring-fifo_8c_a2dc51a008dd649da7f0ceb1db622b9c3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ring-fifo_8c_a2dc51a008dd649da7f0ceb1db622b9c3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ring-fifo_8c_a77fab9449f08873c068ca91015c0a675}\label{ring-fifo_8c_a77fab9449f08873c068ca91015c0a675}} 
+\index{ring-\/fifo.\+c@{ring-\/fifo.\+c}!Ring\+F\+I\+F\+O\+Read@{Ring\+F\+I\+F\+O\+Read}}
+\index{Ring\+F\+I\+F\+O\+Read@{Ring\+F\+I\+F\+O\+Read}!ring-\/fifo.\+c@{ring-\/fifo.\+c}}
+\subsubsection{\texorpdfstring{Ring\+F\+I\+F\+O\+Read()}{RingFIFORead()}}
+{\footnotesize\ttfamily size\+\_\+t Ring\+F\+I\+F\+O\+Read (\begin{DoxyParamCaption}\item[{struct Ring\+F\+I\+FO $\ast$}]{buffer,  }\item[{void $\ast$}]{output,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ring-fifo_8c_a77fab9449f08873c068ca91015c0a675_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ring-fifo_8c_a1f62d2eb6ce5d30e2b8dde832b84768a}\label{ring-fifo_8c_a1f62d2eb6ce5d30e2b8dde832b84768a}} 
+\index{ring-\/fifo.\+c@{ring-\/fifo.\+c}!Ring\+F\+I\+F\+O\+Write@{Ring\+F\+I\+F\+O\+Write}}
+\index{Ring\+F\+I\+F\+O\+Write@{Ring\+F\+I\+F\+O\+Write}!ring-\/fifo.\+c@{ring-\/fifo.\+c}}
+\subsubsection{\texorpdfstring{Ring\+F\+I\+F\+O\+Write()}{RingFIFOWrite()}}
+{\footnotesize\ttfamily size\+\_\+t Ring\+F\+I\+F\+O\+Write (\begin{DoxyParamCaption}\item[{struct Ring\+F\+I\+FO $\ast$}]{buffer,  }\item[{const void $\ast$}]{value,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ring-fifo_8c_a1f62d2eb6ce5d30e2b8dde832b84768a_icgraph}
+\end{center}
+\end{figure}

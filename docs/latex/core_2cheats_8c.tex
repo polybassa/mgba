@@ -1,0 +1,464 @@
+\hypertarget{core_2cheats_8c}{}\section{src/core/cheats.c File Reference}
+\label{core_2cheats_8c}\index{src/core/cheats.\+c@{src/core/cheats.\+c}}
+{\ttfamily \#include $<$mgba/core/cheats.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+Include dependency graph for cheats.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{core_2cheats_8c_af0f2173e3b202ddf5756531b4471dcb2}{M\+A\+X\+\_\+\+L\+I\+N\+E\+\_\+\+L\+E\+N\+G\+TH}}~128
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{core_2cheats_8c_a478271646d58188fff41f9f3640fe2da}{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}} (C\+H\+E\+A\+TS, \char`\"{}Cheats\char`\"{}, \char`\"{}core.\+cheats\char`\"{})
+\item 
+\mbox{\hyperlink{core_2cheats_8c_aca25aa5953e7999745b40d91a9e3d94d}{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}} (m\+Cheat\+List, struct m\+Cheat)
+\item 
+\mbox{\hyperlink{core_2cheats_8c_af9c3bb7b96525333a65294dde8559aac}{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}} (m\+Cheat\+Sets, struct m\+Cheat\+Set $\ast$)
+\item 
+static int32\+\_\+t \mbox{\hyperlink{core_2cheats_8c_ab1a0a358dc6ce80b912930a7178f6a4b}{\+\_\+read\+Mem}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, uint32\+\_\+t address, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_a59b7c57bf1dc7c36ac7c8232cf5bb713}{width}})
+\item 
+static void \mbox{\hyperlink{core_2cheats_8c_a2cf4c2eb3ffce93be1e6f690349ca164}{\+\_\+write\+Mem}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, uint32\+\_\+t address, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_a59b7c57bf1dc7c36ac7c8232cf5bb713}{width}}, int32\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{core_2cheats_8c_a6752fbf92704349da5279d3caf03666e}{m\+Cheat\+Device\+Init}} (void $\ast$, struct m\+C\+P\+U\+Component $\ast$)
+\item 
+static void \mbox{\hyperlink{core_2cheats_8c_a48b75a8662945f47fc5a5cc05e155a8a}{m\+Cheat\+Device\+Deinit}} (struct m\+C\+P\+U\+Component $\ast$)
+\item 
+void \mbox{\hyperlink{core_2cheats_8c_a37c7b42b6e6342cda1e04077104b9c04}{m\+Cheat\+Device\+Create}} (struct m\+Cheat\+Device $\ast$device)
+\item 
+void \mbox{\hyperlink{core_2cheats_8c_ac82c8b206cfbe17c17762ce4455ab513}{m\+Cheat\+Device\+Destroy}} (struct m\+Cheat\+Device $\ast$device)
+\item 
+void \mbox{\hyperlink{core_2cheats_8c_aee25a859870668b562d0fb8b387da3ab}{m\+Cheat\+Device\+Clear}} (struct m\+Cheat\+Device $\ast$device)
+\item 
+void \mbox{\hyperlink{core_2cheats_8c_a13b60b3c504c9ac37d3c6b7836f1a8ae}{m\+Cheat\+Set\+Init}} (struct m\+Cheat\+Set $\ast$set, const char $\ast$name)
+\item 
+void \mbox{\hyperlink{core_2cheats_8c_a497699c7989798b281312b102093579d}{m\+Cheat\+Set\+Deinit}} (struct m\+Cheat\+Set $\ast$set)
+\item 
+void \mbox{\hyperlink{core_2cheats_8c_a7abdb5bb036be9bfb842e696ed67bf4b}{m\+Cheat\+Set\+Rename}} (struct m\+Cheat\+Set $\ast$set, const char $\ast$name)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2cheats_8c_ad1c44cf3bb38f7df4a07931cc8ed7225}{m\+Cheat\+Add\+Line}} (struct m\+Cheat\+Set $\ast$set, const char $\ast$line, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} type)
+\item 
+void \mbox{\hyperlink{core_2cheats_8c_a548cf10aab7a8a8ff0e387805362dcee}{m\+Cheat\+Add\+Set}} (struct m\+Cheat\+Device $\ast$device, struct m\+Cheat\+Set $\ast$cheats)
+\item 
+void \mbox{\hyperlink{core_2cheats_8c_a6258e577d550a9259c6049ac3b18b76d}{m\+Cheat\+Remove\+Set}} (struct m\+Cheat\+Device $\ast$device, struct m\+Cheat\+Set $\ast$cheats)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2cheats_8c_a46b221f9e6d5ed2bfd829b2d57ed494c}{m\+Cheat\+Parse\+File}} (struct m\+Cheat\+Device $\ast$device, struct V\+File $\ast$vf)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2cheats_8c_adc6a2e238aec3b12714f9f419ef35748}{m\+Cheat\+Save\+File}} (struct m\+Cheat\+Device $\ast$device, struct V\+File $\ast$vf)
+\item 
+void \mbox{\hyperlink{core_2cheats_8c_a95da164847f169160e1561ebe9d26399}{m\+Cheat\+Autosave}} (struct m\+Cheat\+Device $\ast$device)
+\item 
+void \mbox{\hyperlink{core_2cheats_8c_a40b8740001252f5a5833566280f3b962}{m\+Cheat\+Refresh}} (struct m\+Cheat\+Device $\ast$device, struct m\+Cheat\+Set $\ast$cheats)
+\item 
+void \mbox{\hyperlink{core_2cheats_8c_a6bfc406d23054b18ebd12c10d0492f1c}{m\+Cheat\+Press\+Button}} (struct m\+Cheat\+Device $\ast$device, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} down)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const uint32\+\_\+t \mbox{\hyperlink{core_2cheats_8c_a21a833afa45623ead021b88b5135016c}{M\+\_\+\+C\+H\+E\+A\+T\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+ID}} = 0x\+A\+B\+A\+D\+C0\+DE
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{core_2cheats_8c_af0f2173e3b202ddf5756531b4471dcb2}\label{core_2cheats_8c_af0f2173e3b202ddf5756531b4471dcb2}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!M\+A\+X\+\_\+\+L\+I\+N\+E\+\_\+\+L\+E\+N\+G\+TH@{M\+A\+X\+\_\+\+L\+I\+N\+E\+\_\+\+L\+E\+N\+G\+TH}}
+\index{M\+A\+X\+\_\+\+L\+I\+N\+E\+\_\+\+L\+E\+N\+G\+TH@{M\+A\+X\+\_\+\+L\+I\+N\+E\+\_\+\+L\+E\+N\+G\+TH}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{M\+A\+X\+\_\+\+L\+I\+N\+E\+\_\+\+L\+E\+N\+G\+TH}{MAX\_LINE\_LENGTH}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+L\+I\+N\+E\+\_\+\+L\+E\+N\+G\+TH~128}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{core_2cheats_8c_ab1a0a358dc6ce80b912930a7178f6a4b}\label{core_2cheats_8c_ab1a0a358dc6ce80b912930a7178f6a4b}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!\+\_\+read\+Mem@{\+\_\+read\+Mem}}
+\index{\+\_\+read\+Mem@{\+\_\+read\+Mem}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Mem()}{\_readMem()}}
+{\footnotesize\ttfamily static int32\+\_\+t \+\_\+read\+Mem (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{uint32\+\_\+t}]{address,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{width }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_ab1a0a358dc6ce80b912930a7178f6a4b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cheats_8c_a2cf4c2eb3ffce93be1e6f690349ca164}\label{core_2cheats_8c_a2cf4c2eb3ffce93be1e6f690349ca164}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!\+\_\+write\+Mem@{\+\_\+write\+Mem}}
+\index{\+\_\+write\+Mem@{\+\_\+write\+Mem}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+write\+Mem()}{\_writeMem()}}
+{\footnotesize\ttfamily static void \+\_\+write\+Mem (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{uint32\+\_\+t}]{address,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{width,  }\item[{int32\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_a2cf4c2eb3ffce93be1e6f690349ca164_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cheats_8c_aca25aa5953e7999745b40d91a9e3d94d}\label{core_2cheats_8c_aca25aa5953e7999745b40d91a9e3d94d}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}}
+\index{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+O\+R()}{DEFINE\_VECTOR()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR (\begin{DoxyParamCaption}\item[{m\+Cheat\+List}]{,  }\item[{struct m\+Cheat}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{core_2cheats_8c_af9c3bb7b96525333a65294dde8559aac}\label{core_2cheats_8c_af9c3bb7b96525333a65294dde8559aac}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}}
+\index{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+O\+R()}{DEFINE\_VECTOR()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR (\begin{DoxyParamCaption}\item[{m\+Cheat\+Sets}]{,  }\item[{struct m\+Cheat\+Set $\ast$}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{core_2cheats_8c_ad1c44cf3bb38f7df4a07931cc8ed7225}\label{core_2cheats_8c_ad1c44cf3bb38f7df4a07931cc8ed7225}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!m\+Cheat\+Add\+Line@{m\+Cheat\+Add\+Line}}
+\index{m\+Cheat\+Add\+Line@{m\+Cheat\+Add\+Line}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{m\+Cheat\+Add\+Line()}{mCheatAddLine()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Cheat\+Add\+Line (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Set $\ast$}]{set,  }\item[{const char $\ast$}]{line,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{type }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_ad1c44cf3bb38f7df4a07931cc8ed7225_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_ad1c44cf3bb38f7df4a07931cc8ed7225_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cheats_8c_a548cf10aab7a8a8ff0e387805362dcee}\label{core_2cheats_8c_a548cf10aab7a8a8ff0e387805362dcee}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!m\+Cheat\+Add\+Set@{m\+Cheat\+Add\+Set}}
+\index{m\+Cheat\+Add\+Set@{m\+Cheat\+Add\+Set}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{m\+Cheat\+Add\+Set()}{mCheatAddSet()}}
+{\footnotesize\ttfamily void m\+Cheat\+Add\+Set (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Device $\ast$}]{device,  }\item[{struct m\+Cheat\+Set $\ast$}]{cheats }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_a548cf10aab7a8a8ff0e387805362dcee_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cheats_8c_a95da164847f169160e1561ebe9d26399}\label{core_2cheats_8c_a95da164847f169160e1561ebe9d26399}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!m\+Cheat\+Autosave@{m\+Cheat\+Autosave}}
+\index{m\+Cheat\+Autosave@{m\+Cheat\+Autosave}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{m\+Cheat\+Autosave()}{mCheatAutosave()}}
+{\footnotesize\ttfamily void m\+Cheat\+Autosave (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Device $\ast$}]{device }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_a95da164847f169160e1561ebe9d26399_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_a95da164847f169160e1561ebe9d26399_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cheats_8c_aee25a859870668b562d0fb8b387da3ab}\label{core_2cheats_8c_aee25a859870668b562d0fb8b387da3ab}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!m\+Cheat\+Device\+Clear@{m\+Cheat\+Device\+Clear}}
+\index{m\+Cheat\+Device\+Clear@{m\+Cheat\+Device\+Clear}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{m\+Cheat\+Device\+Clear()}{mCheatDeviceClear()}}
+{\footnotesize\ttfamily void m\+Cheat\+Device\+Clear (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Device $\ast$}]{device }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_aee25a859870668b562d0fb8b387da3ab_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_aee25a859870668b562d0fb8b387da3ab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cheats_8c_a37c7b42b6e6342cda1e04077104b9c04}\label{core_2cheats_8c_a37c7b42b6e6342cda1e04077104b9c04}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!m\+Cheat\+Device\+Create@{m\+Cheat\+Device\+Create}}
+\index{m\+Cheat\+Device\+Create@{m\+Cheat\+Device\+Create}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{m\+Cheat\+Device\+Create()}{mCheatDeviceCreate()}}
+{\footnotesize\ttfamily void m\+Cheat\+Device\+Create (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Device $\ast$}]{device }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_a37c7b42b6e6342cda1e04077104b9c04_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_a37c7b42b6e6342cda1e04077104b9c04_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cheats_8c_a48b75a8662945f47fc5a5cc05e155a8a}\label{core_2cheats_8c_a48b75a8662945f47fc5a5cc05e155a8a}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!m\+Cheat\+Device\+Deinit@{m\+Cheat\+Device\+Deinit}}
+\index{m\+Cheat\+Device\+Deinit@{m\+Cheat\+Device\+Deinit}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{m\+Cheat\+Device\+Deinit()}{mCheatDeviceDeinit()}}
+{\footnotesize\ttfamily void m\+Cheat\+Device\+Deinit (\begin{DoxyParamCaption}\item[{struct m\+C\+P\+U\+Component $\ast$}]{component }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_a48b75a8662945f47fc5a5cc05e155a8a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_a48b75a8662945f47fc5a5cc05e155a8a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cheats_8c_ac82c8b206cfbe17c17762ce4455ab513}\label{core_2cheats_8c_ac82c8b206cfbe17c17762ce4455ab513}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!m\+Cheat\+Device\+Destroy@{m\+Cheat\+Device\+Destroy}}
+\index{m\+Cheat\+Device\+Destroy@{m\+Cheat\+Device\+Destroy}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{m\+Cheat\+Device\+Destroy()}{mCheatDeviceDestroy()}}
+{\footnotesize\ttfamily void m\+Cheat\+Device\+Destroy (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Device $\ast$}]{device }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_ac82c8b206cfbe17c17762ce4455ab513_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_ac82c8b206cfbe17c17762ce4455ab513_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cheats_8c_a6752fbf92704349da5279d3caf03666e}\label{core_2cheats_8c_a6752fbf92704349da5279d3caf03666e}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!m\+Cheat\+Device\+Init@{m\+Cheat\+Device\+Init}}
+\index{m\+Cheat\+Device\+Init@{m\+Cheat\+Device\+Init}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{m\+Cheat\+Device\+Init()}{mCheatDeviceInit()}}
+{\footnotesize\ttfamily void m\+Cheat\+Device\+Init (\begin{DoxyParamCaption}\item[{void $\ast$}]{cpu,  }\item[{struct m\+C\+P\+U\+Component $\ast$}]{component }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_a6752fbf92704349da5279d3caf03666e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_a6752fbf92704349da5279d3caf03666e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cheats_8c_a46b221f9e6d5ed2bfd829b2d57ed494c}\label{core_2cheats_8c_a46b221f9e6d5ed2bfd829b2d57ed494c}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!m\+Cheat\+Parse\+File@{m\+Cheat\+Parse\+File}}
+\index{m\+Cheat\+Parse\+File@{m\+Cheat\+Parse\+File}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{m\+Cheat\+Parse\+File()}{mCheatParseFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Cheat\+Parse\+File (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Device $\ast$}]{device,  }\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_a46b221f9e6d5ed2bfd829b2d57ed494c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_a46b221f9e6d5ed2bfd829b2d57ed494c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cheats_8c_a6bfc406d23054b18ebd12c10d0492f1c}\label{core_2cheats_8c_a6bfc406d23054b18ebd12c10d0492f1c}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!m\+Cheat\+Press\+Button@{m\+Cheat\+Press\+Button}}
+\index{m\+Cheat\+Press\+Button@{m\+Cheat\+Press\+Button}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{m\+Cheat\+Press\+Button()}{mCheatPressButton()}}
+{\footnotesize\ttfamily void m\+Cheat\+Press\+Button (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Device $\ast$}]{device,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{down }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_a6bfc406d23054b18ebd12c10d0492f1c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cheats_8c_a40b8740001252f5a5833566280f3b962}\label{core_2cheats_8c_a40b8740001252f5a5833566280f3b962}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!m\+Cheat\+Refresh@{m\+Cheat\+Refresh}}
+\index{m\+Cheat\+Refresh@{m\+Cheat\+Refresh}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{m\+Cheat\+Refresh()}{mCheatRefresh()}}
+{\footnotesize\ttfamily void m\+Cheat\+Refresh (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Device $\ast$}]{device,  }\item[{struct m\+Cheat\+Set $\ast$}]{cheats }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{core_2cheats_8c_a40b8740001252f5a5833566280f3b962_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_a40b8740001252f5a5833566280f3b962_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cheats_8c_a6258e577d550a9259c6049ac3b18b76d}\label{core_2cheats_8c_a6258e577d550a9259c6049ac3b18b76d}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!m\+Cheat\+Remove\+Set@{m\+Cheat\+Remove\+Set}}
+\index{m\+Cheat\+Remove\+Set@{m\+Cheat\+Remove\+Set}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{m\+Cheat\+Remove\+Set()}{mCheatRemoveSet()}}
+{\footnotesize\ttfamily void m\+Cheat\+Remove\+Set (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Device $\ast$}]{device,  }\item[{struct m\+Cheat\+Set $\ast$}]{cheats }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_a6258e577d550a9259c6049ac3b18b76d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cheats_8c_adc6a2e238aec3b12714f9f419ef35748}\label{core_2cheats_8c_adc6a2e238aec3b12714f9f419ef35748}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!m\+Cheat\+Save\+File@{m\+Cheat\+Save\+File}}
+\index{m\+Cheat\+Save\+File@{m\+Cheat\+Save\+File}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{m\+Cheat\+Save\+File()}{mCheatSaveFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Cheat\+Save\+File (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Device $\ast$}]{device,  }\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{core_2cheats_8c_adc6a2e238aec3b12714f9f419ef35748_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_adc6a2e238aec3b12714f9f419ef35748_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cheats_8c_a497699c7989798b281312b102093579d}\label{core_2cheats_8c_a497699c7989798b281312b102093579d}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!m\+Cheat\+Set\+Deinit@{m\+Cheat\+Set\+Deinit}}
+\index{m\+Cheat\+Set\+Deinit@{m\+Cheat\+Set\+Deinit}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{m\+Cheat\+Set\+Deinit()}{mCheatSetDeinit()}}
+{\footnotesize\ttfamily void m\+Cheat\+Set\+Deinit (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Set $\ast$}]{set }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{core_2cheats_8c_a497699c7989798b281312b102093579d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_a497699c7989798b281312b102093579d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cheats_8c_a13b60b3c504c9ac37d3c6b7836f1a8ae}\label{core_2cheats_8c_a13b60b3c504c9ac37d3c6b7836f1a8ae}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!m\+Cheat\+Set\+Init@{m\+Cheat\+Set\+Init}}
+\index{m\+Cheat\+Set\+Init@{m\+Cheat\+Set\+Init}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{m\+Cheat\+Set\+Init()}{mCheatSetInit()}}
+{\footnotesize\ttfamily void m\+Cheat\+Set\+Init (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Set $\ast$}]{set,  }\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_a13b60b3c504c9ac37d3c6b7836f1a8ae_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_a13b60b3c504c9ac37d3c6b7836f1a8ae_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cheats_8c_a7abdb5bb036be9bfb842e696ed67bf4b}\label{core_2cheats_8c_a7abdb5bb036be9bfb842e696ed67bf4b}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!m\+Cheat\+Set\+Rename@{m\+Cheat\+Set\+Rename}}
+\index{m\+Cheat\+Set\+Rename@{m\+Cheat\+Set\+Rename}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{m\+Cheat\+Set\+Rename()}{mCheatSetRename()}}
+{\footnotesize\ttfamily void m\+Cheat\+Set\+Rename (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Set $\ast$}]{set,  }\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cheats_8c_a7abdb5bb036be9bfb842e696ed67bf4b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{core_2cheats_8c_a7abdb5bb036be9bfb842e696ed67bf4b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cheats_8c_a478271646d58188fff41f9f3640fe2da}\label{core_2cheats_8c_a478271646d58188fff41f9f3640fe2da}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}}
+\index{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+R\+Y()}{mLOG\_DEFINE\_CATEGORY()}}
+{\footnotesize\ttfamily m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY (\begin{DoxyParamCaption}\item[{C\+H\+E\+A\+TS}]{,  }\item[{\char`\"{}Cheats\char`\"{}}]{,  }\item[{\char`\"{}core.\+cheats\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{core_2cheats_8c_a21a833afa45623ead021b88b5135016c}\label{core_2cheats_8c_a21a833afa45623ead021b88b5135016c}} 
+\index{core/cheats.\+c@{core/cheats.\+c}!M\+\_\+\+C\+H\+E\+A\+T\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+ID@{M\+\_\+\+C\+H\+E\+A\+T\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+ID}}
+\index{M\+\_\+\+C\+H\+E\+A\+T\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+ID@{M\+\_\+\+C\+H\+E\+A\+T\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+ID}!core/cheats.\+c@{core/cheats.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+C\+H\+E\+A\+T\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+ID}{M\_CHEAT\_DEVICE\_ID}}
+{\footnotesize\ttfamily const uint32\+\_\+t M\+\_\+\+C\+H\+E\+A\+T\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+ID = 0x\+A\+B\+A\+D\+C0\+DE}
+

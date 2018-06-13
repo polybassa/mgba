@@ -1,0 +1,74 @@
+\hypertarget{psp2-memory_8c}{}\section{src/platform/psp2/psp2-\/memory.c File Reference}
+\label{psp2-memory_8c}\index{src/platform/psp2/psp2-\/memory.\+c@{src/platform/psp2/psp2-\/memory.\+c}}
+{\ttfamily \#include $<$mgba-\/util/memory.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vector.\+h$>$}\newline
+{\ttfamily \#include $<$psp2/kernel/sysmem.\+h$>$}\newline
+{\ttfamily \#include $<$psp2/types.\+h$>$}\newline
+Include dependency graph for psp2-\/memory.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-memory_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{psp2-memory_8c_afc4985bd27a308f9ffcf1e1ca30c0f6f}{D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+OR}} (Sce\+U\+I\+D\+List, Sce\+U\+ID)
+\item 
+\mbox{\hyperlink{psp2-memory_8c_ab213125f95d41a59c47375541575adec}{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}} (Sce\+U\+I\+D\+List, Sce\+U\+ID)
+\item 
+void $\ast$ \mbox{\hyperlink{psp2-memory_8c_a5d8b8a54c5a5972efba2981636430417}{anonymous\+Memory\+Map}} (size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+void \mbox{\hyperlink{psp2-memory_8c_a3542970c4da761e3d6985de6d36d83d3}{mapped\+Memory\+Free}} (void $\ast$memory, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static struct Sce\+U\+I\+D\+List \mbox{\hyperlink{psp2-memory_8c_ab770cdb736f8e56264040923e738a123}{uids}}
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{psp2-memory_8c_a411640a4775605cd71b94607b8352414}{list\+Init}} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{psp2-memory_8c_a5d8b8a54c5a5972efba2981636430417}\label{psp2-memory_8c_a5d8b8a54c5a5972efba2981636430417}} 
+\index{psp2-\/memory.\+c@{psp2-\/memory.\+c}!anonymous\+Memory\+Map@{anonymous\+Memory\+Map}}
+\index{anonymous\+Memory\+Map@{anonymous\+Memory\+Map}!psp2-\/memory.\+c@{psp2-\/memory.\+c}}
+\subsubsection{\texorpdfstring{anonymous\+Memory\+Map()}{anonymousMemoryMap()}}
+{\footnotesize\ttfamily void$\ast$ anonymous\+Memory\+Map (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{psp2-memory_8c_afc4985bd27a308f9ffcf1e1ca30c0f6f}\label{psp2-memory_8c_afc4985bd27a308f9ffcf1e1ca30c0f6f}} 
+\index{psp2-\/memory.\+c@{psp2-\/memory.\+c}!D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+OR}}
+\index{D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+OR}!psp2-\/memory.\+c@{psp2-\/memory.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+O\+R()}{DECLARE\_VECTOR()}}
+{\footnotesize\ttfamily D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+OR (\begin{DoxyParamCaption}\item[{Sce\+U\+I\+D\+List}]{,  }\item[{Sce\+U\+ID}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{psp2-memory_8c_ab213125f95d41a59c47375541575adec}\label{psp2-memory_8c_ab213125f95d41a59c47375541575adec}} 
+\index{psp2-\/memory.\+c@{psp2-\/memory.\+c}!D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}}
+\index{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}!psp2-\/memory.\+c@{psp2-\/memory.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+O\+R()}{DEFINE\_VECTOR()}}
+{\footnotesize\ttfamily D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR (\begin{DoxyParamCaption}\item[{Sce\+U\+I\+D\+List}]{,  }\item[{Sce\+U\+ID}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{psp2-memory_8c_a3542970c4da761e3d6985de6d36d83d3}\label{psp2-memory_8c_a3542970c4da761e3d6985de6d36d83d3}} 
+\index{psp2-\/memory.\+c@{psp2-\/memory.\+c}!mapped\+Memory\+Free@{mapped\+Memory\+Free}}
+\index{mapped\+Memory\+Free@{mapped\+Memory\+Free}!psp2-\/memory.\+c@{psp2-\/memory.\+c}}
+\subsubsection{\texorpdfstring{mapped\+Memory\+Free()}{mappedMemoryFree()}}
+{\footnotesize\ttfamily void mapped\+Memory\+Free (\begin{DoxyParamCaption}\item[{void $\ast$}]{memory,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{psp2-memory_8c_a411640a4775605cd71b94607b8352414}\label{psp2-memory_8c_a411640a4775605cd71b94607b8352414}} 
+\index{psp2-\/memory.\+c@{psp2-\/memory.\+c}!list\+Init@{list\+Init}}
+\index{list\+Init@{list\+Init}!psp2-\/memory.\+c@{psp2-\/memory.\+c}}
+\subsubsection{\texorpdfstring{list\+Init}{listInit}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} list\+Init = false\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{psp2-memory_8c_ab770cdb736f8e56264040923e738a123}\label{psp2-memory_8c_ab770cdb736f8e56264040923e738a123}} 
+\index{psp2-\/memory.\+c@{psp2-\/memory.\+c}!uids@{uids}}
+\index{uids@{uids}!psp2-\/memory.\+c@{psp2-\/memory.\+c}}
+\subsubsection{\texorpdfstring{uids}{uids}}
+{\footnotesize\ttfamily struct Sce\+U\+I\+D\+List uids\hspace{0.3cm}{\ttfamily [static]}}
+

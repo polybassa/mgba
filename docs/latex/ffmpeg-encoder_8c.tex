@@ -1,0 +1,222 @@
+\hypertarget{ffmpeg-encoder_8c}{}\section{src/feature/ffmpeg/ffmpeg-\/encoder.c File Reference}
+\label{ffmpeg-encoder_8c}\index{src/feature/ffmpeg/ffmpeg-\/encoder.\+c@{src/feature/ffmpeg/ffmpeg-\/encoder.\+c}}
+{\ttfamily \#include \char`\"{}ffmpeg-\/encoder.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/video.\+h$>$}\newline
+{\ttfamily \#include $<$libavcodec/version.\+h$>$}\newline
+{\ttfamily \#include $<$libavcodec/avcodec.\+h$>$}\newline
+{\ttfamily \#include $<$libavutil/version.\+h$>$}\newline
+{\ttfamily \#include $<$libavutil/imgutils.\+h$>$}\newline
+{\ttfamily \#include $<$libavutil/mathematics.\+h$>$}\newline
+{\ttfamily \#include $<$libavutil/opt.\+h$>$}\newline
+{\ttfamily \#include $<$libavresample/avresample.\+h$>$}\newline
+{\ttfamily \#include $<$libswscale/swscale.\+h$>$}\newline
+Include dependency graph for ffmpeg-\/encoder.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ffmpeg-encoder_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \mbox{\hyperlink{ffmpeg-encoder_8c_adf764cbdea00d65edcd07bb9953ad2b7a2656e6725d5bdaffeeb5d585d0b1d892}{P\+R\+E\+F\+E\+R\+R\+E\+D\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+TE}} = 0x8000
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{ffmpeg-encoder_8c_a991130b3e2d7c60555b6daa8e2e14511}{\+\_\+ffmpeg\+Post\+Video\+Frame}} (struct m\+A\+V\+Stream $\ast$, const color\+\_\+t $\ast$pixels, size\+\_\+t stride)
+\item 
+static void \mbox{\hyperlink{ffmpeg-encoder_8c_a90db63fa012864b15e512de2e3699bb5}{\+\_\+ffmpeg\+Post\+Audio\+Frame}} (struct m\+A\+V\+Stream $\ast$, int16\+\_\+t left, int16\+\_\+t right)
+\item 
+static void \mbox{\hyperlink{ffmpeg-encoder_8c_a0ff04375648bb618edabd7296db53aac}{\+\_\+ffmpeg\+Set\+Video\+Dimensions}} (struct m\+A\+V\+Stream $\ast$, unsigned \mbox{\hyperlink{readppm_8c_a59b7c57bf1dc7c36ac7c8232cf5bb713}{width}}, unsigned \mbox{\hyperlink{readppm_8c_ac8b624a7354198da45f5797b93b883c9}{height}})
+\item 
+void \mbox{\hyperlink{ffmpeg-encoder_8c_ac78d06a668741ed714dfe5e4a69a2079}{F\+Fmpeg\+Encoder\+Init}} (struct \mbox{\hyperlink{ffmpeg-encoder_8h_struct_f_fmpeg_encoder}{F\+Fmpeg\+Encoder}} $\ast$encoder)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{ffmpeg-encoder_8c_a2c0ebf9db7aa98077c9c0b128b329c28}{F\+Fmpeg\+Encoder\+Set\+Audio}} (struct \mbox{\hyperlink{ffmpeg-encoder_8h_struct_f_fmpeg_encoder}{F\+Fmpeg\+Encoder}} $\ast$encoder, const char $\ast$acodec, unsigned abr)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{ffmpeg-encoder_8c_a0812bb2471d9e5f5f220531bb1074798}{F\+Fmpeg\+Encoder\+Set\+Video}} (struct \mbox{\hyperlink{ffmpeg-encoder_8h_struct_f_fmpeg_encoder}{F\+Fmpeg\+Encoder}} $\ast$encoder, const char $\ast$vcodec, unsigned vbr)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{ffmpeg-encoder_8c_abad277264801a7f376d166746514d683}{F\+Fmpeg\+Encoder\+Set\+Container}} (struct \mbox{\hyperlink{ffmpeg-encoder_8h_struct_f_fmpeg_encoder}{F\+Fmpeg\+Encoder}} $\ast$encoder, const char $\ast$container)
+\item 
+void \mbox{\hyperlink{ffmpeg-encoder_8c_a1f4d9332a7d88280c90cde4bca269f79}{F\+Fmpeg\+Encoder\+Set\+Dimensions}} (struct \mbox{\hyperlink{ffmpeg-encoder_8h_struct_f_fmpeg_encoder}{F\+Fmpeg\+Encoder}} $\ast$encoder, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_a59b7c57bf1dc7c36ac7c8232cf5bb713}{width}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_ac8b624a7354198da45f5797b93b883c9}{height}})
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{ffmpeg-encoder_8c_a57dc90db7ec7abc72021c7faf1173e01}{F\+Fmpeg\+Encoder\+Verify\+Container}} (struct \mbox{\hyperlink{ffmpeg-encoder_8h_struct_f_fmpeg_encoder}{F\+Fmpeg\+Encoder}} $\ast$encoder)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{ffmpeg-encoder_8c_ae319fa73d21d047862d156fc05902af3}{F\+Fmpeg\+Encoder\+Open}} (struct \mbox{\hyperlink{ffmpeg-encoder_8h_struct_f_fmpeg_encoder}{F\+Fmpeg\+Encoder}} $\ast$encoder, const char $\ast$outfile)
+\item 
+void \mbox{\hyperlink{ffmpeg-encoder_8c_a9e740ab5a264bd7fe8dec61593d3b347}{F\+Fmpeg\+Encoder\+Close}} (struct \mbox{\hyperlink{ffmpeg-encoder_8h_struct_f_fmpeg_encoder}{F\+Fmpeg\+Encoder}} $\ast$encoder)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{ffmpeg-encoder_8c_a3b83672eac569095bfa3a613f8301914}{F\+Fmpeg\+Encoder\+Is\+Open}} (struct \mbox{\hyperlink{ffmpeg-encoder_8h_struct_f_fmpeg_encoder}{F\+Fmpeg\+Encoder}} $\ast$encoder)
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{ffmpeg-encoder_8c_adf764cbdea00d65edcd07bb9953ad2b7}\label{ffmpeg-encoder_8c_adf764cbdea00d65edcd07bb9953ad2b7}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+R\+E\+F\+E\+R\+R\+E\+D\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+TE@{P\+R\+E\+F\+E\+R\+R\+E\+D\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+TE}!ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}}\index{ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}!P\+R\+E\+F\+E\+R\+R\+E\+D\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+TE@{P\+R\+E\+F\+E\+R\+R\+E\+D\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+TE}}}\mbox{\Hypertarget{ffmpeg-encoder_8c_adf764cbdea00d65edcd07bb9953ad2b7a2656e6725d5bdaffeeb5d585d0b1d892}\label{ffmpeg-encoder_8c_adf764cbdea00d65edcd07bb9953ad2b7a2656e6725d5bdaffeeb5d585d0b1d892}} 
+P\+R\+E\+F\+E\+R\+R\+E\+D\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+TE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{ffmpeg-encoder_8c_a90db63fa012864b15e512de2e3699bb5}\label{ffmpeg-encoder_8c_a90db63fa012864b15e512de2e3699bb5}} 
+\index{ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}!\+\_\+ffmpeg\+Post\+Audio\+Frame@{\+\_\+ffmpeg\+Post\+Audio\+Frame}}
+\index{\+\_\+ffmpeg\+Post\+Audio\+Frame@{\+\_\+ffmpeg\+Post\+Audio\+Frame}!ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+ffmpeg\+Post\+Audio\+Frame()}{\_ffmpegPostAudioFrame()}}
+{\footnotesize\ttfamily void \+\_\+ffmpeg\+Post\+Audio\+Frame (\begin{DoxyParamCaption}\item[{struct m\+A\+V\+Stream $\ast$}]{stream,  }\item[{int16\+\_\+t}]{left,  }\item[{int16\+\_\+t}]{right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ffmpeg-encoder_8c_a90db63fa012864b15e512de2e3699bb5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ffmpeg-encoder_8c_a991130b3e2d7c60555b6daa8e2e14511}\label{ffmpeg-encoder_8c_a991130b3e2d7c60555b6daa8e2e14511}} 
+\index{ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}!\+\_\+ffmpeg\+Post\+Video\+Frame@{\+\_\+ffmpeg\+Post\+Video\+Frame}}
+\index{\+\_\+ffmpeg\+Post\+Video\+Frame@{\+\_\+ffmpeg\+Post\+Video\+Frame}!ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+ffmpeg\+Post\+Video\+Frame()}{\_ffmpegPostVideoFrame()}}
+{\footnotesize\ttfamily void \+\_\+ffmpeg\+Post\+Video\+Frame (\begin{DoxyParamCaption}\item[{struct m\+A\+V\+Stream $\ast$}]{stream,  }\item[{const color\+\_\+t $\ast$}]{pixels,  }\item[{size\+\_\+t}]{stride }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ffmpeg-encoder_8c_a991130b3e2d7c60555b6daa8e2e14511_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ffmpeg-encoder_8c_a0ff04375648bb618edabd7296db53aac}\label{ffmpeg-encoder_8c_a0ff04375648bb618edabd7296db53aac}} 
+\index{ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}!\+\_\+ffmpeg\+Set\+Video\+Dimensions@{\+\_\+ffmpeg\+Set\+Video\+Dimensions}}
+\index{\+\_\+ffmpeg\+Set\+Video\+Dimensions@{\+\_\+ffmpeg\+Set\+Video\+Dimensions}!ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+ffmpeg\+Set\+Video\+Dimensions()}{\_ffmpegSetVideoDimensions()}}
+{\footnotesize\ttfamily static void \+\_\+ffmpeg\+Set\+Video\+Dimensions (\begin{DoxyParamCaption}\item[{struct m\+A\+V\+Stream $\ast$}]{stream,  }\item[{unsigned}]{width,  }\item[{unsigned}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ffmpeg-encoder_8c_a0ff04375648bb618edabd7296db53aac_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ffmpeg-encoder_8c_a9e740ab5a264bd7fe8dec61593d3b347}\label{ffmpeg-encoder_8c_a9e740ab5a264bd7fe8dec61593d3b347}} 
+\index{ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}!F\+Fmpeg\+Encoder\+Close@{F\+Fmpeg\+Encoder\+Close}}
+\index{F\+Fmpeg\+Encoder\+Close@{F\+Fmpeg\+Encoder\+Close}!ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}}
+\subsubsection{\texorpdfstring{F\+Fmpeg\+Encoder\+Close()}{FFmpegEncoderClose()}}
+{\footnotesize\ttfamily void F\+Fmpeg\+Encoder\+Close (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{ffmpeg-encoder_8h_struct_f_fmpeg_encoder}{F\+Fmpeg\+Encoder}} $\ast$}]{encoder }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ffmpeg-encoder_8c_ac78d06a668741ed714dfe5e4a69a2079}\label{ffmpeg-encoder_8c_ac78d06a668741ed714dfe5e4a69a2079}} 
+\index{ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}!F\+Fmpeg\+Encoder\+Init@{F\+Fmpeg\+Encoder\+Init}}
+\index{F\+Fmpeg\+Encoder\+Init@{F\+Fmpeg\+Encoder\+Init}!ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}}
+\subsubsection{\texorpdfstring{F\+Fmpeg\+Encoder\+Init()}{FFmpegEncoderInit()}}
+{\footnotesize\ttfamily void F\+Fmpeg\+Encoder\+Init (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{ffmpeg-encoder_8h_struct_f_fmpeg_encoder}{F\+Fmpeg\+Encoder}} $\ast$}]{encoder }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ffmpeg-encoder_8c_ac78d06a668741ed714dfe5e4a69a2079_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ffmpeg-encoder_8c_a3b83672eac569095bfa3a613f8301914}\label{ffmpeg-encoder_8c_a3b83672eac569095bfa3a613f8301914}} 
+\index{ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}!F\+Fmpeg\+Encoder\+Is\+Open@{F\+Fmpeg\+Encoder\+Is\+Open}}
+\index{F\+Fmpeg\+Encoder\+Is\+Open@{F\+Fmpeg\+Encoder\+Is\+Open}!ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}}
+\subsubsection{\texorpdfstring{F\+Fmpeg\+Encoder\+Is\+Open()}{FFmpegEncoderIsOpen()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} F\+Fmpeg\+Encoder\+Is\+Open (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{ffmpeg-encoder_8h_struct_f_fmpeg_encoder}{F\+Fmpeg\+Encoder}} $\ast$}]{encoder }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ffmpeg-encoder_8c_ae319fa73d21d047862d156fc05902af3}\label{ffmpeg-encoder_8c_ae319fa73d21d047862d156fc05902af3}} 
+\index{ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}!F\+Fmpeg\+Encoder\+Open@{F\+Fmpeg\+Encoder\+Open}}
+\index{F\+Fmpeg\+Encoder\+Open@{F\+Fmpeg\+Encoder\+Open}!ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}}
+\subsubsection{\texorpdfstring{F\+Fmpeg\+Encoder\+Open()}{FFmpegEncoderOpen()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} F\+Fmpeg\+Encoder\+Open (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{ffmpeg-encoder_8h_struct_f_fmpeg_encoder}{F\+Fmpeg\+Encoder}} $\ast$}]{encoder,  }\item[{const char $\ast$}]{outfile }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ffmpeg-encoder_8c_ae319fa73d21d047862d156fc05902af3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ffmpeg-encoder_8c_a2c0ebf9db7aa98077c9c0b128b329c28}\label{ffmpeg-encoder_8c_a2c0ebf9db7aa98077c9c0b128b329c28}} 
+\index{ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}!F\+Fmpeg\+Encoder\+Set\+Audio@{F\+Fmpeg\+Encoder\+Set\+Audio}}
+\index{F\+Fmpeg\+Encoder\+Set\+Audio@{F\+Fmpeg\+Encoder\+Set\+Audio}!ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}}
+\subsubsection{\texorpdfstring{F\+Fmpeg\+Encoder\+Set\+Audio()}{FFmpegEncoderSetAudio()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} F\+Fmpeg\+Encoder\+Set\+Audio (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{ffmpeg-encoder_8h_struct_f_fmpeg_encoder}{F\+Fmpeg\+Encoder}} $\ast$}]{encoder,  }\item[{const char $\ast$}]{acodec,  }\item[{unsigned}]{abr }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ffmpeg-encoder_8c_a2c0ebf9db7aa98077c9c0b128b329c28_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ffmpeg-encoder_8c_abad277264801a7f376d166746514d683}\label{ffmpeg-encoder_8c_abad277264801a7f376d166746514d683}} 
+\index{ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}!F\+Fmpeg\+Encoder\+Set\+Container@{F\+Fmpeg\+Encoder\+Set\+Container}}
+\index{F\+Fmpeg\+Encoder\+Set\+Container@{F\+Fmpeg\+Encoder\+Set\+Container}!ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}}
+\subsubsection{\texorpdfstring{F\+Fmpeg\+Encoder\+Set\+Container()}{FFmpegEncoderSetContainer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} F\+Fmpeg\+Encoder\+Set\+Container (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{ffmpeg-encoder_8h_struct_f_fmpeg_encoder}{F\+Fmpeg\+Encoder}} $\ast$}]{encoder,  }\item[{const char $\ast$}]{container }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ffmpeg-encoder_8c_abad277264801a7f376d166746514d683_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ffmpeg-encoder_8c_a1f4d9332a7d88280c90cde4bca269f79}\label{ffmpeg-encoder_8c_a1f4d9332a7d88280c90cde4bca269f79}} 
+\index{ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}!F\+Fmpeg\+Encoder\+Set\+Dimensions@{F\+Fmpeg\+Encoder\+Set\+Dimensions}}
+\index{F\+Fmpeg\+Encoder\+Set\+Dimensions@{F\+Fmpeg\+Encoder\+Set\+Dimensions}!ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}}
+\subsubsection{\texorpdfstring{F\+Fmpeg\+Encoder\+Set\+Dimensions()}{FFmpegEncoderSetDimensions()}}
+{\footnotesize\ttfamily void F\+Fmpeg\+Encoder\+Set\+Dimensions (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{ffmpeg-encoder_8h_struct_f_fmpeg_encoder}{F\+Fmpeg\+Encoder}} $\ast$}]{encoder,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{width,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{height }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ffmpeg-encoder_8c_a1f4d9332a7d88280c90cde4bca269f79_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ffmpeg-encoder_8c_a0812bb2471d9e5f5f220531bb1074798}\label{ffmpeg-encoder_8c_a0812bb2471d9e5f5f220531bb1074798}} 
+\index{ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}!F\+Fmpeg\+Encoder\+Set\+Video@{F\+Fmpeg\+Encoder\+Set\+Video}}
+\index{F\+Fmpeg\+Encoder\+Set\+Video@{F\+Fmpeg\+Encoder\+Set\+Video}!ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}}
+\subsubsection{\texorpdfstring{F\+Fmpeg\+Encoder\+Set\+Video()}{FFmpegEncoderSetVideo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} F\+Fmpeg\+Encoder\+Set\+Video (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{ffmpeg-encoder_8h_struct_f_fmpeg_encoder}{F\+Fmpeg\+Encoder}} $\ast$}]{encoder,  }\item[{const char $\ast$}]{vcodec,  }\item[{unsigned}]{vbr }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ffmpeg-encoder_8c_a0812bb2471d9e5f5f220531bb1074798_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ffmpeg-encoder_8c_a57dc90db7ec7abc72021c7faf1173e01}\label{ffmpeg-encoder_8c_a57dc90db7ec7abc72021c7faf1173e01}} 
+\index{ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}!F\+Fmpeg\+Encoder\+Verify\+Container@{F\+Fmpeg\+Encoder\+Verify\+Container}}
+\index{F\+Fmpeg\+Encoder\+Verify\+Container@{F\+Fmpeg\+Encoder\+Verify\+Container}!ffmpeg-\/encoder.\+c@{ffmpeg-\/encoder.\+c}}
+\subsubsection{\texorpdfstring{F\+Fmpeg\+Encoder\+Verify\+Container()}{FFmpegEncoderVerifyContainer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} F\+Fmpeg\+Encoder\+Verify\+Container (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{ffmpeg-encoder_8h_struct_f_fmpeg_encoder}{F\+Fmpeg\+Encoder}} $\ast$}]{encoder }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ffmpeg-encoder_8c_a57dc90db7ec7abc72021c7faf1173e01_icgraph}
+\end{center}
+\end{figure}

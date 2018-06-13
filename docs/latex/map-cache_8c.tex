@@ -1,0 +1,266 @@
+\hypertarget{map-cache_8c}{}\section{src/core/map-\/cache.c File Reference}
+\label{map-cache_8c}\index{src/core/map-\/cache.\+c@{src/core/map-\/cache.\+c}}
+{\ttfamily \#include $<$mgba/core/map-\/cache.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/memory.\+h$>$}\newline
+Include dependency graph for map-\/cache.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{map-cache_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{map-cache_8c_a29d009ada615c07ef3ad61a09b0e2625}{m\+Map\+Cache\+Init}} (struct m\+Map\+Cache $\ast$cache)
+\item 
+static void \mbox{\hyperlink{map-cache_8c_a5409e1d298b34a1384ad3b76fab685c5}{\+\_\+free\+Cache}} (struct m\+Map\+Cache $\ast$cache)
+\item 
+static void \mbox{\hyperlink{map-cache_8c_ab08e2be4f74e6da3a5ec9ef9e0c5a040}{\+\_\+redo\+Cache\+Size}} (struct m\+Map\+Cache $\ast$cache)
+\item 
+void \mbox{\hyperlink{map-cache_8c_a5d5ff55807cf89a961eaae6c599191ea}{m\+Map\+Cache\+Configure}} (struct m\+Map\+Cache $\ast$cache, m\+Map\+Cache\+Configuration \mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+void \mbox{\hyperlink{map-cache_8c_a4da999fdbbac1c998ca0e5299d56db70}{m\+Map\+Cache\+Configure\+System}} (struct m\+Map\+Cache $\ast$cache, m\+Map\+Cache\+System\+Info \mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+void \mbox{\hyperlink{map-cache_8c_ac10e008271c7b3928897ab928d542cc5}{m\+Map\+Cache\+Configure\+Map}} (struct m\+Map\+Cache $\ast$cache, uint32\+\_\+t map\+Start)
+\item 
+void \mbox{\hyperlink{map-cache_8c_a5d53da29354cc88338a70840e6c60971}{m\+Map\+Cache\+Deinit}} (struct m\+Map\+Cache $\ast$cache)
+\item 
+void \mbox{\hyperlink{map-cache_8c_af15ad9aac58ad3f592a48581be0f1f29}{m\+Map\+Cache\+Write\+V\+R\+AM}} (struct m\+Map\+Cache $\ast$cache, uint32\+\_\+t address)
+\item 
+static void \mbox{\hyperlink{map-cache_8c_ae4693b20d148d7eaa2403672db789c01}{\+\_\+clean\+Tile}} (struct m\+Map\+Cache $\ast$cache, const color\+\_\+t $\ast$tile, color\+\_\+t $\ast$map\+Out, const struct m\+Map\+Cache\+Entry $\ast$status)
+\item 
+uint32\+\_\+t \mbox{\hyperlink{map-cache_8c_a330e8e4a849ed5b322b16c1fbea42b3f}{m\+Map\+Cache\+Tile\+Id}} (struct m\+Map\+Cache $\ast$cache, unsigned x, unsigned y)
+\item 
+void \mbox{\hyperlink{map-cache_8c_abccd8ab5a0dafd34ed2be822edc14af6}{m\+Map\+Cache\+Clean\+Tile}} (struct m\+Map\+Cache $\ast$cache, struct m\+Map\+Cache\+Entry $\ast$entry, unsigned x, unsigned y)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{map-cache_8c_a15867a8857e1045680838b22ad9ccc61}{m\+Map\+Cache\+Check\+Tile}} (struct m\+Map\+Cache $\ast$cache, const struct m\+Map\+Cache\+Entry $\ast$entry, unsigned x, unsigned y)
+\item 
+void \mbox{\hyperlink{map-cache_8c_a0a1c74da99590ece390c102cb8b9b742}{m\+Map\+Cache\+Clean\+Row}} (struct m\+Map\+Cache $\ast$cache, unsigned y)
+\item 
+const color\+\_\+t $\ast$ \mbox{\hyperlink{map-cache_8c_a90311ee29890fde2be10354bfb527898}{m\+Map\+Cache\+Get\+Row}} (struct m\+Map\+Cache $\ast$cache, unsigned y)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{map-cache_8c_ae4693b20d148d7eaa2403672db789c01}\label{map-cache_8c_ae4693b20d148d7eaa2403672db789c01}} 
+\index{map-\/cache.\+c@{map-\/cache.\+c}!\+\_\+clean\+Tile@{\+\_\+clean\+Tile}}
+\index{\+\_\+clean\+Tile@{\+\_\+clean\+Tile}!map-\/cache.\+c@{map-\/cache.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+clean\+Tile()}{\_cleanTile()}}
+{\footnotesize\ttfamily static void \+\_\+clean\+Tile (\begin{DoxyParamCaption}\item[{struct m\+Map\+Cache $\ast$}]{cache,  }\item[{const color\+\_\+t $\ast$}]{tile,  }\item[{color\+\_\+t $\ast$}]{map\+Out,  }\item[{const struct m\+Map\+Cache\+Entry $\ast$}]{status }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{map-cache_8c_ae4693b20d148d7eaa2403672db789c01_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{map-cache_8c_a5409e1d298b34a1384ad3b76fab685c5}\label{map-cache_8c_a5409e1d298b34a1384ad3b76fab685c5}} 
+\index{map-\/cache.\+c@{map-\/cache.\+c}!\+\_\+free\+Cache@{\+\_\+free\+Cache}}
+\index{\+\_\+free\+Cache@{\+\_\+free\+Cache}!map-\/cache.\+c@{map-\/cache.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+free\+Cache()}{\_freeCache()}}
+{\footnotesize\ttfamily static void \+\_\+free\+Cache (\begin{DoxyParamCaption}\item[{struct m\+Map\+Cache $\ast$}]{cache }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{map-cache_8c_a5409e1d298b34a1384ad3b76fab685c5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{map-cache_8c_a5409e1d298b34a1384ad3b76fab685c5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{map-cache_8c_ab08e2be4f74e6da3a5ec9ef9e0c5a040}\label{map-cache_8c_ab08e2be4f74e6da3a5ec9ef9e0c5a040}} 
+\index{map-\/cache.\+c@{map-\/cache.\+c}!\+\_\+redo\+Cache\+Size@{\+\_\+redo\+Cache\+Size}}
+\index{\+\_\+redo\+Cache\+Size@{\+\_\+redo\+Cache\+Size}!map-\/cache.\+c@{map-\/cache.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+redo\+Cache\+Size()}{\_redoCacheSize()}}
+{\footnotesize\ttfamily static void \+\_\+redo\+Cache\+Size (\begin{DoxyParamCaption}\item[{struct m\+Map\+Cache $\ast$}]{cache }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{map-cache_8c_ab08e2be4f74e6da3a5ec9ef9e0c5a040_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{map-cache_8c_ab08e2be4f74e6da3a5ec9ef9e0c5a040_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{map-cache_8c_a15867a8857e1045680838b22ad9ccc61}\label{map-cache_8c_a15867a8857e1045680838b22ad9ccc61}} 
+\index{map-\/cache.\+c@{map-\/cache.\+c}!m\+Map\+Cache\+Check\+Tile@{m\+Map\+Cache\+Check\+Tile}}
+\index{m\+Map\+Cache\+Check\+Tile@{m\+Map\+Cache\+Check\+Tile}!map-\/cache.\+c@{map-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Map\+Cache\+Check\+Tile()}{mMapCacheCheckTile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Map\+Cache\+Check\+Tile (\begin{DoxyParamCaption}\item[{struct m\+Map\+Cache $\ast$}]{cache,  }\item[{const struct m\+Map\+Cache\+Entry $\ast$}]{entry,  }\item[{unsigned}]{x,  }\item[{unsigned}]{y }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{map-cache_8c_a15867a8857e1045680838b22ad9ccc61_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{map-cache_8c_a0a1c74da99590ece390c102cb8b9b742}\label{map-cache_8c_a0a1c74da99590ece390c102cb8b9b742}} 
+\index{map-\/cache.\+c@{map-\/cache.\+c}!m\+Map\+Cache\+Clean\+Row@{m\+Map\+Cache\+Clean\+Row}}
+\index{m\+Map\+Cache\+Clean\+Row@{m\+Map\+Cache\+Clean\+Row}!map-\/cache.\+c@{map-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Map\+Cache\+Clean\+Row()}{mMapCacheCleanRow()}}
+{\footnotesize\ttfamily void m\+Map\+Cache\+Clean\+Row (\begin{DoxyParamCaption}\item[{struct m\+Map\+Cache $\ast$}]{cache,  }\item[{unsigned}]{y }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{map-cache_8c_a0a1c74da99590ece390c102cb8b9b742_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{map-cache_8c_abccd8ab5a0dafd34ed2be822edc14af6}\label{map-cache_8c_abccd8ab5a0dafd34ed2be822edc14af6}} 
+\index{map-\/cache.\+c@{map-\/cache.\+c}!m\+Map\+Cache\+Clean\+Tile@{m\+Map\+Cache\+Clean\+Tile}}
+\index{m\+Map\+Cache\+Clean\+Tile@{m\+Map\+Cache\+Clean\+Tile}!map-\/cache.\+c@{map-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Map\+Cache\+Clean\+Tile()}{mMapCacheCleanTile()}}
+{\footnotesize\ttfamily void m\+Map\+Cache\+Clean\+Tile (\begin{DoxyParamCaption}\item[{struct m\+Map\+Cache $\ast$}]{cache,  }\item[{struct m\+Map\+Cache\+Entry $\ast$}]{entry,  }\item[{unsigned}]{x,  }\item[{unsigned}]{y }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{map-cache_8c_abccd8ab5a0dafd34ed2be822edc14af6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{map-cache_8c_a5d5ff55807cf89a961eaae6c599191ea}\label{map-cache_8c_a5d5ff55807cf89a961eaae6c599191ea}} 
+\index{map-\/cache.\+c@{map-\/cache.\+c}!m\+Map\+Cache\+Configure@{m\+Map\+Cache\+Configure}}
+\index{m\+Map\+Cache\+Configure@{m\+Map\+Cache\+Configure}!map-\/cache.\+c@{map-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Map\+Cache\+Configure()}{mMapCacheConfigure()}}
+{\footnotesize\ttfamily void m\+Map\+Cache\+Configure (\begin{DoxyParamCaption}\item[{struct m\+Map\+Cache $\ast$}]{cache,  }\item[{m\+Map\+Cache\+Configuration}]{config }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{map-cache_8c_a5d5ff55807cf89a961eaae6c599191ea_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{map-cache_8c_ac10e008271c7b3928897ab928d542cc5}\label{map-cache_8c_ac10e008271c7b3928897ab928d542cc5}} 
+\index{map-\/cache.\+c@{map-\/cache.\+c}!m\+Map\+Cache\+Configure\+Map@{m\+Map\+Cache\+Configure\+Map}}
+\index{m\+Map\+Cache\+Configure\+Map@{m\+Map\+Cache\+Configure\+Map}!map-\/cache.\+c@{map-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Map\+Cache\+Configure\+Map()}{mMapCacheConfigureMap()}}
+{\footnotesize\ttfamily void m\+Map\+Cache\+Configure\+Map (\begin{DoxyParamCaption}\item[{struct m\+Map\+Cache $\ast$}]{cache,  }\item[{uint32\+\_\+t}]{map\+Start }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{map-cache_8c_ac10e008271c7b3928897ab928d542cc5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{map-cache_8c_a4da999fdbbac1c998ca0e5299d56db70}\label{map-cache_8c_a4da999fdbbac1c998ca0e5299d56db70}} 
+\index{map-\/cache.\+c@{map-\/cache.\+c}!m\+Map\+Cache\+Configure\+System@{m\+Map\+Cache\+Configure\+System}}
+\index{m\+Map\+Cache\+Configure\+System@{m\+Map\+Cache\+Configure\+System}!map-\/cache.\+c@{map-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Map\+Cache\+Configure\+System()}{mMapCacheConfigureSystem()}}
+{\footnotesize\ttfamily void m\+Map\+Cache\+Configure\+System (\begin{DoxyParamCaption}\item[{struct m\+Map\+Cache $\ast$}]{cache,  }\item[{m\+Map\+Cache\+System\+Info}]{config }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{map-cache_8c_a4da999fdbbac1c998ca0e5299d56db70_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{map-cache_8c_a4da999fdbbac1c998ca0e5299d56db70_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{map-cache_8c_a5d53da29354cc88338a70840e6c60971}\label{map-cache_8c_a5d53da29354cc88338a70840e6c60971}} 
+\index{map-\/cache.\+c@{map-\/cache.\+c}!m\+Map\+Cache\+Deinit@{m\+Map\+Cache\+Deinit}}
+\index{m\+Map\+Cache\+Deinit@{m\+Map\+Cache\+Deinit}!map-\/cache.\+c@{map-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Map\+Cache\+Deinit()}{mMapCacheDeinit()}}
+{\footnotesize\ttfamily void m\+Map\+Cache\+Deinit (\begin{DoxyParamCaption}\item[{struct m\+Map\+Cache $\ast$}]{cache }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{map-cache_8c_a5d53da29354cc88338a70840e6c60971_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{map-cache_8c_a5d53da29354cc88338a70840e6c60971_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{map-cache_8c_a90311ee29890fde2be10354bfb527898}\label{map-cache_8c_a90311ee29890fde2be10354bfb527898}} 
+\index{map-\/cache.\+c@{map-\/cache.\+c}!m\+Map\+Cache\+Get\+Row@{m\+Map\+Cache\+Get\+Row}}
+\index{m\+Map\+Cache\+Get\+Row@{m\+Map\+Cache\+Get\+Row}!map-\/cache.\+c@{map-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Map\+Cache\+Get\+Row()}{mMapCacheGetRow()}}
+{\footnotesize\ttfamily const color\+\_\+t$\ast$ m\+Map\+Cache\+Get\+Row (\begin{DoxyParamCaption}\item[{struct m\+Map\+Cache $\ast$}]{cache,  }\item[{unsigned}]{y }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{map-cache_8c_a29d009ada615c07ef3ad61a09b0e2625}\label{map-cache_8c_a29d009ada615c07ef3ad61a09b0e2625}} 
+\index{map-\/cache.\+c@{map-\/cache.\+c}!m\+Map\+Cache\+Init@{m\+Map\+Cache\+Init}}
+\index{m\+Map\+Cache\+Init@{m\+Map\+Cache\+Init}!map-\/cache.\+c@{map-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Map\+Cache\+Init()}{mMapCacheInit()}}
+{\footnotesize\ttfamily void m\+Map\+Cache\+Init (\begin{DoxyParamCaption}\item[{struct m\+Map\+Cache $\ast$}]{cache }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{map-cache_8c_a29d009ada615c07ef3ad61a09b0e2625_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{map-cache_8c_a330e8e4a849ed5b322b16c1fbea42b3f}\label{map-cache_8c_a330e8e4a849ed5b322b16c1fbea42b3f}} 
+\index{map-\/cache.\+c@{map-\/cache.\+c}!m\+Map\+Cache\+Tile\+Id@{m\+Map\+Cache\+Tile\+Id}}
+\index{m\+Map\+Cache\+Tile\+Id@{m\+Map\+Cache\+Tile\+Id}!map-\/cache.\+c@{map-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Map\+Cache\+Tile\+Id()}{mMapCacheTileId()}}
+{\footnotesize\ttfamily uint32\+\_\+t m\+Map\+Cache\+Tile\+Id (\begin{DoxyParamCaption}\item[{struct m\+Map\+Cache $\ast$}]{cache,  }\item[{unsigned}]{x,  }\item[{unsigned}]{y }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{map-cache_8c_a330e8e4a849ed5b322b16c1fbea42b3f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{map-cache_8c_af15ad9aac58ad3f592a48581be0f1f29}\label{map-cache_8c_af15ad9aac58ad3f592a48581be0f1f29}} 
+\index{map-\/cache.\+c@{map-\/cache.\+c}!m\+Map\+Cache\+Write\+V\+R\+AM@{m\+Map\+Cache\+Write\+V\+R\+AM}}
+\index{m\+Map\+Cache\+Write\+V\+R\+AM@{m\+Map\+Cache\+Write\+V\+R\+AM}!map-\/cache.\+c@{map-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Map\+Cache\+Write\+V\+R\+A\+M()}{mMapCacheWriteVRAM()}}
+{\footnotesize\ttfamily void m\+Map\+Cache\+Write\+V\+R\+AM (\begin{DoxyParamCaption}\item[{struct m\+Map\+Cache $\ast$}]{cache,  }\item[{uint32\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{map-cache_8c_af15ad9aac58ad3f592a48581be0f1f29_icgraph}
+\end{center}
+\end{figure}

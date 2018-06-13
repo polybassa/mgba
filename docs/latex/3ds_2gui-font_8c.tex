@@ -1,0 +1,196 @@
+\hypertarget{3ds_2gui-font_8c}{}\section{src/platform/3ds/gui-\/font.c File Reference}
+\label{3ds_2gui-font_8c}\index{src/platform/3ds/gui-\/font.\+c@{src/platform/3ds/gui-\/font.\+c}}
+{\ttfamily \#include $<$mgba-\/util/gui/font.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/gui/font-\/metrics.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/png-\/io.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}icons.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ctr-\/gpu.\+h\char`\"{}}\newline
+Include dependency graph for gui-\/font.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{3ds_2gui-font_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{3ds_2gui-font_8c_aa968a61524f9ed159c4c5464cb26dd41}{F\+O\+N\+T\+\_\+\+S\+I\+ZE}}~15.\+6f
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct G\+U\+I\+Font $\ast$ \mbox{\hyperlink{3ds_2gui-font_8c_afeda865aa70118eb5e13639aeea185e5}{G\+U\+I\+Font\+Create}} (void)
+\item 
+void \mbox{\hyperlink{3ds_2gui-font_8c_aa30d3bddfd055be2a203306973eb2b6a}{G\+U\+I\+Font\+Destroy}} (struct G\+U\+I\+Font $\ast$\mbox{\hyperlink{wii_2main_8c_adae3f41cbe0ea5e886715661bb739691}{font}})
+\item 
+unsigned \mbox{\hyperlink{3ds_2gui-font_8c_a6d539c7b23450b8918bb6499e2c11042}{G\+U\+I\+Font\+Height}} (const struct G\+U\+I\+Font $\ast$\mbox{\hyperlink{wii_2main_8c_adae3f41cbe0ea5e886715661bb739691}{font}})
+\item 
+unsigned \mbox{\hyperlink{3ds_2gui-font_8c_a4b38c72440f93dd3f4c6d01848a23203}{G\+U\+I\+Font\+Glyph\+Width}} (const struct G\+U\+I\+Font $\ast$\mbox{\hyperlink{wii_2main_8c_adae3f41cbe0ea5e886715661bb739691}{font}}, uint32\+\_\+t glyph)
+\item 
+void \mbox{\hyperlink{3ds_2gui-font_8c_a70534a7637eda192a15884d8930a61b8}{G\+U\+I\+Font\+Icon\+Metrics}} (const struct G\+U\+I\+Font $\ast$\mbox{\hyperlink{wii_2main_8c_adae3f41cbe0ea5e886715661bb739691}{font}}, enum G\+U\+I\+Icon icon, unsigned $\ast$w, unsigned $\ast$\mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}})
+\item 
+void \mbox{\hyperlink{3ds_2gui-font_8c_a6afd907275ce70a3b44246e55bb9eb99}{G\+U\+I\+Font\+Draw\+Glyph}} (const struct G\+U\+I\+Font $\ast$\mbox{\hyperlink{wii_2main_8c_adae3f41cbe0ea5e886715661bb739691}{font}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} glyph\+\_\+x, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} glyph\+\_\+y, uint32\+\_\+t color, uint32\+\_\+t glyph)
+\item 
+void \mbox{\hyperlink{3ds_2gui-font_8c_a89adf10a0ec4d3b2dfba92b95ab17ad5}{G\+U\+I\+Font\+Draw\+Icon}} (const struct G\+U\+I\+Font $\ast$\mbox{\hyperlink{wii_2main_8c_adae3f41cbe0ea5e886715661bb739691}{font}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} x, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} y, enum G\+U\+I\+Alignment align, enum G\+U\+I\+Orientation orient, uint32\+\_\+t color, enum G\+U\+I\+Icon icon)
+\item 
+void \mbox{\hyperlink{3ds_2gui-font_8c_ae9ac7ef646aad8e77b04baf500472178}{G\+U\+I\+Font\+Draw\+Icon\+Size}} (const struct G\+U\+I\+Font $\ast$\mbox{\hyperlink{wii_2main_8c_adae3f41cbe0ea5e886715661bb739691}{font}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} x, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} y, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} w, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}}, uint32\+\_\+t color, enum G\+U\+I\+Icon icon)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{3ds_2gui-font_8c_aa968a61524f9ed159c4c5464cb26dd41}\label{3ds_2gui-font_8c_aa968a61524f9ed159c4c5464cb26dd41}} 
+\index{3ds/gui-\/font.\+c@{3ds/gui-\/font.\+c}!F\+O\+N\+T\+\_\+\+S\+I\+ZE@{F\+O\+N\+T\+\_\+\+S\+I\+ZE}}
+\index{F\+O\+N\+T\+\_\+\+S\+I\+ZE@{F\+O\+N\+T\+\_\+\+S\+I\+ZE}!3ds/gui-\/font.\+c@{3ds/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{F\+O\+N\+T\+\_\+\+S\+I\+ZE}{FONT\_SIZE}}
+{\footnotesize\ttfamily \#define F\+O\+N\+T\+\_\+\+S\+I\+ZE~15.\+6f}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{3ds_2gui-font_8c_afeda865aa70118eb5e13639aeea185e5}\label{3ds_2gui-font_8c_afeda865aa70118eb5e13639aeea185e5}} 
+\index{3ds/gui-\/font.\+c@{3ds/gui-\/font.\+c}!G\+U\+I\+Font\+Create@{G\+U\+I\+Font\+Create}}
+\index{G\+U\+I\+Font\+Create@{G\+U\+I\+Font\+Create}!3ds/gui-\/font.\+c@{3ds/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{G\+U\+I\+Font\+Create()}{GUIFontCreate()}}
+{\footnotesize\ttfamily struct G\+U\+I\+Font$\ast$ G\+U\+I\+Font\+Create (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=245pt]{3ds_2gui-font_8c_afeda865aa70118eb5e13639aeea185e5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{3ds_2gui-font_8c_aa30d3bddfd055be2a203306973eb2b6a}\label{3ds_2gui-font_8c_aa30d3bddfd055be2a203306973eb2b6a}} 
+\index{3ds/gui-\/font.\+c@{3ds/gui-\/font.\+c}!G\+U\+I\+Font\+Destroy@{G\+U\+I\+Font\+Destroy}}
+\index{G\+U\+I\+Font\+Destroy@{G\+U\+I\+Font\+Destroy}!3ds/gui-\/font.\+c@{3ds/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{G\+U\+I\+Font\+Destroy()}{GUIFontDestroy()}}
+{\footnotesize\ttfamily void G\+U\+I\+Font\+Destroy (\begin{DoxyParamCaption}\item[{struct G\+U\+I\+Font $\ast$}]{font }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{3ds_2gui-font_8c_aa30d3bddfd055be2a203306973eb2b6a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=251pt]{3ds_2gui-font_8c_aa30d3bddfd055be2a203306973eb2b6a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{3ds_2gui-font_8c_a6afd907275ce70a3b44246e55bb9eb99}\label{3ds_2gui-font_8c_a6afd907275ce70a3b44246e55bb9eb99}} 
+\index{3ds/gui-\/font.\+c@{3ds/gui-\/font.\+c}!G\+U\+I\+Font\+Draw\+Glyph@{G\+U\+I\+Font\+Draw\+Glyph}}
+\index{G\+U\+I\+Font\+Draw\+Glyph@{G\+U\+I\+Font\+Draw\+Glyph}!3ds/gui-\/font.\+c@{3ds/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{G\+U\+I\+Font\+Draw\+Glyph()}{GUIFontDrawGlyph()}}
+{\footnotesize\ttfamily void G\+U\+I\+Font\+Draw\+Glyph (\begin{DoxyParamCaption}\item[{const struct G\+U\+I\+Font $\ast$}]{font,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{glyph\+\_\+x,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{glyph\+\_\+y,  }\item[{uint32\+\_\+t}]{color,  }\item[{uint32\+\_\+t}]{glyph }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{3ds_2gui-font_8c_a6afd907275ce70a3b44246e55bb9eb99_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{3ds_2gui-font_8c_a6afd907275ce70a3b44246e55bb9eb99_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{3ds_2gui-font_8c_a89adf10a0ec4d3b2dfba92b95ab17ad5}\label{3ds_2gui-font_8c_a89adf10a0ec4d3b2dfba92b95ab17ad5}} 
+\index{3ds/gui-\/font.\+c@{3ds/gui-\/font.\+c}!G\+U\+I\+Font\+Draw\+Icon@{G\+U\+I\+Font\+Draw\+Icon}}
+\index{G\+U\+I\+Font\+Draw\+Icon@{G\+U\+I\+Font\+Draw\+Icon}!3ds/gui-\/font.\+c@{3ds/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{G\+U\+I\+Font\+Draw\+Icon()}{GUIFontDrawIcon()}}
+{\footnotesize\ttfamily void G\+U\+I\+Font\+Draw\+Icon (\begin{DoxyParamCaption}\item[{const struct G\+U\+I\+Font $\ast$}]{font,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{x,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{y,  }\item[{enum G\+U\+I\+Alignment}]{align,  }\item[{enum G\+U\+I\+Orientation}]{orient,  }\item[{uint32\+\_\+t}]{color,  }\item[{enum G\+U\+I\+Icon}]{icon }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{3ds_2gui-font_8c_a89adf10a0ec4d3b2dfba92b95ab17ad5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{3ds_2gui-font_8c_a89adf10a0ec4d3b2dfba92b95ab17ad5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{3ds_2gui-font_8c_ae9ac7ef646aad8e77b04baf500472178}\label{3ds_2gui-font_8c_ae9ac7ef646aad8e77b04baf500472178}} 
+\index{3ds/gui-\/font.\+c@{3ds/gui-\/font.\+c}!G\+U\+I\+Font\+Draw\+Icon\+Size@{G\+U\+I\+Font\+Draw\+Icon\+Size}}
+\index{G\+U\+I\+Font\+Draw\+Icon\+Size@{G\+U\+I\+Font\+Draw\+Icon\+Size}!3ds/gui-\/font.\+c@{3ds/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{G\+U\+I\+Font\+Draw\+Icon\+Size()}{GUIFontDrawIconSize()}}
+{\footnotesize\ttfamily void G\+U\+I\+Font\+Draw\+Icon\+Size (\begin{DoxyParamCaption}\item[{const struct G\+U\+I\+Font $\ast$}]{font,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{x,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{y,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{w,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{h,  }\item[{uint32\+\_\+t}]{color,  }\item[{enum G\+U\+I\+Icon}]{icon }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{3ds_2gui-font_8c_ae9ac7ef646aad8e77b04baf500472178_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{3ds_2gui-font_8c_ae9ac7ef646aad8e77b04baf500472178_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{3ds_2gui-font_8c_a4b38c72440f93dd3f4c6d01848a23203}\label{3ds_2gui-font_8c_a4b38c72440f93dd3f4c6d01848a23203}} 
+\index{3ds/gui-\/font.\+c@{3ds/gui-\/font.\+c}!G\+U\+I\+Font\+Glyph\+Width@{G\+U\+I\+Font\+Glyph\+Width}}
+\index{G\+U\+I\+Font\+Glyph\+Width@{G\+U\+I\+Font\+Glyph\+Width}!3ds/gui-\/font.\+c@{3ds/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{G\+U\+I\+Font\+Glyph\+Width()}{GUIFontGlyphWidth()}}
+{\footnotesize\ttfamily unsigned G\+U\+I\+Font\+Glyph\+Width (\begin{DoxyParamCaption}\item[{const struct G\+U\+I\+Font $\ast$}]{font,  }\item[{uint32\+\_\+t}]{glyph }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{3ds_2gui-font_8c_a4b38c72440f93dd3f4c6d01848a23203_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{3ds_2gui-font_8c_a6d539c7b23450b8918bb6499e2c11042}\label{3ds_2gui-font_8c_a6d539c7b23450b8918bb6499e2c11042}} 
+\index{3ds/gui-\/font.\+c@{3ds/gui-\/font.\+c}!G\+U\+I\+Font\+Height@{G\+U\+I\+Font\+Height}}
+\index{G\+U\+I\+Font\+Height@{G\+U\+I\+Font\+Height}!3ds/gui-\/font.\+c@{3ds/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{G\+U\+I\+Font\+Height()}{GUIFontHeight()}}
+{\footnotesize\ttfamily unsigned G\+U\+I\+Font\+Height (\begin{DoxyParamCaption}\item[{const struct G\+U\+I\+Font $\ast$}]{font }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{3ds_2gui-font_8c_a6d539c7b23450b8918bb6499e2c11042_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{3ds_2gui-font_8c_a70534a7637eda192a15884d8930a61b8}\label{3ds_2gui-font_8c_a70534a7637eda192a15884d8930a61b8}} 
+\index{3ds/gui-\/font.\+c@{3ds/gui-\/font.\+c}!G\+U\+I\+Font\+Icon\+Metrics@{G\+U\+I\+Font\+Icon\+Metrics}}
+\index{G\+U\+I\+Font\+Icon\+Metrics@{G\+U\+I\+Font\+Icon\+Metrics}!3ds/gui-\/font.\+c@{3ds/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{G\+U\+I\+Font\+Icon\+Metrics()}{GUIFontIconMetrics()}}
+{\footnotesize\ttfamily void G\+U\+I\+Font\+Icon\+Metrics (\begin{DoxyParamCaption}\item[{const struct G\+U\+I\+Font $\ast$}]{font,  }\item[{enum G\+U\+I\+Icon}]{icon,  }\item[{unsigned $\ast$}]{w,  }\item[{unsigned $\ast$}]{h }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{3ds_2gui-font_8c_a70534a7637eda192a15884d8930a61b8_icgraph}
+\end{center}
+\end{figure}

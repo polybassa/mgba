@@ -1,0 +1,305 @@
+\hypertarget{commandline_8c}{}\section{src/feature/commandline.c File Reference}
+\label{commandline_8c}\index{src/feature/commandline.\+c@{src/feature/commandline.\+c}}
+{\ttfamily \#include $<$mgba/feature/commandline.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/config.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/version.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$getopt.\+h$>$}\newline
+Include dependency graph for commandline.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{commandline_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{commandline_8c_af1413400c8d7ef63d2bc915f7f33af67}{G\+R\+A\+P\+H\+I\+C\+S\+\_\+\+O\+P\+T\+I\+O\+NS}}~\char`\"{}123456f\char`\"{}
+\item 
+\#define \mbox{\hyperlink{commandline_8c_a420bfff65cf80d8532c4f2553e7c428c}{G\+R\+A\+P\+H\+I\+C\+S\+\_\+\+U\+S\+A\+GE}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{commandline_8c_a5dde2d1d019ac7332eec2bb4f0ae2fa3}{\+\_\+parse\+Graphics\+Arg}} (struct m\+Sub\+Parser $\ast$parser, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} option, const char $\ast$arg)
+\item 
+static void \mbox{\hyperlink{commandline_8c_a79831e8005d66e1a967e0f5218877b47}{\+\_\+apply\+Graphics\+Args}} (struct m\+Sub\+Parser $\ast$parser, struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+static void \mbox{\hyperlink{commandline_8c_af9dbbb63174b2e1df3f1a78975c2b56e}{\+\_\+table\+Insert}} (struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$table, const char $\ast$pair)
+\item 
+static void \mbox{\hyperlink{commandline_8c_afa8677f58a80e8fe67d288b0c9decc12}{\+\_\+table\+Apply}} (const char $\ast$key, void $\ast$value, void $\ast$user)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{commandline_8c_a337ee4a34d548b70d731e6e35b3eb27c}{parse\+Arguments}} (struct m\+Arguments $\ast$args, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, char $\ast$const $\ast$argv, struct m\+Sub\+Parser $\ast$subparser)
+\item 
+void \mbox{\hyperlink{commandline_8c_a13bcb96c37137b86a317c4df2d910b9f}{apply\+Arguments}} (const struct m\+Arguments $\ast$args, struct m\+Sub\+Parser $\ast$subparser, struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+void \mbox{\hyperlink{commandline_8c_ae2e2e2d30d9d40c8e99d4752523f8349}{free\+Arguments}} (struct m\+Arguments $\ast$args)
+\item 
+void \mbox{\hyperlink{commandline_8c_a86f92ef5be7b28674ec687b2d6f520b1}{init\+Parser\+For\+Graphics}} (struct m\+Sub\+Parser $\ast$parser, struct m\+Graphics\+Opts $\ast$opts)
+\item 
+void \mbox{\hyperlink{commandline_8c_aad67a12b5609d607003f86f393c3f2d5}{usage}} (const char $\ast$arg0, const char $\ast$extra\+Options)
+\item 
+void \mbox{\hyperlink{commandline_8c_a77c86c2f67610437b2fd6182ded85bd2}{version}} (const char $\ast$arg0)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const struct option \mbox{\hyperlink{commandline_8c_a2be1a9f8aa806c7e96c0f20a92c53dd6}{\+\_\+options}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{commandline_8c_af1413400c8d7ef63d2bc915f7f33af67}\label{commandline_8c_af1413400c8d7ef63d2bc915f7f33af67}} 
+\index{commandline.\+c@{commandline.\+c}!G\+R\+A\+P\+H\+I\+C\+S\+\_\+\+O\+P\+T\+I\+O\+NS@{G\+R\+A\+P\+H\+I\+C\+S\+\_\+\+O\+P\+T\+I\+O\+NS}}
+\index{G\+R\+A\+P\+H\+I\+C\+S\+\_\+\+O\+P\+T\+I\+O\+NS@{G\+R\+A\+P\+H\+I\+C\+S\+\_\+\+O\+P\+T\+I\+O\+NS}!commandline.\+c@{commandline.\+c}}
+\subsubsection{\texorpdfstring{G\+R\+A\+P\+H\+I\+C\+S\+\_\+\+O\+P\+T\+I\+O\+NS}{GRAPHICS\_OPTIONS}}
+{\footnotesize\ttfamily \#define G\+R\+A\+P\+H\+I\+C\+S\+\_\+\+O\+P\+T\+I\+O\+NS~\char`\"{}123456f\char`\"{}}
+
+\mbox{\Hypertarget{commandline_8c_a420bfff65cf80d8532c4f2553e7c428c}\label{commandline_8c_a420bfff65cf80d8532c4f2553e7c428c}} 
+\index{commandline.\+c@{commandline.\+c}!G\+R\+A\+P\+H\+I\+C\+S\+\_\+\+U\+S\+A\+GE@{G\+R\+A\+P\+H\+I\+C\+S\+\_\+\+U\+S\+A\+GE}}
+\index{G\+R\+A\+P\+H\+I\+C\+S\+\_\+\+U\+S\+A\+GE@{G\+R\+A\+P\+H\+I\+C\+S\+\_\+\+U\+S\+A\+GE}!commandline.\+c@{commandline.\+c}}
+\subsubsection{\texorpdfstring{G\+R\+A\+P\+H\+I\+C\+S\+\_\+\+U\+S\+A\+GE}{GRAPHICS\_USAGE}}
+{\footnotesize\ttfamily \#define G\+R\+A\+P\+H\+I\+C\+S\+\_\+\+U\+S\+A\+GE}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{stringliteral}{"\(\backslash\)nGraphics options:\(\backslash\)n"} \(\backslash\)
+    \textcolor{stringliteral}{"  -1               1x viewport\(\backslash\)n"} \(\backslash\)
+    \textcolor{stringliteral}{"  -2               2x viewport\(\backslash\)n"} \(\backslash\)
+    \textcolor{stringliteral}{"  -3               3x viewport\(\backslash\)n"} \(\backslash\)
+    \textcolor{stringliteral}{"  -4               4x viewport\(\backslash\)n"} \(\backslash\)
+    \textcolor{stringliteral}{"  -5               5x viewport\(\backslash\)n"} \(\backslash\)
+    \textcolor{stringliteral}{"  -6               6x viewport\(\backslash\)n"} \(\backslash\)
+    \textcolor{stringliteral}{"  -f               Start full-screen"}
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{commandline_8c_a79831e8005d66e1a967e0f5218877b47}\label{commandline_8c_a79831e8005d66e1a967e0f5218877b47}} 
+\index{commandline.\+c@{commandline.\+c}!\+\_\+apply\+Graphics\+Args@{\+\_\+apply\+Graphics\+Args}}
+\index{\+\_\+apply\+Graphics\+Args@{\+\_\+apply\+Graphics\+Args}!commandline.\+c@{commandline.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+apply\+Graphics\+Args()}{\_applyGraphicsArgs()}}
+{\footnotesize\ttfamily void \+\_\+apply\+Graphics\+Args (\begin{DoxyParamCaption}\item[{struct m\+Sub\+Parser $\ast$}]{parser,  }\item[{struct m\+Core\+Config $\ast$}]{config }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{commandline_8c_a79831e8005d66e1a967e0f5218877b47_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{commandline_8c_a79831e8005d66e1a967e0f5218877b47_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{commandline_8c_a5dde2d1d019ac7332eec2bb4f0ae2fa3}\label{commandline_8c_a5dde2d1d019ac7332eec2bb4f0ae2fa3}} 
+\index{commandline.\+c@{commandline.\+c}!\+\_\+parse\+Graphics\+Arg@{\+\_\+parse\+Graphics\+Arg}}
+\index{\+\_\+parse\+Graphics\+Arg@{\+\_\+parse\+Graphics\+Arg}!commandline.\+c@{commandline.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+parse\+Graphics\+Arg()}{\_parseGraphicsArg()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+parse\+Graphics\+Arg (\begin{DoxyParamCaption}\item[{struct m\+Sub\+Parser $\ast$}]{parser,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{option,  }\item[{const char $\ast$}]{arg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{commandline_8c_a5dde2d1d019ac7332eec2bb4f0ae2fa3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{commandline_8c_afa8677f58a80e8fe67d288b0c9decc12}\label{commandline_8c_afa8677f58a80e8fe67d288b0c9decc12}} 
+\index{commandline.\+c@{commandline.\+c}!\+\_\+table\+Apply@{\+\_\+table\+Apply}}
+\index{\+\_\+table\+Apply@{\+\_\+table\+Apply}!commandline.\+c@{commandline.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+table\+Apply()}{\_tableApply()}}
+{\footnotesize\ttfamily static void \+\_\+table\+Apply (\begin{DoxyParamCaption}\item[{const char $\ast$}]{key,  }\item[{void $\ast$}]{value,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{commandline_8c_afa8677f58a80e8fe67d288b0c9decc12_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{commandline_8c_afa8677f58a80e8fe67d288b0c9decc12_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{commandline_8c_af9dbbb63174b2e1df3f1a78975c2b56e}\label{commandline_8c_af9dbbb63174b2e1df3f1a78975c2b56e}} 
+\index{commandline.\+c@{commandline.\+c}!\+\_\+table\+Insert@{\+\_\+table\+Insert}}
+\index{\+\_\+table\+Insert@{\+\_\+table\+Insert}!commandline.\+c@{commandline.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+table\+Insert()}{\_tableInsert()}}
+{\footnotesize\ttfamily static void \+\_\+table\+Insert (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$}]{table,  }\item[{const char $\ast$}]{pair }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{commandline_8c_af9dbbb63174b2e1df3f1a78975c2b56e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{commandline_8c_af9dbbb63174b2e1df3f1a78975c2b56e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{commandline_8c_a13bcb96c37137b86a317c4df2d910b9f}\label{commandline_8c_a13bcb96c37137b86a317c4df2d910b9f}} 
+\index{commandline.\+c@{commandline.\+c}!apply\+Arguments@{apply\+Arguments}}
+\index{apply\+Arguments@{apply\+Arguments}!commandline.\+c@{commandline.\+c}}
+\subsubsection{\texorpdfstring{apply\+Arguments()}{applyArguments()}}
+{\footnotesize\ttfamily void apply\+Arguments (\begin{DoxyParamCaption}\item[{const struct m\+Arguments $\ast$}]{args,  }\item[{struct m\+Sub\+Parser $\ast$}]{subparser,  }\item[{struct m\+Core\+Config $\ast$}]{config }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{commandline_8c_a13bcb96c37137b86a317c4df2d910b9f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{commandline_8c_a13bcb96c37137b86a317c4df2d910b9f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{commandline_8c_ae2e2e2d30d9d40c8e99d4752523f8349}\label{commandline_8c_ae2e2e2d30d9d40c8e99d4752523f8349}} 
+\index{commandline.\+c@{commandline.\+c}!free\+Arguments@{free\+Arguments}}
+\index{free\+Arguments@{free\+Arguments}!commandline.\+c@{commandline.\+c}}
+\subsubsection{\texorpdfstring{free\+Arguments()}{freeArguments()}}
+{\footnotesize\ttfamily void free\+Arguments (\begin{DoxyParamCaption}\item[{struct m\+Arguments $\ast$}]{args }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{commandline_8c_ae2e2e2d30d9d40c8e99d4752523f8349_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{commandline_8c_ae2e2e2d30d9d40c8e99d4752523f8349_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{commandline_8c_a86f92ef5be7b28674ec687b2d6f520b1}\label{commandline_8c_a86f92ef5be7b28674ec687b2d6f520b1}} 
+\index{commandline.\+c@{commandline.\+c}!init\+Parser\+For\+Graphics@{init\+Parser\+For\+Graphics}}
+\index{init\+Parser\+For\+Graphics@{init\+Parser\+For\+Graphics}!commandline.\+c@{commandline.\+c}}
+\subsubsection{\texorpdfstring{init\+Parser\+For\+Graphics()}{initParserForGraphics()}}
+{\footnotesize\ttfamily void init\+Parser\+For\+Graphics (\begin{DoxyParamCaption}\item[{struct m\+Sub\+Parser $\ast$}]{parser,  }\item[{struct m\+Graphics\+Opts $\ast$}]{opts }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{commandline_8c_a86f92ef5be7b28674ec687b2d6f520b1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{commandline_8c_a86f92ef5be7b28674ec687b2d6f520b1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{commandline_8c_a337ee4a34d548b70d731e6e35b3eb27c}\label{commandline_8c_a337ee4a34d548b70d731e6e35b3eb27c}} 
+\index{commandline.\+c@{commandline.\+c}!parse\+Arguments@{parse\+Arguments}}
+\index{parse\+Arguments@{parse\+Arguments}!commandline.\+c@{commandline.\+c}}
+\subsubsection{\texorpdfstring{parse\+Arguments()}{parseArguments()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} parse\+Arguments (\begin{DoxyParamCaption}\item[{struct m\+Arguments $\ast$}]{args,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{char $\ast$const $\ast$}]{argv,  }\item[{struct m\+Sub\+Parser $\ast$}]{subparser }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{commandline_8c_a337ee4a34d548b70d731e6e35b3eb27c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=254pt]{commandline_8c_a337ee4a34d548b70d731e6e35b3eb27c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{commandline_8c_aad67a12b5609d607003f86f393c3f2d5}\label{commandline_8c_aad67a12b5609d607003f86f393c3f2d5}} 
+\index{commandline.\+c@{commandline.\+c}!usage@{usage}}
+\index{usage@{usage}!commandline.\+c@{commandline.\+c}}
+\subsubsection{\texorpdfstring{usage()}{usage()}}
+{\footnotesize\ttfamily void usage (\begin{DoxyParamCaption}\item[{const char $\ast$}]{arg0,  }\item[{const char $\ast$}]{extra\+Options }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{commandline_8c_aad67a12b5609d607003f86f393c3f2d5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{commandline_8c_a77c86c2f67610437b2fd6182ded85bd2}\label{commandline_8c_a77c86c2f67610437b2fd6182ded85bd2}} 
+\index{commandline.\+c@{commandline.\+c}!version@{version}}
+\index{version@{version}!commandline.\+c@{commandline.\+c}}
+\subsubsection{\texorpdfstring{version()}{version()}}
+{\footnotesize\ttfamily void version (\begin{DoxyParamCaption}\item[{const char $\ast$}]{arg0 }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{commandline_8c_a77c86c2f67610437b2fd6182ded85bd2_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{commandline_8c_a2be1a9f8aa806c7e96c0f20a92c53dd6}\label{commandline_8c_a2be1a9f8aa806c7e96c0f20a92c53dd6}} 
+\index{commandline.\+c@{commandline.\+c}!\+\_\+options@{\+\_\+options}}
+\index{\+\_\+options@{\+\_\+options}!commandline.\+c@{commandline.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+options}{\_options}}
+{\footnotesize\ttfamily const struct option \+\_\+options\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    \{ \textcolor{stringliteral}{"bios"},      required\_argument, 0, \textcolor{charliteral}{'b'} \},
+    \{ \textcolor{stringliteral}{"cheats"},    required\_argument, 0, \textcolor{charliteral}{'c'} \},
+    \{ \textcolor{stringliteral}{"frameskip"}, required\_argument, 0, \textcolor{charliteral}{'s'} \},
+
+
+
+
+
+
+    \{ \textcolor{stringliteral}{"help"},      no\_argument, 0, \textcolor{charliteral}{'h'} \},
+    \{ \textcolor{stringliteral}{"log-level"}, required\_argument, 0, \textcolor{charliteral}{'l'} \},
+    \{ \textcolor{stringliteral}{"movie"},     required\_argument, 0, \textcolor{charliteral}{'v'} \},
+    \{ \textcolor{stringliteral}{"patch"},     required\_argument, 0, \textcolor{charliteral}{'p'} \},
+    \{ \textcolor{stringliteral}{"version"},   no\_argument, 0, \textcolor{charliteral}{'\(\backslash\)0'} \},
+    \{ 0, 0, 0, 0 \}
+\}
+\end{DoxyCode}

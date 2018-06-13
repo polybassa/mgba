@@ -1,0 +1,415 @@
+\hypertarget{7z_main_8c}{}\section{src/third-\/party/lzma/\+Util/7z/7z\+Main.c File Reference}
+\label{7z_main_8c}\index{src/third-\/party/lzma/\+Util/7z/7z\+Main.\+c@{src/third-\/party/lzma/\+Util/7z/7z\+Main.\+c}}
+{\ttfamily \#include \char`\"{}Precomp.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../../7z.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../7z\+Alloc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../7z\+Buf.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../7z\+Crc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../7z\+File.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../7z\+Version.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+Include dependency graph for 7z\+Main.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_main_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{7z_main_8c_ab909571877078a45a8c249b3f6b5b6bf}{\+\_\+\+U\+S\+E\+\_\+\+U\+T\+F8}}
+\item 
+\#define \mbox{\hyperlink{7z_main_8c_a30b6f41f1e22da6f8e9b08325c922549}{\+\_\+\+U\+T\+F8\+\_\+\+S\+T\+A\+RT}}(\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})~(0x100 -\/ (1 $<$$<$ (7 -\/ (n))))
+\item 
+\#define \mbox{\hyperlink{7z_main_8c_a690274ee76bb91f2e1a596d8913bea0a}{\+\_\+\+U\+T\+F8\+\_\+\+R\+A\+N\+GE}}(\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})~(((\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}})1) $<$$<$ ((\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}}) $\ast$ 5 + 6))
+\item 
+\#define \mbox{\hyperlink{7z_main_8c_aaa2d4f74b6ccd441149cc566d0657561}{\+\_\+\+U\+T\+F8\+\_\+\+H\+E\+AD}}(\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}},  val)~((\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}})(\mbox{\hyperlink{7z_main_8c_a30b6f41f1e22da6f8e9b08325c922549}{\+\_\+\+U\+T\+F8\+\_\+\+S\+T\+A\+RT}}(\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}}) + (val $>$$>$ (6 $\ast$ (\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})))))
+\item 
+\#define \mbox{\hyperlink{7z_main_8c_a34e0348532a2c8d2300ec8e10144ee76}{\+\_\+\+U\+T\+F8\+\_\+\+C\+H\+AR}}(\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}},  val)~((\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}})(0x80 + (((val) $>$$>$ (6 $\ast$ (n))) \& 0x3\+F)))
+\item 
+\#define \mbox{\hyperlink{7z_main_8c_a11f3d166bef8b73bca14928f9cca8f42}{M\+Y\+\_\+\+F\+I\+L\+E\+\_\+\+C\+O\+D\+E\+\_\+\+P\+A\+G\+E\+\_\+\+P\+A\+R\+AM}}
+\item 
+\#define \mbox{\hyperlink{7z_main_8c_afbf77b7e2cf2dbf24d2330f2cfee5011}{P\+E\+R\+I\+O\+D\+\_\+4}}~(4 $\ast$ 365 + 1)
+\item 
+\#define \mbox{\hyperlink{7z_main_8c_abb9c1d11e0c3abed423aed792d3b9925}{P\+E\+R\+I\+O\+D\+\_\+100}}~(\mbox{\hyperlink{7z_main_8c_afbf77b7e2cf2dbf24d2330f2cfee5011}{P\+E\+R\+I\+O\+D\+\_\+4}} $\ast$ 25 -\/ 1)
+\item 
+\#define \mbox{\hyperlink{7z_main_8c_aee3ba9ad5a72c6f549a3984a65fb13b4}{P\+E\+R\+I\+O\+D\+\_\+400}}~(\mbox{\hyperlink{7z_main_8c_abb9c1d11e0c3abed423aed792d3b9925}{P\+E\+R\+I\+O\+D\+\_\+100}} $\ast$ 4 + 1)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{7z_main_8c_a052368100abebde726a6adc1443e0068}{Buf\+\_\+\+Ensure\+Size}} (\mbox{\hyperlink{7z_buf_8h_struct_c_buf}{C\+Buf}} $\ast$dest, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+static size\+\_\+t \mbox{\hyperlink{7z_main_8c_aebb41b8789a0dee2f8ee645738cbd76a}{Utf16\+\_\+\+To\+\_\+\+Utf8\+\_\+\+Calc}} (const \mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}} $\ast$src, const \mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}} $\ast$src\+Lim)
+\item 
+static \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$ \mbox{\hyperlink{7z_main_8c_ae381a3ce59bfeff95ab72f867b494064}{Utf16\+\_\+\+To\+\_\+\+Utf8}} (\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$dest, const \mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}} $\ast$src, const \mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}} $\ast$src\+Lim)
+\item 
+static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{7z_main_8c_a6fa75cb134eb50ecd677bb5391460d41}{Utf16\+\_\+\+To\+\_\+\+Utf8\+Buf}} (\mbox{\hyperlink{7z_buf_8h_struct_c_buf}{C\+Buf}} $\ast$dest, const \mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}} $\ast$src, size\+\_\+t src\+Len)
+\item 
+static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{7z_main_8c_a87898f135e6e14a7c2174d1847e2fab9}{Utf16\+\_\+\+To\+\_\+\+Char}} (\mbox{\hyperlink{7z_buf_8h_struct_c_buf}{C\+Buf}} $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, const \mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}} $\ast$s)
+\item 
+static \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{7z_main_8c_a9cec361a13e93879bdfd18259c0b50a9}{My\+Create\+Dir}} (const \mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}} $\ast$name)
+\item 
+static \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{7z_main_8c_ad1fdbf137e0e3f3a95dbfa403eb26480}{Out\+File\+\_\+\+Open\+Utf16}} (\mbox{\hyperlink{7z_file_8h_struct_c_sz_file}{C\+Sz\+File}} $\ast$p, const \mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}} $\ast$name)
+\item 
+static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{7z_main_8c_ad3911cc897a05afe773fd4b2e1f31ce0}{Print\+String}} (const \mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}} $\ast$s)
+\item 
+static void \mbox{\hyperlink{7z_main_8c_a2b9b2f1fc7a3791e8baa534b41f9c4dd}{U\+Int64\+To\+Str}} (\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} value, char $\ast$s)
+\item 
+static char $\ast$ \mbox{\hyperlink{7z_main_8c_a274be9456470c2eb448757dab6c1c6df}{U\+Int\+To\+Str}} (char $\ast$s, unsigned value, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} num\+Digits)
+\item 
+static void \mbox{\hyperlink{7z_main_8c_af615a770e00876aa3014b38ee02b2209}{U\+Int\+To\+Str\+\_\+2}} (char $\ast$s, unsigned value)
+\item 
+static void \mbox{\hyperlink{7z_main_8c_abe976a741708d8366a69fe0bc72c59d0}{Convert\+File\+Time\+To\+String}} (const \mbox{\hyperlink{7z_8h_struct_c_ntfs_file_time}{C\+Ntfs\+File\+Time}} $\ast$nt, char $\ast$s)
+\item 
+void \mbox{\hyperlink{7z_main_8c_a1454587fbca79868e24ef8eeae653018}{Print\+Error}} (char $\ast$sz)
+\item 
+static void \mbox{\hyperlink{7z_main_8c_aedbd28f50f2f97098b621d798b42dd60}{Get\+Attrib\+String}} (\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} wa, \mbox{\hyperlink{7z_types_8h_afdcfe6db5bea87bd493a3fe2c513d5ef}{Bool}} is\+Dir, char $\ast$s)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{7z_types_8h_a959aa84c48968de4bf433c8ff1df79f1}{M\+Y\+\_\+\+C\+D\+E\+CL}} \mbox{\hyperlink{7z_main_8c_a743a1c1a0225117ba5b8872619ce7aa2}{main}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} numargs, char $\ast$args\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} \mbox{\hyperlink{7z_main_8c_aa11f90dfcd0c973a632dead6c4a76140}{g\+\_\+\+Alloc}} = \{ \mbox{\hyperlink{_lzma86_enc_8c_aa5eb67bbaed541a0795a758720369b7e}{Sz\+Alloc}}, \mbox{\hyperlink{_lzma86_enc_8c_a8c236bdc930def0eed59b90777a2bab3}{Sz\+Free}} \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{7z_main_8c_ab909571877078a45a8c249b3f6b5b6bf}\label{7z_main_8c_ab909571877078a45a8c249b3f6b5b6bf}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!\+\_\+\+U\+S\+E\+\_\+\+U\+T\+F8@{\+\_\+\+U\+S\+E\+\_\+\+U\+T\+F8}}
+\index{\+\_\+\+U\+S\+E\+\_\+\+U\+T\+F8@{\+\_\+\+U\+S\+E\+\_\+\+U\+T\+F8}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+U\+S\+E\+\_\+\+U\+T\+F8}{\_USE\_UTF8}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+S\+E\+\_\+\+U\+T\+F8}
+
+\mbox{\Hypertarget{7z_main_8c_a34e0348532a2c8d2300ec8e10144ee76}\label{7z_main_8c_a34e0348532a2c8d2300ec8e10144ee76}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!\+\_\+\+U\+T\+F8\+\_\+\+C\+H\+AR@{\+\_\+\+U\+T\+F8\+\_\+\+C\+H\+AR}}
+\index{\+\_\+\+U\+T\+F8\+\_\+\+C\+H\+AR@{\+\_\+\+U\+T\+F8\+\_\+\+C\+H\+AR}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+U\+T\+F8\+\_\+\+C\+H\+AR}{\_UTF8\_CHAR}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+T\+F8\+\_\+\+C\+H\+AR(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}},  }\item[{}]{val }\end{DoxyParamCaption})~((\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}})(0x80 + (((val) $>$$>$ (6 $\ast$ (n))) \& 0x3\+F)))}
+
+\mbox{\Hypertarget{7z_main_8c_aaa2d4f74b6ccd441149cc566d0657561}\label{7z_main_8c_aaa2d4f74b6ccd441149cc566d0657561}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!\+\_\+\+U\+T\+F8\+\_\+\+H\+E\+AD@{\+\_\+\+U\+T\+F8\+\_\+\+H\+E\+AD}}
+\index{\+\_\+\+U\+T\+F8\+\_\+\+H\+E\+AD@{\+\_\+\+U\+T\+F8\+\_\+\+H\+E\+AD}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+U\+T\+F8\+\_\+\+H\+E\+AD}{\_UTF8\_HEAD}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+T\+F8\+\_\+\+H\+E\+AD(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}},  }\item[{}]{val }\end{DoxyParamCaption})~((\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}})(\mbox{\hyperlink{7z_main_8c_a30b6f41f1e22da6f8e9b08325c922549}{\+\_\+\+U\+T\+F8\+\_\+\+S\+T\+A\+RT}}(\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}}) + (val $>$$>$ (6 $\ast$ (\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})))))}
+
+\mbox{\Hypertarget{7z_main_8c_a690274ee76bb91f2e1a596d8913bea0a}\label{7z_main_8c_a690274ee76bb91f2e1a596d8913bea0a}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!\+\_\+\+U\+T\+F8\+\_\+\+R\+A\+N\+GE@{\+\_\+\+U\+T\+F8\+\_\+\+R\+A\+N\+GE}}
+\index{\+\_\+\+U\+T\+F8\+\_\+\+R\+A\+N\+GE@{\+\_\+\+U\+T\+F8\+\_\+\+R\+A\+N\+GE}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+U\+T\+F8\+\_\+\+R\+A\+N\+GE}{\_UTF8\_RANGE}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+T\+F8\+\_\+\+R\+A\+N\+GE(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}} }\end{DoxyParamCaption})~(((\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}})1) $<$$<$ ((\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}}) $\ast$ 5 + 6))}
+
+\mbox{\Hypertarget{7z_main_8c_a30b6f41f1e22da6f8e9b08325c922549}\label{7z_main_8c_a30b6f41f1e22da6f8e9b08325c922549}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!\+\_\+\+U\+T\+F8\+\_\+\+S\+T\+A\+RT@{\+\_\+\+U\+T\+F8\+\_\+\+S\+T\+A\+RT}}
+\index{\+\_\+\+U\+T\+F8\+\_\+\+S\+T\+A\+RT@{\+\_\+\+U\+T\+F8\+\_\+\+S\+T\+A\+RT}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+U\+T\+F8\+\_\+\+S\+T\+A\+RT}{\_UTF8\_START}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+T\+F8\+\_\+\+S\+T\+A\+RT(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}} }\end{DoxyParamCaption})~(0x100 -\/ (1 $<$$<$ (7 -\/ (n))))}
+
+\mbox{\Hypertarget{7z_main_8c_a11f3d166bef8b73bca14928f9cca8f42}\label{7z_main_8c_a11f3d166bef8b73bca14928f9cca8f42}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!M\+Y\+\_\+\+F\+I\+L\+E\+\_\+\+C\+O\+D\+E\+\_\+\+P\+A\+G\+E\+\_\+\+P\+A\+R\+AM@{M\+Y\+\_\+\+F\+I\+L\+E\+\_\+\+C\+O\+D\+E\+\_\+\+P\+A\+G\+E\+\_\+\+P\+A\+R\+AM}}
+\index{M\+Y\+\_\+\+F\+I\+L\+E\+\_\+\+C\+O\+D\+E\+\_\+\+P\+A\+G\+E\+\_\+\+P\+A\+R\+AM@{M\+Y\+\_\+\+F\+I\+L\+E\+\_\+\+C\+O\+D\+E\+\_\+\+P\+A\+G\+E\+\_\+\+P\+A\+R\+AM}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{M\+Y\+\_\+\+F\+I\+L\+E\+\_\+\+C\+O\+D\+E\+\_\+\+P\+A\+G\+E\+\_\+\+P\+A\+R\+AM}{MY\_FILE\_CODE\_PAGE\_PARAM}}
+{\footnotesize\ttfamily \#define M\+Y\+\_\+\+F\+I\+L\+E\+\_\+\+C\+O\+D\+E\+\_\+\+P\+A\+G\+E\+\_\+\+P\+A\+R\+AM}
+
+\mbox{\Hypertarget{7z_main_8c_abb9c1d11e0c3abed423aed792d3b9925}\label{7z_main_8c_abb9c1d11e0c3abed423aed792d3b9925}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!P\+E\+R\+I\+O\+D\+\_\+100@{P\+E\+R\+I\+O\+D\+\_\+100}}
+\index{P\+E\+R\+I\+O\+D\+\_\+100@{P\+E\+R\+I\+O\+D\+\_\+100}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{P\+E\+R\+I\+O\+D\+\_\+100}{PERIOD\_100}}
+{\footnotesize\ttfamily \#define P\+E\+R\+I\+O\+D\+\_\+100~(\mbox{\hyperlink{7z_main_8c_afbf77b7e2cf2dbf24d2330f2cfee5011}{P\+E\+R\+I\+O\+D\+\_\+4}} $\ast$ 25 -\/ 1)}
+
+\mbox{\Hypertarget{7z_main_8c_afbf77b7e2cf2dbf24d2330f2cfee5011}\label{7z_main_8c_afbf77b7e2cf2dbf24d2330f2cfee5011}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!P\+E\+R\+I\+O\+D\+\_\+4@{P\+E\+R\+I\+O\+D\+\_\+4}}
+\index{P\+E\+R\+I\+O\+D\+\_\+4@{P\+E\+R\+I\+O\+D\+\_\+4}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{P\+E\+R\+I\+O\+D\+\_\+4}{PERIOD\_4}}
+{\footnotesize\ttfamily \#define P\+E\+R\+I\+O\+D\+\_\+4~(4 $\ast$ 365 + 1)}
+
+\mbox{\Hypertarget{7z_main_8c_aee3ba9ad5a72c6f549a3984a65fb13b4}\label{7z_main_8c_aee3ba9ad5a72c6f549a3984a65fb13b4}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!P\+E\+R\+I\+O\+D\+\_\+400@{P\+E\+R\+I\+O\+D\+\_\+400}}
+\index{P\+E\+R\+I\+O\+D\+\_\+400@{P\+E\+R\+I\+O\+D\+\_\+400}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{P\+E\+R\+I\+O\+D\+\_\+400}{PERIOD\_400}}
+{\footnotesize\ttfamily \#define P\+E\+R\+I\+O\+D\+\_\+400~(\mbox{\hyperlink{7z_main_8c_abb9c1d11e0c3abed423aed792d3b9925}{P\+E\+R\+I\+O\+D\+\_\+100}} $\ast$ 4 + 1)}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{7z_main_8c_a052368100abebde726a6adc1443e0068}\label{7z_main_8c_a052368100abebde726a6adc1443e0068}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!Buf\+\_\+\+Ensure\+Size@{Buf\+\_\+\+Ensure\+Size}}
+\index{Buf\+\_\+\+Ensure\+Size@{Buf\+\_\+\+Ensure\+Size}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{Buf\+\_\+\+Ensure\+Size()}{Buf\_EnsureSize()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Buf\+\_\+\+Ensure\+Size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{7z_buf_8h_struct_c_buf}{C\+Buf}} $\ast$}]{dest,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{7z_main_8c_a052368100abebde726a6adc1443e0068_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_main_8c_a052368100abebde726a6adc1443e0068_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_main_8c_abe976a741708d8366a69fe0bc72c59d0}\label{7z_main_8c_abe976a741708d8366a69fe0bc72c59d0}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!Convert\+File\+Time\+To\+String@{Convert\+File\+Time\+To\+String}}
+\index{Convert\+File\+Time\+To\+String@{Convert\+File\+Time\+To\+String}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{Convert\+File\+Time\+To\+String()}{ConvertFileTimeToString()}}
+{\footnotesize\ttfamily static void Convert\+File\+Time\+To\+String (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{7z_8h_struct_c_ntfs_file_time}{C\+Ntfs\+File\+Time}} $\ast$}]{nt,  }\item[{char $\ast$}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=327pt]{7z_main_8c_abe976a741708d8366a69fe0bc72c59d0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{7z_main_8c_abe976a741708d8366a69fe0bc72c59d0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_main_8c_aedbd28f50f2f97098b621d798b42dd60}\label{7z_main_8c_aedbd28f50f2f97098b621d798b42dd60}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!Get\+Attrib\+String@{Get\+Attrib\+String}}
+\index{Get\+Attrib\+String@{Get\+Attrib\+String}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{Get\+Attrib\+String()}{GetAttribString()}}
+{\footnotesize\ttfamily static void Get\+Attrib\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{wa,  }\item[{\mbox{\hyperlink{7z_types_8h_afdcfe6db5bea87bd493a3fe2c513d5ef}{Bool}}}]{is\+Dir,  }\item[{char $\ast$}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{7z_main_8c_aedbd28f50f2f97098b621d798b42dd60_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_main_8c_a743a1c1a0225117ba5b8872619ce7aa2}\label{7z_main_8c_a743a1c1a0225117ba5b8872619ce7aa2}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!main@{main}}
+\index{main@{main}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{7z_types_8h_a959aa84c48968de4bf433c8ff1df79f1}{M\+Y\+\_\+\+C\+D\+E\+CL}} main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{numargs,  }\item[{char $\ast$}]{args\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_main_8c_a743a1c1a0225117ba5b8872619ce7aa2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_main_8c_a9cec361a13e93879bdfd18259c0b50a9}\label{7z_main_8c_a9cec361a13e93879bdfd18259c0b50a9}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!My\+Create\+Dir@{My\+Create\+Dir}}
+\index{My\+Create\+Dir@{My\+Create\+Dir}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{My\+Create\+Dir()}{MyCreateDir()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} My\+Create\+Dir (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}} $\ast$}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_main_8c_a9cec361a13e93879bdfd18259c0b50a9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{7z_main_8c_a9cec361a13e93879bdfd18259c0b50a9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_main_8c_ad1fdbf137e0e3f3a95dbfa403eb26480}\label{7z_main_8c_ad1fdbf137e0e3f3a95dbfa403eb26480}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!Out\+File\+\_\+\+Open\+Utf16@{Out\+File\+\_\+\+Open\+Utf16}}
+\index{Out\+File\+\_\+\+Open\+Utf16@{Out\+File\+\_\+\+Open\+Utf16}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{Out\+File\+\_\+\+Open\+Utf16()}{OutFile\_OpenUtf16()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} Out\+File\+\_\+\+Open\+Utf16 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{7z_file_8h_struct_c_sz_file}{C\+Sz\+File}} $\ast$}]{p,  }\item[{const \mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}} $\ast$}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_main_8c_ad1fdbf137e0e3f3a95dbfa403eb26480_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{7z_main_8c_ad1fdbf137e0e3f3a95dbfa403eb26480_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_main_8c_a1454587fbca79868e24ef8eeae653018}\label{7z_main_8c_a1454587fbca79868e24ef8eeae653018}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!Print\+Error@{Print\+Error}}
+\index{Print\+Error@{Print\+Error}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{Print\+Error()}{PrintError()}}
+{\footnotesize\ttfamily void Print\+Error (\begin{DoxyParamCaption}\item[{char $\ast$}]{sz }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{7z_main_8c_a1454587fbca79868e24ef8eeae653018_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_main_8c_ad3911cc897a05afe773fd4b2e1f31ce0}\label{7z_main_8c_ad3911cc897a05afe773fd4b2e1f31ce0}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!Print\+String@{Print\+String}}
+\index{Print\+String@{Print\+String}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{Print\+String()}{PrintString()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Print\+String (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}} $\ast$}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_main_8c_ad3911cc897a05afe773fd4b2e1f31ce0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{7z_main_8c_ad3911cc897a05afe773fd4b2e1f31ce0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_main_8c_a2b9b2f1fc7a3791e8baa534b41f9c4dd}\label{7z_main_8c_a2b9b2f1fc7a3791e8baa534b41f9c4dd}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!U\+Int64\+To\+Str@{U\+Int64\+To\+Str}}
+\index{U\+Int64\+To\+Str@{U\+Int64\+To\+Str}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{U\+Int64\+To\+Str()}{UInt64ToStr()}}
+{\footnotesize\ttfamily static void U\+Int64\+To\+Str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}}}]{value,  }\item[{char $\ast$}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{7z_main_8c_a2b9b2f1fc7a3791e8baa534b41f9c4dd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_main_8c_a274be9456470c2eb448757dab6c1c6df}\label{7z_main_8c_a274be9456470c2eb448757dab6c1c6df}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!U\+Int\+To\+Str@{U\+Int\+To\+Str}}
+\index{U\+Int\+To\+Str@{U\+Int\+To\+Str}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{U\+Int\+To\+Str()}{UIntToStr()}}
+{\footnotesize\ttfamily static char$\ast$ U\+Int\+To\+Str (\begin{DoxyParamCaption}\item[{char $\ast$}]{s,  }\item[{unsigned}]{value,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{num\+Digits }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_main_8c_a274be9456470c2eb448757dab6c1c6df_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_main_8c_af615a770e00876aa3014b38ee02b2209}\label{7z_main_8c_af615a770e00876aa3014b38ee02b2209}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!U\+Int\+To\+Str\+\_\+2@{U\+Int\+To\+Str\+\_\+2}}
+\index{U\+Int\+To\+Str\+\_\+2@{U\+Int\+To\+Str\+\_\+2}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{U\+Int\+To\+Str\+\_\+2()}{UIntToStr\_2()}}
+{\footnotesize\ttfamily static void U\+Int\+To\+Str\+\_\+2 (\begin{DoxyParamCaption}\item[{char $\ast$}]{s,  }\item[{unsigned}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_main_8c_af615a770e00876aa3014b38ee02b2209_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_main_8c_a87898f135e6e14a7c2174d1847e2fab9}\label{7z_main_8c_a87898f135e6e14a7c2174d1847e2fab9}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!Utf16\+\_\+\+To\+\_\+\+Char@{Utf16\+\_\+\+To\+\_\+\+Char}}
+\index{Utf16\+\_\+\+To\+\_\+\+Char@{Utf16\+\_\+\+To\+\_\+\+Char}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{Utf16\+\_\+\+To\+\_\+\+Char()}{Utf16\_To\_Char()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Utf16\+\_\+\+To\+\_\+\+Char (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{7z_buf_8h_struct_c_buf}{C\+Buf}} $\ast$}]{buf,  }\item[{const \mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}} $\ast$}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_main_8c_a87898f135e6e14a7c2174d1847e2fab9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_main_8c_a87898f135e6e14a7c2174d1847e2fab9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_main_8c_ae381a3ce59bfeff95ab72f867b494064}\label{7z_main_8c_ae381a3ce59bfeff95ab72f867b494064}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!Utf16\+\_\+\+To\+\_\+\+Utf8@{Utf16\+\_\+\+To\+\_\+\+Utf8}}
+\index{Utf16\+\_\+\+To\+\_\+\+Utf8@{Utf16\+\_\+\+To\+\_\+\+Utf8}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{Utf16\+\_\+\+To\+\_\+\+Utf8()}{Utf16\_To\_Utf8()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}}$\ast$ Utf16\+\_\+\+To\+\_\+\+Utf8 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$}]{dest,  }\item[{const \mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}} $\ast$}]{src,  }\item[{const \mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}} $\ast$}]{src\+Lim }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_main_8c_ae381a3ce59bfeff95ab72f867b494064_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_main_8c_aebb41b8789a0dee2f8ee645738cbd76a}\label{7z_main_8c_aebb41b8789a0dee2f8ee645738cbd76a}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!Utf16\+\_\+\+To\+\_\+\+Utf8\+\_\+\+Calc@{Utf16\+\_\+\+To\+\_\+\+Utf8\+\_\+\+Calc}}
+\index{Utf16\+\_\+\+To\+\_\+\+Utf8\+\_\+\+Calc@{Utf16\+\_\+\+To\+\_\+\+Utf8\+\_\+\+Calc}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{Utf16\+\_\+\+To\+\_\+\+Utf8\+\_\+\+Calc()}{Utf16\_To\_Utf8\_Calc()}}
+{\footnotesize\ttfamily static size\+\_\+t Utf16\+\_\+\+To\+\_\+\+Utf8\+\_\+\+Calc (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}} $\ast$}]{src,  }\item[{const \mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}} $\ast$}]{src\+Lim }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_main_8c_aebb41b8789a0dee2f8ee645738cbd76a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_main_8c_a6fa75cb134eb50ecd677bb5391460d41}\label{7z_main_8c_a6fa75cb134eb50ecd677bb5391460d41}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!Utf16\+\_\+\+To\+\_\+\+Utf8\+Buf@{Utf16\+\_\+\+To\+\_\+\+Utf8\+Buf}}
+\index{Utf16\+\_\+\+To\+\_\+\+Utf8\+Buf@{Utf16\+\_\+\+To\+\_\+\+Utf8\+Buf}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{Utf16\+\_\+\+To\+\_\+\+Utf8\+Buf()}{Utf16\_To\_Utf8Buf()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Utf16\+\_\+\+To\+\_\+\+Utf8\+Buf (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{7z_buf_8h_struct_c_buf}{C\+Buf}} $\ast$}]{dest,  }\item[{const \mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}} $\ast$}]{src,  }\item[{size\+\_\+t}]{src\+Len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_main_8c_a6fa75cb134eb50ecd677bb5391460d41_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_main_8c_a6fa75cb134eb50ecd677bb5391460d41_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{7z_main_8c_aa11f90dfcd0c973a632dead6c4a76140}\label{7z_main_8c_aa11f90dfcd0c973a632dead6c4a76140}} 
+\index{7z\+Main.\+c@{7z\+Main.\+c}!g\+\_\+\+Alloc@{g\+\_\+\+Alloc}}
+\index{g\+\_\+\+Alloc@{g\+\_\+\+Alloc}!7z\+Main.\+c@{7z\+Main.\+c}}
+\subsubsection{\texorpdfstring{g\+\_\+\+Alloc}{g\_Alloc}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} g\+\_\+\+Alloc = \{ \mbox{\hyperlink{_lzma86_enc_8c_aa5eb67bbaed541a0795a758720369b7e}{Sz\+Alloc}}, \mbox{\hyperlink{_lzma86_enc_8c_a8c236bdc930def0eed59b90777a2bab3}{Sz\+Free}} \}\hspace{0.3cm}{\ttfamily [static]}}
+

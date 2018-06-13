@@ -1,0 +1,457 @@
+\hypertarget{table_8c}{}\section{src/util/table.c File Reference}
+\label{table_8c}\index{src/util/table.\+c@{src/util/table.\+c}}
+{\ttfamily \#include $<$mgba-\/util/table.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/hash.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+Include dependency graph for table.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{table_8c_a967d6a04e9b18944ec9fae81483314e8}{L\+I\+S\+T\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+I\+ZE}}~8
+\item 
+\#define \mbox{\hyperlink{table_8c_a194fc451973ed067dd12b925b4bfdd7d}{T\+A\+B\+L\+E\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+I\+ZE}}~8
+\item 
+\#define \mbox{\hyperlink{table_8c_ad9b94580843a5b60b2cc6f49d8174db1}{T\+A\+B\+L\+E\+\_\+\+C\+O\+M\+P\+A\+R\+A\+T\+OR}}(L\+I\+ST,  \mbox{\hyperlink{enough_8c_ada5fcaa4b17f145b3bb9c653ddb25c88}{I\+N\+D\+EX}})~L\+I\+ST-\/$>$list\mbox{[}(\mbox{\hyperlink{enough_8c_ada5fcaa4b17f145b3bb9c653ddb25c88}{I\+N\+D\+EX}})\mbox{]}.key == key
+\item 
+\#define \mbox{\hyperlink{table_8c_a774bf9caf82dc2d694a14bd8fc8fe162}{H\+A\+S\+H\+\_\+\+T\+A\+B\+L\+E\+\_\+\+C\+O\+M\+P\+A\+R\+A\+T\+OR}}(L\+I\+ST,  \mbox{\hyperlink{enough_8c_ada5fcaa4b17f145b3bb9c653ddb25c88}{I\+N\+D\+EX}})~L\+I\+ST-\/$>$list\mbox{[}(\mbox{\hyperlink{enough_8c_ada5fcaa4b17f145b3bb9c653ddb25c88}{I\+N\+D\+EX}})\mbox{]}.key == hash \&\& strncmp(L\+I\+ST-\/$>$list\mbox{[}(\mbox{\hyperlink{enough_8c_ada5fcaa4b17f145b3bb9c653ddb25c88}{I\+N\+D\+EX}})\mbox{]}.string\+Key, key, L\+I\+ST-\/$>$list\mbox{[}(\mbox{\hyperlink{enough_8c_ada5fcaa4b17f145b3bb9c653ddb25c88}{I\+N\+D\+EX}})\mbox{]}.keylen) == 0
+\item 
+\#define \mbox{\hyperlink{table_8c_a8ca38a8a304a28698721d8906ecde4cc}{T\+A\+B\+L\+E\+\_\+\+L\+O\+O\+K\+U\+P\+\_\+\+S\+T\+A\+RT}}(C\+O\+M\+P\+A\+R\+A\+T\+OR,  L\+I\+ST,  K\+EY)
+\item 
+\#define \mbox{\hyperlink{table_8c_a4a5084a430c0e356d18a84c3e6e436bf}{T\+A\+B\+L\+E\+\_\+\+L\+O\+O\+K\+U\+P\+\_\+\+E\+ND}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static struct Table\+List $\ast$ \mbox{\hyperlink{table_8c_a4f847516fa92e6f5fbc191eed8e6b195}{\+\_\+resize\+As\+Needed}} (struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$table, struct Table\+List $\ast$list, uint32\+\_\+t key)
+\item 
+static void \mbox{\hyperlink{table_8c_a9025b77e7d770bb5ded00c7aedb7a9f2}{\+\_\+remove\+Item\+From\+List}} (struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$table, struct Table\+List $\ast$list, size\+\_\+t item)
+\item 
+void \mbox{\hyperlink{table_8c_a45b65a5d4e19ef88f8d6ef4c09d663de}{Table\+Init}} (struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$table, size\+\_\+t initial\+Size, void(deinitializer(void $\ast$)))
+\item 
+void \mbox{\hyperlink{table_8c_a7026fb71d7fa8c066c4f50c9023e02dd}{Table\+Deinit}} (struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$table)
+\item 
+void $\ast$ \mbox{\hyperlink{table_8c_ac38390910ef7646a40baddd4f38aafb9}{Table\+Lookup}} (const struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$table, uint32\+\_\+t key)
+\item 
+void \mbox{\hyperlink{table_8c_ab10d29c06d2dc2b066fcd8642245b17c}{Table\+Insert}} (struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$table, uint32\+\_\+t key, void $\ast$value)
+\item 
+void \mbox{\hyperlink{table_8c_a2a9b3925f40a150730b6f62252944b6b}{Table\+Remove}} (struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$table, uint32\+\_\+t key)
+\item 
+void \mbox{\hyperlink{table_8c_aadd9ba1f8ca1357e1a0edd6735b831d1}{Table\+Clear}} (struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$table)
+\item 
+void \mbox{\hyperlink{table_8c_a1b361448e8ceb3283e62b399e3fdca6f}{Table\+Enumerate}} (const struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$table, void(handler(uint32\+\_\+t key, void $\ast$value, void $\ast$user)), void $\ast$user)
+\item 
+size\+\_\+t \mbox{\hyperlink{table_8c_ab887ec8cbd97bfbc5c2c3762514f46cf}{Table\+Size}} (const struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$table)
+\item 
+void \mbox{\hyperlink{table_8c_a1092cbaa0f727ec15b5b1fc1b7799c45}{Hash\+Table\+Init}} (struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$table, size\+\_\+t initial\+Size, void(deinitializer(void $\ast$)))
+\item 
+void \mbox{\hyperlink{table_8c_a53882b029720ae25d5e09ba5f1319277}{Hash\+Table\+Deinit}} (struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$table)
+\item 
+void $\ast$ \mbox{\hyperlink{table_8c_aa5d660c866d8205455d24b7e85dc155f}{Hash\+Table\+Lookup}} (const struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$table, const char $\ast$key)
+\item 
+void \mbox{\hyperlink{table_8c_a43a27c7ce68ab8beb93060487bc0cb58}{Hash\+Table\+Insert}} (struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$table, const char $\ast$key, void $\ast$value)
+\item 
+void \mbox{\hyperlink{table_8c_aa1fde9779664e6d1a3e677f7a81a359e}{Hash\+Table\+Remove}} (struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$table, const char $\ast$key)
+\item 
+void \mbox{\hyperlink{table_8c_a63813d64ac27bd51eee2c6ca9e58f449}{Hash\+Table\+Clear}} (struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$table)
+\item 
+void \mbox{\hyperlink{table_8c_a00b5019c737ecd69f146e485858f7769}{Hash\+Table\+Enumerate}} (const struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$table, void(handler(const char $\ast$key, void $\ast$value, void $\ast$user)), void $\ast$user)
+\item 
+size\+\_\+t \mbox{\hyperlink{table_8c_a00f8bd16c8e5a73ccf0e916032d04f06}{Hash\+Table\+Size}} (const struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$table)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{table_8c_a774bf9caf82dc2d694a14bd8fc8fe162}\label{table_8c_a774bf9caf82dc2d694a14bd8fc8fe162}} 
+\index{table.\+c@{table.\+c}!H\+A\+S\+H\+\_\+\+T\+A\+B\+L\+E\+\_\+\+C\+O\+M\+P\+A\+R\+A\+T\+OR@{H\+A\+S\+H\+\_\+\+T\+A\+B\+L\+E\+\_\+\+C\+O\+M\+P\+A\+R\+A\+T\+OR}}
+\index{H\+A\+S\+H\+\_\+\+T\+A\+B\+L\+E\+\_\+\+C\+O\+M\+P\+A\+R\+A\+T\+OR@{H\+A\+S\+H\+\_\+\+T\+A\+B\+L\+E\+\_\+\+C\+O\+M\+P\+A\+R\+A\+T\+OR}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{H\+A\+S\+H\+\_\+\+T\+A\+B\+L\+E\+\_\+\+C\+O\+M\+P\+A\+R\+A\+T\+OR}{HASH\_TABLE\_COMPARATOR}}
+{\footnotesize\ttfamily \#define H\+A\+S\+H\+\_\+\+T\+A\+B\+L\+E\+\_\+\+C\+O\+M\+P\+A\+R\+A\+T\+OR(\begin{DoxyParamCaption}\item[{}]{L\+I\+ST,  }\item[{}]{\mbox{\hyperlink{enough_8c_ada5fcaa4b17f145b3bb9c653ddb25c88}{I\+N\+D\+EX}} }\end{DoxyParamCaption})~L\+I\+ST-\/$>$list\mbox{[}(\mbox{\hyperlink{enough_8c_ada5fcaa4b17f145b3bb9c653ddb25c88}{I\+N\+D\+EX}})\mbox{]}.key == hash \&\& strncmp(L\+I\+ST-\/$>$list\mbox{[}(\mbox{\hyperlink{enough_8c_ada5fcaa4b17f145b3bb9c653ddb25c88}{I\+N\+D\+EX}})\mbox{]}.string\+Key, key, L\+I\+ST-\/$>$list\mbox{[}(\mbox{\hyperlink{enough_8c_ada5fcaa4b17f145b3bb9c653ddb25c88}{I\+N\+D\+EX}})\mbox{]}.keylen) == 0}
+
+\mbox{\Hypertarget{table_8c_a967d6a04e9b18944ec9fae81483314e8}\label{table_8c_a967d6a04e9b18944ec9fae81483314e8}} 
+\index{table.\+c@{table.\+c}!L\+I\+S\+T\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+I\+ZE@{L\+I\+S\+T\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+I\+ZE}}
+\index{L\+I\+S\+T\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+I\+ZE@{L\+I\+S\+T\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+I\+ZE}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{L\+I\+S\+T\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+I\+ZE}{LIST\_INITIAL\_SIZE}}
+{\footnotesize\ttfamily \#define L\+I\+S\+T\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+I\+ZE~8}
+
+\mbox{\Hypertarget{table_8c_ad9b94580843a5b60b2cc6f49d8174db1}\label{table_8c_ad9b94580843a5b60b2cc6f49d8174db1}} 
+\index{table.\+c@{table.\+c}!T\+A\+B\+L\+E\+\_\+\+C\+O\+M\+P\+A\+R\+A\+T\+OR@{T\+A\+B\+L\+E\+\_\+\+C\+O\+M\+P\+A\+R\+A\+T\+OR}}
+\index{T\+A\+B\+L\+E\+\_\+\+C\+O\+M\+P\+A\+R\+A\+T\+OR@{T\+A\+B\+L\+E\+\_\+\+C\+O\+M\+P\+A\+R\+A\+T\+OR}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{T\+A\+B\+L\+E\+\_\+\+C\+O\+M\+P\+A\+R\+A\+T\+OR}{TABLE\_COMPARATOR}}
+{\footnotesize\ttfamily \#define T\+A\+B\+L\+E\+\_\+\+C\+O\+M\+P\+A\+R\+A\+T\+OR(\begin{DoxyParamCaption}\item[{}]{L\+I\+ST,  }\item[{}]{\mbox{\hyperlink{enough_8c_ada5fcaa4b17f145b3bb9c653ddb25c88}{I\+N\+D\+EX}} }\end{DoxyParamCaption})~L\+I\+ST-\/$>$list\mbox{[}(\mbox{\hyperlink{enough_8c_ada5fcaa4b17f145b3bb9c653ddb25c88}{I\+N\+D\+EX}})\mbox{]}.key == key}
+
+\mbox{\Hypertarget{table_8c_a194fc451973ed067dd12b925b4bfdd7d}\label{table_8c_a194fc451973ed067dd12b925b4bfdd7d}} 
+\index{table.\+c@{table.\+c}!T\+A\+B\+L\+E\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+I\+ZE@{T\+A\+B\+L\+E\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+I\+ZE}}
+\index{T\+A\+B\+L\+E\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+I\+ZE@{T\+A\+B\+L\+E\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+I\+ZE}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{T\+A\+B\+L\+E\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+I\+ZE}{TABLE\_INITIAL\_SIZE}}
+{\footnotesize\ttfamily \#define T\+A\+B\+L\+E\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+I\+ZE~8}
+
+\mbox{\Hypertarget{table_8c_a4a5084a430c0e356d18a84c3e6e436bf}\label{table_8c_a4a5084a430c0e356d18a84c3e6e436bf}} 
+\index{table.\+c@{table.\+c}!T\+A\+B\+L\+E\+\_\+\+L\+O\+O\+K\+U\+P\+\_\+\+E\+ND@{T\+A\+B\+L\+E\+\_\+\+L\+O\+O\+K\+U\+P\+\_\+\+E\+ND}}
+\index{T\+A\+B\+L\+E\+\_\+\+L\+O\+O\+K\+U\+P\+\_\+\+E\+ND@{T\+A\+B\+L\+E\+\_\+\+L\+O\+O\+K\+U\+P\+\_\+\+E\+ND}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{T\+A\+B\+L\+E\+\_\+\+L\+O\+O\+K\+U\+P\+\_\+\+E\+ND}{TABLE\_LOOKUP\_END}}
+{\footnotesize\ttfamily \#define T\+A\+B\+L\+E\+\_\+\+L\+O\+O\+K\+U\+P\+\_\+\+E\+ND}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{break}; \(\backslash\)
+        \} \(\backslash\)
+    \}
+\end{DoxyCode}
+\mbox{\Hypertarget{table_8c_a8ca38a8a304a28698721d8906ecde4cc}\label{table_8c_a8ca38a8a304a28698721d8906ecde4cc}} 
+\index{table.\+c@{table.\+c}!T\+A\+B\+L\+E\+\_\+\+L\+O\+O\+K\+U\+P\+\_\+\+S\+T\+A\+RT@{T\+A\+B\+L\+E\+\_\+\+L\+O\+O\+K\+U\+P\+\_\+\+S\+T\+A\+RT}}
+\index{T\+A\+B\+L\+E\+\_\+\+L\+O\+O\+K\+U\+P\+\_\+\+S\+T\+A\+RT@{T\+A\+B\+L\+E\+\_\+\+L\+O\+O\+K\+U\+P\+\_\+\+S\+T\+A\+RT}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{T\+A\+B\+L\+E\+\_\+\+L\+O\+O\+K\+U\+P\+\_\+\+S\+T\+A\+RT}{TABLE\_LOOKUP\_START}}
+{\footnotesize\ttfamily \#define T\+A\+B\+L\+E\+\_\+\+L\+O\+O\+K\+U\+P\+\_\+\+S\+T\+A\+RT(\begin{DoxyParamCaption}\item[{}]{C\+O\+M\+P\+A\+R\+A\+T\+OR,  }\item[{}]{L\+I\+ST,  }\item[{}]{K\+EY }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+uint32\_t entry = (KEY) & (table->tableSize - 1); \(\backslash\)
+    LIST = &table->table[entry]; \(\backslash\)
+    size\_t i; \(\backslash\)
+    for (i = 0; i < LIST->nEntries; ++i) \{ \(\backslash\)
+        if (COMPARATOR(LIST, i)) \{ \(\backslash\)
+            struct TableTuple* lookupResult = &LIST->list[i]; \(\backslash\)
+            UNUSED(lookupResult);
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{table_8c_a9025b77e7d770bb5ded00c7aedb7a9f2}\label{table_8c_a9025b77e7d770bb5ded00c7aedb7a9f2}} 
+\index{table.\+c@{table.\+c}!\+\_\+remove\+Item\+From\+List@{\+\_\+remove\+Item\+From\+List}}
+\index{\+\_\+remove\+Item\+From\+List@{\+\_\+remove\+Item\+From\+List}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+remove\+Item\+From\+List()}{\_removeItemFromList()}}
+{\footnotesize\ttfamily static void \+\_\+remove\+Item\+From\+List (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$}]{table,  }\item[{struct Table\+List $\ast$}]{list,  }\item[{size\+\_\+t}]{item }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{table_8c_a9025b77e7d770bb5ded00c7aedb7a9f2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c_a9025b77e7d770bb5ded00c7aedb7a9f2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{table_8c_a4f847516fa92e6f5fbc191eed8e6b195}\label{table_8c_a4f847516fa92e6f5fbc191eed8e6b195}} 
+\index{table.\+c@{table.\+c}!\+\_\+resize\+As\+Needed@{\+\_\+resize\+As\+Needed}}
+\index{\+\_\+resize\+As\+Needed@{\+\_\+resize\+As\+Needed}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+resize\+As\+Needed()}{\_resizeAsNeeded()}}
+{\footnotesize\ttfamily static struct Table\+List$\ast$ \+\_\+resize\+As\+Needed (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$}]{table,  }\item[{struct Table\+List $\ast$}]{list,  }\item[{uint32\+\_\+t}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c_a4f847516fa92e6f5fbc191eed8e6b195_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{table_8c_a63813d64ac27bd51eee2c6ca9e58f449}\label{table_8c_a63813d64ac27bd51eee2c6ca9e58f449}} 
+\index{table.\+c@{table.\+c}!Hash\+Table\+Clear@{Hash\+Table\+Clear}}
+\index{Hash\+Table\+Clear@{Hash\+Table\+Clear}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{Hash\+Table\+Clear()}{HashTableClear()}}
+{\footnotesize\ttfamily void Hash\+Table\+Clear (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$}]{table }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{table_8c_a63813d64ac27bd51eee2c6ca9e58f449_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c_a63813d64ac27bd51eee2c6ca9e58f449_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{table_8c_a53882b029720ae25d5e09ba5f1319277}\label{table_8c_a53882b029720ae25d5e09ba5f1319277}} 
+\index{table.\+c@{table.\+c}!Hash\+Table\+Deinit@{Hash\+Table\+Deinit}}
+\index{Hash\+Table\+Deinit@{Hash\+Table\+Deinit}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{Hash\+Table\+Deinit()}{HashTableDeinit()}}
+{\footnotesize\ttfamily void Hash\+Table\+Deinit (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$}]{table }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c_a53882b029720ae25d5e09ba5f1319277_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c_a53882b029720ae25d5e09ba5f1319277_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{table_8c_a00b5019c737ecd69f146e485858f7769}\label{table_8c_a00b5019c737ecd69f146e485858f7769}} 
+\index{table.\+c@{table.\+c}!Hash\+Table\+Enumerate@{Hash\+Table\+Enumerate}}
+\index{Hash\+Table\+Enumerate@{Hash\+Table\+Enumerate}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{Hash\+Table\+Enumerate()}{HashTableEnumerate()}}
+{\footnotesize\ttfamily void Hash\+Table\+Enumerate (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$}]{table,  }\item[{void(handler(const char $\ast$key, void $\ast$value, void $\ast$user))}]{,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c_a00b5019c737ecd69f146e485858f7769_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{table_8c_a1092cbaa0f727ec15b5b1fc1b7799c45}\label{table_8c_a1092cbaa0f727ec15b5b1fc1b7799c45}} 
+\index{table.\+c@{table.\+c}!Hash\+Table\+Init@{Hash\+Table\+Init}}
+\index{Hash\+Table\+Init@{Hash\+Table\+Init}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{Hash\+Table\+Init()}{HashTableInit()}}
+{\footnotesize\ttfamily void Hash\+Table\+Init (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$}]{table,  }\item[{size\+\_\+t}]{initial\+Size,  }\item[{void(deinitializer(void $\ast$))}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=259pt]{table_8c_a1092cbaa0f727ec15b5b1fc1b7799c45_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c_a1092cbaa0f727ec15b5b1fc1b7799c45_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{table_8c_a43a27c7ce68ab8beb93060487bc0cb58}\label{table_8c_a43a27c7ce68ab8beb93060487bc0cb58}} 
+\index{table.\+c@{table.\+c}!Hash\+Table\+Insert@{Hash\+Table\+Insert}}
+\index{Hash\+Table\+Insert@{Hash\+Table\+Insert}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{Hash\+Table\+Insert()}{HashTableInsert()}}
+{\footnotesize\ttfamily void Hash\+Table\+Insert (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$}]{table,  }\item[{const char $\ast$}]{key,  }\item[{void $\ast$}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c_a43a27c7ce68ab8beb93060487bc0cb58_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c_a43a27c7ce68ab8beb93060487bc0cb58_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{table_8c_aa5d660c866d8205455d24b7e85dc155f}\label{table_8c_aa5d660c866d8205455d24b7e85dc155f}} 
+\index{table.\+c@{table.\+c}!Hash\+Table\+Lookup@{Hash\+Table\+Lookup}}
+\index{Hash\+Table\+Lookup@{Hash\+Table\+Lookup}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{Hash\+Table\+Lookup()}{HashTableLookup()}}
+{\footnotesize\ttfamily void$\ast$ Hash\+Table\+Lookup (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$}]{table,  }\item[{const char $\ast$}]{key }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c_aa5d660c866d8205455d24b7e85dc155f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{table_8c_aa5d660c866d8205455d24b7e85dc155f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{table_8c_aa1fde9779664e6d1a3e677f7a81a359e}\label{table_8c_aa1fde9779664e6d1a3e677f7a81a359e}} 
+\index{table.\+c@{table.\+c}!Hash\+Table\+Remove@{Hash\+Table\+Remove}}
+\index{Hash\+Table\+Remove@{Hash\+Table\+Remove}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{Hash\+Table\+Remove()}{HashTableRemove()}}
+{\footnotesize\ttfamily void Hash\+Table\+Remove (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$}]{table,  }\item[{const char $\ast$}]{key }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c_aa1fde9779664e6d1a3e677f7a81a359e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c_aa1fde9779664e6d1a3e677f7a81a359e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{table_8c_a00f8bd16c8e5a73ccf0e916032d04f06}\label{table_8c_a00f8bd16c8e5a73ccf0e916032d04f06}} 
+\index{table.\+c@{table.\+c}!Hash\+Table\+Size@{Hash\+Table\+Size}}
+\index{Hash\+Table\+Size@{Hash\+Table\+Size}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{Hash\+Table\+Size()}{HashTableSize()}}
+{\footnotesize\ttfamily size\+\_\+t Hash\+Table\+Size (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$}]{table }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{table_8c_aadd9ba1f8ca1357e1a0edd6735b831d1}\label{table_8c_aadd9ba1f8ca1357e1a0edd6735b831d1}} 
+\index{table.\+c@{table.\+c}!Table\+Clear@{Table\+Clear}}
+\index{Table\+Clear@{Table\+Clear}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{Table\+Clear()}{TableClear()}}
+{\footnotesize\ttfamily void Table\+Clear (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$}]{table }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{table_8c_aadd9ba1f8ca1357e1a0edd6735b831d1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c_aadd9ba1f8ca1357e1a0edd6735b831d1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{table_8c_a7026fb71d7fa8c066c4f50c9023e02dd}\label{table_8c_a7026fb71d7fa8c066c4f50c9023e02dd}} 
+\index{table.\+c@{table.\+c}!Table\+Deinit@{Table\+Deinit}}
+\index{Table\+Deinit@{Table\+Deinit}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{Table\+Deinit()}{TableDeinit()}}
+{\footnotesize\ttfamily void Table\+Deinit (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$}]{table }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{table_8c_a7026fb71d7fa8c066c4f50c9023e02dd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c_a7026fb71d7fa8c066c4f50c9023e02dd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{table_8c_a1b361448e8ceb3283e62b399e3fdca6f}\label{table_8c_a1b361448e8ceb3283e62b399e3fdca6f}} 
+\index{table.\+c@{table.\+c}!Table\+Enumerate@{Table\+Enumerate}}
+\index{Table\+Enumerate@{Table\+Enumerate}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{Table\+Enumerate()}{TableEnumerate()}}
+{\footnotesize\ttfamily void Table\+Enumerate (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$}]{table,  }\item[{void(handler(uint32\+\_\+t key, void $\ast$value, void $\ast$user))}]{,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c_a1b361448e8ceb3283e62b399e3fdca6f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{table_8c_a45b65a5d4e19ef88f8d6ef4c09d663de}\label{table_8c_a45b65a5d4e19ef88f8d6ef4c09d663de}} 
+\index{table.\+c@{table.\+c}!Table\+Init@{Table\+Init}}
+\index{Table\+Init@{Table\+Init}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{Table\+Init()}{TableInit()}}
+{\footnotesize\ttfamily void Table\+Init (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$}]{table,  }\item[{size\+\_\+t}]{initial\+Size,  }\item[{void(deinitializer(void $\ast$))}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c_a45b65a5d4e19ef88f8d6ef4c09d663de_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{table_8c_ab10d29c06d2dc2b066fcd8642245b17c}\label{table_8c_ab10d29c06d2dc2b066fcd8642245b17c}} 
+\index{table.\+c@{table.\+c}!Table\+Insert@{Table\+Insert}}
+\index{Table\+Insert@{Table\+Insert}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{Table\+Insert()}{TableInsert()}}
+{\footnotesize\ttfamily void Table\+Insert (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$}]{table,  }\item[{uint32\+\_\+t}]{key,  }\item[{void $\ast$}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{table_8c_ab10d29c06d2dc2b066fcd8642245b17c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c_ab10d29c06d2dc2b066fcd8642245b17c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{table_8c_ac38390910ef7646a40baddd4f38aafb9}\label{table_8c_ac38390910ef7646a40baddd4f38aafb9}} 
+\index{table.\+c@{table.\+c}!Table\+Lookup@{Table\+Lookup}}
+\index{Table\+Lookup@{Table\+Lookup}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{Table\+Lookup()}{TableLookup()}}
+{\footnotesize\ttfamily void$\ast$ Table\+Lookup (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$}]{table,  }\item[{uint32\+\_\+t}]{key }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c_ac38390910ef7646a40baddd4f38aafb9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{table_8c_a2a9b3925f40a150730b6f62252944b6b}\label{table_8c_a2a9b3925f40a150730b6f62252944b6b}} 
+\index{table.\+c@{table.\+c}!Table\+Remove@{Table\+Remove}}
+\index{Table\+Remove@{Table\+Remove}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{Table\+Remove()}{TableRemove()}}
+{\footnotesize\ttfamily void Table\+Remove (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$}]{table,  }\item[{uint32\+\_\+t}]{key }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c_a2a9b3925f40a150730b6f62252944b6b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{table_8c_a2a9b3925f40a150730b6f62252944b6b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{table_8c_ab887ec8cbd97bfbc5c2c3762514f46cf}\label{table_8c_ab887ec8cbd97bfbc5c2c3762514f46cf}} 
+\index{table.\+c@{table.\+c}!Table\+Size@{Table\+Size}}
+\index{Table\+Size@{Table\+Size}!table.\+c@{table.\+c}}
+\subsubsection{\texorpdfstring{Table\+Size()}{TableSize()}}
+{\footnotesize\ttfamily size\+\_\+t Table\+Size (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{sqlite3_8c_aaa5713bb2ecdf81c430009179b806232}{Table}} $\ast$}]{table }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{table_8c_ab887ec8cbd97bfbc5c2c3762514f46cf_icgraph}
+\end{center}
+\end{figure}

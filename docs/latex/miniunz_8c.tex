@@ -1,0 +1,327 @@
+\hypertarget{miniunz_8c}{}\section{src/third-\/party/zlib/contrib/minizip/miniunz.c File Reference}
+\label{miniunz_8c}\index{src/third-\/party/zlib/contrib/minizip/miniunz.\+c@{src/third-\/party/zlib/contrib/minizip/miniunz.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$utime.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}unzip.\+h\char`\"{}}\newline
+Include dependency graph for miniunz.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{miniunz_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{miniunz_8c_aa873b7168492eebce909df8415cac735}{\+\_\+\+\_\+\+U\+S\+E\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T64}}
+\item 
+\#define \mbox{\hyperlink{miniunz_8c_a285ae8236e7a984a6692acf6530cd505}{\+\_\+\+\_\+\+U\+S\+E\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64}}
+\item 
+\#define \mbox{\hyperlink{miniunz_8c_a0e6d20c5075b52b0f0bc4858d51c8591}{\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64\+\_\+\+S\+O\+U\+R\+CE}}
+\item 
+\#define \mbox{\hyperlink{miniunz_8c_ac86701761e1b32d5d7a3358a6c726efa}{\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+B\+IT}}~64
+\item 
+\#define \mbox{\hyperlink{miniunz_8c_a522a01bfc7c0429ab53987e50458fe8c}{F\+O\+P\+E\+N\+\_\+\+F\+U\+NC}}(\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}},  \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})~fopen64(\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}}, \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})
+\item 
+\#define \mbox{\hyperlink{miniunz_8c_ae84e3319767599bbef3ccbdeb4b0a3e4}{F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC}}(\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}})~ftello64(\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}})
+\item 
+\#define \mbox{\hyperlink{miniunz_8c_a0e74e519db7ea2da026a7da7eac65c7c}{F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC}}(\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}},  \mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}},  \mbox{\hyperlink{ioapi_8h_a5f189a59b66f135978bce54f9d0fcade}{origin}})~fseeko64(\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, \mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}}, \mbox{\hyperlink{ioapi_8h_a5f189a59b66f135978bce54f9d0fcade}{origin}})
+\item 
+\#define \mbox{\hyperlink{miniunz_8c_a025b7a799be05748d7635ec50a12d88b}{C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+TY}}~(0)
+\item 
+\#define \mbox{\hyperlink{miniunz_8c_adfe72f5b8aa1cbe610fc54d4e701fee4}{W\+R\+I\+T\+E\+B\+U\+F\+F\+E\+R\+S\+I\+ZE}}~(8192)
+\item 
+\#define \mbox{\hyperlink{miniunz_8c_a0947c0a3d28c188caa4497cce08539c9}{M\+A\+X\+F\+I\+L\+E\+N\+A\+ME}}~(256)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{miniunz_8c_a3de367c55652a8be95824bd90f46dcba}{change\+\_\+file\+\_\+date}} (char $\ast$\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}}, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} dosdate, \mbox{\hyperlink{unzip_8h_a369a14c48c4b71afa6bf6cf95c6b9160}{tm\+\_\+unz}} tmu\+\_\+date) const
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{miniunz_8c_ad0d9e647f30da3250c103414ba12f614}{mymkdir}} (char $\ast$dirname) const
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{miniunz_8c_a9c6519cd0cfaa546c03810d16b47fe95}{makedir}} (char $\ast$newdir)
+\item 
+void \mbox{\hyperlink{miniunz_8c_ac13e8406027ba27328f38a29b8853ee1}{do\+\_\+banner}} ()
+\item 
+void \mbox{\hyperlink{miniunz_8c_a82ccff470e09e8da8a6c92961643c943}{do\+\_\+help}} ()
+\item 
+void \mbox{\hyperlink{miniunz_8c_ae3dee97cf61675df559ed60a88788638}{Display64\+Bits\+Size}} (\mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} \mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} size\+\_\+char)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{miniunz_8c_a593321f3dabdab435ab0832c0fc10c23}{do\+\_\+list}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} uf)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{miniunz_8c_a648b7f2f6b867abadd9f702d9c33ac82}{do\+\_\+extract\+\_\+currentfile}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} uf, const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$popt\+\_\+extract\+\_\+without\+\_\+path, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$popt\+\_\+overwrite, const char $\ast$password)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{miniunz_8c_a6ce8ec76ffe899079cfdbd8184ba31f6}{do\+\_\+extract}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} uf, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} opt\+\_\+extract\+\_\+without\+\_\+path, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} opt\+\_\+overwrite, const char $\ast$password)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{miniunz_8c_a5194c0c88f7a9a180e6550b9ace86b0f}{do\+\_\+extract\+\_\+onefile}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} uf, const char $\ast$\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} opt\+\_\+extract\+\_\+without\+\_\+path, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} opt\+\_\+overwrite, const char $\ast$password)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{miniunz_8c_afced8478b91af5c169926dfa4426333d}{main}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, argv)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{miniunz_8c_aa873b7168492eebce909df8415cac735}\label{miniunz_8c_aa873b7168492eebce909df8415cac735}} 
+\index{miniunz.\+c@{miniunz.\+c}!\+\_\+\+\_\+\+U\+S\+E\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T64@{\+\_\+\+\_\+\+U\+S\+E\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T64}}
+\index{\+\_\+\+\_\+\+U\+S\+E\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T64@{\+\_\+\+\_\+\+U\+S\+E\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T64}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+\+U\+S\+E\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T64}{\_\_USE\_FILE\_OFFSET64}}
+{\footnotesize\ttfamily \#define \+\_\+\+\_\+\+U\+S\+E\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T64}
+
+\mbox{\Hypertarget{miniunz_8c_a285ae8236e7a984a6692acf6530cd505}\label{miniunz_8c_a285ae8236e7a984a6692acf6530cd505}} 
+\index{miniunz.\+c@{miniunz.\+c}!\+\_\+\+\_\+\+U\+S\+E\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64@{\+\_\+\+\_\+\+U\+S\+E\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64}}
+\index{\+\_\+\+\_\+\+U\+S\+E\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64@{\+\_\+\+\_\+\+U\+S\+E\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+\+U\+S\+E\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64}{\_\_USE\_LARGEFILE64}}
+{\footnotesize\ttfamily \#define \+\_\+\+\_\+\+U\+S\+E\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64}
+
+\mbox{\Hypertarget{miniunz_8c_ac86701761e1b32d5d7a3358a6c726efa}\label{miniunz_8c_ac86701761e1b32d5d7a3358a6c726efa}} 
+\index{miniunz.\+c@{miniunz.\+c}!\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+B\+IT@{\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+B\+IT}}
+\index{\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+B\+IT@{\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+B\+IT}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+B\+IT}{\_FILE\_OFFSET\_BIT}}
+{\footnotesize\ttfamily \#define \+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+B\+IT~64}
+
+\mbox{\Hypertarget{miniunz_8c_a0e6d20c5075b52b0f0bc4858d51c8591}\label{miniunz_8c_a0e6d20c5075b52b0f0bc4858d51c8591}} 
+\index{miniunz.\+c@{miniunz.\+c}!\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64\+\_\+\+S\+O\+U\+R\+CE@{\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64\+\_\+\+S\+O\+U\+R\+CE}}
+\index{\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64\+\_\+\+S\+O\+U\+R\+CE@{\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64\+\_\+\+S\+O\+U\+R\+CE}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64\+\_\+\+S\+O\+U\+R\+CE}{\_LARGEFILE64\_SOURCE}}
+{\footnotesize\ttfamily \#define \+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64\+\_\+\+S\+O\+U\+R\+CE}
+
+\mbox{\Hypertarget{miniunz_8c_a025b7a799be05748d7635ec50a12d88b}\label{miniunz_8c_a025b7a799be05748d7635ec50a12d88b}} 
+\index{miniunz.\+c@{miniunz.\+c}!C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+TY@{C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+TY}}
+\index{C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+TY@{C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+TY}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+TY}{CASESENSITIVITY}}
+{\footnotesize\ttfamily \#define C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+TY~(0)}
+
+\mbox{\Hypertarget{miniunz_8c_a522a01bfc7c0429ab53987e50458fe8c}\label{miniunz_8c_a522a01bfc7c0429ab53987e50458fe8c}} 
+\index{miniunz.\+c@{miniunz.\+c}!F\+O\+P\+E\+N\+\_\+\+F\+U\+NC@{F\+O\+P\+E\+N\+\_\+\+F\+U\+NC}}
+\index{F\+O\+P\+E\+N\+\_\+\+F\+U\+NC@{F\+O\+P\+E\+N\+\_\+\+F\+U\+NC}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{F\+O\+P\+E\+N\+\_\+\+F\+U\+NC}{FOPEN\_FUNC}}
+{\footnotesize\ttfamily \#define F\+O\+P\+E\+N\+\_\+\+F\+U\+NC(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}},  }\item[{}]{\mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}} }\end{DoxyParamCaption})~fopen64(\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}}, \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})}
+
+\mbox{\Hypertarget{miniunz_8c_a0e74e519db7ea2da026a7da7eac65c7c}\label{miniunz_8c_a0e74e519db7ea2da026a7da7eac65c7c}} 
+\index{miniunz.\+c@{miniunz.\+c}!F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC@{F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC}}
+\index{F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC@{F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC}{FSEEKO\_FUNC}}
+{\footnotesize\ttfamily \#define F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}},  }\item[{}]{\mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}},  }\item[{}]{\mbox{\hyperlink{ioapi_8h_a5f189a59b66f135978bce54f9d0fcade}{origin}} }\end{DoxyParamCaption})~fseeko64(\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, \mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}}, \mbox{\hyperlink{ioapi_8h_a5f189a59b66f135978bce54f9d0fcade}{origin}})}
+
+\mbox{\Hypertarget{miniunz_8c_ae84e3319767599bbef3ccbdeb4b0a3e4}\label{miniunz_8c_ae84e3319767599bbef3ccbdeb4b0a3e4}} 
+\index{miniunz.\+c@{miniunz.\+c}!F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC@{F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC}}
+\index{F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC@{F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC}{FTELLO\_FUNC}}
+{\footnotesize\ttfamily \#define F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}} }\end{DoxyParamCaption})~ftello64(\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}})}
+
+\mbox{\Hypertarget{miniunz_8c_a0947c0a3d28c188caa4497cce08539c9}\label{miniunz_8c_a0947c0a3d28c188caa4497cce08539c9}} 
+\index{miniunz.\+c@{miniunz.\+c}!M\+A\+X\+F\+I\+L\+E\+N\+A\+ME@{M\+A\+X\+F\+I\+L\+E\+N\+A\+ME}}
+\index{M\+A\+X\+F\+I\+L\+E\+N\+A\+ME@{M\+A\+X\+F\+I\+L\+E\+N\+A\+ME}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{M\+A\+X\+F\+I\+L\+E\+N\+A\+ME}{MAXFILENAME}}
+{\footnotesize\ttfamily \#define M\+A\+X\+F\+I\+L\+E\+N\+A\+ME~(256)}
+
+\mbox{\Hypertarget{miniunz_8c_adfe72f5b8aa1cbe610fc54d4e701fee4}\label{miniunz_8c_adfe72f5b8aa1cbe610fc54d4e701fee4}} 
+\index{miniunz.\+c@{miniunz.\+c}!W\+R\+I\+T\+E\+B\+U\+F\+F\+E\+R\+S\+I\+ZE@{W\+R\+I\+T\+E\+B\+U\+F\+F\+E\+R\+S\+I\+ZE}}
+\index{W\+R\+I\+T\+E\+B\+U\+F\+F\+E\+R\+S\+I\+ZE@{W\+R\+I\+T\+E\+B\+U\+F\+F\+E\+R\+S\+I\+ZE}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{W\+R\+I\+T\+E\+B\+U\+F\+F\+E\+R\+S\+I\+ZE}{WRITEBUFFERSIZE}}
+{\footnotesize\ttfamily \#define W\+R\+I\+T\+E\+B\+U\+F\+F\+E\+R\+S\+I\+ZE~(8192)}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{miniunz_8c_a3de367c55652a8be95824bd90f46dcba}\label{miniunz_8c_a3de367c55652a8be95824bd90f46dcba}} 
+\index{miniunz.\+c@{miniunz.\+c}!change\+\_\+file\+\_\+date@{change\+\_\+file\+\_\+date}}
+\index{change\+\_\+file\+\_\+date@{change\+\_\+file\+\_\+date}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{change\+\_\+file\+\_\+date()}{change\_file\_date()}}
+{\footnotesize\ttfamily void change\+\_\+file\+\_\+date (\begin{DoxyParamCaption}\item[{char $\ast$}]{filename,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{dosdate,  }\item[{\mbox{\hyperlink{unzip_8h_a369a14c48c4b71afa6bf6cf95c6b9160}{tm\+\_\+unz}}}]{tmu\+\_\+date }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{miniunz_8c_a3de367c55652a8be95824bd90f46dcba_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{miniunz_8c_ae3dee97cf61675df559ed60a88788638}\label{miniunz_8c_ae3dee97cf61675df559ed60a88788638}} 
+\index{miniunz.\+c@{miniunz.\+c}!Display64\+Bits\+Size@{Display64\+Bits\+Size}}
+\index{Display64\+Bits\+Size@{Display64\+Bits\+Size}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{Display64\+Bits\+Size()}{Display64BitsSize()}}
+{\footnotesize\ttfamily void Display64\+Bits\+Size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}}}]{n,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{size\+\_\+char }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{miniunz_8c_ae3dee97cf61675df559ed60a88788638_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{miniunz_8c_ac13e8406027ba27328f38a29b8853ee1}\label{miniunz_8c_ac13e8406027ba27328f38a29b8853ee1}} 
+\index{miniunz.\+c@{miniunz.\+c}!do\+\_\+banner@{do\+\_\+banner}}
+\index{do\+\_\+banner@{do\+\_\+banner}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{do\+\_\+banner()}{do\_banner()}}
+{\footnotesize\ttfamily void do\+\_\+banner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{miniunz_8c_ac13e8406027ba27328f38a29b8853ee1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{miniunz_8c_a6ce8ec76ffe899079cfdbd8184ba31f6}\label{miniunz_8c_a6ce8ec76ffe899079cfdbd8184ba31f6}} 
+\index{miniunz.\+c@{miniunz.\+c}!do\+\_\+extract@{do\+\_\+extract}}
+\index{do\+\_\+extract@{do\+\_\+extract}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{do\+\_\+extract()}{do\_extract()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} do\+\_\+extract (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{uf,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{opt\+\_\+extract\+\_\+without\+\_\+path,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{opt\+\_\+overwrite,  }\item[{const char$\ast$}]{password }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{miniunz_8c_a6ce8ec76ffe899079cfdbd8184ba31f6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{miniunz_8c_a6ce8ec76ffe899079cfdbd8184ba31f6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{miniunz_8c_a648b7f2f6b867abadd9f702d9c33ac82}\label{miniunz_8c_a648b7f2f6b867abadd9f702d9c33ac82}} 
+\index{miniunz.\+c@{miniunz.\+c}!do\+\_\+extract\+\_\+currentfile@{do\+\_\+extract\+\_\+currentfile}}
+\index{do\+\_\+extract\+\_\+currentfile@{do\+\_\+extract\+\_\+currentfile}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{do\+\_\+extract\+\_\+currentfile()}{do\_extract\_currentfile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} do\+\_\+extract\+\_\+currentfile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{uf,  }\item[{const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}$\ast$}]{popt\+\_\+extract\+\_\+without\+\_\+path,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}$\ast$}]{popt\+\_\+overwrite,  }\item[{const char$\ast$}]{password }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{miniunz_8c_a648b7f2f6b867abadd9f702d9c33ac82_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{miniunz_8c_a648b7f2f6b867abadd9f702d9c33ac82_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{miniunz_8c_a5194c0c88f7a9a180e6550b9ace86b0f}\label{miniunz_8c_a5194c0c88f7a9a180e6550b9ace86b0f}} 
+\index{miniunz.\+c@{miniunz.\+c}!do\+\_\+extract\+\_\+onefile@{do\+\_\+extract\+\_\+onefile}}
+\index{do\+\_\+extract\+\_\+onefile@{do\+\_\+extract\+\_\+onefile}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{do\+\_\+extract\+\_\+onefile()}{do\_extract\_onefile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} do\+\_\+extract\+\_\+onefile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{uf,  }\item[{const char$\ast$}]{filename,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{opt\+\_\+extract\+\_\+without\+\_\+path,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{opt\+\_\+overwrite,  }\item[{const char$\ast$}]{password }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{miniunz_8c_a5194c0c88f7a9a180e6550b9ace86b0f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{miniunz_8c_a5194c0c88f7a9a180e6550b9ace86b0f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{miniunz_8c_a82ccff470e09e8da8a6c92961643c943}\label{miniunz_8c_a82ccff470e09e8da8a6c92961643c943}} 
+\index{miniunz.\+c@{miniunz.\+c}!do\+\_\+help@{do\+\_\+help}}
+\index{do\+\_\+help@{do\+\_\+help}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{do\+\_\+help()}{do\_help()}}
+{\footnotesize\ttfamily void do\+\_\+help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{miniunz_8c_a82ccff470e09e8da8a6c92961643c943_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{miniunz_8c_a593321f3dabdab435ab0832c0fc10c23}\label{miniunz_8c_a593321f3dabdab435ab0832c0fc10c23}} 
+\index{miniunz.\+c@{miniunz.\+c}!do\+\_\+list@{do\+\_\+list}}
+\index{do\+\_\+list@{do\+\_\+list}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{do\+\_\+list()}{do\_list()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} do\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{uf }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{miniunz_8c_a593321f3dabdab435ab0832c0fc10c23_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{miniunz_8c_a593321f3dabdab435ab0832c0fc10c23_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{miniunz_8c_afced8478b91af5c169926dfa4426333d}\label{miniunz_8c_afced8478b91af5c169926dfa4426333d}} 
+\index{miniunz.\+c@{miniunz.\+c}!main@{main}}
+\index{main@{main}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{argv}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{miniunz_8c_afced8478b91af5c169926dfa4426333d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{miniunz_8c_a9c6519cd0cfaa546c03810d16b47fe95}\label{miniunz_8c_a9c6519cd0cfaa546c03810d16b47fe95}} 
+\index{miniunz.\+c@{miniunz.\+c}!makedir@{makedir}}
+\index{makedir@{makedir}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{makedir()}{makedir()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} makedir (\begin{DoxyParamCaption}\item[{char $\ast$}]{newdir }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{miniunz_8c_a9c6519cd0cfaa546c03810d16b47fe95_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{miniunz_8c_a9c6519cd0cfaa546c03810d16b47fe95_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{miniunz_8c_ad0d9e647f30da3250c103414ba12f614}\label{miniunz_8c_ad0d9e647f30da3250c103414ba12f614}} 
+\index{miniunz.\+c@{miniunz.\+c}!mymkdir@{mymkdir}}
+\index{mymkdir@{mymkdir}!miniunz.\+c@{miniunz.\+c}}
+\subsubsection{\texorpdfstring{mymkdir()}{mymkdir()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} mymkdir (\begin{DoxyParamCaption}\item[{char$\ast$}]{dirname }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{miniunz_8c_ad0d9e647f30da3250c103414ba12f614_icgraph}
+\end{center}
+\end{figure}

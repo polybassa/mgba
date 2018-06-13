@@ -1,0 +1,329 @@
+\hypertarget{gzjoin_8c}{}\section{src/third-\/party/zlib/examples/gzjoin.c File Reference}
+\label{gzjoin_8c}\index{src/third-\/party/zlib/examples/gzjoin.\+c@{src/third-\/party/zlib/examples/gzjoin.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}zlib.\+h\char`\"{}}\newline
+Include dependency graph for gzjoin.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzjoin_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gzjoin_8c_a08023ea6765c99d60a6a3840cd07156e}{local}}~static
+\item 
+\#define \mbox{\hyperlink{gzjoin_8c_a25022864dfc8ec428e7128282e57b136}{C\+H\+U\+NK}}~32768         /$\ast$ must be \mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}} power of two and fit \mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}} unsigned $\ast$/
+\item 
+\#define \mbox{\hyperlink{gzjoin_8c_a08080d1046f9396b99899a15eefba90b}{bget}}(\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}})
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzjoin_8c_a9ee872f7ac6da578c4371ab6ad9e46d6}{bail}} (char $\ast$why1, char $\ast$why2)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{gzjoin_8c_aa96b4a059f8ec01c5d044a87cd9dc7f3}{bclose}} (bin $\ast$\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} bin $\ast$ \mbox{\hyperlink{gzjoin_8c_a1057f62d6438f113a178837aae124b17}{bopen}} (char $\ast$name)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzjoin_8c_aa680d8f13a25b2a173f8a6a648b5d53b}{bload}} (bin $\ast$\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} \mbox{\hyperlink{gzjoin_8c_aba9d03a69de5d40f265b48e14ba9c92e}{bget4}} (bin $\ast$\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{gzjoin_8c_aeabcb42dde2c65eb1f29f998984ff02c}{bskip}} (bin $\ast$\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}, unsigned \mbox{\hyperlink{gzappend_8c_ab3ed01aa0272a6da17923faad217d3bd}{skip}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{gzjoin_8c_a77fdb382c48b884b0e3657c6ae1eb24b}{gzhead}} (bin $\ast$\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{gzjoin_8c_a7cea5ecfdb86820828381809cee72144}{put4}} (unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} val, F\+I\+LE $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{gzjoin_8c_ac5d6f99beca691f34c343dc1885f2641}{zpull}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm, bin $\ast$\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{gzjoin_8c_a245451f6c17c8bb8c10484e45f4918f5}{gzinit}} (unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} $\ast$crc, unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} $\ast$tot, F\+I\+LE $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{gzjoin_8c_a79abcbc6637be647e768103de22ec599}{gzcopy}} (char $\ast$name, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} clr, unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} $\ast$crc, unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} $\ast$tot, F\+I\+LE $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzjoin_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{gzjoin_8c_a08080d1046f9396b99899a15eefba90b}\label{gzjoin_8c_a08080d1046f9396b99899a15eefba90b}} 
+\index{gzjoin.\+c@{gzjoin.\+c}!bget@{bget}}
+\index{bget@{bget}!gzjoin.\+c@{gzjoin.\+c}}
+\subsubsection{\texorpdfstring{bget}{bget}}
+{\footnotesize\ttfamily \#define bget(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+(\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}->left ? 0 : \mbox{\hyperlink{gzjoin_8c_aa680d8f13a25b2a173f8a6a648b5d53b}{bload}}(\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}), \(\backslash\)
+                  in->left ? (\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}->left--, *(\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}->next)++) : \(\backslash\)
+                    bail(\textcolor{stringliteral}{"unexpected end of file on "}, \mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}->name))
+\end{DoxyCode}
+\mbox{\Hypertarget{gzjoin_8c_a25022864dfc8ec428e7128282e57b136}\label{gzjoin_8c_a25022864dfc8ec428e7128282e57b136}} 
+\index{gzjoin.\+c@{gzjoin.\+c}!C\+H\+U\+NK@{C\+H\+U\+NK}}
+\index{C\+H\+U\+NK@{C\+H\+U\+NK}!gzjoin.\+c@{gzjoin.\+c}}
+\subsubsection{\texorpdfstring{C\+H\+U\+NK}{CHUNK}}
+{\footnotesize\ttfamily \#define C\+H\+U\+NK~32768         /$\ast$ must be \mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}} power of two and fit \mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}} unsigned $\ast$/}
+
+\mbox{\Hypertarget{gzjoin_8c_a08023ea6765c99d60a6a3840cd07156e}\label{gzjoin_8c_a08023ea6765c99d60a6a3840cd07156e}} 
+\index{gzjoin.\+c@{gzjoin.\+c}!local@{local}}
+\index{local@{local}!gzjoin.\+c@{gzjoin.\+c}}
+\subsubsection{\texorpdfstring{local}{local}}
+{\footnotesize\ttfamily \#define local~static}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{gzjoin_8c_a9ee872f7ac6da578c4371ab6ad9e46d6}\label{gzjoin_8c_a9ee872f7ac6da578c4371ab6ad9e46d6}} 
+\index{gzjoin.\+c@{gzjoin.\+c}!bail@{bail}}
+\index{bail@{bail}!gzjoin.\+c@{gzjoin.\+c}}
+\subsubsection{\texorpdfstring{bail()}{bail()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} bail (\begin{DoxyParamCaption}\item[{char $\ast$}]{why1,  }\item[{char $\ast$}]{why2 }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzjoin_8c_a9ee872f7ac6da578c4371ab6ad9e46d6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzjoin_8c_aa96b4a059f8ec01c5d044a87cd9dc7f3}\label{gzjoin_8c_aa96b4a059f8ec01c5d044a87cd9dc7f3}} 
+\index{gzjoin.\+c@{gzjoin.\+c}!bclose@{bclose}}
+\index{bclose@{bclose}!gzjoin.\+c@{gzjoin.\+c}}
+\subsubsection{\texorpdfstring{bclose()}{bclose()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void bclose (\begin{DoxyParamCaption}\item[{bin $\ast$}]{in }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzjoin_8c_aa96b4a059f8ec01c5d044a87cd9dc7f3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzjoin_8c_aa96b4a059f8ec01c5d044a87cd9dc7f3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzjoin_8c_aba9d03a69de5d40f265b48e14ba9c92e}\label{gzjoin_8c_aba9d03a69de5d40f265b48e14ba9c92e}} 
+\index{gzjoin.\+c@{gzjoin.\+c}!bget4@{bget4}}
+\index{bget4@{bget4}!gzjoin.\+c@{gzjoin.\+c}}
+\subsubsection{\texorpdfstring{bget4()}{bget4()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} bget4 (\begin{DoxyParamCaption}\item[{bin $\ast$}]{in }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzjoin_8c_aba9d03a69de5d40f265b48e14ba9c92e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{gzjoin_8c_aba9d03a69de5d40f265b48e14ba9c92e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzjoin_8c_aa680d8f13a25b2a173f8a6a648b5d53b}\label{gzjoin_8c_aa680d8f13a25b2a173f8a6a648b5d53b}} 
+\index{gzjoin.\+c@{gzjoin.\+c}!bload@{bload}}
+\index{bload@{bload}!gzjoin.\+c@{gzjoin.\+c}}
+\subsubsection{\texorpdfstring{bload()}{bload()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} bload (\begin{DoxyParamCaption}\item[{bin $\ast$}]{in }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzjoin_8c_aa680d8f13a25b2a173f8a6a648b5d53b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzjoin_8c_aa680d8f13a25b2a173f8a6a648b5d53b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzjoin_8c_a1057f62d6438f113a178837aae124b17}\label{gzjoin_8c_a1057f62d6438f113a178837aae124b17}} 
+\index{gzjoin.\+c@{gzjoin.\+c}!bopen@{bopen}}
+\index{bopen@{bopen}!gzjoin.\+c@{gzjoin.\+c}}
+\subsubsection{\texorpdfstring{bopen()}{bopen()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} bin$\ast$ bopen (\begin{DoxyParamCaption}\item[{char $\ast$}]{name }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzjoin_8c_a1057f62d6438f113a178837aae124b17_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{gzjoin_8c_a1057f62d6438f113a178837aae124b17_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzjoin_8c_aeabcb42dde2c65eb1f29f998984ff02c}\label{gzjoin_8c_aeabcb42dde2c65eb1f29f998984ff02c}} 
+\index{gzjoin.\+c@{gzjoin.\+c}!bskip@{bskip}}
+\index{bskip@{bskip}!gzjoin.\+c@{gzjoin.\+c}}
+\subsubsection{\texorpdfstring{bskip()}{bskip()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void bskip (\begin{DoxyParamCaption}\item[{bin $\ast$}]{in,  }\item[{unsigned}]{skip }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzjoin_8c_aeabcb42dde2c65eb1f29f998984ff02c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzjoin_8c_aeabcb42dde2c65eb1f29f998984ff02c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzjoin_8c_a79abcbc6637be647e768103de22ec599}\label{gzjoin_8c_a79abcbc6637be647e768103de22ec599}} 
+\index{gzjoin.\+c@{gzjoin.\+c}!gzcopy@{gzcopy}}
+\index{gzcopy@{gzcopy}!gzjoin.\+c@{gzjoin.\+c}}
+\subsubsection{\texorpdfstring{gzcopy()}{gzcopy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void gzcopy (\begin{DoxyParamCaption}\item[{char $\ast$}]{name,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{clr,  }\item[{unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} $\ast$}]{crc,  }\item[{unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} $\ast$}]{tot,  }\item[{F\+I\+LE $\ast$}]{out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzjoin_8c_a79abcbc6637be647e768103de22ec599_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{gzjoin_8c_a79abcbc6637be647e768103de22ec599_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzjoin_8c_a77fdb382c48b884b0e3657c6ae1eb24b}\label{gzjoin_8c_a77fdb382c48b884b0e3657c6ae1eb24b}} 
+\index{gzjoin.\+c@{gzjoin.\+c}!gzhead@{gzhead}}
+\index{gzhead@{gzhead}!gzjoin.\+c@{gzjoin.\+c}}
+\subsubsection{\texorpdfstring{gzhead()}{gzhead()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void gzhead (\begin{DoxyParamCaption}\item[{bin $\ast$}]{in }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzjoin_8c_a77fdb382c48b884b0e3657c6ae1eb24b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{gzjoin_8c_a77fdb382c48b884b0e3657c6ae1eb24b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzjoin_8c_a245451f6c17c8bb8c10484e45f4918f5}\label{gzjoin_8c_a245451f6c17c8bb8c10484e45f4918f5}} 
+\index{gzjoin.\+c@{gzjoin.\+c}!gzinit@{gzinit}}
+\index{gzinit@{gzinit}!gzjoin.\+c@{gzjoin.\+c}}
+\subsubsection{\texorpdfstring{gzinit()}{gzinit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void gzinit (\begin{DoxyParamCaption}\item[{unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} $\ast$}]{crc,  }\item[{unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} $\ast$}]{tot,  }\item[{F\+I\+LE $\ast$}]{out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzjoin_8c_a245451f6c17c8bb8c10484e45f4918f5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=201pt]{gzjoin_8c_a245451f6c17c8bb8c10484e45f4918f5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzjoin_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{gzjoin_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{gzjoin.\+c@{gzjoin.\+c}!main@{main}}
+\index{main@{main}!gzjoin.\+c@{gzjoin.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzjoin_8c_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzjoin_8c_a7cea5ecfdb86820828381809cee72144}\label{gzjoin_8c_a7cea5ecfdb86820828381809cee72144}} 
+\index{gzjoin.\+c@{gzjoin.\+c}!put4@{put4}}
+\index{put4@{put4}!gzjoin.\+c@{gzjoin.\+c}}
+\subsubsection{\texorpdfstring{put4()}{put4()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void put4 (\begin{DoxyParamCaption}\item[{unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}}}]{val,  }\item[{F\+I\+LE $\ast$}]{out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzjoin_8c_a7cea5ecfdb86820828381809cee72144_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{gzjoin_8c_a7cea5ecfdb86820828381809cee72144_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzjoin_8c_ac5d6f99beca691f34c343dc1885f2641}\label{gzjoin_8c_ac5d6f99beca691f34c343dc1885f2641}} 
+\index{gzjoin.\+c@{gzjoin.\+c}!zpull@{zpull}}
+\index{zpull@{zpull}!gzjoin.\+c@{gzjoin.\+c}}
+\subsubsection{\texorpdfstring{zpull()}{zpull()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void zpull (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{strm,  }\item[{bin $\ast$}]{in }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzjoin_8c_ac5d6f99beca691f34c343dc1885f2641_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{gzjoin_8c_ac5d6f99beca691f34c343dc1885f2641_icgraph}
+\end{center}
+\end{figure}

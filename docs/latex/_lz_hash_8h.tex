@@ -1,0 +1,171 @@
+\hypertarget{_lz_hash_8h}{}\section{src/third-\/party/lzma/\+Lz\+Hash.h File Reference}
+\label{_lz_hash_8h}\index{src/third-\/party/lzma/\+Lz\+Hash.\+h@{src/third-\/party/lzma/\+Lz\+Hash.\+h}}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{_lz_hash_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_lz_hash_8h_a329be29d9e83d874d5e599eb888698c8}{k\+Hash2\+Size}}~(1 $<$$<$ 10)
+\item 
+\#define \mbox{\hyperlink{_lz_hash_8h_ada485c5ae49b85e8a7e5cced5ddf4f0d}{k\+Hash3\+Size}}~(1 $<$$<$ 16)
+\item 
+\#define \mbox{\hyperlink{_lz_hash_8h_ace07d0e20c2f6629cbf675997fdc5138}{k\+Hash4\+Size}}~(1 $<$$<$ 20)
+\item 
+\#define \mbox{\hyperlink{_lz_hash_8h_a355880a38ccb1f2dd0f79cfcafa4d71a}{k\+Fix3\+Hash\+Size}}~(\mbox{\hyperlink{_lz_hash_8h_a329be29d9e83d874d5e599eb888698c8}{k\+Hash2\+Size}})
+\item 
+\#define \mbox{\hyperlink{_lz_hash_8h_a03a6593a5538236723aa78bfef375a22}{k\+Fix4\+Hash\+Size}}~(\mbox{\hyperlink{_lz_hash_8h_a329be29d9e83d874d5e599eb888698c8}{k\+Hash2\+Size}} + \mbox{\hyperlink{_lz_hash_8h_ada485c5ae49b85e8a7e5cced5ddf4f0d}{k\+Hash3\+Size}})
+\item 
+\#define \mbox{\hyperlink{_lz_hash_8h_aab3eb881347315549f70b18889e4f8b2}{k\+Fix5\+Hash\+Size}}~(\mbox{\hyperlink{_lz_hash_8h_a329be29d9e83d874d5e599eb888698c8}{k\+Hash2\+Size}} + \mbox{\hyperlink{_lz_hash_8h_ada485c5ae49b85e8a7e5cced5ddf4f0d}{k\+Hash3\+Size}} + \mbox{\hyperlink{_lz_hash_8h_ace07d0e20c2f6629cbf675997fdc5138}{k\+Hash4\+Size}})
+\item 
+\#define \mbox{\hyperlink{_lz_hash_8h_a14fc800bc74282a288c410610fa63b60}{H\+A\+S\+H2\+\_\+\+C\+A\+LC}}~hv = cur\mbox{[}0\mbox{]} $\vert$ ((\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}})cur\mbox{[}1\mbox{]} $<$$<$ 8);
+\item 
+\#define \mbox{\hyperlink{_lz_hash_8h_af97f6377522289382ae2d4ede21334f9}{H\+A\+S\+H3\+\_\+\+C\+A\+LC}}
+\item 
+\#define \mbox{\hyperlink{_lz_hash_8h_a7c9301debe19a7ea1b249511723ce335}{H\+A\+S\+H4\+\_\+\+C\+A\+LC}}
+\item 
+\#define \mbox{\hyperlink{_lz_hash_8h_a1c089185352cf9adceb989b6e2a14e3f}{H\+A\+S\+H5\+\_\+\+C\+A\+LC}}
+\item 
+\#define \mbox{\hyperlink{_lz_hash_8h_a48efc9509d9de04deca7c64bc921edf1}{H\+A\+S\+H\+\_\+\+Z\+I\+P\+\_\+\+C\+A\+LC}}~hv = ((cur\mbox{[}2\mbox{]} $\vert$ ((\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}})cur\mbox{[}0\mbox{]} $<$$<$ 8)) $^\wedge$ p-\/$>$crc\mbox{[}cur\mbox{[}1\mbox{]}\mbox{]}) \& 0x\+F\+F\+F\+F;
+\item 
+\#define \mbox{\hyperlink{_lz_hash_8h_ac3a01d7e76f598194ae20b4062be4590}{M\+T\+\_\+\+H\+A\+S\+H2\+\_\+\+C\+A\+LC}}~h2 = (p-\/$>$crc\mbox{[}cur\mbox{[}0\mbox{]}\mbox{]} $^\wedge$ cur\mbox{[}1\mbox{]}) \& (\mbox{\hyperlink{_lz_hash_8h_a329be29d9e83d874d5e599eb888698c8}{k\+Hash2\+Size}} -\/ 1);
+\item 
+\#define \mbox{\hyperlink{_lz_hash_8h_a53d5e20da385b5509e14241478b2eacf}{M\+T\+\_\+\+H\+A\+S\+H3\+\_\+\+C\+A\+LC}}
+\item 
+\#define \mbox{\hyperlink{_lz_hash_8h_ab79a0b78805c357569e6910c64719bbf}{M\+T\+\_\+\+H\+A\+S\+H4\+\_\+\+C\+A\+LC}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_lz_hash_8h_a14fc800bc74282a288c410610fa63b60}\label{_lz_hash_8h_a14fc800bc74282a288c410610fa63b60}} 
+\index{Lz\+Hash.\+h@{Lz\+Hash.\+h}!H\+A\+S\+H2\+\_\+\+C\+A\+LC@{H\+A\+S\+H2\+\_\+\+C\+A\+LC}}
+\index{H\+A\+S\+H2\+\_\+\+C\+A\+LC@{H\+A\+S\+H2\+\_\+\+C\+A\+LC}!Lz\+Hash.\+h@{Lz\+Hash.\+h}}
+\subsubsection{\texorpdfstring{H\+A\+S\+H2\+\_\+\+C\+A\+LC}{HASH2\_CALC}}
+{\footnotesize\ttfamily \#define H\+A\+S\+H2\+\_\+\+C\+A\+LC~hv = cur\mbox{[}0\mbox{]} $\vert$ ((\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}})cur\mbox{[}1\mbox{]} $<$$<$ 8);}
+
+\mbox{\Hypertarget{_lz_hash_8h_af97f6377522289382ae2d4ede21334f9}\label{_lz_hash_8h_af97f6377522289382ae2d4ede21334f9}} 
+\index{Lz\+Hash.\+h@{Lz\+Hash.\+h}!H\+A\+S\+H3\+\_\+\+C\+A\+LC@{H\+A\+S\+H3\+\_\+\+C\+A\+LC}}
+\index{H\+A\+S\+H3\+\_\+\+C\+A\+LC@{H\+A\+S\+H3\+\_\+\+C\+A\+LC}!Lz\+Hash.\+h@{Lz\+Hash.\+h}}
+\subsubsection{\texorpdfstring{H\+A\+S\+H3\+\_\+\+C\+A\+LC}{HASH3\_CALC}}
+{\footnotesize\ttfamily \#define H\+A\+S\+H3\+\_\+\+C\+A\+LC}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\{ \(\backslash\)
+  UInt32 temp = p->crc[cur[0]] ^ cur[1]; \(\backslash\)
+  h2 = temp & (\mbox{\hyperlink{_lz_hash_8h_a329be29d9e83d874d5e599eb888698c8}{kHash2Size}} - 1); \(\backslash\)
+  hv = (temp ^ ((\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}})cur[2] << 8)) & p->hashMask; \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_lz_hash_8h_a7c9301debe19a7ea1b249511723ce335}\label{_lz_hash_8h_a7c9301debe19a7ea1b249511723ce335}} 
+\index{Lz\+Hash.\+h@{Lz\+Hash.\+h}!H\+A\+S\+H4\+\_\+\+C\+A\+LC@{H\+A\+S\+H4\+\_\+\+C\+A\+LC}}
+\index{H\+A\+S\+H4\+\_\+\+C\+A\+LC@{H\+A\+S\+H4\+\_\+\+C\+A\+LC}!Lz\+Hash.\+h@{Lz\+Hash.\+h}}
+\subsubsection{\texorpdfstring{H\+A\+S\+H4\+\_\+\+C\+A\+LC}{HASH4\_CALC}}
+{\footnotesize\ttfamily \#define H\+A\+S\+H4\+\_\+\+C\+A\+LC}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\{ \(\backslash\)
+  UInt32 temp = p->crc[cur[0]] ^ cur[1]; \(\backslash\)
+  h2 = temp & (\mbox{\hyperlink{_lz_hash_8h_a329be29d9e83d874d5e599eb888698c8}{kHash2Size}} - 1); \(\backslash\)
+  temp ^= ((\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}})cur[2] << 8); \(\backslash\)
+  h3 = temp & (\mbox{\hyperlink{_lz_hash_8h_ada485c5ae49b85e8a7e5cced5ddf4f0d}{kHash3Size}} - 1); \(\backslash\)
+  hv = (temp ^ (p->crc[cur[3]] << 5)) & p->hashMask; \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_lz_hash_8h_a1c089185352cf9adceb989b6e2a14e3f}\label{_lz_hash_8h_a1c089185352cf9adceb989b6e2a14e3f}} 
+\index{Lz\+Hash.\+h@{Lz\+Hash.\+h}!H\+A\+S\+H5\+\_\+\+C\+A\+LC@{H\+A\+S\+H5\+\_\+\+C\+A\+LC}}
+\index{H\+A\+S\+H5\+\_\+\+C\+A\+LC@{H\+A\+S\+H5\+\_\+\+C\+A\+LC}!Lz\+Hash.\+h@{Lz\+Hash.\+h}}
+\subsubsection{\texorpdfstring{H\+A\+S\+H5\+\_\+\+C\+A\+LC}{HASH5\_CALC}}
+{\footnotesize\ttfamily \#define H\+A\+S\+H5\+\_\+\+C\+A\+LC}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\{ \(\backslash\)
+  UInt32 temp = p->crc[cur[0]] ^ cur[1]; \(\backslash\)
+  h2 = temp & (\mbox{\hyperlink{_lz_hash_8h_a329be29d9e83d874d5e599eb888698c8}{kHash2Size}} - 1); \(\backslash\)
+  temp ^= ((\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}})cur[2] << 8); \(\backslash\)
+  h3 = temp & (\mbox{\hyperlink{_lz_hash_8h_ada485c5ae49b85e8a7e5cced5ddf4f0d}{kHash3Size}} - 1); \(\backslash\)
+  temp ^= (p->crc[cur[3]] << 5); \(\backslash\)
+  h4 = temp & (\mbox{\hyperlink{_lz_hash_8h_ace07d0e20c2f6629cbf675997fdc5138}{kHash4Size}} - 1); \(\backslash\)
+  hv = (temp ^ (p->crc[cur[4]] << 3)) & p->hashMask; \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_lz_hash_8h_a48efc9509d9de04deca7c64bc921edf1}\label{_lz_hash_8h_a48efc9509d9de04deca7c64bc921edf1}} 
+\index{Lz\+Hash.\+h@{Lz\+Hash.\+h}!H\+A\+S\+H\+\_\+\+Z\+I\+P\+\_\+\+C\+A\+LC@{H\+A\+S\+H\+\_\+\+Z\+I\+P\+\_\+\+C\+A\+LC}}
+\index{H\+A\+S\+H\+\_\+\+Z\+I\+P\+\_\+\+C\+A\+LC@{H\+A\+S\+H\+\_\+\+Z\+I\+P\+\_\+\+C\+A\+LC}!Lz\+Hash.\+h@{Lz\+Hash.\+h}}
+\subsubsection{\texorpdfstring{H\+A\+S\+H\+\_\+\+Z\+I\+P\+\_\+\+C\+A\+LC}{HASH\_ZIP\_CALC}}
+{\footnotesize\ttfamily \#define H\+A\+S\+H\+\_\+\+Z\+I\+P\+\_\+\+C\+A\+LC~hv = ((cur\mbox{[}2\mbox{]} $\vert$ ((\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}})cur\mbox{[}0\mbox{]} $<$$<$ 8)) $^\wedge$ p-\/$>$crc\mbox{[}cur\mbox{[}1\mbox{]}\mbox{]}) \& 0x\+F\+F\+F\+F;}
+
+\mbox{\Hypertarget{_lz_hash_8h_a355880a38ccb1f2dd0f79cfcafa4d71a}\label{_lz_hash_8h_a355880a38ccb1f2dd0f79cfcafa4d71a}} 
+\index{Lz\+Hash.\+h@{Lz\+Hash.\+h}!k\+Fix3\+Hash\+Size@{k\+Fix3\+Hash\+Size}}
+\index{k\+Fix3\+Hash\+Size@{k\+Fix3\+Hash\+Size}!Lz\+Hash.\+h@{Lz\+Hash.\+h}}
+\subsubsection{\texorpdfstring{k\+Fix3\+Hash\+Size}{kFix3HashSize}}
+{\footnotesize\ttfamily \#define k\+Fix3\+Hash\+Size~(\mbox{\hyperlink{_lz_hash_8h_a329be29d9e83d874d5e599eb888698c8}{k\+Hash2\+Size}})}
+
+\mbox{\Hypertarget{_lz_hash_8h_a03a6593a5538236723aa78bfef375a22}\label{_lz_hash_8h_a03a6593a5538236723aa78bfef375a22}} 
+\index{Lz\+Hash.\+h@{Lz\+Hash.\+h}!k\+Fix4\+Hash\+Size@{k\+Fix4\+Hash\+Size}}
+\index{k\+Fix4\+Hash\+Size@{k\+Fix4\+Hash\+Size}!Lz\+Hash.\+h@{Lz\+Hash.\+h}}
+\subsubsection{\texorpdfstring{k\+Fix4\+Hash\+Size}{kFix4HashSize}}
+{\footnotesize\ttfamily \#define k\+Fix4\+Hash\+Size~(\mbox{\hyperlink{_lz_hash_8h_a329be29d9e83d874d5e599eb888698c8}{k\+Hash2\+Size}} + \mbox{\hyperlink{_lz_hash_8h_ada485c5ae49b85e8a7e5cced5ddf4f0d}{k\+Hash3\+Size}})}
+
+\mbox{\Hypertarget{_lz_hash_8h_aab3eb881347315549f70b18889e4f8b2}\label{_lz_hash_8h_aab3eb881347315549f70b18889e4f8b2}} 
+\index{Lz\+Hash.\+h@{Lz\+Hash.\+h}!k\+Fix5\+Hash\+Size@{k\+Fix5\+Hash\+Size}}
+\index{k\+Fix5\+Hash\+Size@{k\+Fix5\+Hash\+Size}!Lz\+Hash.\+h@{Lz\+Hash.\+h}}
+\subsubsection{\texorpdfstring{k\+Fix5\+Hash\+Size}{kFix5HashSize}}
+{\footnotesize\ttfamily \#define k\+Fix5\+Hash\+Size~(\mbox{\hyperlink{_lz_hash_8h_a329be29d9e83d874d5e599eb888698c8}{k\+Hash2\+Size}} + \mbox{\hyperlink{_lz_hash_8h_ada485c5ae49b85e8a7e5cced5ddf4f0d}{k\+Hash3\+Size}} + \mbox{\hyperlink{_lz_hash_8h_ace07d0e20c2f6629cbf675997fdc5138}{k\+Hash4\+Size}})}
+
+\mbox{\Hypertarget{_lz_hash_8h_a329be29d9e83d874d5e599eb888698c8}\label{_lz_hash_8h_a329be29d9e83d874d5e599eb888698c8}} 
+\index{Lz\+Hash.\+h@{Lz\+Hash.\+h}!k\+Hash2\+Size@{k\+Hash2\+Size}}
+\index{k\+Hash2\+Size@{k\+Hash2\+Size}!Lz\+Hash.\+h@{Lz\+Hash.\+h}}
+\subsubsection{\texorpdfstring{k\+Hash2\+Size}{kHash2Size}}
+{\footnotesize\ttfamily \#define k\+Hash2\+Size~(1 $<$$<$ 10)}
+
+\mbox{\Hypertarget{_lz_hash_8h_ada485c5ae49b85e8a7e5cced5ddf4f0d}\label{_lz_hash_8h_ada485c5ae49b85e8a7e5cced5ddf4f0d}} 
+\index{Lz\+Hash.\+h@{Lz\+Hash.\+h}!k\+Hash3\+Size@{k\+Hash3\+Size}}
+\index{k\+Hash3\+Size@{k\+Hash3\+Size}!Lz\+Hash.\+h@{Lz\+Hash.\+h}}
+\subsubsection{\texorpdfstring{k\+Hash3\+Size}{kHash3Size}}
+{\footnotesize\ttfamily \#define k\+Hash3\+Size~(1 $<$$<$ 16)}
+
+\mbox{\Hypertarget{_lz_hash_8h_ace07d0e20c2f6629cbf675997fdc5138}\label{_lz_hash_8h_ace07d0e20c2f6629cbf675997fdc5138}} 
+\index{Lz\+Hash.\+h@{Lz\+Hash.\+h}!k\+Hash4\+Size@{k\+Hash4\+Size}}
+\index{k\+Hash4\+Size@{k\+Hash4\+Size}!Lz\+Hash.\+h@{Lz\+Hash.\+h}}
+\subsubsection{\texorpdfstring{k\+Hash4\+Size}{kHash4Size}}
+{\footnotesize\ttfamily \#define k\+Hash4\+Size~(1 $<$$<$ 20)}
+
+\mbox{\Hypertarget{_lz_hash_8h_ac3a01d7e76f598194ae20b4062be4590}\label{_lz_hash_8h_ac3a01d7e76f598194ae20b4062be4590}} 
+\index{Lz\+Hash.\+h@{Lz\+Hash.\+h}!M\+T\+\_\+\+H\+A\+S\+H2\+\_\+\+C\+A\+LC@{M\+T\+\_\+\+H\+A\+S\+H2\+\_\+\+C\+A\+LC}}
+\index{M\+T\+\_\+\+H\+A\+S\+H2\+\_\+\+C\+A\+LC@{M\+T\+\_\+\+H\+A\+S\+H2\+\_\+\+C\+A\+LC}!Lz\+Hash.\+h@{Lz\+Hash.\+h}}
+\subsubsection{\texorpdfstring{M\+T\+\_\+\+H\+A\+S\+H2\+\_\+\+C\+A\+LC}{MT\_HASH2\_CALC}}
+{\footnotesize\ttfamily \#define M\+T\+\_\+\+H\+A\+S\+H2\+\_\+\+C\+A\+LC~h2 = (p-\/$>$crc\mbox{[}cur\mbox{[}0\mbox{]}\mbox{]} $^\wedge$ cur\mbox{[}1\mbox{]}) \& (\mbox{\hyperlink{_lz_hash_8h_a329be29d9e83d874d5e599eb888698c8}{k\+Hash2\+Size}} -\/ 1);}
+
+\mbox{\Hypertarget{_lz_hash_8h_a53d5e20da385b5509e14241478b2eacf}\label{_lz_hash_8h_a53d5e20da385b5509e14241478b2eacf}} 
+\index{Lz\+Hash.\+h@{Lz\+Hash.\+h}!M\+T\+\_\+\+H\+A\+S\+H3\+\_\+\+C\+A\+LC@{M\+T\+\_\+\+H\+A\+S\+H3\+\_\+\+C\+A\+LC}}
+\index{M\+T\+\_\+\+H\+A\+S\+H3\+\_\+\+C\+A\+LC@{M\+T\+\_\+\+H\+A\+S\+H3\+\_\+\+C\+A\+LC}!Lz\+Hash.\+h@{Lz\+Hash.\+h}}
+\subsubsection{\texorpdfstring{M\+T\+\_\+\+H\+A\+S\+H3\+\_\+\+C\+A\+LC}{MT\_HASH3\_CALC}}
+{\footnotesize\ttfamily \#define M\+T\+\_\+\+H\+A\+S\+H3\+\_\+\+C\+A\+LC}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\{ \(\backslash\)
+  UInt32 temp = p->crc[cur[0]] ^ cur[1]; \(\backslash\)
+  h2 = temp & (\mbox{\hyperlink{_lz_hash_8h_a329be29d9e83d874d5e599eb888698c8}{kHash2Size}} - 1); \(\backslash\)
+  h3 = (temp ^ ((\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}})cur[2] << 8)) & (\mbox{\hyperlink{_lz_hash_8h_ada485c5ae49b85e8a7e5cced5ddf4f0d}{kHash3Size}} - 1); \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_lz_hash_8h_ab79a0b78805c357569e6910c64719bbf}\label{_lz_hash_8h_ab79a0b78805c357569e6910c64719bbf}} 
+\index{Lz\+Hash.\+h@{Lz\+Hash.\+h}!M\+T\+\_\+\+H\+A\+S\+H4\+\_\+\+C\+A\+LC@{M\+T\+\_\+\+H\+A\+S\+H4\+\_\+\+C\+A\+LC}}
+\index{M\+T\+\_\+\+H\+A\+S\+H4\+\_\+\+C\+A\+LC@{M\+T\+\_\+\+H\+A\+S\+H4\+\_\+\+C\+A\+LC}!Lz\+Hash.\+h@{Lz\+Hash.\+h}}
+\subsubsection{\texorpdfstring{M\+T\+\_\+\+H\+A\+S\+H4\+\_\+\+C\+A\+LC}{MT\_HASH4\_CALC}}
+{\footnotesize\ttfamily \#define M\+T\+\_\+\+H\+A\+S\+H4\+\_\+\+C\+A\+LC}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\{ \(\backslash\)
+  UInt32 temp = p->crc[cur[0]] ^ cur[1]; \(\backslash\)
+  h2 = temp & (\mbox{\hyperlink{_lz_hash_8h_a329be29d9e83d874d5e599eb888698c8}{kHash2Size}} - 1); \(\backslash\)
+  temp ^= ((\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}})cur[2] << 8); \(\backslash\)
+  h3 = temp & (\mbox{\hyperlink{_lz_hash_8h_ada485c5ae49b85e8a7e5cced5ddf4f0d}{kHash3Size}} - 1); \(\backslash\)
+  h4 = (temp ^ (p->crc[cur[3]] << 5)) & (\mbox{\hyperlink{_lz_hash_8h_ace07d0e20c2f6629cbf675997fdc5138}{kHash4Size}} - 1); \}
+\end{DoxyCode}

@@ -1,0 +1,118 @@
+\hypertarget{lr35902_2debugger_2memory-debugger_8c}{}\section{src/lr35902/debugger/memory-\/debugger.c File Reference}
+\label{lr35902_2debugger_2memory-debugger_8c}\index{src/lr35902/debugger/memory-\/debugger.\+c@{src/lr35902/debugger/memory-\/debugger.\+c}}
+{\ttfamily \#include $<$mgba/internal/lr35902/debugger/memory-\/debugger.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/debugger/parser.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/lr35902/debugger/debugger.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/math.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for memory-\/debugger.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_2debugger_2memory-debugger_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{lr35902_2debugger_2memory-debugger_8c_ac0a015bae6add1406e70a94743727d6d}{F\+I\+N\+D\+\_\+\+D\+E\+B\+U\+G\+G\+ER}}(D\+E\+B\+U\+G\+G\+ER,  C\+PU)
+\item 
+\#define \mbox{\hyperlink{lr35902_2debugger_2memory-debugger_8c_a476513de7d3b509e146bd83f1b2fa25f}{C\+R\+E\+A\+T\+E\+\_\+\+W\+A\+T\+C\+H\+P\+O\+I\+N\+T\+\_\+\+S\+H\+IM}}(\mbox{\hyperlink{inflate_8h_a164ea0159d5f0b5f12a646f25f99eceaa67bc2ced260a8e43805d2480a785d312}{N\+A\+ME}},  RW,  V\+A\+L\+UE,  R\+E\+T\+U\+RN,  T\+Y\+P\+ES, ...)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{lr35902_2debugger_2memory-debugger_8c_afbc9d616dc0d5cce0c985e3f53fbbff8}{\+\_\+check\+Watchpoints}} (struct L\+R35902\+Debugger $\ast$debugger, uint16\+\_\+t address, struct m\+Debugger\+Entry\+Info $\ast$\mbox{\hyperlink{libretro_8h_a283ad41e4809f9c0ebe736a9861d8a91}{info}}, enum m\+Watchpoint\+Type type, uint8\+\_\+t new\+Value)
+\item 
+void \mbox{\hyperlink{lr35902_2debugger_2memory-debugger_8c_a0bd5023fb705b2c236d1d7d914e065fa}{L\+R35902\+Debugger\+Install\+Memory\+Shim}} (struct L\+R35902\+Debugger $\ast$debugger)
+\item 
+void \mbox{\hyperlink{lr35902_2debugger_2memory-debugger_8c_a2c84c9eab16fbb97967df0f2fd5b7614}{L\+R35902\+Debugger\+Remove\+Memory\+Shim}} (struct L\+R35902\+Debugger $\ast$debugger)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{lr35902_2debugger_2memory-debugger_8c_a476513de7d3b509e146bd83f1b2fa25f}\label{lr35902_2debugger_2memory-debugger_8c_a476513de7d3b509e146bd83f1b2fa25f}} 
+\index{lr35902/debugger/memory-\/debugger.\+c@{lr35902/debugger/memory-\/debugger.\+c}!C\+R\+E\+A\+T\+E\+\_\+\+W\+A\+T\+C\+H\+P\+O\+I\+N\+T\+\_\+\+S\+H\+IM@{C\+R\+E\+A\+T\+E\+\_\+\+W\+A\+T\+C\+H\+P\+O\+I\+N\+T\+\_\+\+S\+H\+IM}}
+\index{C\+R\+E\+A\+T\+E\+\_\+\+W\+A\+T\+C\+H\+P\+O\+I\+N\+T\+\_\+\+S\+H\+IM@{C\+R\+E\+A\+T\+E\+\_\+\+W\+A\+T\+C\+H\+P\+O\+I\+N\+T\+\_\+\+S\+H\+IM}!lr35902/debugger/memory-\/debugger.\+c@{lr35902/debugger/memory-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{C\+R\+E\+A\+T\+E\+\_\+\+W\+A\+T\+C\+H\+P\+O\+I\+N\+T\+\_\+\+S\+H\+IM}{CREATE\_WATCHPOINT\_SHIM}}
+{\footnotesize\ttfamily \#define C\+R\+E\+A\+T\+E\+\_\+\+W\+A\+T\+C\+H\+P\+O\+I\+N\+T\+\_\+\+S\+H\+IM(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{inflate_8h_a164ea0159d5f0b5f12a646f25f99eceaa67bc2ced260a8e43805d2480a785d312}{N\+A\+ME}},  }\item[{}]{RW,  }\item[{}]{V\+A\+L\+UE,  }\item[{}]{R\+E\+T\+U\+RN,  }\item[{}]{T\+Y\+P\+ES,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keyword}{static} RETURN DebuggerShim\_ ## \mbox{\hyperlink{inflate_8h_a164ea0159d5f0b5f12a646f25f99eceaa67bc2ced260a8e43805d2480a785d312}{NAME}} TYPES \{ \(\backslash\)
+        struct LR35902Debugger* debugger; \(\backslash\)
+        FIND\_DEBUGGER(debugger, cpu); \(\backslash\)
+        struct mDebuggerEntryInfo \mbox{\hyperlink{libretro_8h_a283ad41e4809f9c0ebe736a9861d8a91}{info}}; \(\backslash\)
+        if (\mbox{\hyperlink{lr35902_2debugger_2memory-debugger_8c_afbc9d616dc0d5cce0c985e3f53fbbff8}{\_checkWatchpoints}}(debugger, address, &\mbox{\hyperlink{libretro_8h_structretro__game__info}{info}}, WATCHPOINT\_ ## RW, VALUE)) \{ \(\backslash\)
+            mDebuggerEnter(debugger->d.p, DEBUGGER\_ENTER\_WATCHPOINT, &\mbox{\hyperlink{libretro_8h_structretro__game__info}{info}}); \(\backslash\)
+        \} \(\backslash\)
+        return debugger->originalMemory.NAME(cpu, \_\_VA\_ARGS\_\_); \(\backslash\)
+    \}
+\end{DoxyCode}
+\mbox{\Hypertarget{lr35902_2debugger_2memory-debugger_8c_ac0a015bae6add1406e70a94743727d6d}\label{lr35902_2debugger_2memory-debugger_8c_ac0a015bae6add1406e70a94743727d6d}} 
+\index{lr35902/debugger/memory-\/debugger.\+c@{lr35902/debugger/memory-\/debugger.\+c}!F\+I\+N\+D\+\_\+\+D\+E\+B\+U\+G\+G\+ER@{F\+I\+N\+D\+\_\+\+D\+E\+B\+U\+G\+G\+ER}}
+\index{F\+I\+N\+D\+\_\+\+D\+E\+B\+U\+G\+G\+ER@{F\+I\+N\+D\+\_\+\+D\+E\+B\+U\+G\+G\+ER}!lr35902/debugger/memory-\/debugger.\+c@{lr35902/debugger/memory-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{F\+I\+N\+D\+\_\+\+D\+E\+B\+U\+G\+G\+ER}{FIND\_DEBUGGER}}
+{\footnotesize\ttfamily \#define F\+I\+N\+D\+\_\+\+D\+E\+B\+U\+G\+G\+ER(\begin{DoxyParamCaption}\item[{}]{D\+E\+B\+U\+G\+G\+ER,  }\item[{}]{C\+PU }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        DEBUGGER = 0; \(\backslash\)
+        size\_t i; \(\backslash\)
+        for (i = 0; i < CPU->numComponents; ++i) \{ \(\backslash\)
+            if (CPU->components[i]->id == \mbox{\hyperlink{debugger_2debugger_8c_ae33c11549450a32642dcb0452471a22a}{DEBUGGER\_ID}}) \{ \(\backslash\)
+                DEBUGGER = (\textcolor{keyword}{struct }LR35902Debugger*) ((\textcolor{keyword}{struct} mDebugger*) cpu->components[i])->platform; \(\backslash\)
+                goto debuggerFound; \(\backslash\)
+            \} \(\backslash\)
+        \} \(\backslash\)
+        abort(); \(\backslash\)
+        debuggerFound: \textcolor{keywordflow}{break}; \(\backslash\)
+    \} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{lr35902_2debugger_2memory-debugger_8c_afbc9d616dc0d5cce0c985e3f53fbbff8}\label{lr35902_2debugger_2memory-debugger_8c_afbc9d616dc0d5cce0c985e3f53fbbff8}} 
+\index{lr35902/debugger/memory-\/debugger.\+c@{lr35902/debugger/memory-\/debugger.\+c}!\+\_\+check\+Watchpoints@{\+\_\+check\+Watchpoints}}
+\index{\+\_\+check\+Watchpoints@{\+\_\+check\+Watchpoints}!lr35902/debugger/memory-\/debugger.\+c@{lr35902/debugger/memory-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+check\+Watchpoints()}{\_checkWatchpoints()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+check\+Watchpoints (\begin{DoxyParamCaption}\item[{struct L\+R35902\+Debugger $\ast$}]{debugger,  }\item[{uint16\+\_\+t}]{address,  }\item[{struct m\+Debugger\+Entry\+Info $\ast$}]{info,  }\item[{enum m\+Watchpoint\+Type}]{type,  }\item[{uint8\+\_\+t}]{new\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_2debugger_2memory-debugger_8c_afbc9d616dc0d5cce0c985e3f53fbbff8_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lr35902_2debugger_2memory-debugger_8c_a0bd5023fb705b2c236d1d7d914e065fa}\label{lr35902_2debugger_2memory-debugger_8c_a0bd5023fb705b2c236d1d7d914e065fa}} 
+\index{lr35902/debugger/memory-\/debugger.\+c@{lr35902/debugger/memory-\/debugger.\+c}!L\+R35902\+Debugger\+Install\+Memory\+Shim@{L\+R35902\+Debugger\+Install\+Memory\+Shim}}
+\index{L\+R35902\+Debugger\+Install\+Memory\+Shim@{L\+R35902\+Debugger\+Install\+Memory\+Shim}!lr35902/debugger/memory-\/debugger.\+c@{lr35902/debugger/memory-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{L\+R35902\+Debugger\+Install\+Memory\+Shim()}{LR35902DebuggerInstallMemoryShim()}}
+{\footnotesize\ttfamily void L\+R35902\+Debugger\+Install\+Memory\+Shim (\begin{DoxyParamCaption}\item[{struct L\+R35902\+Debugger $\ast$}]{debugger }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_2debugger_2memory-debugger_8c_a0bd5023fb705b2c236d1d7d914e065fa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lr35902_2debugger_2memory-debugger_8c_a2c84c9eab16fbb97967df0f2fd5b7614}\label{lr35902_2debugger_2memory-debugger_8c_a2c84c9eab16fbb97967df0f2fd5b7614}} 
+\index{lr35902/debugger/memory-\/debugger.\+c@{lr35902/debugger/memory-\/debugger.\+c}!L\+R35902\+Debugger\+Remove\+Memory\+Shim@{L\+R35902\+Debugger\+Remove\+Memory\+Shim}}
+\index{L\+R35902\+Debugger\+Remove\+Memory\+Shim@{L\+R35902\+Debugger\+Remove\+Memory\+Shim}!lr35902/debugger/memory-\/debugger.\+c@{lr35902/debugger/memory-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{L\+R35902\+Debugger\+Remove\+Memory\+Shim()}{LR35902DebuggerRemoveMemoryShim()}}
+{\footnotesize\ttfamily void L\+R35902\+Debugger\+Remove\+Memory\+Shim (\begin{DoxyParamCaption}\item[{struct L\+R35902\+Debugger $\ast$}]{debugger }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_2debugger_2memory-debugger_8c_a2c84c9eab16fbb97967df0f2fd5b7614_icgraph}
+\end{center}
+\end{figure}

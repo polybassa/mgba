@@ -1,0 +1,698 @@
+\hypertarget{hardware_8c}{}\section{src/gba/hardware.c File Reference}
+\label{hardware_8c}\index{src/gba/hardware.\+c@{src/gba/hardware.\+c}}
+{\ttfamily \#include $<$mgba/internal/gba/hardware.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/arm/macros.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/io.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/serialize.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/formatting.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/hash.\+h$>$}\newline
+Include dependency graph for hardware.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{hardware_8c_a98558b68012261633e6317c726c08cea}{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}} (G\+B\+A\+\_\+\+HW, \char`\"{}G\+BA Pak Hardware\char`\"{}, \char`\"{}gba.\+hardware\char`\"{})
+\item 
+static void \mbox{\hyperlink{hardware_8c_a27f61711edec80f2ba776f1310bd1a71}{\+\_\+read\+Pins}} (struct G\+B\+A\+Cartridge\+Hardware $\ast$hw)
+\item 
+static void \mbox{\hyperlink{hardware_8c_a2a63d88745d98d763171873ec0e0ce81}{\+\_\+output\+Pins}} (struct G\+B\+A\+Cartridge\+Hardware $\ast$hw, unsigned pins)
+\item 
+static void \mbox{\hyperlink{hardware_8c_a33054af74e031fdce82371e8d1348453}{\+\_\+rtc\+Read\+Pins}} (struct G\+B\+A\+Cartridge\+Hardware $\ast$hw)
+\item 
+static unsigned \mbox{\hyperlink{hardware_8c_a2a938753262cdae2e36c9efe7b598ef7}{\+\_\+rtc\+Output}} (struct G\+B\+A\+Cartridge\+Hardware $\ast$hw)
+\item 
+static void \mbox{\hyperlink{hardware_8c_a8103ebb49c07b869f4ee091db4c4177f}{\+\_\+rtc\+Process\+Byte}} (struct G\+B\+A\+Cartridge\+Hardware $\ast$hw)
+\item 
+static void \mbox{\hyperlink{hardware_8c_abb8570299546c24ce9665475ae0135c0}{\+\_\+rtc\+Update\+Clock}} (struct G\+B\+A\+Cartridge\+Hardware $\ast$hw)
+\item 
+static unsigned \mbox{\hyperlink{hardware_8c_a1d7756dd0289ba6be8430762b771687d}{\+\_\+rtc\+B\+CD}} (unsigned value)
+\item 
+static \mbox{\hyperlink{__builder_8h_afbab2fa83a411ded31f77ed022c20218}{time\+\_\+t}} \mbox{\hyperlink{hardware_8c_a4632e48dc50d1fecf5e9d0075c2fea06}{\+\_\+rtc\+Generic\+Callback}} (struct m\+R\+T\+C\+Source $\ast$source)
+\item 
+static void \mbox{\hyperlink{hardware_8c_a0ba452abf2cdd8cfdf5a0b73ba856c72}{\+\_\+gyro\+Read\+Pins}} (struct G\+B\+A\+Cartridge\+Hardware $\ast$hw)
+\item 
+static void \mbox{\hyperlink{hardware_8c_a8511449a11da42ca8582c4a77dc455f3}{\+\_\+rumble\+Read\+Pins}} (struct G\+B\+A\+Cartridge\+Hardware $\ast$hw)
+\item 
+static void \mbox{\hyperlink{hardware_8c_ad483d27e39fced00d3ea2fd0aac25d6c}{\+\_\+light\+Read\+Pins}} (struct G\+B\+A\+Cartridge\+Hardware $\ast$hw)
+\item 
+static uint16\+\_\+t \mbox{\hyperlink{hardware_8c_a5b9213311986d1d46444cee2e7008446}{\+\_\+gbp\+Read}} (struct m\+Key\+Callback $\ast$)
+\item 
+static uint16\+\_\+t \mbox{\hyperlink{hardware_8c_a3b35f3934539c83e19baee31d742cd23}{\+\_\+gbp\+Sio\+Write\+Register}} (struct G\+B\+A\+S\+I\+O\+Driver $\ast$driver, uint32\+\_\+t address, uint16\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{hardware_8c_a662bb06375a1439587a3274dc9f292f2}{\+\_\+gbp\+Sio\+Process\+Events}} (struct m\+Timing $\ast$timing, void $\ast$user, uint32\+\_\+t cycles\+Late)
+\item 
+void \mbox{\hyperlink{hardware_8c_a59989de7486f12123180083ecde3a335}{G\+B\+A\+Hardware\+Init}} (struct G\+B\+A\+Cartridge\+Hardware $\ast$hw, uint16\+\_\+t $\ast$base)
+\item 
+void \mbox{\hyperlink{hardware_8c_a3d9314630f74a6b0f70b476b008da719}{G\+B\+A\+Hardware\+Clear}} (struct G\+B\+A\+Cartridge\+Hardware $\ast$hw)
+\item 
+void \mbox{\hyperlink{hardware_8c_a3727cd09750d69db2f47074df882b1e1}{G\+B\+A\+Hardware\+G\+P\+I\+O\+Write}} (struct G\+B\+A\+Cartridge\+Hardware $\ast$hw, uint32\+\_\+t address, uint16\+\_\+t value)
+\item 
+void \mbox{\hyperlink{hardware_8c_ab7606b24a662bba52bfe3e757f4e4e02}{G\+B\+A\+Hardware\+Init\+R\+TC}} (struct G\+B\+A\+Cartridge\+Hardware $\ast$hw)
+\item 
+void \mbox{\hyperlink{hardware_8c_a996c0b8b73ad9a795c39ee4e658d4ac9}{G\+B\+A\+R\+T\+C\+Generic\+Source\+Init}} (struct G\+B\+A\+R\+T\+C\+Generic\+Source $\ast$rtc, struct G\+BA $\ast$gba)
+\item 
+void \mbox{\hyperlink{hardware_8c_acddd561d40cd136566b10ae1c8b245ec}{G\+B\+A\+Hardware\+Init\+Gyro}} (struct G\+B\+A\+Cartridge\+Hardware $\ast$hw)
+\item 
+void \mbox{\hyperlink{hardware_8c_a46efcff736b780bc007ec14ab87906b2}{G\+B\+A\+Hardware\+Init\+Rumble}} (struct G\+B\+A\+Cartridge\+Hardware $\ast$hw)
+\item 
+void \mbox{\hyperlink{hardware_8c_aa7a7f1da1582d1a176e3f67528afda16}{G\+B\+A\+Hardware\+Init\+Light}} (struct G\+B\+A\+Cartridge\+Hardware $\ast$hw)
+\item 
+void \mbox{\hyperlink{hardware_8c_a339fa571700bed6fe5f1b68772f65a29}{G\+B\+A\+Hardware\+Init\+Tilt}} (struct G\+B\+A\+Cartridge\+Hardware $\ast$hw)
+\item 
+void \mbox{\hyperlink{hardware_8c_a34bf6b872ff26889899d284580cf9294}{G\+B\+A\+Hardware\+Tilt\+Write}} (struct G\+B\+A\+Cartridge\+Hardware $\ast$hw, uint32\+\_\+t address, uint8\+\_\+t value)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{hardware_8c_a7d857aa736bedbdae7dc0af69c659aae}{G\+B\+A\+Hardware\+Tilt\+Read}} (struct G\+B\+A\+Cartridge\+Hardware $\ast$hw, uint32\+\_\+t address)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{hardware_8c_a78915003b9ed6feae28847ba11058977}{G\+B\+A\+Hardware\+Player\+Check\+Screen}} (const struct G\+B\+A\+Video $\ast$video)
+\item 
+void \mbox{\hyperlink{hardware_8c_adb3bcbc22612eb64f410ef6a87cc089e}{G\+B\+A\+Hardware\+Player\+Update}} (struct G\+BA $\ast$gba)
+\item 
+void \mbox{\hyperlink{hardware_8c_ac792c85ef37c153c7ca4ac01fc1d6f66}{G\+B\+A\+Hardware\+Serialize}} (const struct G\+B\+A\+Cartridge\+Hardware $\ast$hw, struct G\+B\+A\+Serialized\+State $\ast$state)
+\item 
+void \mbox{\hyperlink{hardware_8c_a6534d31e23e1453b163c56baaf928c89}{G\+B\+A\+Hardware\+Deserialize}} (struct G\+B\+A\+Cartridge\+Hardware $\ast$hw, const struct G\+B\+A\+Serialized\+State $\ast$state)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{hardware_8c_a0a609f7094ddc7686806cd62eb9ef8ba}{G\+B\+A\+\_\+\+L\+U\+X\+\_\+\+L\+E\+V\+E\+LS}} \mbox{[}10\mbox{]} = \{ 5, 11, 18, 27, 42, 62, 84, 109, 139, 183 \}
+\item 
+static const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{hardware_8c_aae4025aaae2af34f2a2190585e823ed7}{R\+T\+C\+\_\+\+B\+Y\+T\+ES}} \mbox{[}8\mbox{]}
+\item 
+static const uint16\+\_\+t \mbox{\hyperlink{hardware_8c_a8fb5c2eb3d8d6b9b8287d1f9d1df6162}{\+\_\+logo\+Palette}} \mbox{[}$\,$\mbox{]}
+\item 
+static const uint32\+\_\+t \mbox{\hyperlink{hardware_8c_abb4634072f96fd6f43e2365db1d86ad9}{\+\_\+logo\+Hash}} = 0x\+E\+E\+D\+A6963
+\item 
+static const uint32\+\_\+t \mbox{\hyperlink{hardware_8c_ae21eb9beb69f09b8420f83cdef3b1157}{\+\_\+gbp\+Tx\+Data}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{hardware_8c_a5b9213311986d1d46444cee2e7008446}\label{hardware_8c_a5b9213311986d1d46444cee2e7008446}} 
+\index{hardware.\+c@{hardware.\+c}!\+\_\+gbp\+Read@{\+\_\+gbp\+Read}}
+\index{\+\_\+gbp\+Read@{\+\_\+gbp\+Read}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+gbp\+Read()}{\_gbpRead()}}
+{\footnotesize\ttfamily uint16\+\_\+t \+\_\+gbp\+Read (\begin{DoxyParamCaption}\item[{struct m\+Key\+Callback $\ast$}]{callback }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a5b9213311986d1d46444cee2e7008446_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a662bb06375a1439587a3274dc9f292f2}\label{hardware_8c_a662bb06375a1439587a3274dc9f292f2}} 
+\index{hardware.\+c@{hardware.\+c}!\+\_\+gbp\+Sio\+Process\+Events@{\+\_\+gbp\+Sio\+Process\+Events}}
+\index{\+\_\+gbp\+Sio\+Process\+Events@{\+\_\+gbp\+Sio\+Process\+Events}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+gbp\+Sio\+Process\+Events()}{\_gbpSioProcessEvents()}}
+{\footnotesize\ttfamily void \+\_\+gbp\+Sio\+Process\+Events (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing,  }\item[{void $\ast$}]{user,  }\item[{uint32\+\_\+t}]{cycles\+Late }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a662bb06375a1439587a3274dc9f292f2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a662bb06375a1439587a3274dc9f292f2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a3b35f3934539c83e19baee31d742cd23}\label{hardware_8c_a3b35f3934539c83e19baee31d742cd23}} 
+\index{hardware.\+c@{hardware.\+c}!\+\_\+gbp\+Sio\+Write\+Register@{\+\_\+gbp\+Sio\+Write\+Register}}
+\index{\+\_\+gbp\+Sio\+Write\+Register@{\+\_\+gbp\+Sio\+Write\+Register}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+gbp\+Sio\+Write\+Register()}{\_gbpSioWriteRegister()}}
+{\footnotesize\ttfamily uint16\+\_\+t \+\_\+gbp\+Sio\+Write\+Register (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+S\+I\+O\+Driver $\ast$}]{driver,  }\item[{uint32\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a3b35f3934539c83e19baee31d742cd23_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a3b35f3934539c83e19baee31d742cd23_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a0ba452abf2cdd8cfdf5a0b73ba856c72}\label{hardware_8c_a0ba452abf2cdd8cfdf5a0b73ba856c72}} 
+\index{hardware.\+c@{hardware.\+c}!\+\_\+gyro\+Read\+Pins@{\+\_\+gyro\+Read\+Pins}}
+\index{\+\_\+gyro\+Read\+Pins@{\+\_\+gyro\+Read\+Pins}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+gyro\+Read\+Pins()}{\_gyroReadPins()}}
+{\footnotesize\ttfamily void \+\_\+gyro\+Read\+Pins (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{hardware_8c_a0ba452abf2cdd8cfdf5a0b73ba856c72_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a0ba452abf2cdd8cfdf5a0b73ba856c72_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_ad483d27e39fced00d3ea2fd0aac25d6c}\label{hardware_8c_ad483d27e39fced00d3ea2fd0aac25d6c}} 
+\index{hardware.\+c@{hardware.\+c}!\+\_\+light\+Read\+Pins@{\+\_\+light\+Read\+Pins}}
+\index{\+\_\+light\+Read\+Pins@{\+\_\+light\+Read\+Pins}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+light\+Read\+Pins()}{\_lightReadPins()}}
+{\footnotesize\ttfamily void \+\_\+light\+Read\+Pins (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{hardware_8c_ad483d27e39fced00d3ea2fd0aac25d6c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_ad483d27e39fced00d3ea2fd0aac25d6c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a2a63d88745d98d763171873ec0e0ce81}\label{hardware_8c_a2a63d88745d98d763171873ec0e0ce81}} 
+\index{hardware.\+c@{hardware.\+c}!\+\_\+output\+Pins@{\+\_\+output\+Pins}}
+\index{\+\_\+output\+Pins@{\+\_\+output\+Pins}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+output\+Pins()}{\_outputPins()}}
+{\footnotesize\ttfamily void \+\_\+output\+Pins (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw,  }\item[{unsigned}]{pins }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a2a63d88745d98d763171873ec0e0ce81_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a27f61711edec80f2ba776f1310bd1a71}\label{hardware_8c_a27f61711edec80f2ba776f1310bd1a71}} 
+\index{hardware.\+c@{hardware.\+c}!\+\_\+read\+Pins@{\+\_\+read\+Pins}}
+\index{\+\_\+read\+Pins@{\+\_\+read\+Pins}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Pins()}{\_readPins()}}
+{\footnotesize\ttfamily void \+\_\+read\+Pins (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a27f61711edec80f2ba776f1310bd1a71_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a27f61711edec80f2ba776f1310bd1a71_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a1d7756dd0289ba6be8430762b771687d}\label{hardware_8c_a1d7756dd0289ba6be8430762b771687d}} 
+\index{hardware.\+c@{hardware.\+c}!\+\_\+rtc\+B\+CD@{\+\_\+rtc\+B\+CD}}
+\index{\+\_\+rtc\+B\+CD@{\+\_\+rtc\+B\+CD}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+rtc\+B\+C\+D()}{\_rtcBCD()}}
+{\footnotesize\ttfamily unsigned \+\_\+rtc\+B\+CD (\begin{DoxyParamCaption}\item[{unsigned}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a1d7756dd0289ba6be8430762b771687d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a4632e48dc50d1fecf5e9d0075c2fea06}\label{hardware_8c_a4632e48dc50d1fecf5e9d0075c2fea06}} 
+\index{hardware.\+c@{hardware.\+c}!\+\_\+rtc\+Generic\+Callback@{\+\_\+rtc\+Generic\+Callback}}
+\index{\+\_\+rtc\+Generic\+Callback@{\+\_\+rtc\+Generic\+Callback}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+rtc\+Generic\+Callback()}{\_rtcGenericCallback()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{__builder_8h_afbab2fa83a411ded31f77ed022c20218}{time\+\_\+t}} \+\_\+rtc\+Generic\+Callback (\begin{DoxyParamCaption}\item[{struct m\+R\+T\+C\+Source $\ast$}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a4632e48dc50d1fecf5e9d0075c2fea06_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a2a938753262cdae2e36c9efe7b598ef7}\label{hardware_8c_a2a938753262cdae2e36c9efe7b598ef7}} 
+\index{hardware.\+c@{hardware.\+c}!\+\_\+rtc\+Output@{\+\_\+rtc\+Output}}
+\index{\+\_\+rtc\+Output@{\+\_\+rtc\+Output}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+rtc\+Output()}{\_rtcOutput()}}
+{\footnotesize\ttfamily unsigned \+\_\+rtc\+Output (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a2a938753262cdae2e36c9efe7b598ef7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a8103ebb49c07b869f4ee091db4c4177f}\label{hardware_8c_a8103ebb49c07b869f4ee091db4c4177f}} 
+\index{hardware.\+c@{hardware.\+c}!\+\_\+rtc\+Process\+Byte@{\+\_\+rtc\+Process\+Byte}}
+\index{\+\_\+rtc\+Process\+Byte@{\+\_\+rtc\+Process\+Byte}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+rtc\+Process\+Byte()}{\_rtcProcessByte()}}
+{\footnotesize\ttfamily void \+\_\+rtc\+Process\+Byte (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a8103ebb49c07b869f4ee091db4c4177f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a8103ebb49c07b869f4ee091db4c4177f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a33054af74e031fdce82371e8d1348453}\label{hardware_8c_a33054af74e031fdce82371e8d1348453}} 
+\index{hardware.\+c@{hardware.\+c}!\+\_\+rtc\+Read\+Pins@{\+\_\+rtc\+Read\+Pins}}
+\index{\+\_\+rtc\+Read\+Pins@{\+\_\+rtc\+Read\+Pins}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+rtc\+Read\+Pins()}{\_rtcReadPins()}}
+{\footnotesize\ttfamily void \+\_\+rtc\+Read\+Pins (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a33054af74e031fdce82371e8d1348453_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a33054af74e031fdce82371e8d1348453_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_abb8570299546c24ce9665475ae0135c0}\label{hardware_8c_abb8570299546c24ce9665475ae0135c0}} 
+\index{hardware.\+c@{hardware.\+c}!\+\_\+rtc\+Update\+Clock@{\+\_\+rtc\+Update\+Clock}}
+\index{\+\_\+rtc\+Update\+Clock@{\+\_\+rtc\+Update\+Clock}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+rtc\+Update\+Clock()}{\_rtcUpdateClock()}}
+{\footnotesize\ttfamily void \+\_\+rtc\+Update\+Clock (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{hardware_8c_abb8570299546c24ce9665475ae0135c0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_abb8570299546c24ce9665475ae0135c0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a8511449a11da42ca8582c4a77dc455f3}\label{hardware_8c_a8511449a11da42ca8582c4a77dc455f3}} 
+\index{hardware.\+c@{hardware.\+c}!\+\_\+rumble\+Read\+Pins@{\+\_\+rumble\+Read\+Pins}}
+\index{\+\_\+rumble\+Read\+Pins@{\+\_\+rumble\+Read\+Pins}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+rumble\+Read\+Pins()}{\_rumbleReadPins()}}
+{\footnotesize\ttfamily void \+\_\+rumble\+Read\+Pins (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a8511449a11da42ca8582c4a77dc455f3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a3d9314630f74a6b0f70b476b008da719}\label{hardware_8c_a3d9314630f74a6b0f70b476b008da719}} 
+\index{hardware.\+c@{hardware.\+c}!G\+B\+A\+Hardware\+Clear@{G\+B\+A\+Hardware\+Clear}}
+\index{G\+B\+A\+Hardware\+Clear@{G\+B\+A\+Hardware\+Clear}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Hardware\+Clear()}{GBAHardwareClear()}}
+{\footnotesize\ttfamily void G\+B\+A\+Hardware\+Clear (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{hardware_8c_a3d9314630f74a6b0f70b476b008da719_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a3d9314630f74a6b0f70b476b008da719_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a6534d31e23e1453b163c56baaf928c89}\label{hardware_8c_a6534d31e23e1453b163c56baaf928c89}} 
+\index{hardware.\+c@{hardware.\+c}!G\+B\+A\+Hardware\+Deserialize@{G\+B\+A\+Hardware\+Deserialize}}
+\index{G\+B\+A\+Hardware\+Deserialize@{G\+B\+A\+Hardware\+Deserialize}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Hardware\+Deserialize()}{GBAHardwareDeserialize()}}
+{\footnotesize\ttfamily void G\+B\+A\+Hardware\+Deserialize (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw,  }\item[{const struct G\+B\+A\+Serialized\+State $\ast$}]{state }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a6534d31e23e1453b163c56baaf928c89_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a6534d31e23e1453b163c56baaf928c89_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a3727cd09750d69db2f47074df882b1e1}\label{hardware_8c_a3727cd09750d69db2f47074df882b1e1}} 
+\index{hardware.\+c@{hardware.\+c}!G\+B\+A\+Hardware\+G\+P\+I\+O\+Write@{G\+B\+A\+Hardware\+G\+P\+I\+O\+Write}}
+\index{G\+B\+A\+Hardware\+G\+P\+I\+O\+Write@{G\+B\+A\+Hardware\+G\+P\+I\+O\+Write}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Hardware\+G\+P\+I\+O\+Write()}{GBAHardwareGPIOWrite()}}
+{\footnotesize\ttfamily void G\+B\+A\+Hardware\+G\+P\+I\+O\+Write (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw,  }\item[{uint32\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a3727cd09750d69db2f47074df882b1e1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a3727cd09750d69db2f47074df882b1e1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a59989de7486f12123180083ecde3a335}\label{hardware_8c_a59989de7486f12123180083ecde3a335}} 
+\index{hardware.\+c@{hardware.\+c}!G\+B\+A\+Hardware\+Init@{G\+B\+A\+Hardware\+Init}}
+\index{G\+B\+A\+Hardware\+Init@{G\+B\+A\+Hardware\+Init}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Hardware\+Init()}{GBAHardwareInit()}}
+{\footnotesize\ttfamily void G\+B\+A\+Hardware\+Init (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw,  }\item[{uint16\+\_\+t $\ast$}]{base }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a59989de7486f12123180083ecde3a335_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a59989de7486f12123180083ecde3a335_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_acddd561d40cd136566b10ae1c8b245ec}\label{hardware_8c_acddd561d40cd136566b10ae1c8b245ec}} 
+\index{hardware.\+c@{hardware.\+c}!G\+B\+A\+Hardware\+Init\+Gyro@{G\+B\+A\+Hardware\+Init\+Gyro}}
+\index{G\+B\+A\+Hardware\+Init\+Gyro@{G\+B\+A\+Hardware\+Init\+Gyro}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Hardware\+Init\+Gyro()}{GBAHardwareInitGyro()}}
+{\footnotesize\ttfamily void G\+B\+A\+Hardware\+Init\+Gyro (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_acddd561d40cd136566b10ae1c8b245ec_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_aa7a7f1da1582d1a176e3f67528afda16}\label{hardware_8c_aa7a7f1da1582d1a176e3f67528afda16}} 
+\index{hardware.\+c@{hardware.\+c}!G\+B\+A\+Hardware\+Init\+Light@{G\+B\+A\+Hardware\+Init\+Light}}
+\index{G\+B\+A\+Hardware\+Init\+Light@{G\+B\+A\+Hardware\+Init\+Light}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Hardware\+Init\+Light()}{GBAHardwareInitLight()}}
+{\footnotesize\ttfamily void G\+B\+A\+Hardware\+Init\+Light (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_aa7a7f1da1582d1a176e3f67528afda16_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_ab7606b24a662bba52bfe3e757f4e4e02}\label{hardware_8c_ab7606b24a662bba52bfe3e757f4e4e02}} 
+\index{hardware.\+c@{hardware.\+c}!G\+B\+A\+Hardware\+Init\+R\+TC@{G\+B\+A\+Hardware\+Init\+R\+TC}}
+\index{G\+B\+A\+Hardware\+Init\+R\+TC@{G\+B\+A\+Hardware\+Init\+R\+TC}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Hardware\+Init\+R\+T\+C()}{GBAHardwareInitRTC()}}
+{\footnotesize\ttfamily void G\+B\+A\+Hardware\+Init\+R\+TC (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_ab7606b24a662bba52bfe3e757f4e4e02_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a46efcff736b780bc007ec14ab87906b2}\label{hardware_8c_a46efcff736b780bc007ec14ab87906b2}} 
+\index{hardware.\+c@{hardware.\+c}!G\+B\+A\+Hardware\+Init\+Rumble@{G\+B\+A\+Hardware\+Init\+Rumble}}
+\index{G\+B\+A\+Hardware\+Init\+Rumble@{G\+B\+A\+Hardware\+Init\+Rumble}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Hardware\+Init\+Rumble()}{GBAHardwareInitRumble()}}
+{\footnotesize\ttfamily void G\+B\+A\+Hardware\+Init\+Rumble (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a46efcff736b780bc007ec14ab87906b2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a339fa571700bed6fe5f1b68772f65a29}\label{hardware_8c_a339fa571700bed6fe5f1b68772f65a29}} 
+\index{hardware.\+c@{hardware.\+c}!G\+B\+A\+Hardware\+Init\+Tilt@{G\+B\+A\+Hardware\+Init\+Tilt}}
+\index{G\+B\+A\+Hardware\+Init\+Tilt@{G\+B\+A\+Hardware\+Init\+Tilt}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Hardware\+Init\+Tilt()}{GBAHardwareInitTilt()}}
+{\footnotesize\ttfamily void G\+B\+A\+Hardware\+Init\+Tilt (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a339fa571700bed6fe5f1b68772f65a29_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a78915003b9ed6feae28847ba11058977}\label{hardware_8c_a78915003b9ed6feae28847ba11058977}} 
+\index{hardware.\+c@{hardware.\+c}!G\+B\+A\+Hardware\+Player\+Check\+Screen@{G\+B\+A\+Hardware\+Player\+Check\+Screen}}
+\index{G\+B\+A\+Hardware\+Player\+Check\+Screen@{G\+B\+A\+Hardware\+Player\+Check\+Screen}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Hardware\+Player\+Check\+Screen()}{GBAHardwarePlayerCheckScreen()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+A\+Hardware\+Player\+Check\+Screen (\begin{DoxyParamCaption}\item[{const struct G\+B\+A\+Video $\ast$}]{video }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a78915003b9ed6feae28847ba11058977_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a78915003b9ed6feae28847ba11058977_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_adb3bcbc22612eb64f410ef6a87cc089e}\label{hardware_8c_adb3bcbc22612eb64f410ef6a87cc089e}} 
+\index{hardware.\+c@{hardware.\+c}!G\+B\+A\+Hardware\+Player\+Update@{G\+B\+A\+Hardware\+Player\+Update}}
+\index{G\+B\+A\+Hardware\+Player\+Update@{G\+B\+A\+Hardware\+Player\+Update}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Hardware\+Player\+Update()}{GBAHardwarePlayerUpdate()}}
+{\footnotesize\ttfamily void G\+B\+A\+Hardware\+Player\+Update (\begin{DoxyParamCaption}\item[{struct G\+BA $\ast$}]{gba }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_adb3bcbc22612eb64f410ef6a87cc089e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_adb3bcbc22612eb64f410ef6a87cc089e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_ac792c85ef37c153c7ca4ac01fc1d6f66}\label{hardware_8c_ac792c85ef37c153c7ca4ac01fc1d6f66}} 
+\index{hardware.\+c@{hardware.\+c}!G\+B\+A\+Hardware\+Serialize@{G\+B\+A\+Hardware\+Serialize}}
+\index{G\+B\+A\+Hardware\+Serialize@{G\+B\+A\+Hardware\+Serialize}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Hardware\+Serialize()}{GBAHardwareSerialize()}}
+{\footnotesize\ttfamily void G\+B\+A\+Hardware\+Serialize (\begin{DoxyParamCaption}\item[{const struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw,  }\item[{struct G\+B\+A\+Serialized\+State $\ast$}]{state }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_ac792c85ef37c153c7ca4ac01fc1d6f66_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_ac792c85ef37c153c7ca4ac01fc1d6f66_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a7d857aa736bedbdae7dc0af69c659aae}\label{hardware_8c_a7d857aa736bedbdae7dc0af69c659aae}} 
+\index{hardware.\+c@{hardware.\+c}!G\+B\+A\+Hardware\+Tilt\+Read@{G\+B\+A\+Hardware\+Tilt\+Read}}
+\index{G\+B\+A\+Hardware\+Tilt\+Read@{G\+B\+A\+Hardware\+Tilt\+Read}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Hardware\+Tilt\+Read()}{GBAHardwareTiltRead()}}
+{\footnotesize\ttfamily uint8\+\_\+t G\+B\+A\+Hardware\+Tilt\+Read (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw,  }\item[{uint32\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a7d857aa736bedbdae7dc0af69c659aae_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a34bf6b872ff26889899d284580cf9294}\label{hardware_8c_a34bf6b872ff26889899d284580cf9294}} 
+\index{hardware.\+c@{hardware.\+c}!G\+B\+A\+Hardware\+Tilt\+Write@{G\+B\+A\+Hardware\+Tilt\+Write}}
+\index{G\+B\+A\+Hardware\+Tilt\+Write@{G\+B\+A\+Hardware\+Tilt\+Write}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Hardware\+Tilt\+Write()}{GBAHardwareTiltWrite()}}
+{\footnotesize\ttfamily void G\+B\+A\+Hardware\+Tilt\+Write (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cartridge\+Hardware $\ast$}]{hw,  }\item[{uint32\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a34bf6b872ff26889899d284580cf9294_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a996c0b8b73ad9a795c39ee4e658d4ac9}\label{hardware_8c_a996c0b8b73ad9a795c39ee4e658d4ac9}} 
+\index{hardware.\+c@{hardware.\+c}!G\+B\+A\+R\+T\+C\+Generic\+Source\+Init@{G\+B\+A\+R\+T\+C\+Generic\+Source\+Init}}
+\index{G\+B\+A\+R\+T\+C\+Generic\+Source\+Init@{G\+B\+A\+R\+T\+C\+Generic\+Source\+Init}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+R\+T\+C\+Generic\+Source\+Init()}{GBARTCGenericSourceInit()}}
+{\footnotesize\ttfamily void G\+B\+A\+R\+T\+C\+Generic\+Source\+Init (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+R\+T\+C\+Generic\+Source $\ast$}]{rtc,  }\item[{struct G\+BA $\ast$}]{gba }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{hardware_8c_a996c0b8b73ad9a795c39ee4e658d4ac9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{hardware_8c_a98558b68012261633e6317c726c08cea}\label{hardware_8c_a98558b68012261633e6317c726c08cea}} 
+\index{hardware.\+c@{hardware.\+c}!m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}}
+\index{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+R\+Y()}{mLOG\_DEFINE\_CATEGORY()}}
+{\footnotesize\ttfamily m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY (\begin{DoxyParamCaption}\item[{G\+B\+A\+\_\+\+HW}]{,  }\item[{\char`\"{}G\+BA Pak Hardware\char`\"{}}]{,  }\item[{\char`\"{}gba.\+hardware\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{hardware_8c_ae21eb9beb69f09b8420f83cdef3b1157}\label{hardware_8c_ae21eb9beb69f09b8420f83cdef3b1157}} 
+\index{hardware.\+c@{hardware.\+c}!\+\_\+gbp\+Tx\+Data@{\+\_\+gbp\+Tx\+Data}}
+\index{\+\_\+gbp\+Tx\+Data@{\+\_\+gbp\+Tx\+Data}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+gbp\+Tx\+Data}{\_gbpTxData}}
+{\footnotesize\ttfamily const uint32\+\_\+t \+\_\+gbp\+Tx\+Data\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    0x0000494E, 0x0000494E,
+    0xB6B1494E, 0xB6B1544E,
+    0xABB1544E, 0xABB14E45,
+    0xB1BA4E45, 0xB1BA4F44,
+    0xB0BB4F44, 0xB0BB8002,
+    0x10000010, 0x20000013,
+    0x30000003
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{hardware_8c_abb4634072f96fd6f43e2365db1d86ad9}\label{hardware_8c_abb4634072f96fd6f43e2365db1d86ad9}} 
+\index{hardware.\+c@{hardware.\+c}!\+\_\+logo\+Hash@{\+\_\+logo\+Hash}}
+\index{\+\_\+logo\+Hash@{\+\_\+logo\+Hash}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+logo\+Hash}{\_logoHash}}
+{\footnotesize\ttfamily const uint32\+\_\+t \+\_\+logo\+Hash = 0x\+E\+E\+D\+A6963\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{hardware_8c_a8fb5c2eb3d8d6b9b8287d1f9d1df6162}\label{hardware_8c_a8fb5c2eb3d8d6b9b8287d1f9d1df6162}} 
+\index{hardware.\+c@{hardware.\+c}!\+\_\+logo\+Palette@{\+\_\+logo\+Palette}}
+\index{\+\_\+logo\+Palette@{\+\_\+logo\+Palette}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+logo\+Palette}{\_logoPalette}}
+{\footnotesize\ttfamily const uint16\+\_\+t \+\_\+logo\+Palette\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    0xFFDF, 0x640C, 0xE40C, 0xE42D, 0x644E, 0xE44E, 0xE46E, 0x68AF,
+    0xE8B0, 0x68D0, 0x68F0, 0x6911, 0xE911, 0x6D32, 0xED32, 0xED73,
+    0x6D93, 0xED94, 0x6DB4, 0xF1D5, 0x71F5, 0xF1F6, 0x7216, 0x7257,
+    0xF657, 0x7678, 0xF678, 0xF699, 0xF6B9, 0x76D9, 0xF6DA, 0x7B1B,
+    0xFB1B, 0xFB3C, 0x7B5C, 0x7B7D, 0xFF7D, 0x7F9D, 0x7FBE, 0x7FFF,
+    0x642D, 0x648E, 0xE88F, 0xE8F1, 0x6D52, 0x6D73, 0xF1B4, 0xF216,
+    0x7237, 0x7698, 0x7AFA, 0xFAFA, 0xFB5C, 0xFFBE, 0x7FDE, 0xFFFF,
+    0xFFFF, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{hardware_8c_a0a609f7094ddc7686806cd62eb9ef8ba}\label{hardware_8c_a0a609f7094ddc7686806cd62eb9ef8ba}} 
+\index{hardware.\+c@{hardware.\+c}!G\+B\+A\+\_\+\+L\+U\+X\+\_\+\+L\+E\+V\+E\+LS@{G\+B\+A\+\_\+\+L\+U\+X\+\_\+\+L\+E\+V\+E\+LS}}
+\index{G\+B\+A\+\_\+\+L\+U\+X\+\_\+\+L\+E\+V\+E\+LS@{G\+B\+A\+\_\+\+L\+U\+X\+\_\+\+L\+E\+V\+E\+LS}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+\_\+\+L\+U\+X\+\_\+\+L\+E\+V\+E\+LS}{GBA\_LUX\_LEVELS}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} G\+B\+A\+\_\+\+L\+U\+X\+\_\+\+L\+E\+V\+E\+LS\mbox{[}10\mbox{]} = \{ 5, 11, 18, 27, 42, 62, 84, 109, 139, 183 \}}
+
+\mbox{\Hypertarget{hardware_8c_aae4025aaae2af34f2a2190585e823ed7}\label{hardware_8c_aae4025aaae2af34f2a2190585e823ed7}} 
+\index{hardware.\+c@{hardware.\+c}!R\+T\+C\+\_\+\+B\+Y\+T\+ES@{R\+T\+C\+\_\+\+B\+Y\+T\+ES}}
+\index{R\+T\+C\+\_\+\+B\+Y\+T\+ES@{R\+T\+C\+\_\+\+B\+Y\+T\+ES}!hardware.\+c@{hardware.\+c}}
+\subsubsection{\texorpdfstring{R\+T\+C\+\_\+\+B\+Y\+T\+ES}{RTC\_BYTES}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} R\+T\+C\+\_\+\+B\+Y\+T\+ES\mbox{[}8\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    0, 
+    0, 
+    7, 
+    0, 
+    1, 
+    0, 
+    3, 
+    0 
+\}
+\end{DoxyCode}

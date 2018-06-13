@@ -1,0 +1,632 @@
+\hypertarget{inflate_8c}{}\section{src/third-\/party/zlib/inflate.c File Reference}
+\label{inflate_8c}\index{src/third-\/party/zlib/inflate.\+c@{src/third-\/party/zlib/inflate.\+c}}
+{\ttfamily \#include \char`\"{}zutil.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}inftrees.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}inflate.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}inffast.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}inffixed.\+h\char`\"{}}\newline
+Include dependency graph for inflate.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{inflate_8c_a5eea7ffd1fff4fbea834bcb292d1bea2}{U\+P\+D\+A\+TE}}(check,  \mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},  len)~(state-\/$>$\mbox{\hyperlink{lr35902_2decoder_8c_a11f29eea941556f0630cfd3285f565c0}{flags}} ? \mbox{\hyperlink{util_2crc32_8c_a0bdd14723a2507e6465c44ca5d9dc364}{crc32}}(check, \mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, len) \+: \mbox{\hyperlink{adler32_8c_a86607743a4b76949b24cf5cc2f01a40d}{adler32}}(check, \mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, len))
+\item 
+\#define \mbox{\hyperlink{inflate_8c_a2bdde00539008d4c1be6f9d29f0e4bd0}{C\+R\+C2}}(check,  word)
+\item 
+\#define \mbox{\hyperlink{inflate_8c_a57c65b3c2ffdfe37b805b749a2c5fdbe}{C\+R\+C4}}(check,  word)
+\item 
+\#define \mbox{\hyperlink{inflate_8c_a03dae42536f97b08183620a910f9b204}{L\+O\+AD}}()
+\item 
+\#define \mbox{\hyperlink{inflate_8c_af3b6db2fe8b54bb9edf88c2002e4bf34}{R\+E\+S\+T\+O\+RE}}()
+\item 
+\#define \mbox{\hyperlink{inflate_8c_a3ffcbdd4824c339e07ea67dd412636fd}{I\+N\+I\+T\+B\+I\+TS}}()
+\item 
+\#define \mbox{\hyperlink{inflate_8c_add54302c739466e0e4a204fa1015694b}{P\+U\+L\+L\+B\+Y\+TE}}()
+\item 
+\#define \mbox{\hyperlink{inflate_8c_ab3731a4aa4bb04481dc95069bbfb7156}{N\+E\+E\+D\+B\+I\+TS}}(\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})
+\item 
+\#define \mbox{\hyperlink{inflate_8c_a5967693540f086cfa357f68978bf0be7}{B\+I\+TS}}(\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})~((unsigned)hold \& ((1\+U $<$$<$ (n)) -\/ 1))
+\item 
+\#define \mbox{\hyperlink{inflate_8c_a65312e68bdf918e606b0deaf69793523}{D\+R\+O\+P\+B\+I\+TS}}(\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})
+\item 
+\#define \mbox{\hyperlink{inflate_8c_aa1e478b107abaccc428d6266ea5ca595}{B\+Y\+T\+E\+B\+I\+TS}}()
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{inflate_8c_a4493a4d633ce7f2dd463edc3a9bce72f}{fixedtables}} \mbox{\hyperlink{inflate_8c_a53ea906bc5582e6dcc143b749202cfef}{OF}} ((struct \mbox{\hyperlink{inflate_8h_structinflate__state}{inflate\+\_\+state}} F\+AR $\ast$state))
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{inflate_8c_abac7d2a1c1331a2bfe2ad4dc53a0787d}{updatewindow}} \mbox{\hyperlink{inflate_8c_a6f69356d24d36b9b118df32a5bad3a17}{OF}} ((\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm, const unsigned char F\+AR $\ast$end, unsigned copy))
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} unsigned \mbox{\hyperlink{inflate_8c_a4b61e4d1ecb446f14fa32c7da0cfb55e}{syncsearch}} \mbox{\hyperlink{inflate_8c_a267b37b42d592ebe7aee3f15db8b96c9}{OF}} ((unsigned F\+AR $\ast$have, const unsigned char F\+AR $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, unsigned len))
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{inflate_8c_a999219816122f73a0e1af7191ad91146}{inflate\+Reset\+Keep}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{inflate_8c_adb02c2100f9179f4075b220395b1553c}{inflate\+Reset}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{inflate_8c_af5a145c15cfb580ef24ce3fc4d292a02}{inflate\+Reset2}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} window\+Bits)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{inflate_8c_aa87e80daa481d931b2d4d414769d432a}{inflate\+Init2\+\_\+}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} window\+Bits, const char $\ast$\mbox{\hyperlink{commandline_8c_a77c86c2f67610437b2fd6182ded85bd2}{version}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} stream\+\_\+size)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{inflate_8c_aed01e9084fe1ed4d8808bbcf525dfe63}{inflate\+Init\+\_\+}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm, const char $\ast$\mbox{\hyperlink{commandline_8c_a77c86c2f67610437b2fd6182ded85bd2}{version}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} stream\+\_\+size)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{inflate_8c_a67fe72a5001252fee87757fa6a215d61}{inflate\+Prime}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{puff_8c_af23433d9d58fb31d4a1ac224e3bc46e8}{bits}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} value)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{inflate_8c_a4493a4d633ce7f2dd463edc3a9bce72f}{fixedtables}} (struct \mbox{\hyperlink{inflate_8h_structinflate__state}{inflate\+\_\+state}} F\+AR $\ast$state)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{inflate_8c_abac7d2a1c1331a2bfe2ad4dc53a0787d}{updatewindow}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm, const Bytef $\ast$end, unsigned copy)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{inflate_8c_a9a49cf8b6ce882dea33505b0ac84ecef}{inflate}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} flush)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{inflate_8c_aed3136bc8afc3ef309b731b4ad724534}{inflate\+End}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{inflate_8c_a2f6a2c3d1472e476adc01c2d634c0212}{inflate\+Get\+Dictionary}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm, Bytef $\ast$\mbox{\hyperlink{zlib_2test_2example_8c_a050a02a0902aa81571331f8b3b876deb}{dictionary}}, u\+Int $\ast$dict\+Length)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{inflate_8c_a0e7de2db7d65e00a99bea217653b152e}{inflate\+Set\+Dictionary}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm, const Bytef $\ast$\mbox{\hyperlink{zlib_2test_2example_8c_a050a02a0902aa81571331f8b3b876deb}{dictionary}}, u\+Int dict\+Length)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{inflate_8c_a7a24a91914357dc95ee94bb30fe2ba57}{inflate\+Get\+Header}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm, \mbox{\hyperlink{zlib_8h_a40e9dcc294796d99b25e98fb06477fc8}{gz\+\_\+headerp}} head)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} unsigned \mbox{\hyperlink{inflate_8c_a4b61e4d1ecb446f14fa32c7da0cfb55e}{syncsearch}} (unsigned F\+AR $\ast$have, const unsigned char F\+AR $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, unsigned len)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{inflate_8c_a91828dbb3f427115719a892872b414a4}{inflate\+Sync}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{inflate_8c_a4499ff5c57a6da7b10a834e82c3e5ab8}{inflate\+Sync\+Point}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{inflate_8c_aed5ce4086853dcd68479b936c516ac09}{inflate\+Copy}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} dest, \mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} source)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{inflate_8c_a8975366f04bd9e4adefd64f6ad6ce362}{inflate\+Undermine}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} subvert)
+\item 
+\mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{inflate_8c_a2e07af688276b7ee6ace646d7ce8a4af}{inflate\+Mark}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{inflate_8c_a5967693540f086cfa357f68978bf0be7}\label{inflate_8c_a5967693540f086cfa357f68978bf0be7}} 
+\index{inflate.\+c@{inflate.\+c}!B\+I\+TS@{B\+I\+TS}}
+\index{B\+I\+TS@{B\+I\+TS}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{B\+I\+TS}{BITS}}
+{\footnotesize\ttfamily \#define B\+I\+TS(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}} }\end{DoxyParamCaption})~((unsigned)hold \& ((1\+U $<$$<$ (n)) -\/ 1))}
+
+\mbox{\Hypertarget{inflate_8c_aa1e478b107abaccc428d6266ea5ca595}\label{inflate_8c_aa1e478b107abaccc428d6266ea5ca595}} 
+\index{inflate.\+c@{inflate.\+c}!B\+Y\+T\+E\+B\+I\+TS@{B\+Y\+T\+E\+B\+I\+TS}}
+\index{B\+Y\+T\+E\+B\+I\+TS@{B\+Y\+T\+E\+B\+I\+TS}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{B\+Y\+T\+E\+B\+I\+TS}{BYTEBITS}}
+{\footnotesize\ttfamily \#define B\+Y\+T\+E\+B\+I\+TS(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        hold >>= \mbox{\hyperlink{blast_8c_af23433d9d58fb31d4a1ac224e3bc46e8}{bits}} & 7; \(\backslash\)
+        bits -= \mbox{\hyperlink{blast_8c_af23433d9d58fb31d4a1ac224e3bc46e8}{bits}} & 7; \(\backslash\)
+    \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\mbox{\Hypertarget{inflate_8c_a2bdde00539008d4c1be6f9d29f0e4bd0}\label{inflate_8c_a2bdde00539008d4c1be6f9d29f0e4bd0}} 
+\index{inflate.\+c@{inflate.\+c}!C\+R\+C2@{C\+R\+C2}}
+\index{C\+R\+C2@{C\+R\+C2}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{C\+R\+C2}{CRC2}}
+{\footnotesize\ttfamily \#define C\+R\+C2(\begin{DoxyParamCaption}\item[{}]{check,  }\item[{}]{word }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        hbuf[0] = (\textcolor{keywordtype}{unsigned} char)(word); \(\backslash\)
+        hbuf[1] = (\textcolor{keywordtype}{unsigned} char)((word) >> 8); \(\backslash\)
+        check = \mbox{\hyperlink{tarith_8c_a7524302ed2b89b736707053a56247a0f}{crc32}}(check, hbuf, 2); \(\backslash\)
+    \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\mbox{\Hypertarget{inflate_8c_a57c65b3c2ffdfe37b805b749a2c5fdbe}\label{inflate_8c_a57c65b3c2ffdfe37b805b749a2c5fdbe}} 
+\index{inflate.\+c@{inflate.\+c}!C\+R\+C4@{C\+R\+C4}}
+\index{C\+R\+C4@{C\+R\+C4}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{C\+R\+C4}{CRC4}}
+{\footnotesize\ttfamily \#define C\+R\+C4(\begin{DoxyParamCaption}\item[{}]{check,  }\item[{}]{word }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        hbuf[0] = (\textcolor{keywordtype}{unsigned} char)(word); \(\backslash\)
+        hbuf[1] = (\textcolor{keywordtype}{unsigned} char)((word) >> 8); \(\backslash\)
+        hbuf[2] = (\textcolor{keywordtype}{unsigned} char)((word) >> 16); \(\backslash\)
+        hbuf[3] = (\textcolor{keywordtype}{unsigned} char)((word) >> 24); \(\backslash\)
+        check = \mbox{\hyperlink{tarith_8c_a7524302ed2b89b736707053a56247a0f}{crc32}}(check, hbuf, 4); \(\backslash\)
+    \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\mbox{\Hypertarget{inflate_8c_a65312e68bdf918e606b0deaf69793523}\label{inflate_8c_a65312e68bdf918e606b0deaf69793523}} 
+\index{inflate.\+c@{inflate.\+c}!D\+R\+O\+P\+B\+I\+TS@{D\+R\+O\+P\+B\+I\+TS}}
+\index{D\+R\+O\+P\+B\+I\+TS@{D\+R\+O\+P\+B\+I\+TS}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{D\+R\+O\+P\+B\+I\+TS}{DROPBITS}}
+{\footnotesize\ttfamily \#define D\+R\+O\+P\+B\+I\+TS(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        hold >>= (\mbox{\hyperlink{isa-arm_8c_a4e34aefb3cc5403a07c020131077100a}{n}}); \(\backslash\)
+        bits -= (unsigned)(\mbox{\hyperlink{isa-arm_8c_a4e34aefb3cc5403a07c020131077100a}{n}}); \(\backslash\)
+    \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\mbox{\Hypertarget{inflate_8c_a3ffcbdd4824c339e07ea67dd412636fd}\label{inflate_8c_a3ffcbdd4824c339e07ea67dd412636fd}} 
+\index{inflate.\+c@{inflate.\+c}!I\+N\+I\+T\+B\+I\+TS@{I\+N\+I\+T\+B\+I\+TS}}
+\index{I\+N\+I\+T\+B\+I\+TS@{I\+N\+I\+T\+B\+I\+TS}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{I\+N\+I\+T\+B\+I\+TS}{INITBITS}}
+{\footnotesize\ttfamily \#define I\+N\+I\+T\+B\+I\+TS(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        hold = 0; \(\backslash\)
+        bits = 0; \(\backslash\)
+    \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\mbox{\Hypertarget{inflate_8c_a03dae42536f97b08183620a910f9b204}\label{inflate_8c_a03dae42536f97b08183620a910f9b204}} 
+\index{inflate.\+c@{inflate.\+c}!L\+O\+AD@{L\+O\+AD}}
+\index{L\+O\+AD@{L\+O\+AD}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{L\+O\+AD}{LOAD}}
+{\footnotesize\ttfamily \#define L\+O\+AD(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        put = strm->next\_out; \(\backslash\)
+        left = strm->avail\_out; \(\backslash\)
+        next = strm->next\_in; \(\backslash\)
+        have = strm->avail\_in; \(\backslash\)
+        hold = state->hold; \(\backslash\)
+        bits = state->bits; \(\backslash\)
+    \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\mbox{\Hypertarget{inflate_8c_ab3731a4aa4bb04481dc95069bbfb7156}\label{inflate_8c_ab3731a4aa4bb04481dc95069bbfb7156}} 
+\index{inflate.\+c@{inflate.\+c}!N\+E\+E\+D\+B\+I\+TS@{N\+E\+E\+D\+B\+I\+TS}}
+\index{N\+E\+E\+D\+B\+I\+TS@{N\+E\+E\+D\+B\+I\+TS}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{N\+E\+E\+D\+B\+I\+TS}{NEEDBITS}}
+{\footnotesize\ttfamily \#define N\+E\+E\+D\+B\+I\+TS(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        while (\mbox{\hyperlink{blast_8c_af23433d9d58fb31d4a1ac224e3bc46e8}{bits}} < (\textcolor{keywordtype}{unsigned})(\mbox{\hyperlink{isa-arm_8c_a4e34aefb3cc5403a07c020131077100a}{n}})) \(\backslash\)
+            PULLBYTE(); \(\backslash\)
+    \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\mbox{\Hypertarget{inflate_8c_add54302c739466e0e4a204fa1015694b}\label{inflate_8c_add54302c739466e0e4a204fa1015694b}} 
+\index{inflate.\+c@{inflate.\+c}!P\+U\+L\+L\+B\+Y\+TE@{P\+U\+L\+L\+B\+Y\+TE}}
+\index{P\+U\+L\+L\+B\+Y\+TE@{P\+U\+L\+L\+B\+Y\+TE}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{P\+U\+L\+L\+B\+Y\+TE}{PULLBYTE}}
+{\footnotesize\ttfamily \#define P\+U\+L\+L\+B\+Y\+TE(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        if (have == 0) goto inf\_leave; \(\backslash\)
+        have--; \(\backslash\)
+        hold += (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long})(*next++) << \mbox{\hyperlink{blast_8c_af23433d9d58fb31d4a1ac224e3bc46e8}{bits}}; \(\backslash\)
+        \mbox{\hyperlink{blast_8c_af23433d9d58fb31d4a1ac224e3bc46e8}{bits}} += 8; \(\backslash\)
+    \} while (0)
+\end{DoxyCode}
+\mbox{\Hypertarget{inflate_8c_af3b6db2fe8b54bb9edf88c2002e4bf34}\label{inflate_8c_af3b6db2fe8b54bb9edf88c2002e4bf34}} 
+\index{inflate.\+c@{inflate.\+c}!R\+E\+S\+T\+O\+RE@{R\+E\+S\+T\+O\+RE}}
+\index{R\+E\+S\+T\+O\+RE@{R\+E\+S\+T\+O\+RE}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{R\+E\+S\+T\+O\+RE}{RESTORE}}
+{\footnotesize\ttfamily \#define R\+E\+S\+T\+O\+RE(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        strm->next\_out = put; \(\backslash\)
+        strm->avail\_out = left; \(\backslash\)
+        strm->next\_in = next; \(\backslash\)
+        strm->avail\_in = have; \(\backslash\)
+        state->hold = hold; \(\backslash\)
+        state->bits = \mbox{\hyperlink{blast_8c_af23433d9d58fb31d4a1ac224e3bc46e8}{bits}}; \(\backslash\)
+    \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\mbox{\Hypertarget{inflate_8c_a5eea7ffd1fff4fbea834bcb292d1bea2}\label{inflate_8c_a5eea7ffd1fff4fbea834bcb292d1bea2}} 
+\index{inflate.\+c@{inflate.\+c}!U\+P\+D\+A\+TE@{U\+P\+D\+A\+TE}}
+\index{U\+P\+D\+A\+TE@{U\+P\+D\+A\+TE}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{U\+P\+D\+A\+TE}{UPDATE}}
+{\footnotesize\ttfamily \#define U\+P\+D\+A\+TE(\begin{DoxyParamCaption}\item[{}]{check,  }\item[{}]{\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},  }\item[{}]{len }\end{DoxyParamCaption})~(state-\/$>$\mbox{\hyperlink{lr35902_2decoder_8c_a11f29eea941556f0630cfd3285f565c0}{flags}} ? \mbox{\hyperlink{util_2crc32_8c_a0bdd14723a2507e6465c44ca5d9dc364}{crc32}}(check, \mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, len) \+: \mbox{\hyperlink{adler32_8c_a86607743a4b76949b24cf5cc2f01a40d}{adler32}}(check, \mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, len))}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{inflate_8c_a4493a4d633ce7f2dd463edc3a9bce72f}\label{inflate_8c_a4493a4d633ce7f2dd463edc3a9bce72f}} 
+\index{inflate.\+c@{inflate.\+c}!fixedtables@{fixedtables}}
+\index{fixedtables@{fixedtables}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{fixedtables()}{fixedtables()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void fixedtables (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{inflate_8h_structinflate__state}{inflate\+\_\+state}} F\+AR $\ast$}]{state }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_a4493a4d633ce7f2dd463edc3a9bce72f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_a4493a4d633ce7f2dd463edc3a9bce72f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{inflate_8c_a9a49cf8b6ce882dea33505b0ac84ecef}\label{inflate_8c_a9a49cf8b6ce882dea33505b0ac84ecef}} 
+\index{inflate.\+c@{inflate.\+c}!inflate@{inflate}}
+\index{inflate@{inflate}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{inflate()}{inflate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT inflate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{strm,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{flush }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_a9a49cf8b6ce882dea33505b0ac84ecef_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_a9a49cf8b6ce882dea33505b0ac84ecef_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{inflate_8c_aed5ce4086853dcd68479b936c516ac09}\label{inflate_8c_aed5ce4086853dcd68479b936c516ac09}} 
+\index{inflate.\+c@{inflate.\+c}!inflate\+Copy@{inflate\+Copy}}
+\index{inflate\+Copy@{inflate\+Copy}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{inflate\+Copy()}{inflateCopy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT inflate\+Copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{dest,  }\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{source }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=254pt]{inflate_8c_aed5ce4086853dcd68479b936c516ac09_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_aed5ce4086853dcd68479b936c516ac09_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{inflate_8c_aed3136bc8afc3ef309b731b4ad724534}\label{inflate_8c_aed3136bc8afc3ef309b731b4ad724534}} 
+\index{inflate.\+c@{inflate.\+c}!inflate\+End@{inflate\+End}}
+\index{inflate\+End@{inflate\+End}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{inflate\+End()}{inflateEnd()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT inflate\+End (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{strm }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{inflate_8c_aed3136bc8afc3ef309b731b4ad724534_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_aed3136bc8afc3ef309b731b4ad724534_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{inflate_8c_a2f6a2c3d1472e476adc01c2d634c0212}\label{inflate_8c_a2f6a2c3d1472e476adc01c2d634c0212}} 
+\index{inflate.\+c@{inflate.\+c}!inflate\+Get\+Dictionary@{inflate\+Get\+Dictionary}}
+\index{inflate\+Get\+Dictionary@{inflate\+Get\+Dictionary}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{inflate\+Get\+Dictionary()}{inflateGetDictionary()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT inflate\+Get\+Dictionary (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{strm,  }\item[{Bytef $\ast$}]{dictionary,  }\item[{u\+Int $\ast$}]{dict\+Length }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{inflate_8c_a2f6a2c3d1472e476adc01c2d634c0212_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{inflate_8c_a7a24a91914357dc95ee94bb30fe2ba57}\label{inflate_8c_a7a24a91914357dc95ee94bb30fe2ba57}} 
+\index{inflate.\+c@{inflate.\+c}!inflate\+Get\+Header@{inflate\+Get\+Header}}
+\index{inflate\+Get\+Header@{inflate\+Get\+Header}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{inflate\+Get\+Header()}{inflateGetHeader()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT inflate\+Get\+Header (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{strm,  }\item[{\mbox{\hyperlink{zlib_8h_a40e9dcc294796d99b25e98fb06477fc8}{gz\+\_\+headerp}}}]{head }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{inflate_8c_a7a24a91914357dc95ee94bb30fe2ba57_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_a7a24a91914357dc95ee94bb30fe2ba57_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{inflate_8c_aa87e80daa481d931b2d4d414769d432a}\label{inflate_8c_aa87e80daa481d931b2d4d414769d432a}} 
+\index{inflate.\+c@{inflate.\+c}!inflate\+Init2\+\_\+@{inflate\+Init2\+\_\+}}
+\index{inflate\+Init2\+\_\+@{inflate\+Init2\+\_\+}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{inflate\+Init2\+\_\+()}{inflateInit2\_()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT inflate\+Init2\+\_\+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{strm,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{window\+Bits,  }\item[{const char $\ast$}]{version,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{stream\+\_\+size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_aa87e80daa481d931b2d4d414769d432a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_aa87e80daa481d931b2d4d414769d432a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{inflate_8c_aed01e9084fe1ed4d8808bbcf525dfe63}\label{inflate_8c_aed01e9084fe1ed4d8808bbcf525dfe63}} 
+\index{inflate.\+c@{inflate.\+c}!inflate\+Init\+\_\+@{inflate\+Init\+\_\+}}
+\index{inflate\+Init\+\_\+@{inflate\+Init\+\_\+}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{inflate\+Init\+\_\+()}{inflateInit\_()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT inflate\+Init\+\_\+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{strm,  }\item[{const char $\ast$}]{version,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{stream\+\_\+size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_aed01e9084fe1ed4d8808bbcf525dfe63_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{inflate_8c_aed01e9084fe1ed4d8808bbcf525dfe63_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{inflate_8c_a2e07af688276b7ee6ace646d7ce8a4af}\label{inflate_8c_a2e07af688276b7ee6ace646d7ce8a4af}} 
+\index{inflate.\+c@{inflate.\+c}!inflate\+Mark@{inflate\+Mark}}
+\index{inflate\+Mark@{inflate\+Mark}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{inflate\+Mark()}{inflateMark()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} Z\+E\+X\+P\+O\+RT inflate\+Mark (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{strm }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{inflate_8c_a2e07af688276b7ee6ace646d7ce8a4af_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{inflate_8c_a67fe72a5001252fee87757fa6a215d61}\label{inflate_8c_a67fe72a5001252fee87757fa6a215d61}} 
+\index{inflate.\+c@{inflate.\+c}!inflate\+Prime@{inflate\+Prime}}
+\index{inflate\+Prime@{inflate\+Prime}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{inflate\+Prime()}{inflatePrime()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT inflate\+Prime (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{strm,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{bits,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=293pt]{inflate_8c_a67fe72a5001252fee87757fa6a215d61_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_a67fe72a5001252fee87757fa6a215d61_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{inflate_8c_adb02c2100f9179f4075b220395b1553c}\label{inflate_8c_adb02c2100f9179f4075b220395b1553c}} 
+\index{inflate.\+c@{inflate.\+c}!inflate\+Reset@{inflate\+Reset}}
+\index{inflate\+Reset@{inflate\+Reset}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{inflate\+Reset()}{inflateReset()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT inflate\+Reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{strm }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_adb02c2100f9179f4075b220395b1553c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_adb02c2100f9179f4075b220395b1553c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{inflate_8c_af5a145c15cfb580ef24ce3fc4d292a02}\label{inflate_8c_af5a145c15cfb580ef24ce3fc4d292a02}} 
+\index{inflate.\+c@{inflate.\+c}!inflate\+Reset2@{inflate\+Reset2}}
+\index{inflate\+Reset2@{inflate\+Reset2}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{inflate\+Reset2()}{inflateReset2()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT inflate\+Reset2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{strm,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{window\+Bits }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_af5a145c15cfb580ef24ce3fc4d292a02_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_af5a145c15cfb580ef24ce3fc4d292a02_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{inflate_8c_a999219816122f73a0e1af7191ad91146}\label{inflate_8c_a999219816122f73a0e1af7191ad91146}} 
+\index{inflate.\+c@{inflate.\+c}!inflate\+Reset\+Keep@{inflate\+Reset\+Keep}}
+\index{inflate\+Reset\+Keep@{inflate\+Reset\+Keep}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{inflate\+Reset\+Keep()}{inflateResetKeep()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT inflate\+Reset\+Keep (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{strm }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{inflate_8c_a999219816122f73a0e1af7191ad91146_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_a999219816122f73a0e1af7191ad91146_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{inflate_8c_a0e7de2db7d65e00a99bea217653b152e}\label{inflate_8c_a0e7de2db7d65e00a99bea217653b152e}} 
+\index{inflate.\+c@{inflate.\+c}!inflate\+Set\+Dictionary@{inflate\+Set\+Dictionary}}
+\index{inflate\+Set\+Dictionary@{inflate\+Set\+Dictionary}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{inflate\+Set\+Dictionary()}{inflateSetDictionary()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT inflate\+Set\+Dictionary (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{strm,  }\item[{const Bytef $\ast$}]{dictionary,  }\item[{u\+Int}]{dict\+Length }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_a0e7de2db7d65e00a99bea217653b152e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_a0e7de2db7d65e00a99bea217653b152e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{inflate_8c_a91828dbb3f427115719a892872b414a4}\label{inflate_8c_a91828dbb3f427115719a892872b414a4}} 
+\index{inflate.\+c@{inflate.\+c}!inflate\+Sync@{inflate\+Sync}}
+\index{inflate\+Sync@{inflate\+Sync}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{inflate\+Sync()}{inflateSync()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT inflate\+Sync (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{strm }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_a91828dbb3f427115719a892872b414a4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{inflate_8c_a91828dbb3f427115719a892872b414a4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{inflate_8c_a4499ff5c57a6da7b10a834e82c3e5ab8}\label{inflate_8c_a4499ff5c57a6da7b10a834e82c3e5ab8}} 
+\index{inflate.\+c@{inflate.\+c}!inflate\+Sync\+Point@{inflate\+Sync\+Point}}
+\index{inflate\+Sync\+Point@{inflate\+Sync\+Point}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{inflate\+Sync\+Point()}{inflateSyncPoint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT inflate\+Sync\+Point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{strm }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_a4499ff5c57a6da7b10a834e82c3e5ab8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{inflate_8c_a8975366f04bd9e4adefd64f6ad6ce362}\label{inflate_8c_a8975366f04bd9e4adefd64f6ad6ce362}} 
+\index{inflate.\+c@{inflate.\+c}!inflate\+Undermine@{inflate\+Undermine}}
+\index{inflate\+Undermine@{inflate\+Undermine}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{inflate\+Undermine()}{inflateUndermine()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT inflate\+Undermine (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{strm,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{subvert }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_a8975366f04bd9e4adefd64f6ad6ce362_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{inflate_8c_a53ea906bc5582e6dcc143b749202cfef}\label{inflate_8c_a53ea906bc5582e6dcc143b749202cfef}} 
+\index{inflate.\+c@{inflate.\+c}!OF@{OF}}
+\index{OF@{OF}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{O\+F()}{OF()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{inflate_8c_a4493a4d633ce7f2dd463edc3a9bce72f}{fixedtables}} OF (\begin{DoxyParamCaption}\item[{(struct \mbox{\hyperlink{inflate_8h_structinflate__state}{inflate\+\_\+state}} F\+AR $\ast$state)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{inflate_8c_a6f69356d24d36b9b118df32a5bad3a17}\label{inflate_8c_a6f69356d24d36b9b118df32a5bad3a17}} 
+\index{inflate.\+c@{inflate.\+c}!OF@{OF}}
+\index{OF@{OF}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{O\+F()}{OF()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{inflate_8c_abac7d2a1c1331a2bfe2ad4dc53a0787d}{updatewindow}} OF (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm, const unsigned char F\+AR $\ast$end, unsigned copy)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{inflate_8c_a267b37b42d592ebe7aee3f15db8b96c9}\label{inflate_8c_a267b37b42d592ebe7aee3f15db8b96c9}} 
+\index{inflate.\+c@{inflate.\+c}!OF@{OF}}
+\index{OF@{OF}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{O\+F()}{OF()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} unsigned \mbox{\hyperlink{inflate_8c_a4b61e4d1ecb446f14fa32c7da0cfb55e}{syncsearch}} OF (\begin{DoxyParamCaption}\item[{(unsigned F\+AR $\ast$have, const unsigned char F\+AR $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, unsigned len)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{inflate_8c_a4b61e4d1ecb446f14fa32c7da0cfb55e}\label{inflate_8c_a4b61e4d1ecb446f14fa32c7da0cfb55e}} 
+\index{inflate.\+c@{inflate.\+c}!syncsearch@{syncsearch}}
+\index{syncsearch@{syncsearch}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{syncsearch()}{syncsearch()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} unsigned syncsearch (\begin{DoxyParamCaption}\item[{unsigned F\+AR $\ast$}]{have,  }\item[{const unsigned char F\+AR $\ast$}]{buf,  }\item[{unsigned}]{len }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_a4b61e4d1ecb446f14fa32c7da0cfb55e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{inflate_8c_abac7d2a1c1331a2bfe2ad4dc53a0787d}\label{inflate_8c_abac7d2a1c1331a2bfe2ad4dc53a0787d}} 
+\index{inflate.\+c@{inflate.\+c}!updatewindow@{updatewindow}}
+\index{updatewindow@{updatewindow}!inflate.\+c@{inflate.\+c}}
+\subsubsection{\texorpdfstring{updatewindow()}{updatewindow()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} updatewindow (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{strm,  }\item[{const Bytef $\ast$}]{end,  }\item[{unsigned}]{copy }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{inflate_8c_abac7d2a1c1331a2bfe2ad4dc53a0787d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{inflate_8c_abac7d2a1c1331a2bfe2ad4dc53a0787d_icgraph}
+\end{center}
+\end{figure}

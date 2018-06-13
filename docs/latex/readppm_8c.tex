@@ -1,0 +1,145 @@
+\hypertarget{readppm_8c}{}\section{src/third-\/party/libpng/contrib/gregbook/readppm.c File Reference}
+\label{readppm_8c}\index{src/third-\/party/libpng/contrib/gregbook/readppm.\+c@{src/third-\/party/libpng/contrib/gregbook/readppm.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}readpng.\+h\char`\"{}}\newline
+Include dependency graph for readppm.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{readppm_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{readppm_8c_a5c5b57a6492cc869d47a86674e28e913}{readpng\+\_\+version\+\_\+info}} ()
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_abcffa8d26844aec3f1765f7327b75e12}{readpng\+\_\+init}} (F\+I\+LE $\ast$\mbox{\hyperlink{rpng2-x_8c_af19157da745ecb3f2b088c8f3a10c0a7}{infile}}, \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} $\ast$p\+Width, \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} $\ast$p\+Height)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_a6866a94e95ce02afa395e6060bb42944}{readpng\+\_\+get\+\_\+bgcolor}} (\mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$red, \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$green, \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$blue)
+\item 
+\mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$ \mbox{\hyperlink{readppm_8c_a27767a3a405bdf480d26397b31a63cb6}{readpng\+\_\+get\+\_\+image}} (double \mbox{\hyperlink{rpng-x_8c_ad738f63cfb0d9f52281786250bd91ceb}{display\+\_\+exponent}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$p\+Channels, \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} $\ast$p\+Rowbytes)
+\item 
+void \mbox{\hyperlink{readppm_8c_a58b09d9e29c5c21f0b2a06da58c87fb6}{readpng\+\_\+cleanup}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} free\+\_\+image\+\_\+data)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} \mbox{\hyperlink{readppm_8c_a59b7c57bf1dc7c36ac7c8232cf5bb713}{width}}
+\item 
+\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} \mbox{\hyperlink{readppm_8c_ac8b624a7354198da45f5797b93b883c9}{height}}
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_a06ec7298e38952fe9572e828d37d8d93}{bit\+\_\+depth}}
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_ae179b4e193ca0afef9aa3c2ddb7270fc}{color\+\_\+type}}
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_a178795099d0608972755dfef8d8367e3}{channels}}
+\item 
+\mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$ \mbox{\hyperlink{readppm_8c_ab11e4eabc5bd13b2fee5b43afa28cd64}{image\+\_\+data}} = N\+U\+LL
+\item 
+F\+I\+LE $\ast$ \mbox{\hyperlink{readppm_8c_ae40a4b5d501e0eb49c33778b59e1b901}{saved\+\_\+infile}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{readppm_8c_a58b09d9e29c5c21f0b2a06da58c87fb6}\label{readppm_8c_a58b09d9e29c5c21f0b2a06da58c87fb6}} 
+\index{readppm.\+c@{readppm.\+c}!readpng\+\_\+cleanup@{readpng\+\_\+cleanup}}
+\index{readpng\+\_\+cleanup@{readpng\+\_\+cleanup}!readppm.\+c@{readppm.\+c}}
+\subsubsection{\texorpdfstring{readpng\+\_\+cleanup()}{readpng\_cleanup()}}
+{\footnotesize\ttfamily void readpng\+\_\+cleanup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{free\+\_\+image\+\_\+data }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{readppm_8c_a58b09d9e29c5c21f0b2a06da58c87fb6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{readppm_8c_a6866a94e95ce02afa395e6060bb42944}\label{readppm_8c_a6866a94e95ce02afa395e6060bb42944}} 
+\index{readppm.\+c@{readppm.\+c}!readpng\+\_\+get\+\_\+bgcolor@{readpng\+\_\+get\+\_\+bgcolor}}
+\index{readpng\+\_\+get\+\_\+bgcolor@{readpng\+\_\+get\+\_\+bgcolor}!readppm.\+c@{readppm.\+c}}
+\subsubsection{\texorpdfstring{readpng\+\_\+get\+\_\+bgcolor()}{readpng\_get\_bgcolor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} readpng\+\_\+get\+\_\+bgcolor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$}]{red,  }\item[{\mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$}]{green,  }\item[{\mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$}]{blue }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{readppm_8c_a27767a3a405bdf480d26397b31a63cb6}\label{readppm_8c_a27767a3a405bdf480d26397b31a63cb6}} 
+\index{readppm.\+c@{readppm.\+c}!readpng\+\_\+get\+\_\+image@{readpng\+\_\+get\+\_\+image}}
+\index{readpng\+\_\+get\+\_\+image@{readpng\+\_\+get\+\_\+image}!readppm.\+c@{readppm.\+c}}
+\subsubsection{\texorpdfstring{readpng\+\_\+get\+\_\+image()}{readpng\_get\_image()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}}$\ast$ readpng\+\_\+get\+\_\+image (\begin{DoxyParamCaption}\item[{double}]{display\+\_\+exponent,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{p\+Channels,  }\item[{\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} $\ast$}]{p\+Rowbytes }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{readppm_8c_a27767a3a405bdf480d26397b31a63cb6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{readppm_8c_abcffa8d26844aec3f1765f7327b75e12}\label{readppm_8c_abcffa8d26844aec3f1765f7327b75e12}} 
+\index{readppm.\+c@{readppm.\+c}!readpng\+\_\+init@{readpng\+\_\+init}}
+\index{readpng\+\_\+init@{readpng\+\_\+init}!readppm.\+c@{readppm.\+c}}
+\subsubsection{\texorpdfstring{readpng\+\_\+init()}{readpng\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} readpng\+\_\+init (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{infile,  }\item[{\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} $\ast$}]{p\+Width,  }\item[{\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} $\ast$}]{p\+Height }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{readppm_8c_abcffa8d26844aec3f1765f7327b75e12_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{readppm_8c_a5c5b57a6492cc869d47a86674e28e913}\label{readppm_8c_a5c5b57a6492cc869d47a86674e28e913}} 
+\index{readppm.\+c@{readppm.\+c}!readpng\+\_\+version\+\_\+info@{readpng\+\_\+version\+\_\+info}}
+\index{readpng\+\_\+version\+\_\+info@{readpng\+\_\+version\+\_\+info}!readppm.\+c@{readppm.\+c}}
+\subsubsection{\texorpdfstring{readpng\+\_\+version\+\_\+info()}{readpng\_version\_info()}}
+{\footnotesize\ttfamily void readpng\+\_\+version\+\_\+info (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{readppm_8c_a06ec7298e38952fe9572e828d37d8d93}\label{readppm_8c_a06ec7298e38952fe9572e828d37d8d93}} 
+\index{readppm.\+c@{readppm.\+c}!bit\+\_\+depth@{bit\+\_\+depth}}
+\index{bit\+\_\+depth@{bit\+\_\+depth}!readppm.\+c@{readppm.\+c}}
+\subsubsection{\texorpdfstring{bit\+\_\+depth}{bit\_depth}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} bit\+\_\+depth}
+
+\mbox{\Hypertarget{readppm_8c_a178795099d0608972755dfef8d8367e3}\label{readppm_8c_a178795099d0608972755dfef8d8367e3}} 
+\index{readppm.\+c@{readppm.\+c}!channels@{channels}}
+\index{channels@{channels}!readppm.\+c@{readppm.\+c}}
+\subsubsection{\texorpdfstring{channels}{channels}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} channels}
+
+\mbox{\Hypertarget{readppm_8c_ae179b4e193ca0afef9aa3c2ddb7270fc}\label{readppm_8c_ae179b4e193ca0afef9aa3c2ddb7270fc}} 
+\index{readppm.\+c@{readppm.\+c}!color\+\_\+type@{color\+\_\+type}}
+\index{color\+\_\+type@{color\+\_\+type}!readppm.\+c@{readppm.\+c}}
+\subsubsection{\texorpdfstring{color\+\_\+type}{color\_type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} color\+\_\+type}
+
+\mbox{\Hypertarget{readppm_8c_ac8b624a7354198da45f5797b93b883c9}\label{readppm_8c_ac8b624a7354198da45f5797b93b883c9}} 
+\index{readppm.\+c@{readppm.\+c}!height@{height}}
+\index{height@{height}!readppm.\+c@{readppm.\+c}}
+\subsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} height}
+
+\mbox{\Hypertarget{readppm_8c_ab11e4eabc5bd13b2fee5b43afa28cd64}\label{readppm_8c_ab11e4eabc5bd13b2fee5b43afa28cd64}} 
+\index{readppm.\+c@{readppm.\+c}!image\+\_\+data@{image\+\_\+data}}
+\index{image\+\_\+data@{image\+\_\+data}!readppm.\+c@{readppm.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+data}{image\_data}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}}$\ast$ image\+\_\+data = N\+U\+LL}
+
+\mbox{\Hypertarget{readppm_8c_ae40a4b5d501e0eb49c33778b59e1b901}\label{readppm_8c_ae40a4b5d501e0eb49c33778b59e1b901}} 
+\index{readppm.\+c@{readppm.\+c}!saved\+\_\+infile@{saved\+\_\+infile}}
+\index{saved\+\_\+infile@{saved\+\_\+infile}!readppm.\+c@{readppm.\+c}}
+\subsubsection{\texorpdfstring{saved\+\_\+infile}{saved\_infile}}
+{\footnotesize\ttfamily F\+I\+LE$\ast$ saved\+\_\+infile}
+
+\mbox{\Hypertarget{readppm_8c_a59b7c57bf1dc7c36ac7c8232cf5bb713}\label{readppm_8c_a59b7c57bf1dc7c36ac7c8232cf5bb713}} 
+\index{readppm.\+c@{readppm.\+c}!width@{width}}
+\index{width@{width}!readppm.\+c@{readppm.\+c}}
+\subsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} width}
+

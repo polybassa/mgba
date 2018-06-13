@@ -1,0 +1,155 @@
+\hypertarget{directories_8c}{}\section{src/core/directories.c File Reference}
+\label{directories_8c}\index{src/core/directories.\+c@{src/core/directories.\+c}}
+{\ttfamily \#include $<$mgba/core/directories.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/config.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+Include dependency graph for directories.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{directories_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{directories_8c_a797550e1406598a9da884ad7ea6915ca}{m\+Directory\+Set\+Init}} (struct m\+Directory\+Set $\ast$dirs)
+\item 
+void \mbox{\hyperlink{directories_8c_ad695113456deecea09f8ca6f16b8b7a7}{m\+Directory\+Set\+Deinit}} (struct m\+Directory\+Set $\ast$dirs)
+\item 
+void \mbox{\hyperlink{directories_8c_a74d4aa6d93aa3779dab682f4f92e7ef8}{m\+Directory\+Set\+Attach\+Base}} (struct m\+Directory\+Set $\ast$dirs, struct V\+Dir $\ast$base)
+\item 
+void \mbox{\hyperlink{directories_8c_a441767c6a06e22d2b36289adabb9bbab}{m\+Directory\+Set\+Detach\+Base}} (struct m\+Directory\+Set $\ast$dirs)
+\item 
+struct V\+File $\ast$ \mbox{\hyperlink{directories_8c_a5d6471bcecfa3a6495fc85ae30ecfadb}{m\+Directory\+Set\+Open\+Path}} (struct m\+Directory\+Set $\ast$dirs, const char $\ast$path, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}($\ast$filter)(struct V\+File $\ast$))
+\item 
+struct V\+File $\ast$ \mbox{\hyperlink{directories_8c_adde988baf8965a15cac1996276f903a1}{m\+Directory\+Set\+Open\+Suffix}} (struct m\+Directory\+Set $\ast$dirs, struct V\+Dir $\ast$dir, const char $\ast$\mbox{\hyperlink{gun_8c_a143c3ff770154542cc6bd4602c3148a9}{suffix}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})
+\item 
+void \mbox{\hyperlink{directories_8c_aef6dee2fbff4f8819f49a4774d813361}{m\+Directory\+Set\+Map\+Options}} (struct m\+Directory\+Set $\ast$dirs, const struct m\+Core\+Options $\ast$opts)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{directories_8c_a74d4aa6d93aa3779dab682f4f92e7ef8}\label{directories_8c_a74d4aa6d93aa3779dab682f4f92e7ef8}} 
+\index{directories.\+c@{directories.\+c}!m\+Directory\+Set\+Attach\+Base@{m\+Directory\+Set\+Attach\+Base}}
+\index{m\+Directory\+Set\+Attach\+Base@{m\+Directory\+Set\+Attach\+Base}!directories.\+c@{directories.\+c}}
+\subsubsection{\texorpdfstring{m\+Directory\+Set\+Attach\+Base()}{mDirectorySetAttachBase()}}
+{\footnotesize\ttfamily void m\+Directory\+Set\+Attach\+Base (\begin{DoxyParamCaption}\item[{struct m\+Directory\+Set $\ast$}]{dirs,  }\item[{struct V\+Dir $\ast$}]{base }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{directories_8c_a74d4aa6d93aa3779dab682f4f92e7ef8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{directories_8c_ad695113456deecea09f8ca6f16b8b7a7}\label{directories_8c_ad695113456deecea09f8ca6f16b8b7a7}} 
+\index{directories.\+c@{directories.\+c}!m\+Directory\+Set\+Deinit@{m\+Directory\+Set\+Deinit}}
+\index{m\+Directory\+Set\+Deinit@{m\+Directory\+Set\+Deinit}!directories.\+c@{directories.\+c}}
+\subsubsection{\texorpdfstring{m\+Directory\+Set\+Deinit()}{mDirectorySetDeinit()}}
+{\footnotesize\ttfamily void m\+Directory\+Set\+Deinit (\begin{DoxyParamCaption}\item[{struct m\+Directory\+Set $\ast$}]{dirs }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{directories_8c_ad695113456deecea09f8ca6f16b8b7a7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{directories_8c_ad695113456deecea09f8ca6f16b8b7a7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{directories_8c_a441767c6a06e22d2b36289adabb9bbab}\label{directories_8c_a441767c6a06e22d2b36289adabb9bbab}} 
+\index{directories.\+c@{directories.\+c}!m\+Directory\+Set\+Detach\+Base@{m\+Directory\+Set\+Detach\+Base}}
+\index{m\+Directory\+Set\+Detach\+Base@{m\+Directory\+Set\+Detach\+Base}!directories.\+c@{directories.\+c}}
+\subsubsection{\texorpdfstring{m\+Directory\+Set\+Detach\+Base()}{mDirectorySetDetachBase()}}
+{\footnotesize\ttfamily void m\+Directory\+Set\+Detach\+Base (\begin{DoxyParamCaption}\item[{struct m\+Directory\+Set $\ast$}]{dirs }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{directories_8c_a441767c6a06e22d2b36289adabb9bbab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{directories_8c_a797550e1406598a9da884ad7ea6915ca}\label{directories_8c_a797550e1406598a9da884ad7ea6915ca}} 
+\index{directories.\+c@{directories.\+c}!m\+Directory\+Set\+Init@{m\+Directory\+Set\+Init}}
+\index{m\+Directory\+Set\+Init@{m\+Directory\+Set\+Init}!directories.\+c@{directories.\+c}}
+\subsubsection{\texorpdfstring{m\+Directory\+Set\+Init()}{mDirectorySetInit()}}
+{\footnotesize\ttfamily void m\+Directory\+Set\+Init (\begin{DoxyParamCaption}\item[{struct m\+Directory\+Set $\ast$}]{dirs }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{directories_8c_a797550e1406598a9da884ad7ea6915ca_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{directories_8c_aef6dee2fbff4f8819f49a4774d813361}\label{directories_8c_aef6dee2fbff4f8819f49a4774d813361}} 
+\index{directories.\+c@{directories.\+c}!m\+Directory\+Set\+Map\+Options@{m\+Directory\+Set\+Map\+Options}}
+\index{m\+Directory\+Set\+Map\+Options@{m\+Directory\+Set\+Map\+Options}!directories.\+c@{directories.\+c}}
+\subsubsection{\texorpdfstring{m\+Directory\+Set\+Map\+Options()}{mDirectorySetMapOptions()}}
+{\footnotesize\ttfamily void m\+Directory\+Set\+Map\+Options (\begin{DoxyParamCaption}\item[{struct m\+Directory\+Set $\ast$}]{dirs,  }\item[{const struct m\+Core\+Options $\ast$}]{opts }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{directories_8c_aef6dee2fbff4f8819f49a4774d813361_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{directories_8c_aef6dee2fbff4f8819f49a4774d813361_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{directories_8c_a5d6471bcecfa3a6495fc85ae30ecfadb}\label{directories_8c_a5d6471bcecfa3a6495fc85ae30ecfadb}} 
+\index{directories.\+c@{directories.\+c}!m\+Directory\+Set\+Open\+Path@{m\+Directory\+Set\+Open\+Path}}
+\index{m\+Directory\+Set\+Open\+Path@{m\+Directory\+Set\+Open\+Path}!directories.\+c@{directories.\+c}}
+\subsubsection{\texorpdfstring{m\+Directory\+Set\+Open\+Path()}{mDirectorySetOpenPath()}}
+{\footnotesize\ttfamily struct V\+File$\ast$ m\+Directory\+Set\+Open\+Path (\begin{DoxyParamCaption}\item[{struct m\+Directory\+Set $\ast$}]{dirs,  }\item[{const char $\ast$}]{path,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}($\ast$)(struct V\+File $\ast$)}]{filter }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{directories_8c_a5d6471bcecfa3a6495fc85ae30ecfadb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{directories_8c_a5d6471bcecfa3a6495fc85ae30ecfadb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{directories_8c_adde988baf8965a15cac1996276f903a1}\label{directories_8c_adde988baf8965a15cac1996276f903a1}} 
+\index{directories.\+c@{directories.\+c}!m\+Directory\+Set\+Open\+Suffix@{m\+Directory\+Set\+Open\+Suffix}}
+\index{m\+Directory\+Set\+Open\+Suffix@{m\+Directory\+Set\+Open\+Suffix}!directories.\+c@{directories.\+c}}
+\subsubsection{\texorpdfstring{m\+Directory\+Set\+Open\+Suffix()}{mDirectorySetOpenSuffix()}}
+{\footnotesize\ttfamily struct V\+File$\ast$ m\+Directory\+Set\+Open\+Suffix (\begin{DoxyParamCaption}\item[{struct m\+Directory\+Set $\ast$}]{dirs,  }\item[{struct V\+Dir $\ast$}]{dir,  }\item[{const char $\ast$}]{suffix,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{mode }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{directories_8c_adde988baf8965a15cac1996276f903a1_icgraph}
+\end{center}
+\end{figure}

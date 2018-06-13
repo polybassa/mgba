@@ -1,0 +1,170 @@
+\hypertarget{ini_8c}{}\section{src/third-\/party/inih/ini.c File Reference}
+\label{ini_8c}\index{src/third-\/party/inih/ini.\+c@{src/third-\/party/inih/ini.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}ini.\+h\char`\"{}}\newline
+Include dependency graph for ini.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{ini_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{ini_8c_aaf452164719d4d290a4766282df9d690}{M\+A\+X\+\_\+\+S\+E\+C\+T\+I\+ON}}~128
+\item 
+\#define \mbox{\hyperlink{ini_8c_ac7c0207aa5a0e10d378be03b68041350}{M\+A\+X\+\_\+\+N\+A\+ME}}~128
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static char $\ast$ \mbox{\hyperlink{ini_8c_adeed2706622d58ae4098f37974429627}{rstrip}} (char $\ast$s)
+\item 
+static char $\ast$ \mbox{\hyperlink{ini_8c_a106085a60583761d9db2b77929a3abe0}{lskip}} (const char $\ast$s)
+\item 
+static char $\ast$ \mbox{\hyperlink{ini_8c_a6f64a9dea7820a6ecd1f61525ce22720}{find\+\_\+char\+\_\+or\+\_\+comment}} (const char $\ast$s, char \mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}})
+\item 
+static char $\ast$ \mbox{\hyperlink{ini_8c_a12124686d5fdc4fa123955450b1201d0}{strncpy0}} (char $\ast$dest, const char $\ast$src, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ini_8c_ad8b766ac18397b0b262559203ea7f602}{ini\+\_\+parse\+\_\+stream}} (\mbox{\hyperlink{ini_8h_a49ee9ec26dff11c908ef9abace9aae08}{ini\+\_\+reader}} reader, void $\ast$\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, \mbox{\hyperlink{ini_8h_a7343d087975289e095471430150dbe59}{ini\+\_\+handler}} handler, void $\ast$user)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ini_8c_a876bf8b62ade275320db827b929f9289}{ini\+\_\+parse\+\_\+file}} (F\+I\+LE $\ast$file, \mbox{\hyperlink{ini_8h_a7343d087975289e095471430150dbe59}{ini\+\_\+handler}} handler, void $\ast$user)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ini_8c_a2fab292681265b7774e2a2885abb758c}{ini\+\_\+parse}} (const char $\ast$\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}}, \mbox{\hyperlink{ini_8h_a7343d087975289e095471430150dbe59}{ini\+\_\+handler}} handler, void $\ast$user)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{ini_8c_ac7c0207aa5a0e10d378be03b68041350}\label{ini_8c_ac7c0207aa5a0e10d378be03b68041350}} 
+\index{ini.\+c@{ini.\+c}!M\+A\+X\+\_\+\+N\+A\+ME@{M\+A\+X\+\_\+\+N\+A\+ME}}
+\index{M\+A\+X\+\_\+\+N\+A\+ME@{M\+A\+X\+\_\+\+N\+A\+ME}!ini.\+c@{ini.\+c}}
+\subsubsection{\texorpdfstring{M\+A\+X\+\_\+\+N\+A\+ME}{MAX\_NAME}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+N\+A\+ME~128}
+
+\mbox{\Hypertarget{ini_8c_aaf452164719d4d290a4766282df9d690}\label{ini_8c_aaf452164719d4d290a4766282df9d690}} 
+\index{ini.\+c@{ini.\+c}!M\+A\+X\+\_\+\+S\+E\+C\+T\+I\+ON@{M\+A\+X\+\_\+\+S\+E\+C\+T\+I\+ON}}
+\index{M\+A\+X\+\_\+\+S\+E\+C\+T\+I\+ON@{M\+A\+X\+\_\+\+S\+E\+C\+T\+I\+ON}!ini.\+c@{ini.\+c}}
+\subsubsection{\texorpdfstring{M\+A\+X\+\_\+\+S\+E\+C\+T\+I\+ON}{MAX\_SECTION}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+S\+E\+C\+T\+I\+ON~128}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{ini_8c_a6f64a9dea7820a6ecd1f61525ce22720}\label{ini_8c_a6f64a9dea7820a6ecd1f61525ce22720}} 
+\index{ini.\+c@{ini.\+c}!find\+\_\+char\+\_\+or\+\_\+comment@{find\+\_\+char\+\_\+or\+\_\+comment}}
+\index{find\+\_\+char\+\_\+or\+\_\+comment@{find\+\_\+char\+\_\+or\+\_\+comment}!ini.\+c@{ini.\+c}}
+\subsubsection{\texorpdfstring{find\+\_\+char\+\_\+or\+\_\+comment()}{find\_char\_or\_comment()}}
+{\footnotesize\ttfamily static char$\ast$ find\+\_\+char\+\_\+or\+\_\+comment (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s,  }\item[{char}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ini_8c_a6f64a9dea7820a6ecd1f61525ce22720_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ini_8c_a2fab292681265b7774e2a2885abb758c}\label{ini_8c_a2fab292681265b7774e2a2885abb758c}} 
+\index{ini.\+c@{ini.\+c}!ini\+\_\+parse@{ini\+\_\+parse}}
+\index{ini\+\_\+parse@{ini\+\_\+parse}!ini.\+c@{ini.\+c}}
+\subsubsection{\texorpdfstring{ini\+\_\+parse()}{ini\_parse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} ini\+\_\+parse (\begin{DoxyParamCaption}\item[{const char $\ast$}]{filename,  }\item[{\mbox{\hyperlink{ini_8h_a7343d087975289e095471430150dbe59}{ini\+\_\+handler}}}]{handler,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ini_8c_a2fab292681265b7774e2a2885abb758c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ini_8c_a876bf8b62ade275320db827b929f9289}\label{ini_8c_a876bf8b62ade275320db827b929f9289}} 
+\index{ini.\+c@{ini.\+c}!ini\+\_\+parse\+\_\+file@{ini\+\_\+parse\+\_\+file}}
+\index{ini\+\_\+parse\+\_\+file@{ini\+\_\+parse\+\_\+file}!ini.\+c@{ini.\+c}}
+\subsubsection{\texorpdfstring{ini\+\_\+parse\+\_\+file()}{ini\_parse\_file()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} ini\+\_\+parse\+\_\+file (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{file,  }\item[{\mbox{\hyperlink{ini_8h_a7343d087975289e095471430150dbe59}{ini\+\_\+handler}}}]{handler,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ini_8c_a876bf8b62ade275320db827b929f9289_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=259pt]{ini_8c_a876bf8b62ade275320db827b929f9289_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ini_8c_ad8b766ac18397b0b262559203ea7f602}\label{ini_8c_ad8b766ac18397b0b262559203ea7f602}} 
+\index{ini.\+c@{ini.\+c}!ini\+\_\+parse\+\_\+stream@{ini\+\_\+parse\+\_\+stream}}
+\index{ini\+\_\+parse\+\_\+stream@{ini\+\_\+parse\+\_\+stream}!ini.\+c@{ini.\+c}}
+\subsubsection{\texorpdfstring{ini\+\_\+parse\+\_\+stream()}{ini\_parse\_stream()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} ini\+\_\+parse\+\_\+stream (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ini_8h_a49ee9ec26dff11c908ef9abace9aae08}{ini\+\_\+reader}}}]{reader,  }\item[{void $\ast$}]{stream,  }\item[{\mbox{\hyperlink{ini_8h_a7343d087975289e095471430150dbe59}{ini\+\_\+handler}}}]{handler,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{ini_8c_ad8b766ac18397b0b262559203ea7f602_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ini_8c_ad8b766ac18397b0b262559203ea7f602_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ini_8c_a106085a60583761d9db2b77929a3abe0}\label{ini_8c_a106085a60583761d9db2b77929a3abe0}} 
+\index{ini.\+c@{ini.\+c}!lskip@{lskip}}
+\index{lskip@{lskip}!ini.\+c@{ini.\+c}}
+\subsubsection{\texorpdfstring{lskip()}{lskip()}}
+{\footnotesize\ttfamily static char$\ast$ lskip (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ini_8c_a106085a60583761d9db2b77929a3abe0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ini_8c_adeed2706622d58ae4098f37974429627}\label{ini_8c_adeed2706622d58ae4098f37974429627}} 
+\index{ini.\+c@{ini.\+c}!rstrip@{rstrip}}
+\index{rstrip@{rstrip}!ini.\+c@{ini.\+c}}
+\subsubsection{\texorpdfstring{rstrip()}{rstrip()}}
+{\footnotesize\ttfamily static char$\ast$ rstrip (\begin{DoxyParamCaption}\item[{char $\ast$}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ini_8c_adeed2706622d58ae4098f37974429627_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ini_8c_a12124686d5fdc4fa123955450b1201d0}\label{ini_8c_a12124686d5fdc4fa123955450b1201d0}} 
+\index{ini.\+c@{ini.\+c}!strncpy0@{strncpy0}}
+\index{strncpy0@{strncpy0}!ini.\+c@{ini.\+c}}
+\subsubsection{\texorpdfstring{strncpy0()}{strncpy0()}}
+{\footnotesize\ttfamily static char$\ast$ strncpy0 (\begin{DoxyParamCaption}\item[{char $\ast$}]{dest,  }\item[{const char $\ast$}]{src,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ini_8c_a12124686d5fdc4fa123955450b1201d0_icgraph}
+\end{center}
+\end{figure}

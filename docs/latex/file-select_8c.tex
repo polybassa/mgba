@@ -1,0 +1,155 @@
+\hypertarget{file-select_8c}{}\section{src/util/gui/file-\/select.c File Reference}
+\label{file-select_8c}\index{src/util/gui/file-\/select.\+c@{src/util/gui/file-\/select.\+c}}
+{\ttfamily \#include $<$mgba-\/util/gui/file-\/select.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/gui/font.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/gui/menu.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+Include dependency graph for file-\/select.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{file-select_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{file-select_8c_a3ad638821db1c150fa4ecda36a1dda01}{I\+T\+E\+R\+A\+T\+I\+O\+N\+\_\+\+S\+I\+ZE}}~5
+\item 
+\#define \mbox{\hyperlink{file-select_8c_a0e52e463a0c3af52d2c929663a92d876}{S\+C\+A\+N\+N\+I\+N\+G\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+1}}~50
+\item 
+\#define \mbox{\hyperlink{file-select_8c_a802b33edb86b450d0529f0c9fb9a8556}{S\+C\+A\+N\+N\+I\+N\+G\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+2}}~50
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{file-select_8c_a9270d5f5d4df7b53e1c337065ddf44bf}{\+\_\+clean\+Files}} (struct G\+U\+I\+Menu\+Item\+List $\ast$current\+Files)
+\item 
+static void \mbox{\hyperlink{file-select_8c_a52fbed7d72ffed083d8277f5070ad33d}{\+\_\+up\+Directory}} (char $\ast$current\+Path)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{file-select_8c_aac23dd0c263192be4391a136d2d31d9a}{\+\_\+strpcmp}} (const void $\ast$\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}}, const void $\ast$b)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{file-select_8c_ad8e0bb9d5b8355bc27bdc9a55dcc2e75}{\+\_\+refresh\+Directory}} (struct G\+U\+I\+Params $\ast$params, const char $\ast$current\+Path, struct G\+U\+I\+Menu\+Item\+List $\ast$current\+Files, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}($\ast$filter)(struct V\+File $\ast$))
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{file-select_8c_a8ad8aec85f35dc0c7d53e825447c3fcb}{G\+U\+I\+Select\+File}} (struct G\+U\+I\+Params $\ast$params, char $\ast$out\+Path, size\+\_\+t out\+Len, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}($\ast$filter)(struct V\+File $\ast$))
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{file-select_8c_a3ad638821db1c150fa4ecda36a1dda01}\label{file-select_8c_a3ad638821db1c150fa4ecda36a1dda01}} 
+\index{file-\/select.\+c@{file-\/select.\+c}!I\+T\+E\+R\+A\+T\+I\+O\+N\+\_\+\+S\+I\+ZE@{I\+T\+E\+R\+A\+T\+I\+O\+N\+\_\+\+S\+I\+ZE}}
+\index{I\+T\+E\+R\+A\+T\+I\+O\+N\+\_\+\+S\+I\+ZE@{I\+T\+E\+R\+A\+T\+I\+O\+N\+\_\+\+S\+I\+ZE}!file-\/select.\+c@{file-\/select.\+c}}
+\subsubsection{\texorpdfstring{I\+T\+E\+R\+A\+T\+I\+O\+N\+\_\+\+S\+I\+ZE}{ITERATION\_SIZE}}
+{\footnotesize\ttfamily \#define I\+T\+E\+R\+A\+T\+I\+O\+N\+\_\+\+S\+I\+ZE~5}
+
+\mbox{\Hypertarget{file-select_8c_a0e52e463a0c3af52d2c929663a92d876}\label{file-select_8c_a0e52e463a0c3af52d2c929663a92d876}} 
+\index{file-\/select.\+c@{file-\/select.\+c}!S\+C\+A\+N\+N\+I\+N\+G\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+1@{S\+C\+A\+N\+N\+I\+N\+G\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+1}}
+\index{S\+C\+A\+N\+N\+I\+N\+G\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+1@{S\+C\+A\+N\+N\+I\+N\+G\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+1}!file-\/select.\+c@{file-\/select.\+c}}
+\subsubsection{\texorpdfstring{S\+C\+A\+N\+N\+I\+N\+G\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+1}{SCANNING\_THRESHOLD\_1}}
+{\footnotesize\ttfamily \#define S\+C\+A\+N\+N\+I\+N\+G\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+1~50}
+
+\mbox{\Hypertarget{file-select_8c_a802b33edb86b450d0529f0c9fb9a8556}\label{file-select_8c_a802b33edb86b450d0529f0c9fb9a8556}} 
+\index{file-\/select.\+c@{file-\/select.\+c}!S\+C\+A\+N\+N\+I\+N\+G\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+2@{S\+C\+A\+N\+N\+I\+N\+G\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+2}}
+\index{S\+C\+A\+N\+N\+I\+N\+G\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+2@{S\+C\+A\+N\+N\+I\+N\+G\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+2}!file-\/select.\+c@{file-\/select.\+c}}
+\subsubsection{\texorpdfstring{S\+C\+A\+N\+N\+I\+N\+G\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+2}{SCANNING\_THRESHOLD\_2}}
+{\footnotesize\ttfamily \#define S\+C\+A\+N\+N\+I\+N\+G\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D\+\_\+2~50}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{file-select_8c_a9270d5f5d4df7b53e1c337065ddf44bf}\label{file-select_8c_a9270d5f5d4df7b53e1c337065ddf44bf}} 
+\index{file-\/select.\+c@{file-\/select.\+c}!\+\_\+clean\+Files@{\+\_\+clean\+Files}}
+\index{\+\_\+clean\+Files@{\+\_\+clean\+Files}!file-\/select.\+c@{file-\/select.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+clean\+Files()}{\_cleanFiles()}}
+{\footnotesize\ttfamily static void \+\_\+clean\+Files (\begin{DoxyParamCaption}\item[{struct G\+U\+I\+Menu\+Item\+List $\ast$}]{current\+Files }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{file-select_8c_a9270d5f5d4df7b53e1c337065ddf44bf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{file-select_8c_a9270d5f5d4df7b53e1c337065ddf44bf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{file-select_8c_ad8e0bb9d5b8355bc27bdc9a55dcc2e75}\label{file-select_8c_ad8e0bb9d5b8355bc27bdc9a55dcc2e75}} 
+\index{file-\/select.\+c@{file-\/select.\+c}!\+\_\+refresh\+Directory@{\+\_\+refresh\+Directory}}
+\index{\+\_\+refresh\+Directory@{\+\_\+refresh\+Directory}!file-\/select.\+c@{file-\/select.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+refresh\+Directory()}{\_refreshDirectory()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+refresh\+Directory (\begin{DoxyParamCaption}\item[{struct G\+U\+I\+Params $\ast$}]{params,  }\item[{const char $\ast$}]{current\+Path,  }\item[{struct G\+U\+I\+Menu\+Item\+List $\ast$}]{current\+Files,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}($\ast$)(struct V\+File $\ast$)}]{filter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{file-select_8c_ad8e0bb9d5b8355bc27bdc9a55dcc2e75_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{file-select_8c_ad8e0bb9d5b8355bc27bdc9a55dcc2e75_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{file-select_8c_aac23dd0c263192be4391a136d2d31d9a}\label{file-select_8c_aac23dd0c263192be4391a136d2d31d9a}} 
+\index{file-\/select.\+c@{file-\/select.\+c}!\+\_\+strpcmp@{\+\_\+strpcmp}}
+\index{\+\_\+strpcmp@{\+\_\+strpcmp}!file-\/select.\+c@{file-\/select.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+strpcmp()}{\_strpcmp()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \+\_\+strpcmp (\begin{DoxyParamCaption}\item[{const void $\ast$}]{a,  }\item[{const void $\ast$}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{file-select_8c_aac23dd0c263192be4391a136d2d31d9a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{file-select_8c_a52fbed7d72ffed083d8277f5070ad33d}\label{file-select_8c_a52fbed7d72ffed083d8277f5070ad33d}} 
+\index{file-\/select.\+c@{file-\/select.\+c}!\+\_\+up\+Directory@{\+\_\+up\+Directory}}
+\index{\+\_\+up\+Directory@{\+\_\+up\+Directory}!file-\/select.\+c@{file-\/select.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+up\+Directory()}{\_upDirectory()}}
+{\footnotesize\ttfamily static void \+\_\+up\+Directory (\begin{DoxyParamCaption}\item[{char $\ast$}]{current\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{file-select_8c_a52fbed7d72ffed083d8277f5070ad33d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{file-select_8c_a8ad8aec85f35dc0c7d53e825447c3fcb}\label{file-select_8c_a8ad8aec85f35dc0c7d53e825447c3fcb}} 
+\index{file-\/select.\+c@{file-\/select.\+c}!G\+U\+I\+Select\+File@{G\+U\+I\+Select\+File}}
+\index{G\+U\+I\+Select\+File@{G\+U\+I\+Select\+File}!file-\/select.\+c@{file-\/select.\+c}}
+\subsubsection{\texorpdfstring{G\+U\+I\+Select\+File()}{GUISelectFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+U\+I\+Select\+File (\begin{DoxyParamCaption}\item[{struct G\+U\+I\+Params $\ast$}]{params,  }\item[{char $\ast$}]{out\+Path,  }\item[{size\+\_\+t}]{out\+Len,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}($\ast$)(struct V\+File $\ast$)}]{filter }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{file-select_8c_a8ad8aec85f35dc0c7d53e825447c3fcb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{file-select_8c_a8ad8aec85f35dc0c7d53e825447c3fcb_icgraph}
+\end{center}
+\end{figure}

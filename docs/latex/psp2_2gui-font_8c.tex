@@ -1,0 +1,152 @@
+\hypertarget{psp2_2gui-font_8c}{}\section{src/platform/psp2/gui-\/font.c File Reference}
+\label{psp2_2gui-font_8c}\index{src/platform/psp2/gui-\/font.\+c@{src/platform/psp2/gui-\/font.\+c}}
+{\ttfamily \#include $<$mgba-\/util/gui/font.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/gui/font-\/metrics.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+{\ttfamily \#include $<$vita2d.\+h$>$}\newline
+Include dependency graph for gui-\/font.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2_2gui-font_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{psp2_2gui-font_8c_a8519cbc2997bb2eb21cf5571b37b38bd}{C\+E\+L\+L\+\_\+\+H\+E\+I\+G\+HT}}~32
+\item 
+\#define \mbox{\hyperlink{psp2_2gui-font_8c_ae1dbb0e959fde337fa4e436b61bb2bac}{C\+E\+L\+L\+\_\+\+W\+I\+D\+TH}}~32
+\item 
+\#define \mbox{\hyperlink{psp2_2gui-font_8c_aa968a61524f9ed159c4c5464cb26dd41}{F\+O\+N\+T\+\_\+\+S\+I\+ZE}}~1.\+25f
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct G\+U\+I\+Font $\ast$ \mbox{\hyperlink{psp2_2gui-font_8c_afeda865aa70118eb5e13639aeea185e5}{G\+U\+I\+Font\+Create}} (void)
+\item 
+void \mbox{\hyperlink{psp2_2gui-font_8c_aa30d3bddfd055be2a203306973eb2b6a}{G\+U\+I\+Font\+Destroy}} (struct G\+U\+I\+Font $\ast$\mbox{\hyperlink{wii_2main_8c_adae3f41cbe0ea5e886715661bb739691}{font}})
+\item 
+unsigned \mbox{\hyperlink{psp2_2gui-font_8c_a6d539c7b23450b8918bb6499e2c11042}{G\+U\+I\+Font\+Height}} (const struct G\+U\+I\+Font $\ast$\mbox{\hyperlink{wii_2main_8c_adae3f41cbe0ea5e886715661bb739691}{font}})
+\item 
+unsigned \mbox{\hyperlink{psp2_2gui-font_8c_a4b38c72440f93dd3f4c6d01848a23203}{G\+U\+I\+Font\+Glyph\+Width}} (const struct G\+U\+I\+Font $\ast$\mbox{\hyperlink{wii_2main_8c_adae3f41cbe0ea5e886715661bb739691}{font}}, uint32\+\_\+t glyph)
+\item 
+void \mbox{\hyperlink{psp2_2gui-font_8c_a70534a7637eda192a15884d8930a61b8}{G\+U\+I\+Font\+Icon\+Metrics}} (const struct G\+U\+I\+Font $\ast$\mbox{\hyperlink{wii_2main_8c_adae3f41cbe0ea5e886715661bb739691}{font}}, enum G\+U\+I\+Icon icon, unsigned $\ast$w, unsigned $\ast$\mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}})
+\item 
+void \mbox{\hyperlink{psp2_2gui-font_8c_a7be283f1f320dc6308f9bc4ac24c4da7}{G\+U\+I\+Font\+Draw\+Glyph}} (const struct G\+U\+I\+Font $\ast$\mbox{\hyperlink{wii_2main_8c_adae3f41cbe0ea5e886715661bb739691}{font}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} x, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} y, uint32\+\_\+t color, uint32\+\_\+t glyph)
+\item 
+void \mbox{\hyperlink{psp2_2gui-font_8c_a89adf10a0ec4d3b2dfba92b95ab17ad5}{G\+U\+I\+Font\+Draw\+Icon}} (const struct G\+U\+I\+Font $\ast$\mbox{\hyperlink{wii_2main_8c_adae3f41cbe0ea5e886715661bb739691}{font}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} x, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} y, enum G\+U\+I\+Alignment align, enum G\+U\+I\+Orientation orient, uint32\+\_\+t color, enum G\+U\+I\+Icon icon)
+\item 
+void \mbox{\hyperlink{psp2_2gui-font_8c_ae9ac7ef646aad8e77b04baf500472178}{G\+U\+I\+Font\+Draw\+Icon\+Size}} (const struct G\+U\+I\+Font $\ast$\mbox{\hyperlink{wii_2main_8c_adae3f41cbe0ea5e886715661bb739691}{font}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} x, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} y, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} w, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}}, uint32\+\_\+t color, enum G\+U\+I\+Icon icon)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{psp2_2gui-font_8c_a1ba621619eef6abfdbf98dc18648eba0}{\+\_\+binary\+\_\+icons2x\+\_\+png\+\_\+start}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{psp2_2gui-font_8c_a8519cbc2997bb2eb21cf5571b37b38bd}\label{psp2_2gui-font_8c_a8519cbc2997bb2eb21cf5571b37b38bd}} 
+\index{psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}!C\+E\+L\+L\+\_\+\+H\+E\+I\+G\+HT@{C\+E\+L\+L\+\_\+\+H\+E\+I\+G\+HT}}
+\index{C\+E\+L\+L\+\_\+\+H\+E\+I\+G\+HT@{C\+E\+L\+L\+\_\+\+H\+E\+I\+G\+HT}!psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{C\+E\+L\+L\+\_\+\+H\+E\+I\+G\+HT}{CELL\_HEIGHT}}
+{\footnotesize\ttfamily \#define C\+E\+L\+L\+\_\+\+H\+E\+I\+G\+HT~32}
+
+\mbox{\Hypertarget{psp2_2gui-font_8c_ae1dbb0e959fde337fa4e436b61bb2bac}\label{psp2_2gui-font_8c_ae1dbb0e959fde337fa4e436b61bb2bac}} 
+\index{psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}!C\+E\+L\+L\+\_\+\+W\+I\+D\+TH@{C\+E\+L\+L\+\_\+\+W\+I\+D\+TH}}
+\index{C\+E\+L\+L\+\_\+\+W\+I\+D\+TH@{C\+E\+L\+L\+\_\+\+W\+I\+D\+TH}!psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{C\+E\+L\+L\+\_\+\+W\+I\+D\+TH}{CELL\_WIDTH}}
+{\footnotesize\ttfamily \#define C\+E\+L\+L\+\_\+\+W\+I\+D\+TH~32}
+
+\mbox{\Hypertarget{psp2_2gui-font_8c_aa968a61524f9ed159c4c5464cb26dd41}\label{psp2_2gui-font_8c_aa968a61524f9ed159c4c5464cb26dd41}} 
+\index{psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}!F\+O\+N\+T\+\_\+\+S\+I\+ZE@{F\+O\+N\+T\+\_\+\+S\+I\+ZE}}
+\index{F\+O\+N\+T\+\_\+\+S\+I\+ZE@{F\+O\+N\+T\+\_\+\+S\+I\+ZE}!psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{F\+O\+N\+T\+\_\+\+S\+I\+ZE}{FONT\_SIZE}}
+{\footnotesize\ttfamily \#define F\+O\+N\+T\+\_\+\+S\+I\+ZE~1.\+25f}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{psp2_2gui-font_8c_afeda865aa70118eb5e13639aeea185e5}\label{psp2_2gui-font_8c_afeda865aa70118eb5e13639aeea185e5}} 
+\index{psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}!G\+U\+I\+Font\+Create@{G\+U\+I\+Font\+Create}}
+\index{G\+U\+I\+Font\+Create@{G\+U\+I\+Font\+Create}!psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{G\+U\+I\+Font\+Create()}{GUIFontCreate()}}
+{\footnotesize\ttfamily struct G\+U\+I\+Font$\ast$ G\+U\+I\+Font\+Create (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{psp2_2gui-font_8c_aa30d3bddfd055be2a203306973eb2b6a}\label{psp2_2gui-font_8c_aa30d3bddfd055be2a203306973eb2b6a}} 
+\index{psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}!G\+U\+I\+Font\+Destroy@{G\+U\+I\+Font\+Destroy}}
+\index{G\+U\+I\+Font\+Destroy@{G\+U\+I\+Font\+Destroy}!psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{G\+U\+I\+Font\+Destroy()}{GUIFontDestroy()}}
+{\footnotesize\ttfamily void G\+U\+I\+Font\+Destroy (\begin{DoxyParamCaption}\item[{struct G\+U\+I\+Font $\ast$}]{font }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{psp2_2gui-font_8c_aa30d3bddfd055be2a203306973eb2b6a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2_2gui-font_8c_a7be283f1f320dc6308f9bc4ac24c4da7}\label{psp2_2gui-font_8c_a7be283f1f320dc6308f9bc4ac24c4da7}} 
+\index{psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}!G\+U\+I\+Font\+Draw\+Glyph@{G\+U\+I\+Font\+Draw\+Glyph}}
+\index{G\+U\+I\+Font\+Draw\+Glyph@{G\+U\+I\+Font\+Draw\+Glyph}!psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{G\+U\+I\+Font\+Draw\+Glyph()}{GUIFontDrawGlyph()}}
+{\footnotesize\ttfamily void G\+U\+I\+Font\+Draw\+Glyph (\begin{DoxyParamCaption}\item[{const struct G\+U\+I\+Font $\ast$}]{font,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{x,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{y,  }\item[{uint32\+\_\+t}]{color,  }\item[{uint32\+\_\+t}]{glyph }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{psp2_2gui-font_8c_a7be283f1f320dc6308f9bc4ac24c4da7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2_2gui-font_8c_a89adf10a0ec4d3b2dfba92b95ab17ad5}\label{psp2_2gui-font_8c_a89adf10a0ec4d3b2dfba92b95ab17ad5}} 
+\index{psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}!G\+U\+I\+Font\+Draw\+Icon@{G\+U\+I\+Font\+Draw\+Icon}}
+\index{G\+U\+I\+Font\+Draw\+Icon@{G\+U\+I\+Font\+Draw\+Icon}!psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{G\+U\+I\+Font\+Draw\+Icon()}{GUIFontDrawIcon()}}
+{\footnotesize\ttfamily void G\+U\+I\+Font\+Draw\+Icon (\begin{DoxyParamCaption}\item[{const struct G\+U\+I\+Font $\ast$}]{font,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{x,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{y,  }\item[{enum G\+U\+I\+Alignment}]{align,  }\item[{enum G\+U\+I\+Orientation}]{orient,  }\item[{uint32\+\_\+t}]{color,  }\item[{enum G\+U\+I\+Icon}]{icon }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{psp2_2gui-font_8c_ae9ac7ef646aad8e77b04baf500472178}\label{psp2_2gui-font_8c_ae9ac7ef646aad8e77b04baf500472178}} 
+\index{psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}!G\+U\+I\+Font\+Draw\+Icon\+Size@{G\+U\+I\+Font\+Draw\+Icon\+Size}}
+\index{G\+U\+I\+Font\+Draw\+Icon\+Size@{G\+U\+I\+Font\+Draw\+Icon\+Size}!psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{G\+U\+I\+Font\+Draw\+Icon\+Size()}{GUIFontDrawIconSize()}}
+{\footnotesize\ttfamily void G\+U\+I\+Font\+Draw\+Icon\+Size (\begin{DoxyParamCaption}\item[{const struct G\+U\+I\+Font $\ast$}]{font,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{x,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{y,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{w,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{h,  }\item[{uint32\+\_\+t}]{color,  }\item[{enum G\+U\+I\+Icon}]{icon }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{psp2_2gui-font_8c_a4b38c72440f93dd3f4c6d01848a23203}\label{psp2_2gui-font_8c_a4b38c72440f93dd3f4c6d01848a23203}} 
+\index{psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}!G\+U\+I\+Font\+Glyph\+Width@{G\+U\+I\+Font\+Glyph\+Width}}
+\index{G\+U\+I\+Font\+Glyph\+Width@{G\+U\+I\+Font\+Glyph\+Width}!psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{G\+U\+I\+Font\+Glyph\+Width()}{GUIFontGlyphWidth()}}
+{\footnotesize\ttfamily unsigned G\+U\+I\+Font\+Glyph\+Width (\begin{DoxyParamCaption}\item[{const struct G\+U\+I\+Font $\ast$}]{font,  }\item[{uint32\+\_\+t}]{glyph }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{psp2_2gui-font_8c_a4b38c72440f93dd3f4c6d01848a23203_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2_2gui-font_8c_a6d539c7b23450b8918bb6499e2c11042}\label{psp2_2gui-font_8c_a6d539c7b23450b8918bb6499e2c11042}} 
+\index{psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}!G\+U\+I\+Font\+Height@{G\+U\+I\+Font\+Height}}
+\index{G\+U\+I\+Font\+Height@{G\+U\+I\+Font\+Height}!psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{G\+U\+I\+Font\+Height()}{GUIFontHeight()}}
+{\footnotesize\ttfamily unsigned G\+U\+I\+Font\+Height (\begin{DoxyParamCaption}\item[{const struct G\+U\+I\+Font $\ast$}]{font }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{psp2_2gui-font_8c_a70534a7637eda192a15884d8930a61b8}\label{psp2_2gui-font_8c_a70534a7637eda192a15884d8930a61b8}} 
+\index{psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}!G\+U\+I\+Font\+Icon\+Metrics@{G\+U\+I\+Font\+Icon\+Metrics}}
+\index{G\+U\+I\+Font\+Icon\+Metrics@{G\+U\+I\+Font\+Icon\+Metrics}!psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{G\+U\+I\+Font\+Icon\+Metrics()}{GUIFontIconMetrics()}}
+{\footnotesize\ttfamily void G\+U\+I\+Font\+Icon\+Metrics (\begin{DoxyParamCaption}\item[{const struct G\+U\+I\+Font $\ast$}]{font,  }\item[{enum G\+U\+I\+Icon}]{icon,  }\item[{unsigned $\ast$}]{w,  }\item[{unsigned $\ast$}]{h }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{psp2_2gui-font_8c_a1ba621619eef6abfdbf98dc18648eba0}\label{psp2_2gui-font_8c_a1ba621619eef6abfdbf98dc18648eba0}} 
+\index{psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}!\+\_\+binary\+\_\+icons2x\+\_\+png\+\_\+start@{\+\_\+binary\+\_\+icons2x\+\_\+png\+\_\+start}}
+\index{\+\_\+binary\+\_\+icons2x\+\_\+png\+\_\+start@{\+\_\+binary\+\_\+icons2x\+\_\+png\+\_\+start}!psp2/gui-\/font.\+c@{psp2/gui-\/font.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+binary\+\_\+icons2x\+\_\+png\+\_\+start}{\_binary\_icons2x\_png\_start}}
+{\footnotesize\ttfamily const uint8\+\_\+t \+\_\+binary\+\_\+icons2x\+\_\+png\+\_\+start\mbox{[}$\,$\mbox{]}}
+

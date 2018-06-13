@@ -1,0 +1,359 @@
+\hypertarget{ioapi_8c}{}\section{src/third-\/party/zlib/contrib/minizip/ioapi.c File Reference}
+\label{ioapi_8c}\index{src/third-\/party/zlib/contrib/minizip/ioapi.\+c@{src/third-\/party/zlib/contrib/minizip/ioapi.\+c}}
+{\ttfamily \#include \char`\"{}ioapi.\+h\char`\"{}}\newline
+Include dependency graph for ioapi.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{ioapi_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{ioapi_8c_a522a01bfc7c0429ab53987e50458fe8c}{F\+O\+P\+E\+N\+\_\+\+F\+U\+NC}}(\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}},  \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})~fopen64(\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}}, \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})
+\item 
+\#define \mbox{\hyperlink{ioapi_8c_ae84e3319767599bbef3ccbdeb4b0a3e4}{F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC}}(\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}})~ftello64(\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}})
+\item 
+\#define \mbox{\hyperlink{ioapi_8c_a0e74e519db7ea2da026a7da7eac65c7c}{F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC}}(\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}},  \mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}},  \mbox{\hyperlink{ioapi_8h_a5f189a59b66f135978bce54f9d0fcade}{origin}})~fseeko64(\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, \mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}}, \mbox{\hyperlink{ioapi_8h_a5f189a59b66f135978bce54f9d0fcade}{origin}})
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8c_aba1d7f2b69248eee96210089ce140925}{call\+\_\+zopen64}} (const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$pfilefunc, const void $\ast$\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})
+\item 
+\mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} \mbox{\hyperlink{ioapi_8c_aa3566299e354e3275a72193ab48e4af3}{call\+\_\+zseek64}} (const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$pfilefunc, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} filestream, \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} \mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a5f189a59b66f135978bce54f9d0fcade}{origin}})
+\item 
+\mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} \mbox{\hyperlink{ioapi_8c_ad18411c799d4ef86d37e25610e411c93}{call\+\_\+ztell64}} (const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$pfilefunc, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} filestream)
+\item 
+void \mbox{\hyperlink{ioapi_8c_a0c90747a8b732158bc3666411776affe}{fill\+\_\+zlib\+\_\+filefunc64\+\_\+32\+\_\+def\+\_\+from\+\_\+filefunc32}} (\mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$p\+\_\+filefunc64\+\_\+32, const \mbox{\hyperlink{ioapi_8h_a269f2bded66a7ee4052a60025afebd7e}{zlib\+\_\+filefunc\+\_\+def}} $\ast$p\+\_\+filefunc32)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} \mbox{\hyperlink{ioapi_8c_aed02c9f309fbe8fa9ecbf9b3e7e746cf}{fopen\+\_\+file\+\_\+func}} \mbox{\hyperlink{ioapi_8c_a2f5556626b4d14c8083b30ae93c16c07}{OF}} ((\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, const char $\ast$\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}}))
+\item 
+static \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} \mbox{\hyperlink{ioapi_8c_af6fb57d5dc750e2583a440acd4f2d13a}{fread\+\_\+file\+\_\+func}} \mbox{\hyperlink{ioapi_8c_aeb48b105028356325635fa77098865f5}{OF}} ((\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, void $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}))
+\item 
+static \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} \mbox{\hyperlink{ioapi_8c_a8ef76475abb40e42450cc9117c50d9f3}{fwrite\+\_\+file\+\_\+func}} \mbox{\hyperlink{ioapi_8c_a19f7ad118bdcf11460898e9acda78bb1}{OF}} ((\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, const void $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}))
+\item 
+static \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} \mbox{\hyperlink{ioapi_8c_a0a0b418f733f73f7a3f2856f9cdb8ef4}{ftell64\+\_\+file\+\_\+func}} \mbox{\hyperlink{ioapi_8c_ad95c95c714179fa5af08ed178e6dd9ed}{OF}} ((\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}))
+\item 
+static \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} \mbox{\hyperlink{ioapi_8c_a12efe8a77998c3c45d3025442ac0a4e4}{fseek64\+\_\+file\+\_\+func}} \mbox{\hyperlink{ioapi_8c_acd5e9217896ff179eb5d402234a1dc12}{OF}} ((\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} \mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a5f189a59b66f135978bce54f9d0fcade}{origin}}))
+\item 
+static \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} \mbox{\hyperlink{ioapi_8c_aed02c9f309fbe8fa9ecbf9b3e7e746cf}{fopen\+\_\+file\+\_\+func}} (\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, const char $\ast$\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})
+\item 
+static \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} \mbox{\hyperlink{ioapi_8c_aec6993b6c2a3aa1daf13500d14043e42}{fopen64\+\_\+file\+\_\+func}} (\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, const void $\ast$\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})
+\item 
+static \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} \mbox{\hyperlink{ioapi_8c_af6fb57d5dc750e2583a440acd4f2d13a}{fread\+\_\+file\+\_\+func}} (\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, void $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+static \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} \mbox{\hyperlink{ioapi_8c_a8ef76475abb40e42450cc9117c50d9f3}{fwrite\+\_\+file\+\_\+func}} (\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, const void $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+static \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} \mbox{\hyperlink{ioapi_8c_af2da2a0e814672e227b4fbc3872f2cd2}{ftell\+\_\+file\+\_\+func}} (\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}})
+\item 
+static \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} \mbox{\hyperlink{ioapi_8c_a0a0b418f733f73f7a3f2856f9cdb8ef4}{ftell64\+\_\+file\+\_\+func}} (\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}})
+\item 
+static \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} \mbox{\hyperlink{ioapi_8c_a019e81e9f25309850cd58dc38efb9144}{fseek\+\_\+file\+\_\+func}} (\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a5f189a59b66f135978bce54f9d0fcade}{origin}})
+\item 
+static \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} \mbox{\hyperlink{ioapi_8c_a12efe8a77998c3c45d3025442ac0a4e4}{fseek64\+\_\+file\+\_\+func}} (\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} \mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a5f189a59b66f135978bce54f9d0fcade}{origin}})
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} \mbox{\hyperlink{ioapi_8c_afafa291651579b4e9a86fd2dd0be77a0}{fclose\+\_\+file\+\_\+func}} (\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}})
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} \mbox{\hyperlink{ioapi_8c_a3aa4c3f5fe3a24948eabef9f7bbaa2b3}{ferror\+\_\+file\+\_\+func}} (\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}})
+\item 
+void \mbox{\hyperlink{ioapi_8c_ab44f1d585b26ce7f9447a91ada432727}{fill\+\_\+fopen\+\_\+filefunc}} (\mbox{\hyperlink{ioapi_8h_a269f2bded66a7ee4052a60025afebd7e}{zlib\+\_\+filefunc\+\_\+def}} $\ast$pzlib\+\_\+filefunc\+\_\+def)
+\item 
+void \mbox{\hyperlink{ioapi_8c_aa67e4de04de04bf2d1694febd74bd16f}{fill\+\_\+fopen64\+\_\+filefunc}} (\mbox{\hyperlink{ioapi_8h_a6be8577ecdaf6c1f57fb75006aa2b56c}{zlib\+\_\+filefunc64\+\_\+def}} $\ast$pzlib\+\_\+filefunc\+\_\+def)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{ioapi_8c_a522a01bfc7c0429ab53987e50458fe8c}\label{ioapi_8c_a522a01bfc7c0429ab53987e50458fe8c}} 
+\index{ioapi.\+c@{ioapi.\+c}!F\+O\+P\+E\+N\+\_\+\+F\+U\+NC@{F\+O\+P\+E\+N\+\_\+\+F\+U\+NC}}
+\index{F\+O\+P\+E\+N\+\_\+\+F\+U\+NC@{F\+O\+P\+E\+N\+\_\+\+F\+U\+NC}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{F\+O\+P\+E\+N\+\_\+\+F\+U\+NC}{FOPEN\_FUNC}}
+{\footnotesize\ttfamily \#define F\+O\+P\+E\+N\+\_\+\+F\+U\+NC(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}},  }\item[{}]{\mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}} }\end{DoxyParamCaption})~fopen64(\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}}, \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})}
+
+\mbox{\Hypertarget{ioapi_8c_a0e74e519db7ea2da026a7da7eac65c7c}\label{ioapi_8c_a0e74e519db7ea2da026a7da7eac65c7c}} 
+\index{ioapi.\+c@{ioapi.\+c}!F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC@{F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC}}
+\index{F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC@{F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC}{FSEEKO\_FUNC}}
+{\footnotesize\ttfamily \#define F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}},  }\item[{}]{\mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}},  }\item[{}]{\mbox{\hyperlink{ioapi_8h_a5f189a59b66f135978bce54f9d0fcade}{origin}} }\end{DoxyParamCaption})~fseeko64(\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, \mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}}, \mbox{\hyperlink{ioapi_8h_a5f189a59b66f135978bce54f9d0fcade}{origin}})}
+
+\mbox{\Hypertarget{ioapi_8c_ae84e3319767599bbef3ccbdeb4b0a3e4}\label{ioapi_8c_ae84e3319767599bbef3ccbdeb4b0a3e4}} 
+\index{ioapi.\+c@{ioapi.\+c}!F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC@{F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC}}
+\index{F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC@{F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC}{FTELLO\_FUNC}}
+{\footnotesize\ttfamily \#define F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}} }\end{DoxyParamCaption})~ftello64(\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}})}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{ioapi_8c_aba1d7f2b69248eee96210089ce140925}\label{ioapi_8c_aba1d7f2b69248eee96210089ce140925}} 
+\index{ioapi.\+c@{ioapi.\+c}!call\+\_\+zopen64@{call\+\_\+zopen64}}
+\index{call\+\_\+zopen64@{call\+\_\+zopen64}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{call\+\_\+zopen64()}{call\_zopen64()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} call\+\_\+zopen64 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$}]{pfilefunc,  }\item[{const void $\ast$}]{filename,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{mode }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{ioapi_8c_aa3566299e354e3275a72193ab48e4af3}\label{ioapi_8c_aa3566299e354e3275a72193ab48e4af3}} 
+\index{ioapi.\+c@{ioapi.\+c}!call\+\_\+zseek64@{call\+\_\+zseek64}}
+\index{call\+\_\+zseek64@{call\+\_\+zseek64}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{call\+\_\+zseek64()}{call\_zseek64()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} call\+\_\+zseek64 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$}]{pfilefunc,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{filestream,  }\item[{\mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}}}]{offset,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{origin }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{ioapi_8c_aa3566299e354e3275a72193ab48e4af3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ioapi_8c_ad18411c799d4ef86d37e25610e411c93}\label{ioapi_8c_ad18411c799d4ef86d37e25610e411c93}} 
+\index{ioapi.\+c@{ioapi.\+c}!call\+\_\+ztell64@{call\+\_\+ztell64}}
+\index{call\+\_\+ztell64@{call\+\_\+ztell64}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{call\+\_\+ztell64()}{call\_ztell64()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} call\+\_\+ztell64 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$}]{pfilefunc,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{filestream }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{ioapi_8c_ad18411c799d4ef86d37e25610e411c93_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ioapi_8c_afafa291651579b4e9a86fd2dd0be77a0}\label{ioapi_8c_afafa291651579b4e9a86fd2dd0be77a0}} 
+\index{ioapi.\+c@{ioapi.\+c}!fclose\+\_\+file\+\_\+func@{fclose\+\_\+file\+\_\+func}}
+\index{fclose\+\_\+file\+\_\+func@{fclose\+\_\+file\+\_\+func}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{fclose\+\_\+file\+\_\+func()}{fclose\_file\_func()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} fclose\+\_\+file\+\_\+func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{opaque,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ioapi_8c_afafa291651579b4e9a86fd2dd0be77a0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ioapi_8c_a3aa4c3f5fe3a24948eabef9f7bbaa2b3}\label{ioapi_8c_a3aa4c3f5fe3a24948eabef9f7bbaa2b3}} 
+\index{ioapi.\+c@{ioapi.\+c}!ferror\+\_\+file\+\_\+func@{ferror\+\_\+file\+\_\+func}}
+\index{ferror\+\_\+file\+\_\+func@{ferror\+\_\+file\+\_\+func}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{ferror\+\_\+file\+\_\+func()}{ferror\_file\_func()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} ferror\+\_\+file\+\_\+func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{opaque,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ioapi_8c_a3aa4c3f5fe3a24948eabef9f7bbaa2b3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ioapi_8c_aa67e4de04de04bf2d1694febd74bd16f}\label{ioapi_8c_aa67e4de04de04bf2d1694febd74bd16f}} 
+\index{ioapi.\+c@{ioapi.\+c}!fill\+\_\+fopen64\+\_\+filefunc@{fill\+\_\+fopen64\+\_\+filefunc}}
+\index{fill\+\_\+fopen64\+\_\+filefunc@{fill\+\_\+fopen64\+\_\+filefunc}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{fill\+\_\+fopen64\+\_\+filefunc()}{fill\_fopen64\_filefunc()}}
+{\footnotesize\ttfamily void fill\+\_\+fopen64\+\_\+filefunc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a6be8577ecdaf6c1f57fb75006aa2b56c}{zlib\+\_\+filefunc64\+\_\+def}} $\ast$}]{pzlib\+\_\+filefunc\+\_\+def }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ioapi_8c_aa67e4de04de04bf2d1694febd74bd16f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ioapi_8c_aa67e4de04de04bf2d1694febd74bd16f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ioapi_8c_ab44f1d585b26ce7f9447a91ada432727}\label{ioapi_8c_ab44f1d585b26ce7f9447a91ada432727}} 
+\index{ioapi.\+c@{ioapi.\+c}!fill\+\_\+fopen\+\_\+filefunc@{fill\+\_\+fopen\+\_\+filefunc}}
+\index{fill\+\_\+fopen\+\_\+filefunc@{fill\+\_\+fopen\+\_\+filefunc}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{fill\+\_\+fopen\+\_\+filefunc()}{fill\_fopen\_filefunc()}}
+{\footnotesize\ttfamily void fill\+\_\+fopen\+\_\+filefunc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a269f2bded66a7ee4052a60025afebd7e}{zlib\+\_\+filefunc\+\_\+def}}$\ast$}]{pzlib\+\_\+filefunc\+\_\+def }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ioapi_8c_ab44f1d585b26ce7f9447a91ada432727_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ioapi_8c_a0c90747a8b732158bc3666411776affe}\label{ioapi_8c_a0c90747a8b732158bc3666411776affe}} 
+\index{ioapi.\+c@{ioapi.\+c}!fill\+\_\+zlib\+\_\+filefunc64\+\_\+32\+\_\+def\+\_\+from\+\_\+filefunc32@{fill\+\_\+zlib\+\_\+filefunc64\+\_\+32\+\_\+def\+\_\+from\+\_\+filefunc32}}
+\index{fill\+\_\+zlib\+\_\+filefunc64\+\_\+32\+\_\+def\+\_\+from\+\_\+filefunc32@{fill\+\_\+zlib\+\_\+filefunc64\+\_\+32\+\_\+def\+\_\+from\+\_\+filefunc32}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{fill\+\_\+zlib\+\_\+filefunc64\+\_\+32\+\_\+def\+\_\+from\+\_\+filefunc32()}{fill\_zlib\_filefunc64\_32\_def\_from\_filefunc32()}}
+{\footnotesize\ttfamily void fill\+\_\+zlib\+\_\+filefunc64\+\_\+32\+\_\+def\+\_\+from\+\_\+filefunc32 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$}]{p\+\_\+filefunc64\+\_\+32,  }\item[{const \mbox{\hyperlink{ioapi_8h_a269f2bded66a7ee4052a60025afebd7e}{zlib\+\_\+filefunc\+\_\+def}} $\ast$}]{p\+\_\+filefunc32 }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ioapi_8c_a0c90747a8b732158bc3666411776affe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ioapi_8c_aec6993b6c2a3aa1daf13500d14043e42}\label{ioapi_8c_aec6993b6c2a3aa1daf13500d14043e42}} 
+\index{ioapi.\+c@{ioapi.\+c}!fopen64\+\_\+file\+\_\+func@{fopen64\+\_\+file\+\_\+func}}
+\index{fopen64\+\_\+file\+\_\+func@{fopen64\+\_\+file\+\_\+func}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{fopen64\+\_\+file\+\_\+func()}{fopen64\_file\_func()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} fopen64\+\_\+file\+\_\+func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{opaque,  }\item[{const void $\ast$}]{filename,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ioapi_8c_aec6993b6c2a3aa1daf13500d14043e42_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ioapi_8c_aed02c9f309fbe8fa9ecbf9b3e7e746cf}\label{ioapi_8c_aed02c9f309fbe8fa9ecbf9b3e7e746cf}} 
+\index{ioapi.\+c@{ioapi.\+c}!fopen\+\_\+file\+\_\+func@{fopen\+\_\+file\+\_\+func}}
+\index{fopen\+\_\+file\+\_\+func@{fopen\+\_\+file\+\_\+func}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{fopen\+\_\+file\+\_\+func()}{fopen\_file\_func()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} fopen\+\_\+file\+\_\+func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{opaque,  }\item[{const char $\ast$}]{filename,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{ioapi_8c_aed02c9f309fbe8fa9ecbf9b3e7e746cf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ioapi_8c_af6fb57d5dc750e2583a440acd4f2d13a}\label{ioapi_8c_af6fb57d5dc750e2583a440acd4f2d13a}} 
+\index{ioapi.\+c@{ioapi.\+c}!fread\+\_\+file\+\_\+func@{fread\+\_\+file\+\_\+func}}
+\index{fread\+\_\+file\+\_\+func@{fread\+\_\+file\+\_\+func}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{fread\+\_\+file\+\_\+func()}{fread\_file\_func()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} fread\+\_\+file\+\_\+func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{opaque,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{stream,  }\item[{void $\ast$}]{buf,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=251pt]{ioapi_8c_af6fb57d5dc750e2583a440acd4f2d13a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ioapi_8c_af6fb57d5dc750e2583a440acd4f2d13a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ioapi_8c_a12efe8a77998c3c45d3025442ac0a4e4}\label{ioapi_8c_a12efe8a77998c3c45d3025442ac0a4e4}} 
+\index{ioapi.\+c@{ioapi.\+c}!fseek64\+\_\+file\+\_\+func@{fseek64\+\_\+file\+\_\+func}}
+\index{fseek64\+\_\+file\+\_\+func@{fseek64\+\_\+file\+\_\+func}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{fseek64\+\_\+file\+\_\+func()}{fseek64\_file\_func()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} fseek64\+\_\+file\+\_\+func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{opaque,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{stream,  }\item[{\mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}}}]{offset,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{origin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ioapi_8c_a12efe8a77998c3c45d3025442ac0a4e4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ioapi_8c_a019e81e9f25309850cd58dc38efb9144}\label{ioapi_8c_a019e81e9f25309850cd58dc38efb9144}} 
+\index{ioapi.\+c@{ioapi.\+c}!fseek\+\_\+file\+\_\+func@{fseek\+\_\+file\+\_\+func}}
+\index{fseek\+\_\+file\+\_\+func@{fseek\+\_\+file\+\_\+func}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{fseek\+\_\+file\+\_\+func()}{fseek\_file\_func()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} fseek\+\_\+file\+\_\+func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{opaque,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{stream,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{offset,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{origin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{ioapi_8c_a019e81e9f25309850cd58dc38efb9144_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ioapi_8c_a0a0b418f733f73f7a3f2856f9cdb8ef4}\label{ioapi_8c_a0a0b418f733f73f7a3f2856f9cdb8ef4}} 
+\index{ioapi.\+c@{ioapi.\+c}!ftell64\+\_\+file\+\_\+func@{ftell64\+\_\+file\+\_\+func}}
+\index{ftell64\+\_\+file\+\_\+func@{ftell64\+\_\+file\+\_\+func}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{ftell64\+\_\+file\+\_\+func()}{ftell64\_file\_func()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} ftell64\+\_\+file\+\_\+func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{opaque,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ioapi_8c_a0a0b418f733f73f7a3f2856f9cdb8ef4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ioapi_8c_af2da2a0e814672e227b4fbc3872f2cd2}\label{ioapi_8c_af2da2a0e814672e227b4fbc3872f2cd2}} 
+\index{ioapi.\+c@{ioapi.\+c}!ftell\+\_\+file\+\_\+func@{ftell\+\_\+file\+\_\+func}}
+\index{ftell\+\_\+file\+\_\+func@{ftell\+\_\+file\+\_\+func}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{ftell\+\_\+file\+\_\+func()}{ftell\_file\_func()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} ftell\+\_\+file\+\_\+func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{opaque,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=303pt]{ioapi_8c_af2da2a0e814672e227b4fbc3872f2cd2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ioapi_8c_a8ef76475abb40e42450cc9117c50d9f3}\label{ioapi_8c_a8ef76475abb40e42450cc9117c50d9f3}} 
+\index{ioapi.\+c@{ioapi.\+c}!fwrite\+\_\+file\+\_\+func@{fwrite\+\_\+file\+\_\+func}}
+\index{fwrite\+\_\+file\+\_\+func@{fwrite\+\_\+file\+\_\+func}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{fwrite\+\_\+file\+\_\+func()}{fwrite\_file\_func()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} fwrite\+\_\+file\+\_\+func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{opaque,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{stream,  }\item[{const void $\ast$}]{buf,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=254pt]{ioapi_8c_a8ef76475abb40e42450cc9117c50d9f3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ioapi_8c_a8ef76475abb40e42450cc9117c50d9f3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{ioapi_8c_a2f5556626b4d14c8083b30ae93c16c07}\label{ioapi_8c_a2f5556626b4d14c8083b30ae93c16c07}} 
+\index{ioapi.\+c@{ioapi.\+c}!OF@{OF}}
+\index{OF@{OF}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{O\+F()}{OF()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} \mbox{\hyperlink{ioapi_8c_aed02c9f309fbe8fa9ecbf9b3e7e746cf}{fopen\+\_\+file\+\_\+func}} OF (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, const char $\ast$\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{ioapi_8c_aeb48b105028356325635fa77098865f5}\label{ioapi_8c_aeb48b105028356325635fa77098865f5}} 
+\index{ioapi.\+c@{ioapi.\+c}!OF@{OF}}
+\index{OF@{OF}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{O\+F()}{OF()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} \mbox{\hyperlink{ioapi_8c_af6fb57d5dc750e2583a440acd4f2d13a}{fread\+\_\+file\+\_\+func}} OF (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, void $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{ioapi_8c_a19f7ad118bdcf11460898e9acda78bb1}\label{ioapi_8c_a19f7ad118bdcf11460898e9acda78bb1}} 
+\index{ioapi.\+c@{ioapi.\+c}!OF@{OF}}
+\index{OF@{OF}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{O\+F()}{OF()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} \mbox{\hyperlink{ioapi_8c_a8ef76475abb40e42450cc9117c50d9f3}{fwrite\+\_\+file\+\_\+func}} OF (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, const void $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{ioapi_8c_ad95c95c714179fa5af08ed178e6dd9ed}\label{ioapi_8c_ad95c95c714179fa5af08ed178e6dd9ed}} 
+\index{ioapi.\+c@{ioapi.\+c}!OF@{OF}}
+\index{OF@{OF}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{O\+F()}{OF()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} \mbox{\hyperlink{ioapi_8c_a0a0b418f733f73f7a3f2856f9cdb8ef4}{ftell64\+\_\+file\+\_\+func}} OF (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}})}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{ioapi_8c_acd5e9217896ff179eb5d402234a1dc12}\label{ioapi_8c_acd5e9217896ff179eb5d402234a1dc12}} 
+\index{ioapi.\+c@{ioapi.\+c}!OF@{OF}}
+\index{OF@{OF}!ioapi.\+c@{ioapi.\+c}}
+\subsubsection{\texorpdfstring{O\+F()}{OF()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} \mbox{\hyperlink{ioapi_8h_aace96475a6dd2915bc55bc542d7aa8a5}{Z\+C\+A\+L\+L\+B\+A\+CK}} \mbox{\hyperlink{ioapi_8c_a12efe8a77998c3c45d3025442ac0a4e4}{fseek64\+\_\+file\+\_\+func}} OF (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} \mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a5f189a59b66f135978bce54f9d0fcade}{origin}})}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+

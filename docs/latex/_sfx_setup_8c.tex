@@ -1,0 +1,260 @@
+\hypertarget{_sfx_setup_8c}{}\section{src/third-\/party/lzma/\+Util/\+Sfx\+Setup/\+Sfx\+Setup.c File Reference}
+\label{_sfx_setup_8c}\index{src/third-\/party/lzma/\+Util/\+Sfx\+Setup/\+Sfx\+Setup.\+c@{src/third-\/party/lzma/\+Util/\+Sfx\+Setup/\+Sfx\+Setup.\+c}}
+{\ttfamily \#include \char`\"{}Precomp.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../7z.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../7z\+Alloc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../7z\+Crc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../7z\+File.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../\+Cpu\+Arch.\+h\char`\"{}}\newline
+Include dependency graph for Sfx\+Setup.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_sfx_setup_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_sfx_setup_8c_a09ecca53f2cd1b8d1c566bedb245e141}{U\+N\+I\+C\+O\+DE}}
+\item 
+\#define \mbox{\hyperlink{_sfx_setup_8c_a78880e1abcefc90f14185aee93ad0e20}{\+\_\+\+U\+N\+I\+C\+O\+DE}}
+\item 
+\#define \mbox{\hyperlink{_sfx_setup_8c_aeaf82cffbe430ddab127f590872e991b}{k\+\_\+\+E\+X\+E\+\_\+\+Ext\+Index}}~2
+\item 
+\#define \mbox{\hyperlink{_sfx_setup_8c_a339e9ee0a9f91b6bd0cee92c1232044a}{M\+A\+K\+E\+\_\+\+C\+H\+A\+R\+\_\+\+U\+P\+P\+ER}}(\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}})~((((\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}}) $>$= \textquotesingle{}\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}}\textquotesingle{} \&\& (\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}}) $<$= \textquotesingle{}\mbox{\hyperlink{isa-lr35902_8c_a9bfcf38888761332515ae81f9c499233}{z}}\textquotesingle{}) ? (\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}}) -\/= 0x20 \+: (c)))
+\item 
+\#define \mbox{\hyperlink{_sfx_setup_8c_aa1c34e702d71838b2b30b0e0b57b5469}{k\+Buffer\+Size}}~(1 $<$$<$ 15)
+\item 
+\#define \mbox{\hyperlink{_sfx_setup_8c_a47ddaf969436e4a954bd5fc3ccef13d9}{k\+Signature\+Search\+Limit}}~(1 $<$$<$ 22)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static unsigned \mbox{\hyperlink{_sfx_setup_8c_ae6531af50c965e59363a2d4037bc9202}{Find\+Ext}} (const wchar\+\_\+t $\ast$s, unsigned $\ast$ext\+Len)
+\item 
+static unsigned \mbox{\hyperlink{_sfx_setup_8c_a0c980e7c8743ee9a16c70132e934ecd7}{Find\+Item}} (const char $\ast$const $\ast$items, unsigned \mbox{\hyperlink{enough_8c_a1fd0a5ffc280a84b0764e8ec908f814a}{num}}, const wchar\+\_\+t $\ast$s, unsigned len)
+\item 
+static void \mbox{\hyperlink{_sfx_setup_8c_ad35ff8747b1dd6cbe48ae67f189be7cd}{Print\+Error\+Message}} (const char $\ast$message)
+\item 
+static \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{_sfx_setup_8c_a9dc2e13abe3e2f1fa0bcb30b657f8946}{My\+Create\+Dir}} (const W\+C\+H\+AR $\ast$name)
+\item 
+static \mbox{\hyperlink{7z_types_8h_afdcfe6db5bea87bd493a3fe2c513d5ef}{Bool}} \mbox{\hyperlink{_sfx_setup_8c_a19fcd98946d178b32bbd00187144ef7a}{Find\+Signature}} (\mbox{\hyperlink{7z_file_8h_struct_c_sz_file}{C\+Sz\+File}} $\ast$\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, \mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} $\ast$res\+Pos)
+\item 
+static \mbox{\hyperlink{7z_types_8h_afdcfe6db5bea87bd493a3fe2c513d5ef}{Bool}} \mbox{\hyperlink{_sfx_setup_8c_a88050b87dbc5e9b5a7ab63c26bb294cd}{Does\+File\+Or\+Dir\+Exist}} (const W\+C\+H\+AR $\ast$path)
+\item 
+static \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{_sfx_setup_8c_a8cc4a22e4d1ceb14a22b129810b74ff7}{Remove\+Dir\+With\+Sub\+Items}} (W\+C\+H\+AR $\ast$path)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} A\+P\+I\+E\+N\+T\+RY \mbox{\hyperlink{_sfx_setup_8c_a1122673f59be78a3997ec7dd1c4688f9}{Win\+Main}} (H\+I\+N\+S\+T\+A\+N\+CE h\+Instance, H\+I\+N\+S\+T\+A\+N\+CE h\+Prev\+Instance, L\+P\+S\+TR lp\+Cmd\+Line, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} n\+Cmd\+Show)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const char $\ast$const \mbox{\hyperlink{_sfx_setup_8c_a3012b2c329de88e740ff596096d09f6e}{k\+Exts}} \mbox{[}$\,$\mbox{]}
+\item 
+static const char $\ast$const \mbox{\hyperlink{_sfx_setup_8c_a9798e997f669b9c319781ccb047a7566}{k\+Names}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_sfx_setup_8c_a78880e1abcefc90f14185aee93ad0e20}\label{_sfx_setup_8c_a78880e1abcefc90f14185aee93ad0e20}} 
+\index{Sfx\+Setup.\+c@{Sfx\+Setup.\+c}!\+\_\+\+U\+N\+I\+C\+O\+DE@{\+\_\+\+U\+N\+I\+C\+O\+DE}}
+\index{\+\_\+\+U\+N\+I\+C\+O\+DE@{\+\_\+\+U\+N\+I\+C\+O\+DE}!Sfx\+Setup.\+c@{Sfx\+Setup.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+U\+N\+I\+C\+O\+DE}{\_UNICODE}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+N\+I\+C\+O\+DE}
+
+\mbox{\Hypertarget{_sfx_setup_8c_aeaf82cffbe430ddab127f590872e991b}\label{_sfx_setup_8c_aeaf82cffbe430ddab127f590872e991b}} 
+\index{Sfx\+Setup.\+c@{Sfx\+Setup.\+c}!k\+\_\+\+E\+X\+E\+\_\+\+Ext\+Index@{k\+\_\+\+E\+X\+E\+\_\+\+Ext\+Index}}
+\index{k\+\_\+\+E\+X\+E\+\_\+\+Ext\+Index@{k\+\_\+\+E\+X\+E\+\_\+\+Ext\+Index}!Sfx\+Setup.\+c@{Sfx\+Setup.\+c}}
+\subsubsection{\texorpdfstring{k\+\_\+\+E\+X\+E\+\_\+\+Ext\+Index}{k\_EXE\_ExtIndex}}
+{\footnotesize\ttfamily \#define k\+\_\+\+E\+X\+E\+\_\+\+Ext\+Index~2}
+
+\mbox{\Hypertarget{_sfx_setup_8c_aa1c34e702d71838b2b30b0e0b57b5469}\label{_sfx_setup_8c_aa1c34e702d71838b2b30b0e0b57b5469}} 
+\index{Sfx\+Setup.\+c@{Sfx\+Setup.\+c}!k\+Buffer\+Size@{k\+Buffer\+Size}}
+\index{k\+Buffer\+Size@{k\+Buffer\+Size}!Sfx\+Setup.\+c@{Sfx\+Setup.\+c}}
+\subsubsection{\texorpdfstring{k\+Buffer\+Size}{kBufferSize}}
+{\footnotesize\ttfamily \#define k\+Buffer\+Size~(1 $<$$<$ 15)}
+
+\mbox{\Hypertarget{_sfx_setup_8c_a47ddaf969436e4a954bd5fc3ccef13d9}\label{_sfx_setup_8c_a47ddaf969436e4a954bd5fc3ccef13d9}} 
+\index{Sfx\+Setup.\+c@{Sfx\+Setup.\+c}!k\+Signature\+Search\+Limit@{k\+Signature\+Search\+Limit}}
+\index{k\+Signature\+Search\+Limit@{k\+Signature\+Search\+Limit}!Sfx\+Setup.\+c@{Sfx\+Setup.\+c}}
+\subsubsection{\texorpdfstring{k\+Signature\+Search\+Limit}{kSignatureSearchLimit}}
+{\footnotesize\ttfamily \#define k\+Signature\+Search\+Limit~(1 $<$$<$ 22)}
+
+\mbox{\Hypertarget{_sfx_setup_8c_a339e9ee0a9f91b6bd0cee92c1232044a}\label{_sfx_setup_8c_a339e9ee0a9f91b6bd0cee92c1232044a}} 
+\index{Sfx\+Setup.\+c@{Sfx\+Setup.\+c}!M\+A\+K\+E\+\_\+\+C\+H\+A\+R\+\_\+\+U\+P\+P\+ER@{M\+A\+K\+E\+\_\+\+C\+H\+A\+R\+\_\+\+U\+P\+P\+ER}}
+\index{M\+A\+K\+E\+\_\+\+C\+H\+A\+R\+\_\+\+U\+P\+P\+ER@{M\+A\+K\+E\+\_\+\+C\+H\+A\+R\+\_\+\+U\+P\+P\+ER}!Sfx\+Setup.\+c@{Sfx\+Setup.\+c}}
+\subsubsection{\texorpdfstring{M\+A\+K\+E\+\_\+\+C\+H\+A\+R\+\_\+\+U\+P\+P\+ER}{MAKE\_CHAR\_UPPER}}
+{\footnotesize\ttfamily \#define M\+A\+K\+E\+\_\+\+C\+H\+A\+R\+\_\+\+U\+P\+P\+ER(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}} }\end{DoxyParamCaption})~((((\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}}) $>$= \textquotesingle{}\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}}\textquotesingle{} \&\& (\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}}) $<$= \textquotesingle{}\mbox{\hyperlink{isa-lr35902_8c_a9bfcf38888761332515ae81f9c499233}{z}}\textquotesingle{}) ? (\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}}) -\/= 0x20 \+: (c)))}
+
+\mbox{\Hypertarget{_sfx_setup_8c_a09ecca53f2cd1b8d1c566bedb245e141}\label{_sfx_setup_8c_a09ecca53f2cd1b8d1c566bedb245e141}} 
+\index{Sfx\+Setup.\+c@{Sfx\+Setup.\+c}!U\+N\+I\+C\+O\+DE@{U\+N\+I\+C\+O\+DE}}
+\index{U\+N\+I\+C\+O\+DE@{U\+N\+I\+C\+O\+DE}!Sfx\+Setup.\+c@{Sfx\+Setup.\+c}}
+\subsubsection{\texorpdfstring{U\+N\+I\+C\+O\+DE}{UNICODE}}
+{\footnotesize\ttfamily \#define U\+N\+I\+C\+O\+DE}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_sfx_setup_8c_a88050b87dbc5e9b5a7ab63c26bb294cd}\label{_sfx_setup_8c_a88050b87dbc5e9b5a7ab63c26bb294cd}} 
+\index{Sfx\+Setup.\+c@{Sfx\+Setup.\+c}!Does\+File\+Or\+Dir\+Exist@{Does\+File\+Or\+Dir\+Exist}}
+\index{Does\+File\+Or\+Dir\+Exist@{Does\+File\+Or\+Dir\+Exist}!Sfx\+Setup.\+c@{Sfx\+Setup.\+c}}
+\subsubsection{\texorpdfstring{Does\+File\+Or\+Dir\+Exist()}{DoesFileOrDirExist()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_afdcfe6db5bea87bd493a3fe2c513d5ef}{Bool}} Does\+File\+Or\+Dir\+Exist (\begin{DoxyParamCaption}\item[{const W\+C\+H\+AR $\ast$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=283pt]{_sfx_setup_8c_a88050b87dbc5e9b5a7ab63c26bb294cd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_sfx_setup_8c_ae6531af50c965e59363a2d4037bc9202}\label{_sfx_setup_8c_ae6531af50c965e59363a2d4037bc9202}} 
+\index{Sfx\+Setup.\+c@{Sfx\+Setup.\+c}!Find\+Ext@{Find\+Ext}}
+\index{Find\+Ext@{Find\+Ext}!Sfx\+Setup.\+c@{Sfx\+Setup.\+c}}
+\subsubsection{\texorpdfstring{Find\+Ext()}{FindExt()}}
+{\footnotesize\ttfamily static unsigned Find\+Ext (\begin{DoxyParamCaption}\item[{const wchar\+\_\+t $\ast$}]{s,  }\item[{unsigned $\ast$}]{ext\+Len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{_sfx_setup_8c_ae6531af50c965e59363a2d4037bc9202_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_sfx_setup_8c_a0c980e7c8743ee9a16c70132e934ecd7}\label{_sfx_setup_8c_a0c980e7c8743ee9a16c70132e934ecd7}} 
+\index{Sfx\+Setup.\+c@{Sfx\+Setup.\+c}!Find\+Item@{Find\+Item}}
+\index{Find\+Item@{Find\+Item}!Sfx\+Setup.\+c@{Sfx\+Setup.\+c}}
+\subsubsection{\texorpdfstring{Find\+Item()}{FindItem()}}
+{\footnotesize\ttfamily static unsigned Find\+Item (\begin{DoxyParamCaption}\item[{const char $\ast$const $\ast$}]{items,  }\item[{unsigned}]{num,  }\item[{const wchar\+\_\+t $\ast$}]{s,  }\item[{unsigned}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{_sfx_setup_8c_a0c980e7c8743ee9a16c70132e934ecd7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_sfx_setup_8c_a19fcd98946d178b32bbd00187144ef7a}\label{_sfx_setup_8c_a19fcd98946d178b32bbd00187144ef7a}} 
+\index{Sfx\+Setup.\+c@{Sfx\+Setup.\+c}!Find\+Signature@{Find\+Signature}}
+\index{Find\+Signature@{Find\+Signature}!Sfx\+Setup.\+c@{Sfx\+Setup.\+c}}
+\subsubsection{\texorpdfstring{Find\+Signature()}{FindSignature()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_afdcfe6db5bea87bd493a3fe2c513d5ef}{Bool}} Find\+Signature (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{7z_file_8h_struct_c_sz_file}{C\+Sz\+File}} $\ast$}]{stream,  }\item[{\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} $\ast$}]{res\+Pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{_sfx_setup_8c_a19fcd98946d178b32bbd00187144ef7a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{_sfx_setup_8c_a19fcd98946d178b32bbd00187144ef7a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_sfx_setup_8c_a9dc2e13abe3e2f1fa0bcb30b657f8946}\label{_sfx_setup_8c_a9dc2e13abe3e2f1fa0bcb30b657f8946}} 
+\index{Sfx\+Setup.\+c@{Sfx\+Setup.\+c}!My\+Create\+Dir@{My\+Create\+Dir}}
+\index{My\+Create\+Dir@{My\+Create\+Dir}!Sfx\+Setup.\+c@{Sfx\+Setup.\+c}}
+\subsubsection{\texorpdfstring{My\+Create\+Dir()}{MyCreateDir()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} My\+Create\+Dir (\begin{DoxyParamCaption}\item[{const W\+C\+H\+AR $\ast$}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{_sfx_setup_8c_a9dc2e13abe3e2f1fa0bcb30b657f8946_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_sfx_setup_8c_ad35ff8747b1dd6cbe48ae67f189be7cd}\label{_sfx_setup_8c_ad35ff8747b1dd6cbe48ae67f189be7cd}} 
+\index{Sfx\+Setup.\+c@{Sfx\+Setup.\+c}!Print\+Error\+Message@{Print\+Error\+Message}}
+\index{Print\+Error\+Message@{Print\+Error\+Message}!Sfx\+Setup.\+c@{Sfx\+Setup.\+c}}
+\subsubsection{\texorpdfstring{Print\+Error\+Message()}{PrintErrorMessage()}}
+{\footnotesize\ttfamily static void Print\+Error\+Message (\begin{DoxyParamCaption}\item[{const char $\ast$}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{_sfx_setup_8c_ad35ff8747b1dd6cbe48ae67f189be7cd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_sfx_setup_8c_a8cc4a22e4d1ceb14a22b129810b74ff7}\label{_sfx_setup_8c_a8cc4a22e4d1ceb14a22b129810b74ff7}} 
+\index{Sfx\+Setup.\+c@{Sfx\+Setup.\+c}!Remove\+Dir\+With\+Sub\+Items@{Remove\+Dir\+With\+Sub\+Items}}
+\index{Remove\+Dir\+With\+Sub\+Items@{Remove\+Dir\+With\+Sub\+Items}!Sfx\+Setup.\+c@{Sfx\+Setup.\+c}}
+\subsubsection{\texorpdfstring{Remove\+Dir\+With\+Sub\+Items()}{RemoveDirWithSubItems()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} Remove\+Dir\+With\+Sub\+Items (\begin{DoxyParamCaption}\item[{W\+C\+H\+AR $\ast$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{_sfx_setup_8c_a8cc4a22e4d1ceb14a22b129810b74ff7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_sfx_setup_8c_a1122673f59be78a3997ec7dd1c4688f9}\label{_sfx_setup_8c_a1122673f59be78a3997ec7dd1c4688f9}} 
+\index{Sfx\+Setup.\+c@{Sfx\+Setup.\+c}!Win\+Main@{Win\+Main}}
+\index{Win\+Main@{Win\+Main}!Sfx\+Setup.\+c@{Sfx\+Setup.\+c}}
+\subsubsection{\texorpdfstring{Win\+Main()}{WinMain()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} A\+P\+I\+E\+N\+T\+RY Win\+Main (\begin{DoxyParamCaption}\item[{H\+I\+N\+S\+T\+A\+N\+CE}]{h\+Instance,  }\item[{H\+I\+N\+S\+T\+A\+N\+CE}]{h\+Prev\+Instance,  }\item[{L\+P\+S\+TR}]{lp\+Cmd\+Line,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{n\+Cmd\+Show }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_sfx_setup_8c_a1122673f59be78a3997ec7dd1c4688f9_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_sfx_setup_8c_a3012b2c329de88e740ff596096d09f6e}\label{_sfx_setup_8c_a3012b2c329de88e740ff596096d09f6e}} 
+\index{Sfx\+Setup.\+c@{Sfx\+Setup.\+c}!k\+Exts@{k\+Exts}}
+\index{k\+Exts@{k\+Exts}!Sfx\+Setup.\+c@{Sfx\+Setup.\+c}}
+\subsubsection{\texorpdfstring{k\+Exts}{kExts}}
+{\footnotesize\ttfamily const char$\ast$ const k\+Exts\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+\{
+    \textcolor{stringliteral}{"bat"}
+  , \textcolor{stringliteral}{"cmd"}
+  , \textcolor{stringliteral}{"exe"}
+  , \textcolor{stringliteral}{"inf"}
+  , \textcolor{stringliteral}{"msi"}
+
+
+
+  , \textcolor{stringliteral}{"html"}
+  , \textcolor{stringliteral}{"htm"}
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{_sfx_setup_8c_a9798e997f669b9c319781ccb047a7566}\label{_sfx_setup_8c_a9798e997f669b9c319781ccb047a7566}} 
+\index{Sfx\+Setup.\+c@{Sfx\+Setup.\+c}!k\+Names@{k\+Names}}
+\index{k\+Names@{k\+Names}!Sfx\+Setup.\+c@{Sfx\+Setup.\+c}}
+\subsubsection{\texorpdfstring{k\+Names}{kNames}}
+{\footnotesize\ttfamily const char$\ast$ const k\+Names\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+\{
+    \textcolor{stringliteral}{"setup"}
+  , \textcolor{stringliteral}{"install"}
+  , \textcolor{stringliteral}{"run"}
+  , \textcolor{stringliteral}{"start"}
+\}
+\end{DoxyCode}

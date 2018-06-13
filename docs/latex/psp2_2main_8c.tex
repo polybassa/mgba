@@ -1,0 +1,137 @@
+\hypertarget{psp2_2main_8c}{}\section{src/platform/psp2/main.c File Reference}
+\label{psp2_2main_8c}\index{src/platform/psp2/main.\+c@{src/platform/psp2/main.\+c}}
+{\ttfamily \#include \char`\"{}psp2-\/context.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba/internal/gba/gba.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}feature/gui/gui-\/runner.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba-\/util/gui.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/gui/font.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/gui/file-\/select.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/gui/menu.\+h$>$}\newline
+{\ttfamily \#include $<$psp2/apputil.\+h$>$}\newline
+{\ttfamily \#include $<$psp2/ctrl.\+h$>$}\newline
+{\ttfamily \#include $<$psp2/display.\+h$>$}\newline
+{\ttfamily \#include $<$psp2/kernel/processmgr.\+h$>$}\newline
+{\ttfamily \#include $<$psp2/kernel/threadmgr.\+h$>$}\newline
+{\ttfamily \#include $<$psp2/power.\+h$>$}\newline
+{\ttfamily \#include $<$psp2/sysmodule.\+h$>$}\newline
+{\ttfamily \#include $<$psp2/system\+\_\+param.\+h$>$}\newline
+{\ttfamily \#include $<$psp2/touch.\+h$>$}\newline
+{\ttfamily \#include $<$vita2d.\+h$>$}\newline
+Include dependency graph for main.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2_2main_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{psp2_2main_8c_a971ecc7f379baaab90aa7fa59acc9d52}{\+\_\+draw\+Start}} (void)
+\item 
+static void \mbox{\hyperlink{psp2_2main_8c_a1d972b1c2c62a05aa9e3bb27fb4b2763}{\+\_\+draw\+End}} (void)
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{psp2_2main_8c_a70889b18348c9bf289ff5fe3c44fea5b}{\+\_\+poll\+Input}} (const struct m\+Input\+Map $\ast$map)
+\item 
+static enum G\+U\+I\+Cursor\+State \mbox{\hyperlink{psp2_2main_8c_a18e379d7cd5b99e472c96dbeb05d2c19}{\+\_\+poll\+Cursor}} (unsigned $\ast$x, unsigned $\ast$y)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{psp2_2main_8c_a50261320fb04e91c0500ad52c964a52a}{\+\_\+battery\+State}} (void)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{psp2_2main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{psp2_2main_8c_a50261320fb04e91c0500ad52c964a52a}\label{psp2_2main_8c_a50261320fb04e91c0500ad52c964a52a}} 
+\index{psp2/main.\+c@{psp2/main.\+c}!\+\_\+battery\+State@{\+\_\+battery\+State}}
+\index{\+\_\+battery\+State@{\+\_\+battery\+State}!psp2/main.\+c@{psp2/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+battery\+State()}{\_batteryState()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \+\_\+battery\+State (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{psp2_2main_8c_a50261320fb04e91c0500ad52c964a52a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2_2main_8c_a1d972b1c2c62a05aa9e3bb27fb4b2763}\label{psp2_2main_8c_a1d972b1c2c62a05aa9e3bb27fb4b2763}} 
+\index{psp2/main.\+c@{psp2/main.\+c}!\+\_\+draw\+End@{\+\_\+draw\+End}}
+\index{\+\_\+draw\+End@{\+\_\+draw\+End}!psp2/main.\+c@{psp2/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+draw\+End()}{\_drawEnd()}}
+{\footnotesize\ttfamily static void \+\_\+draw\+End (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{psp2_2main_8c_a1d972b1c2c62a05aa9e3bb27fb4b2763_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2_2main_8c_a971ecc7f379baaab90aa7fa59acc9d52}\label{psp2_2main_8c_a971ecc7f379baaab90aa7fa59acc9d52}} 
+\index{psp2/main.\+c@{psp2/main.\+c}!\+\_\+draw\+Start@{\+\_\+draw\+Start}}
+\index{\+\_\+draw\+Start@{\+\_\+draw\+Start}!psp2/main.\+c@{psp2/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+draw\+Start()}{\_drawStart()}}
+{\footnotesize\ttfamily static void \+\_\+draw\+Start (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{psp2_2main_8c_a971ecc7f379baaab90aa7fa59acc9d52_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2_2main_8c_a18e379d7cd5b99e472c96dbeb05d2c19}\label{psp2_2main_8c_a18e379d7cd5b99e472c96dbeb05d2c19}} 
+\index{psp2/main.\+c@{psp2/main.\+c}!\+\_\+poll\+Cursor@{\+\_\+poll\+Cursor}}
+\index{\+\_\+poll\+Cursor@{\+\_\+poll\+Cursor}!psp2/main.\+c@{psp2/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+poll\+Cursor()}{\_pollCursor()}}
+{\footnotesize\ttfamily static enum G\+U\+I\+Cursor\+State \+\_\+poll\+Cursor (\begin{DoxyParamCaption}\item[{unsigned $\ast$}]{x,  }\item[{unsigned $\ast$}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{psp2_2main_8c_a18e379d7cd5b99e472c96dbeb05d2c19_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2_2main_8c_a70889b18348c9bf289ff5fe3c44fea5b}\label{psp2_2main_8c_a70889b18348c9bf289ff5fe3c44fea5b}} 
+\index{psp2/main.\+c@{psp2/main.\+c}!\+\_\+poll\+Input@{\+\_\+poll\+Input}}
+\index{\+\_\+poll\+Input@{\+\_\+poll\+Input}!psp2/main.\+c@{psp2/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+poll\+Input()}{\_pollInput()}}
+{\footnotesize\ttfamily static uint32\+\_\+t \+\_\+poll\+Input (\begin{DoxyParamCaption}\item[{const struct m\+Input\+Map $\ast$}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2_2main_8c_a70889b18348c9bf289ff5fe3c44fea5b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{psp2_2main_8c_a70889b18348c9bf289ff5fe3c44fea5b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2_2main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{psp2_2main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{psp2/main.\+c@{psp2/main.\+c}!main@{main}}
+\index{main@{main}!psp2/main.\+c@{psp2/main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{psp2_2main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph}
+\end{center}
+\end{figure}

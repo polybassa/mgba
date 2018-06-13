@@ -1,0 +1,885 @@
+\hypertarget{gdb-stub_8c}{}\section{src/debugger/gdb-\/stub.c File Reference}
+\label{gdb-stub_8c}\index{src/debugger/gdb-\/stub.\+c@{src/debugger/gdb-\/stub.\+c}}
+{\ttfamily \#include $<$mgba/internal/debugger/gdb-\/stub.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/arm/debugger/debugger.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/arm/isa-\/inlines.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/memory.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+Include dependency graph for gdb-\/stub.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gdb-stub_8c_aa2beb906ab1b46676e63823f4e773c38}{S\+I\+G\+T\+R\+AP}}~5 /$\ast$ Win32 Signals do not include S\+I\+G\+T\+R\+AP $\ast$/
+\item 
+\#define \mbox{\hyperlink{gdb-stub_8c_aca6153015dc94fe7679954a1ff9d9b15}{S\+O\+C\+K\+E\+T\+\_\+\+T\+I\+M\+E\+O\+UT}}~50
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{gdb-stub_8c_a5bd3541bce743d620bce1273a43416dd}{G\+D\+B\+Error}} \{ \mbox{\hyperlink{gdb-stub_8c_a5bd3541bce743d620bce1273a43416ddaa680a8f84a2a0a0b668ad9c008750f75}{G\+D\+B\+\_\+\+N\+O\+\_\+\+E\+R\+R\+OR}} = 0x00, 
+\mbox{\hyperlink{gdb-stub_8c_a5bd3541bce743d620bce1273a43416ddaeef0423575ca7aa7140d916085a9fc84}{G\+D\+B\+\_\+\+B\+A\+D\+\_\+\+A\+R\+G\+U\+M\+E\+N\+TS}} = 0x06, 
+\mbox{\hyperlink{gdb-stub_8c_a5bd3541bce743d620bce1273a43416dda58b8d55f8dc2564d163381daaae27f5a}{G\+D\+B\+\_\+\+U\+N\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+C\+O\+M\+M\+A\+ND}} = 0x07
+ \}
+\item 
+enum \{ \mbox{\hyperlink{gdb-stub_8c_a06fc87d81c62e9abb8790b6e5713c55ba4fbf85341093edf66aa8540987b82b79}{M\+A\+C\+H\+\_\+\+O\+\_\+\+A\+RM}} = 12, 
+\mbox{\hyperlink{gdb-stub_8c_a06fc87d81c62e9abb8790b6e5713c55bae0dd04ab9648730cb2eef39214f5125b}{M\+A\+C\+H\+\_\+\+O\+\_\+\+A\+R\+M\+\_\+\+V4T}} = 5
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_abb9ab714ec89c5c39435215b2f48517c}{\+\_\+send\+Message}} (struct G\+D\+B\+Stub $\ast$stub)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_aff57f00e254220e5733ab7a534ab526c}{\+\_\+gdb\+Stub\+Deinit}} (struct m\+Debugger $\ast$debugger)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_a409655c77fda26ad161b9097e7d4130e}{\+\_\+gdb\+Stub\+Entered}} (struct m\+Debugger $\ast$debugger, enum m\+Debugger\+Entry\+Reason reason, struct m\+Debugger\+Entry\+Info $\ast$\mbox{\hyperlink{libretro_8h_a283ad41e4809f9c0ebe736a9861d8a91}{info}})
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_ae58295c549402f4ef20ff8aad2c5dfeb}{\+\_\+gdb\+Stub\+Poll}} (struct m\+Debugger $\ast$debugger)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_a611cb8cc4b4a1b0885f3d3a45487045b}{\+\_\+gdb\+Stub\+Wait}} (struct m\+Debugger $\ast$debugger)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_abfab9a55492e6a7fc7ca801619550fb0}{\+\_\+ack}} (struct G\+D\+B\+Stub $\ast$stub)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_a36136f8c4944f09ed1670d80a19fa31a}{\+\_\+nak}} (struct G\+D\+B\+Stub $\ast$stub)
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{gdb-stub_8c_acc566acd6b2a0d699a29fc52811d345e}{\+\_\+hex2int}} (const char $\ast$hex, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} max\+Digits)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_ad3195dd3a3a4e1fcdb8368c6c8372a08}{\+\_\+int2hex8}} (uint8\+\_\+t value, char $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_a77ffa276051d098347aadf57d3a8e245}{\+\_\+int2hex32}} (uint32\+\_\+t value, char $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{gdb-stub_8c_a480f57f311cfc4a8cd9182b20ca8addc}{\+\_\+read\+Hex}} (const char $\ast$\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}, unsigned $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_a2efa3a2574e849468b6c893d8fae58ca}{\+\_\+error}} (struct G\+D\+B\+Stub $\ast$stub, enum \mbox{\hyperlink{gdb-stub_8c_a5bd3541bce743d620bce1273a43416dd}{G\+D\+B\+Error}} \mbox{\hyperlink{minigzip_8c_aee763da2c1c9da197307bad1d009513d}{error}})
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_abf80181e6f4f0b39c329b802fa1cae95}{\+\_\+write\+Host\+Info}} (struct G\+D\+B\+Stub $\ast$stub)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_ade267028ab6c52118e785970aecd3fd9}{\+\_\+continue}} (struct G\+D\+B\+Stub $\ast$stub, const char $\ast$message)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_ae28066e90628c8bf0560863573506b06}{\+\_\+step}} (struct G\+D\+B\+Stub $\ast$stub, const char $\ast$message)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_a57b8f62dd442a177c1cca999ec2010a4}{\+\_\+write\+Memory\+Binary}} (struct G\+D\+B\+Stub $\ast$stub, const char $\ast$message)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_a4e6946316c1b882a919c3839f12b6c85}{\+\_\+write\+Memory}} (struct G\+D\+B\+Stub $\ast$stub, const char $\ast$message)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_aaf71acf340ddecdd40415bcd393b31cb}{\+\_\+read\+Memory}} (struct G\+D\+B\+Stub $\ast$stub, const char $\ast$message)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_aa692d1765e005bcc6fa510f74a85c598}{\+\_\+write\+G\+P\+Rs}} (struct G\+D\+B\+Stub $\ast$stub, const char $\ast$message)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_ab27c309a3277a098b285f7b0e65d4372}{\+\_\+read\+G\+P\+Rs}} (struct G\+D\+B\+Stub $\ast$stub, const char $\ast$message)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_aa8d43b0007b4cac1d3dcad6212b8406e}{\+\_\+write\+Register}} (struct G\+D\+B\+Stub $\ast$stub, const char $\ast$message)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_ab3eabf8dd23cecb74255396e87e72453}{\+\_\+read\+Register}} (struct G\+D\+B\+Stub $\ast$stub, const char $\ast$message)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_aa885c9605db7de6ec89abaf7c094c61f}{\+\_\+process\+Q\+Supported\+Command}} (struct G\+D\+B\+Stub $\ast$stub, const char $\ast$message)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_ab15c73fbee09b784e5989c520d65c002}{\+\_\+process\+Q\+Read\+Command}} (struct G\+D\+B\+Stub $\ast$stub, const char $\ast$message)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_a34a7a41e3881752f1882a6edccd6edce}{\+\_\+process\+Q\+Write\+Command}} (struct G\+D\+B\+Stub $\ast$stub, const char $\ast$message)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_a582e9560a7cedd1a58761398f1761a0d}{\+\_\+process\+V\+Write\+Command}} (struct G\+D\+B\+Stub $\ast$stub, const char $\ast$message)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_a28273f2230ac620b2972bd50b2e6e6a9}{\+\_\+process\+V\+Read\+Command}} (struct G\+D\+B\+Stub $\ast$stub, const char $\ast$message)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_a20d837c8c41a03d7d12d2af71302514f}{\+\_\+set\+Breakpoint}} (struct G\+D\+B\+Stub $\ast$stub, const char $\ast$message)
+\item 
+static void \mbox{\hyperlink{gdb-stub_8c_a53d57d6dc1ec038bf80e8e8c9bd1f6a8}{\+\_\+clear\+Breakpoint}} (struct G\+D\+B\+Stub $\ast$stub, const char $\ast$message)
+\item 
+size\+\_\+t \mbox{\hyperlink{gdb-stub_8c_ac8630a52d935a21513afd3f0d14ffe90}{\+\_\+parse\+G\+D\+B\+Message}} (struct G\+D\+B\+Stub $\ast$stub, const char $\ast$message)
+\item 
+void \mbox{\hyperlink{gdb-stub_8c_a22597ba75b0b4cfd482b774f19d0200a}{G\+D\+B\+Stub\+Create}} (struct G\+D\+B\+Stub $\ast$stub)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{gdb-stub_8c_a0ccf43b868dd63e4eb34e327a7b16816}{G\+D\+B\+Stub\+Listen}} (struct G\+D\+B\+Stub $\ast$stub, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} port, const struct Address $\ast$bind\+Address)
+\item 
+void \mbox{\hyperlink{gdb-stub_8c_a28c1b7ad1cc9e5dbf3a8204d45ee2813}{G\+D\+B\+Stub\+Hangup}} (struct G\+D\+B\+Stub $\ast$stub)
+\item 
+void \mbox{\hyperlink{gdb-stub_8c_abe19ef8bb5b906d431db62458f3b5c5f}{G\+D\+B\+Stub\+Shutdown}} (struct G\+D\+B\+Stub $\ast$stub)
+\item 
+void \mbox{\hyperlink{gdb-stub_8c_a258a1ad74baac2ecfadeab0d1e07e3b0}{G\+D\+B\+Stub\+Update}} (struct G\+D\+B\+Stub $\ast$stub)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{gdb-stub_8c_aa2beb906ab1b46676e63823f4e773c38}\label{gdb-stub_8c_aa2beb906ab1b46676e63823f4e773c38}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!S\+I\+G\+T\+R\+AP@{S\+I\+G\+T\+R\+AP}}
+\index{S\+I\+G\+T\+R\+AP@{S\+I\+G\+T\+R\+AP}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{S\+I\+G\+T\+R\+AP}{SIGTRAP}}
+{\footnotesize\ttfamily \#define S\+I\+G\+T\+R\+AP~5 /$\ast$ Win32 Signals do not include S\+I\+G\+T\+R\+AP $\ast$/}
+
+\mbox{\Hypertarget{gdb-stub_8c_aca6153015dc94fe7679954a1ff9d9b15}\label{gdb-stub_8c_aca6153015dc94fe7679954a1ff9d9b15}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!S\+O\+C\+K\+E\+T\+\_\+\+T\+I\+M\+E\+O\+UT@{S\+O\+C\+K\+E\+T\+\_\+\+T\+I\+M\+E\+O\+UT}}
+\index{S\+O\+C\+K\+E\+T\+\_\+\+T\+I\+M\+E\+O\+UT@{S\+O\+C\+K\+E\+T\+\_\+\+T\+I\+M\+E\+O\+UT}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{S\+O\+C\+K\+E\+T\+\_\+\+T\+I\+M\+E\+O\+UT}{SOCKET\_TIMEOUT}}
+{\footnotesize\ttfamily \#define S\+O\+C\+K\+E\+T\+\_\+\+T\+I\+M\+E\+O\+UT~50}
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{gdb-stub_8c_a06fc87d81c62e9abb8790b6e5713c55b}\label{gdb-stub_8c_a06fc87d81c62e9abb8790b6e5713c55b}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+A\+C\+H\+\_\+\+O\+\_\+\+A\+RM@{M\+A\+C\+H\+\_\+\+O\+\_\+\+A\+RM}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!M\+A\+C\+H\+\_\+\+O\+\_\+\+A\+RM@{M\+A\+C\+H\+\_\+\+O\+\_\+\+A\+RM}}}\mbox{\Hypertarget{gdb-stub_8c_a06fc87d81c62e9abb8790b6e5713c55ba4fbf85341093edf66aa8540987b82b79}\label{gdb-stub_8c_a06fc87d81c62e9abb8790b6e5713c55ba4fbf85341093edf66aa8540987b82b79}} 
+M\+A\+C\+H\+\_\+\+O\+\_\+\+A\+RM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{M\+A\+C\+H\+\_\+\+O\+\_\+\+A\+R\+M\+\_\+\+V4T@{M\+A\+C\+H\+\_\+\+O\+\_\+\+A\+R\+M\+\_\+\+V4T}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!M\+A\+C\+H\+\_\+\+O\+\_\+\+A\+R\+M\+\_\+\+V4T@{M\+A\+C\+H\+\_\+\+O\+\_\+\+A\+R\+M\+\_\+\+V4T}}}\mbox{\Hypertarget{gdb-stub_8c_a06fc87d81c62e9abb8790b6e5713c55bae0dd04ab9648730cb2eef39214f5125b}\label{gdb-stub_8c_a06fc87d81c62e9abb8790b6e5713c55bae0dd04ab9648730cb2eef39214f5125b}} 
+M\+A\+C\+H\+\_\+\+O\+\_\+\+A\+R\+M\+\_\+\+V4T&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{gdb-stub_8c_a5bd3541bce743d620bce1273a43416dd}\label{gdb-stub_8c_a5bd3541bce743d620bce1273a43416dd}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!G\+D\+B\+Error@{G\+D\+B\+Error}}
+\index{G\+D\+B\+Error@{G\+D\+B\+Error}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{G\+D\+B\+Error}{GDBError}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{gdb-stub_8c_a5bd3541bce743d620bce1273a43416dd}{G\+D\+B\+Error}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+D\+B\+\_\+\+N\+O\+\_\+\+E\+R\+R\+OR@{G\+D\+B\+\_\+\+N\+O\+\_\+\+E\+R\+R\+OR}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!G\+D\+B\+\_\+\+N\+O\+\_\+\+E\+R\+R\+OR@{G\+D\+B\+\_\+\+N\+O\+\_\+\+E\+R\+R\+OR}}}\mbox{\Hypertarget{gdb-stub_8c_a5bd3541bce743d620bce1273a43416ddaa680a8f84a2a0a0b668ad9c008750f75}\label{gdb-stub_8c_a5bd3541bce743d620bce1273a43416ddaa680a8f84a2a0a0b668ad9c008750f75}} 
+G\+D\+B\+\_\+\+N\+O\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+D\+B\+\_\+\+B\+A\+D\+\_\+\+A\+R\+G\+U\+M\+E\+N\+TS@{G\+D\+B\+\_\+\+B\+A\+D\+\_\+\+A\+R\+G\+U\+M\+E\+N\+TS}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!G\+D\+B\+\_\+\+B\+A\+D\+\_\+\+A\+R\+G\+U\+M\+E\+N\+TS@{G\+D\+B\+\_\+\+B\+A\+D\+\_\+\+A\+R\+G\+U\+M\+E\+N\+TS}}}\mbox{\Hypertarget{gdb-stub_8c_a5bd3541bce743d620bce1273a43416ddaeef0423575ca7aa7140d916085a9fc84}\label{gdb-stub_8c_a5bd3541bce743d620bce1273a43416ddaeef0423575ca7aa7140d916085a9fc84}} 
+G\+D\+B\+\_\+\+B\+A\+D\+\_\+\+A\+R\+G\+U\+M\+E\+N\+TS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{G\+D\+B\+\_\+\+U\+N\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+C\+O\+M\+M\+A\+ND@{G\+D\+B\+\_\+\+U\+N\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+C\+O\+M\+M\+A\+ND}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!G\+D\+B\+\_\+\+U\+N\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+C\+O\+M\+M\+A\+ND@{G\+D\+B\+\_\+\+U\+N\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+C\+O\+M\+M\+A\+ND}}}\mbox{\Hypertarget{gdb-stub_8c_a5bd3541bce743d620bce1273a43416dda58b8d55f8dc2564d163381daaae27f5a}\label{gdb-stub_8c_a5bd3541bce743d620bce1273a43416dda58b8d55f8dc2564d163381daaae27f5a}} 
+G\+D\+B\+\_\+\+U\+N\+S\+U\+P\+P\+O\+R\+T\+E\+D\+\_\+\+C\+O\+M\+M\+A\+ND&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{gdb-stub_8c_abfab9a55492e6a7fc7ca801619550fb0}\label{gdb-stub_8c_abfab9a55492e6a7fc7ca801619550fb0}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+ack@{\+\_\+ack}}
+\index{\+\_\+ack@{\+\_\+ack}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+ack()}{\_ack()}}
+{\footnotesize\ttfamily static void \+\_\+ack (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_abfab9a55492e6a7fc7ca801619550fb0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_a53d57d6dc1ec038bf80e8e8c9bd1f6a8}\label{gdb-stub_8c_a53d57d6dc1ec038bf80e8e8c9bd1f6a8}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+clear\+Breakpoint@{\+\_\+clear\+Breakpoint}}
+\index{\+\_\+clear\+Breakpoint@{\+\_\+clear\+Breakpoint}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+clear\+Breakpoint()}{\_clearBreakpoint()}}
+{\footnotesize\ttfamily static void \+\_\+clear\+Breakpoint (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub,  }\item[{const char $\ast$}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a53d57d6dc1ec038bf80e8e8c9bd1f6a8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a53d57d6dc1ec038bf80e8e8c9bd1f6a8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_ade267028ab6c52118e785970aecd3fd9}\label{gdb-stub_8c_ade267028ab6c52118e785970aecd3fd9}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+continue@{\+\_\+continue}}
+\index{\+\_\+continue@{\+\_\+continue}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+continue()}{\_continue()}}
+{\footnotesize\ttfamily static void \+\_\+continue (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub,  }\item[{const char $\ast$}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_ade267028ab6c52118e785970aecd3fd9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_a2efa3a2574e849468b6c893d8fae58ca}\label{gdb-stub_8c_a2efa3a2574e849468b6c893d8fae58ca}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+error@{\+\_\+error}}
+\index{\+\_\+error@{\+\_\+error}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+error()}{\_error()}}
+{\footnotesize\ttfamily static void \+\_\+error (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub,  }\item[{enum \mbox{\hyperlink{gdb-stub_8c_a5bd3541bce743d620bce1273a43416dd}{G\+D\+B\+Error}}}]{error }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a2efa3a2574e849468b6c893d8fae58ca_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a2efa3a2574e849468b6c893d8fae58ca_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_aff57f00e254220e5733ab7a534ab526c}\label{gdb-stub_8c_aff57f00e254220e5733ab7a534ab526c}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+gdb\+Stub\+Deinit@{\+\_\+gdb\+Stub\+Deinit}}
+\index{\+\_\+gdb\+Stub\+Deinit@{\+\_\+gdb\+Stub\+Deinit}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+gdb\+Stub\+Deinit()}{\_gdbStubDeinit()}}
+{\footnotesize\ttfamily static void \+\_\+gdb\+Stub\+Deinit (\begin{DoxyParamCaption}\item[{struct m\+Debugger $\ast$}]{debugger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_aff57f00e254220e5733ab7a534ab526c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_aff57f00e254220e5733ab7a534ab526c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_a409655c77fda26ad161b9097e7d4130e}\label{gdb-stub_8c_a409655c77fda26ad161b9097e7d4130e}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+gdb\+Stub\+Entered@{\+\_\+gdb\+Stub\+Entered}}
+\index{\+\_\+gdb\+Stub\+Entered@{\+\_\+gdb\+Stub\+Entered}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+gdb\+Stub\+Entered()}{\_gdbStubEntered()}}
+{\footnotesize\ttfamily static void \+\_\+gdb\+Stub\+Entered (\begin{DoxyParamCaption}\item[{struct m\+Debugger $\ast$}]{debugger,  }\item[{enum m\+Debugger\+Entry\+Reason}]{reason,  }\item[{struct m\+Debugger\+Entry\+Info $\ast$}]{info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a409655c77fda26ad161b9097e7d4130e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a409655c77fda26ad161b9097e7d4130e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_ae58295c549402f4ef20ff8aad2c5dfeb}\label{gdb-stub_8c_ae58295c549402f4ef20ff8aad2c5dfeb}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+gdb\+Stub\+Poll@{\+\_\+gdb\+Stub\+Poll}}
+\index{\+\_\+gdb\+Stub\+Poll@{\+\_\+gdb\+Stub\+Poll}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+gdb\+Stub\+Poll()}{\_gdbStubPoll()}}
+{\footnotesize\ttfamily static void \+\_\+gdb\+Stub\+Poll (\begin{DoxyParamCaption}\item[{struct m\+Debugger $\ast$}]{debugger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_ae58295c549402f4ef20ff8aad2c5dfeb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_ae58295c549402f4ef20ff8aad2c5dfeb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_a611cb8cc4b4a1b0885f3d3a45487045b}\label{gdb-stub_8c_a611cb8cc4b4a1b0885f3d3a45487045b}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+gdb\+Stub\+Wait@{\+\_\+gdb\+Stub\+Wait}}
+\index{\+\_\+gdb\+Stub\+Wait@{\+\_\+gdb\+Stub\+Wait}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+gdb\+Stub\+Wait()}{\_gdbStubWait()}}
+{\footnotesize\ttfamily static void \+\_\+gdb\+Stub\+Wait (\begin{DoxyParamCaption}\item[{struct m\+Debugger $\ast$}]{debugger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a611cb8cc4b4a1b0885f3d3a45487045b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a611cb8cc4b4a1b0885f3d3a45487045b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_acc566acd6b2a0d699a29fc52811d345e}\label{gdb-stub_8c_acc566acd6b2a0d699a29fc52811d345e}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+hex2int@{\+\_\+hex2int}}
+\index{\+\_\+hex2int@{\+\_\+hex2int}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+hex2int()}{\_hex2int()}}
+{\footnotesize\ttfamily static uint32\+\_\+t \+\_\+hex2int (\begin{DoxyParamCaption}\item[{const char $\ast$}]{hex,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{max\+Digits }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_acc566acd6b2a0d699a29fc52811d345e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_a77ffa276051d098347aadf57d3a8e245}\label{gdb-stub_8c_a77ffa276051d098347aadf57d3a8e245}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+int2hex32@{\+\_\+int2hex32}}
+\index{\+\_\+int2hex32@{\+\_\+int2hex32}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+int2hex32()}{\_int2hex32()}}
+{\footnotesize\ttfamily static void \+\_\+int2hex32 (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{value,  }\item[{char $\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a77ffa276051d098347aadf57d3a8e245_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a77ffa276051d098347aadf57d3a8e245_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_ad3195dd3a3a4e1fcdb8368c6c8372a08}\label{gdb-stub_8c_ad3195dd3a3a4e1fcdb8368c6c8372a08}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+int2hex8@{\+\_\+int2hex8}}
+\index{\+\_\+int2hex8@{\+\_\+int2hex8}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+int2hex8()}{\_int2hex8()}}
+{\footnotesize\ttfamily static void \+\_\+int2hex8 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{value,  }\item[{char $\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_ad3195dd3a3a4e1fcdb8368c6c8372a08_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_ad3195dd3a3a4e1fcdb8368c6c8372a08_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_a36136f8c4944f09ed1670d80a19fa31a}\label{gdb-stub_8c_a36136f8c4944f09ed1670d80a19fa31a}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+nak@{\+\_\+nak}}
+\index{\+\_\+nak@{\+\_\+nak}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+nak()}{\_nak()}}
+{\footnotesize\ttfamily static void \+\_\+nak (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a36136f8c4944f09ed1670d80a19fa31a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_ac8630a52d935a21513afd3f0d14ffe90}\label{gdb-stub_8c_ac8630a52d935a21513afd3f0d14ffe90}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+parse\+G\+D\+B\+Message@{\+\_\+parse\+G\+D\+B\+Message}}
+\index{\+\_\+parse\+G\+D\+B\+Message@{\+\_\+parse\+G\+D\+B\+Message}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+parse\+G\+D\+B\+Message()}{\_parseGDBMessage()}}
+{\footnotesize\ttfamily size\+\_\+t \+\_\+parse\+G\+D\+B\+Message (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub,  }\item[{const char $\ast$}]{message }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_ac8630a52d935a21513afd3f0d14ffe90_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_ac8630a52d935a21513afd3f0d14ffe90_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_ab15c73fbee09b784e5989c520d65c002}\label{gdb-stub_8c_ab15c73fbee09b784e5989c520d65c002}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+process\+Q\+Read\+Command@{\+\_\+process\+Q\+Read\+Command}}
+\index{\+\_\+process\+Q\+Read\+Command@{\+\_\+process\+Q\+Read\+Command}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+process\+Q\+Read\+Command()}{\_processQReadCommand()}}
+{\footnotesize\ttfamily static void \+\_\+process\+Q\+Read\+Command (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub,  }\item[{const char $\ast$}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_ab15c73fbee09b784e5989c520d65c002_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_ab15c73fbee09b784e5989c520d65c002_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_aa885c9605db7de6ec89abaf7c094c61f}\label{gdb-stub_8c_aa885c9605db7de6ec89abaf7c094c61f}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+process\+Q\+Supported\+Command@{\+\_\+process\+Q\+Supported\+Command}}
+\index{\+\_\+process\+Q\+Supported\+Command@{\+\_\+process\+Q\+Supported\+Command}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+process\+Q\+Supported\+Command()}{\_processQSupportedCommand()}}
+{\footnotesize\ttfamily static void \+\_\+process\+Q\+Supported\+Command (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub,  }\item[{const char $\ast$}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_aa885c9605db7de6ec89abaf7c094c61f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_a34a7a41e3881752f1882a6edccd6edce}\label{gdb-stub_8c_a34a7a41e3881752f1882a6edccd6edce}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+process\+Q\+Write\+Command@{\+\_\+process\+Q\+Write\+Command}}
+\index{\+\_\+process\+Q\+Write\+Command@{\+\_\+process\+Q\+Write\+Command}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+process\+Q\+Write\+Command()}{\_processQWriteCommand()}}
+{\footnotesize\ttfamily static void \+\_\+process\+Q\+Write\+Command (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub,  }\item[{const char $\ast$}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a34a7a41e3881752f1882a6edccd6edce_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a34a7a41e3881752f1882a6edccd6edce_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_a28273f2230ac620b2972bd50b2e6e6a9}\label{gdb-stub_8c_a28273f2230ac620b2972bd50b2e6e6a9}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+process\+V\+Read\+Command@{\+\_\+process\+V\+Read\+Command}}
+\index{\+\_\+process\+V\+Read\+Command@{\+\_\+process\+V\+Read\+Command}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+process\+V\+Read\+Command()}{\_processVReadCommand()}}
+{\footnotesize\ttfamily static void \+\_\+process\+V\+Read\+Command (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub,  }\item[{const char $\ast$}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a28273f2230ac620b2972bd50b2e6e6a9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a28273f2230ac620b2972bd50b2e6e6a9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_a582e9560a7cedd1a58761398f1761a0d}\label{gdb-stub_8c_a582e9560a7cedd1a58761398f1761a0d}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+process\+V\+Write\+Command@{\+\_\+process\+V\+Write\+Command}}
+\index{\+\_\+process\+V\+Write\+Command@{\+\_\+process\+V\+Write\+Command}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+process\+V\+Write\+Command()}{\_processVWriteCommand()}}
+{\footnotesize\ttfamily static void \+\_\+process\+V\+Write\+Command (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub,  }\item[{const char $\ast$}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a582e9560a7cedd1a58761398f1761a0d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a582e9560a7cedd1a58761398f1761a0d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_ab27c309a3277a098b285f7b0e65d4372}\label{gdb-stub_8c_ab27c309a3277a098b285f7b0e65d4372}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+read\+G\+P\+Rs@{\+\_\+read\+G\+P\+Rs}}
+\index{\+\_\+read\+G\+P\+Rs@{\+\_\+read\+G\+P\+Rs}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+G\+P\+Rs()}{\_readGPRs()}}
+{\footnotesize\ttfamily static void \+\_\+read\+G\+P\+Rs (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub,  }\item[{const char $\ast$}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_ab27c309a3277a098b285f7b0e65d4372_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_ab27c309a3277a098b285f7b0e65d4372_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_a480f57f311cfc4a8cd9182b20ca8addc}\label{gdb-stub_8c_a480f57f311cfc4a8cd9182b20ca8addc}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+read\+Hex@{\+\_\+read\+Hex}}
+\index{\+\_\+read\+Hex@{\+\_\+read\+Hex}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Hex()}{\_readHex()}}
+{\footnotesize\ttfamily static uint32\+\_\+t \+\_\+read\+Hex (\begin{DoxyParamCaption}\item[{const char $\ast$}]{in,  }\item[{unsigned $\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a480f57f311cfc4a8cd9182b20ca8addc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a480f57f311cfc4a8cd9182b20ca8addc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_aaf71acf340ddecdd40415bcd393b31cb}\label{gdb-stub_8c_aaf71acf340ddecdd40415bcd393b31cb}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+read\+Memory@{\+\_\+read\+Memory}}
+\index{\+\_\+read\+Memory@{\+\_\+read\+Memory}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Memory()}{\_readMemory()}}
+{\footnotesize\ttfamily static void \+\_\+read\+Memory (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub,  }\item[{const char $\ast$}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_aaf71acf340ddecdd40415bcd393b31cb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_aaf71acf340ddecdd40415bcd393b31cb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_ab3eabf8dd23cecb74255396e87e72453}\label{gdb-stub_8c_ab3eabf8dd23cecb74255396e87e72453}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+read\+Register@{\+\_\+read\+Register}}
+\index{\+\_\+read\+Register@{\+\_\+read\+Register}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Register()}{\_readRegister()}}
+{\footnotesize\ttfamily static void \+\_\+read\+Register (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub,  }\item[{const char $\ast$}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_ab3eabf8dd23cecb74255396e87e72453_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_ab3eabf8dd23cecb74255396e87e72453_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_abb9ab714ec89c5c39435215b2f48517c}\label{gdb-stub_8c_abb9ab714ec89c5c39435215b2f48517c}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+send\+Message@{\+\_\+send\+Message}}
+\index{\+\_\+send\+Message@{\+\_\+send\+Message}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+send\+Message()}{\_sendMessage()}}
+{\footnotesize\ttfamily static void \+\_\+send\+Message (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_abb9ab714ec89c5c39435215b2f48517c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_abb9ab714ec89c5c39435215b2f48517c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_a20d837c8c41a03d7d12d2af71302514f}\label{gdb-stub_8c_a20d837c8c41a03d7d12d2af71302514f}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+set\+Breakpoint@{\+\_\+set\+Breakpoint}}
+\index{\+\_\+set\+Breakpoint@{\+\_\+set\+Breakpoint}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+set\+Breakpoint()}{\_setBreakpoint()}}
+{\footnotesize\ttfamily static void \+\_\+set\+Breakpoint (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub,  }\item[{const char $\ast$}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a20d837c8c41a03d7d12d2af71302514f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a20d837c8c41a03d7d12d2af71302514f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_ae28066e90628c8bf0560863573506b06}\label{gdb-stub_8c_ae28066e90628c8bf0560863573506b06}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+step@{\+\_\+step}}
+\index{\+\_\+step@{\+\_\+step}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+step()}{\_step()}}
+{\footnotesize\ttfamily static void \+\_\+step (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub,  }\item[{const char $\ast$}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_ae28066e90628c8bf0560863573506b06_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_ae28066e90628c8bf0560863573506b06_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_aa692d1765e005bcc6fa510f74a85c598}\label{gdb-stub_8c_aa692d1765e005bcc6fa510f74a85c598}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+write\+G\+P\+Rs@{\+\_\+write\+G\+P\+Rs}}
+\index{\+\_\+write\+G\+P\+Rs@{\+\_\+write\+G\+P\+Rs}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+write\+G\+P\+Rs()}{\_writeGPRs()}}
+{\footnotesize\ttfamily static void \+\_\+write\+G\+P\+Rs (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub,  }\item[{const char $\ast$}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_aa692d1765e005bcc6fa510f74a85c598_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_aa692d1765e005bcc6fa510f74a85c598_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_abf80181e6f4f0b39c329b802fa1cae95}\label{gdb-stub_8c_abf80181e6f4f0b39c329b802fa1cae95}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+write\+Host\+Info@{\+\_\+write\+Host\+Info}}
+\index{\+\_\+write\+Host\+Info@{\+\_\+write\+Host\+Info}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+write\+Host\+Info()}{\_writeHostInfo()}}
+{\footnotesize\ttfamily static void \+\_\+write\+Host\+Info (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_abf80181e6f4f0b39c329b802fa1cae95_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_abf80181e6f4f0b39c329b802fa1cae95_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_a4e6946316c1b882a919c3839f12b6c85}\label{gdb-stub_8c_a4e6946316c1b882a919c3839f12b6c85}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+write\+Memory@{\+\_\+write\+Memory}}
+\index{\+\_\+write\+Memory@{\+\_\+write\+Memory}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+write\+Memory()}{\_writeMemory()}}
+{\footnotesize\ttfamily static void \+\_\+write\+Memory (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub,  }\item[{const char $\ast$}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a4e6946316c1b882a919c3839f12b6c85_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a4e6946316c1b882a919c3839f12b6c85_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_a57b8f62dd442a177c1cca999ec2010a4}\label{gdb-stub_8c_a57b8f62dd442a177c1cca999ec2010a4}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+write\+Memory\+Binary@{\+\_\+write\+Memory\+Binary}}
+\index{\+\_\+write\+Memory\+Binary@{\+\_\+write\+Memory\+Binary}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+write\+Memory\+Binary()}{\_writeMemoryBinary()}}
+{\footnotesize\ttfamily static void \+\_\+write\+Memory\+Binary (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub,  }\item[{const char $\ast$}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a57b8f62dd442a177c1cca999ec2010a4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a57b8f62dd442a177c1cca999ec2010a4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_aa8d43b0007b4cac1d3dcad6212b8406e}\label{gdb-stub_8c_aa8d43b0007b4cac1d3dcad6212b8406e}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!\+\_\+write\+Register@{\+\_\+write\+Register}}
+\index{\+\_\+write\+Register@{\+\_\+write\+Register}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+write\+Register()}{\_writeRegister()}}
+{\footnotesize\ttfamily static void \+\_\+write\+Register (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub,  }\item[{const char $\ast$}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_aa8d43b0007b4cac1d3dcad6212b8406e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_aa8d43b0007b4cac1d3dcad6212b8406e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_a22597ba75b0b4cfd482b774f19d0200a}\label{gdb-stub_8c_a22597ba75b0b4cfd482b774f19d0200a}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!G\+D\+B\+Stub\+Create@{G\+D\+B\+Stub\+Create}}
+\index{G\+D\+B\+Stub\+Create@{G\+D\+B\+Stub\+Create}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{G\+D\+B\+Stub\+Create()}{GDBStubCreate()}}
+{\footnotesize\ttfamily void G\+D\+B\+Stub\+Create (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a22597ba75b0b4cfd482b774f19d0200a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a22597ba75b0b4cfd482b774f19d0200a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_a28c1b7ad1cc9e5dbf3a8204d45ee2813}\label{gdb-stub_8c_a28c1b7ad1cc9e5dbf3a8204d45ee2813}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!G\+D\+B\+Stub\+Hangup@{G\+D\+B\+Stub\+Hangup}}
+\index{G\+D\+B\+Stub\+Hangup@{G\+D\+B\+Stub\+Hangup}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{G\+D\+B\+Stub\+Hangup()}{GDBStubHangup()}}
+{\footnotesize\ttfamily void G\+D\+B\+Stub\+Hangup (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a28c1b7ad1cc9e5dbf3a8204d45ee2813_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_a0ccf43b868dd63e4eb34e327a7b16816}\label{gdb-stub_8c_a0ccf43b868dd63e4eb34e327a7b16816}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!G\+D\+B\+Stub\+Listen@{G\+D\+B\+Stub\+Listen}}
+\index{G\+D\+B\+Stub\+Listen@{G\+D\+B\+Stub\+Listen}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{G\+D\+B\+Stub\+Listen()}{GDBStubListen()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+D\+B\+Stub\+Listen (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{port,  }\item[{const struct Address $\ast$}]{bind\+Address }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a0ccf43b868dd63e4eb34e327a7b16816_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a0ccf43b868dd63e4eb34e327a7b16816_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_abe19ef8bb5b906d431db62458f3b5c5f}\label{gdb-stub_8c_abe19ef8bb5b906d431db62458f3b5c5f}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!G\+D\+B\+Stub\+Shutdown@{G\+D\+B\+Stub\+Shutdown}}
+\index{G\+D\+B\+Stub\+Shutdown@{G\+D\+B\+Stub\+Shutdown}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{G\+D\+B\+Stub\+Shutdown()}{GDBStubShutdown()}}
+{\footnotesize\ttfamily void G\+D\+B\+Stub\+Shutdown (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{gdb-stub_8c_abe19ef8bb5b906d431db62458f3b5c5f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_abe19ef8bb5b906d431db62458f3b5c5f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gdb-stub_8c_a258a1ad74baac2ecfadeab0d1e07e3b0}\label{gdb-stub_8c_a258a1ad74baac2ecfadeab0d1e07e3b0}} 
+\index{gdb-\/stub.\+c@{gdb-\/stub.\+c}!G\+D\+B\+Stub\+Update@{G\+D\+B\+Stub\+Update}}
+\index{G\+D\+B\+Stub\+Update@{G\+D\+B\+Stub\+Update}!gdb-\/stub.\+c@{gdb-\/stub.\+c}}
+\subsubsection{\texorpdfstring{G\+D\+B\+Stub\+Update()}{GDBStubUpdate()}}
+{\footnotesize\ttfamily void G\+D\+B\+Stub\+Update (\begin{DoxyParamCaption}\item[{struct G\+D\+B\+Stub $\ast$}]{stub }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a258a1ad74baac2ecfadeab0d1e07e3b0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gdb-stub_8c_a258a1ad74baac2ecfadeab0d1e07e3b0_icgraph}
+\end{center}
+\end{figure}

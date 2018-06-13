@@ -1,0 +1,403 @@
+\hypertarget{_threads_8c}{}\section{src/third-\/party/lzma/\+Threads.c File Reference}
+\label{_threads_8c}\index{src/third-\/party/lzma/\+Threads.\+c@{src/third-\/party/lzma/\+Threads.\+c}}
+{\ttfamily \#include \char`\"{}Precomp.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$process.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Threads.\+h\char`\"{}}\newline
+Include dependency graph for Threads.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{_threads_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{_threads_8c_a5a8c2084ac9159353b8ec1cca090baf5}{Get\+Error}} ()
+\item 
+\mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{_threads_8c_af3ca267ee246c91b7e564b078a559975}{Handle\+To\+W\+Res}} (H\+A\+N\+D\+LE \mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}})
+\item 
+\mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{_threads_8c_a4cab6ca310179ac5fd522acd3fa59a50}{B\+O\+O\+L\+To\+W\+Res}} (\mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}} v)
+\item 
+\mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{_threads_8c_aacfb2481097538f4435d403494726d3a}{Handle\+Ptr\+\_\+\+Close}} (H\+A\+N\+D\+LE $\ast$p)
+\item 
+\mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{_threads_8c_a2bf0ebdd9901830b8e5f90d29b6e63bb}{Handle\+\_\+\+Wait\+Object}} (H\+A\+N\+D\+LE \mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}})
+\item 
+\mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{_threads_8c_a62e1050845b14c17f4d628ab4c60284f}{Thread\+\_\+\+Create}} (\mbox{\hyperlink{_threads_8h_a068a5473befa776f23a97add9512d427}{C\+Thread}} $\ast$p, \mbox{\hyperlink{_threads_8h_abeb46eb195a92134b29761a43e542052}{T\+H\+R\+E\+A\+D\+\_\+\+F\+U\+N\+C\+\_\+\+T\+Y\+PE}} func, L\+P\+V\+O\+ID param)
+\item 
+\mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{_threads_8c_a5f6fb57a558b848442b2ae0a91edd7cc}{Event\+\_\+\+Create}} (\mbox{\hyperlink{_threads_8h_ad3b664012f3ed6e3e8f05d26cd9df807}{C\+Event}} $\ast$p, \mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}} manual\+Reset, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} signaled)
+\item 
+\mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{_threads_8c_a4c894884b1268b8d00d2a96489ba89e3}{Event\+\_\+\+Set}} (\mbox{\hyperlink{_threads_8h_ad3b664012f3ed6e3e8f05d26cd9df807}{C\+Event}} $\ast$p)
+\item 
+\mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{_threads_8c_adcebff2a2a5098940f037eb6ba9d6873}{Event\+\_\+\+Reset}} (\mbox{\hyperlink{_threads_8h_ad3b664012f3ed6e3e8f05d26cd9df807}{C\+Event}} $\ast$p)
+\item 
+\mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{_threads_8c_a674ddf2bcc8c81d557d9d7c6062d9d6d}{Manual\+Reset\+Event\+\_\+\+Create}} (\mbox{\hyperlink{_threads_8h_a577b1156766499bb9817e8304c529263}{C\+Manual\+Reset\+Event}} $\ast$p, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} signaled)
+\item 
+\mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{_threads_8c_adb1324b7e6541e5ccb3467a41378390e}{Auto\+Reset\+Event\+\_\+\+Create}} (\mbox{\hyperlink{_threads_8h_ab7aa6e63ea49ce5799992cfc4b1262cd}{C\+Auto\+Reset\+Event}} $\ast$p, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} signaled)
+\item 
+\mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{_threads_8c_aea4abce1bd8c949beec4ec4b04a20dc9}{Manual\+Reset\+Event\+\_\+\+Create\+Not\+Signaled}} (\mbox{\hyperlink{_threads_8h_a577b1156766499bb9817e8304c529263}{C\+Manual\+Reset\+Event}} $\ast$p)
+\item 
+\mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{_threads_8c_a412a057fdddc508871f7c63812a96aff}{Auto\+Reset\+Event\+\_\+\+Create\+Not\+Signaled}} (\mbox{\hyperlink{_threads_8h_ab7aa6e63ea49ce5799992cfc4b1262cd}{C\+Auto\+Reset\+Event}} $\ast$p)
+\item 
+\mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{_threads_8c_a51b22b5cb07125cf25e502042c6ce1f3}{Semaphore\+\_\+\+Create}} (\mbox{\hyperlink{_threads_8h_a06778ea105c5f99d685edf99dd15db73}{C\+Semaphore}} $\ast$p, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} init\+Count, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} max\+Count)
+\item 
+static \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{_threads_8c_a72b23d29f5a7d71e78c0098eab955513}{Semaphore\+\_\+\+Release}} (\mbox{\hyperlink{_threads_8h_a06778ea105c5f99d685edf99dd15db73}{C\+Semaphore}} $\ast$p, L\+O\+NG release\+Count, L\+O\+NG $\ast$previous\+Count)
+\item 
+\mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{_threads_8c_a1dfc591d0c0c4fcc8881567bfa146498}{Semaphore\+\_\+\+ReleaseN}} (\mbox{\hyperlink{_threads_8h_a06778ea105c5f99d685edf99dd15db73}{C\+Semaphore}} $\ast$p, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} \mbox{\hyperlink{enough_8c_a1fd0a5ffc280a84b0764e8ec908f814a}{num}})
+\item 
+\mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{_threads_8c_a6d392082486c2dd897b1256a5b5eb8f7}{Semaphore\+\_\+\+Release1}} (\mbox{\hyperlink{_threads_8h_a06778ea105c5f99d685edf99dd15db73}{C\+Semaphore}} $\ast$p)
+\item 
+\mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} \mbox{\hyperlink{_threads_8c_a1e49081fd33200900841f17035ecb15b}{Critical\+Section\+\_\+\+Init}} (\mbox{\hyperlink{_threads_8h_a3b3880669408bfbc0974840ee06c8bb6}{C\+Critical\+Section}} $\ast$p)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_threads_8c_adb1324b7e6541e5ccb3467a41378390e}\label{_threads_8c_adb1324b7e6541e5ccb3467a41378390e}} 
+\index{Threads.\+c@{Threads.\+c}!Auto\+Reset\+Event\+\_\+\+Create@{Auto\+Reset\+Event\+\_\+\+Create}}
+\index{Auto\+Reset\+Event\+\_\+\+Create@{Auto\+Reset\+Event\+\_\+\+Create}!Threads.\+c@{Threads.\+c}}
+\subsubsection{\texorpdfstring{Auto\+Reset\+Event\+\_\+\+Create()}{AutoResetEvent\_Create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} Auto\+Reset\+Event\+\_\+\+Create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_threads_8h_ab7aa6e63ea49ce5799992cfc4b1262cd}{C\+Auto\+Reset\+Event}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{signaled }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_adb1324b7e6541e5ccb3467a41378390e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_adb1324b7e6541e5ccb3467a41378390e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_threads_8c_a412a057fdddc508871f7c63812a96aff}\label{_threads_8c_a412a057fdddc508871f7c63812a96aff}} 
+\index{Threads.\+c@{Threads.\+c}!Auto\+Reset\+Event\+\_\+\+Create\+Not\+Signaled@{Auto\+Reset\+Event\+\_\+\+Create\+Not\+Signaled}}
+\index{Auto\+Reset\+Event\+\_\+\+Create\+Not\+Signaled@{Auto\+Reset\+Event\+\_\+\+Create\+Not\+Signaled}!Threads.\+c@{Threads.\+c}}
+\subsubsection{\texorpdfstring{Auto\+Reset\+Event\+\_\+\+Create\+Not\+Signaled()}{AutoResetEvent\_CreateNotSignaled()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} Auto\+Reset\+Event\+\_\+\+Create\+Not\+Signaled (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_threads_8h_ab7aa6e63ea49ce5799992cfc4b1262cd}{C\+Auto\+Reset\+Event}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a412a057fdddc508871f7c63812a96aff_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a412a057fdddc508871f7c63812a96aff_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_threads_8c_a4cab6ca310179ac5fd522acd3fa59a50}\label{_threads_8c_a4cab6ca310179ac5fd522acd3fa59a50}} 
+\index{Threads.\+c@{Threads.\+c}!B\+O\+O\+L\+To\+W\+Res@{B\+O\+O\+L\+To\+W\+Res}}
+\index{B\+O\+O\+L\+To\+W\+Res@{B\+O\+O\+L\+To\+W\+Res}!Threads.\+c@{Threads.\+c}}
+\subsubsection{\texorpdfstring{B\+O\+O\+L\+To\+W\+Res()}{BOOLToWRes()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} B\+O\+O\+L\+To\+W\+Res (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}}}]{v }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{_threads_8c_a4cab6ca310179ac5fd522acd3fa59a50_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a4cab6ca310179ac5fd522acd3fa59a50_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_threads_8c_a1e49081fd33200900841f17035ecb15b}\label{_threads_8c_a1e49081fd33200900841f17035ecb15b}} 
+\index{Threads.\+c@{Threads.\+c}!Critical\+Section\+\_\+\+Init@{Critical\+Section\+\_\+\+Init}}
+\index{Critical\+Section\+\_\+\+Init@{Critical\+Section\+\_\+\+Init}!Threads.\+c@{Threads.\+c}}
+\subsubsection{\texorpdfstring{Critical\+Section\+\_\+\+Init()}{CriticalSection\_Init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} Critical\+Section\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_threads_8h_a3b3880669408bfbc0974840ee06c8bb6}{C\+Critical\+Section}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a1e49081fd33200900841f17035ecb15b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_threads_8c_a5f6fb57a558b848442b2ae0a91edd7cc}\label{_threads_8c_a5f6fb57a558b848442b2ae0a91edd7cc}} 
+\index{Threads.\+c@{Threads.\+c}!Event\+\_\+\+Create@{Event\+\_\+\+Create}}
+\index{Event\+\_\+\+Create@{Event\+\_\+\+Create}!Threads.\+c@{Threads.\+c}}
+\subsubsection{\texorpdfstring{Event\+\_\+\+Create()}{Event\_Create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} Event\+\_\+\+Create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_threads_8h_ad3b664012f3ed6e3e8f05d26cd9df807}{C\+Event}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}}}]{manual\+Reset,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{signaled }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a5f6fb57a558b848442b2ae0a91edd7cc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a5f6fb57a558b848442b2ae0a91edd7cc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_threads_8c_adcebff2a2a5098940f037eb6ba9d6873}\label{_threads_8c_adcebff2a2a5098940f037eb6ba9d6873}} 
+\index{Threads.\+c@{Threads.\+c}!Event\+\_\+\+Reset@{Event\+\_\+\+Reset}}
+\index{Event\+\_\+\+Reset@{Event\+\_\+\+Reset}!Threads.\+c@{Threads.\+c}}
+\subsubsection{\texorpdfstring{Event\+\_\+\+Reset()}{Event\_Reset()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} Event\+\_\+\+Reset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_threads_8h_ad3b664012f3ed6e3e8f05d26cd9df807}{C\+Event}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_adcebff2a2a5098940f037eb6ba9d6873_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_adcebff2a2a5098940f037eb6ba9d6873_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_threads_8c_a4c894884b1268b8d00d2a96489ba89e3}\label{_threads_8c_a4c894884b1268b8d00d2a96489ba89e3}} 
+\index{Threads.\+c@{Threads.\+c}!Event\+\_\+\+Set@{Event\+\_\+\+Set}}
+\index{Event\+\_\+\+Set@{Event\+\_\+\+Set}!Threads.\+c@{Threads.\+c}}
+\subsubsection{\texorpdfstring{Event\+\_\+\+Set()}{Event\_Set()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} Event\+\_\+\+Set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_threads_8h_ad3b664012f3ed6e3e8f05d26cd9df807}{C\+Event}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a4c894884b1268b8d00d2a96489ba89e3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a4c894884b1268b8d00d2a96489ba89e3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_threads_8c_a5a8c2084ac9159353b8ec1cca090baf5}\label{_threads_8c_a5a8c2084ac9159353b8ec1cca090baf5}} 
+\index{Threads.\+c@{Threads.\+c}!Get\+Error@{Get\+Error}}
+\index{Get\+Error@{Get\+Error}!Threads.\+c@{Threads.\+c}}
+\subsubsection{\texorpdfstring{Get\+Error()}{GetError()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} Get\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a5a8c2084ac9159353b8ec1cca090baf5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_threads_8c_a2bf0ebdd9901830b8e5f90d29b6e63bb}\label{_threads_8c_a2bf0ebdd9901830b8e5f90d29b6e63bb}} 
+\index{Threads.\+c@{Threads.\+c}!Handle\+\_\+\+Wait\+Object@{Handle\+\_\+\+Wait\+Object}}
+\index{Handle\+\_\+\+Wait\+Object@{Handle\+\_\+\+Wait\+Object}!Threads.\+c@{Threads.\+c}}
+\subsubsection{\texorpdfstring{Handle\+\_\+\+Wait\+Object()}{Handle\_WaitObject()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} Handle\+\_\+\+Wait\+Object (\begin{DoxyParamCaption}\item[{H\+A\+N\+D\+LE}]{h }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_threads_8c_aacfb2481097538f4435d403494726d3a}\label{_threads_8c_aacfb2481097538f4435d403494726d3a}} 
+\index{Threads.\+c@{Threads.\+c}!Handle\+Ptr\+\_\+\+Close@{Handle\+Ptr\+\_\+\+Close}}
+\index{Handle\+Ptr\+\_\+\+Close@{Handle\+Ptr\+\_\+\+Close}!Threads.\+c@{Threads.\+c}}
+\subsubsection{\texorpdfstring{Handle\+Ptr\+\_\+\+Close()}{HandlePtr\_Close()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} Handle\+Ptr\+\_\+\+Close (\begin{DoxyParamCaption}\item[{H\+A\+N\+D\+LE $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{_threads_8c_aacfb2481097538f4435d403494726d3a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_threads_8c_af3ca267ee246c91b7e564b078a559975}\label{_threads_8c_af3ca267ee246c91b7e564b078a559975}} 
+\index{Threads.\+c@{Threads.\+c}!Handle\+To\+W\+Res@{Handle\+To\+W\+Res}}
+\index{Handle\+To\+W\+Res@{Handle\+To\+W\+Res}!Threads.\+c@{Threads.\+c}}
+\subsubsection{\texorpdfstring{Handle\+To\+W\+Res()}{HandleToWRes()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} Handle\+To\+W\+Res (\begin{DoxyParamCaption}\item[{H\+A\+N\+D\+LE}]{h }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{_threads_8c_af3ca267ee246c91b7e564b078a559975_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_af3ca267ee246c91b7e564b078a559975_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_threads_8c_a674ddf2bcc8c81d557d9d7c6062d9d6d}\label{_threads_8c_a674ddf2bcc8c81d557d9d7c6062d9d6d}} 
+\index{Threads.\+c@{Threads.\+c}!Manual\+Reset\+Event\+\_\+\+Create@{Manual\+Reset\+Event\+\_\+\+Create}}
+\index{Manual\+Reset\+Event\+\_\+\+Create@{Manual\+Reset\+Event\+\_\+\+Create}!Threads.\+c@{Threads.\+c}}
+\subsubsection{\texorpdfstring{Manual\+Reset\+Event\+\_\+\+Create()}{ManualResetEvent\_Create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} Manual\+Reset\+Event\+\_\+\+Create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_threads_8h_a577b1156766499bb9817e8304c529263}{C\+Manual\+Reset\+Event}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{signaled }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a674ddf2bcc8c81d557d9d7c6062d9d6d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a674ddf2bcc8c81d557d9d7c6062d9d6d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_threads_8c_aea4abce1bd8c949beec4ec4b04a20dc9}\label{_threads_8c_aea4abce1bd8c949beec4ec4b04a20dc9}} 
+\index{Threads.\+c@{Threads.\+c}!Manual\+Reset\+Event\+\_\+\+Create\+Not\+Signaled@{Manual\+Reset\+Event\+\_\+\+Create\+Not\+Signaled}}
+\index{Manual\+Reset\+Event\+\_\+\+Create\+Not\+Signaled@{Manual\+Reset\+Event\+\_\+\+Create\+Not\+Signaled}!Threads.\+c@{Threads.\+c}}
+\subsubsection{\texorpdfstring{Manual\+Reset\+Event\+\_\+\+Create\+Not\+Signaled()}{ManualResetEvent\_CreateNotSignaled()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} Manual\+Reset\+Event\+\_\+\+Create\+Not\+Signaled (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_threads_8h_a577b1156766499bb9817e8304c529263}{C\+Manual\+Reset\+Event}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_aea4abce1bd8c949beec4ec4b04a20dc9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_threads_8c_a51b22b5cb07125cf25e502042c6ce1f3}\label{_threads_8c_a51b22b5cb07125cf25e502042c6ce1f3}} 
+\index{Threads.\+c@{Threads.\+c}!Semaphore\+\_\+\+Create@{Semaphore\+\_\+\+Create}}
+\index{Semaphore\+\_\+\+Create@{Semaphore\+\_\+\+Create}!Threads.\+c@{Threads.\+c}}
+\subsubsection{\texorpdfstring{Semaphore\+\_\+\+Create()}{Semaphore\_Create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} Semaphore\+\_\+\+Create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_threads_8h_a06778ea105c5f99d685edf99dd15db73}{C\+Semaphore}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{init\+Count,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{max\+Count }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a51b22b5cb07125cf25e502042c6ce1f3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a51b22b5cb07125cf25e502042c6ce1f3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_threads_8c_a72b23d29f5a7d71e78c0098eab955513}\label{_threads_8c_a72b23d29f5a7d71e78c0098eab955513}} 
+\index{Threads.\+c@{Threads.\+c}!Semaphore\+\_\+\+Release@{Semaphore\+\_\+\+Release}}
+\index{Semaphore\+\_\+\+Release@{Semaphore\+\_\+\+Release}!Threads.\+c@{Threads.\+c}}
+\subsubsection{\texorpdfstring{Semaphore\+\_\+\+Release()}{Semaphore\_Release()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} Semaphore\+\_\+\+Release (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_threads_8h_a06778ea105c5f99d685edf99dd15db73}{C\+Semaphore}} $\ast$}]{p,  }\item[{L\+O\+NG}]{release\+Count,  }\item[{L\+O\+NG $\ast$}]{previous\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a72b23d29f5a7d71e78c0098eab955513_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a72b23d29f5a7d71e78c0098eab955513_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_threads_8c_a6d392082486c2dd897b1256a5b5eb8f7}\label{_threads_8c_a6d392082486c2dd897b1256a5b5eb8f7}} 
+\index{Threads.\+c@{Threads.\+c}!Semaphore\+\_\+\+Release1@{Semaphore\+\_\+\+Release1}}
+\index{Semaphore\+\_\+\+Release1@{Semaphore\+\_\+\+Release1}!Threads.\+c@{Threads.\+c}}
+\subsubsection{\texorpdfstring{Semaphore\+\_\+\+Release1()}{Semaphore\_Release1()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} Semaphore\+\_\+\+Release1 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_threads_8h_a06778ea105c5f99d685edf99dd15db73}{C\+Semaphore}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a6d392082486c2dd897b1256a5b5eb8f7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a6d392082486c2dd897b1256a5b5eb8f7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_threads_8c_a1dfc591d0c0c4fcc8881567bfa146498}\label{_threads_8c_a1dfc591d0c0c4fcc8881567bfa146498}} 
+\index{Threads.\+c@{Threads.\+c}!Semaphore\+\_\+\+ReleaseN@{Semaphore\+\_\+\+ReleaseN}}
+\index{Semaphore\+\_\+\+ReleaseN@{Semaphore\+\_\+\+ReleaseN}!Threads.\+c@{Threads.\+c}}
+\subsubsection{\texorpdfstring{Semaphore\+\_\+\+Release\+N()}{Semaphore\_ReleaseN()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} Semaphore\+\_\+\+ReleaseN (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_threads_8h_a06778ea105c5f99d685edf99dd15db73}{C\+Semaphore}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{num }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a1dfc591d0c0c4fcc8881567bfa146498_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a1dfc591d0c0c4fcc8881567bfa146498_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_threads_8c_a62e1050845b14c17f4d628ab4c60284f}\label{_threads_8c_a62e1050845b14c17f4d628ab4c60284f}} 
+\index{Threads.\+c@{Threads.\+c}!Thread\+\_\+\+Create@{Thread\+\_\+\+Create}}
+\index{Thread\+\_\+\+Create@{Thread\+\_\+\+Create}!Threads.\+c@{Threads.\+c}}
+\subsubsection{\texorpdfstring{Thread\+\_\+\+Create()}{Thread\_Create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_a5e39b5d1938d3304107325c7533d8d31}{W\+Res}} Thread\+\_\+\+Create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_threads_8h_a068a5473befa776f23a97add9512d427}{C\+Thread}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{_threads_8h_abeb46eb195a92134b29761a43e542052}{T\+H\+R\+E\+A\+D\+\_\+\+F\+U\+N\+C\+\_\+\+T\+Y\+PE}}}]{func,  }\item[{L\+P\+V\+O\+ID}]{param }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a62e1050845b14c17f4d628ab4c60284f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_threads_8c_a62e1050845b14c17f4d628ab4c60284f_icgraph}
+\end{center}
+\end{figure}

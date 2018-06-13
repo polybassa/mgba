@@ -1,0 +1,177 @@
+\hypertarget{gregbook_2readpng_8c}{}\section{src/third-\/party/libpng/contrib/gregbook/readpng.c File Reference}
+\label{gregbook_2readpng_8c}\index{src/third-\/party/libpng/contrib/gregbook/readpng.\+c@{src/third-\/party/libpng/contrib/gregbook/readpng.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$zlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}png.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}readpng.\+h\char`\"{}}\newline
+Include dependency graph for readpng.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gregbook_2readpng_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gregbook_2readpng_8c_a55eebffdbcbda980a3024fc989695b74}{png\+\_\+jmpbuf}}(\mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}})~((\mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}})-\/$>$jmpbuf)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gregbook_2readpng_8c_a15a1e1a81cb84497e808bee018103498}{readpng\+\_\+version\+\_\+info}} (void)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gregbook_2readpng_8c_abcffa8d26844aec3f1765f7327b75e12}{readpng\+\_\+init}} (F\+I\+LE $\ast$\mbox{\hyperlink{rpng2-x_8c_af19157da745ecb3f2b088c8f3a10c0a7}{infile}}, \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} $\ast$p\+Width, \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} $\ast$p\+Height)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gregbook_2readpng_8c_a6866a94e95ce02afa395e6060bb42944}{readpng\+\_\+get\+\_\+bgcolor}} (\mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$red, \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$green, \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$blue)
+\item 
+\mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$ \mbox{\hyperlink{gregbook_2readpng_8c_a27767a3a405bdf480d26397b31a63cb6}{readpng\+\_\+get\+\_\+image}} (double \mbox{\hyperlink{rpng-x_8c_ad738f63cfb0d9f52281786250bd91ceb}{display\+\_\+exponent}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$p\+Channels, \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} $\ast$p\+Rowbytes)
+\item 
+void \mbox{\hyperlink{gregbook_2readpng_8c_a58b09d9e29c5c21f0b2a06da58c87fb6}{readpng\+\_\+cleanup}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} free\+\_\+image\+\_\+data)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}} \mbox{\hyperlink{gregbook_2readpng_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}} = N\+U\+LL
+\item 
+static \mbox{\hyperlink{png_8h_ae3fea93b4964dd221f5ef0f88690dd68}{png\+\_\+infop}} \mbox{\hyperlink{gregbook_2readpng_8c_acff20584e44b8e5b6ebd0ef649fd89f9}{info\+\_\+ptr}} = N\+U\+LL
+\item 
+png\+\_\+uint\+\_\+32 \mbox{\hyperlink{gregbook_2readpng_8c_ad02cd220028343ea4b1943ff4aedc38d}{width}}
+\item 
+png\+\_\+uint\+\_\+32 \mbox{\hyperlink{gregbook_2readpng_8c_ad35d10a175726c3e46ffb65e8d6e4703}{height}}
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gregbook_2readpng_8c_a06ec7298e38952fe9572e828d37d8d93}{bit\+\_\+depth}}
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gregbook_2readpng_8c_ae179b4e193ca0afef9aa3c2ddb7270fc}{color\+\_\+type}}
+\item 
+\mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$ \mbox{\hyperlink{gregbook_2readpng_8c_ab11e4eabc5bd13b2fee5b43afa28cd64}{image\+\_\+data}} = N\+U\+LL
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{gregbook_2readpng_8c_a55eebffdbcbda980a3024fc989695b74}\label{gregbook_2readpng_8c_a55eebffdbcbda980a3024fc989695b74}} 
+\index{gregbook/readpng.\+c@{gregbook/readpng.\+c}!png\+\_\+jmpbuf@{png\+\_\+jmpbuf}}
+\index{png\+\_\+jmpbuf@{png\+\_\+jmpbuf}!gregbook/readpng.\+c@{gregbook/readpng.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+jmpbuf}{png\_jmpbuf}}
+{\footnotesize\ttfamily \#define png\+\_\+jmpbuf(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}} }\end{DoxyParamCaption})~((\mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}})-\/$>$jmpbuf)}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{gregbook_2readpng_8c_a58b09d9e29c5c21f0b2a06da58c87fb6}\label{gregbook_2readpng_8c_a58b09d9e29c5c21f0b2a06da58c87fb6}} 
+\index{gregbook/readpng.\+c@{gregbook/readpng.\+c}!readpng\+\_\+cleanup@{readpng\+\_\+cleanup}}
+\index{readpng\+\_\+cleanup@{readpng\+\_\+cleanup}!gregbook/readpng.\+c@{gregbook/readpng.\+c}}
+\subsubsection{\texorpdfstring{readpng\+\_\+cleanup()}{readpng\_cleanup()}}
+{\footnotesize\ttfamily void readpng\+\_\+cleanup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{free\+\_\+image\+\_\+data }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=275pt]{gregbook_2readpng_8c_a58b09d9e29c5c21f0b2a06da58c87fb6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gregbook_2readpng_8c_a6866a94e95ce02afa395e6060bb42944}\label{gregbook_2readpng_8c_a6866a94e95ce02afa395e6060bb42944}} 
+\index{gregbook/readpng.\+c@{gregbook/readpng.\+c}!readpng\+\_\+get\+\_\+bgcolor@{readpng\+\_\+get\+\_\+bgcolor}}
+\index{readpng\+\_\+get\+\_\+bgcolor@{readpng\+\_\+get\+\_\+bgcolor}!gregbook/readpng.\+c@{gregbook/readpng.\+c}}
+\subsubsection{\texorpdfstring{readpng\+\_\+get\+\_\+bgcolor()}{readpng\_get\_bgcolor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} readpng\+\_\+get\+\_\+bgcolor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$}]{red,  }\item[{\mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$}]{green,  }\item[{\mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$}]{blue }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{gregbook_2readpng_8c_a6866a94e95ce02afa395e6060bb42944_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gregbook_2readpng_8c_a27767a3a405bdf480d26397b31a63cb6}\label{gregbook_2readpng_8c_a27767a3a405bdf480d26397b31a63cb6}} 
+\index{gregbook/readpng.\+c@{gregbook/readpng.\+c}!readpng\+\_\+get\+\_\+image@{readpng\+\_\+get\+\_\+image}}
+\index{readpng\+\_\+get\+\_\+image@{readpng\+\_\+get\+\_\+image}!gregbook/readpng.\+c@{gregbook/readpng.\+c}}
+\subsubsection{\texorpdfstring{readpng\+\_\+get\+\_\+image()}{readpng\_get\_image()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}}$\ast$ readpng\+\_\+get\+\_\+image (\begin{DoxyParamCaption}\item[{double}]{display\+\_\+exponent,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{p\+Channels,  }\item[{\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} $\ast$}]{p\+Rowbytes }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{gregbook_2readpng_8c_a27767a3a405bdf480d26397b31a63cb6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gregbook_2readpng_8c_abcffa8d26844aec3f1765f7327b75e12}\label{gregbook_2readpng_8c_abcffa8d26844aec3f1765f7327b75e12}} 
+\index{gregbook/readpng.\+c@{gregbook/readpng.\+c}!readpng\+\_\+init@{readpng\+\_\+init}}
+\index{readpng\+\_\+init@{readpng\+\_\+init}!gregbook/readpng.\+c@{gregbook/readpng.\+c}}
+\subsubsection{\texorpdfstring{readpng\+\_\+init()}{readpng\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} readpng\+\_\+init (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{infile,  }\item[{\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} $\ast$}]{p\+Width,  }\item[{\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} $\ast$}]{p\+Height }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{gregbook_2readpng_8c_abcffa8d26844aec3f1765f7327b75e12_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gregbook_2readpng_8c_a15a1e1a81cb84497e808bee018103498}\label{gregbook_2readpng_8c_a15a1e1a81cb84497e808bee018103498}} 
+\index{gregbook/readpng.\+c@{gregbook/readpng.\+c}!readpng\+\_\+version\+\_\+info@{readpng\+\_\+version\+\_\+info}}
+\index{readpng\+\_\+version\+\_\+info@{readpng\+\_\+version\+\_\+info}!gregbook/readpng.\+c@{gregbook/readpng.\+c}}
+\subsubsection{\texorpdfstring{readpng\+\_\+version\+\_\+info()}{readpng\_version\_info()}}
+{\footnotesize\ttfamily void readpng\+\_\+version\+\_\+info (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{gregbook_2readpng_8c_a15a1e1a81cb84497e808bee018103498_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{gregbook_2readpng_8c_a06ec7298e38952fe9572e828d37d8d93}\label{gregbook_2readpng_8c_a06ec7298e38952fe9572e828d37d8d93}} 
+\index{gregbook/readpng.\+c@{gregbook/readpng.\+c}!bit\+\_\+depth@{bit\+\_\+depth}}
+\index{bit\+\_\+depth@{bit\+\_\+depth}!gregbook/readpng.\+c@{gregbook/readpng.\+c}}
+\subsubsection{\texorpdfstring{bit\+\_\+depth}{bit\_depth}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} bit\+\_\+depth}
+
+\mbox{\Hypertarget{gregbook_2readpng_8c_ae179b4e193ca0afef9aa3c2ddb7270fc}\label{gregbook_2readpng_8c_ae179b4e193ca0afef9aa3c2ddb7270fc}} 
+\index{gregbook/readpng.\+c@{gregbook/readpng.\+c}!color\+\_\+type@{color\+\_\+type}}
+\index{color\+\_\+type@{color\+\_\+type}!gregbook/readpng.\+c@{gregbook/readpng.\+c}}
+\subsubsection{\texorpdfstring{color\+\_\+type}{color\_type}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} color\+\_\+type}
+
+\mbox{\Hypertarget{gregbook_2readpng_8c_ad35d10a175726c3e46ffb65e8d6e4703}\label{gregbook_2readpng_8c_ad35d10a175726c3e46ffb65e8d6e4703}} 
+\index{gregbook/readpng.\+c@{gregbook/readpng.\+c}!height@{height}}
+\index{height@{height}!gregbook/readpng.\+c@{gregbook/readpng.\+c}}
+\subsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily png\+\_\+uint\+\_\+32 height}
+
+\mbox{\Hypertarget{gregbook_2readpng_8c_ab11e4eabc5bd13b2fee5b43afa28cd64}\label{gregbook_2readpng_8c_ab11e4eabc5bd13b2fee5b43afa28cd64}} 
+\index{gregbook/readpng.\+c@{gregbook/readpng.\+c}!image\+\_\+data@{image\+\_\+data}}
+\index{image\+\_\+data@{image\+\_\+data}!gregbook/readpng.\+c@{gregbook/readpng.\+c}}
+\subsubsection{\texorpdfstring{image\+\_\+data}{image\_data}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}}$\ast$ image\+\_\+data = N\+U\+LL}
+
+\mbox{\Hypertarget{gregbook_2readpng_8c_acff20584e44b8e5b6ebd0ef649fd89f9}\label{gregbook_2readpng_8c_acff20584e44b8e5b6ebd0ef649fd89f9}} 
+\index{gregbook/readpng.\+c@{gregbook/readpng.\+c}!info\+\_\+ptr@{info\+\_\+ptr}}
+\index{info\+\_\+ptr@{info\+\_\+ptr}!gregbook/readpng.\+c@{gregbook/readpng.\+c}}
+\subsubsection{\texorpdfstring{info\+\_\+ptr}{info\_ptr}}
+{\footnotesize\ttfamily \mbox{\hyperlink{png_8h_ae3fea93b4964dd221f5ef0f88690dd68}{png\+\_\+infop}} info\+\_\+ptr = N\+U\+LL\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{gregbook_2readpng_8c_a55aeeb404d5f026787361dda7a4f1cb8}\label{gregbook_2readpng_8c_a55aeeb404d5f026787361dda7a4f1cb8}} 
+\index{gregbook/readpng.\+c@{gregbook/readpng.\+c}!png\+\_\+ptr@{png\+\_\+ptr}}
+\index{png\+\_\+ptr@{png\+\_\+ptr}!gregbook/readpng.\+c@{gregbook/readpng.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+ptr}{png\_ptr}}
+{\footnotesize\ttfamily \mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}} png\+\_\+ptr = N\+U\+LL\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{gregbook_2readpng_8c_ad02cd220028343ea4b1943ff4aedc38d}\label{gregbook_2readpng_8c_ad02cd220028343ea4b1943ff4aedc38d}} 
+\index{gregbook/readpng.\+c@{gregbook/readpng.\+c}!width@{width}}
+\index{width@{width}!gregbook/readpng.\+c@{gregbook/readpng.\+c}}
+\subsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily png\+\_\+uint\+\_\+32 width}
+

@@ -1,0 +1,145 @@
+\hypertarget{core_2cache-set_8c}{}\section{src/core/cache-\/set.c File Reference}
+\label{core_2cache-set_8c}\index{src/core/cache-\/set.\+c@{src/core/cache-\/set.\+c}}
+{\ttfamily \#include $<$mgba/core/cache-\/set.\+h$>$}\newline
+Include dependency graph for cache-\/set.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{core_2cache-set_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{core_2cache-set_8c_ae9141e76f46e5dc6c9984fa89aa8d1ae}{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}} (m\+Map\+Cache\+Set, struct m\+Map\+Cache)
+\item 
+\mbox{\hyperlink{core_2cache-set_8c_ad5cc5bc90c21d9400d4aa398600f6f97}{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}} (m\+Tile\+Cache\+Set, struct m\+Tile\+Cache)
+\item 
+void \mbox{\hyperlink{core_2cache-set_8c_a0082eccdfc7d350d0fb3092820f4bf95}{m\+Cache\+Set\+Init}} (struct m\+Cache\+Set $\ast$cache, size\+\_\+t n\+Maps, size\+\_\+t n\+Tiles)
+\item 
+void \mbox{\hyperlink{core_2cache-set_8c_ae4f1af2ec62092b9a029f684d6df8630}{m\+Cache\+Set\+Deinit}} (struct m\+Cache\+Set $\ast$cache)
+\item 
+void \mbox{\hyperlink{core_2cache-set_8c_ac54ed5b76adf1e6bbe892e3467ca6b7a}{m\+Cache\+Set\+Assign\+V\+R\+AM}} (struct m\+Cache\+Set $\ast$cache, void $\ast$vram)
+\item 
+void \mbox{\hyperlink{core_2cache-set_8c_ab75388da75a72f138ca6e24089fe5158}{m\+Cache\+Set\+Write\+V\+R\+AM}} (struct m\+Cache\+Set $\ast$cache, uint32\+\_\+t address)
+\item 
+void \mbox{\hyperlink{core_2cache-set_8c_a911c877cb6f25d98b07830de12a90dd5}{m\+Cache\+Set\+Write\+Palette}} (struct m\+Cache\+Set $\ast$cache, uint32\+\_\+t entry, color\+\_\+t color)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{core_2cache-set_8c_ae9141e76f46e5dc6c9984fa89aa8d1ae}\label{core_2cache-set_8c_ae9141e76f46e5dc6c9984fa89aa8d1ae}} 
+\index{core/cache-\/set.\+c@{core/cache-\/set.\+c}!D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}}
+\index{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}!core/cache-\/set.\+c@{core/cache-\/set.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+O\+R()}{DEFINE\_VECTOR()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR (\begin{DoxyParamCaption}\item[{m\+Map\+Cache\+Set}]{,  }\item[{struct m\+Map\+Cache}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{core_2cache-set_8c_ad5cc5bc90c21d9400d4aa398600f6f97}\label{core_2cache-set_8c_ad5cc5bc90c21d9400d4aa398600f6f97}} 
+\index{core/cache-\/set.\+c@{core/cache-\/set.\+c}!D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}}
+\index{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}!core/cache-\/set.\+c@{core/cache-\/set.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+O\+R()}{DEFINE\_VECTOR()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR (\begin{DoxyParamCaption}\item[{m\+Tile\+Cache\+Set}]{,  }\item[{struct m\+Tile\+Cache}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{core_2cache-set_8c_ac54ed5b76adf1e6bbe892e3467ca6b7a}\label{core_2cache-set_8c_ac54ed5b76adf1e6bbe892e3467ca6b7a}} 
+\index{core/cache-\/set.\+c@{core/cache-\/set.\+c}!m\+Cache\+Set\+Assign\+V\+R\+AM@{m\+Cache\+Set\+Assign\+V\+R\+AM}}
+\index{m\+Cache\+Set\+Assign\+V\+R\+AM@{m\+Cache\+Set\+Assign\+V\+R\+AM}!core/cache-\/set.\+c@{core/cache-\/set.\+c}}
+\subsubsection{\texorpdfstring{m\+Cache\+Set\+Assign\+V\+R\+A\+M()}{mCacheSetAssignVRAM()}}
+{\footnotesize\ttfamily void m\+Cache\+Set\+Assign\+V\+R\+AM (\begin{DoxyParamCaption}\item[{struct m\+Cache\+Set $\ast$}]{cache,  }\item[{void $\ast$}]{vram }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cache-set_8c_ac54ed5b76adf1e6bbe892e3467ca6b7a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cache-set_8c_ae4f1af2ec62092b9a029f684d6df8630}\label{core_2cache-set_8c_ae4f1af2ec62092b9a029f684d6df8630}} 
+\index{core/cache-\/set.\+c@{core/cache-\/set.\+c}!m\+Cache\+Set\+Deinit@{m\+Cache\+Set\+Deinit}}
+\index{m\+Cache\+Set\+Deinit@{m\+Cache\+Set\+Deinit}!core/cache-\/set.\+c@{core/cache-\/set.\+c}}
+\subsubsection{\texorpdfstring{m\+Cache\+Set\+Deinit()}{mCacheSetDeinit()}}
+{\footnotesize\ttfamily void m\+Cache\+Set\+Deinit (\begin{DoxyParamCaption}\item[{struct m\+Cache\+Set $\ast$}]{cache }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cache-set_8c_ae4f1af2ec62092b9a029f684d6df8630_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{core_2cache-set_8c_ae4f1af2ec62092b9a029f684d6df8630_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cache-set_8c_a0082eccdfc7d350d0fb3092820f4bf95}\label{core_2cache-set_8c_a0082eccdfc7d350d0fb3092820f4bf95}} 
+\index{core/cache-\/set.\+c@{core/cache-\/set.\+c}!m\+Cache\+Set\+Init@{m\+Cache\+Set\+Init}}
+\index{m\+Cache\+Set\+Init@{m\+Cache\+Set\+Init}!core/cache-\/set.\+c@{core/cache-\/set.\+c}}
+\subsubsection{\texorpdfstring{m\+Cache\+Set\+Init()}{mCacheSetInit()}}
+{\footnotesize\ttfamily void m\+Cache\+Set\+Init (\begin{DoxyParamCaption}\item[{struct m\+Cache\+Set $\ast$}]{cache,  }\item[{size\+\_\+t}]{n\+Maps,  }\item[{size\+\_\+t}]{n\+Tiles }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{core_2cache-set_8c_a0082eccdfc7d350d0fb3092820f4bf95_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cache-set_8c_a0082eccdfc7d350d0fb3092820f4bf95_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cache-set_8c_a911c877cb6f25d98b07830de12a90dd5}\label{core_2cache-set_8c_a911c877cb6f25d98b07830de12a90dd5}} 
+\index{core/cache-\/set.\+c@{core/cache-\/set.\+c}!m\+Cache\+Set\+Write\+Palette@{m\+Cache\+Set\+Write\+Palette}}
+\index{m\+Cache\+Set\+Write\+Palette@{m\+Cache\+Set\+Write\+Palette}!core/cache-\/set.\+c@{core/cache-\/set.\+c}}
+\subsubsection{\texorpdfstring{m\+Cache\+Set\+Write\+Palette()}{mCacheSetWritePalette()}}
+{\footnotesize\ttfamily void m\+Cache\+Set\+Write\+Palette (\begin{DoxyParamCaption}\item[{struct m\+Cache\+Set $\ast$}]{cache,  }\item[{uint32\+\_\+t}]{entry,  }\item[{color\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cache-set_8c_a911c877cb6f25d98b07830de12a90dd5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cache-set_8c_a911c877cb6f25d98b07830de12a90dd5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2cache-set_8c_ab75388da75a72f138ca6e24089fe5158}\label{core_2cache-set_8c_ab75388da75a72f138ca6e24089fe5158}} 
+\index{core/cache-\/set.\+c@{core/cache-\/set.\+c}!m\+Cache\+Set\+Write\+V\+R\+AM@{m\+Cache\+Set\+Write\+V\+R\+AM}}
+\index{m\+Cache\+Set\+Write\+V\+R\+AM@{m\+Cache\+Set\+Write\+V\+R\+AM}!core/cache-\/set.\+c@{core/cache-\/set.\+c}}
+\subsubsection{\texorpdfstring{m\+Cache\+Set\+Write\+V\+R\+A\+M()}{mCacheSetWriteVRAM()}}
+{\footnotesize\ttfamily void m\+Cache\+Set\+Write\+V\+R\+AM (\begin{DoxyParamCaption}\item[{struct m\+Cache\+Set $\ast$}]{cache,  }\item[{uint32\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cache-set_8c_ab75388da75a72f138ca6e24089fe5158_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2cache-set_8c_ab75388da75a72f138ca6e24089fe5158_icgraph}
+\end{center}
+\end{figure}

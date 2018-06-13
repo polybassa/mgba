@@ -1,0 +1,116 @@
+\hypertarget{cexcept_8h}{}\section{src/third-\/party/libpng/contrib/visupng/cexcept.h File Reference}
+\label{cexcept_8h}\index{src/third-\/party/libpng/contrib/visupng/cexcept.\+h@{src/third-\/party/libpng/contrib/visupng/cexcept.\+h}}
+{\ttfamily \#include $<$setjmp.\+h$>$}\newline
+Include dependency graph for cexcept.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{cexcept_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{cexcept_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{cexcept_8h_a8247a7b4db1c801ef3ae69d0fbcc2657}{define\+\_\+exception\+\_\+type}}(etype)
+\item 
+\#define \mbox{\hyperlink{cexcept_8h_a053c0f20ed7a06e95b5fd927e7b7b327}{init\+\_\+exception\+\_\+context}}(ec)~((void)((ec)-\/$>$penv = 0))
+\item 
+\#define \mbox{\hyperlink{cexcept_8h_a7a2b8ccf41cff483bac8e86ac7feff9b}{Try}}
+\item 
+\#define \mbox{\hyperlink{cexcept_8h_a47ebb624fdf4572dadaab02169edc65d}{exception\+\_\+\+\_\+catch}}(action)
+\item 
+\#define \mbox{\hyperlink{cexcept_8h_a27a2d449a9d7e55bc4ef33a7a47d30fb}{Catch}}(e)~\mbox{\hyperlink{cexcept_8h_a47ebb624fdf4572dadaab02169edc65d}{exception\+\_\+\+\_\+catch}}(((e) = \mbox{\hyperlink{_png_file_8c_ae75645d286e713f5cbede4403281515f}{the\+\_\+exception\+\_\+context}}-\/$>$v.\+etmp, 0))
+\item 
+\#define \mbox{\hyperlink{cexcept_8h_a2c3991fe7bafac71aaa443acd8c21343}{Catch\+\_\+anonymous}}~\mbox{\hyperlink{cexcept_8h_a47ebb624fdf4572dadaab02169edc65d}{exception\+\_\+\+\_\+catch}}(0)
+\item 
+\#define \mbox{\hyperlink{cexcept_8h_a2e731a4fd1760ee22c3e2bae0f8e5f2e}{Throw}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{cexcept_8h_a27a2d449a9d7e55bc4ef33a7a47d30fb}\label{cexcept_8h_a27a2d449a9d7e55bc4ef33a7a47d30fb}} 
+\index{cexcept.\+h@{cexcept.\+h}!Catch@{Catch}}
+\index{Catch@{Catch}!cexcept.\+h@{cexcept.\+h}}
+\subsubsection{\texorpdfstring{Catch}{Catch}}
+{\footnotesize\ttfamily \#define Catch(\begin{DoxyParamCaption}\item[{}]{e }\end{DoxyParamCaption})~\mbox{\hyperlink{cexcept_8h_a47ebb624fdf4572dadaab02169edc65d}{exception\+\_\+\+\_\+catch}}(((e) = \mbox{\hyperlink{_png_file_8c_ae75645d286e713f5cbede4403281515f}{the\+\_\+exception\+\_\+context}}-\/$>$v.\+etmp, 0))}
+
+\mbox{\Hypertarget{cexcept_8h_a2c3991fe7bafac71aaa443acd8c21343}\label{cexcept_8h_a2c3991fe7bafac71aaa443acd8c21343}} 
+\index{cexcept.\+h@{cexcept.\+h}!Catch\+\_\+anonymous@{Catch\+\_\+anonymous}}
+\index{Catch\+\_\+anonymous@{Catch\+\_\+anonymous}!cexcept.\+h@{cexcept.\+h}}
+\subsubsection{\texorpdfstring{Catch\+\_\+anonymous}{Catch\_anonymous}}
+{\footnotesize\ttfamily \#define Catch\+\_\+anonymous~\mbox{\hyperlink{cexcept_8h_a47ebb624fdf4572dadaab02169edc65d}{exception\+\_\+\+\_\+catch}}(0)}
+
+\mbox{\Hypertarget{cexcept_8h_a8247a7b4db1c801ef3ae69d0fbcc2657}\label{cexcept_8h_a8247a7b4db1c801ef3ae69d0fbcc2657}} 
+\index{cexcept.\+h@{cexcept.\+h}!define\+\_\+exception\+\_\+type@{define\+\_\+exception\+\_\+type}}
+\index{define\+\_\+exception\+\_\+type@{define\+\_\+exception\+\_\+type}!cexcept.\+h@{cexcept.\+h}}
+\subsubsection{\texorpdfstring{define\+\_\+exception\+\_\+type}{define\_exception\_type}}
+{\footnotesize\ttfamily \#define define\+\_\+exception\+\_\+type(\begin{DoxyParamCaption}\item[{}]{etype }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keyword}{struct }exception\_context \{ \(\backslash\)
+  jmp\_buf *penv; \(\backslash\)
+  int caught; \(\backslash\)
+  volatile \textcolor{keyword}{struct }\{ etype etmp; \} v; \(\backslash\)
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{cexcept_8h_a47ebb624fdf4572dadaab02169edc65d}\label{cexcept_8h_a47ebb624fdf4572dadaab02169edc65d}} 
+\index{cexcept.\+h@{cexcept.\+h}!exception\+\_\+\+\_\+catch@{exception\+\_\+\+\_\+catch}}
+\index{exception\+\_\+\+\_\+catch@{exception\+\_\+\+\_\+catch}!cexcept.\+h@{cexcept.\+h}}
+\subsubsection{\texorpdfstring{exception\+\_\+\+\_\+catch}{exception\_\_catch}}
+{\footnotesize\ttfamily \#define exception\+\_\+\+\_\+catch(\begin{DoxyParamCaption}\item[{}]{action }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{while} (\mbox{\hyperlink{_png_file_8c_ae75645d286e713f5cbede4403281515f}{the\_exception\_context}}->caught = 0, \(\backslash\)
+             \mbox{\hyperlink{_png_file_8c_ae75645d286e713f5cbede4403281515f}{the\_exception\_context}}->caught); \(\backslash\)
+    \} \(\backslash\)
+    else \{ \(\backslash\)
+      the\_exception\_context->caught = 1; \(\backslash\)
+    \} \(\backslash\)
+    the\_exception\_context->penv = exception\_\_prev; \(\backslash\)
+  \} \(\backslash\)
+  if (!\mbox{\hyperlink{_png_file_8c_ae75645d286e713f5cbede4403281515f}{the\_exception\_context}}->caught || action) \{ \} \(\backslash\)
+  else
+\end{DoxyCode}
+\mbox{\Hypertarget{cexcept_8h_a053c0f20ed7a06e95b5fd927e7b7b327}\label{cexcept_8h_a053c0f20ed7a06e95b5fd927e7b7b327}} 
+\index{cexcept.\+h@{cexcept.\+h}!init\+\_\+exception\+\_\+context@{init\+\_\+exception\+\_\+context}}
+\index{init\+\_\+exception\+\_\+context@{init\+\_\+exception\+\_\+context}!cexcept.\+h@{cexcept.\+h}}
+\subsubsection{\texorpdfstring{init\+\_\+exception\+\_\+context}{init\_exception\_context}}
+{\footnotesize\ttfamily \#define init\+\_\+exception\+\_\+context(\begin{DoxyParamCaption}\item[{}]{ec }\end{DoxyParamCaption})~((void)((ec)-\/$>$penv = 0))}
+
+\mbox{\Hypertarget{cexcept_8h_a2e731a4fd1760ee22c3e2bae0f8e5f2e}\label{cexcept_8h_a2e731a4fd1760ee22c3e2bae0f8e5f2e}} 
+\index{cexcept.\+h@{cexcept.\+h}!Throw@{Throw}}
+\index{Throw@{Throw}!cexcept.\+h@{cexcept.\+h}}
+\subsubsection{\texorpdfstring{Throw}{Throw}}
+{\footnotesize\ttfamily \#define Throw}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} (;; longjmp(*\mbox{\hyperlink{_png_file_8c_ae75645d286e713f5cbede4403281515f}{the\_exception\_context}}->penv, 1)) \(\backslash\)
+    \mbox{\hyperlink{_png_file_8c_ae75645d286e713f5cbede4403281515f}{the\_exception\_context}}->v.etmp =
+\end{DoxyCode}
+\mbox{\Hypertarget{cexcept_8h_a7a2b8ccf41cff483bac8e86ac7feff9b}\label{cexcept_8h_a7a2b8ccf41cff483bac8e86ac7feff9b}} 
+\index{cexcept.\+h@{cexcept.\+h}!Try@{Try}}
+\index{Try@{Try}!cexcept.\+h@{cexcept.\+h}}
+\subsubsection{\texorpdfstring{Try}{Try}}
+{\footnotesize\ttfamily \#define Try}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\{ \(\backslash\)
+    jmp\_buf *exception\_\_prev, exception\_\_env; \(\backslash\)
+    exception\_\_prev = \mbox{\hyperlink{_png_file_8c_ae75645d286e713f5cbede4403281515f}{the\_exception\_context}}->penv; \(\backslash\)
+    the\_exception\_context->penv = &exception\_\_env; \(\backslash\)
+    if (setjmp(exception\_\_env) == 0) \{ \(\backslash\)
+      do
+\end{DoxyCode}

@@ -1,0 +1,124 @@
+\hypertarget{pandora-sdl_8c}{}\section{src/platform/sdl/pandora-\/sdl.c File Reference}
+\label{pandora-sdl_8c}\index{src/platform/sdl/pandora-\/sdl.\+c@{src/platform/sdl/pandora-\/sdl.\+c}}
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gba/supervisor/thread.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$linux/omapfb.\+h$>$}\newline
+{\ttfamily \#include $<$linux/fb.\+h$>$}\newline
+{\ttfamily \#include $<$sys/ioctl.\+h$>$}\newline
+{\ttfamily \#include $<$sys/mman.\+h$>$}\newline
+Include dependency graph for pandora-\/sdl.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pandora-sdl_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{pandora-sdl_8c_ad169cbc3efb007545485b3ca1b5d7e6a}{F\+B\+I\+O\+\_\+\+W\+A\+I\+T\+F\+O\+R\+V\+S\+Y\+NC}}~\+\_\+\+I\+OW(\textquotesingle{}F\textquotesingle{}, 0x20, \+\_\+\+\_\+u32)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{pandora-sdl_8c_aed39e297edf44f1d18eb5228c4653bb0}{m\+S\+D\+L\+Init}} (struct S\+D\+L\+Software\+Renderer $\ast$renderer)
+\item 
+static void \mbox{\hyperlink{pandora-sdl_8c_a290e757b4ab3c47950e274fdf8d6c7ea}{m\+S\+D\+L\+Runloop}} (struct G\+B\+A\+Thread $\ast$context, struct S\+D\+L\+Software\+Renderer $\ast$renderer)
+\item 
+static void \mbox{\hyperlink{pandora-sdl_8c_a2e844dec0a5e889059cdf4f395679121}{m\+S\+D\+L\+Deinit}} (struct S\+D\+L\+Software\+Renderer $\ast$renderer)
+\item 
+void \mbox{\hyperlink{pandora-sdl_8c_ac0f0fed0a8f63ea7109a5427609fb678}{m\+S\+D\+L\+G\+L\+Create}} (struct S\+D\+L\+Software\+Renderer $\ast$renderer)
+\item 
+void \mbox{\hyperlink{pandora-sdl_8c_a272167ed06db7f73e361c3bfbd158698}{m\+S\+D\+L\+S\+W\+Create}} (struct S\+D\+L\+Software\+Renderer $\ast$renderer)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{pandora-sdl_8c_ad169cbc3efb007545485b3ca1b5d7e6a}\label{pandora-sdl_8c_ad169cbc3efb007545485b3ca1b5d7e6a}} 
+\index{pandora-\/sdl.\+c@{pandora-\/sdl.\+c}!F\+B\+I\+O\+\_\+\+W\+A\+I\+T\+F\+O\+R\+V\+S\+Y\+NC@{F\+B\+I\+O\+\_\+\+W\+A\+I\+T\+F\+O\+R\+V\+S\+Y\+NC}}
+\index{F\+B\+I\+O\+\_\+\+W\+A\+I\+T\+F\+O\+R\+V\+S\+Y\+NC@{F\+B\+I\+O\+\_\+\+W\+A\+I\+T\+F\+O\+R\+V\+S\+Y\+NC}!pandora-\/sdl.\+c@{pandora-\/sdl.\+c}}
+\subsubsection{\texorpdfstring{F\+B\+I\+O\+\_\+\+W\+A\+I\+T\+F\+O\+R\+V\+S\+Y\+NC}{FBIO\_WAITFORVSYNC}}
+{\footnotesize\ttfamily \#define F\+B\+I\+O\+\_\+\+W\+A\+I\+T\+F\+O\+R\+V\+S\+Y\+NC~\+\_\+\+I\+OW(\textquotesingle{}F\textquotesingle{}, 0x20, \+\_\+\+\_\+u32)}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{pandora-sdl_8c_a2e844dec0a5e889059cdf4f395679121}\label{pandora-sdl_8c_a2e844dec0a5e889059cdf4f395679121}} 
+\index{pandora-\/sdl.\+c@{pandora-\/sdl.\+c}!m\+S\+D\+L\+Deinit@{m\+S\+D\+L\+Deinit}}
+\index{m\+S\+D\+L\+Deinit@{m\+S\+D\+L\+Deinit}!pandora-\/sdl.\+c@{pandora-\/sdl.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Deinit()}{mSDLDeinit()}}
+{\footnotesize\ttfamily void m\+S\+D\+L\+Deinit (\begin{DoxyParamCaption}\item[{struct S\+D\+L\+Software\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=283pt]{pandora-sdl_8c_a2e844dec0a5e889059cdf4f395679121_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{pandora-sdl_8c_ac0f0fed0a8f63ea7109a5427609fb678}\label{pandora-sdl_8c_ac0f0fed0a8f63ea7109a5427609fb678}} 
+\index{pandora-\/sdl.\+c@{pandora-\/sdl.\+c}!m\+S\+D\+L\+G\+L\+Create@{m\+S\+D\+L\+G\+L\+Create}}
+\index{m\+S\+D\+L\+G\+L\+Create@{m\+S\+D\+L\+G\+L\+Create}!pandora-\/sdl.\+c@{pandora-\/sdl.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+G\+L\+Create()}{mSDLGLCreate()}}
+{\footnotesize\ttfamily void m\+S\+D\+L\+G\+L\+Create (\begin{DoxyParamCaption}\item[{struct S\+D\+L\+Software\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pandora-sdl_8c_ac0f0fed0a8f63ea7109a5427609fb678_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{pandora-sdl_8c_aed39e297edf44f1d18eb5228c4653bb0}\label{pandora-sdl_8c_aed39e297edf44f1d18eb5228c4653bb0}} 
+\index{pandora-\/sdl.\+c@{pandora-\/sdl.\+c}!m\+S\+D\+L\+Init@{m\+S\+D\+L\+Init}}
+\index{m\+S\+D\+L\+Init@{m\+S\+D\+L\+Init}!pandora-\/sdl.\+c@{pandora-\/sdl.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Init()}{mSDLInit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+S\+D\+L\+Init (\begin{DoxyParamCaption}\item[{struct S\+D\+L\+Software\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{pandora-sdl_8c_aed39e297edf44f1d18eb5228c4653bb0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{pandora-sdl_8c_a290e757b4ab3c47950e274fdf8d6c7ea}\label{pandora-sdl_8c_a290e757b4ab3c47950e274fdf8d6c7ea}} 
+\index{pandora-\/sdl.\+c@{pandora-\/sdl.\+c}!m\+S\+D\+L\+Runloop@{m\+S\+D\+L\+Runloop}}
+\index{m\+S\+D\+L\+Runloop@{m\+S\+D\+L\+Runloop}!pandora-\/sdl.\+c@{pandora-\/sdl.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Runloop()}{mSDLRunloop()}}
+{\footnotesize\ttfamily void m\+S\+D\+L\+Runloop (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Thread $\ast$}]{context,  }\item[{struct S\+D\+L\+Software\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pandora-sdl_8c_a290e757b4ab3c47950e274fdf8d6c7ea_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{pandora-sdl_8c_a290e757b4ab3c47950e274fdf8d6c7ea_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{pandora-sdl_8c_a272167ed06db7f73e361c3bfbd158698}\label{pandora-sdl_8c_a272167ed06db7f73e361c3bfbd158698}} 
+\index{pandora-\/sdl.\+c@{pandora-\/sdl.\+c}!m\+S\+D\+L\+S\+W\+Create@{m\+S\+D\+L\+S\+W\+Create}}
+\index{m\+S\+D\+L\+S\+W\+Create@{m\+S\+D\+L\+S\+W\+Create}!pandora-\/sdl.\+c@{pandora-\/sdl.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+S\+W\+Create()}{mSDLSWCreate()}}
+{\footnotesize\ttfamily void m\+S\+D\+L\+S\+W\+Create (\begin{DoxyParamCaption}\item[{struct S\+D\+L\+Software\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pandora-sdl_8c_a272167ed06db7f73e361c3bfbd158698_cgraph}
+\end{center}
+\end{figure}

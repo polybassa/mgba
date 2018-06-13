@@ -1,0 +1,211 @@
+\hypertarget{scripting_8c}{}\section{src/core/scripting.c File Reference}
+\label{scripting_8c}\index{src/core/scripting.\+c@{src/core/scripting.\+c}}
+{\ttfamily \#include $<$mgba/core/scripting.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/table.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+Include dependency graph for scripting.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{scripting_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{scripting_8c_ad8412d4b6794b3a31aa888d7f1b7933a}{\+\_\+se\+Deinit}} (void $\ast$value)
+\item 
+static void \mbox{\hyperlink{scripting_8c_a70d2e9d30f04c38180d45d309eed88fa}{\+\_\+se\+Try\+Load}} (const char $\ast$key, void $\ast$value, void $\ast$user)
+\item 
+static void \mbox{\hyperlink{scripting_8c_abbf725713ca23659f4f79cce9e9379d4}{\+\_\+se\+Lookup\+Symbol}} (const char $\ast$key, void $\ast$value, void $\ast$user)
+\item 
+static void \mbox{\hyperlink{scripting_8c_a690e00f73991e29c58392e70f0d6254a}{\+\_\+se\+Run}} (const char $\ast$key, void $\ast$value, void $\ast$user)
+\item 
+struct m\+Script\+Bridge $\ast$ \mbox{\hyperlink{scripting_8c_aae6d5ff88307ecd2ca253c94539ba0a7}{m\+Script\+Bridge\+Create}} (void)
+\item 
+void \mbox{\hyperlink{scripting_8c_a446c0f8701d1e9a85c676535c5f3de48}{m\+Script\+Bridge\+Destroy}} (struct m\+Script\+Bridge $\ast$sb)
+\item 
+void \mbox{\hyperlink{scripting_8c_a657f3e2f5c1e2c6f6e7127cbf263ea6c}{m\+Script\+Bridge\+Install\+Engine}} (struct m\+Script\+Bridge $\ast$sb, struct m\+Script\+Engine $\ast$se)
+\item 
+void \mbox{\hyperlink{scripting_8c_ae843eb5ac71f54f611b66e57fceb74da}{m\+Script\+Bridge\+Run}} (struct m\+Script\+Bridge $\ast$sb)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{scripting_8c_a279300ac0bc323125d08e09e5ec5c5c5}{m\+Script\+Bridge\+Load\+Script}} (struct m\+Script\+Bridge $\ast$sb, const char $\ast$name)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{scripting_8c_a2478f864b1bc3f050d6893f77606025f}{m\+Script\+Bridge\+Lookup\+Symbol}} (struct m\+Script\+Bridge $\ast$sb, const char $\ast$name, int32\+\_\+t $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{scripting_8c_ad8412d4b6794b3a31aa888d7f1b7933a}\label{scripting_8c_ad8412d4b6794b3a31aa888d7f1b7933a}} 
+\index{scripting.\+c@{scripting.\+c}!\+\_\+se\+Deinit@{\+\_\+se\+Deinit}}
+\index{\+\_\+se\+Deinit@{\+\_\+se\+Deinit}!scripting.\+c@{scripting.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+se\+Deinit()}{\_seDeinit()}}
+{\footnotesize\ttfamily static void \+\_\+se\+Deinit (\begin{DoxyParamCaption}\item[{void $\ast$}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{scripting_8c_ad8412d4b6794b3a31aa888d7f1b7933a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{scripting_8c_abbf725713ca23659f4f79cce9e9379d4}\label{scripting_8c_abbf725713ca23659f4f79cce9e9379d4}} 
+\index{scripting.\+c@{scripting.\+c}!\+\_\+se\+Lookup\+Symbol@{\+\_\+se\+Lookup\+Symbol}}
+\index{\+\_\+se\+Lookup\+Symbol@{\+\_\+se\+Lookup\+Symbol}!scripting.\+c@{scripting.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+se\+Lookup\+Symbol()}{\_seLookupSymbol()}}
+{\footnotesize\ttfamily static void \+\_\+se\+Lookup\+Symbol (\begin{DoxyParamCaption}\item[{const char $\ast$}]{key,  }\item[{void $\ast$}]{value,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{scripting_8c_abbf725713ca23659f4f79cce9e9379d4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{scripting_8c_a690e00f73991e29c58392e70f0d6254a}\label{scripting_8c_a690e00f73991e29c58392e70f0d6254a}} 
+\index{scripting.\+c@{scripting.\+c}!\+\_\+se\+Run@{\+\_\+se\+Run}}
+\index{\+\_\+se\+Run@{\+\_\+se\+Run}!scripting.\+c@{scripting.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+se\+Run()}{\_seRun()}}
+{\footnotesize\ttfamily static void \+\_\+se\+Run (\begin{DoxyParamCaption}\item[{const char $\ast$}]{key,  }\item[{void $\ast$}]{value,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{scripting_8c_a690e00f73991e29c58392e70f0d6254a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{scripting_8c_a70d2e9d30f04c38180d45d309eed88fa}\label{scripting_8c_a70d2e9d30f04c38180d45d309eed88fa}} 
+\index{scripting.\+c@{scripting.\+c}!\+\_\+se\+Try\+Load@{\+\_\+se\+Try\+Load}}
+\index{\+\_\+se\+Try\+Load@{\+\_\+se\+Try\+Load}!scripting.\+c@{scripting.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+se\+Try\+Load()}{\_seTryLoad()}}
+{\footnotesize\ttfamily static void \+\_\+se\+Try\+Load (\begin{DoxyParamCaption}\item[{const char $\ast$}]{key,  }\item[{void $\ast$}]{value,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{scripting_8c_a70d2e9d30f04c38180d45d309eed88fa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{scripting_8c_aae6d5ff88307ecd2ca253c94539ba0a7}\label{scripting_8c_aae6d5ff88307ecd2ca253c94539ba0a7}} 
+\index{scripting.\+c@{scripting.\+c}!m\+Script\+Bridge\+Create@{m\+Script\+Bridge\+Create}}
+\index{m\+Script\+Bridge\+Create@{m\+Script\+Bridge\+Create}!scripting.\+c@{scripting.\+c}}
+\subsubsection{\texorpdfstring{m\+Script\+Bridge\+Create()}{mScriptBridgeCreate()}}
+{\footnotesize\ttfamily struct m\+Script\+Bridge$\ast$ m\+Script\+Bridge\+Create (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{scripting_8c_aae6d5ff88307ecd2ca253c94539ba0a7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{scripting_8c_aae6d5ff88307ecd2ca253c94539ba0a7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{scripting_8c_a446c0f8701d1e9a85c676535c5f3de48}\label{scripting_8c_a446c0f8701d1e9a85c676535c5f3de48}} 
+\index{scripting.\+c@{scripting.\+c}!m\+Script\+Bridge\+Destroy@{m\+Script\+Bridge\+Destroy}}
+\index{m\+Script\+Bridge\+Destroy@{m\+Script\+Bridge\+Destroy}!scripting.\+c@{scripting.\+c}}
+\subsubsection{\texorpdfstring{m\+Script\+Bridge\+Destroy()}{mScriptBridgeDestroy()}}
+{\footnotesize\ttfamily void m\+Script\+Bridge\+Destroy (\begin{DoxyParamCaption}\item[{struct m\+Script\+Bridge $\ast$}]{sb }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{scripting_8c_a446c0f8701d1e9a85c676535c5f3de48_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{scripting_8c_a446c0f8701d1e9a85c676535c5f3de48_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{scripting_8c_a657f3e2f5c1e2c6f6e7127cbf263ea6c}\label{scripting_8c_a657f3e2f5c1e2c6f6e7127cbf263ea6c}} 
+\index{scripting.\+c@{scripting.\+c}!m\+Script\+Bridge\+Install\+Engine@{m\+Script\+Bridge\+Install\+Engine}}
+\index{m\+Script\+Bridge\+Install\+Engine@{m\+Script\+Bridge\+Install\+Engine}!scripting.\+c@{scripting.\+c}}
+\subsubsection{\texorpdfstring{m\+Script\+Bridge\+Install\+Engine()}{mScriptBridgeInstallEngine()}}
+{\footnotesize\ttfamily void m\+Script\+Bridge\+Install\+Engine (\begin{DoxyParamCaption}\item[{struct m\+Script\+Bridge $\ast$}]{sb,  }\item[{struct m\+Script\+Engine $\ast$}]{se }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{scripting_8c_a657f3e2f5c1e2c6f6e7127cbf263ea6c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{scripting_8c_a657f3e2f5c1e2c6f6e7127cbf263ea6c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{scripting_8c_a279300ac0bc323125d08e09e5ec5c5c5}\label{scripting_8c_a279300ac0bc323125d08e09e5ec5c5c5}} 
+\index{scripting.\+c@{scripting.\+c}!m\+Script\+Bridge\+Load\+Script@{m\+Script\+Bridge\+Load\+Script}}
+\index{m\+Script\+Bridge\+Load\+Script@{m\+Script\+Bridge\+Load\+Script}!scripting.\+c@{scripting.\+c}}
+\subsubsection{\texorpdfstring{m\+Script\+Bridge\+Load\+Script()}{mScriptBridgeLoadScript()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Script\+Bridge\+Load\+Script (\begin{DoxyParamCaption}\item[{struct m\+Script\+Bridge $\ast$}]{sb,  }\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{scripting_8c_a279300ac0bc323125d08e09e5ec5c5c5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{scripting_8c_a2478f864b1bc3f050d6893f77606025f}\label{scripting_8c_a2478f864b1bc3f050d6893f77606025f}} 
+\index{scripting.\+c@{scripting.\+c}!m\+Script\+Bridge\+Lookup\+Symbol@{m\+Script\+Bridge\+Lookup\+Symbol}}
+\index{m\+Script\+Bridge\+Lookup\+Symbol@{m\+Script\+Bridge\+Lookup\+Symbol}!scripting.\+c@{scripting.\+c}}
+\subsubsection{\texorpdfstring{m\+Script\+Bridge\+Lookup\+Symbol()}{mScriptBridgeLookupSymbol()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Script\+Bridge\+Lookup\+Symbol (\begin{DoxyParamCaption}\item[{struct m\+Script\+Bridge $\ast$}]{sb,  }\item[{const char $\ast$}]{name,  }\item[{int32\+\_\+t $\ast$}]{out }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{scripting_8c_a2478f864b1bc3f050d6893f77606025f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{scripting_8c_a2478f864b1bc3f050d6893f77606025f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{scripting_8c_ae843eb5ac71f54f611b66e57fceb74da}\label{scripting_8c_ae843eb5ac71f54f611b66e57fceb74da}} 
+\index{scripting.\+c@{scripting.\+c}!m\+Script\+Bridge\+Run@{m\+Script\+Bridge\+Run}}
+\index{m\+Script\+Bridge\+Run@{m\+Script\+Bridge\+Run}!scripting.\+c@{scripting.\+c}}
+\subsubsection{\texorpdfstring{m\+Script\+Bridge\+Run()}{mScriptBridgeRun()}}
+{\footnotesize\ttfamily void m\+Script\+Bridge\+Run (\begin{DoxyParamCaption}\item[{struct m\+Script\+Bridge $\ast$}]{sb }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{scripting_8c_ae843eb5ac71f54f611b66e57fceb74da_cgraph}
+\end{center}
+\end{figure}

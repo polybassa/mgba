@@ -1,0 +1,884 @@
+\hypertarget{config_8c}{}\section{src/core/config.c File Reference}
+\label{config_8c}\index{src/core/config.\+c@{src/core/config.\+c}}
+{\ttfamily \#include $<$mgba/core/config.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/version.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/formatting.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+Include dependency graph for config.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{config_8c_ac85e5a3bf96f5e3c2bc022c60d373b23}{S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX}}~128
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static const char $\ast$ \mbox{\hyperlink{config_8c_a0c3465e2bd042659d1a3cff0f39c05d5}{\+\_\+lookup\+Value}} (const struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{config_8c_ad361647b9b83f2cf8ba5679d589dba5d}{\+\_\+lookup\+Char\+Value}} (const struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key, char $\ast$$\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{config_8c_a9598983ce529620b9e4ab4ff24b2cbbd}{\+\_\+lookup\+Int\+Value}} (const struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{config_8c_a0be4e2e0bfdb5ed64c212c3efe584fd2}{\+\_\+lookup\+U\+Int\+Value}} (const struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key, unsigned $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{config_8c_a7c4fca039a41465352cd419d69a75cb0}{\+\_\+lookup\+Float\+Value}} (const struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key, float $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\item 
+void \mbox{\hyperlink{config_8c_a0c0fcfc922892059029b85f448a3404b}{m\+Core\+Config\+Init}} (struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$port)
+\item 
+void \mbox{\hyperlink{config_8c_ad6da770e3068c91481bee2ee90a4d1e0}{m\+Core\+Config\+Deinit}} (struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{config_8c_a73f48c45b26c7fd87fb75097ca3fcce3}{m\+Core\+Config\+Load}} (struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{config_8c_a34b06af4daa2ff484943a5c6b314c09f}{m\+Core\+Config\+Save}} (const struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{config_8c_af60baf30939dac3dad4518a3446ac45a}{m\+Core\+Config\+Load\+Path}} (struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$path)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{config_8c_a68f221e80d877118fc764a4442f44aea}{m\+Core\+Config\+Save\+Path}} (const struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$path)
+\item 
+void \mbox{\hyperlink{config_8c_a9d27e0d9a158a2ed263cdba3dd14a63c}{m\+Core\+Config\+Make\+Portable}} (const struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+void \mbox{\hyperlink{config_8c_ad7ea4bdebb0dd566e827ce0035c7d85e}{m\+Core\+Config\+Directory}} (char $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}}, size\+\_\+t out\+Length)
+\item 
+const char $\ast$ \mbox{\hyperlink{config_8c_a4d4916acfe1b4c11913db721881c1581}{m\+Core\+Config\+Get\+Value}} (const struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{config_8c_ae713d9305a19c83a022152edf5ae52dc}{m\+Core\+Config\+Get\+Int\+Value}} (const struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$value)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{config_8c_a1c8c86ac5882d325e4b1e50afcbc97b6}{m\+Core\+Config\+Get\+U\+Int\+Value}} (const struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key, unsigned $\ast$value)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{config_8c_a7bc6d20d3724216736dcc4df1b49c8f2}{m\+Core\+Config\+Get\+Float\+Value}} (const struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key, float $\ast$value)
+\item 
+void \mbox{\hyperlink{config_8c_a4f5b0ef23ebaa554c14d51742f7c1d79}{m\+Core\+Config\+Set\+Value}} (struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key, const char $\ast$value)
+\item 
+void \mbox{\hyperlink{config_8c_a26ee501348266988a4dd1796515d5268}{m\+Core\+Config\+Set\+Int\+Value}} (struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} value)
+\item 
+void \mbox{\hyperlink{config_8c_a4fb43c65c0dceec7956667dcd35bdc28}{m\+Core\+Config\+Set\+U\+Int\+Value}} (struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key, unsigned value)
+\item 
+void \mbox{\hyperlink{config_8c_a73915ef96bcbf5be7d8de02be12b83b6}{m\+Core\+Config\+Set\+Float\+Value}} (struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key, float value)
+\item 
+void \mbox{\hyperlink{config_8c_a9e165e6fb3db2754102997c779f6f8ba}{m\+Core\+Config\+Set\+Default\+Value}} (struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key, const char $\ast$value)
+\item 
+void \mbox{\hyperlink{config_8c_a0b0000cf87a44bd131cea0d4e58e59c4}{m\+Core\+Config\+Set\+Default\+Int\+Value}} (struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} value)
+\item 
+void \mbox{\hyperlink{config_8c_ad1a81a33d210a3568be118955311709c}{m\+Core\+Config\+Set\+Default\+U\+Int\+Value}} (struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key, unsigned value)
+\item 
+void \mbox{\hyperlink{config_8c_a24dca37bc3ebf177d34b496ea909ecb0}{m\+Core\+Config\+Set\+Default\+Float\+Value}} (struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key, float value)
+\item 
+void \mbox{\hyperlink{config_8c_aa9163395078f049f1c213d9db185c42a}{m\+Core\+Config\+Set\+Override\+Value}} (struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key, const char $\ast$value)
+\item 
+void \mbox{\hyperlink{config_8c_a0475a7438268ab53710f495481fe6a37}{m\+Core\+Config\+Set\+Override\+Int\+Value}} (struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} value)
+\item 
+void \mbox{\hyperlink{config_8c_a822042f1399274ece7c2648263ad9e10}{m\+Core\+Config\+Set\+Override\+U\+Int\+Value}} (struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key, unsigned value)
+\item 
+void \mbox{\hyperlink{config_8c_a79473ce3cab4470e82cdd85f4a2f57eb}{m\+Core\+Config\+Set\+Override\+Float\+Value}} (struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$key, float value)
+\item 
+void \mbox{\hyperlink{config_8c_a46a78334bdbc6f2e5c6124a79386d86a}{m\+Core\+Config\+Copy\+Value}} (struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const struct m\+Core\+Config $\ast$src, const char $\ast$key)
+\item 
+void \mbox{\hyperlink{config_8c_aad73c46529d710a6783fe61336df2a05}{m\+Core\+Config\+Map}} (const struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, struct m\+Core\+Options $\ast$opts)
+\item 
+void \mbox{\hyperlink{config_8c_a19e4c7f96078dd68231624fe7f54dbfd}{m\+Core\+Config\+Load\+Defaults}} (struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const struct m\+Core\+Options $\ast$opts)
+\item 
+static void \mbox{\hyperlink{config_8c_a5401f5c0a851678eb0aa57038e2b9918}{\+\_\+config\+Enum}} (const char $\ast$key, const char $\ast$value, void $\ast$user)
+\item 
+void \mbox{\hyperlink{config_8c_acf0f1fd42c7d273a3642705f762a5cdf}{m\+Core\+Config\+Enumerate}} (const struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$\mbox{\hyperlink{gun_8c_ada2f6550a9ffe8e311af824df31c6064}{prefix}}, void($\ast$handler)(const char $\ast$key, const char $\ast$value, enum m\+Core\+Config\+Level type, void $\ast$user), void $\ast$user)
+\item 
+struct Configuration $\ast$ \mbox{\hyperlink{config_8c_abe94cb522cb3606edb7708193b9dbe35}{m\+Core\+Config\+Get\+Input}} (struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+struct Configuration $\ast$ \mbox{\hyperlink{config_8c_ac8d5db74a51d7799563b752e78eab0ad}{m\+Core\+Config\+Get\+Overrides}} (struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+const struct Configuration $\ast$ \mbox{\hyperlink{config_8c_a6ff4cacfd392de61bd68db5685f834ad}{m\+Core\+Config\+Get\+Overrides\+Const}} (const struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+void \mbox{\hyperlink{config_8c_a98e6e7032128374bb67499aec1827e27}{m\+Core\+Config\+Free\+Opts}} (struct m\+Core\+Options $\ast$opts)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{config_8c_ac85e5a3bf96f5e3c2bc022c60d373b23}\label{config_8c_ac85e5a3bf96f5e3c2bc022c60d373b23}} 
+\index{config.\+c@{config.\+c}!S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX@{S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX}}
+\index{S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX@{S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX}{SECTION\_NAME\_MAX}}
+{\footnotesize\ttfamily \#define S\+E\+C\+T\+I\+O\+N\+\_\+\+N\+A\+M\+E\+\_\+\+M\+AX~128}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{config_8c_a5401f5c0a851678eb0aa57038e2b9918}\label{config_8c_a5401f5c0a851678eb0aa57038e2b9918}} 
+\index{config.\+c@{config.\+c}!\+\_\+config\+Enum@{\+\_\+config\+Enum}}
+\index{\+\_\+config\+Enum@{\+\_\+config\+Enum}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+config\+Enum()}{\_configEnum()}}
+{\footnotesize\ttfamily static void \+\_\+config\+Enum (\begin{DoxyParamCaption}\item[{const char $\ast$}]{key,  }\item[{const char $\ast$}]{value,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{config_8c_a5401f5c0a851678eb0aa57038e2b9918_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a5401f5c0a851678eb0aa57038e2b9918_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_ad361647b9b83f2cf8ba5679d589dba5d}\label{config_8c_ad361647b9b83f2cf8ba5679d589dba5d}} 
+\index{config.\+c@{config.\+c}!\+\_\+lookup\+Char\+Value@{\+\_\+lookup\+Char\+Value}}
+\index{\+\_\+lookup\+Char\+Value@{\+\_\+lookup\+Char\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+lookup\+Char\+Value()}{\_lookupCharValue()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+lookup\+Char\+Value (\begin{DoxyParamCaption}\item[{const struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{char $\ast$$\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_ad361647b9b83f2cf8ba5679d589dba5d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_ad361647b9b83f2cf8ba5679d589dba5d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a7c4fca039a41465352cd419d69a75cb0}\label{config_8c_a7c4fca039a41465352cd419d69a75cb0}} 
+\index{config.\+c@{config.\+c}!\+\_\+lookup\+Float\+Value@{\+\_\+lookup\+Float\+Value}}
+\index{\+\_\+lookup\+Float\+Value@{\+\_\+lookup\+Float\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+lookup\+Float\+Value()}{\_lookupFloatValue()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+lookup\+Float\+Value (\begin{DoxyParamCaption}\item[{const struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{float $\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a7c4fca039a41465352cd419d69a75cb0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a7c4fca039a41465352cd419d69a75cb0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a9598983ce529620b9e4ab4ff24b2cbbd}\label{config_8c_a9598983ce529620b9e4ab4ff24b2cbbd}} 
+\index{config.\+c@{config.\+c}!\+\_\+lookup\+Int\+Value@{\+\_\+lookup\+Int\+Value}}
+\index{\+\_\+lookup\+Int\+Value@{\+\_\+lookup\+Int\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+lookup\+Int\+Value()}{\_lookupIntValue()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+lookup\+Int\+Value (\begin{DoxyParamCaption}\item[{const struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a9598983ce529620b9e4ab4ff24b2cbbd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a9598983ce529620b9e4ab4ff24b2cbbd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a0be4e2e0bfdb5ed64c212c3efe584fd2}\label{config_8c_a0be4e2e0bfdb5ed64c212c3efe584fd2}} 
+\index{config.\+c@{config.\+c}!\+\_\+lookup\+U\+Int\+Value@{\+\_\+lookup\+U\+Int\+Value}}
+\index{\+\_\+lookup\+U\+Int\+Value@{\+\_\+lookup\+U\+Int\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+lookup\+U\+Int\+Value()}{\_lookupUIntValue()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+lookup\+U\+Int\+Value (\begin{DoxyParamCaption}\item[{const struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{unsigned $\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a0be4e2e0bfdb5ed64c212c3efe584fd2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a0be4e2e0bfdb5ed64c212c3efe584fd2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a0c3465e2bd042659d1a3cff0f39c05d5}\label{config_8c_a0c3465e2bd042659d1a3cff0f39c05d5}} 
+\index{config.\+c@{config.\+c}!\+\_\+lookup\+Value@{\+\_\+lookup\+Value}}
+\index{\+\_\+lookup\+Value@{\+\_\+lookup\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+lookup\+Value()}{\_lookupValue()}}
+{\footnotesize\ttfamily static const char$\ast$ \+\_\+lookup\+Value (\begin{DoxyParamCaption}\item[{const struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a0c3465e2bd042659d1a3cff0f39c05d5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a0c3465e2bd042659d1a3cff0f39c05d5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a46a78334bdbc6f2e5c6124a79386d86a}\label{config_8c_a46a78334bdbc6f2e5c6124a79386d86a}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Copy\+Value@{m\+Core\+Config\+Copy\+Value}}
+\index{m\+Core\+Config\+Copy\+Value@{m\+Core\+Config\+Copy\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Copy\+Value()}{mCoreConfigCopyValue()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Copy\+Value (\begin{DoxyParamCaption}\item[{struct m\+Core\+Config $\ast$}]{config,  }\item[{const struct m\+Core\+Config $\ast$}]{src,  }\item[{const char $\ast$}]{key }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a46a78334bdbc6f2e5c6124a79386d86a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a46a78334bdbc6f2e5c6124a79386d86a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_ad6da770e3068c91481bee2ee90a4d1e0}\label{config_8c_ad6da770e3068c91481bee2ee90a4d1e0}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Deinit@{m\+Core\+Config\+Deinit}}
+\index{m\+Core\+Config\+Deinit@{m\+Core\+Config\+Deinit}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Deinit()}{mCoreConfigDeinit()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Deinit (\begin{DoxyParamCaption}\item[{struct m\+Core\+Config $\ast$}]{config }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_ad6da770e3068c91481bee2ee90a4d1e0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_ad6da770e3068c91481bee2ee90a4d1e0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_ad7ea4bdebb0dd566e827ce0035c7d85e}\label{config_8c_ad7ea4bdebb0dd566e827ce0035c7d85e}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Directory@{m\+Core\+Config\+Directory}}
+\index{m\+Core\+Config\+Directory@{m\+Core\+Config\+Directory}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Directory()}{mCoreConfigDirectory()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Directory (\begin{DoxyParamCaption}\item[{char $\ast$}]{out,  }\item[{size\+\_\+t}]{out\+Length }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_ad7ea4bdebb0dd566e827ce0035c7d85e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_ad7ea4bdebb0dd566e827ce0035c7d85e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_acf0f1fd42c7d273a3642705f762a5cdf}\label{config_8c_acf0f1fd42c7d273a3642705f762a5cdf}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Enumerate@{m\+Core\+Config\+Enumerate}}
+\index{m\+Core\+Config\+Enumerate@{m\+Core\+Config\+Enumerate}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Enumerate()}{mCoreConfigEnumerate()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Enumerate (\begin{DoxyParamCaption}\item[{const struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{prefix,  }\item[{void($\ast$)(const char $\ast$key, const char $\ast$value, enum m\+Core\+Config\+Level type, void $\ast$user)}]{handler,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_acf0f1fd42c7d273a3642705f762a5cdf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_acf0f1fd42c7d273a3642705f762a5cdf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a98e6e7032128374bb67499aec1827e27}\label{config_8c_a98e6e7032128374bb67499aec1827e27}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Free\+Opts@{m\+Core\+Config\+Free\+Opts}}
+\index{m\+Core\+Config\+Free\+Opts@{m\+Core\+Config\+Free\+Opts}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Free\+Opts()}{mCoreConfigFreeOpts()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Free\+Opts (\begin{DoxyParamCaption}\item[{struct m\+Core\+Options $\ast$}]{opts }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{config_8c_a98e6e7032128374bb67499aec1827e27_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a98e6e7032128374bb67499aec1827e27_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a7bc6d20d3724216736dcc4df1b49c8f2}\label{config_8c_a7bc6d20d3724216736dcc4df1b49c8f2}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Get\+Float\+Value@{m\+Core\+Config\+Get\+Float\+Value}}
+\index{m\+Core\+Config\+Get\+Float\+Value@{m\+Core\+Config\+Get\+Float\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Get\+Float\+Value()}{mCoreConfigGetFloatValue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Config\+Get\+Float\+Value (\begin{DoxyParamCaption}\item[{const struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{float $\ast$}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a7bc6d20d3724216736dcc4df1b49c8f2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a7bc6d20d3724216736dcc4df1b49c8f2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_abe94cb522cb3606edb7708193b9dbe35}\label{config_8c_abe94cb522cb3606edb7708193b9dbe35}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Get\+Input@{m\+Core\+Config\+Get\+Input}}
+\index{m\+Core\+Config\+Get\+Input@{m\+Core\+Config\+Get\+Input}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Get\+Input()}{mCoreConfigGetInput()}}
+{\footnotesize\ttfamily struct Configuration$\ast$ m\+Core\+Config\+Get\+Input (\begin{DoxyParamCaption}\item[{struct m\+Core\+Config $\ast$}]{config }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_abe94cb522cb3606edb7708193b9dbe35_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_ae713d9305a19c83a022152edf5ae52dc}\label{config_8c_ae713d9305a19c83a022152edf5ae52dc}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Get\+Int\+Value@{m\+Core\+Config\+Get\+Int\+Value}}
+\index{m\+Core\+Config\+Get\+Int\+Value@{m\+Core\+Config\+Get\+Int\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Get\+Int\+Value()}{mCoreConfigGetIntValue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Config\+Get\+Int\+Value (\begin{DoxyParamCaption}\item[{const struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_ae713d9305a19c83a022152edf5ae52dc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_ae713d9305a19c83a022152edf5ae52dc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_ac8d5db74a51d7799563b752e78eab0ad}\label{config_8c_ac8d5db74a51d7799563b752e78eab0ad}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Get\+Overrides@{m\+Core\+Config\+Get\+Overrides}}
+\index{m\+Core\+Config\+Get\+Overrides@{m\+Core\+Config\+Get\+Overrides}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Get\+Overrides()}{mCoreConfigGetOverrides()}}
+{\footnotesize\ttfamily struct Configuration$\ast$ m\+Core\+Config\+Get\+Overrides (\begin{DoxyParamCaption}\item[{struct m\+Core\+Config $\ast$}]{config }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_ac8d5db74a51d7799563b752e78eab0ad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a6ff4cacfd392de61bd68db5685f834ad}\label{config_8c_a6ff4cacfd392de61bd68db5685f834ad}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Get\+Overrides\+Const@{m\+Core\+Config\+Get\+Overrides\+Const}}
+\index{m\+Core\+Config\+Get\+Overrides\+Const@{m\+Core\+Config\+Get\+Overrides\+Const}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Get\+Overrides\+Const()}{mCoreConfigGetOverridesConst()}}
+{\footnotesize\ttfamily const struct Configuration$\ast$ m\+Core\+Config\+Get\+Overrides\+Const (\begin{DoxyParamCaption}\item[{const struct m\+Core\+Config $\ast$}]{config }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a6ff4cacfd392de61bd68db5685f834ad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a1c8c86ac5882d325e4b1e50afcbc97b6}\label{config_8c_a1c8c86ac5882d325e4b1e50afcbc97b6}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Get\+U\+Int\+Value@{m\+Core\+Config\+Get\+U\+Int\+Value}}
+\index{m\+Core\+Config\+Get\+U\+Int\+Value@{m\+Core\+Config\+Get\+U\+Int\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Get\+U\+Int\+Value()}{mCoreConfigGetUIntValue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Config\+Get\+U\+Int\+Value (\begin{DoxyParamCaption}\item[{const struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{unsigned $\ast$}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a1c8c86ac5882d325e4b1e50afcbc97b6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a1c8c86ac5882d325e4b1e50afcbc97b6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a4d4916acfe1b4c11913db721881c1581}\label{config_8c_a4d4916acfe1b4c11913db721881c1581}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Get\+Value@{m\+Core\+Config\+Get\+Value}}
+\index{m\+Core\+Config\+Get\+Value@{m\+Core\+Config\+Get\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Get\+Value()}{mCoreConfigGetValue()}}
+{\footnotesize\ttfamily const char$\ast$ m\+Core\+Config\+Get\+Value (\begin{DoxyParamCaption}\item[{const struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a4d4916acfe1b4c11913db721881c1581_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a4d4916acfe1b4c11913db721881c1581_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a0c0fcfc922892059029b85f448a3404b}\label{config_8c_a0c0fcfc922892059029b85f448a3404b}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Init@{m\+Core\+Config\+Init}}
+\index{m\+Core\+Config\+Init@{m\+Core\+Config\+Init}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Init()}{mCoreConfigInit()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Init (\begin{DoxyParamCaption}\item[{struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{port }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a0c0fcfc922892059029b85f448a3404b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a0c0fcfc922892059029b85f448a3404b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a73f48c45b26c7fd87fb75097ca3fcce3}\label{config_8c_a73f48c45b26c7fd87fb75097ca3fcce3}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Load@{m\+Core\+Config\+Load}}
+\index{m\+Core\+Config\+Load@{m\+Core\+Config\+Load}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Load()}{mCoreConfigLoad()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Config\+Load (\begin{DoxyParamCaption}\item[{struct m\+Core\+Config $\ast$}]{config }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a73f48c45b26c7fd87fb75097ca3fcce3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a73f48c45b26c7fd87fb75097ca3fcce3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a19e4c7f96078dd68231624fe7f54dbfd}\label{config_8c_a19e4c7f96078dd68231624fe7f54dbfd}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Load\+Defaults@{m\+Core\+Config\+Load\+Defaults}}
+\index{m\+Core\+Config\+Load\+Defaults@{m\+Core\+Config\+Load\+Defaults}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Load\+Defaults()}{mCoreConfigLoadDefaults()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Load\+Defaults (\begin{DoxyParamCaption}\item[{struct m\+Core\+Config $\ast$}]{config,  }\item[{const struct m\+Core\+Options $\ast$}]{opts }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a19e4c7f96078dd68231624fe7f54dbfd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a19e4c7f96078dd68231624fe7f54dbfd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_af60baf30939dac3dad4518a3446ac45a}\label{config_8c_af60baf30939dac3dad4518a3446ac45a}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Load\+Path@{m\+Core\+Config\+Load\+Path}}
+\index{m\+Core\+Config\+Load\+Path@{m\+Core\+Config\+Load\+Path}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Load\+Path()}{mCoreConfigLoadPath()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Config\+Load\+Path (\begin{DoxyParamCaption}\item[{struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{path }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_af60baf30939dac3dad4518a3446ac45a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_af60baf30939dac3dad4518a3446ac45a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a9d27e0d9a158a2ed263cdba3dd14a63c}\label{config_8c_a9d27e0d9a158a2ed263cdba3dd14a63c}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Make\+Portable@{m\+Core\+Config\+Make\+Portable}}
+\index{m\+Core\+Config\+Make\+Portable@{m\+Core\+Config\+Make\+Portable}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Make\+Portable()}{mCoreConfigMakePortable()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Make\+Portable (\begin{DoxyParamCaption}\item[{const struct m\+Core\+Config $\ast$}]{config }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a9d27e0d9a158a2ed263cdba3dd14a63c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a9d27e0d9a158a2ed263cdba3dd14a63c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_aad73c46529d710a6783fe61336df2a05}\label{config_8c_aad73c46529d710a6783fe61336df2a05}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Map@{m\+Core\+Config\+Map}}
+\index{m\+Core\+Config\+Map@{m\+Core\+Config\+Map}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Map()}{mCoreConfigMap()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Map (\begin{DoxyParamCaption}\item[{const struct m\+Core\+Config $\ast$}]{config,  }\item[{struct m\+Core\+Options $\ast$}]{opts }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_aad73c46529d710a6783fe61336df2a05_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_aad73c46529d710a6783fe61336df2a05_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a34b06af4daa2ff484943a5c6b314c09f}\label{config_8c_a34b06af4daa2ff484943a5c6b314c09f}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Save@{m\+Core\+Config\+Save}}
+\index{m\+Core\+Config\+Save@{m\+Core\+Config\+Save}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Save()}{mCoreConfigSave()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Config\+Save (\begin{DoxyParamCaption}\item[{const struct m\+Core\+Config $\ast$}]{config }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a34b06af4daa2ff484943a5c6b314c09f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a34b06af4daa2ff484943a5c6b314c09f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a68f221e80d877118fc764a4442f44aea}\label{config_8c_a68f221e80d877118fc764a4442f44aea}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Save\+Path@{m\+Core\+Config\+Save\+Path}}
+\index{m\+Core\+Config\+Save\+Path@{m\+Core\+Config\+Save\+Path}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Save\+Path()}{mCoreConfigSavePath()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Config\+Save\+Path (\begin{DoxyParamCaption}\item[{const struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{path }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a68f221e80d877118fc764a4442f44aea_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a68f221e80d877118fc764a4442f44aea_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a24dca37bc3ebf177d34b496ea909ecb0}\label{config_8c_a24dca37bc3ebf177d34b496ea909ecb0}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Set\+Default\+Float\+Value@{m\+Core\+Config\+Set\+Default\+Float\+Value}}
+\index{m\+Core\+Config\+Set\+Default\+Float\+Value@{m\+Core\+Config\+Set\+Default\+Float\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Set\+Default\+Float\+Value()}{mCoreConfigSetDefaultFloatValue()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Set\+Default\+Float\+Value (\begin{DoxyParamCaption}\item[{struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{float}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a24dca37bc3ebf177d34b496ea909ecb0_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a0b0000cf87a44bd131cea0d4e58e59c4}\label{config_8c_a0b0000cf87a44bd131cea0d4e58e59c4}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Set\+Default\+Int\+Value@{m\+Core\+Config\+Set\+Default\+Int\+Value}}
+\index{m\+Core\+Config\+Set\+Default\+Int\+Value@{m\+Core\+Config\+Set\+Default\+Int\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Set\+Default\+Int\+Value()}{mCoreConfigSetDefaultIntValue()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Set\+Default\+Int\+Value (\begin{DoxyParamCaption}\item[{struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a0b0000cf87a44bd131cea0d4e58e59c4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a0b0000cf87a44bd131cea0d4e58e59c4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_ad1a81a33d210a3568be118955311709c}\label{config_8c_ad1a81a33d210a3568be118955311709c}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Set\+Default\+U\+Int\+Value@{m\+Core\+Config\+Set\+Default\+U\+Int\+Value}}
+\index{m\+Core\+Config\+Set\+Default\+U\+Int\+Value@{m\+Core\+Config\+Set\+Default\+U\+Int\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Set\+Default\+U\+Int\+Value()}{mCoreConfigSetDefaultUIntValue()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Set\+Default\+U\+Int\+Value (\begin{DoxyParamCaption}\item[{struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{unsigned}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_ad1a81a33d210a3568be118955311709c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a9e165e6fb3db2754102997c779f6f8ba}\label{config_8c_a9e165e6fb3db2754102997c779f6f8ba}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Set\+Default\+Value@{m\+Core\+Config\+Set\+Default\+Value}}
+\index{m\+Core\+Config\+Set\+Default\+Value@{m\+Core\+Config\+Set\+Default\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Set\+Default\+Value()}{mCoreConfigSetDefaultValue()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Set\+Default\+Value (\begin{DoxyParamCaption}\item[{struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{const char $\ast$}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a9e165e6fb3db2754102997c779f6f8ba_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a9e165e6fb3db2754102997c779f6f8ba_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a73915ef96bcbf5be7d8de02be12b83b6}\label{config_8c_a73915ef96bcbf5be7d8de02be12b83b6}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Set\+Float\+Value@{m\+Core\+Config\+Set\+Float\+Value}}
+\index{m\+Core\+Config\+Set\+Float\+Value@{m\+Core\+Config\+Set\+Float\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Set\+Float\+Value()}{mCoreConfigSetFloatValue()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Set\+Float\+Value (\begin{DoxyParamCaption}\item[{struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{float}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a73915ef96bcbf5be7d8de02be12b83b6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a26ee501348266988a4dd1796515d5268}\label{config_8c_a26ee501348266988a4dd1796515d5268}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Set\+Int\+Value@{m\+Core\+Config\+Set\+Int\+Value}}
+\index{m\+Core\+Config\+Set\+Int\+Value@{m\+Core\+Config\+Set\+Int\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Set\+Int\+Value()}{mCoreConfigSetIntValue()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Set\+Int\+Value (\begin{DoxyParamCaption}\item[{struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a26ee501348266988a4dd1796515d5268_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a26ee501348266988a4dd1796515d5268_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a79473ce3cab4470e82cdd85f4a2f57eb}\label{config_8c_a79473ce3cab4470e82cdd85f4a2f57eb}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Set\+Override\+Float\+Value@{m\+Core\+Config\+Set\+Override\+Float\+Value}}
+\index{m\+Core\+Config\+Set\+Override\+Float\+Value@{m\+Core\+Config\+Set\+Override\+Float\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Set\+Override\+Float\+Value()}{mCoreConfigSetOverrideFloatValue()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Set\+Override\+Float\+Value (\begin{DoxyParamCaption}\item[{struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{float}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a79473ce3cab4470e82cdd85f4a2f57eb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a0475a7438268ab53710f495481fe6a37}\label{config_8c_a0475a7438268ab53710f495481fe6a37}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Set\+Override\+Int\+Value@{m\+Core\+Config\+Set\+Override\+Int\+Value}}
+\index{m\+Core\+Config\+Set\+Override\+Int\+Value@{m\+Core\+Config\+Set\+Override\+Int\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Set\+Override\+Int\+Value()}{mCoreConfigSetOverrideIntValue()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Set\+Override\+Int\+Value (\begin{DoxyParamCaption}\item[{struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a0475a7438268ab53710f495481fe6a37_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a0475a7438268ab53710f495481fe6a37_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a822042f1399274ece7c2648263ad9e10}\label{config_8c_a822042f1399274ece7c2648263ad9e10}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Set\+Override\+U\+Int\+Value@{m\+Core\+Config\+Set\+Override\+U\+Int\+Value}}
+\index{m\+Core\+Config\+Set\+Override\+U\+Int\+Value@{m\+Core\+Config\+Set\+Override\+U\+Int\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Set\+Override\+U\+Int\+Value()}{mCoreConfigSetOverrideUIntValue()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Set\+Override\+U\+Int\+Value (\begin{DoxyParamCaption}\item[{struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{unsigned}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a822042f1399274ece7c2648263ad9e10_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_aa9163395078f049f1c213d9db185c42a}\label{config_8c_aa9163395078f049f1c213d9db185c42a}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Set\+Override\+Value@{m\+Core\+Config\+Set\+Override\+Value}}
+\index{m\+Core\+Config\+Set\+Override\+Value@{m\+Core\+Config\+Set\+Override\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Set\+Override\+Value()}{mCoreConfigSetOverrideValue()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Set\+Override\+Value (\begin{DoxyParamCaption}\item[{struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{const char $\ast$}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_aa9163395078f049f1c213d9db185c42a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_aa9163395078f049f1c213d9db185c42a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a4fb43c65c0dceec7956667dcd35bdc28}\label{config_8c_a4fb43c65c0dceec7956667dcd35bdc28}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Set\+U\+Int\+Value@{m\+Core\+Config\+Set\+U\+Int\+Value}}
+\index{m\+Core\+Config\+Set\+U\+Int\+Value@{m\+Core\+Config\+Set\+U\+Int\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Set\+U\+Int\+Value()}{mCoreConfigSetUIntValue()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Set\+U\+Int\+Value (\begin{DoxyParamCaption}\item[{struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{unsigned}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a4fb43c65c0dceec7956667dcd35bdc28_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a4fb43c65c0dceec7956667dcd35bdc28_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{config_8c_a4f5b0ef23ebaa554c14d51742f7c1d79}\label{config_8c_a4f5b0ef23ebaa554c14d51742f7c1d79}} 
+\index{config.\+c@{config.\+c}!m\+Core\+Config\+Set\+Value@{m\+Core\+Config\+Set\+Value}}
+\index{m\+Core\+Config\+Set\+Value@{m\+Core\+Config\+Set\+Value}!config.\+c@{config.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Config\+Set\+Value()}{mCoreConfigSetValue()}}
+{\footnotesize\ttfamily void m\+Core\+Config\+Set\+Value (\begin{DoxyParamCaption}\item[{struct m\+Core\+Config $\ast$}]{config,  }\item[{const char $\ast$}]{key,  }\item[{const char $\ast$}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a4f5b0ef23ebaa554c14d51742f7c1d79_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{config_8c_a4f5b0ef23ebaa554c14d51742f7c1d79_icgraph}
+\end{center}
+\end{figure}

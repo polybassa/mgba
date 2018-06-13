@@ -1,0 +1,238 @@
+\hypertarget{_png_file_8c}{}\section{src/third-\/party/libpng/contrib/visupng/\+Png\+File.c File Reference}
+\label{_png_file_8c}\index{src/third-\/party/libpng/contrib/visupng/\+Png\+File.\+c@{src/third-\/party/libpng/contrib/visupng/\+Png\+File.\+c}}
+{\ttfamily \#include $<$windows.\+h$>$}\newline
+{\ttfamily \#include $<$commdlg.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$zlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}png.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pngfile.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cexcept.\+h\char`\"{}}\newline
+Include dependency graph for Png\+File.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_png_file_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_png_file_8c_a8758a40de94caf95a33d08b2018598d3}{define\+\_\+exception\+\_\+type}} (const char $\ast$)
+\item 
+static void \mbox{\hyperlink{_png_file_8c_a60c0f340f44959f3257da2b802dccf16}{png\+\_\+cexcept\+\_\+error}} (\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}} \mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}}, \mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}} \mbox{\hyperlink{_png_file_8c_a4e8f3041f859c6e44551174061b83012}{msg}})
+\item 
+void \mbox{\hyperlink{_png_file_8c_ad4ead5e7e3a49ad0139ad2c86b142466}{Png\+File\+Initialize}} (H\+W\+ND hwnd)
+\item 
+\mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}} \mbox{\hyperlink{_png_file_8c_ac24d5e4be7e227c773eb54ca390e3b5c}{Png\+File\+Open\+Dlg}} (H\+W\+ND hwnd, P\+T\+S\+TR pstr\+File\+Name, P\+T\+S\+TR pstr\+Title\+Name)
+\item 
+\mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}} \mbox{\hyperlink{_png_file_8c_a76aaac46633f2d68f8f65075bad3f8e7}{Png\+File\+Save\+Dlg}} (H\+W\+ND hwnd, P\+T\+S\+TR pstr\+File\+Name, P\+T\+S\+TR pstr\+Title\+Name)
+\item 
+\mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}} \mbox{\hyperlink{_png_file_8c_af37b6adcb977a4aa66f0bd5383c7eff7}{Png\+Load\+Image}} (P\+T\+S\+TR pstr\+File\+Name, png\+\_\+byte $\ast$$\ast$ppb\+Image\+Data, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$pi\+Width, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$pi\+Height, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$pi\+Channels, \mbox{\hyperlink{png_8h_a4fbb1fb927190cfa198c221e42bbb781}{png\+\_\+color}} $\ast$p\+Bkg\+Color)
+\item 
+\mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}} \mbox{\hyperlink{_png_file_8c_a6008b4919333b23b741096dbe8887333}{Png\+Save\+Image}} (P\+T\+S\+TR pstr\+File\+Name, png\+\_\+byte $\ast$p\+Di\+Data, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} i\+Width, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} i\+Height, \mbox{\hyperlink{png_8h_a4fbb1fb927190cfa198c221e42bbb781}{png\+\_\+color}} bkg\+Color)
+\item 
+static void \mbox{\hyperlink{_png_file_8c_a9c815fa135e07c51e185562e274ebfa6}{png\+\_\+read\+\_\+data}} (\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}} \mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}}, \mbox{\hyperlink{pngconf_8h_a759e1c893f977ec7b67820bc3ca37524}{png\+\_\+bytep}} \mbox{\hyperlink{libretro_8c_a735984d41155bc1032e09bece8f8d66d}{data}}, \mbox{\hyperlink{pngconf_8h_a975e35d0a699ea3b08b8feef90fd29eb}{png\+\_\+size\+\_\+t}} length)
+\item 
+static void \mbox{\hyperlink{_png_file_8c_a91079da341ead60dbfa94a2afb6f458d}{png\+\_\+write\+\_\+data}} (\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}} \mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}}, \mbox{\hyperlink{pngconf_8h_a759e1c893f977ec7b67820bc3ca37524}{png\+\_\+bytep}} \mbox{\hyperlink{libretro_8c_a735984d41155bc1032e09bece8f8d66d}{data}}, \mbox{\hyperlink{pngconf_8h_a975e35d0a699ea3b08b8feef90fd29eb}{png\+\_\+size\+\_\+t}} length)
+\item 
+static void \mbox{\hyperlink{_png_file_8c_abc05c5591dbf4c581718669ff45248b5}{png\+\_\+flush}} (\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}} \mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct exception\+\_\+context \mbox{\hyperlink{_png_file_8c_ae75645d286e713f5cbede4403281515f}{the\+\_\+exception\+\_\+context}} \mbox{[}1\mbox{]}
+\item 
+\mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}} \mbox{\hyperlink{_png_file_8c_a4e8f3041f859c6e44551174061b83012}{msg}}
+\item 
+static O\+P\+E\+N\+F\+I\+L\+E\+N\+A\+ME \mbox{\hyperlink{_png_file_8c_a961582bd67b7e7c771852e39fd771cc9}{ofn}}
+\item 
+static \mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}} \mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}} = N\+U\+LL
+\item 
+static \mbox{\hyperlink{png_8h_ae3fea93b4964dd221f5ef0f88690dd68}{png\+\_\+infop}} \mbox{\hyperlink{_png_file_8c_acff20584e44b8e5b6ebd0ef649fd89f9}{info\+\_\+ptr}} = N\+U\+LL
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_png_file_8c_a8758a40de94caf95a33d08b2018598d3}\label{_png_file_8c_a8758a40de94caf95a33d08b2018598d3}} 
+\index{Png\+File.\+c@{Png\+File.\+c}!define\+\_\+exception\+\_\+type@{define\+\_\+exception\+\_\+type}}
+\index{define\+\_\+exception\+\_\+type@{define\+\_\+exception\+\_\+type}!Png\+File.\+c@{Png\+File.\+c}}
+\subsubsection{\texorpdfstring{define\+\_\+exception\+\_\+type()}{define\_exception\_type()}}
+{\footnotesize\ttfamily define\+\_\+exception\+\_\+type (\begin{DoxyParamCaption}\item[{const char $\ast$}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_png_file_8c_a60c0f340f44959f3257da2b802dccf16}\label{_png_file_8c_a60c0f340f44959f3257da2b802dccf16}} 
+\index{Png\+File.\+c@{Png\+File.\+c}!png\+\_\+cexcept\+\_\+error@{png\+\_\+cexcept\+\_\+error}}
+\index{png\+\_\+cexcept\+\_\+error@{png\+\_\+cexcept\+\_\+error}!Png\+File.\+c@{Png\+File.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+cexcept\+\_\+error()}{png\_cexcept\_error()}}
+{\footnotesize\ttfamily static void png\+\_\+cexcept\+\_\+error (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}}}]{png\+\_\+ptr,  }\item[{\mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}}}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_png_file_8c_a60c0f340f44959f3257da2b802dccf16_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_png_file_8c_abc05c5591dbf4c581718669ff45248b5}\label{_png_file_8c_abc05c5591dbf4c581718669ff45248b5}} 
+\index{Png\+File.\+c@{Png\+File.\+c}!png\+\_\+flush@{png\+\_\+flush}}
+\index{png\+\_\+flush@{png\+\_\+flush}!Png\+File.\+c@{Png\+File.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+flush()}{png\_flush()}}
+{\footnotesize\ttfamily static void png\+\_\+flush (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}}}]{png\+\_\+ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_png_file_8c_abc05c5591dbf4c581718669ff45248b5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_png_file_8c_a9c815fa135e07c51e185562e274ebfa6}\label{_png_file_8c_a9c815fa135e07c51e185562e274ebfa6}} 
+\index{Png\+File.\+c@{Png\+File.\+c}!png\+\_\+read\+\_\+data@{png\+\_\+read\+\_\+data}}
+\index{png\+\_\+read\+\_\+data@{png\+\_\+read\+\_\+data}!Png\+File.\+c@{Png\+File.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+read\+\_\+data()}{png\_read\_data()}}
+{\footnotesize\ttfamily static void png\+\_\+read\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}}}]{png\+\_\+ptr,  }\item[{\mbox{\hyperlink{pngconf_8h_a759e1c893f977ec7b67820bc3ca37524}{png\+\_\+bytep}}}]{data,  }\item[{\mbox{\hyperlink{pngconf_8h_a975e35d0a699ea3b08b8feef90fd29eb}{png\+\_\+size\+\_\+t}}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_png_file_8c_a9c815fa135e07c51e185562e274ebfa6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_png_file_8c_a91079da341ead60dbfa94a2afb6f458d}\label{_png_file_8c_a91079da341ead60dbfa94a2afb6f458d}} 
+\index{Png\+File.\+c@{Png\+File.\+c}!png\+\_\+write\+\_\+data@{png\+\_\+write\+\_\+data}}
+\index{png\+\_\+write\+\_\+data@{png\+\_\+write\+\_\+data}!Png\+File.\+c@{Png\+File.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+write\+\_\+data()}{png\_write\_data()}}
+{\footnotesize\ttfamily static void png\+\_\+write\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}}}]{png\+\_\+ptr,  }\item[{\mbox{\hyperlink{pngconf_8h_a759e1c893f977ec7b67820bc3ca37524}{png\+\_\+bytep}}}]{data,  }\item[{\mbox{\hyperlink{pngconf_8h_a975e35d0a699ea3b08b8feef90fd29eb}{png\+\_\+size\+\_\+t}}}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_png_file_8c_a91079da341ead60dbfa94a2afb6f458d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_png_file_8c_ad4ead5e7e3a49ad0139ad2c86b142466}\label{_png_file_8c_ad4ead5e7e3a49ad0139ad2c86b142466}} 
+\index{Png\+File.\+c@{Png\+File.\+c}!Png\+File\+Initialize@{Png\+File\+Initialize}}
+\index{Png\+File\+Initialize@{Png\+File\+Initialize}!Png\+File.\+c@{Png\+File.\+c}}
+\subsubsection{\texorpdfstring{Png\+File\+Initialize()}{PngFileInitialize()}}
+{\footnotesize\ttfamily void Png\+File\+Initialize (\begin{DoxyParamCaption}\item[{H\+W\+ND}]{hwnd }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_png_file_8c_ad4ead5e7e3a49ad0139ad2c86b142466_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_png_file_8c_ac24d5e4be7e227c773eb54ca390e3b5c}\label{_png_file_8c_ac24d5e4be7e227c773eb54ca390e3b5c}} 
+\index{Png\+File.\+c@{Png\+File.\+c}!Png\+File\+Open\+Dlg@{Png\+File\+Open\+Dlg}}
+\index{Png\+File\+Open\+Dlg@{Png\+File\+Open\+Dlg}!Png\+File.\+c@{Png\+File.\+c}}
+\subsubsection{\texorpdfstring{Png\+File\+Open\+Dlg()}{PngFileOpenDlg()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}} Png\+File\+Open\+Dlg (\begin{DoxyParamCaption}\item[{H\+W\+ND}]{hwnd,  }\item[{P\+T\+S\+TR}]{pstr\+File\+Name,  }\item[{P\+T\+S\+TR}]{pstr\+Title\+Name }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_png_file_8c_ac24d5e4be7e227c773eb54ca390e3b5c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_png_file_8c_a76aaac46633f2d68f8f65075bad3f8e7}\label{_png_file_8c_a76aaac46633f2d68f8f65075bad3f8e7}} 
+\index{Png\+File.\+c@{Png\+File.\+c}!Png\+File\+Save\+Dlg@{Png\+File\+Save\+Dlg}}
+\index{Png\+File\+Save\+Dlg@{Png\+File\+Save\+Dlg}!Png\+File.\+c@{Png\+File.\+c}}
+\subsubsection{\texorpdfstring{Png\+File\+Save\+Dlg()}{PngFileSaveDlg()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}} Png\+File\+Save\+Dlg (\begin{DoxyParamCaption}\item[{H\+W\+ND}]{hwnd,  }\item[{P\+T\+S\+TR}]{pstr\+File\+Name,  }\item[{P\+T\+S\+TR}]{pstr\+Title\+Name }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_png_file_8c_a76aaac46633f2d68f8f65075bad3f8e7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_png_file_8c_af37b6adcb977a4aa66f0bd5383c7eff7}\label{_png_file_8c_af37b6adcb977a4aa66f0bd5383c7eff7}} 
+\index{Png\+File.\+c@{Png\+File.\+c}!Png\+Load\+Image@{Png\+Load\+Image}}
+\index{Png\+Load\+Image@{Png\+Load\+Image}!Png\+File.\+c@{Png\+File.\+c}}
+\subsubsection{\texorpdfstring{Png\+Load\+Image()}{PngLoadImage()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}} Png\+Load\+Image (\begin{DoxyParamCaption}\item[{P\+T\+S\+TR}]{pstr\+File\+Name,  }\item[{png\+\_\+byte $\ast$$\ast$}]{ppb\+Image\+Data,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{pi\+Width,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{pi\+Height,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{pi\+Channels,  }\item[{\mbox{\hyperlink{png_8h_a4fbb1fb927190cfa198c221e42bbb781}{png\+\_\+color}} $\ast$}]{p\+Bkg\+Color }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_png_file_8c_af37b6adcb977a4aa66f0bd5383c7eff7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_png_file_8c_af37b6adcb977a4aa66f0bd5383c7eff7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_png_file_8c_a6008b4919333b23b741096dbe8887333}\label{_png_file_8c_a6008b4919333b23b741096dbe8887333}} 
+\index{Png\+File.\+c@{Png\+File.\+c}!Png\+Save\+Image@{Png\+Save\+Image}}
+\index{Png\+Save\+Image@{Png\+Save\+Image}!Png\+File.\+c@{Png\+File.\+c}}
+\subsubsection{\texorpdfstring{Png\+Save\+Image()}{PngSaveImage()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{pnm2png_8c_ae4cc35dcc70810fa972cc8a5185a28fa}{B\+O\+OL}} Png\+Save\+Image (\begin{DoxyParamCaption}\item[{P\+T\+S\+TR}]{pstr\+File\+Name,  }\item[{png\+\_\+byte $\ast$}]{p\+Di\+Data,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{i\+Width,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{i\+Height,  }\item[{\mbox{\hyperlink{png_8h_a4fbb1fb927190cfa198c221e42bbb781}{png\+\_\+color}}}]{bkg\+Color }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_png_file_8c_a6008b4919333b23b741096dbe8887333_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_png_file_8c_a6008b4919333b23b741096dbe8887333_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_png_file_8c_acff20584e44b8e5b6ebd0ef649fd89f9}\label{_png_file_8c_acff20584e44b8e5b6ebd0ef649fd89f9}} 
+\index{Png\+File.\+c@{Png\+File.\+c}!info\+\_\+ptr@{info\+\_\+ptr}}
+\index{info\+\_\+ptr@{info\+\_\+ptr}!Png\+File.\+c@{Png\+File.\+c}}
+\subsubsection{\texorpdfstring{info\+\_\+ptr}{info\_ptr}}
+{\footnotesize\ttfamily \mbox{\hyperlink{png_8h_ae3fea93b4964dd221f5ef0f88690dd68}{png\+\_\+infop}} info\+\_\+ptr = N\+U\+LL\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{_png_file_8c_a4e8f3041f859c6e44551174061b83012}\label{_png_file_8c_a4e8f3041f859c6e44551174061b83012}} 
+\index{Png\+File.\+c@{Png\+File.\+c}!msg@{msg}}
+\index{msg@{msg}!Png\+File.\+c@{Png\+File.\+c}}
+\subsubsection{\texorpdfstring{msg}{msg}}
+{\footnotesize\ttfamily \mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}} msg}
+
+\mbox{\Hypertarget{_png_file_8c_a961582bd67b7e7c771852e39fd771cc9}\label{_png_file_8c_a961582bd67b7e7c771852e39fd771cc9}} 
+\index{Png\+File.\+c@{Png\+File.\+c}!ofn@{ofn}}
+\index{ofn@{ofn}!Png\+File.\+c@{Png\+File.\+c}}
+\subsubsection{\texorpdfstring{ofn}{ofn}}
+{\footnotesize\ttfamily O\+P\+E\+N\+F\+I\+L\+E\+N\+A\+ME ofn\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}\label{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}} 
+\index{Png\+File.\+c@{Png\+File.\+c}!png\+\_\+ptr@{png\+\_\+ptr}}
+\index{png\+\_\+ptr@{png\+\_\+ptr}!Png\+File.\+c@{Png\+File.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+ptr}{png\_ptr}}
+{\footnotesize\ttfamily \mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}} png\+\_\+ptr = N\+U\+LL\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{_png_file_8c_ae75645d286e713f5cbede4403281515f}\label{_png_file_8c_ae75645d286e713f5cbede4403281515f}} 
+\index{Png\+File.\+c@{Png\+File.\+c}!the\+\_\+exception\+\_\+context@{the\+\_\+exception\+\_\+context}}
+\index{the\+\_\+exception\+\_\+context@{the\+\_\+exception\+\_\+context}!Png\+File.\+c@{Png\+File.\+c}}
+\subsubsection{\texorpdfstring{the\+\_\+exception\+\_\+context}{the\_exception\_context}}
+{\footnotesize\ttfamily struct exception\+\_\+context the\+\_\+exception\+\_\+context}
+

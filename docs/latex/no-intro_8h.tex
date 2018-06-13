@@ -1,0 +1,162 @@
+\hypertarget{no-intro_8h}{}\section{src/feature/sqlite3/no-\/intro.h File Reference}
+\label{no-intro_8h}\index{src/feature/sqlite3/no-\/intro.\+h@{src/feature/sqlite3/no-\/intro.\+h}}
+{\ttfamily \#include $<$mgba-\/util/common.\+h$>$}\newline
+Include dependency graph for no-\/intro.h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{no-intro_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{no-intro_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{no-intro_8h_struct_no_intro_game}{No\+Intro\+Game}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct No\+Intro\+DB $\ast$ \mbox{\hyperlink{no-intro_8h_a467dbcef29eb2a06f7b5747e6ee4fddb}{No\+Intro\+D\+B\+Load}} (const char $\ast$path)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{no-intro_8h_a0ce34503c62adbfd6accf09a9ce89260}{No\+Intro\+D\+B\+Load\+Clr\+Mame\+Pro}} (struct No\+Intro\+DB $\ast$db, struct V\+File $\ast$vf)
+\item 
+void \mbox{\hyperlink{no-intro_8h_a1a941643f11437a5ef79fc8ef7c4e55e}{No\+Intro\+D\+B\+Destroy}} (struct No\+Intro\+DB $\ast$db)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{no-intro_8h_a8aa1074ddc85b995d2949c72e356f0d1}{No\+Intro\+D\+B\+Lookup\+Game\+By\+C\+RC}} (const struct No\+Intro\+DB $\ast$db, uint32\+\_\+t \mbox{\hyperlink{util_2crc32_8c_a0bdd14723a2507e6465c44ca5d9dc364}{crc32}}, struct \mbox{\hyperlink{no-intro_8h_struct_no_intro_game}{No\+Intro\+Game}} $\ast$game)
+\end{DoxyCompactItemize}
+
+
+\subsection{Class Documentation}
+\index{No\+Intro\+Game@{No\+Intro\+Game}}\label{struct_no_intro_game}
+\Hypertarget{no-intro_8h_struct_no_intro_game}
+\subsubsection{struct No\+Intro\+Game}
+
+
+Collaboration diagram for No\+Intro\+Game\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=162pt]{struct_no_intro_game__coll__graph}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\mbox{\Hypertarget{no-intro_8h_a9d877941cb7e86e0c5028af5c501ecdc}\label{no-intro_8h_a9d877941cb7e86e0c5028af5c501ecdc}} 
+uint32\_t&
+crc32&
+\\
+\hline
+
+\mbox{\Hypertarget{no-intro_8h_a8946ea9799cb2b1356b90ab544ed1bd2}\label{no-intro_8h_a8946ea9799cb2b1356b90ab544ed1bd2}} 
+uint8\_t&
+md5\mbox{[}16\mbox{]}&
+\\
+\hline
+
+\mbox{\Hypertarget{no-intro_8h_a1f00463418ccdbd1eed596c09df7835d}\label{no-intro_8h_a1f00463418ccdbd1eed596c09df7835d}} 
+const char $\ast$&
+name&
+\\
+\hline
+
+\mbox{\Hypertarget{no-intro_8h_a0ba13974f1ee1c0835c43013dd38a795}\label{no-intro_8h_a0ba13974f1ee1c0835c43013dd38a795}} 
+const char $\ast$&
+romName&
+\\
+\hline
+
+\mbox{\Hypertarget{no-intro_8h_a58235ac62c8aaa365d3f84c2ea69f87c}\label{no-intro_8h_a58235ac62c8aaa365d3f84c2ea69f87c}} 
+uint8\_t&
+sha1\mbox{[}20\mbox{]}&
+\\
+\hline
+
+\mbox{\Hypertarget{no-intro_8h_ab4dba559a513fd1bd66a50cb248bc509}\label{no-intro_8h_ab4dba559a513fd1bd66a50cb248bc509}} 
+size\_t&
+size&
+\\
+\hline
+
+\mbox{\Hypertarget{no-intro_8h_a0f3788e6181926e929e497f99dbb0939}\label{no-intro_8h_a0f3788e6181926e929e497f99dbb0939}} 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}&
+verified&
+\\
+\hline
+
+\end{DoxyFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{no-intro_8h_a1a941643f11437a5ef79fc8ef7c4e55e}\label{no-intro_8h_a1a941643f11437a5ef79fc8ef7c4e55e}} 
+\index{no-\/intro.\+h@{no-\/intro.\+h}!No\+Intro\+D\+B\+Destroy@{No\+Intro\+D\+B\+Destroy}}
+\index{No\+Intro\+D\+B\+Destroy@{No\+Intro\+D\+B\+Destroy}!no-\/intro.\+h@{no-\/intro.\+h}}
+\subsubsection{\texorpdfstring{No\+Intro\+D\+B\+Destroy()}{NoIntroDBDestroy()}}
+{\footnotesize\ttfamily void No\+Intro\+D\+B\+Destroy (\begin{DoxyParamCaption}\item[{struct No\+Intro\+DB $\ast$}]{db }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{no-intro_8h_a1a941643f11437a5ef79fc8ef7c4e55e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{no-intro_8h_a1a941643f11437a5ef79fc8ef7c4e55e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{no-intro_8h_a467dbcef29eb2a06f7b5747e6ee4fddb}\label{no-intro_8h_a467dbcef29eb2a06f7b5747e6ee4fddb}} 
+\index{no-\/intro.\+h@{no-\/intro.\+h}!No\+Intro\+D\+B\+Load@{No\+Intro\+D\+B\+Load}}
+\index{No\+Intro\+D\+B\+Load@{No\+Intro\+D\+B\+Load}!no-\/intro.\+h@{no-\/intro.\+h}}
+\subsubsection{\texorpdfstring{No\+Intro\+D\+B\+Load()}{NoIntroDBLoad()}}
+{\footnotesize\ttfamily struct No\+Intro\+DB$\ast$ No\+Intro\+D\+B\+Load (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{no-intro_8h_a467dbcef29eb2a06f7b5747e6ee4fddb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{no-intro_8h_a0ce34503c62adbfd6accf09a9ce89260}\label{no-intro_8h_a0ce34503c62adbfd6accf09a9ce89260}} 
+\index{no-\/intro.\+h@{no-\/intro.\+h}!No\+Intro\+D\+B\+Load\+Clr\+Mame\+Pro@{No\+Intro\+D\+B\+Load\+Clr\+Mame\+Pro}}
+\index{No\+Intro\+D\+B\+Load\+Clr\+Mame\+Pro@{No\+Intro\+D\+B\+Load\+Clr\+Mame\+Pro}!no-\/intro.\+h@{no-\/intro.\+h}}
+\subsubsection{\texorpdfstring{No\+Intro\+D\+B\+Load\+Clr\+Mame\+Pro()}{NoIntroDBLoadClrMamePro()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} No\+Intro\+D\+B\+Load\+Clr\+Mame\+Pro (\begin{DoxyParamCaption}\item[{struct No\+Intro\+DB $\ast$}]{db,  }\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{no-intro_8h_a0ce34503c62adbfd6accf09a9ce89260_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{no-intro_8h_a8aa1074ddc85b995d2949c72e356f0d1}\label{no-intro_8h_a8aa1074ddc85b995d2949c72e356f0d1}} 
+\index{no-\/intro.\+h@{no-\/intro.\+h}!No\+Intro\+D\+B\+Lookup\+Game\+By\+C\+RC@{No\+Intro\+D\+B\+Lookup\+Game\+By\+C\+RC}}
+\index{No\+Intro\+D\+B\+Lookup\+Game\+By\+C\+RC@{No\+Intro\+D\+B\+Lookup\+Game\+By\+C\+RC}!no-\/intro.\+h@{no-\/intro.\+h}}
+\subsubsection{\texorpdfstring{No\+Intro\+D\+B\+Lookup\+Game\+By\+C\+R\+C()}{NoIntroDBLookupGameByCRC()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} No\+Intro\+D\+B\+Lookup\+Game\+By\+C\+RC (\begin{DoxyParamCaption}\item[{const struct No\+Intro\+DB $\ast$}]{db,  }\item[{uint32\+\_\+t}]{crc32,  }\item[{struct \mbox{\hyperlink{no-intro_8h_struct_no_intro_game}{No\+Intro\+Game}} $\ast$}]{game }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{no-intro_8h_a8aa1074ddc85b995d2949c72e356f0d1_icgraph}
+\end{center}
+\end{figure}

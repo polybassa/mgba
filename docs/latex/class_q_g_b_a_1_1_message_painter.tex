@@ -1,0 +1,253 @@
+\hypertarget{class_q_g_b_a_1_1_message_painter}{}\section{Q\+G\+BA\+:\+:Message\+Painter Class Reference}
+\label{class_q_g_b_a_1_1_message_painter}\index{Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}}
+
+
+{\ttfamily \#include $<$Message\+Painter.\+h$>$}
+
+
+
+Inheritance diagram for Q\+G\+BA\+:\+:Message\+Painter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{class_q_g_b_a_1_1_message_painter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Q\+G\+BA\+:\+:Message\+Painter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{class_q_g_b_a_1_1_message_painter__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_message_painter_acba4e5689aab5656c16fe87e04545558}{show\+Message}} (const Q\+String \&message)
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_message_painter_a6880cc16df94e00ff0d57869f93022b0}{clear\+Message}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_q_g_b_a_1_1_message_painter_a17d9cc1af0b1c6ffe65f0ff91d15a39b}{Message\+Painter}} (Q\+Object $\ast$parent=nullptr)
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_message_painter_aa5b77ba11d3fb71e85765c279944495c}{resize}} (const Q\+Size \&\mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} lock\+Aspect\+Ratio, qreal \mbox{\hyperlink{wii_2main_8c_abf473eae6494d40ce12c72a39f0ca41d}{scale\+Factor}})
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_message_painter_a2c8a4b2a2935f3d1033260768aa36796}{paint}} (Q\+Painter $\ast$painter)
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_message_painter_ae3c9b2709da7fdb9467c170da17bea26}{set\+Scale\+Factor}} (qreal factor)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_message_painter_ad6d1f2533c2e7bd5afa17814044adc8d}{redraw}} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Mutex \mbox{\hyperlink{class_q_g_b_a_1_1_message_painter_a9618c0d3cdc33432c200966bcecb5bdd}{m\+\_\+mutex}}
+\item 
+Q\+Static\+Text \mbox{\hyperlink{class_q_g_b_a_1_1_message_painter_a9e5fbca172c6c61292bb43121266372f}{m\+\_\+message}}
+\item 
+Q\+Pixmap \mbox{\hyperlink{class_q_g_b_a_1_1_message_painter_a3f43515c865b31df3f0f5c2261c7e9c5}{m\+\_\+pixmap}}
+\item 
+Q\+Pixmap \mbox{\hyperlink{class_q_g_b_a_1_1_message_painter_acccfa5252cf51ba760cceb9a012042e4}{m\+\_\+pixmap\+Buffer}}
+\item 
+Q\+Timer \mbox{\hyperlink{class_q_g_b_a_1_1_message_painter_af070a0a89e1cb4c7f08cda762f5474f8}{m\+\_\+message\+Timer}} \{this\}
+\item 
+Q\+Point \mbox{\hyperlink{class_q_g_b_a_1_1_message_painter_af5175c1b0b4f67357642af284e89eaa4}{m\+\_\+local}}
+\item 
+Q\+Transform \mbox{\hyperlink{class_q_g_b_a_1_1_message_painter_ab7772ab3f76e81bcb6a45a9850f31944}{m\+\_\+world}}
+\item 
+Q\+Font \mbox{\hyperlink{class_q_g_b_a_1_1_message_painter_a725a170659c9650d1a8542b1535bc7b8}{m\+\_\+message\+Font}}
+\item 
+qreal \mbox{\hyperlink{class_q_g_b_a_1_1_message_painter_ae0c3e8dff872aff6df2ef537f4ecf3ce}{m\+\_\+scale\+Factor}} = 1
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_message_painter_a17d9cc1af0b1c6ffe65f0ff91d15a39b}\label{class_q_g_b_a_1_1_message_painter_a17d9cc1af0b1c6ffe65f0ff91d15a39b}} 
+\index{Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}!Message\+Painter@{Message\+Painter}}
+\index{Message\+Painter@{Message\+Painter}!Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}}
+\subsubsection{\texorpdfstring{Message\+Painter()}{MessagePainter()}}
+{\footnotesize\ttfamily Message\+Painter\+::\+Message\+Painter (\begin{DoxyParamCaption}\item[{Q\+Object $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_message_painter_a17d9cc1af0b1c6ffe65f0ff91d15a39b_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_message_painter_a6880cc16df94e00ff0d57869f93022b0}\label{class_q_g_b_a_1_1_message_painter_a6880cc16df94e00ff0d57869f93022b0}} 
+\index{Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}!clear\+Message@{clear\+Message}}
+\index{clear\+Message@{clear\+Message}!Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}}
+\subsubsection{\texorpdfstring{clear\+Message}{clearMessage}}
+{\footnotesize\ttfamily void Message\+Painter\+::clear\+Message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_message_painter_a6880cc16df94e00ff0d57869f93022b0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_message_painter_a6880cc16df94e00ff0d57869f93022b0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_message_painter_a2c8a4b2a2935f3d1033260768aa36796}\label{class_q_g_b_a_1_1_message_painter_a2c8a4b2a2935f3d1033260768aa36796}} 
+\index{Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}!paint@{paint}}
+\index{paint@{paint}!Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}}
+\subsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily void Message\+Painter\+::paint (\begin{DoxyParamCaption}\item[{Q\+Painter $\ast$}]{painter }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_message_painter_a2c8a4b2a2935f3d1033260768aa36796_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_message_painter_ad6d1f2533c2e7bd5afa17814044adc8d}\label{class_q_g_b_a_1_1_message_painter_ad6d1f2533c2e7bd5afa17814044adc8d}} 
+\index{Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}!redraw@{redraw}}
+\index{redraw@{redraw}!Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}}
+\subsubsection{\texorpdfstring{redraw()}{redraw()}}
+{\footnotesize\ttfamily void Message\+Painter\+::redraw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_message_painter_ad6d1f2533c2e7bd5afa17814044adc8d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_message_painter_aa5b77ba11d3fb71e85765c279944495c}\label{class_q_g_b_a_1_1_message_painter_aa5b77ba11d3fb71e85765c279944495c}} 
+\index{Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}!resize@{resize}}
+\index{resize@{resize}!Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}}
+\subsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily void Message\+Painter\+::resize (\begin{DoxyParamCaption}\item[{const Q\+Size \&}]{size,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{lock\+Aspect\+Ratio,  }\item[{qreal}]{scale\+Factor }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_message_painter_aa5b77ba11d3fb71e85765c279944495c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_message_painter_aa5b77ba11d3fb71e85765c279944495c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_message_painter_ae3c9b2709da7fdb9467c170da17bea26}\label{class_q_g_b_a_1_1_message_painter_ae3c9b2709da7fdb9467c170da17bea26}} 
+\index{Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}!set\+Scale\+Factor@{set\+Scale\+Factor}}
+\index{set\+Scale\+Factor@{set\+Scale\+Factor}!Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}}
+\subsubsection{\texorpdfstring{set\+Scale\+Factor()}{setScaleFactor()}}
+{\footnotesize\ttfamily void Q\+G\+B\+A\+::\+Message\+Painter\+::set\+Scale\+Factor (\begin{DoxyParamCaption}\item[{qreal}]{factor }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_message_painter_acba4e5689aab5656c16fe87e04545558}\label{class_q_g_b_a_1_1_message_painter_acba4e5689aab5656c16fe87e04545558}} 
+\index{Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}!show\+Message@{show\+Message}}
+\index{show\+Message@{show\+Message}!Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}}
+\subsubsection{\texorpdfstring{show\+Message}{showMessage}}
+{\footnotesize\ttfamily void Message\+Painter\+::show\+Message (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_message_painter_acba4e5689aab5656c16fe87e04545558_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_message_painter_acba4e5689aab5656c16fe87e04545558_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_message_painter_af5175c1b0b4f67357642af284e89eaa4}\label{class_q_g_b_a_1_1_message_painter_af5175c1b0b4f67357642af284e89eaa4}} 
+\index{Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}!m\+\_\+local@{m\+\_\+local}}
+\index{m\+\_\+local@{m\+\_\+local}!Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}}
+\subsubsection{\texorpdfstring{m\+\_\+local}{m\_local}}
+{\footnotesize\ttfamily Q\+Point Q\+G\+B\+A\+::\+Message\+Painter\+::m\+\_\+local\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_message_painter_a9e5fbca172c6c61292bb43121266372f}\label{class_q_g_b_a_1_1_message_painter_a9e5fbca172c6c61292bb43121266372f}} 
+\index{Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}!m\+\_\+message@{m\+\_\+message}}
+\index{m\+\_\+message@{m\+\_\+message}!Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}}
+\subsubsection{\texorpdfstring{m\+\_\+message}{m\_message}}
+{\footnotesize\ttfamily Q\+Static\+Text Q\+G\+B\+A\+::\+Message\+Painter\+::m\+\_\+message\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_message_painter_a725a170659c9650d1a8542b1535bc7b8}\label{class_q_g_b_a_1_1_message_painter_a725a170659c9650d1a8542b1535bc7b8}} 
+\index{Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}!m\+\_\+message\+Font@{m\+\_\+message\+Font}}
+\index{m\+\_\+message\+Font@{m\+\_\+message\+Font}!Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}}
+\subsubsection{\texorpdfstring{m\+\_\+message\+Font}{m\_messageFont}}
+{\footnotesize\ttfamily Q\+Font Q\+G\+B\+A\+::\+Message\+Painter\+::m\+\_\+message\+Font\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_message_painter_af070a0a89e1cb4c7f08cda762f5474f8}\label{class_q_g_b_a_1_1_message_painter_af070a0a89e1cb4c7f08cda762f5474f8}} 
+\index{Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}!m\+\_\+message\+Timer@{m\+\_\+message\+Timer}}
+\index{m\+\_\+message\+Timer@{m\+\_\+message\+Timer}!Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}}
+\subsubsection{\texorpdfstring{m\+\_\+message\+Timer}{m\_messageTimer}}
+{\footnotesize\ttfamily Q\+Timer Q\+G\+B\+A\+::\+Message\+Painter\+::m\+\_\+message\+Timer \{this\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_message_painter_a9618c0d3cdc33432c200966bcecb5bdd}\label{class_q_g_b_a_1_1_message_painter_a9618c0d3cdc33432c200966bcecb5bdd}} 
+\index{Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}!m\+\_\+mutex@{m\+\_\+mutex}}
+\index{m\+\_\+mutex@{m\+\_\+mutex}!Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}}
+\subsubsection{\texorpdfstring{m\+\_\+mutex}{m\_mutex}}
+{\footnotesize\ttfamily Q\+Mutex Q\+G\+B\+A\+::\+Message\+Painter\+::m\+\_\+mutex\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_message_painter_a3f43515c865b31df3f0f5c2261c7e9c5}\label{class_q_g_b_a_1_1_message_painter_a3f43515c865b31df3f0f5c2261c7e9c5}} 
+\index{Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}!m\+\_\+pixmap@{m\+\_\+pixmap}}
+\index{m\+\_\+pixmap@{m\+\_\+pixmap}!Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}}
+\subsubsection{\texorpdfstring{m\+\_\+pixmap}{m\_pixmap}}
+{\footnotesize\ttfamily Q\+Pixmap Q\+G\+B\+A\+::\+Message\+Painter\+::m\+\_\+pixmap\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_message_painter_acccfa5252cf51ba760cceb9a012042e4}\label{class_q_g_b_a_1_1_message_painter_acccfa5252cf51ba760cceb9a012042e4}} 
+\index{Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}!m\+\_\+pixmap\+Buffer@{m\+\_\+pixmap\+Buffer}}
+\index{m\+\_\+pixmap\+Buffer@{m\+\_\+pixmap\+Buffer}!Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}}
+\subsubsection{\texorpdfstring{m\+\_\+pixmap\+Buffer}{m\_pixmapBuffer}}
+{\footnotesize\ttfamily Q\+Pixmap Q\+G\+B\+A\+::\+Message\+Painter\+::m\+\_\+pixmap\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_message_painter_ae0c3e8dff872aff6df2ef537f4ecf3ce}\label{class_q_g_b_a_1_1_message_painter_ae0c3e8dff872aff6df2ef537f4ecf3ce}} 
+\index{Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}!m\+\_\+scale\+Factor@{m\+\_\+scale\+Factor}}
+\index{m\+\_\+scale\+Factor@{m\+\_\+scale\+Factor}!Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}}
+\subsubsection{\texorpdfstring{m\+\_\+scale\+Factor}{m\_scaleFactor}}
+{\footnotesize\ttfamily qreal Q\+G\+B\+A\+::\+Message\+Painter\+::m\+\_\+scale\+Factor = 1\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_message_painter_ab7772ab3f76e81bcb6a45a9850f31944}\label{class_q_g_b_a_1_1_message_painter_ab7772ab3f76e81bcb6a45a9850f31944}} 
+\index{Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}!m\+\_\+world@{m\+\_\+world}}
+\index{m\+\_\+world@{m\+\_\+world}!Q\+G\+B\+A\+::\+Message\+Painter@{Q\+G\+B\+A\+::\+Message\+Painter}}
+\subsubsection{\texorpdfstring{m\+\_\+world}{m\_world}}
+{\footnotesize\ttfamily Q\+Transform Q\+G\+B\+A\+::\+Message\+Painter\+::m\+\_\+world\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/platform/qt/\mbox{\hyperlink{_message_painter_8h}{Message\+Painter.\+h}}\item 
+src/platform/qt/\mbox{\hyperlink{_message_painter_8cpp}{Message\+Painter.\+cpp}}\end{DoxyCompactItemize}

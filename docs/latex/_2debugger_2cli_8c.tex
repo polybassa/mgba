@@ -1,0 +1,142 @@
+\hypertarget{_2debugger_2cli_8c}{}\section{src/gba/debugger/cli.c File Reference}
+\label{_2debugger_2cli_8c}\index{src/gba/debugger/cli.\+c@{src/gba/debugger/cli.\+c}}
+{\ttfamily \#include $<$mgba/internal/gba/extra/cli.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/serialize.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/gba.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/io.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/video.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/arm/debugger/cli-\/debugger.\+h$>$}\newline
+Include dependency graph for cli.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2debugger_2cli_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{_2debugger_2cli_8c_ab4234f17916db24f7440d5fb56f17bad}{\+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Init}} (struct C\+L\+I\+Debugger\+System $\ast$)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{_2debugger_2cli_8c_ac21a258b2d868cc8036f23548f14ed46}{\+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Custom}} (struct C\+L\+I\+Debugger\+System $\ast$)
+\item 
+static void \mbox{\hyperlink{_2debugger_2cli_8c_a06209adc73542d74582727f2baf847f4}{\+\_\+frame}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{_2debugger_2cli_8c_a74a3715078a501ee500ce870c701fb70}{\+\_\+load}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{_2debugger_2cli_8c_afea8fb188853669030258413795e4190}{\+\_\+save}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+struct G\+B\+A\+C\+L\+I\+Debugger $\ast$ \mbox{\hyperlink{_2debugger_2cli_8c_a70bedb9db38769ac9704d03ef0f370a7}{G\+B\+A\+C\+L\+I\+Debugger\+Create}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct C\+L\+I\+Debugger\+Command\+Summary \mbox{\hyperlink{_2debugger_2cli_8c_ac1c771e408a50fef6c7de08b4923b5ff}{\+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Commands}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_2debugger_2cli_8c_a06209adc73542d74582727f2baf847f4}\label{_2debugger_2cli_8c_a06209adc73542d74582727f2baf847f4}} 
+\index{/debugger/cli.\+c@{/debugger/cli.\+c}!\+\_\+frame@{\+\_\+frame}}
+\index{\+\_\+frame@{\+\_\+frame}!/debugger/cli.\+c@{/debugger/cli.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+frame()}{\_frame()}}
+{\footnotesize\ttfamily static void \+\_\+frame (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{_2debugger_2cli_8c_ac21a258b2d868cc8036f23548f14ed46}\label{_2debugger_2cli_8c_ac21a258b2d868cc8036f23548f14ed46}} 
+\index{/debugger/cli.\+c@{/debugger/cli.\+c}!\+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Custom@{\+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Custom}}
+\index{\+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Custom@{\+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Custom}!/debugger/cli.\+c@{/debugger/cli.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Custom()}{\_GBACLIDebuggerCustom()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Custom (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger\+System $\ast$}]{debugger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2debugger_2cli_8c_ac21a258b2d868cc8036f23548f14ed46_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2debugger_2cli_8c_ac21a258b2d868cc8036f23548f14ed46_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2debugger_2cli_8c_ab4234f17916db24f7440d5fb56f17bad}\label{_2debugger_2cli_8c_ab4234f17916db24f7440d5fb56f17bad}} 
+\index{/debugger/cli.\+c@{/debugger/cli.\+c}!\+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Init@{\+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Init}}
+\index{\+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Init@{\+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Init}!/debugger/cli.\+c@{/debugger/cli.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Init()}{\_GBACLIDebuggerInit()}}
+{\footnotesize\ttfamily static void \+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Init (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger\+System $\ast$}]{debugger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2debugger_2cli_8c_ab4234f17916db24f7440d5fb56f17bad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2debugger_2cli_8c_a74a3715078a501ee500ce870c701fb70}\label{_2debugger_2cli_8c_a74a3715078a501ee500ce870c701fb70}} 
+\index{/debugger/cli.\+c@{/debugger/cli.\+c}!\+\_\+load@{\+\_\+load}}
+\index{\+\_\+load@{\+\_\+load}!/debugger/cli.\+c@{/debugger/cli.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+load()}{\_load()}}
+{\footnotesize\ttfamily static void \+\_\+load (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2debugger_2cli_8c_a74a3715078a501ee500ce870c701fb70_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2debugger_2cli_8c_afea8fb188853669030258413795e4190}\label{_2debugger_2cli_8c_afea8fb188853669030258413795e4190}} 
+\index{/debugger/cli.\+c@{/debugger/cli.\+c}!\+\_\+save@{\+\_\+save}}
+\index{\+\_\+save@{\+\_\+save}!/debugger/cli.\+c@{/debugger/cli.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+save()}{\_save()}}
+{\footnotesize\ttfamily static void \+\_\+save (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2debugger_2cli_8c_afea8fb188853669030258413795e4190_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2debugger_2cli_8c_a70bedb9db38769ac9704d03ef0f370a7}\label{_2debugger_2cli_8c_a70bedb9db38769ac9704d03ef0f370a7}} 
+\index{/debugger/cli.\+c@{/debugger/cli.\+c}!G\+B\+A\+C\+L\+I\+Debugger\+Create@{G\+B\+A\+C\+L\+I\+Debugger\+Create}}
+\index{G\+B\+A\+C\+L\+I\+Debugger\+Create@{G\+B\+A\+C\+L\+I\+Debugger\+Create}!/debugger/cli.\+c@{/debugger/cli.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+C\+L\+I\+Debugger\+Create()}{GBACLIDebuggerCreate()}}
+{\footnotesize\ttfamily struct G\+B\+A\+C\+L\+I\+Debugger$\ast$ G\+B\+A\+C\+L\+I\+Debugger\+Create (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2debugger_2cli_8c_a70bedb9db38769ac9704d03ef0f370a7_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_2debugger_2cli_8c_ac1c771e408a50fef6c7de08b4923b5ff}\label{_2debugger_2cli_8c_ac1c771e408a50fef6c7de08b4923b5ff}} 
+\index{/debugger/cli.\+c@{/debugger/cli.\+c}!\+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Commands@{\+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Commands}}
+\index{\+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Commands@{\+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Commands}!/debugger/cli.\+c@{/debugger/cli.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Commands}{\_GBACLIDebuggerCommands}}
+{\footnotesize\ttfamily struct C\+L\+I\+Debugger\+Command\+Summary \+\_\+\+G\+B\+A\+C\+L\+I\+Debugger\+Commands\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    \{ \textcolor{stringliteral}{"frame"}, \mbox{\hyperlink{_2debugger_2cli_8c_a06209adc73542d74582727f2baf847f4}{\_frame}}, \textcolor{stringliteral}{""}, \textcolor{stringliteral}{"Frame advance"} \},
+    \{ \textcolor{stringliteral}{"load"}, \mbox{\hyperlink{_2debugger_2cli_8c_a74a3715078a501ee500ce870c701fb70}{\_load}}, \textcolor{stringliteral}{"*"}, \textcolor{stringliteral}{"Load a savestate"} \},
+    \{ \textcolor{stringliteral}{"save"}, \mbox{\hyperlink{_2debugger_2cli_8c_afea8fb188853669030258413795e4190}{\_save}}, \textcolor{stringliteral}{"*"}, \textcolor{stringliteral}{"Save a savestate"} \},
+    \{ 0, 0, 0, 0 \}
+\}
+\end{DoxyCode}

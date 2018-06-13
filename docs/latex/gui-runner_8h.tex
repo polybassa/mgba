@@ -1,0 +1,325 @@
+\hypertarget{gui-runner_8h}{}\section{src/feature/gui/gui-\/runner.h File Reference}
+\label{gui-runner_8h}\index{src/feature/gui/gui-\/runner.\+h@{src/feature/gui/gui-\/runner.\+h}}
+{\ttfamily \#include $<$mgba-\/util/common.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/config.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}feature/gui/remap.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba/internal/gba/hardware.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/circle-\/buffer.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/gui.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/threading.\+h$>$}\newline
+Include dependency graph for gui-\/runner.h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui-runner_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui-runner_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{gui-runner_8h_structm_g_u_i_background}{m\+G\+U\+I\+Background}}
+\item 
+struct \mbox{\hyperlink{gui-runner_8h_structm_g_u_i_runner_lux}{m\+G\+U\+I\+Runner\+Lux}}
+\item 
+struct \mbox{\hyperlink{gui-runner_8h_structm_g_u_i_autosave_context}{m\+G\+U\+I\+Autosave\+Context}}
+\item 
+struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{gui-runner_8h_ac190200f37f0499dccb86ebb1d15ced0}{m\+G\+U\+I\+Input}} \{ \newline
+\mbox{\hyperlink{gui-runner_8h_ac190200f37f0499dccb86ebb1d15ced0a3af7363535b2615b88ab3ec4a197ee5d}{m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+I\+N\+C\+R\+E\+A\+S\+E\+\_\+\+B\+R\+I\+G\+H\+T\+N\+E\+SS}} = G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+U\+S\+E\+R\+\_\+\+S\+T\+A\+RT, 
+\mbox{\hyperlink{gui-runner_8h_ac190200f37f0499dccb86ebb1d15ced0ae54a7af768df3f7c793c07652b8d001d}{m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+D\+E\+C\+R\+E\+A\+S\+E\+\_\+\+B\+R\+I\+G\+H\+T\+N\+E\+SS}}, 
+\mbox{\hyperlink{gui-runner_8h_ac190200f37f0499dccb86ebb1d15ced0ac63fa69551e8690d0651bc7dcc42c19f}{m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+S\+C\+R\+E\+E\+N\+\_\+\+M\+O\+DE}}, 
+\mbox{\hyperlink{gui-runner_8h_ac190200f37f0499dccb86ebb1d15ced0aa808e86fce3835db3cabc04420409eaf}{m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+S\+C\+R\+E\+E\+N\+S\+H\+OT}}, 
+\newline
+\mbox{\hyperlink{gui-runner_8h_ac190200f37f0499dccb86ebb1d15ced0a309dd664e34ad9e20a0884748ba49b50}{m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+F\+A\+S\+T\+\_\+\+F\+O\+R\+W\+A\+RD}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gui-runner_8h_ad34949b1a8eea99a01dd34345c87f8a4}{m\+G\+U\+I\+Init}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$, const char $\ast$port)
+\item 
+void \mbox{\hyperlink{gui-runner_8h_a5d0bba06810ebab1134e6d5d26d46767}{m\+G\+U\+I\+Deinit}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$)
+\item 
+void \mbox{\hyperlink{gui-runner_8h_a857680d78d61544055058419bdca0bed}{m\+G\+U\+I\+Run}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$, const char $\ast$path)
+\item 
+void \mbox{\hyperlink{gui-runner_8h_a613515116fcdd9bb3f2743607aa0c18e}{m\+G\+U\+I\+Runloop}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$)
+\item 
+T\+H\+R\+E\+A\+D\+\_\+\+E\+N\+T\+RY \mbox{\hyperlink{gui-runner_8h_a893aeb86364bda67a415a000c4a690d6}{m\+G\+U\+I\+Autosave\+Thread}} (void $\ast$context)
+\end{DoxyCompactItemize}
+
+
+\subsection{Class Documentation}
+\index{m\+G\+U\+I\+Background@{m\+G\+U\+I\+Background}}\label{structm_g_u_i_background}
+\Hypertarget{gui-runner_8h_structm_g_u_i_background}
+\subsubsection{struct m\+G\+U\+I\+Background}
+
+
+Collaboration diagram for m\+G\+U\+I\+Background\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structm_g_u_i_background__coll__graph}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\mbox{\Hypertarget{gui-runner_8h_ad19787c8d810ee2098ad87d444095bc4}\label{gui-runner_8h_ad19787c8d810ee2098ad87d444095bc4}} 
+struct GUIBackground&
+d&
+\\
+\hline
+
+\mbox{\Hypertarget{gui-runner_8h_a421bbf1b67c109156330f9387ce1bcc7}\label{gui-runner_8h_a421bbf1b67c109156330f9387ce1bcc7}} 
+struct \mbox{\hyperlink{structm_g_u_i_runner}{mGUIRunner}} $\ast$&
+p&
+\\
+\hline
+
+\mbox{\Hypertarget{gui-runner_8h_a86c935c6b997bf6f3c2772c5693a2ca1}\label{gui-runner_8h_a86c935c6b997bf6f3c2772c5693a2ca1}} 
+color\_t $\ast$&
+screenshot&
+\\
+\hline
+
+\mbox{\Hypertarget{gui-runner_8h_a4795ed58b45e831117295a67b6aeb039}\label{gui-runner_8h_a4795ed58b45e831117295a67b6aeb039}} 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}&
+screenshotId&
+\\
+\hline
+
+\end{DoxyFields}
+\index{m\+G\+U\+I\+Runner\+Lux@{m\+G\+U\+I\+Runner\+Lux}}\label{structm_g_u_i_runner_lux}
+\Hypertarget{gui-runner_8h_structm_g_u_i_runner_lux}
+\subsubsection{struct m\+G\+U\+I\+Runner\+Lux}
+
+
+Collaboration diagram for m\+G\+U\+I\+Runner\+Lux\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{structm_g_u_i_runner_lux__coll__graph}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\mbox{\Hypertarget{gui-runner_8h_a7be7665b7684a325d38cb481a1ab5747}\label{gui-runner_8h_a7be7665b7684a325d38cb481a1ab5747}} 
+struct GBALuminanceSource&
+d&
+\\
+\hline
+
+\mbox{\Hypertarget{gui-runner_8h_aaaa6e215a7c1eeecadd92feffe7ba4f0}\label{gui-runner_8h_aaaa6e215a7c1eeecadd92feffe7ba4f0}} 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}&
+luxLevel&
+\\
+\hline
+
+\end{DoxyFields}
+\index{m\+G\+U\+I\+Autosave\+Context@{m\+G\+U\+I\+Autosave\+Context}}\label{structm_g_u_i_autosave_context}
+\Hypertarget{gui-runner_8h_structm_g_u_i_autosave_context}
+\subsubsection{struct m\+G\+U\+I\+Autosave\+Context}
+
+
+Collaboration diagram for m\+G\+U\+I\+Autosave\+Context\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{structm_g_u_i_autosave_context__coll__graph}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\mbox{\Hypertarget{gui-runner_8h_aeda880ec961fb96942c204461a85e927}\label{gui-runner_8h_aeda880ec961fb96942c204461a85e927}} 
+struct VFile $\ast$&
+buffer&
+\\
+\hline
+
+\mbox{\Hypertarget{gui-runner_8h_a5063e1983e50f46260059055e98ae2f0}\label{gui-runner_8h_a5063e1983e50f46260059055e98ae2f0}} 
+Condition&
+cond&
+\\
+\hline
+
+\mbox{\Hypertarget{gui-runner_8h_a40c414a2080811c2e5b9dbc48f63f039}\label{gui-runner_8h_a40c414a2080811c2e5b9dbc48f63f039}} 
+struct mCore $\ast$&
+core&
+\\
+\hline
+
+\mbox{\Hypertarget{gui-runner_8h_aede38b4d34982e1850a547ec09e8a003}\label{gui-runner_8h_aede38b4d34982e1850a547ec09e8a003}} 
+Mutex&
+mutex&
+\\
+\hline
+
+\mbox{\Hypertarget{gui-runner_8h_a562e2016dd4f2d0a60b4fb8ce592c9dd}\label{gui-runner_8h_a562e2016dd4f2d0a60b4fb8ce592c9dd}} 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}&
+running&
+\\
+\hline
+
+\mbox{\Hypertarget{gui-runner_8h_a358e2ebdb22e01ac230979c936419762}\label{gui-runner_8h_a358e2ebdb22e01ac230979c936419762}} 
+Thread&
+thread&
+\\
+\hline
+
+\end{DoxyFields}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{gui-runner_8h_ac190200f37f0499dccb86ebb1d15ced0}\label{gui-runner_8h_ac190200f37f0499dccb86ebb1d15ced0}} 
+\index{gui-\/runner.\+h@{gui-\/runner.\+h}!m\+G\+U\+I\+Input@{m\+G\+U\+I\+Input}}
+\index{m\+G\+U\+I\+Input@{m\+G\+U\+I\+Input}!gui-\/runner.\+h@{gui-\/runner.\+h}}
+\subsubsection{\texorpdfstring{m\+G\+U\+I\+Input}{mGUIInput}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{gui-runner_8h_ac190200f37f0499dccb86ebb1d15ced0}{m\+G\+U\+I\+Input}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+I\+N\+C\+R\+E\+A\+S\+E\+\_\+\+B\+R\+I\+G\+H\+T\+N\+E\+SS@{m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+I\+N\+C\+R\+E\+A\+S\+E\+\_\+\+B\+R\+I\+G\+H\+T\+N\+E\+SS}!gui-\/runner.\+h@{gui-\/runner.\+h}}\index{gui-\/runner.\+h@{gui-\/runner.\+h}!m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+I\+N\+C\+R\+E\+A\+S\+E\+\_\+\+B\+R\+I\+G\+H\+T\+N\+E\+SS@{m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+I\+N\+C\+R\+E\+A\+S\+E\+\_\+\+B\+R\+I\+G\+H\+T\+N\+E\+SS}}}\mbox{\Hypertarget{gui-runner_8h_ac190200f37f0499dccb86ebb1d15ced0a3af7363535b2615b88ab3ec4a197ee5d}\label{gui-runner_8h_ac190200f37f0499dccb86ebb1d15ced0a3af7363535b2615b88ab3ec4a197ee5d}} 
+m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+I\+N\+C\+R\+E\+A\+S\+E\+\_\+\+B\+R\+I\+G\+H\+T\+N\+E\+SS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+D\+E\+C\+R\+E\+A\+S\+E\+\_\+\+B\+R\+I\+G\+H\+T\+N\+E\+SS@{m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+D\+E\+C\+R\+E\+A\+S\+E\+\_\+\+B\+R\+I\+G\+H\+T\+N\+E\+SS}!gui-\/runner.\+h@{gui-\/runner.\+h}}\index{gui-\/runner.\+h@{gui-\/runner.\+h}!m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+D\+E\+C\+R\+E\+A\+S\+E\+\_\+\+B\+R\+I\+G\+H\+T\+N\+E\+SS@{m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+D\+E\+C\+R\+E\+A\+S\+E\+\_\+\+B\+R\+I\+G\+H\+T\+N\+E\+SS}}}\mbox{\Hypertarget{gui-runner_8h_ac190200f37f0499dccb86ebb1d15ced0ae54a7af768df3f7c793c07652b8d001d}\label{gui-runner_8h_ac190200f37f0499dccb86ebb1d15ced0ae54a7af768df3f7c793c07652b8d001d}} 
+m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+D\+E\+C\+R\+E\+A\+S\+E\+\_\+\+B\+R\+I\+G\+H\+T\+N\+E\+SS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+S\+C\+R\+E\+E\+N\+\_\+\+M\+O\+DE@{m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+S\+C\+R\+E\+E\+N\+\_\+\+M\+O\+DE}!gui-\/runner.\+h@{gui-\/runner.\+h}}\index{gui-\/runner.\+h@{gui-\/runner.\+h}!m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+S\+C\+R\+E\+E\+N\+\_\+\+M\+O\+DE@{m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+S\+C\+R\+E\+E\+N\+\_\+\+M\+O\+DE}}}\mbox{\Hypertarget{gui-runner_8h_ac190200f37f0499dccb86ebb1d15ced0ac63fa69551e8690d0651bc7dcc42c19f}\label{gui-runner_8h_ac190200f37f0499dccb86ebb1d15ced0ac63fa69551e8690d0651bc7dcc42c19f}} 
+m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+S\+C\+R\+E\+E\+N\+\_\+\+M\+O\+DE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+S\+C\+R\+E\+E\+N\+S\+H\+OT@{m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+S\+C\+R\+E\+E\+N\+S\+H\+OT}!gui-\/runner.\+h@{gui-\/runner.\+h}}\index{gui-\/runner.\+h@{gui-\/runner.\+h}!m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+S\+C\+R\+E\+E\+N\+S\+H\+OT@{m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+S\+C\+R\+E\+E\+N\+S\+H\+OT}}}\mbox{\Hypertarget{gui-runner_8h_ac190200f37f0499dccb86ebb1d15ced0aa808e86fce3835db3cabc04420409eaf}\label{gui-runner_8h_ac190200f37f0499dccb86ebb1d15ced0aa808e86fce3835db3cabc04420409eaf}} 
+m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+S\+C\+R\+E\+E\+N\+S\+H\+OT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+F\+A\+S\+T\+\_\+\+F\+O\+R\+W\+A\+RD@{m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+F\+A\+S\+T\+\_\+\+F\+O\+R\+W\+A\+RD}!gui-\/runner.\+h@{gui-\/runner.\+h}}\index{gui-\/runner.\+h@{gui-\/runner.\+h}!m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+F\+A\+S\+T\+\_\+\+F\+O\+R\+W\+A\+RD@{m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+F\+A\+S\+T\+\_\+\+F\+O\+R\+W\+A\+RD}}}\mbox{\Hypertarget{gui-runner_8h_ac190200f37f0499dccb86ebb1d15ced0a309dd664e34ad9e20a0884748ba49b50}\label{gui-runner_8h_ac190200f37f0499dccb86ebb1d15ced0a309dd664e34ad9e20a0884748ba49b50}} 
+m\+G\+U\+I\+\_\+\+I\+N\+P\+U\+T\+\_\+\+F\+A\+S\+T\+\_\+\+F\+O\+R\+W\+A\+RD&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{gui-runner_8h_a893aeb86364bda67a415a000c4a690d6}\label{gui-runner_8h_a893aeb86364bda67a415a000c4a690d6}} 
+\index{gui-\/runner.\+h@{gui-\/runner.\+h}!m\+G\+U\+I\+Autosave\+Thread@{m\+G\+U\+I\+Autosave\+Thread}}
+\index{m\+G\+U\+I\+Autosave\+Thread@{m\+G\+U\+I\+Autosave\+Thread}!gui-\/runner.\+h@{gui-\/runner.\+h}}
+\subsubsection{\texorpdfstring{m\+G\+U\+I\+Autosave\+Thread()}{mGUIAutosaveThread()}}
+{\footnotesize\ttfamily T\+H\+R\+E\+A\+D\+\_\+\+E\+N\+T\+RY m\+G\+U\+I\+Autosave\+Thread (\begin{DoxyParamCaption}\item[{void $\ast$}]{context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui-runner_8h_a893aeb86364bda67a415a000c4a690d6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui-runner_8h_a893aeb86364bda67a415a000c4a690d6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gui-runner_8h_a5d0bba06810ebab1134e6d5d26d46767}\label{gui-runner_8h_a5d0bba06810ebab1134e6d5d26d46767}} 
+\index{gui-\/runner.\+h@{gui-\/runner.\+h}!m\+G\+U\+I\+Deinit@{m\+G\+U\+I\+Deinit}}
+\index{m\+G\+U\+I\+Deinit@{m\+G\+U\+I\+Deinit}!gui-\/runner.\+h@{gui-\/runner.\+h}}
+\subsubsection{\texorpdfstring{m\+G\+U\+I\+Deinit()}{mGUIDeinit()}}
+{\footnotesize\ttfamily void m\+G\+U\+I\+Deinit (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui-runner_8h_a5d0bba06810ebab1134e6d5d26d46767_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{gui-runner_8h_a5d0bba06810ebab1134e6d5d26d46767_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gui-runner_8h_ad34949b1a8eea99a01dd34345c87f8a4}\label{gui-runner_8h_ad34949b1a8eea99a01dd34345c87f8a4}} 
+\index{gui-\/runner.\+h@{gui-\/runner.\+h}!m\+G\+U\+I\+Init@{m\+G\+U\+I\+Init}}
+\index{m\+G\+U\+I\+Init@{m\+G\+U\+I\+Init}!gui-\/runner.\+h@{gui-\/runner.\+h}}
+\subsubsection{\texorpdfstring{m\+G\+U\+I\+Init()}{mGUIInit()}}
+{\footnotesize\ttfamily void m\+G\+U\+I\+Init (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{,  }\item[{const char $\ast$}]{port }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui-runner_8h_ad34949b1a8eea99a01dd34345c87f8a4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{gui-runner_8h_ad34949b1a8eea99a01dd34345c87f8a4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gui-runner_8h_a857680d78d61544055058419bdca0bed}\label{gui-runner_8h_a857680d78d61544055058419bdca0bed}} 
+\index{gui-\/runner.\+h@{gui-\/runner.\+h}!m\+G\+U\+I\+Run@{m\+G\+U\+I\+Run}}
+\index{m\+G\+U\+I\+Run@{m\+G\+U\+I\+Run}!gui-\/runner.\+h@{gui-\/runner.\+h}}
+\subsubsection{\texorpdfstring{m\+G\+U\+I\+Run()}{mGUIRun()}}
+{\footnotesize\ttfamily void m\+G\+U\+I\+Run (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{,  }\item[{const char $\ast$}]{path }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui-runner_8h_a857680d78d61544055058419bdca0bed_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{gui-runner_8h_a857680d78d61544055058419bdca0bed_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gui-runner_8h_a613515116fcdd9bb3f2743607aa0c18e}\label{gui-runner_8h_a613515116fcdd9bb3f2743607aa0c18e}} 
+\index{gui-\/runner.\+h@{gui-\/runner.\+h}!m\+G\+U\+I\+Runloop@{m\+G\+U\+I\+Runloop}}
+\index{m\+G\+U\+I\+Runloop@{m\+G\+U\+I\+Runloop}!gui-\/runner.\+h@{gui-\/runner.\+h}}
+\subsubsection{\texorpdfstring{m\+G\+U\+I\+Runloop()}{mGUIRunloop()}}
+{\footnotesize\ttfamily void m\+G\+U\+I\+Runloop (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gui-runner_8h_a613515116fcdd9bb3f2743607aa0c18e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{gui-runner_8h_a613515116fcdd9bb3f2743607aa0c18e_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,140 @@
+\hypertarget{imagemagick-gif-encoder_8c}{}\section{src/feature/imagemagick/imagemagick-\/gif-\/encoder.c File Reference}
+\label{imagemagick-gif-encoder_8c}\index{src/feature/imagemagick/imagemagick-\/gif-\/encoder.\+c@{src/feature/imagemagick/imagemagick-\/gif-\/encoder.\+c}}
+{\ttfamily \#include \char`\"{}imagemagick-\/gif-\/encoder.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba/internal/gba/gba.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/video.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+Include dependency graph for imagemagick-\/gif-\/encoder.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{imagemagick-gif-encoder_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{imagemagick-gif-encoder_8c_a90fcc60d0fb6e6dc2c5279773d876161}{\+\_\+magick\+Post\+Video\+Frame}} (struct m\+A\+V\+Stream $\ast$, const color\+\_\+t $\ast$pixels, size\+\_\+t stride)
+\item 
+static void \mbox{\hyperlink{imagemagick-gif-encoder_8c_a22ece06be91b078780d4bf4306bc93e2}{\+\_\+magick\+Video\+Dimensions\+Changed}} (struct m\+A\+V\+Stream $\ast$, unsigned \mbox{\hyperlink{readppm_8c_a59b7c57bf1dc7c36ac7c8232cf5bb713}{width}}, unsigned \mbox{\hyperlink{readppm_8c_ac8b624a7354198da45f5797b93b883c9}{height}})
+\item 
+void \mbox{\hyperlink{imagemagick-gif-encoder_8c_a09cc198e1bf6838fe97da63133398315}{Image\+Magick\+G\+I\+F\+Encoder\+Init}} (struct \mbox{\hyperlink{imagemagick-gif-encoder_8h_struct_image_magick_g_i_f_encoder}{Image\+Magick\+G\+I\+F\+Encoder}} $\ast$encoder)
+\item 
+void \mbox{\hyperlink{imagemagick-gif-encoder_8c_a40b53230d8a8b3b36048085d06d9d029}{Image\+Magick\+G\+I\+F\+Encoder\+Set\+Params}} (struct \mbox{\hyperlink{imagemagick-gif-encoder_8h_struct_image_magick_g_i_f_encoder}{Image\+Magick\+G\+I\+F\+Encoder}} $\ast$encoder, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} frameskip, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} delay\+Ms)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{imagemagick-gif-encoder_8c_ad1c19071d722aa4826774e1f179b3f57}{Image\+Magick\+G\+I\+F\+Encoder\+Open}} (struct \mbox{\hyperlink{imagemagick-gif-encoder_8h_struct_image_magick_g_i_f_encoder}{Image\+Magick\+G\+I\+F\+Encoder}} $\ast$encoder, const char $\ast$outfile)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{imagemagick-gif-encoder_8c_afbb1ff524c5364a4e5470189f8501204}{Image\+Magick\+G\+I\+F\+Encoder\+Close}} (struct \mbox{\hyperlink{imagemagick-gif-encoder_8h_struct_image_magick_g_i_f_encoder}{Image\+Magick\+G\+I\+F\+Encoder}} $\ast$encoder)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{imagemagick-gif-encoder_8c_a05aba14b683c69c288b19fb794847dfc}{Image\+Magick\+G\+I\+F\+Encoder\+Is\+Open}} (struct \mbox{\hyperlink{imagemagick-gif-encoder_8h_struct_image_magick_g_i_f_encoder}{Image\+Magick\+G\+I\+F\+Encoder}} $\ast$encoder)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{imagemagick-gif-encoder_8c_a90fcc60d0fb6e6dc2c5279773d876161}\label{imagemagick-gif-encoder_8c_a90fcc60d0fb6e6dc2c5279773d876161}} 
+\index{imagemagick-\/gif-\/encoder.\+c@{imagemagick-\/gif-\/encoder.\+c}!\+\_\+magick\+Post\+Video\+Frame@{\+\_\+magick\+Post\+Video\+Frame}}
+\index{\+\_\+magick\+Post\+Video\+Frame@{\+\_\+magick\+Post\+Video\+Frame}!imagemagick-\/gif-\/encoder.\+c@{imagemagick-\/gif-\/encoder.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+magick\+Post\+Video\+Frame()}{\_magickPostVideoFrame()}}
+{\footnotesize\ttfamily static void \+\_\+magick\+Post\+Video\+Frame (\begin{DoxyParamCaption}\item[{struct m\+A\+V\+Stream $\ast$}]{stream,  }\item[{const color\+\_\+t $\ast$}]{pixels,  }\item[{size\+\_\+t}]{stride }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{imagemagick-gif-encoder_8c_a90fcc60d0fb6e6dc2c5279773d876161_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{imagemagick-gif-encoder_8c_a22ece06be91b078780d4bf4306bc93e2}\label{imagemagick-gif-encoder_8c_a22ece06be91b078780d4bf4306bc93e2}} 
+\index{imagemagick-\/gif-\/encoder.\+c@{imagemagick-\/gif-\/encoder.\+c}!\+\_\+magick\+Video\+Dimensions\+Changed@{\+\_\+magick\+Video\+Dimensions\+Changed}}
+\index{\+\_\+magick\+Video\+Dimensions\+Changed@{\+\_\+magick\+Video\+Dimensions\+Changed}!imagemagick-\/gif-\/encoder.\+c@{imagemagick-\/gif-\/encoder.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+magick\+Video\+Dimensions\+Changed()}{\_magickVideoDimensionsChanged()}}
+{\footnotesize\ttfamily static void \+\_\+magick\+Video\+Dimensions\+Changed (\begin{DoxyParamCaption}\item[{struct m\+A\+V\+Stream $\ast$}]{stream,  }\item[{unsigned}]{width,  }\item[{unsigned}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{imagemagick-gif-encoder_8c_a22ece06be91b078780d4bf4306bc93e2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{imagemagick-gif-encoder_8c_a22ece06be91b078780d4bf4306bc93e2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{imagemagick-gif-encoder_8c_afbb1ff524c5364a4e5470189f8501204}\label{imagemagick-gif-encoder_8c_afbb1ff524c5364a4e5470189f8501204}} 
+\index{imagemagick-\/gif-\/encoder.\+c@{imagemagick-\/gif-\/encoder.\+c}!Image\+Magick\+G\+I\+F\+Encoder\+Close@{Image\+Magick\+G\+I\+F\+Encoder\+Close}}
+\index{Image\+Magick\+G\+I\+F\+Encoder\+Close@{Image\+Magick\+G\+I\+F\+Encoder\+Close}!imagemagick-\/gif-\/encoder.\+c@{imagemagick-\/gif-\/encoder.\+c}}
+\subsubsection{\texorpdfstring{Image\+Magick\+G\+I\+F\+Encoder\+Close()}{ImageMagickGIFEncoderClose()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} Image\+Magick\+G\+I\+F\+Encoder\+Close (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{imagemagick-gif-encoder_8h_struct_image_magick_g_i_f_encoder}{Image\+Magick\+G\+I\+F\+Encoder}} $\ast$}]{encoder }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{imagemagick-gif-encoder_8c_afbb1ff524c5364a4e5470189f8501204_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{imagemagick-gif-encoder_8c_a09cc198e1bf6838fe97da63133398315}\label{imagemagick-gif-encoder_8c_a09cc198e1bf6838fe97da63133398315}} 
+\index{imagemagick-\/gif-\/encoder.\+c@{imagemagick-\/gif-\/encoder.\+c}!Image\+Magick\+G\+I\+F\+Encoder\+Init@{Image\+Magick\+G\+I\+F\+Encoder\+Init}}
+\index{Image\+Magick\+G\+I\+F\+Encoder\+Init@{Image\+Magick\+G\+I\+F\+Encoder\+Init}!imagemagick-\/gif-\/encoder.\+c@{imagemagick-\/gif-\/encoder.\+c}}
+\subsubsection{\texorpdfstring{Image\+Magick\+G\+I\+F\+Encoder\+Init()}{ImageMagickGIFEncoderInit()}}
+{\footnotesize\ttfamily void Image\+Magick\+G\+I\+F\+Encoder\+Init (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{imagemagick-gif-encoder_8h_struct_image_magick_g_i_f_encoder}{Image\+Magick\+G\+I\+F\+Encoder}} $\ast$}]{encoder }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{imagemagick-gif-encoder_8c_a09cc198e1bf6838fe97da63133398315_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{imagemagick-gif-encoder_8c_a05aba14b683c69c288b19fb794847dfc}\label{imagemagick-gif-encoder_8c_a05aba14b683c69c288b19fb794847dfc}} 
+\index{imagemagick-\/gif-\/encoder.\+c@{imagemagick-\/gif-\/encoder.\+c}!Image\+Magick\+G\+I\+F\+Encoder\+Is\+Open@{Image\+Magick\+G\+I\+F\+Encoder\+Is\+Open}}
+\index{Image\+Magick\+G\+I\+F\+Encoder\+Is\+Open@{Image\+Magick\+G\+I\+F\+Encoder\+Is\+Open}!imagemagick-\/gif-\/encoder.\+c@{imagemagick-\/gif-\/encoder.\+c}}
+\subsubsection{\texorpdfstring{Image\+Magick\+G\+I\+F\+Encoder\+Is\+Open()}{ImageMagickGIFEncoderIsOpen()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} Image\+Magick\+G\+I\+F\+Encoder\+Is\+Open (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{imagemagick-gif-encoder_8h_struct_image_magick_g_i_f_encoder}{Image\+Magick\+G\+I\+F\+Encoder}} $\ast$}]{encoder }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{imagemagick-gif-encoder_8c_a05aba14b683c69c288b19fb794847dfc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{imagemagick-gif-encoder_8c_ad1c19071d722aa4826774e1f179b3f57}\label{imagemagick-gif-encoder_8c_ad1c19071d722aa4826774e1f179b3f57}} 
+\index{imagemagick-\/gif-\/encoder.\+c@{imagemagick-\/gif-\/encoder.\+c}!Image\+Magick\+G\+I\+F\+Encoder\+Open@{Image\+Magick\+G\+I\+F\+Encoder\+Open}}
+\index{Image\+Magick\+G\+I\+F\+Encoder\+Open@{Image\+Magick\+G\+I\+F\+Encoder\+Open}!imagemagick-\/gif-\/encoder.\+c@{imagemagick-\/gif-\/encoder.\+c}}
+\subsubsection{\texorpdfstring{Image\+Magick\+G\+I\+F\+Encoder\+Open()}{ImageMagickGIFEncoderOpen()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} Image\+Magick\+G\+I\+F\+Encoder\+Open (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{imagemagick-gif-encoder_8h_struct_image_magick_g_i_f_encoder}{Image\+Magick\+G\+I\+F\+Encoder}} $\ast$}]{encoder,  }\item[{const char $\ast$}]{outfile }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{imagemagick-gif-encoder_8c_ad1c19071d722aa4826774e1f179b3f57_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{imagemagick-gif-encoder_8c_a40b53230d8a8b3b36048085d06d9d029}\label{imagemagick-gif-encoder_8c_a40b53230d8a8b3b36048085d06d9d029}} 
+\index{imagemagick-\/gif-\/encoder.\+c@{imagemagick-\/gif-\/encoder.\+c}!Image\+Magick\+G\+I\+F\+Encoder\+Set\+Params@{Image\+Magick\+G\+I\+F\+Encoder\+Set\+Params}}
+\index{Image\+Magick\+G\+I\+F\+Encoder\+Set\+Params@{Image\+Magick\+G\+I\+F\+Encoder\+Set\+Params}!imagemagick-\/gif-\/encoder.\+c@{imagemagick-\/gif-\/encoder.\+c}}
+\subsubsection{\texorpdfstring{Image\+Magick\+G\+I\+F\+Encoder\+Set\+Params()}{ImageMagickGIFEncoderSetParams()}}
+{\footnotesize\ttfamily void Image\+Magick\+G\+I\+F\+Encoder\+Set\+Params (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{imagemagick-gif-encoder_8h_struct_image_magick_g_i_f_encoder}{Image\+Magick\+G\+I\+F\+Encoder}} $\ast$}]{encoder,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{frameskip,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{delay\+Ms }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{imagemagick-gif-encoder_8c_a40b53230d8a8b3b36048085d06d9d029_cgraph}
+\end{center}
+\end{figure}

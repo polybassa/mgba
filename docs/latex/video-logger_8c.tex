@@ -1,0 +1,902 @@
+\hypertarget{video-logger_8c}{}\section{src/feature/video-\/logger.c File Reference}
+\label{video-logger_8c}\index{src/feature/video-\/logger.\+c@{src/feature/video-\/logger.\+c}}
+{\ttfamily \#include $<$mgba/feature/video-\/logger.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/memory.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/math.\+h$>$}\newline
+Include dependency graph for video-\/logger.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{video-logger_8c_a0ac864c0038cca0b382e3103f9a6f32e}{B\+U\+F\+F\+E\+R\+\_\+\+B\+A\+S\+E\+\_\+\+S\+I\+ZE}}~0x20000
+\item 
+\#define \mbox{\hyperlink{video-logger_8c_aa8bad2cd89820cdaf2a7f26392774014}{M\+A\+X\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+ZE}}~0x800000
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{video-logger_8c_a565fbaa07fe50c5ef36224a0f586048a}{m\+V\+L\+Block\+Type}} \{ \newline
+\mbox{\hyperlink{video-logger_8c_a565fbaa07fe50c5ef36224a0f586048aab633461be1c66917f469963cc0eeb9c7}{m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+D\+U\+M\+MY}} = 0, 
+\mbox{\hyperlink{video-logger_8c_a565fbaa07fe50c5ef36224a0f586048aa65a9cdc4a92556634a393026e168900d}{m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+T\+A\+TE}}, 
+\mbox{\hyperlink{video-logger_8c_a565fbaa07fe50c5ef36224a0f586048aa6e73f830afca38ee2b752d9ea097a335}{m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+\+H\+E\+A\+D\+ER}}, 
+\mbox{\hyperlink{video-logger_8c_a565fbaa07fe50c5ef36224a0f586048aae8a8a535bb511df0b69ca819d7579b71}{m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+D\+A\+TA}}, 
+\newline
+\mbox{\hyperlink{video-logger_8c_a565fbaa07fe50c5ef36224a0f586048aae2aac6b3dfc1785c2f32778d21a5f012}{m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+F\+O\+O\+T\+ER}} = 0x784\+C566D
+ \}
+\item 
+enum \mbox{\hyperlink{video-logger_8c_a6bddeb07afc4e7350f6c1b9587ba8a7e}{m\+V\+L\+Header\+Flag}} \{ \mbox{\hyperlink{video-logger_8c_a6bddeb07afc4e7350f6c1b9587ba8a7ea39c3448e1ef1be5d020feb64d5ba9355}{m\+V\+L\+\_\+\+F\+L\+A\+G\+\_\+\+H\+A\+S\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+T\+A\+TE}} = 1
+ \}
+\item 
+enum \mbox{\hyperlink{video-logger_8c_af34b32cd58509f1d6f7c6ad935657cc0}{m\+V\+L\+Block\+Flag}} \{ \mbox{\hyperlink{video-logger_8c_af34b32cd58509f1d6f7c6ad935657cc0aae8b041cbca0730e37518df9b56a59f0}{m\+V\+L\+\_\+\+F\+L\+A\+G\+\_\+\+B\+L\+O\+C\+K\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+ED}} = 1
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{video-logger_8c_a163afd173e5992530065bb8ddc2b693e}{\+\_\+write\+Data}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}, const void $\ast$\mbox{\hyperlink{libretro_8c_a735984d41155bc1032e09bece8f8d66d}{data}}, size\+\_\+t length)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{video-logger_8c_a2bb793afc8d7e37b65be24d0c0198d13}{\+\_\+write\+Null}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}, const void $\ast$\mbox{\hyperlink{libretro_8c_a735984d41155bc1032e09bece8f8d66d}{data}}, size\+\_\+t length)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{video-logger_8c_abcbab73349348e3342c1e7255ed55ee4}{\+\_\+read\+Data}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}, void $\ast$\mbox{\hyperlink{libretro_8c_a735984d41155bc1032e09bece8f8d66d}{data}}, size\+\_\+t length, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} block)
+\item 
+static ssize\+\_\+t \mbox{\hyperlink{video-logger_8c_aad574cf14798e8c2e42090aa1378c7fe}{m\+Video\+Logger\+Read\+Channel}} (struct m\+Video\+Log\+Channel $\ast$channel, void $\ast$\mbox{\hyperlink{libretro_8c_a735984d41155bc1032e09bece8f8d66d}{data}}, size\+\_\+t length)
+\item 
+static ssize\+\_\+t \mbox{\hyperlink{video-logger_8c_a4ff0364da23c84ee35e9e6cd4118a1bb}{m\+Video\+Logger\+Write\+Channel}} (struct m\+Video\+Log\+Channel $\ast$channel, const void $\ast$\mbox{\hyperlink{libretro_8c_a735984d41155bc1032e09bece8f8d66d}{data}}, size\+\_\+t length)
+\item 
+static size\+\_\+t \mbox{\hyperlink{video-logger_8c_a18aadf02a7a40b898d4b6d362af0e06a}{\+\_\+round\+Up}} (size\+\_\+t value, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} shift)
+\item 
+void \mbox{\hyperlink{video-logger_8c_ad61ee4a99ebbf8066988b0da02c69838}{m\+Video\+Logger\+Renderer\+Create}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} readonly)
+\item 
+void \mbox{\hyperlink{video-logger_8c_a16bd9eb225160df41ea90b332634c267}{m\+Video\+Logger\+Renderer\+Init}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}})
+\item 
+void \mbox{\hyperlink{video-logger_8c_ae525d818fd82d5753562673f85ff0b4d}{m\+Video\+Logger\+Renderer\+Deinit}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}})
+\item 
+void \mbox{\hyperlink{video-logger_8c_adeafad306d275ef128d6f88bb2c28ea0}{m\+Video\+Logger\+Renderer\+Reset}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}})
+\item 
+void \mbox{\hyperlink{video-logger_8c_a92cbf883be4c238b029ff28a8b905841}{m\+Video\+Logger\+Renderer\+Write\+Video\+Register}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}, uint32\+\_\+t address, uint16\+\_\+t value)
+\item 
+void \mbox{\hyperlink{video-logger_8c_ad44e459bc3864018f661249901f07cf2}{m\+Video\+Logger\+Renderer\+Write\+V\+R\+AM}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}, uint32\+\_\+t address)
+\item 
+void \mbox{\hyperlink{video-logger_8c_a00131ffac3e67e4c8615fe36d9aad49c}{m\+Video\+Logger\+Renderer\+Write\+Palette}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}, uint32\+\_\+t address, uint16\+\_\+t value)
+\item 
+void \mbox{\hyperlink{video-logger_8c_abc3329514cd845af3704c8daabc1f626}{m\+Video\+Logger\+Renderer\+Write\+O\+AM}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}, uint32\+\_\+t address, uint16\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{video-logger_8c_af04fe8e7da4383d4c2de8bd267880974}{\+\_\+flush\+V\+R\+AM}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}})
+\item 
+void \mbox{\hyperlink{video-logger_8c_aae580067601d3fb8deb476d420acf304}{m\+Video\+Logger\+Renderer\+Draw\+Scanline}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} y)
+\item 
+void \mbox{\hyperlink{video-logger_8c_a4ba6e2f71a9a753f746248d6b0855e7b}{m\+Video\+Logger\+Renderer\+Draw\+Range}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} startX, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} endX, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} y)
+\item 
+void \mbox{\hyperlink{video-logger_8c_a62188c3c2ee5b48e38f1f79431d50551}{m\+Video\+Logger\+Renderer\+Flush}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}})
+\item 
+void \mbox{\hyperlink{video-logger_8c_ae0985d556c5cd2c11d95f3b0c8e820af}{m\+Video\+Logger\+Renderer\+Finish\+Frame}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}})
+\item 
+void \mbox{\hyperlink{video-logger_8c_a1548cd96c67d81fecdd4e71df06c6b2f}{m\+Video\+Logger\+Write\+Buffer}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}, uint32\+\_\+t \mbox{\hyperlink{3ds_2main_8c_a28a1f39901bcbdd2fb34c81ca5649a4a}{buffer\+Id}}, uint32\+\_\+t \mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}}, uint32\+\_\+t length, const void $\ast$\mbox{\hyperlink{libretro_8c_a735984d41155bc1032e09bece8f8d66d}{data}})
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{video-logger_8c_ab790ed3e764c170c154f5781ecba758d}{m\+Video\+Logger\+Renderer\+Run}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} block)
+\item 
+void \mbox{\hyperlink{video-logger_8c_ab35cded24430e8df5eea72310c1827be}{m\+Video\+Logger\+Attach\+Channel}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}, struct m\+Video\+Log\+Context $\ast$context, size\+\_\+t channel\+Id)
+\item 
+struct m\+Video\+Log\+Context $\ast$ \mbox{\hyperlink{video-logger_8c_abfc652080406bf430af299f8ab419aec}{m\+Video\+Log\+Context\+Create}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}})
+\item 
+void \mbox{\hyperlink{video-logger_8c_a89d33ff62ba22b7fcd0fe5e895b4c95e}{m\+Video\+Log\+Context\+Set\+Output}} (struct m\+Video\+Log\+Context $\ast$context, struct V\+File $\ast$vf)
+\item 
+void \mbox{\hyperlink{video-logger_8c_a53b5285dc89f4789592daef5ba376368}{m\+Video\+Log\+Context\+Write\+Header}} (struct m\+Video\+Log\+Context $\ast$context, struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}})
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{video-logger_8c_abb929a40c45d70202af57598a73f625a}{\+\_\+read\+Block\+Header}} (struct m\+Video\+Log\+Context $\ast$context, struct m\+V\+L\+Block\+Header $\ast$header)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{video-logger_8c_ac5911963671b26f1d64938bcf9ac6648}{\+\_\+read\+Header}} (struct m\+Video\+Log\+Context $\ast$context)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{video-logger_8c_ab20aa19e19c6e5eb89100137495bfef1}{m\+Video\+Log\+Context\+Load}} (struct m\+Video\+Log\+Context $\ast$context, struct V\+File $\ast$vf)
+\item 
+static void \mbox{\hyperlink{video-logger_8c_a7a65448771b3eb66410f5d1e4537e322}{\+\_\+flush\+Buffer}} (struct m\+Video\+Log\+Context $\ast$context)
+\item 
+void \mbox{\hyperlink{video-logger_8c_a300bc3d5849465d59ddaa92e6a338fb6}{m\+Video\+Log\+Context\+Destroy}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, struct m\+Video\+Log\+Context $\ast$context)
+\item 
+void \mbox{\hyperlink{video-logger_8c_aea08663b76690e7220b3f8377f971785}{m\+Video\+Log\+Context\+Rewind}} (struct m\+Video\+Log\+Context $\ast$context, struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}})
+\item 
+void $\ast$ \mbox{\hyperlink{video-logger_8c_aa9a3f77cb1a532bdc62db67c0724697f}{m\+Video\+Log\+Context\+Initial\+State}} (struct m\+Video\+Log\+Context $\ast$context, size\+\_\+t $\ast$\mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{video-logger_8c_a27685ba414aed35c5b92736c0ef21ebe}{m\+Video\+Logger\+Add\+Channel}} (struct m\+Video\+Log\+Context $\ast$context)
+\item 
+static void \mbox{\hyperlink{video-logger_8c_a4b7dfbbd89bf3e590e5c16912b79bfa4}{\+\_\+read\+Buffer}} (struct V\+File $\ast$vf, struct m\+Video\+Log\+Channel $\ast$channel, size\+\_\+t length)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{video-logger_8c_ac918b379da982809457516728ac365c0}{\+\_\+fill\+Buffer}} (struct m\+Video\+Log\+Context $\ast$context, size\+\_\+t channel\+Id, size\+\_\+t length)
+\item 
+struct m\+Core $\ast$ \mbox{\hyperlink{video-logger_8c_a16da7b6caa981b54250b3a0eb1c945a2}{m\+Video\+Log\+Core\+Find}} (struct V\+File $\ast$vf)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char \mbox{\hyperlink{video-logger_8c_a5d1620a649e7d23e38b4a81320d2e690}{m\+V\+L\+\_\+\+M\+A\+G\+IC}} \mbox{[}$\,$\mbox{]} = \char`\"{}m\+V\+L\textbackslash{}0\char`\"{}
+\item 
+static const struct m\+V\+L\+Descriptor \mbox{\hyperlink{video-logger_8c_a787ded6be63576e12586e834b8a96b6b}{\+\_\+descriptors}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{video-logger_8c_a0ac864c0038cca0b382e3103f9a6f32e}\label{video-logger_8c_a0ac864c0038cca0b382e3103f9a6f32e}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!B\+U\+F\+F\+E\+R\+\_\+\+B\+A\+S\+E\+\_\+\+S\+I\+ZE@{B\+U\+F\+F\+E\+R\+\_\+\+B\+A\+S\+E\+\_\+\+S\+I\+ZE}}
+\index{B\+U\+F\+F\+E\+R\+\_\+\+B\+A\+S\+E\+\_\+\+S\+I\+ZE@{B\+U\+F\+F\+E\+R\+\_\+\+B\+A\+S\+E\+\_\+\+S\+I\+ZE}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{B\+U\+F\+F\+E\+R\+\_\+\+B\+A\+S\+E\+\_\+\+S\+I\+ZE}{BUFFER\_BASE\_SIZE}}
+{\footnotesize\ttfamily \#define B\+U\+F\+F\+E\+R\+\_\+\+B\+A\+S\+E\+\_\+\+S\+I\+ZE~0x20000}
+
+\mbox{\Hypertarget{video-logger_8c_aa8bad2cd89820cdaf2a7f26392774014}\label{video-logger_8c_aa8bad2cd89820cdaf2a7f26392774014}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!M\+A\+X\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+ZE@{M\+A\+X\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+ZE}}
+\index{M\+A\+X\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+ZE@{M\+A\+X\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+ZE}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{M\+A\+X\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+ZE}{MAX\_BLOCK\_SIZE}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+ZE~0x800000}
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{video-logger_8c_af34b32cd58509f1d6f7c6ad935657cc0}\label{video-logger_8c_af34b32cd58509f1d6f7c6ad935657cc0}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+V\+L\+Block\+Flag@{m\+V\+L\+Block\+Flag}}
+\index{m\+V\+L\+Block\+Flag@{m\+V\+L\+Block\+Flag}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+V\+L\+Block\+Flag}{mVLBlockFlag}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{video-logger_8c_af34b32cd58509f1d6f7c6ad935657cc0}{m\+V\+L\+Block\+Flag}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{m\+V\+L\+\_\+\+F\+L\+A\+G\+\_\+\+B\+L\+O\+C\+K\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+ED@{m\+V\+L\+\_\+\+F\+L\+A\+G\+\_\+\+B\+L\+O\+C\+K\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+ED}!video-\/logger.\+c@{video-\/logger.\+c}}\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+V\+L\+\_\+\+F\+L\+A\+G\+\_\+\+B\+L\+O\+C\+K\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+ED@{m\+V\+L\+\_\+\+F\+L\+A\+G\+\_\+\+B\+L\+O\+C\+K\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+ED}}}\mbox{\Hypertarget{video-logger_8c_af34b32cd58509f1d6f7c6ad935657cc0aae8b041cbca0730e37518df9b56a59f0}\label{video-logger_8c_af34b32cd58509f1d6f7c6ad935657cc0aae8b041cbca0730e37518df9b56a59f0}} 
+m\+V\+L\+\_\+\+F\+L\+A\+G\+\_\+\+B\+L\+O\+C\+K\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+ED&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{video-logger_8c_a565fbaa07fe50c5ef36224a0f586048a}\label{video-logger_8c_a565fbaa07fe50c5ef36224a0f586048a}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+V\+L\+Block\+Type@{m\+V\+L\+Block\+Type}}
+\index{m\+V\+L\+Block\+Type@{m\+V\+L\+Block\+Type}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+V\+L\+Block\+Type}{mVLBlockType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{video-logger_8c_a565fbaa07fe50c5ef36224a0f586048a}{m\+V\+L\+Block\+Type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+D\+U\+M\+MY@{m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+D\+U\+M\+MY}!video-\/logger.\+c@{video-\/logger.\+c}}\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+D\+U\+M\+MY@{m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+D\+U\+M\+MY}}}\mbox{\Hypertarget{video-logger_8c_a565fbaa07fe50c5ef36224a0f586048aab633461be1c66917f469963cc0eeb9c7}\label{video-logger_8c_a565fbaa07fe50c5ef36224a0f586048aab633461be1c66917f469963cc0eeb9c7}} 
+m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+D\+U\+M\+MY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+T\+A\+TE@{m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+T\+A\+TE}!video-\/logger.\+c@{video-\/logger.\+c}}\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+T\+A\+TE@{m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+T\+A\+TE}}}\mbox{\Hypertarget{video-logger_8c_a565fbaa07fe50c5ef36224a0f586048aa65a9cdc4a92556634a393026e168900d}\label{video-logger_8c_a565fbaa07fe50c5ef36224a0f586048aa65a9cdc4a92556634a393026e168900d}} 
+m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+T\+A\+TE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+\+H\+E\+A\+D\+ER@{m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+\+H\+E\+A\+D\+ER}!video-\/logger.\+c@{video-\/logger.\+c}}\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+\+H\+E\+A\+D\+ER@{m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+\+H\+E\+A\+D\+ER}}}\mbox{\Hypertarget{video-logger_8c_a565fbaa07fe50c5ef36224a0f586048aa6e73f830afca38ee2b752d9ea097a335}\label{video-logger_8c_a565fbaa07fe50c5ef36224a0f586048aa6e73f830afca38ee2b752d9ea097a335}} 
+m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+C\+H\+A\+N\+N\+E\+L\+\_\+\+H\+E\+A\+D\+ER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+D\+A\+TA@{m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+D\+A\+TA}!video-\/logger.\+c@{video-\/logger.\+c}}\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+D\+A\+TA@{m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+D\+A\+TA}}}\mbox{\Hypertarget{video-logger_8c_a565fbaa07fe50c5ef36224a0f586048aae8a8a535bb511df0b69ca819d7579b71}\label{video-logger_8c_a565fbaa07fe50c5ef36224a0f586048aae8a8a535bb511df0b69ca819d7579b71}} 
+m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+D\+A\+TA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+F\+O\+O\+T\+ER@{m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+F\+O\+O\+T\+ER}!video-\/logger.\+c@{video-\/logger.\+c}}\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+F\+O\+O\+T\+ER@{m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+F\+O\+O\+T\+ER}}}\mbox{\Hypertarget{video-logger_8c_a565fbaa07fe50c5ef36224a0f586048aae2aac6b3dfc1785c2f32778d21a5f012}\label{video-logger_8c_a565fbaa07fe50c5ef36224a0f586048aae2aac6b3dfc1785c2f32778d21a5f012}} 
+m\+V\+L\+\_\+\+B\+L\+O\+C\+K\+\_\+\+F\+O\+O\+T\+ER&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{video-logger_8c_a6bddeb07afc4e7350f6c1b9587ba8a7e}\label{video-logger_8c_a6bddeb07afc4e7350f6c1b9587ba8a7e}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+V\+L\+Header\+Flag@{m\+V\+L\+Header\+Flag}}
+\index{m\+V\+L\+Header\+Flag@{m\+V\+L\+Header\+Flag}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+V\+L\+Header\+Flag}{mVLHeaderFlag}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{video-logger_8c_a6bddeb07afc4e7350f6c1b9587ba8a7e}{m\+V\+L\+Header\+Flag}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{m\+V\+L\+\_\+\+F\+L\+A\+G\+\_\+\+H\+A\+S\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+T\+A\+TE@{m\+V\+L\+\_\+\+F\+L\+A\+G\+\_\+\+H\+A\+S\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+T\+A\+TE}!video-\/logger.\+c@{video-\/logger.\+c}}\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+V\+L\+\_\+\+F\+L\+A\+G\+\_\+\+H\+A\+S\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+T\+A\+TE@{m\+V\+L\+\_\+\+F\+L\+A\+G\+\_\+\+H\+A\+S\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+T\+A\+TE}}}\mbox{\Hypertarget{video-logger_8c_a6bddeb07afc4e7350f6c1b9587ba8a7ea39c3448e1ef1be5d020feb64d5ba9355}\label{video-logger_8c_a6bddeb07afc4e7350f6c1b9587ba8a7ea39c3448e1ef1be5d020feb64d5ba9355}} 
+m\+V\+L\+\_\+\+F\+L\+A\+G\+\_\+\+H\+A\+S\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+S\+T\+A\+TE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{video-logger_8c_ac918b379da982809457516728ac365c0}\label{video-logger_8c_ac918b379da982809457516728ac365c0}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!\+\_\+fill\+Buffer@{\+\_\+fill\+Buffer}}
+\index{\+\_\+fill\+Buffer@{\+\_\+fill\+Buffer}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+fill\+Buffer()}{\_fillBuffer()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+fill\+Buffer (\begin{DoxyParamCaption}\item[{struct m\+Video\+Log\+Context $\ast$}]{context,  }\item[{size\+\_\+t}]{channel\+Id,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_ac918b379da982809457516728ac365c0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_ac918b379da982809457516728ac365c0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_a7a65448771b3eb66410f5d1e4537e322}\label{video-logger_8c_a7a65448771b3eb66410f5d1e4537e322}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!\+\_\+flush\+Buffer@{\+\_\+flush\+Buffer}}
+\index{\+\_\+flush\+Buffer@{\+\_\+flush\+Buffer}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+flush\+Buffer()}{\_flushBuffer()}}
+{\footnotesize\ttfamily static void \+\_\+flush\+Buffer (\begin{DoxyParamCaption}\item[{struct m\+Video\+Log\+Context $\ast$}]{context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a7a65448771b3eb66410f5d1e4537e322_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a7a65448771b3eb66410f5d1e4537e322_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_af04fe8e7da4383d4c2de8bd267880974}\label{video-logger_8c_af04fe8e7da4383d4c2de8bd267880974}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!\+\_\+flush\+V\+R\+AM@{\+\_\+flush\+V\+R\+AM}}
+\index{\+\_\+flush\+V\+R\+AM@{\+\_\+flush\+V\+R\+AM}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+flush\+V\+R\+A\+M()}{\_flushVRAM()}}
+{\footnotesize\ttfamily static void \+\_\+flush\+V\+R\+AM (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{video-logger_8c_af04fe8e7da4383d4c2de8bd267880974_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_af04fe8e7da4383d4c2de8bd267880974_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_abb929a40c45d70202af57598a73f625a}\label{video-logger_8c_abb929a40c45d70202af57598a73f625a}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!\+\_\+read\+Block\+Header@{\+\_\+read\+Block\+Header}}
+\index{\+\_\+read\+Block\+Header@{\+\_\+read\+Block\+Header}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Block\+Header()}{\_readBlockHeader()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+read\+Block\+Header (\begin{DoxyParamCaption}\item[{struct m\+Video\+Log\+Context $\ast$}]{context,  }\item[{struct m\+V\+L\+Block\+Header $\ast$}]{header }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_abb929a40c45d70202af57598a73f625a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_a4b7dfbbd89bf3e590e5c16912b79bfa4}\label{video-logger_8c_a4b7dfbbd89bf3e590e5c16912b79bfa4}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!\+\_\+read\+Buffer@{\+\_\+read\+Buffer}}
+\index{\+\_\+read\+Buffer@{\+\_\+read\+Buffer}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Buffer()}{\_readBuffer()}}
+{\footnotesize\ttfamily static void \+\_\+read\+Buffer (\begin{DoxyParamCaption}\item[{struct V\+File $\ast$}]{vf,  }\item[{struct m\+Video\+Log\+Channel $\ast$}]{channel,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a4b7dfbbd89bf3e590e5c16912b79bfa4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a4b7dfbbd89bf3e590e5c16912b79bfa4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_abcbab73349348e3342c1e7255ed55ee4}\label{video-logger_8c_abcbab73349348e3342c1e7255ed55ee4}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!\+\_\+read\+Data@{\+\_\+read\+Data}}
+\index{\+\_\+read\+Data@{\+\_\+read\+Data}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Data()}{\_readData()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+read\+Data (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger,  }\item[{void $\ast$}]{data,  }\item[{size\+\_\+t}]{length,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{block }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_abcbab73349348e3342c1e7255ed55ee4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_abcbab73349348e3342c1e7255ed55ee4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_ac5911963671b26f1d64938bcf9ac6648}\label{video-logger_8c_ac5911963671b26f1d64938bcf9ac6648}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!\+\_\+read\+Header@{\+\_\+read\+Header}}
+\index{\+\_\+read\+Header@{\+\_\+read\+Header}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Header()}{\_readHeader()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+read\+Header (\begin{DoxyParamCaption}\item[{struct m\+Video\+Log\+Context $\ast$}]{context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_ac5911963671b26f1d64938bcf9ac6648_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_ac5911963671b26f1d64938bcf9ac6648_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_a18aadf02a7a40b898d4b6d362af0e06a}\label{video-logger_8c_a18aadf02a7a40b898d4b6d362af0e06a}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!\+\_\+round\+Up@{\+\_\+round\+Up}}
+\index{\+\_\+round\+Up@{\+\_\+round\+Up}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+round\+Up()}{\_roundUp()}}
+{\footnotesize\ttfamily static size\+\_\+t \+\_\+round\+Up (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{value,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{shift }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a18aadf02a7a40b898d4b6d362af0e06a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_a163afd173e5992530065bb8ddc2b693e}\label{video-logger_8c_a163afd173e5992530065bb8ddc2b693e}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!\+\_\+write\+Data@{\+\_\+write\+Data}}
+\index{\+\_\+write\+Data@{\+\_\+write\+Data}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+write\+Data()}{\_writeData()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+write\+Data (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger,  }\item[{const void $\ast$}]{data,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a163afd173e5992530065bb8ddc2b693e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a163afd173e5992530065bb8ddc2b693e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_a2bb793afc8d7e37b65be24d0c0198d13}\label{video-logger_8c_a2bb793afc8d7e37b65be24d0c0198d13}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!\+\_\+write\+Null@{\+\_\+write\+Null}}
+\index{\+\_\+write\+Null@{\+\_\+write\+Null}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+write\+Null()}{\_writeNull()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+write\+Null (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger,  }\item[{const void $\ast$}]{data,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a2bb793afc8d7e37b65be24d0c0198d13_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_abfc652080406bf430af299f8ab419aec}\label{video-logger_8c_abfc652080406bf430af299f8ab419aec}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Log\+Context\+Create@{m\+Video\+Log\+Context\+Create}}
+\index{m\+Video\+Log\+Context\+Create@{m\+Video\+Log\+Context\+Create}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Log\+Context\+Create()}{mVideoLogContextCreate()}}
+{\footnotesize\ttfamily struct m\+Video\+Log\+Context$\ast$ m\+Video\+Log\+Context\+Create (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_abfc652080406bf430af299f8ab419aec_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_abfc652080406bf430af299f8ab419aec_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_a300bc3d5849465d59ddaa92e6a338fb6}\label{video-logger_8c_a300bc3d5849465d59ddaa92e6a338fb6}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Log\+Context\+Destroy@{m\+Video\+Log\+Context\+Destroy}}
+\index{m\+Video\+Log\+Context\+Destroy@{m\+Video\+Log\+Context\+Destroy}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Log\+Context\+Destroy()}{mVideoLogContextDestroy()}}
+{\footnotesize\ttfamily void m\+Video\+Log\+Context\+Destroy (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{struct m\+Video\+Log\+Context $\ast$}]{context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a300bc3d5849465d59ddaa92e6a338fb6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a300bc3d5849465d59ddaa92e6a338fb6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_aa9a3f77cb1a532bdc62db67c0724697f}\label{video-logger_8c_aa9a3f77cb1a532bdc62db67c0724697f}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Log\+Context\+Initial\+State@{m\+Video\+Log\+Context\+Initial\+State}}
+\index{m\+Video\+Log\+Context\+Initial\+State@{m\+Video\+Log\+Context\+Initial\+State}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Log\+Context\+Initial\+State()}{mVideoLogContextInitialState()}}
+{\footnotesize\ttfamily void$\ast$ m\+Video\+Log\+Context\+Initial\+State (\begin{DoxyParamCaption}\item[{struct m\+Video\+Log\+Context $\ast$}]{context,  }\item[{size\+\_\+t $\ast$}]{size }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_aa9a3f77cb1a532bdc62db67c0724697f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_ab20aa19e19c6e5eb89100137495bfef1}\label{video-logger_8c_ab20aa19e19c6e5eb89100137495bfef1}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Log\+Context\+Load@{m\+Video\+Log\+Context\+Load}}
+\index{m\+Video\+Log\+Context\+Load@{m\+Video\+Log\+Context\+Load}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Log\+Context\+Load()}{mVideoLogContextLoad()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Video\+Log\+Context\+Load (\begin{DoxyParamCaption}\item[{struct m\+Video\+Log\+Context $\ast$}]{context,  }\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_ab20aa19e19c6e5eb89100137495bfef1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_ab20aa19e19c6e5eb89100137495bfef1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_aea08663b76690e7220b3f8377f971785}\label{video-logger_8c_aea08663b76690e7220b3f8377f971785}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Log\+Context\+Rewind@{m\+Video\+Log\+Context\+Rewind}}
+\index{m\+Video\+Log\+Context\+Rewind@{m\+Video\+Log\+Context\+Rewind}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Log\+Context\+Rewind()}{mVideoLogContextRewind()}}
+{\footnotesize\ttfamily void m\+Video\+Log\+Context\+Rewind (\begin{DoxyParamCaption}\item[{struct m\+Video\+Log\+Context $\ast$}]{context,  }\item[{struct m\+Core $\ast$}]{core }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_aea08663b76690e7220b3f8377f971785_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_aea08663b76690e7220b3f8377f971785_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_a89d33ff62ba22b7fcd0fe5e895b4c95e}\label{video-logger_8c_a89d33ff62ba22b7fcd0fe5e895b4c95e}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Log\+Context\+Set\+Output@{m\+Video\+Log\+Context\+Set\+Output}}
+\index{m\+Video\+Log\+Context\+Set\+Output@{m\+Video\+Log\+Context\+Set\+Output}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Log\+Context\+Set\+Output()}{mVideoLogContextSetOutput()}}
+{\footnotesize\ttfamily void m\+Video\+Log\+Context\+Set\+Output (\begin{DoxyParamCaption}\item[{struct m\+Video\+Log\+Context $\ast$}]{context,  }\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a89d33ff62ba22b7fcd0fe5e895b4c95e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_a53b5285dc89f4789592daef5ba376368}\label{video-logger_8c_a53b5285dc89f4789592daef5ba376368}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Log\+Context\+Write\+Header@{m\+Video\+Log\+Context\+Write\+Header}}
+\index{m\+Video\+Log\+Context\+Write\+Header@{m\+Video\+Log\+Context\+Write\+Header}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Log\+Context\+Write\+Header()}{mVideoLogContextWriteHeader()}}
+{\footnotesize\ttfamily void m\+Video\+Log\+Context\+Write\+Header (\begin{DoxyParamCaption}\item[{struct m\+Video\+Log\+Context $\ast$}]{context,  }\item[{struct m\+Core $\ast$}]{core }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a53b5285dc89f4789592daef5ba376368_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a53b5285dc89f4789592daef5ba376368_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_a16da7b6caa981b54250b3a0eb1c945a2}\label{video-logger_8c_a16da7b6caa981b54250b3a0eb1c945a2}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Log\+Core\+Find@{m\+Video\+Log\+Core\+Find}}
+\index{m\+Video\+Log\+Core\+Find@{m\+Video\+Log\+Core\+Find}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Log\+Core\+Find()}{mVideoLogCoreFind()}}
+{\footnotesize\ttfamily struct m\+Core$\ast$ m\+Video\+Log\+Core\+Find (\begin{DoxyParamCaption}\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a16da7b6caa981b54250b3a0eb1c945a2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a16da7b6caa981b54250b3a0eb1c945a2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_a27685ba414aed35c5b92736c0ef21ebe}\label{video-logger_8c_a27685ba414aed35c5b92736c0ef21ebe}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Logger\+Add\+Channel@{m\+Video\+Logger\+Add\+Channel}}
+\index{m\+Video\+Logger\+Add\+Channel@{m\+Video\+Logger\+Add\+Channel}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Logger\+Add\+Channel()}{mVideoLoggerAddChannel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} m\+Video\+Logger\+Add\+Channel (\begin{DoxyParamCaption}\item[{struct m\+Video\+Log\+Context $\ast$}]{context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a27685ba414aed35c5b92736c0ef21ebe_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a27685ba414aed35c5b92736c0ef21ebe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_ab35cded24430e8df5eea72310c1827be}\label{video-logger_8c_ab35cded24430e8df5eea72310c1827be}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Logger\+Attach\+Channel@{m\+Video\+Logger\+Attach\+Channel}}
+\index{m\+Video\+Logger\+Attach\+Channel@{m\+Video\+Logger\+Attach\+Channel}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Logger\+Attach\+Channel()}{mVideoLoggerAttachChannel()}}
+{\footnotesize\ttfamily void m\+Video\+Logger\+Attach\+Channel (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger,  }\item[{struct m\+Video\+Log\+Context $\ast$}]{context,  }\item[{size\+\_\+t}]{channel\+Id }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_ab35cded24430e8df5eea72310c1827be_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_aad574cf14798e8c2e42090aa1378c7fe}\label{video-logger_8c_aad574cf14798e8c2e42090aa1378c7fe}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Logger\+Read\+Channel@{m\+Video\+Logger\+Read\+Channel}}
+\index{m\+Video\+Logger\+Read\+Channel@{m\+Video\+Logger\+Read\+Channel}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Logger\+Read\+Channel()}{mVideoLoggerReadChannel()}}
+{\footnotesize\ttfamily static ssize\+\_\+t m\+Video\+Logger\+Read\+Channel (\begin{DoxyParamCaption}\item[{struct m\+Video\+Log\+Channel $\ast$}]{channel,  }\item[{void $\ast$}]{data,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_aad574cf14798e8c2e42090aa1378c7fe_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_aad574cf14798e8c2e42090aa1378c7fe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_ad61ee4a99ebbf8066988b0da02c69838}\label{video-logger_8c_ad61ee4a99ebbf8066988b0da02c69838}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Logger\+Renderer\+Create@{m\+Video\+Logger\+Renderer\+Create}}
+\index{m\+Video\+Logger\+Renderer\+Create@{m\+Video\+Logger\+Renderer\+Create}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Logger\+Renderer\+Create()}{mVideoLoggerRendererCreate()}}
+{\footnotesize\ttfamily void m\+Video\+Logger\+Renderer\+Create (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{readonly }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_ad61ee4a99ebbf8066988b0da02c69838_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_ad61ee4a99ebbf8066988b0da02c69838_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_ae525d818fd82d5753562673f85ff0b4d}\label{video-logger_8c_ae525d818fd82d5753562673f85ff0b4d}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Logger\+Renderer\+Deinit@{m\+Video\+Logger\+Renderer\+Deinit}}
+\index{m\+Video\+Logger\+Renderer\+Deinit@{m\+Video\+Logger\+Renderer\+Deinit}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Logger\+Renderer\+Deinit()}{mVideoLoggerRendererDeinit()}}
+{\footnotesize\ttfamily void m\+Video\+Logger\+Renderer\+Deinit (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_ae525d818fd82d5753562673f85ff0b4d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_ae525d818fd82d5753562673f85ff0b4d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_a4ba6e2f71a9a753f746248d6b0855e7b}\label{video-logger_8c_a4ba6e2f71a9a753f746248d6b0855e7b}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Logger\+Renderer\+Draw\+Range@{m\+Video\+Logger\+Renderer\+Draw\+Range}}
+\index{m\+Video\+Logger\+Renderer\+Draw\+Range@{m\+Video\+Logger\+Renderer\+Draw\+Range}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Logger\+Renderer\+Draw\+Range()}{mVideoLoggerRendererDrawRange()}}
+{\footnotesize\ttfamily void m\+Video\+Logger\+Renderer\+Draw\+Range (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{startX,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{endX,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{y }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a4ba6e2f71a9a753f746248d6b0855e7b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a4ba6e2f71a9a753f746248d6b0855e7b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_aae580067601d3fb8deb476d420acf304}\label{video-logger_8c_aae580067601d3fb8deb476d420acf304}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Logger\+Renderer\+Draw\+Scanline@{m\+Video\+Logger\+Renderer\+Draw\+Scanline}}
+\index{m\+Video\+Logger\+Renderer\+Draw\+Scanline@{m\+Video\+Logger\+Renderer\+Draw\+Scanline}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Logger\+Renderer\+Draw\+Scanline()}{mVideoLoggerRendererDrawScanline()}}
+{\footnotesize\ttfamily void m\+Video\+Logger\+Renderer\+Draw\+Scanline (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{y }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_aae580067601d3fb8deb476d420acf304_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_aae580067601d3fb8deb476d420acf304_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_ae0985d556c5cd2c11d95f3b0c8e820af}\label{video-logger_8c_ae0985d556c5cd2c11d95f3b0c8e820af}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Logger\+Renderer\+Finish\+Frame@{m\+Video\+Logger\+Renderer\+Finish\+Frame}}
+\index{m\+Video\+Logger\+Renderer\+Finish\+Frame@{m\+Video\+Logger\+Renderer\+Finish\+Frame}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Logger\+Renderer\+Finish\+Frame()}{mVideoLoggerRendererFinishFrame()}}
+{\footnotesize\ttfamily void m\+Video\+Logger\+Renderer\+Finish\+Frame (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_ae0985d556c5cd2c11d95f3b0c8e820af_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_a62188c3c2ee5b48e38f1f79431d50551}\label{video-logger_8c_a62188c3c2ee5b48e38f1f79431d50551}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Logger\+Renderer\+Flush@{m\+Video\+Logger\+Renderer\+Flush}}
+\index{m\+Video\+Logger\+Renderer\+Flush@{m\+Video\+Logger\+Renderer\+Flush}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Logger\+Renderer\+Flush()}{mVideoLoggerRendererFlush()}}
+{\footnotesize\ttfamily void m\+Video\+Logger\+Renderer\+Flush (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a62188c3c2ee5b48e38f1f79431d50551_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_a16bd9eb225160df41ea90b332634c267}\label{video-logger_8c_a16bd9eb225160df41ea90b332634c267}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Logger\+Renderer\+Init@{m\+Video\+Logger\+Renderer\+Init}}
+\index{m\+Video\+Logger\+Renderer\+Init@{m\+Video\+Logger\+Renderer\+Init}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Logger\+Renderer\+Init()}{mVideoLoggerRendererInit()}}
+{\footnotesize\ttfamily void m\+Video\+Logger\+Renderer\+Init (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a16bd9eb225160df41ea90b332634c267_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a16bd9eb225160df41ea90b332634c267_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_adeafad306d275ef128d6f88bb2c28ea0}\label{video-logger_8c_adeafad306d275ef128d6f88bb2c28ea0}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Logger\+Renderer\+Reset@{m\+Video\+Logger\+Renderer\+Reset}}
+\index{m\+Video\+Logger\+Renderer\+Reset@{m\+Video\+Logger\+Renderer\+Reset}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Logger\+Renderer\+Reset()}{mVideoLoggerRendererReset()}}
+{\footnotesize\ttfamily void m\+Video\+Logger\+Renderer\+Reset (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{video-logger_8c_adeafad306d275ef128d6f88bb2c28ea0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_adeafad306d275ef128d6f88bb2c28ea0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_ab790ed3e764c170c154f5781ecba758d}\label{video-logger_8c_ab790ed3e764c170c154f5781ecba758d}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Logger\+Renderer\+Run@{m\+Video\+Logger\+Renderer\+Run}}
+\index{m\+Video\+Logger\+Renderer\+Run@{m\+Video\+Logger\+Renderer\+Run}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Logger\+Renderer\+Run()}{mVideoLoggerRendererRun()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Video\+Logger\+Renderer\+Run (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{block }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_ab790ed3e764c170c154f5781ecba758d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_abc3329514cd845af3704c8daabc1f626}\label{video-logger_8c_abc3329514cd845af3704c8daabc1f626}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Logger\+Renderer\+Write\+O\+AM@{m\+Video\+Logger\+Renderer\+Write\+O\+AM}}
+\index{m\+Video\+Logger\+Renderer\+Write\+O\+AM@{m\+Video\+Logger\+Renderer\+Write\+O\+AM}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Logger\+Renderer\+Write\+O\+A\+M()}{mVideoLoggerRendererWriteOAM()}}
+{\footnotesize\ttfamily void m\+Video\+Logger\+Renderer\+Write\+O\+AM (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger,  }\item[{uint32\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_abc3329514cd845af3704c8daabc1f626_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_a00131ffac3e67e4c8615fe36d9aad49c}\label{video-logger_8c_a00131ffac3e67e4c8615fe36d9aad49c}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Logger\+Renderer\+Write\+Palette@{m\+Video\+Logger\+Renderer\+Write\+Palette}}
+\index{m\+Video\+Logger\+Renderer\+Write\+Palette@{m\+Video\+Logger\+Renderer\+Write\+Palette}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Logger\+Renderer\+Write\+Palette()}{mVideoLoggerRendererWritePalette()}}
+{\footnotesize\ttfamily void m\+Video\+Logger\+Renderer\+Write\+Palette (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger,  }\item[{uint32\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a00131ffac3e67e4c8615fe36d9aad49c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_a92cbf883be4c238b029ff28a8b905841}\label{video-logger_8c_a92cbf883be4c238b029ff28a8b905841}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Logger\+Renderer\+Write\+Video\+Register@{m\+Video\+Logger\+Renderer\+Write\+Video\+Register}}
+\index{m\+Video\+Logger\+Renderer\+Write\+Video\+Register@{m\+Video\+Logger\+Renderer\+Write\+Video\+Register}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Logger\+Renderer\+Write\+Video\+Register()}{mVideoLoggerRendererWriteVideoRegister()}}
+{\footnotesize\ttfamily void m\+Video\+Logger\+Renderer\+Write\+Video\+Register (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger,  }\item[{uint32\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a92cbf883be4c238b029ff28a8b905841_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_ad44e459bc3864018f661249901f07cf2}\label{video-logger_8c_ad44e459bc3864018f661249901f07cf2}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Logger\+Renderer\+Write\+V\+R\+AM@{m\+Video\+Logger\+Renderer\+Write\+V\+R\+AM}}
+\index{m\+Video\+Logger\+Renderer\+Write\+V\+R\+AM@{m\+Video\+Logger\+Renderer\+Write\+V\+R\+AM}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Logger\+Renderer\+Write\+V\+R\+A\+M()}{mVideoLoggerRendererWriteVRAM()}}
+{\footnotesize\ttfamily void m\+Video\+Logger\+Renderer\+Write\+V\+R\+AM (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger,  }\item[{uint32\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_ad44e459bc3864018f661249901f07cf2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_a1548cd96c67d81fecdd4e71df06c6b2f}\label{video-logger_8c_a1548cd96c67d81fecdd4e71df06c6b2f}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Logger\+Write\+Buffer@{m\+Video\+Logger\+Write\+Buffer}}
+\index{m\+Video\+Logger\+Write\+Buffer@{m\+Video\+Logger\+Write\+Buffer}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Logger\+Write\+Buffer()}{mVideoLoggerWriteBuffer()}}
+{\footnotesize\ttfamily void m\+Video\+Logger\+Write\+Buffer (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger,  }\item[{uint32\+\_\+t}]{buffer\+Id,  }\item[{uint32\+\_\+t}]{offset,  }\item[{uint32\+\_\+t}]{length,  }\item[{const void $\ast$}]{data }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a1548cd96c67d81fecdd4e71df06c6b2f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-logger_8c_a4ff0364da23c84ee35e9e6cd4118a1bb}\label{video-logger_8c_a4ff0364da23c84ee35e9e6cd4118a1bb}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+Video\+Logger\+Write\+Channel@{m\+Video\+Logger\+Write\+Channel}}
+\index{m\+Video\+Logger\+Write\+Channel@{m\+Video\+Logger\+Write\+Channel}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+Video\+Logger\+Write\+Channel()}{mVideoLoggerWriteChannel()}}
+{\footnotesize\ttfamily static ssize\+\_\+t m\+Video\+Logger\+Write\+Channel (\begin{DoxyParamCaption}\item[{struct m\+Video\+Log\+Channel $\ast$}]{channel,  }\item[{const void $\ast$}]{data,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a4ff0364da23c84ee35e9e6cd4118a1bb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-logger_8c_a4ff0364da23c84ee35e9e6cd4118a1bb_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{video-logger_8c_a787ded6be63576e12586e834b8a96b6b}\label{video-logger_8c_a787ded6be63576e12586e834b8a96b6b}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!\+\_\+descriptors@{\+\_\+descriptors}}
+\index{\+\_\+descriptors@{\+\_\+descriptors}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+descriptors}{\_descriptors}}
+{\footnotesize\ttfamily const struct m\+V\+L\+Descriptor  \+\_\+descriptors\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+
+
+
+
+
+
+    \{ PLATFORM\_NONE, 0 \}
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{video-logger_8c_a5d1620a649e7d23e38b4a81320d2e690}\label{video-logger_8c_a5d1620a649e7d23e38b4a81320d2e690}} 
+\index{video-\/logger.\+c@{video-\/logger.\+c}!m\+V\+L\+\_\+\+M\+A\+G\+IC@{m\+V\+L\+\_\+\+M\+A\+G\+IC}}
+\index{m\+V\+L\+\_\+\+M\+A\+G\+IC@{m\+V\+L\+\_\+\+M\+A\+G\+IC}!video-\/logger.\+c@{video-\/logger.\+c}}
+\subsubsection{\texorpdfstring{m\+V\+L\+\_\+\+M\+A\+G\+IC}{mVL\_MAGIC}}
+{\footnotesize\ttfamily const char m\+V\+L\+\_\+\+M\+A\+G\+IC\mbox{[}$\,$\mbox{]} = \char`\"{}m\+V\+L\textbackslash{}0\char`\"{}}
+

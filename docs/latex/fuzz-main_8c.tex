@@ -1,0 +1,155 @@
+\hypertarget{fuzz-main_8c}{}\section{src/platform/test/fuzz-\/main.c File Reference}
+\label{fuzz-main_8c}\index{src/platform/test/fuzz-\/main.\+c@{src/platform/test/fuzz-\/main.\+c}}
+{\ttfamily \#include $<$mgba/core/blip\+\_\+buf.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/cheats.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/config.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/serialize.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/gb/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/gba/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/gba.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/feature/commandline.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/memory.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+Include dependency graph for fuzz-\/main.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fuzz-main_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{fuzz-main_8c_a1ba1c6c17fafca1710418ac9abfd7994}{F\+U\+Z\+Z\+\_\+\+O\+P\+T\+I\+O\+NS}}~\char`\"{}F\+:\+N\+O\+:\+S\+:\+V\+:\char`\"{}
+\item 
+\#define \mbox{\hyperlink{fuzz-main_8c_ab48c3f60c1385a1a52801d32023d7584}{F\+U\+Z\+Z\+\_\+\+U\+S\+A\+GE}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{fuzz-main_8c_a2d0278ae741941374e0465b15af47d1d}{\+\_\+fuzz\+Runloop}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} frames)
+\item 
+static void \mbox{\hyperlink{fuzz-main_8c_a4c46953207b5f03a88084e0d3918c9d1}{\+\_\+fuzz\+Shutdown}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} signal)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{fuzz-main_8c_abe6668fd69b615464e23aff05af1b70b}{\+\_\+parse\+Fuzz\+Opts}} (struct m\+Sub\+Parser $\ast$parser, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} option, const char $\ast$arg)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{fuzz-main_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{fuzz-main_8c_a8525f6cde5f9256308f54df6d5b5ba37}{\+\_\+dispatch\+Exiting}} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{fuzz-main_8c_a1ba1c6c17fafca1710418ac9abfd7994}\label{fuzz-main_8c_a1ba1c6c17fafca1710418ac9abfd7994}} 
+\index{fuzz-\/main.\+c@{fuzz-\/main.\+c}!F\+U\+Z\+Z\+\_\+\+O\+P\+T\+I\+O\+NS@{F\+U\+Z\+Z\+\_\+\+O\+P\+T\+I\+O\+NS}}
+\index{F\+U\+Z\+Z\+\_\+\+O\+P\+T\+I\+O\+NS@{F\+U\+Z\+Z\+\_\+\+O\+P\+T\+I\+O\+NS}!fuzz-\/main.\+c@{fuzz-\/main.\+c}}
+\subsubsection{\texorpdfstring{F\+U\+Z\+Z\+\_\+\+O\+P\+T\+I\+O\+NS}{FUZZ\_OPTIONS}}
+{\footnotesize\ttfamily \#define F\+U\+Z\+Z\+\_\+\+O\+P\+T\+I\+O\+NS~\char`\"{}F\+:\+N\+O\+:\+S\+:\+V\+:\char`\"{}}
+
+\mbox{\Hypertarget{fuzz-main_8c_ab48c3f60c1385a1a52801d32023d7584}\label{fuzz-main_8c_ab48c3f60c1385a1a52801d32023d7584}} 
+\index{fuzz-\/main.\+c@{fuzz-\/main.\+c}!F\+U\+Z\+Z\+\_\+\+U\+S\+A\+GE@{F\+U\+Z\+Z\+\_\+\+U\+S\+A\+GE}}
+\index{F\+U\+Z\+Z\+\_\+\+U\+S\+A\+GE@{F\+U\+Z\+Z\+\_\+\+U\+S\+A\+GE}!fuzz-\/main.\+c@{fuzz-\/main.\+c}}
+\subsubsection{\texorpdfstring{F\+U\+Z\+Z\+\_\+\+U\+S\+A\+GE}{FUZZ\_USAGE}}
+{\footnotesize\ttfamily \#define F\+U\+Z\+Z\+\_\+\+U\+S\+A\+GE}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{stringliteral}{"\(\backslash\)nAdditional options:\(\backslash\)n"} \(\backslash\)
+    \textcolor{stringliteral}{"  -F FRAMES        Run for the specified number of FRAMES before exiting\(\backslash\)n"} \(\backslash\)
+    \textcolor{stringliteral}{"  -N               Disable video rendering entirely\(\backslash\)n"} \(\backslash\)
+    \textcolor{stringliteral}{"  -O OFFSET        Offset to apply savestate overlay\(\backslash\)n"} \(\backslash\)
+    \textcolor{stringliteral}{"  -S FILE          Load a savestate when starting the test\(\backslash\)n"} \(\backslash\)
+    \textcolor{stringliteral}{"  -V FILE          Overlay a second savestate over the loaded savestate\(\backslash\)n"} \(\backslash\)
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{fuzz-main_8c_a2d0278ae741941374e0465b15af47d1d}\label{fuzz-main_8c_a2d0278ae741941374e0465b15af47d1d}} 
+\index{fuzz-\/main.\+c@{fuzz-\/main.\+c}!\+\_\+fuzz\+Runloop@{\+\_\+fuzz\+Runloop}}
+\index{\+\_\+fuzz\+Runloop@{\+\_\+fuzz\+Runloop}!fuzz-\/main.\+c@{fuzz-\/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+fuzz\+Runloop()}{\_fuzzRunloop()}}
+{\footnotesize\ttfamily static void \+\_\+fuzz\+Runloop (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{frames }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{fuzz-main_8c_a2d0278ae741941374e0465b15af47d1d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=239pt]{fuzz-main_8c_a2d0278ae741941374e0465b15af47d1d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{fuzz-main_8c_a4c46953207b5f03a88084e0d3918c9d1}\label{fuzz-main_8c_a4c46953207b5f03a88084e0d3918c9d1}} 
+\index{fuzz-\/main.\+c@{fuzz-\/main.\+c}!\+\_\+fuzz\+Shutdown@{\+\_\+fuzz\+Shutdown}}
+\index{\+\_\+fuzz\+Shutdown@{\+\_\+fuzz\+Shutdown}!fuzz-\/main.\+c@{fuzz-\/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+fuzz\+Shutdown()}{\_fuzzShutdown()}}
+{\footnotesize\ttfamily static void \+\_\+fuzz\+Shutdown (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{signal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{fuzz-main_8c_a4c46953207b5f03a88084e0d3918c9d1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{fuzz-main_8c_abe6668fd69b615464e23aff05af1b70b}\label{fuzz-main_8c_abe6668fd69b615464e23aff05af1b70b}} 
+\index{fuzz-\/main.\+c@{fuzz-\/main.\+c}!\+\_\+parse\+Fuzz\+Opts@{\+\_\+parse\+Fuzz\+Opts}}
+\index{\+\_\+parse\+Fuzz\+Opts@{\+\_\+parse\+Fuzz\+Opts}!fuzz-\/main.\+c@{fuzz-\/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+parse\+Fuzz\+Opts()}{\_parseFuzzOpts()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+parse\+Fuzz\+Opts (\begin{DoxyParamCaption}\item[{struct m\+Sub\+Parser $\ast$}]{parser,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{option,  }\item[{const char $\ast$}]{arg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fuzz-main_8c_abe6668fd69b615464e23aff05af1b70b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=250pt]{fuzz-main_8c_abe6668fd69b615464e23aff05af1b70b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{fuzz-main_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{fuzz-main_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{fuzz-\/main.\+c@{fuzz-\/main.\+c}!main@{main}}
+\index{main@{main}!fuzz-\/main.\+c@{fuzz-\/main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fuzz-main_8c_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{fuzz-main_8c_a8525f6cde5f9256308f54df6d5b5ba37}\label{fuzz-main_8c_a8525f6cde5f9256308f54df6d5b5ba37}} 
+\index{fuzz-\/main.\+c@{fuzz-\/main.\+c}!\+\_\+dispatch\+Exiting@{\+\_\+dispatch\+Exiting}}
+\index{\+\_\+dispatch\+Exiting@{\+\_\+dispatch\+Exiting}!fuzz-\/main.\+c@{fuzz-\/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+dispatch\+Exiting}{\_dispatchExiting}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+dispatch\+Exiting = false\hspace{0.3cm}{\ttfamily [static]}}
+

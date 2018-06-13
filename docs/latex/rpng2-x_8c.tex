@@ -1,0 +1,802 @@
+\hypertarget{rpng2-x_8c}{}\section{src/third-\/party/libpng/contrib/gregbook/rpng2-\/x.c File Reference}
+\label{rpng2-x_8c}\index{src/third-\/party/libpng/contrib/gregbook/rpng2-\/x.\+c@{src/third-\/party/libpng/contrib/gregbook/rpng2-\/x.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$setjmp.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$X11/\+Xlib.\+h$>$}\newline
+{\ttfamily \#include $<$X11/\+Xutil.\+h$>$}\newline
+{\ttfamily \#include $<$X11/\+Xos.\+h$>$}\newline
+{\ttfamily \#include $<$X11/keysym.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}readpng2.\+h\char`\"{}}\newline
+Include dependency graph for rpng2-\/x.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rpng2-x_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_a8c9afb758de9a0355c93fc926b8ce6b1}{P\+R\+O\+G\+N\+A\+ME}}~\char`\"{}rpng2-\/x\char`\"{}
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_ae8176192ea4d52bb0acbcfeaaffb3bd8}{L\+O\+N\+G\+N\+A\+ME}}~\char`\"{}Progressive P\+NG Viewer for X\char`\"{}
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_a1c6d5de492ac61ad29aec7aa9a436bbf}{V\+E\+R\+S\+I\+ON}}~\char`\"{}2.\+04 of 15 June 2014\char`\"{}
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_a26d3cf6f35fd25b054ff41b03368b31b}{R\+E\+S\+N\+A\+ME}}~\char`\"{}rpng2\char`\"{}       /$\ast$ our X resource application name $\ast$/
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_a3b0a2ac91fca697e3acedd9903efd4fd}{R\+E\+S\+C\+L\+A\+SS}}~\char`\"{}Rpng\char`\"{}       /$\ast$ our X resource class name $\ast$/
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_a44ed0f898da2dd3ada04f222e0dce283}{usleep}}(x)~sleep(((x)+499999)/1000000)
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_a598a3330b3c21701223ee0ca14316eca}{PI}}~3.\+141592653589793238
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_a7c7671235d3f0d09bc5c011920fe0d5b}{P\+I\+\_\+2}}~(\mbox{\hyperlink{rpng2-x_8c_a598a3330b3c21701223ee0ca14316eca}{PI}}$\ast$0.\+5)
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_a99c039c85f9ce3e4a4dc4f95fce32972}{I\+N\+V\+\_\+\+P\+I\+\_\+360}}~(360.\+0 / \mbox{\hyperlink{rpng2-x_8c_a598a3330b3c21701223ee0ca14316eca}{PI}})
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_afa99ec4acc4ecb2dc3c2d05da15d0e3f}{M\+AX}}(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}},  b)~(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}}$>$b?a\+:b)
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_a3acffbd305ee72dcd4593c0d8af64a4f}{M\+IN}}(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}},  b)~(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}}$<$b?a\+:b)
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_a747f7929e94899e6b0714649864b8711}{C\+L\+IP}}(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}},  min,  \mbox{\hyperlink{enough_8c_a3f41d878a34048480562aba063c70c92}{max}})~\mbox{\hyperlink{sqlite3_8c_ad935f1ff1a50822e317bdb321ce991ad}{M\+AX}}(min,\mbox{\hyperlink{sqlite3_8c_adcd021ac91d43a62b2cdecf9a5b971a7}{M\+IN}}((\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}}),\mbox{\hyperlink{enough_8c_a3f41d878a34048480562aba063c70c92}{max}}))
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_ae2f08dc603ae93c402abd918ba4e23e1}{A\+BS}}(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}})~((\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}})$<$0?-\/(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}})\+:(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}}))
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_a59dbc34417cea1957b04dbd47534fbaa}{C\+L\+I\+P8P}}(\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}})~\mbox{\hyperlink{sqlite3_8c_ad935f1ff1a50822e317bdb321ce991ad}{M\+AX}}(0,(\mbox{\hyperlink{sqlite3_8c_adcd021ac91d43a62b2cdecf9a5b971a7}{M\+IN}}((\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}}),255)))   /$\ast$ 8-\/bit pos. integer (\mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}}) $\ast$/
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_afecc38967871feedc120e1d3650d387e}{R\+O\+U\+N\+DF}}(\mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}})~((\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}})(\mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}} + 0.\+5))
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_ad76830d9084202349fd77f494a991ce4}{Q\+U\+IT}}(e,  k)
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_a17b2fe83e2965ffad1ae90c4283b3034}{N\+O\+\_\+24\+B\+I\+T\+\_\+\+M\+A\+S\+KS}}~/$\ast$ undef case not fully written-\/-\/only for redisplay() $\ast$/
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_a2fff10e39e5f260c02e0d3ca6f0d0767}{rgb1\+\_\+max}}~bg\+\_\+freq
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_a296f60be08dd0f77ffa8567145fb420b}{rgb1\+\_\+min}}~bg\+\_\+gray
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_a302c6a6f0caef8546ccf8d25e2ba0217}{rgb2\+\_\+max}}~bg\+\_\+bsat
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_a9de071f4fad1348f0344e55ab384f2a3}{rgb2\+\_\+min}}~bg\+\_\+brot
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_af1fe887e7346a25e71f3b1527e723692}{alpha\+\_\+composite}}(composite,  fg,  alpha,  \mbox{\hyperlink{rpng2-x_8c_a808fa6d3573a86afa3ba7698a65b1ef6}{bg}})
+\item 
+\#define \mbox{\hyperlink{rpng2-x_8c_ab3f00dac33458432279d4308226d8413}{I\+N\+B\+U\+F\+S\+I\+ZE}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{rpng2-x_8c_ab20ab6bc14c0853af2e0e7698125174e}{rpng2\+\_\+x\+\_\+init}} (void)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_aa1d3f0f82dec46874ea19ffa781cb1f7}{rpng2\+\_\+x\+\_\+create\+\_\+window}} (void)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_ad02636450f027c837e6a3fbbe7a81829}{rpng2\+\_\+x\+\_\+load\+\_\+bg\+\_\+image}} (void)
+\item 
+static void \mbox{\hyperlink{rpng2-x_8c_a249f2f9baf0276621e94b788cd6d34c3}{rpng2\+\_\+x\+\_\+display\+\_\+row}} (\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} row)
+\item 
+static void \mbox{\hyperlink{rpng2-x_8c_ab1a527797f2c8d50003040e0af0b0fc9}{rpng2\+\_\+x\+\_\+finish\+\_\+display}} (void)
+\item 
+static void \mbox{\hyperlink{rpng2-x_8c_affab9dec431ea4b549e6ced6d3e416f5}{rpng2\+\_\+x\+\_\+redisplay\+\_\+image}} (\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} startcol, \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} startrow, \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} \mbox{\hyperlink{readppm_8c_a59b7c57bf1dc7c36ac7c8232cf5bb713}{width}}, \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} \mbox{\hyperlink{readppm_8c_ac8b624a7354198da45f5797b93b883c9}{height}})
+\item 
+static void \mbox{\hyperlink{rpng2-x_8c_aca1959fe9e81b967dfd94fa218c72e84}{rpng2\+\_\+x\+\_\+cleanup}} (void)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_a6d049c205a7e333060fd97d7a41e71ff}{rpng2\+\_\+x\+\_\+msb}} (\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} u32val)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static char \mbox{\hyperlink{rpng2-x_8c_a7d71fb2a6cfb5d27855f58bc7e548978}{titlebar}} \mbox{[}1024\mbox{]}
+\item 
+static char $\ast$ \mbox{\hyperlink{rpng2-x_8c_ad98b89261d368fd018f2d8de359b6863}{window\+\_\+name}} = \mbox{\hyperlink{rpng2-x_8c_a7d71fb2a6cfb5d27855f58bc7e548978}{titlebar}}
+\item 
+static char $\ast$ \mbox{\hyperlink{rpng2-x_8c_a9db0329b02c3e8e0260939a1c680738a}{appname}} = \mbox{\hyperlink{_visual_png_8c_ae8176192ea4d52bb0acbcfeaaffb3bd8}{L\+O\+N\+G\+N\+A\+ME}}
+\item 
+static char $\ast$ \mbox{\hyperlink{rpng2-x_8c_a2f4fb0c5d67793c3073266f0d247a33d}{icon\+\_\+name}} = \mbox{\hyperlink{_visual_png_8c_a8c9afb758de9a0355c93fc926b8ce6b1}{P\+R\+O\+G\+N\+A\+ME}}
+\item 
+static char $\ast$ \mbox{\hyperlink{rpng2-x_8c_ae178e0b707bb083445446bacf79138f0}{res\+\_\+name}} = \mbox{\hyperlink{rpng2-x_8c_a26d3cf6f35fd25b054ff41b03368b31b}{R\+E\+S\+N\+A\+ME}}
+\item 
+static char $\ast$ \mbox{\hyperlink{rpng2-x_8c_a0aeb2856c5f54c1744e73632e7c595b7}{res\+\_\+class}} = \mbox{\hyperlink{rpng2-x_8c_a3b0a2ac91fca697e3acedd9903efd4fd}{R\+E\+S\+C\+L\+A\+SS}}
+\item 
+static char $\ast$ \mbox{\hyperlink{rpng2-x_8c_aeac90097f29f7529968697163cea5c18}{filename}}
+\item 
+static F\+I\+LE $\ast$ \mbox{\hyperlink{rpng2-x_8c_af19157da745ecb3f2b088c8f3a10c0a7}{infile}}
+\item 
+static \mbox{\hyperlink{readpng2_8h_a1b06d069c8b16f46dd13c65e745bbdcb}{mainprog\+\_\+info}} \mbox{\hyperlink{rpng2-x_8c_a620379ebfcc5817eef3e6a063e83f64f}{rpng2\+\_\+info}}
+\item 
+static \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} \mbox{\hyperlink{rpng2-x_8c_a82a0c3437e717af50ffb2c5244a611dd}{inbuf}} \mbox{[}\mbox{\hyperlink{rpng2-x_8c_ab3f00dac33458432279d4308226d8413}{I\+N\+B\+U\+F\+S\+I\+ZE}}\mbox{]}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_aeb67c5d07a9a094de6dc172d6ef53766}{incount}}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_a0e13c5b1758f3abeec1855394c921107}{pat}} = 6
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_a1f95a8a8bfcf398fe6d4b23eb958f064}{bg\+\_\+image}} = 0
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_ab2bd2b176aeae12a23126f93e3ccab33}{bgscale}}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_afbdec83022903cd491403d2faae5e38a}{bgscale\+\_\+default}} = 16
+\item 
+static \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} \mbox{\hyperlink{rpng2-x_8c_a87b93a760b02367b4454818bce11ac88}{bg\+\_\+rowbytes}}
+\item 
+static \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$ \mbox{\hyperlink{rpng2-x_8c_ae7b1caf5caf0f274b142e9792622dac4}{bg\+\_\+data}}
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_afb2f62a163496d342d914e18bdb28554}{pause\+\_\+after\+\_\+pass}} = \mbox{\hyperlink{pnm2png_8c_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_ae852c2333fbe5ff435d0f120e36bd657}{demo\+\_\+timing}} = \mbox{\hyperlink{pnm2png_8c_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}
+\item 
+\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} \mbox{\hyperlink{rpng2-x_8c_acdb3a6fad912cfd36518b01be3c90753}{usleep\+\_\+duration}} = 0L
+\item 
+static struct rgb\+\_\+color \mbox{\hyperlink{rpng2-x_8c_a3640ea0c70d52a4d9bb9b79008e91dc5}{rgb}} \mbox{[}$\,$\mbox{]}
+\item 
+static struct background\+\_\+pattern \mbox{\hyperlink{rpng2-x_8c_a808fa6d3573a86afa3ba7698a65b1ef6}{bg}} \mbox{[}$\,$\mbox{]}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_af61b351338b26840386fbab7f8214e53}{num\+\_\+bgpat}} = sizeof(\mbox{\hyperlink{rpng2-x_8c_a808fa6d3573a86afa3ba7698a65b1ef6}{bg}}) / sizeof(struct background\+\_\+pattern)
+\item 
+static char $\ast$ \mbox{\hyperlink{rpng2-x_8c_a50689dac041ace6e96378e3f30ca5cc4}{displayname}}
+\item 
+static X\+Image $\ast$ \mbox{\hyperlink{rpng2-x_8c_a49ce7b9b4d558b607f8ad1854599fde2}{ximage}}
+\item 
+static Display $\ast$ \mbox{\hyperlink{rpng2-x_8c_a854f9eb314f72feecf68ba03c6f0e5d5}{display}}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_acb5ba97551079e0b072c62c21d784ac5}{depth}}
+\item 
+static Visual $\ast$ \mbox{\hyperlink{rpng2-x_8c_a6ff21403d498574a0185ea2e360e66e9}{visual}}
+\item 
+static X\+Visual\+Info $\ast$ \mbox{\hyperlink{rpng2-x_8c_a60185eb73e2607b97ece59bd1ef958a1}{visual\+\_\+list}}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_a749e9e93860b1af042087034eea7684c}{R\+Shift}}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_aab8970c588e523b349cc24466aacfdb7}{G\+Shift}}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_a4ebd97c21166f35b46ac4d4409ee3edf}{B\+Shift}}
+\item 
+static \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} \mbox{\hyperlink{rpng2-x_8c_a212e4ea41130e09c64e370b2bb342724}{R\+Mask}}
+\item 
+static \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} \mbox{\hyperlink{rpng2-x_8c_a2fbd729689ff182bd914481196f3850e}{G\+Mask}}
+\item 
+static \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} \mbox{\hyperlink{rpng2-x_8c_ad1a7f16abbb81ff4ed49b6eb472e9822}{B\+Mask}}
+\item 
+static Window \mbox{\hyperlink{rpng2-x_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}
+\item 
+static GC \mbox{\hyperlink{rpng2-x_8c_a5da9d24666f1955a9b5ce3d2583b823a}{gc}}
+\item 
+static Colormap \mbox{\hyperlink{rpng2-x_8c_af611adb2a277a44b745300318b0bbca7}{colormap}}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_a93e94a7490818556d4d9d76a804cc24f}{have\+\_\+nondefault\+\_\+visual}} = \mbox{\hyperlink{pnm2png_8c_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_ab3e4800c6d7c9fc245408d2f353c323e}{have\+\_\+colormap}} = \mbox{\hyperlink{pnm2png_8c_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_abc7a59036bc5c12eb5146800de191e77}{have\+\_\+window}} = \mbox{\hyperlink{pnm2png_8c_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_a5d1f5ec6f862a98b237378772eb5a1c8}{have\+\_\+gc}} = \mbox{\hyperlink{pnm2png_8c_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{rpng2-x_8c_ae2f08dc603ae93c402abd918ba4e23e1}\label{rpng2-x_8c_ae2f08dc603ae93c402abd918ba4e23e1}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!A\+BS@{A\+BS}}
+\index{A\+BS@{A\+BS}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{A\+BS}{ABS}}
+{\footnotesize\ttfamily \#define A\+BS(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}} }\end{DoxyParamCaption})~((\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}})$<$0?-\/(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}})\+:(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}}))}
+
+\mbox{\Hypertarget{rpng2-x_8c_af1fe887e7346a25e71f3b1527e723692}\label{rpng2-x_8c_af1fe887e7346a25e71f3b1527e723692}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!alpha\+\_\+composite@{alpha\+\_\+composite}}
+\index{alpha\+\_\+composite@{alpha\+\_\+composite}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{alpha\+\_\+composite}{alpha\_composite}}
+{\footnotesize\ttfamily \#define alpha\+\_\+composite(\begin{DoxyParamCaption}\item[{}]{composite,  }\item[{}]{fg,  }\item[{}]{alpha,  }\item[{}]{\mbox{\hyperlink{rpng2-x_8c_a808fa6d3573a86afa3ba7698a65b1ef6}{bg}} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\{               \(\backslash\)
+    ush temp = ((\mbox{\hyperlink{readpng_8h_a3754180d606d4ed15468d15d9665aa2e}{ush}})(fg)*(\mbox{\hyperlink{readpng_8h_a3754180d606d4ed15468d15d9665aa2e}{ush}})(alpha) +                          \(\backslash\)
+                (\mbox{\hyperlink{readpng_8h_a3754180d606d4ed15468d15d9665aa2e}{ush}})(\mbox{\hyperlink{rpng2-x_8c_a808fa6d3573a86afa3ba7698a65b1ef6}{bg}})*(\mbox{\hyperlink{readpng_8h_a3754180d606d4ed15468d15d9665aa2e}{ush}})(255 - (\mbox{\hyperlink{readpng_8h_a3754180d606d4ed15468d15d9665aa2e}{ush}})(alpha)) + (\mbox{\hyperlink{readpng_8h_a3754180d606d4ed15468d15d9665aa2e}{ush}})128);  \(\backslash\)
+    (composite) = (\mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}})((temp + (temp >> 8)) >> 8);               \(\backslash\)
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{rpng2-x_8c_a747f7929e94899e6b0714649864b8711}\label{rpng2-x_8c_a747f7929e94899e6b0714649864b8711}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!C\+L\+IP@{C\+L\+IP}}
+\index{C\+L\+IP@{C\+L\+IP}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{C\+L\+IP}{CLIP}}
+{\footnotesize\ttfamily \#define C\+L\+IP(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}},  }\item[{}]{min,  }\item[{}]{\mbox{\hyperlink{enough_8c_a3f41d878a34048480562aba063c70c92}{max}} }\end{DoxyParamCaption})~\mbox{\hyperlink{sqlite3_8c_ad935f1ff1a50822e317bdb321ce991ad}{M\+AX}}(min,\mbox{\hyperlink{sqlite3_8c_adcd021ac91d43a62b2cdecf9a5b971a7}{M\+IN}}((\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}}),\mbox{\hyperlink{enough_8c_a3f41d878a34048480562aba063c70c92}{max}}))}
+
+\mbox{\Hypertarget{rpng2-x_8c_a59dbc34417cea1957b04dbd47534fbaa}\label{rpng2-x_8c_a59dbc34417cea1957b04dbd47534fbaa}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!C\+L\+I\+P8P@{C\+L\+I\+P8P}}
+\index{C\+L\+I\+P8P@{C\+L\+I\+P8P}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{C\+L\+I\+P8P}{CLIP8P}}
+{\footnotesize\ttfamily \#define C\+L\+I\+P8P(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}} }\end{DoxyParamCaption})~\mbox{\hyperlink{sqlite3_8c_ad935f1ff1a50822e317bdb321ce991ad}{M\+AX}}(0,(\mbox{\hyperlink{sqlite3_8c_adcd021ac91d43a62b2cdecf9a5b971a7}{M\+IN}}((\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}}),255)))   /$\ast$ 8-\/bit pos. integer (\mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}}) $\ast$/}
+
+\mbox{\Hypertarget{rpng2-x_8c_ab3f00dac33458432279d4308226d8413}\label{rpng2-x_8c_ab3f00dac33458432279d4308226d8413}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!I\+N\+B\+U\+F\+S\+I\+ZE@{I\+N\+B\+U\+F\+S\+I\+ZE}}
+\index{I\+N\+B\+U\+F\+S\+I\+ZE@{I\+N\+B\+U\+F\+S\+I\+ZE}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{I\+N\+B\+U\+F\+S\+I\+ZE}{INBUFSIZE}}
+{\footnotesize\ttfamily \#define I\+N\+B\+U\+F\+S\+I\+ZE}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+4096   \textcolor{comment}{/* with pseudo-timing on (1 sec delay/block), this}
+\textcolor{comment}{                          *  block size corresponds roughly to a download}
+\textcolor{comment}{                          *  speed 10% faster than theoretical 33.6K maximum}
+\textcolor{comment}{                          *  (assuming 8 data bits, 1 stop bit and no other}
+\textcolor{comment}{                          *  overhead) */}
+\end{DoxyCode}
+\mbox{\Hypertarget{rpng2-x_8c_a99c039c85f9ce3e4a4dc4f95fce32972}\label{rpng2-x_8c_a99c039c85f9ce3e4a4dc4f95fce32972}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!I\+N\+V\+\_\+\+P\+I\+\_\+360@{I\+N\+V\+\_\+\+P\+I\+\_\+360}}
+\index{I\+N\+V\+\_\+\+P\+I\+\_\+360@{I\+N\+V\+\_\+\+P\+I\+\_\+360}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{I\+N\+V\+\_\+\+P\+I\+\_\+360}{INV\_PI\_360}}
+{\footnotesize\ttfamily \#define I\+N\+V\+\_\+\+P\+I\+\_\+360~(360.\+0 / \mbox{\hyperlink{rpng2-x_8c_a598a3330b3c21701223ee0ca14316eca}{PI}})}
+
+\mbox{\Hypertarget{rpng2-x_8c_ae8176192ea4d52bb0acbcfeaaffb3bd8}\label{rpng2-x_8c_ae8176192ea4d52bb0acbcfeaaffb3bd8}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!L\+O\+N\+G\+N\+A\+ME@{L\+O\+N\+G\+N\+A\+ME}}
+\index{L\+O\+N\+G\+N\+A\+ME@{L\+O\+N\+G\+N\+A\+ME}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{L\+O\+N\+G\+N\+A\+ME}{LONGNAME}}
+{\footnotesize\ttfamily \#define L\+O\+N\+G\+N\+A\+ME~\char`\"{}Progressive P\+NG Viewer for X\char`\"{}}
+
+\mbox{\Hypertarget{rpng2-x_8c_afa99ec4acc4ecb2dc3c2d05da15d0e3f}\label{rpng2-x_8c_afa99ec4acc4ecb2dc3c2d05da15d0e3f}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!M\+AX@{M\+AX}}
+\index{M\+AX@{M\+AX}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{M\+AX}{MAX}}
+{\footnotesize\ttfamily \#define M\+AX(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}},  }\item[{}]{b }\end{DoxyParamCaption})~(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}}$>$b?a\+:b)}
+
+\mbox{\Hypertarget{rpng2-x_8c_a3acffbd305ee72dcd4593c0d8af64a4f}\label{rpng2-x_8c_a3acffbd305ee72dcd4593c0d8af64a4f}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!M\+IN@{M\+IN}}
+\index{M\+IN@{M\+IN}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{M\+IN}{MIN}}
+{\footnotesize\ttfamily \#define M\+IN(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}},  }\item[{}]{b }\end{DoxyParamCaption})~(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}}$<$b?a\+:b)}
+
+\mbox{\Hypertarget{rpng2-x_8c_a17b2fe83e2965ffad1ae90c4283b3034}\label{rpng2-x_8c_a17b2fe83e2965ffad1ae90c4283b3034}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!N\+O\+\_\+24\+B\+I\+T\+\_\+\+M\+A\+S\+KS@{N\+O\+\_\+24\+B\+I\+T\+\_\+\+M\+A\+S\+KS}}
+\index{N\+O\+\_\+24\+B\+I\+T\+\_\+\+M\+A\+S\+KS@{N\+O\+\_\+24\+B\+I\+T\+\_\+\+M\+A\+S\+KS}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{N\+O\+\_\+24\+B\+I\+T\+\_\+\+M\+A\+S\+KS}{NO\_24BIT\_MASKS}}
+{\footnotesize\ttfamily \#define N\+O\+\_\+24\+B\+I\+T\+\_\+\+M\+A\+S\+KS~/$\ast$ undef case not fully written-\/-\/only for redisplay() $\ast$/}
+
+\mbox{\Hypertarget{rpng2-x_8c_a598a3330b3c21701223ee0ca14316eca}\label{rpng2-x_8c_a598a3330b3c21701223ee0ca14316eca}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!PI@{PI}}
+\index{PI@{PI}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{PI}{PI}}
+{\footnotesize\ttfamily \#define PI~3.\+141592653589793238}
+
+\mbox{\Hypertarget{rpng2-x_8c_a7c7671235d3f0d09bc5c011920fe0d5b}\label{rpng2-x_8c_a7c7671235d3f0d09bc5c011920fe0d5b}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!P\+I\+\_\+2@{P\+I\+\_\+2}}
+\index{P\+I\+\_\+2@{P\+I\+\_\+2}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{P\+I\+\_\+2}{PI\_2}}
+{\footnotesize\ttfamily \#define P\+I\+\_\+2~(\mbox{\hyperlink{rpng2-x_8c_a598a3330b3c21701223ee0ca14316eca}{PI}}$\ast$0.\+5)}
+
+\mbox{\Hypertarget{rpng2-x_8c_a8c9afb758de9a0355c93fc926b8ce6b1}\label{rpng2-x_8c_a8c9afb758de9a0355c93fc926b8ce6b1}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!P\+R\+O\+G\+N\+A\+ME@{P\+R\+O\+G\+N\+A\+ME}}
+\index{P\+R\+O\+G\+N\+A\+ME@{P\+R\+O\+G\+N\+A\+ME}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{P\+R\+O\+G\+N\+A\+ME}{PROGNAME}}
+{\footnotesize\ttfamily \#define P\+R\+O\+G\+N\+A\+ME~\char`\"{}rpng2-\/x\char`\"{}}
+
+\mbox{\Hypertarget{rpng2-x_8c_ad76830d9084202349fd77f494a991ce4}\label{rpng2-x_8c_ad76830d9084202349fd77f494a991ce4}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!Q\+U\+IT@{Q\+U\+IT}}
+\index{Q\+U\+IT@{Q\+U\+IT}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{Q\+U\+IT}{QUIT}}
+{\footnotesize\ttfamily \#define Q\+U\+IT(\begin{DoxyParamCaption}\item[{}]{e,  }\item[{}]{k }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+((e.type == ButtonPress && e.xbutton.button == Button1) ||  \(\backslash\)
+                  (e.type == KeyPress &&   \textcolor{comment}{/*  v--- or 1 for shifted keys */}  \(\backslash\)
+                  ((k = XLookupKeysym(&e.xkey, 0)) == XK\_q || k == XK\_Escape)))
+\end{DoxyCode}
+\mbox{\Hypertarget{rpng2-x_8c_a3b0a2ac91fca697e3acedd9903efd4fd}\label{rpng2-x_8c_a3b0a2ac91fca697e3acedd9903efd4fd}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!R\+E\+S\+C\+L\+A\+SS@{R\+E\+S\+C\+L\+A\+SS}}
+\index{R\+E\+S\+C\+L\+A\+SS@{R\+E\+S\+C\+L\+A\+SS}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{R\+E\+S\+C\+L\+A\+SS}{RESCLASS}}
+{\footnotesize\ttfamily \#define R\+E\+S\+C\+L\+A\+SS~\char`\"{}Rpng\char`\"{}       /$\ast$ our X resource class name $\ast$/}
+
+\mbox{\Hypertarget{rpng2-x_8c_a26d3cf6f35fd25b054ff41b03368b31b}\label{rpng2-x_8c_a26d3cf6f35fd25b054ff41b03368b31b}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!R\+E\+S\+N\+A\+ME@{R\+E\+S\+N\+A\+ME}}
+\index{R\+E\+S\+N\+A\+ME@{R\+E\+S\+N\+A\+ME}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{R\+E\+S\+N\+A\+ME}{RESNAME}}
+{\footnotesize\ttfamily \#define R\+E\+S\+N\+A\+ME~\char`\"{}rpng2\char`\"{}       /$\ast$ our X resource application name $\ast$/}
+
+\mbox{\Hypertarget{rpng2-x_8c_a2fff10e39e5f260c02e0d3ca6f0d0767}\label{rpng2-x_8c_a2fff10e39e5f260c02e0d3ca6f0d0767}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!rgb1\+\_\+max@{rgb1\+\_\+max}}
+\index{rgb1\+\_\+max@{rgb1\+\_\+max}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{rgb1\+\_\+max}{rgb1\_max}}
+{\footnotesize\ttfamily \#define rgb1\+\_\+max~bg\+\_\+freq}
+
+\mbox{\Hypertarget{rpng2-x_8c_a296f60be08dd0f77ffa8567145fb420b}\label{rpng2-x_8c_a296f60be08dd0f77ffa8567145fb420b}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!rgb1\+\_\+min@{rgb1\+\_\+min}}
+\index{rgb1\+\_\+min@{rgb1\+\_\+min}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{rgb1\+\_\+min}{rgb1\_min}}
+{\footnotesize\ttfamily \#define rgb1\+\_\+min~bg\+\_\+gray}
+
+\mbox{\Hypertarget{rpng2-x_8c_a302c6a6f0caef8546ccf8d25e2ba0217}\label{rpng2-x_8c_a302c6a6f0caef8546ccf8d25e2ba0217}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!rgb2\+\_\+max@{rgb2\+\_\+max}}
+\index{rgb2\+\_\+max@{rgb2\+\_\+max}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{rgb2\+\_\+max}{rgb2\_max}}
+{\footnotesize\ttfamily \#define rgb2\+\_\+max~bg\+\_\+bsat}
+
+\mbox{\Hypertarget{rpng2-x_8c_a9de071f4fad1348f0344e55ab384f2a3}\label{rpng2-x_8c_a9de071f4fad1348f0344e55ab384f2a3}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!rgb2\+\_\+min@{rgb2\+\_\+min}}
+\index{rgb2\+\_\+min@{rgb2\+\_\+min}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{rgb2\+\_\+min}{rgb2\_min}}
+{\footnotesize\ttfamily \#define rgb2\+\_\+min~bg\+\_\+brot}
+
+\mbox{\Hypertarget{rpng2-x_8c_afecc38967871feedc120e1d3650d387e}\label{rpng2-x_8c_afecc38967871feedc120e1d3650d387e}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!R\+O\+U\+N\+DF@{R\+O\+U\+N\+DF}}
+\index{R\+O\+U\+N\+DF@{R\+O\+U\+N\+DF}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{R\+O\+U\+N\+DF}{ROUNDF}}
+{\footnotesize\ttfamily \#define R\+O\+U\+N\+DF(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}} }\end{DoxyParamCaption})~((\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}})(\mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}} + 0.\+5))}
+
+\mbox{\Hypertarget{rpng2-x_8c_a44ed0f898da2dd3ada04f222e0dce283}\label{rpng2-x_8c_a44ed0f898da2dd3ada04f222e0dce283}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!usleep@{usleep}}
+\index{usleep@{usleep}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{usleep}{usleep}}
+{\footnotesize\ttfamily \#define usleep(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~sleep(((x)+499999)/1000000)}
+
+\mbox{\Hypertarget{rpng2-x_8c_a1c6d5de492ac61ad29aec7aa9a436bbf}\label{rpng2-x_8c_a1c6d5de492ac61ad29aec7aa9a436bbf}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!V\+E\+R\+S\+I\+ON@{V\+E\+R\+S\+I\+ON}}
+\index{V\+E\+R\+S\+I\+ON@{V\+E\+R\+S\+I\+ON}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{V\+E\+R\+S\+I\+ON}{VERSION}}
+{\footnotesize\ttfamily \#define V\+E\+R\+S\+I\+ON~\char`\"{}2.\+04 of 15 June 2014\char`\"{}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{rpng2-x_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{rpng2-x_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!main@{main}}
+\index{main@{main}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rpng2-x_8c_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rpng2-x_8c_aca1959fe9e81b967dfd94fa218c72e84}\label{rpng2-x_8c_aca1959fe9e81b967dfd94fa218c72e84}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!rpng2\+\_\+x\+\_\+cleanup@{rpng2\+\_\+x\+\_\+cleanup}}
+\index{rpng2\+\_\+x\+\_\+cleanup@{rpng2\+\_\+x\+\_\+cleanup}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{rpng2\+\_\+x\+\_\+cleanup()}{rpng2\_x\_cleanup()}}
+{\footnotesize\ttfamily static void rpng2\+\_\+x\+\_\+cleanup (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=251pt]{rpng2-x_8c_aca1959fe9e81b967dfd94fa218c72e84_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rpng2-x_8c_aca1959fe9e81b967dfd94fa218c72e84_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rpng2-x_8c_aa1d3f0f82dec46874ea19ffa781cb1f7}\label{rpng2-x_8c_aa1d3f0f82dec46874ea19ffa781cb1f7}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!rpng2\+\_\+x\+\_\+create\+\_\+window@{rpng2\+\_\+x\+\_\+create\+\_\+window}}
+\index{rpng2\+\_\+x\+\_\+create\+\_\+window@{rpng2\+\_\+x\+\_\+create\+\_\+window}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{rpng2\+\_\+x\+\_\+create\+\_\+window()}{rpng2\_x\_create\_window()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} rpng2\+\_\+x\+\_\+create\+\_\+window (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rpng2-x_8c_aa1d3f0f82dec46874ea19ffa781cb1f7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rpng2-x_8c_aa1d3f0f82dec46874ea19ffa781cb1f7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rpng2-x_8c_a249f2f9baf0276621e94b788cd6d34c3}\label{rpng2-x_8c_a249f2f9baf0276621e94b788cd6d34c3}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!rpng2\+\_\+x\+\_\+display\+\_\+row@{rpng2\+\_\+x\+\_\+display\+\_\+row}}
+\index{rpng2\+\_\+x\+\_\+display\+\_\+row@{rpng2\+\_\+x\+\_\+display\+\_\+row}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{rpng2\+\_\+x\+\_\+display\+\_\+row()}{rpng2\_x\_display\_row()}}
+{\footnotesize\ttfamily static void rpng2\+\_\+x\+\_\+display\+\_\+row (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}}}]{row }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{rpng2-x_8c_a249f2f9baf0276621e94b788cd6d34c3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rpng2-x_8c_ab1a527797f2c8d50003040e0af0b0fc9}\label{rpng2-x_8c_ab1a527797f2c8d50003040e0af0b0fc9}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!rpng2\+\_\+x\+\_\+finish\+\_\+display@{rpng2\+\_\+x\+\_\+finish\+\_\+display}}
+\index{rpng2\+\_\+x\+\_\+finish\+\_\+display@{rpng2\+\_\+x\+\_\+finish\+\_\+display}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{rpng2\+\_\+x\+\_\+finish\+\_\+display()}{rpng2\_x\_finish\_display()}}
+{\footnotesize\ttfamily static void rpng2\+\_\+x\+\_\+finish\+\_\+display (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{rpng2-x_8c_ab1a527797f2c8d50003040e0af0b0fc9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rpng2-x_8c_ab20ab6bc14c0853af2e0e7698125174e}\label{rpng2-x_8c_ab20ab6bc14c0853af2e0e7698125174e}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!rpng2\+\_\+x\+\_\+init@{rpng2\+\_\+x\+\_\+init}}
+\index{rpng2\+\_\+x\+\_\+init@{rpng2\+\_\+x\+\_\+init}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{rpng2\+\_\+x\+\_\+init()}{rpng2\_x\_init()}}
+{\footnotesize\ttfamily static void rpng2\+\_\+x\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rpng2-x_8c_ab20ab6bc14c0853af2e0e7698125174e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{rpng2-x_8c_ab20ab6bc14c0853af2e0e7698125174e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rpng2-x_8c_ad02636450f027c837e6a3fbbe7a81829}\label{rpng2-x_8c_ad02636450f027c837e6a3fbbe7a81829}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!rpng2\+\_\+x\+\_\+load\+\_\+bg\+\_\+image@{rpng2\+\_\+x\+\_\+load\+\_\+bg\+\_\+image}}
+\index{rpng2\+\_\+x\+\_\+load\+\_\+bg\+\_\+image@{rpng2\+\_\+x\+\_\+load\+\_\+bg\+\_\+image}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{rpng2\+\_\+x\+\_\+load\+\_\+bg\+\_\+image()}{rpng2\_x\_load\_bg\_image()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} rpng2\+\_\+x\+\_\+load\+\_\+bg\+\_\+image (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{rpng2-x_8c_ad02636450f027c837e6a3fbbe7a81829_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rpng2-x_8c_ad02636450f027c837e6a3fbbe7a81829_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rpng2-x_8c_a6d049c205a7e333060fd97d7a41e71ff}\label{rpng2-x_8c_a6d049c205a7e333060fd97d7a41e71ff}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!rpng2\+\_\+x\+\_\+msb@{rpng2\+\_\+x\+\_\+msb}}
+\index{rpng2\+\_\+x\+\_\+msb@{rpng2\+\_\+x\+\_\+msb}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{rpng2\+\_\+x\+\_\+msb()}{rpng2\_x\_msb()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} rpng2\+\_\+x\+\_\+msb (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}}}]{u32val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rpng2-x_8c_a6d049c205a7e333060fd97d7a41e71ff_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rpng2-x_8c_affab9dec431ea4b549e6ced6d3e416f5}\label{rpng2-x_8c_affab9dec431ea4b549e6ced6d3e416f5}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!rpng2\+\_\+x\+\_\+redisplay\+\_\+image@{rpng2\+\_\+x\+\_\+redisplay\+\_\+image}}
+\index{rpng2\+\_\+x\+\_\+redisplay\+\_\+image@{rpng2\+\_\+x\+\_\+redisplay\+\_\+image}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{rpng2\+\_\+x\+\_\+redisplay\+\_\+image()}{rpng2\_x\_redisplay\_image()}}
+{\footnotesize\ttfamily static void rpng2\+\_\+x\+\_\+redisplay\+\_\+image (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}}}]{startcol,  }\item[{\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}}}]{startrow,  }\item[{\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}}}]{width,  }\item[{\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}}}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=299pt]{rpng2-x_8c_affab9dec431ea4b549e6ced6d3e416f5_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{rpng2-x_8c_a9db0329b02c3e8e0260939a1c680738a}\label{rpng2-x_8c_a9db0329b02c3e8e0260939a1c680738a}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!appname@{appname}}
+\index{appname@{appname}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{appname}{appname}}
+{\footnotesize\ttfamily char$\ast$ appname = \mbox{\hyperlink{_visual_png_8c_ae8176192ea4d52bb0acbcfeaaffb3bd8}{L\+O\+N\+G\+N\+A\+ME}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_a808fa6d3573a86afa3ba7698a65b1ef6}\label{rpng2-x_8c_a808fa6d3573a86afa3ba7698a65b1ef6}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!bg@{bg}}
+\index{bg@{bg}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{bg}{bg}}
+{\footnotesize\ttfamily struct background\+\_\+pattern  bg\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    \{0,     1,1, 16,16\},        
+    \{0+8,   2,0,  1,15\},        
+    \{0+24,  2,0,  1,0\},         
+    \{0+8,   4,5,  0,2\},         
+    \{0+8,   4,5,  0,6\},         
+    \{0,     7,0,  8,9\},         
+    \{0+8,  13,0,  5,14\},        
+    \{0+8,  12,0, 10,11\},        
+    \{1,     7,0,  8,0\},         
+    \{1,    12,0, 11,0\},         
+    \{1,    10,0,  7,0\},         
+    \{1,     4,0,  5,0\},         
+    \{1,     3,0,  0,0\},         
+    \{2,    16, 100,  20,   0\},  
+    \{2,    18, 100,  10,   2\},  
+    \{2,    16, 256, 100, 250\},  
+    \{2, 10000, 256,  11,   0\}   
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{rpng2-x_8c_ae7b1caf5caf0f274b142e9792622dac4}\label{rpng2-x_8c_ae7b1caf5caf0f274b142e9792622dac4}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!bg\+\_\+data@{bg\+\_\+data}}
+\index{bg\+\_\+data@{bg\+\_\+data}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{bg\+\_\+data}{bg\_data}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}}$\ast$ bg\+\_\+data\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_a1f95a8a8bfcf398fe6d4b23eb958f064}\label{rpng2-x_8c_a1f95a8a8bfcf398fe6d4b23eb958f064}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!bg\+\_\+image@{bg\+\_\+image}}
+\index{bg\+\_\+image@{bg\+\_\+image}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{bg\+\_\+image}{bg\_image}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} bg\+\_\+image = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_a87b93a760b02367b4454818bce11ac88}\label{rpng2-x_8c_a87b93a760b02367b4454818bce11ac88}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!bg\+\_\+rowbytes@{bg\+\_\+rowbytes}}
+\index{bg\+\_\+rowbytes@{bg\+\_\+rowbytes}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{bg\+\_\+rowbytes}{bg\_rowbytes}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} bg\+\_\+rowbytes\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_ab2bd2b176aeae12a23126f93e3ccab33}\label{rpng2-x_8c_ab2bd2b176aeae12a23126f93e3ccab33}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!bgscale@{bgscale}}
+\index{bgscale@{bgscale}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{bgscale}{bgscale}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} bgscale\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_afbdec83022903cd491403d2faae5e38a}\label{rpng2-x_8c_afbdec83022903cd491403d2faae5e38a}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!bgscale\+\_\+default@{bgscale\+\_\+default}}
+\index{bgscale\+\_\+default@{bgscale\+\_\+default}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{bgscale\+\_\+default}{bgscale\_default}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} bgscale\+\_\+default = 16\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_ad1a7f16abbb81ff4ed49b6eb472e9822}\label{rpng2-x_8c_ad1a7f16abbb81ff4ed49b6eb472e9822}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!B\+Mask@{B\+Mask}}
+\index{B\+Mask@{B\+Mask}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{B\+Mask}{BMask}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} B\+Mask\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_a4ebd97c21166f35b46ac4d4409ee3edf}\label{rpng2-x_8c_a4ebd97c21166f35b46ac4d4409ee3edf}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!B\+Shift@{B\+Shift}}
+\index{B\+Shift@{B\+Shift}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{B\+Shift}{BShift}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} B\+Shift\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_af611adb2a277a44b745300318b0bbca7}\label{rpng2-x_8c_af611adb2a277a44b745300318b0bbca7}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!colormap@{colormap}}
+\index{colormap@{colormap}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{colormap}{colormap}}
+{\footnotesize\ttfamily Colormap colormap\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_ae852c2333fbe5ff435d0f120e36bd657}\label{rpng2-x_8c_ae852c2333fbe5ff435d0f120e36bd657}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!demo\+\_\+timing@{demo\+\_\+timing}}
+\index{demo\+\_\+timing@{demo\+\_\+timing}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{demo\+\_\+timing}{demo\_timing}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} demo\+\_\+timing = \mbox{\hyperlink{pnm2png_8c_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}}
+
+\mbox{\Hypertarget{rpng2-x_8c_acb5ba97551079e0b072c62c21d784ac5}\label{rpng2-x_8c_acb5ba97551079e0b072c62c21d784ac5}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!depth@{depth}}
+\index{depth@{depth}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{depth}{depth}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} depth\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_a854f9eb314f72feecf68ba03c6f0e5d5}\label{rpng2-x_8c_a854f9eb314f72feecf68ba03c6f0e5d5}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!display@{display}}
+\index{display@{display}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{display}{display}}
+{\footnotesize\ttfamily Display$\ast$ display\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_a50689dac041ace6e96378e3f30ca5cc4}\label{rpng2-x_8c_a50689dac041ace6e96378e3f30ca5cc4}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!displayname@{displayname}}
+\index{displayname@{displayname}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{displayname}{displayname}}
+{\footnotesize\ttfamily char$\ast$ displayname\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_aeac90097f29f7529968697163cea5c18}\label{rpng2-x_8c_aeac90097f29f7529968697163cea5c18}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!filename@{filename}}
+\index{filename@{filename}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{filename}{filename}}
+{\footnotesize\ttfamily char$\ast$ \mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_a5da9d24666f1955a9b5ce3d2583b823a}\label{rpng2-x_8c_a5da9d24666f1955a9b5ce3d2583b823a}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!gc@{gc}}
+\index{gc@{gc}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{gc}{gc}}
+{\footnotesize\ttfamily GC gc\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_a2fbd729689ff182bd914481196f3850e}\label{rpng2-x_8c_a2fbd729689ff182bd914481196f3850e}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!G\+Mask@{G\+Mask}}
+\index{G\+Mask@{G\+Mask}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{G\+Mask}{GMask}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} G\+Mask\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_aab8970c588e523b349cc24466aacfdb7}\label{rpng2-x_8c_aab8970c588e523b349cc24466aacfdb7}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!G\+Shift@{G\+Shift}}
+\index{G\+Shift@{G\+Shift}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{G\+Shift}{GShift}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} G\+Shift\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_ab3e4800c6d7c9fc245408d2f353c323e}\label{rpng2-x_8c_ab3e4800c6d7c9fc245408d2f353c323e}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!have\+\_\+colormap@{have\+\_\+colormap}}
+\index{have\+\_\+colormap@{have\+\_\+colormap}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{have\+\_\+colormap}{have\_colormap}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} have\+\_\+colormap = \mbox{\hyperlink{pnm2png_8c_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_a5d1f5ec6f862a98b237378772eb5a1c8}\label{rpng2-x_8c_a5d1f5ec6f862a98b237378772eb5a1c8}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!have\+\_\+gc@{have\+\_\+gc}}
+\index{have\+\_\+gc@{have\+\_\+gc}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{have\+\_\+gc}{have\_gc}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} have\+\_\+gc = \mbox{\hyperlink{pnm2png_8c_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_a93e94a7490818556d4d9d76a804cc24f}\label{rpng2-x_8c_a93e94a7490818556d4d9d76a804cc24f}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!have\+\_\+nondefault\+\_\+visual@{have\+\_\+nondefault\+\_\+visual}}
+\index{have\+\_\+nondefault\+\_\+visual@{have\+\_\+nondefault\+\_\+visual}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{have\+\_\+nondefault\+\_\+visual}{have\_nondefault\_visual}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} have\+\_\+nondefault\+\_\+visual = \mbox{\hyperlink{pnm2png_8c_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_abc7a59036bc5c12eb5146800de191e77}\label{rpng2-x_8c_abc7a59036bc5c12eb5146800de191e77}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!have\+\_\+window@{have\+\_\+window}}
+\index{have\+\_\+window@{have\+\_\+window}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{have\+\_\+window}{have\_window}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} have\+\_\+window = \mbox{\hyperlink{pnm2png_8c_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_a2f4fb0c5d67793c3073266f0d247a33d}\label{rpng2-x_8c_a2f4fb0c5d67793c3073266f0d247a33d}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!icon\+\_\+name@{icon\+\_\+name}}
+\index{icon\+\_\+name@{icon\+\_\+name}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{icon\+\_\+name}{icon\_name}}
+{\footnotesize\ttfamily char$\ast$ icon\+\_\+name = \mbox{\hyperlink{_visual_png_8c_a8c9afb758de9a0355c93fc926b8ce6b1}{P\+R\+O\+G\+N\+A\+ME}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_a82a0c3437e717af50ffb2c5244a611dd}\label{rpng2-x_8c_a82a0c3437e717af50ffb2c5244a611dd}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!inbuf@{inbuf}}
+\index{inbuf@{inbuf}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{inbuf}{inbuf}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} inbuf\mbox{[}\mbox{\hyperlink{rpng2-x_8c_ab3f00dac33458432279d4308226d8413}{I\+N\+B\+U\+F\+S\+I\+ZE}}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_aeb67c5d07a9a094de6dc172d6ef53766}\label{rpng2-x_8c_aeb67c5d07a9a094de6dc172d6ef53766}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!incount@{incount}}
+\index{incount@{incount}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{incount}{incount}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} incount\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_af19157da745ecb3f2b088c8f3a10c0a7}\label{rpng2-x_8c_af19157da745ecb3f2b088c8f3a10c0a7}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!infile@{infile}}
+\index{infile@{infile}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{infile}{infile}}
+{\footnotesize\ttfamily F\+I\+LE$\ast$ infile\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_af61b351338b26840386fbab7f8214e53}\label{rpng2-x_8c_af61b351338b26840386fbab7f8214e53}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!num\+\_\+bgpat@{num\+\_\+bgpat}}
+\index{num\+\_\+bgpat@{num\+\_\+bgpat}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{num\+\_\+bgpat}{num\_bgpat}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} num\+\_\+bgpat = sizeof(\mbox{\hyperlink{rpng2-x_8c_a808fa6d3573a86afa3ba7698a65b1ef6}{bg}}) / sizeof(struct background\+\_\+pattern)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_a0e13c5b1758f3abeec1855394c921107}\label{rpng2-x_8c_a0e13c5b1758f3abeec1855394c921107}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!pat@{pat}}
+\index{pat@{pat}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{pat}{pat}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} pat = 6\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_afb2f62a163496d342d914e18bdb28554}\label{rpng2-x_8c_afb2f62a163496d342d914e18bdb28554}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!pause\+\_\+after\+\_\+pass@{pause\+\_\+after\+\_\+pass}}
+\index{pause\+\_\+after\+\_\+pass@{pause\+\_\+after\+\_\+pass}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{pause\+\_\+after\+\_\+pass}{pause\_after\_pass}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} pause\+\_\+after\+\_\+pass = \mbox{\hyperlink{pnm2png_8c_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}}}
+
+\mbox{\Hypertarget{rpng2-x_8c_a0aeb2856c5f54c1744e73632e7c595b7}\label{rpng2-x_8c_a0aeb2856c5f54c1744e73632e7c595b7}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!res\+\_\+class@{res\+\_\+class}}
+\index{res\+\_\+class@{res\+\_\+class}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{res\+\_\+class}{res\_class}}
+{\footnotesize\ttfamily char$\ast$ res\+\_\+class = \mbox{\hyperlink{rpng2-x_8c_a3b0a2ac91fca697e3acedd9903efd4fd}{R\+E\+S\+C\+L\+A\+SS}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_ae178e0b707bb083445446bacf79138f0}\label{rpng2-x_8c_ae178e0b707bb083445446bacf79138f0}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!res\+\_\+name@{res\+\_\+name}}
+\index{res\+\_\+name@{res\+\_\+name}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{res\+\_\+name}{res\_name}}
+{\footnotesize\ttfamily char$\ast$ res\+\_\+name = \mbox{\hyperlink{rpng2-x_8c_a26d3cf6f35fd25b054ff41b03368b31b}{R\+E\+S\+N\+A\+ME}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_a3640ea0c70d52a4d9bb9b79008e91dc5}\label{rpng2-x_8c_a3640ea0c70d52a4d9bb9b79008e91dc5}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!rgb@{rgb}}
+\index{rgb@{rgb}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{rgb}{rgb}}
+{\footnotesize\ttfamily struct rgb\+\_\+color  rgb\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    \{  0,   0,   0\},    
+    \{255, 255, 255\},    
+    \{173, 132,  57\},    
+    \{ 64, 132,   0\},    
+    \{189, 117,   1\},    
+    \{253, 249,   1\},    
+    \{  0,   0, 255\},    
+    \{  0,   0, 120\},    
+    \{255,   0, 255\},    
+    \{ 64,   0,  64\},    
+    \{255,   0,   0\},    
+    \{ 64,   0,   0\},    
+    \{255, 127,   0\},    
+    \{192,  96,   0\},    
+    \{ 24,  60,   0\},    
+    \{ 85, 125, 200\},    
+    \{192, 192, 192\}     
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{rpng2-x_8c_a212e4ea41130e09c64e370b2bb342724}\label{rpng2-x_8c_a212e4ea41130e09c64e370b2bb342724}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!R\+Mask@{R\+Mask}}
+\index{R\+Mask@{R\+Mask}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{R\+Mask}{RMask}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} R\+Mask\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_a620379ebfcc5817eef3e6a063e83f64f}\label{rpng2-x_8c_a620379ebfcc5817eef3e6a063e83f64f}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!rpng2\+\_\+info@{rpng2\+\_\+info}}
+\index{rpng2\+\_\+info@{rpng2\+\_\+info}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{rpng2\+\_\+info}{rpng2\_info}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng2_8h_a1b06d069c8b16f46dd13c65e745bbdcb}{mainprog\+\_\+info}} rpng2\+\_\+info\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_a749e9e93860b1af042087034eea7684c}\label{rpng2-x_8c_a749e9e93860b1af042087034eea7684c}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!R\+Shift@{R\+Shift}}
+\index{R\+Shift@{R\+Shift}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{R\+Shift}{RShift}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} R\+Shift\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_a7d71fb2a6cfb5d27855f58bc7e548978}\label{rpng2-x_8c_a7d71fb2a6cfb5d27855f58bc7e548978}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!titlebar@{titlebar}}
+\index{titlebar@{titlebar}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{titlebar}{titlebar}}
+{\footnotesize\ttfamily char titlebar\mbox{[}1024\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_acdb3a6fad912cfd36518b01be3c90753}\label{rpng2-x_8c_acdb3a6fad912cfd36518b01be3c90753}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!usleep\+\_\+duration@{usleep\+\_\+duration}}
+\index{usleep\+\_\+duration@{usleep\+\_\+duration}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{usleep\+\_\+duration}{usleep\_duration}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}} usleep\+\_\+duration = 0L}
+
+\mbox{\Hypertarget{rpng2-x_8c_a6ff21403d498574a0185ea2e360e66e9}\label{rpng2-x_8c_a6ff21403d498574a0185ea2e360e66e9}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!visual@{visual}}
+\index{visual@{visual}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{visual}{visual}}
+{\footnotesize\ttfamily Visual$\ast$ visual\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_a60185eb73e2607b97ece59bd1ef958a1}\label{rpng2-x_8c_a60185eb73e2607b97ece59bd1ef958a1}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!visual\+\_\+list@{visual\+\_\+list}}
+\index{visual\+\_\+list@{visual\+\_\+list}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{visual\+\_\+list}{visual\_list}}
+{\footnotesize\ttfamily X\+Visual\+Info$\ast$ visual\+\_\+list\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}\label{rpng2-x_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!window@{window}}
+\index{window@{window}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily Window window\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_ad98b89261d368fd018f2d8de359b6863}\label{rpng2-x_8c_ad98b89261d368fd018f2d8de359b6863}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!window\+\_\+name@{window\+\_\+name}}
+\index{window\+\_\+name@{window\+\_\+name}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{window\+\_\+name}{window\_name}}
+{\footnotesize\ttfamily char $\ast$ window\+\_\+name = \mbox{\hyperlink{rpng2-x_8c_a7d71fb2a6cfb5d27855f58bc7e548978}{titlebar}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{rpng2-x_8c_a49ce7b9b4d558b607f8ad1854599fde2}\label{rpng2-x_8c_a49ce7b9b4d558b607f8ad1854599fde2}} 
+\index{rpng2-\/x.\+c@{rpng2-\/x.\+c}!ximage@{ximage}}
+\index{ximage@{ximage}!rpng2-\/x.\+c@{rpng2-\/x.\+c}}
+\subsubsection{\texorpdfstring{ximage}{ximage}}
+{\footnotesize\ttfamily X\+Image$\ast$ ximage\hspace{0.3cm}{\ttfamily [static]}}
+

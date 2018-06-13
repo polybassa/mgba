@@ -1,0 +1,332 @@
+\hypertarget{arm_8c}{}\section{src/arm/arm.c File Reference}
+\label{arm_8c}\index{src/arm/arm.\+c@{src/arm/arm.\+c}}
+{\ttfamily \#include $<$mgba/internal/arm/arm.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/arm/isa-\/arm.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/arm/isa-\/inlines.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/arm/isa-\/thumb.\+h$>$}\newline
+Include dependency graph for arm.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static enum Register\+Bank \mbox{\hyperlink{arm_8c_aa415563be0ca1e64a5cdb2d7736598af}{\+\_\+\+A\+R\+M\+Select\+Bank}} (enum Privilege\+Mode)
+\item 
+void \mbox{\hyperlink{arm_8c_af9de2af4fb669d1dd92d55c1ed906327}{A\+R\+M\+Set\+Privilege\+Mode}} (struct A\+R\+M\+Core $\ast$cpu, enum Privilege\+Mode \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})
+\item 
+void \mbox{\hyperlink{arm_8c_ad2ce057339ce8f050c9fcfb3a4ce05ed}{A\+R\+M\+Init}} (struct A\+R\+M\+Core $\ast$cpu)
+\item 
+void \mbox{\hyperlink{arm_8c_a072b29533dd7ea5b1b1a4a43f4f7892d}{A\+R\+M\+Deinit}} (struct A\+R\+M\+Core $\ast$cpu)
+\item 
+void \mbox{\hyperlink{arm_8c_a7dfafd4b898398aae1de08cd5308efdb}{A\+R\+M\+Set\+Components}} (struct A\+R\+M\+Core $\ast$cpu, struct m\+C\+P\+U\+Component $\ast$master, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} extra, struct m\+C\+P\+U\+Component $\ast$$\ast$extras)
+\item 
+void \mbox{\hyperlink{arm_8c_af0edac547e703998284ca18cea1e5ad1}{A\+R\+M\+Hotplug\+Attach}} (struct A\+R\+M\+Core $\ast$cpu, size\+\_\+t slot)
+\item 
+void \mbox{\hyperlink{arm_8c_ab97675f40fcbf06847507e4f7e6c230a}{A\+R\+M\+Hotplug\+Detach}} (struct A\+R\+M\+Core $\ast$cpu, size\+\_\+t slot)
+\item 
+void \mbox{\hyperlink{arm_8c_a5a7afff5d9f6e1990a3aed7a75ec2252}{A\+R\+M\+Reset}} (struct A\+R\+M\+Core $\ast$cpu)
+\item 
+void \mbox{\hyperlink{arm_8c_a7867bb6d7bf66911e150fce522e5220c}{A\+R\+M\+Raise\+I\+RQ}} (struct A\+R\+M\+Core $\ast$cpu)
+\item 
+void \mbox{\hyperlink{arm_8c_aaba5a3d8dfbdcb7244bf87b826967fc3}{A\+R\+M\+Raise\+S\+WI}} (struct A\+R\+M\+Core $\ast$cpu)
+\item 
+void \mbox{\hyperlink{arm_8c_ab7f300582a61263770c960ff6e64ca1a}{A\+R\+M\+Raise\+Undefined}} (struct A\+R\+M\+Core $\ast$cpu)
+\item 
+static void \mbox{\hyperlink{arm_8c_a8e5e6e693b86ca0d3265a929a5e931f1}{A\+R\+M\+Step}} (struct A\+R\+M\+Core $\ast$cpu)
+\item 
+static void \mbox{\hyperlink{arm_8c_a3f04da3ecb15437a64bcf536f72ac177}{Thumb\+Step}} (struct A\+R\+M\+Core $\ast$cpu)
+\item 
+void \mbox{\hyperlink{arm_8c_a55e1077710ba2fd3e2f69121dcca26f2}{A\+R\+M\+Run}} (struct A\+R\+M\+Core $\ast$cpu)
+\item 
+void \mbox{\hyperlink{arm_8c_a4bc6ce8ed6bb38c581218131a5a17826}{A\+R\+M\+Run\+Loop}} (struct A\+R\+M\+Core $\ast$cpu)
+\item 
+void \mbox{\hyperlink{arm_8c_a5f71e666bd98a9493f91dd11ca5e33c7}{A\+R\+M\+Run\+Fake}} (struct A\+R\+M\+Core $\ast$cpu, uint32\+\_\+t opcode)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{arm_8c_aa415563be0ca1e64a5cdb2d7736598af}\label{arm_8c_aa415563be0ca1e64a5cdb2d7736598af}} 
+\index{arm.\+c@{arm.\+c}!\+\_\+\+A\+R\+M\+Select\+Bank@{\+\_\+\+A\+R\+M\+Select\+Bank}}
+\index{\+\_\+\+A\+R\+M\+Select\+Bank@{\+\_\+\+A\+R\+M\+Select\+Bank}!arm.\+c@{arm.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+A\+R\+M\+Select\+Bank()}{\_ARMSelectBank()}}
+{\footnotesize\ttfamily static enum Register\+Bank \+\_\+\+A\+R\+M\+Select\+Bank (\begin{DoxyParamCaption}\item[{enum Privilege\+Mode}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c_aa415563be0ca1e64a5cdb2d7736598af_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_8c_a072b29533dd7ea5b1b1a4a43f4f7892d}\label{arm_8c_a072b29533dd7ea5b1b1a4a43f4f7892d}} 
+\index{arm.\+c@{arm.\+c}!A\+R\+M\+Deinit@{A\+R\+M\+Deinit}}
+\index{A\+R\+M\+Deinit@{A\+R\+M\+Deinit}!arm.\+c@{arm.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Deinit()}{ARMDeinit()}}
+{\footnotesize\ttfamily void A\+R\+M\+Deinit (\begin{DoxyParamCaption}\item[{struct A\+R\+M\+Core $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c_a072b29533dd7ea5b1b1a4a43f4f7892d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_8c_af0edac547e703998284ca18cea1e5ad1}\label{arm_8c_af0edac547e703998284ca18cea1e5ad1}} 
+\index{arm.\+c@{arm.\+c}!A\+R\+M\+Hotplug\+Attach@{A\+R\+M\+Hotplug\+Attach}}
+\index{A\+R\+M\+Hotplug\+Attach@{A\+R\+M\+Hotplug\+Attach}!arm.\+c@{arm.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Hotplug\+Attach()}{ARMHotplugAttach()}}
+{\footnotesize\ttfamily void A\+R\+M\+Hotplug\+Attach (\begin{DoxyParamCaption}\item[{struct A\+R\+M\+Core $\ast$}]{cpu,  }\item[{size\+\_\+t}]{slot }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c_af0edac547e703998284ca18cea1e5ad1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_8c_ab97675f40fcbf06847507e4f7e6c230a}\label{arm_8c_ab97675f40fcbf06847507e4f7e6c230a}} 
+\index{arm.\+c@{arm.\+c}!A\+R\+M\+Hotplug\+Detach@{A\+R\+M\+Hotplug\+Detach}}
+\index{A\+R\+M\+Hotplug\+Detach@{A\+R\+M\+Hotplug\+Detach}!arm.\+c@{arm.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Hotplug\+Detach()}{ARMHotplugDetach()}}
+{\footnotesize\ttfamily void A\+R\+M\+Hotplug\+Detach (\begin{DoxyParamCaption}\item[{struct A\+R\+M\+Core $\ast$}]{cpu,  }\item[{size\+\_\+t}]{slot }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c_ab97675f40fcbf06847507e4f7e6c230a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_8c_ad2ce057339ce8f050c9fcfb3a4ce05ed}\label{arm_8c_ad2ce057339ce8f050c9fcfb3a4ce05ed}} 
+\index{arm.\+c@{arm.\+c}!A\+R\+M\+Init@{A\+R\+M\+Init}}
+\index{A\+R\+M\+Init@{A\+R\+M\+Init}!arm.\+c@{arm.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Init()}{ARMInit()}}
+{\footnotesize\ttfamily void A\+R\+M\+Init (\begin{DoxyParamCaption}\item[{struct A\+R\+M\+Core $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c_ad2ce057339ce8f050c9fcfb3a4ce05ed_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_8c_a7867bb6d7bf66911e150fce522e5220c}\label{arm_8c_a7867bb6d7bf66911e150fce522e5220c}} 
+\index{arm.\+c@{arm.\+c}!A\+R\+M\+Raise\+I\+RQ@{A\+R\+M\+Raise\+I\+RQ}}
+\index{A\+R\+M\+Raise\+I\+RQ@{A\+R\+M\+Raise\+I\+RQ}!arm.\+c@{arm.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Raise\+I\+R\+Q()}{ARMRaiseIRQ()}}
+{\footnotesize\ttfamily void A\+R\+M\+Raise\+I\+RQ (\begin{DoxyParamCaption}\item[{struct A\+R\+M\+Core $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c_a7867bb6d7bf66911e150fce522e5220c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c_a7867bb6d7bf66911e150fce522e5220c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_8c_aaba5a3d8dfbdcb7244bf87b826967fc3}\label{arm_8c_aaba5a3d8dfbdcb7244bf87b826967fc3}} 
+\index{arm.\+c@{arm.\+c}!A\+R\+M\+Raise\+S\+WI@{A\+R\+M\+Raise\+S\+WI}}
+\index{A\+R\+M\+Raise\+S\+WI@{A\+R\+M\+Raise\+S\+WI}!arm.\+c@{arm.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Raise\+S\+W\+I()}{ARMRaiseSWI()}}
+{\footnotesize\ttfamily void A\+R\+M\+Raise\+S\+WI (\begin{DoxyParamCaption}\item[{struct A\+R\+M\+Core $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c_aaba5a3d8dfbdcb7244bf87b826967fc3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c_aaba5a3d8dfbdcb7244bf87b826967fc3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_8c_ab7f300582a61263770c960ff6e64ca1a}\label{arm_8c_ab7f300582a61263770c960ff6e64ca1a}} 
+\index{arm.\+c@{arm.\+c}!A\+R\+M\+Raise\+Undefined@{A\+R\+M\+Raise\+Undefined}}
+\index{A\+R\+M\+Raise\+Undefined@{A\+R\+M\+Raise\+Undefined}!arm.\+c@{arm.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Raise\+Undefined()}{ARMRaiseUndefined()}}
+{\footnotesize\ttfamily void A\+R\+M\+Raise\+Undefined (\begin{DoxyParamCaption}\item[{struct A\+R\+M\+Core $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c_ab7f300582a61263770c960ff6e64ca1a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c_ab7f300582a61263770c960ff6e64ca1a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_8c_a5a7afff5d9f6e1990a3aed7a75ec2252}\label{arm_8c_a5a7afff5d9f6e1990a3aed7a75ec2252}} 
+\index{arm.\+c@{arm.\+c}!A\+R\+M\+Reset@{A\+R\+M\+Reset}}
+\index{A\+R\+M\+Reset@{A\+R\+M\+Reset}!arm.\+c@{arm.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Reset()}{ARMReset()}}
+{\footnotesize\ttfamily void A\+R\+M\+Reset (\begin{DoxyParamCaption}\item[{struct A\+R\+M\+Core $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c_a5a7afff5d9f6e1990a3aed7a75ec2252_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_8c_a55e1077710ba2fd3e2f69121dcca26f2}\label{arm_8c_a55e1077710ba2fd3e2f69121dcca26f2}} 
+\index{arm.\+c@{arm.\+c}!A\+R\+M\+Run@{A\+R\+M\+Run}}
+\index{A\+R\+M\+Run@{A\+R\+M\+Run}!arm.\+c@{arm.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Run()}{ARMRun()}}
+{\footnotesize\ttfamily void A\+R\+M\+Run (\begin{DoxyParamCaption}\item[{struct A\+R\+M\+Core $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{arm_8c_a55e1077710ba2fd3e2f69121dcca26f2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c_a55e1077710ba2fd3e2f69121dcca26f2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_8c_a5f71e666bd98a9493f91dd11ca5e33c7}\label{arm_8c_a5f71e666bd98a9493f91dd11ca5e33c7}} 
+\index{arm.\+c@{arm.\+c}!A\+R\+M\+Run\+Fake@{A\+R\+M\+Run\+Fake}}
+\index{A\+R\+M\+Run\+Fake@{A\+R\+M\+Run\+Fake}!arm.\+c@{arm.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Run\+Fake()}{ARMRunFake()}}
+{\footnotesize\ttfamily void A\+R\+M\+Run\+Fake (\begin{DoxyParamCaption}\item[{struct A\+R\+M\+Core $\ast$}]{cpu,  }\item[{uint32\+\_\+t}]{opcode }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c_a5f71e666bd98a9493f91dd11ca5e33c7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_8c_a4bc6ce8ed6bb38c581218131a5a17826}\label{arm_8c_a4bc6ce8ed6bb38c581218131a5a17826}} 
+\index{arm.\+c@{arm.\+c}!A\+R\+M\+Run\+Loop@{A\+R\+M\+Run\+Loop}}
+\index{A\+R\+M\+Run\+Loop@{A\+R\+M\+Run\+Loop}!arm.\+c@{arm.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Run\+Loop()}{ARMRunLoop()}}
+{\footnotesize\ttfamily void A\+R\+M\+Run\+Loop (\begin{DoxyParamCaption}\item[{struct A\+R\+M\+Core $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c_a4bc6ce8ed6bb38c581218131a5a17826_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c_a4bc6ce8ed6bb38c581218131a5a17826_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_8c_a7dfafd4b898398aae1de08cd5308efdb}\label{arm_8c_a7dfafd4b898398aae1de08cd5308efdb}} 
+\index{arm.\+c@{arm.\+c}!A\+R\+M\+Set\+Components@{A\+R\+M\+Set\+Components}}
+\index{A\+R\+M\+Set\+Components@{A\+R\+M\+Set\+Components}!arm.\+c@{arm.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Set\+Components()}{ARMSetComponents()}}
+{\footnotesize\ttfamily void A\+R\+M\+Set\+Components (\begin{DoxyParamCaption}\item[{struct A\+R\+M\+Core $\ast$}]{cpu,  }\item[{struct m\+C\+P\+U\+Component $\ast$}]{master,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{extra,  }\item[{struct m\+C\+P\+U\+Component $\ast$$\ast$}]{extras }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c_a7dfafd4b898398aae1de08cd5308efdb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_8c_af9de2af4fb669d1dd92d55c1ed906327}\label{arm_8c_af9de2af4fb669d1dd92d55c1ed906327}} 
+\index{arm.\+c@{arm.\+c}!A\+R\+M\+Set\+Privilege\+Mode@{A\+R\+M\+Set\+Privilege\+Mode}}
+\index{A\+R\+M\+Set\+Privilege\+Mode@{A\+R\+M\+Set\+Privilege\+Mode}!arm.\+c@{arm.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Set\+Privilege\+Mode()}{ARMSetPrivilegeMode()}}
+{\footnotesize\ttfamily void A\+R\+M\+Set\+Privilege\+Mode (\begin{DoxyParamCaption}\item[{struct A\+R\+M\+Core $\ast$}]{cpu,  }\item[{enum Privilege\+Mode}]{mode }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{arm_8c_af9de2af4fb669d1dd92d55c1ed906327_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c_af9de2af4fb669d1dd92d55c1ed906327_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_8c_a8e5e6e693b86ca0d3265a929a5e931f1}\label{arm_8c_a8e5e6e693b86ca0d3265a929a5e931f1}} 
+\index{arm.\+c@{arm.\+c}!A\+R\+M\+Step@{A\+R\+M\+Step}}
+\index{A\+R\+M\+Step@{A\+R\+M\+Step}!arm.\+c@{arm.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Step()}{ARMStep()}}
+{\footnotesize\ttfamily static void A\+R\+M\+Step (\begin{DoxyParamCaption}\item[{struct A\+R\+M\+Core $\ast$}]{cpu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{arm_8c_a8e5e6e693b86ca0d3265a929a5e931f1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c_a8e5e6e693b86ca0d3265a929a5e931f1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_8c_a3f04da3ecb15437a64bcf536f72ac177}\label{arm_8c_a3f04da3ecb15437a64bcf536f72ac177}} 
+\index{arm.\+c@{arm.\+c}!Thumb\+Step@{Thumb\+Step}}
+\index{Thumb\+Step@{Thumb\+Step}!arm.\+c@{arm.\+c}}
+\subsubsection{\texorpdfstring{Thumb\+Step()}{ThumbStep()}}
+{\footnotesize\ttfamily static void Thumb\+Step (\begin{DoxyParamCaption}\item[{struct A\+R\+M\+Core $\ast$}]{cpu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_8c_a3f04da3ecb15437a64bcf536f72ac177_icgraph}
+\end{center}
+\end{figure}

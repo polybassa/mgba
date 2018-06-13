@@ -1,0 +1,177 @@
+\hypertarget{timing_8c}{}\section{src/core/timing.c File Reference}
+\label{timing_8c}\index{src/core/timing.\+c@{src/core/timing.\+c}}
+{\ttfamily \#include $<$mgba/core/timing.\+h$>$}\newline
+Include dependency graph for timing.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{timing_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{timing_8c_a6f6d8d643641fad7d96b52fd5fb017a2}{m\+Timing\+Init}} (struct m\+Timing $\ast$timing, int32\+\_\+t $\ast$relative\+Cycles, int32\+\_\+t $\ast$next\+Event)
+\item 
+void \mbox{\hyperlink{timing_8c_a69849197a7e8d65e9e301dea91232020}{m\+Timing\+Deinit}} (struct m\+Timing $\ast$timing)
+\item 
+void \mbox{\hyperlink{timing_8c_a3872c1e42f2ed5c9d1dcde27b150adab}{m\+Timing\+Clear}} (struct m\+Timing $\ast$timing)
+\item 
+void \mbox{\hyperlink{timing_8c_a3b94d6f9002ea3212cb6a18aff10c496}{m\+Timing\+Schedule}} (struct m\+Timing $\ast$timing, struct m\+Timing\+Event $\ast$event, int32\+\_\+t when)
+\item 
+void \mbox{\hyperlink{timing_8c_aa0c14e256f36f32429d71be3e8f2b29d}{m\+Timing\+Deschedule}} (struct m\+Timing $\ast$timing, struct m\+Timing\+Event $\ast$event)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{timing_8c_aa0a2972da94eea6c41431126d920dc62}{m\+Timing\+Is\+Scheduled}} (const struct m\+Timing $\ast$timing, const struct m\+Timing\+Event $\ast$event)
+\item 
+int32\+\_\+t \mbox{\hyperlink{timing_8c_a0bbd8621245f18d34afa23ec8db5a62b}{m\+Timing\+Tick}} (struct m\+Timing $\ast$timing, int32\+\_\+t cycles)
+\item 
+int32\+\_\+t \mbox{\hyperlink{timing_8c_ab3af73480bd170931f267b816dd362c2}{m\+Timing\+Current\+Time}} (const struct m\+Timing $\ast$timing)
+\item 
+int32\+\_\+t \mbox{\hyperlink{timing_8c_a50fcb1a7b1bf08509836f60e748e3029}{m\+Timing\+Next\+Event}} (struct m\+Timing $\ast$timing)
+\item 
+int32\+\_\+t \mbox{\hyperlink{timing_8c_a625c9a7431424a7640081c9670247274}{m\+Timing\+Until}} (const struct m\+Timing $\ast$timing, const struct m\+Timing\+Event $\ast$event)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{timing_8c_a3872c1e42f2ed5c9d1dcde27b150adab}\label{timing_8c_a3872c1e42f2ed5c9d1dcde27b150adab}} 
+\index{timing.\+c@{timing.\+c}!m\+Timing\+Clear@{m\+Timing\+Clear}}
+\index{m\+Timing\+Clear@{m\+Timing\+Clear}!timing.\+c@{timing.\+c}}
+\subsubsection{\texorpdfstring{m\+Timing\+Clear()}{mTimingClear()}}
+{\footnotesize\ttfamily void m\+Timing\+Clear (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timing_8c_a3872c1e42f2ed5c9d1dcde27b150adab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{timing_8c_ab3af73480bd170931f267b816dd362c2}\label{timing_8c_ab3af73480bd170931f267b816dd362c2}} 
+\index{timing.\+c@{timing.\+c}!m\+Timing\+Current\+Time@{m\+Timing\+Current\+Time}}
+\index{m\+Timing\+Current\+Time@{m\+Timing\+Current\+Time}!timing.\+c@{timing.\+c}}
+\subsubsection{\texorpdfstring{m\+Timing\+Current\+Time()}{mTimingCurrentTime()}}
+{\footnotesize\ttfamily int32\+\_\+t m\+Timing\+Current\+Time (\begin{DoxyParamCaption}\item[{const struct m\+Timing $\ast$}]{timing }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timing_8c_ab3af73480bd170931f267b816dd362c2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{timing_8c_a69849197a7e8d65e9e301dea91232020}\label{timing_8c_a69849197a7e8d65e9e301dea91232020}} 
+\index{timing.\+c@{timing.\+c}!m\+Timing\+Deinit@{m\+Timing\+Deinit}}
+\index{m\+Timing\+Deinit@{m\+Timing\+Deinit}!timing.\+c@{timing.\+c}}
+\subsubsection{\texorpdfstring{m\+Timing\+Deinit()}{mTimingDeinit()}}
+{\footnotesize\ttfamily void m\+Timing\+Deinit (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timing_8c_a69849197a7e8d65e9e301dea91232020_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{timing_8c_aa0c14e256f36f32429d71be3e8f2b29d}\label{timing_8c_aa0c14e256f36f32429d71be3e8f2b29d}} 
+\index{timing.\+c@{timing.\+c}!m\+Timing\+Deschedule@{m\+Timing\+Deschedule}}
+\index{m\+Timing\+Deschedule@{m\+Timing\+Deschedule}!timing.\+c@{timing.\+c}}
+\subsubsection{\texorpdfstring{m\+Timing\+Deschedule()}{mTimingDeschedule()}}
+{\footnotesize\ttfamily void m\+Timing\+Deschedule (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing,  }\item[{struct m\+Timing\+Event $\ast$}]{event }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timing_8c_aa0c14e256f36f32429d71be3e8f2b29d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{timing_8c_a6f6d8d643641fad7d96b52fd5fb017a2}\label{timing_8c_a6f6d8d643641fad7d96b52fd5fb017a2}} 
+\index{timing.\+c@{timing.\+c}!m\+Timing\+Init@{m\+Timing\+Init}}
+\index{m\+Timing\+Init@{m\+Timing\+Init}!timing.\+c@{timing.\+c}}
+\subsubsection{\texorpdfstring{m\+Timing\+Init()}{mTimingInit()}}
+{\footnotesize\ttfamily void m\+Timing\+Init (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing,  }\item[{int32\+\_\+t $\ast$}]{relative\+Cycles,  }\item[{int32\+\_\+t $\ast$}]{next\+Event }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timing_8c_a6f6d8d643641fad7d96b52fd5fb017a2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{timing_8c_aa0a2972da94eea6c41431126d920dc62}\label{timing_8c_aa0a2972da94eea6c41431126d920dc62}} 
+\index{timing.\+c@{timing.\+c}!m\+Timing\+Is\+Scheduled@{m\+Timing\+Is\+Scheduled}}
+\index{m\+Timing\+Is\+Scheduled@{m\+Timing\+Is\+Scheduled}!timing.\+c@{timing.\+c}}
+\subsubsection{\texorpdfstring{m\+Timing\+Is\+Scheduled()}{mTimingIsScheduled()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Timing\+Is\+Scheduled (\begin{DoxyParamCaption}\item[{const struct m\+Timing $\ast$}]{timing,  }\item[{const struct m\+Timing\+Event $\ast$}]{event }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timing_8c_aa0a2972da94eea6c41431126d920dc62_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{timing_8c_a50fcb1a7b1bf08509836f60e748e3029}\label{timing_8c_a50fcb1a7b1bf08509836f60e748e3029}} 
+\index{timing.\+c@{timing.\+c}!m\+Timing\+Next\+Event@{m\+Timing\+Next\+Event}}
+\index{m\+Timing\+Next\+Event@{m\+Timing\+Next\+Event}!timing.\+c@{timing.\+c}}
+\subsubsection{\texorpdfstring{m\+Timing\+Next\+Event()}{mTimingNextEvent()}}
+{\footnotesize\ttfamily int32\+\_\+t m\+Timing\+Next\+Event (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timing_8c_a50fcb1a7b1bf08509836f60e748e3029_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{timing_8c_a3b94d6f9002ea3212cb6a18aff10c496}\label{timing_8c_a3b94d6f9002ea3212cb6a18aff10c496}} 
+\index{timing.\+c@{timing.\+c}!m\+Timing\+Schedule@{m\+Timing\+Schedule}}
+\index{m\+Timing\+Schedule@{m\+Timing\+Schedule}!timing.\+c@{timing.\+c}}
+\subsubsection{\texorpdfstring{m\+Timing\+Schedule()}{mTimingSchedule()}}
+{\footnotesize\ttfamily void m\+Timing\+Schedule (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing,  }\item[{struct m\+Timing\+Event $\ast$}]{event,  }\item[{int32\+\_\+t}]{when }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{timing_8c_a0bbd8621245f18d34afa23ec8db5a62b}\label{timing_8c_a0bbd8621245f18d34afa23ec8db5a62b}} 
+\index{timing.\+c@{timing.\+c}!m\+Timing\+Tick@{m\+Timing\+Tick}}
+\index{m\+Timing\+Tick@{m\+Timing\+Tick}!timing.\+c@{timing.\+c}}
+\subsubsection{\texorpdfstring{m\+Timing\+Tick()}{mTimingTick()}}
+{\footnotesize\ttfamily int32\+\_\+t m\+Timing\+Tick (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing,  }\item[{int32\+\_\+t}]{cycles }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{timing_8c_a0bbd8621245f18d34afa23ec8db5a62b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timing_8c_a0bbd8621245f18d34afa23ec8db5a62b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{timing_8c_a625c9a7431424a7640081c9670247274}\label{timing_8c_a625c9a7431424a7640081c9670247274}} 
+\index{timing.\+c@{timing.\+c}!m\+Timing\+Until@{m\+Timing\+Until}}
+\index{m\+Timing\+Until@{m\+Timing\+Until}!timing.\+c@{timing.\+c}}
+\subsubsection{\texorpdfstring{m\+Timing\+Until()}{mTimingUntil()}}
+{\footnotesize\ttfamily int32\+\_\+t m\+Timing\+Until (\begin{DoxyParamCaption}\item[{const struct m\+Timing $\ast$}]{timing,  }\item[{const struct m\+Timing\+Event $\ast$}]{event }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timing_8c_a625c9a7431424a7640081c9670247274_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,350 @@
+\hypertarget{rtc_8c}{}\section{src/gb/test/rtc.c File Reference}
+\label{rtc_8c}\index{src/gb/test/rtc.\+c@{src/gb/test/rtc.\+c}}
+{\ttfamily \#include \char`\"{}util/test/suite.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/gb/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/gb.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/mbc.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+Include dependency graph for rtc.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{rtc_8c_ae9cea0e1e7dbe5cb4979f6e8939e16c4}{\+\_\+sample\+Rtc}} (struct GB $\ast$gb)
+\item 
+static void \mbox{\hyperlink{rtc_8c_ae1a234ae76e4acdf4eddf975037581cd}{\+\_\+sample\+Rtc\+Keep\+Latch}} (struct GB $\ast$gb)
+\item 
+static \mbox{\hyperlink{__builder_8h_afbab2fa83a411ded31f77ed022c20218}{time\+\_\+t}} \mbox{\hyperlink{rtc_8c_a1a69d3e2d77265f36dc1157c30e0dbbb}{\+\_\+test\+Time}} (struct m\+R\+T\+C\+Source $\ast$source)
+\item 
+\mbox{\hyperlink{rtc_8c_a2156a01925680922fe986a201247bfad}{M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+S\+E\+T\+UP}} (G\+B\+R\+TC)
+\item 
+\mbox{\hyperlink{rtc_8c_ab085f0232c9e9c0c4ca4dbdd1a95e11e}{M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+T\+E\+A\+R\+D\+O\+WN}} (G\+B\+R\+TC)
+\item 
+\mbox{\hyperlink{rtc_8c_a5206b3fecb5759740bdd219a16d86460}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (create)
+\item 
+\mbox{\hyperlink{rtc_8c_a6796e968c5bc68d0ffd8b3cdefd44c5c}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (tick\+Second)
+\item 
+\mbox{\hyperlink{rtc_8c_a8ffd1a15b96751a725e398fb8a8b21f3}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (tick30\+Seconds)
+\item 
+\mbox{\hyperlink{rtc_8c_a35ffd1747a49ae64b97e902440f64db6}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (tick\+Minute)
+\item 
+\mbox{\hyperlink{rtc_8c_a328214832cbb08554e2904a1382d5833}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (tick90\+Seconds)
+\item 
+\mbox{\hyperlink{rtc_8c_a80daf4dd39ddd1656d847c1e0ca8f36d}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (tick30\+Minutes)
+\item 
+\mbox{\hyperlink{rtc_8c_aae2296aa7f579f9d6ab13f2c8261ec09}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (tick\+Hour)
+\item 
+\mbox{\hyperlink{rtc_8c_adee27104557f6341907722c7a1f1df4a}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (tick12\+Hours)
+\item 
+\mbox{\hyperlink{rtc_8c_a5ae987d398826ba703f9b024f9598650}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (tick\+Day)
+\item 
+\mbox{\hyperlink{rtc_8c_a090d738ded0ed17389161ba6256e3d27}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (wide\+Tick\+Day)
+\item 
+\mbox{\hyperlink{rtc_8c_a295c70c057069c9538a21c8819348bac}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (rollover\+Second)
+\item 
+\mbox{\hyperlink{rtc_8c_a14a209e052db01597d2324829b5d8f4e}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (roundtrip0)
+\item 
+\mbox{\hyperlink{rtc_8c_a095ceaf23562a58b8c9710fbc7475585}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (roundtrip\+Second)
+\item 
+\mbox{\hyperlink{rtc_8c_a57a680eeaf63f6535755db0b3da048cb}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (roundtrip\+Day)
+\item 
+\mbox{\hyperlink{rtc_8c_a9f2ba9e7118f8d7891a64c8684462a3d}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (roundtrip\+Huge)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{rtc_8c_ae9cea0e1e7dbe5cb4979f6e8939e16c4}\label{rtc_8c_ae9cea0e1e7dbe5cb4979f6e8939e16c4}} 
+\index{rtc.\+c@{rtc.\+c}!\+\_\+sample\+Rtc@{\+\_\+sample\+Rtc}}
+\index{\+\_\+sample\+Rtc@{\+\_\+sample\+Rtc}!rtc.\+c@{rtc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+sample\+Rtc()}{\_sampleRtc()}}
+{\footnotesize\ttfamily static void \+\_\+sample\+Rtc (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{rtc_8c_ae9cea0e1e7dbe5cb4979f6e8939e16c4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{rtc_8c_ae9cea0e1e7dbe5cb4979f6e8939e16c4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_ae1a234ae76e4acdf4eddf975037581cd}\label{rtc_8c_ae1a234ae76e4acdf4eddf975037581cd}} 
+\index{rtc.\+c@{rtc.\+c}!\+\_\+sample\+Rtc\+Keep\+Latch@{\+\_\+sample\+Rtc\+Keep\+Latch}}
+\index{\+\_\+sample\+Rtc\+Keep\+Latch@{\+\_\+sample\+Rtc\+Keep\+Latch}!rtc.\+c@{rtc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+sample\+Rtc\+Keep\+Latch()}{\_sampleRtcKeepLatch()}}
+{\footnotesize\ttfamily static void \+\_\+sample\+Rtc\+Keep\+Latch (\begin{DoxyParamCaption}\item[{struct GB $\ast$}]{gb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_ae1a234ae76e4acdf4eddf975037581cd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{rtc_8c_ae1a234ae76e4acdf4eddf975037581cd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_a1a69d3e2d77265f36dc1157c30e0dbbb}\label{rtc_8c_a1a69d3e2d77265f36dc1157c30e0dbbb}} 
+\index{rtc.\+c@{rtc.\+c}!\+\_\+test\+Time@{\+\_\+test\+Time}}
+\index{\+\_\+test\+Time@{\+\_\+test\+Time}!rtc.\+c@{rtc.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+test\+Time()}{\_testTime()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{__builder_8h_afbab2fa83a411ded31f77ed022c20218}{time\+\_\+t}} \+\_\+test\+Time (\begin{DoxyParamCaption}\item[{struct m\+R\+T\+C\+Source $\ast$}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{rtc_8c_a1a69d3e2d77265f36dc1157c30e0dbbb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_a5206b3fecb5759740bdd219a16d86460}\label{rtc_8c_a5206b3fecb5759740bdd219a16d86460}} 
+\index{rtc.\+c@{rtc.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!rtc.\+c@{rtc.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [1/15]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{create}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{rtc_8c_a6796e968c5bc68d0ffd8b3cdefd44c5c}\label{rtc_8c_a6796e968c5bc68d0ffd8b3cdefd44c5c}} 
+\index{rtc.\+c@{rtc.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!rtc.\+c@{rtc.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [2/15]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{tick\+Second}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a6796e968c5bc68d0ffd8b3cdefd44c5c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_a8ffd1a15b96751a725e398fb8a8b21f3}\label{rtc_8c_a8ffd1a15b96751a725e398fb8a8b21f3}} 
+\index{rtc.\+c@{rtc.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!rtc.\+c@{rtc.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [3/15]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{tick30\+Seconds}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a8ffd1a15b96751a725e398fb8a8b21f3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_a35ffd1747a49ae64b97e902440f64db6}\label{rtc_8c_a35ffd1747a49ae64b97e902440f64db6}} 
+\index{rtc.\+c@{rtc.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!rtc.\+c@{rtc.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [4/15]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{tick\+Minute}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a35ffd1747a49ae64b97e902440f64db6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_a328214832cbb08554e2904a1382d5833}\label{rtc_8c_a328214832cbb08554e2904a1382d5833}} 
+\index{rtc.\+c@{rtc.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!rtc.\+c@{rtc.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [5/15]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{tick90\+Seconds}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a328214832cbb08554e2904a1382d5833_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_a80daf4dd39ddd1656d847c1e0ca8f36d}\label{rtc_8c_a80daf4dd39ddd1656d847c1e0ca8f36d}} 
+\index{rtc.\+c@{rtc.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!rtc.\+c@{rtc.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [6/15]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{tick30\+Minutes}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a80daf4dd39ddd1656d847c1e0ca8f36d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_aae2296aa7f579f9d6ab13f2c8261ec09}\label{rtc_8c_aae2296aa7f579f9d6ab13f2c8261ec09}} 
+\index{rtc.\+c@{rtc.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!rtc.\+c@{rtc.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [7/15]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{tick\+Hour}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_aae2296aa7f579f9d6ab13f2c8261ec09_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_adee27104557f6341907722c7a1f1df4a}\label{rtc_8c_adee27104557f6341907722c7a1f1df4a}} 
+\index{rtc.\+c@{rtc.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!rtc.\+c@{rtc.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [8/15]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{tick12\+Hours}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_adee27104557f6341907722c7a1f1df4a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_a5ae987d398826ba703f9b024f9598650}\label{rtc_8c_a5ae987d398826ba703f9b024f9598650}} 
+\index{rtc.\+c@{rtc.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!rtc.\+c@{rtc.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [9/15]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{tick\+Day}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a5ae987d398826ba703f9b024f9598650_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_a090d738ded0ed17389161ba6256e3d27}\label{rtc_8c_a090d738ded0ed17389161ba6256e3d27}} 
+\index{rtc.\+c@{rtc.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!rtc.\+c@{rtc.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [10/15]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{wide\+Tick\+Day}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a090d738ded0ed17389161ba6256e3d27_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_a295c70c057069c9538a21c8819348bac}\label{rtc_8c_a295c70c057069c9538a21c8819348bac}} 
+\index{rtc.\+c@{rtc.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!rtc.\+c@{rtc.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [11/15]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{rollover\+Second}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a295c70c057069c9538a21c8819348bac_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_a14a209e052db01597d2324829b5d8f4e}\label{rtc_8c_a14a209e052db01597d2324829b5d8f4e}} 
+\index{rtc.\+c@{rtc.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!rtc.\+c@{rtc.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [12/15]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{roundtrip0}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a14a209e052db01597d2324829b5d8f4e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_a095ceaf23562a58b8c9710fbc7475585}\label{rtc_8c_a095ceaf23562a58b8c9710fbc7475585}} 
+\index{rtc.\+c@{rtc.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!rtc.\+c@{rtc.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [13/15]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{roundtrip\+Second}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a095ceaf23562a58b8c9710fbc7475585_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_a57a680eeaf63f6535755db0b3da048cb}\label{rtc_8c_a57a680eeaf63f6535755db0b3da048cb}} 
+\index{rtc.\+c@{rtc.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!rtc.\+c@{rtc.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [14/15]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{roundtrip\+Day}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a57a680eeaf63f6535755db0b3da048cb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_a9f2ba9e7118f8d7891a64c8684462a3d}\label{rtc_8c_a9f2ba9e7118f8d7891a64c8684462a3d}} 
+\index{rtc.\+c@{rtc.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!rtc.\+c@{rtc.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [15/15]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{roundtrip\+Huge}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a9f2ba9e7118f8d7891a64c8684462a3d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_a2156a01925680922fe986a201247bfad}\label{rtc_8c_a2156a01925680922fe986a201247bfad}} 
+\index{rtc.\+c@{rtc.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+S\+E\+T\+UP@{M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+S\+E\+T\+UP}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+S\+E\+T\+UP@{M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+S\+E\+T\+UP}!rtc.\+c@{rtc.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+S\+E\+T\+U\+P()}{M\_TEST\_SUITE\_SETUP()}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+S\+E\+T\+UP (\begin{DoxyParamCaption}\item[{G\+B\+R\+TC}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{rtc_8c_a2156a01925680922fe986a201247bfad_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_ab085f0232c9e9c0c4ca4dbdd1a95e11e}\label{rtc_8c_ab085f0232c9e9c0c4ca4dbdd1a95e11e}} 
+\index{rtc.\+c@{rtc.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+T\+E\+A\+R\+D\+O\+WN@{M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+T\+E\+A\+R\+D\+O\+WN}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+T\+E\+A\+R\+D\+O\+WN@{M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+T\+E\+A\+R\+D\+O\+WN}!rtc.\+c@{rtc.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+T\+E\+A\+R\+D\+O\+W\+N()}{M\_TEST\_SUITE\_TEARDOWN()}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+T\+E\+A\+R\+D\+O\+WN (\begin{DoxyParamCaption}\item[{G\+B\+R\+TC}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=303pt]{rtc_8c_ab085f0232c9e9c0c4ca4dbdd1a95e11e_cgraph}
+\end{center}
+\end{figure}

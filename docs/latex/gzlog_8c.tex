@@ -1,0 +1,661 @@
+\hypertarget{gzlog_8c}{}\section{src/third-\/party/zlib/examples/gzlog.c File Reference}
+\label{gzlog_8c}\index{src/third-\/party/zlib/examples/gzlog.\+c@{src/third-\/party/zlib/examples/gzlog.\+c}}
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$sys/time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}zlib.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gzlog.\+h\char`\"{}}\newline
+Include dependency graph for gzlog.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gzlog_8c_a08023ea6765c99d60a6a3840cd07156e}{local}}~static
+\item 
+\#define \mbox{\hyperlink{gzlog_8c_a0d8eb6704165bdbea0a82d347f065d83}{B\+A\+IL}}(\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})
+\item 
+\#define \mbox{\hyperlink{gzlog_8c_af4fb82063ff79b16c303ea9bc3fc7bfa}{P\+A\+T\+I\+E\+N\+CE}}~300
+\item 
+\#define \mbox{\hyperlink{gzlog_8c_a543bd5ecb483023e2a0d87835fd63050}{M\+A\+X\+\_\+\+S\+T\+O\+RE}}~16
+\item 
+\#define \mbox{\hyperlink{gzlog_8c_a86de85f5177dabb5ff712bf180db43aa}{T\+R\+I\+G\+G\+ER}}~1024
+\item 
+\#define \mbox{\hyperlink{gzlog_8c_af12094577cf59e40e4609108aa4bdb11}{D\+I\+CT}}~32768U
+\item 
+\#define \mbox{\hyperlink{gzlog_8c_a8623d9a06ad6dbcf3aa30c92d35b5cce}{N\+O\+\_\+\+OP}}~0
+\item 
+\#define \mbox{\hyperlink{gzlog_8c_a85b1745eef08a412829d33eff0d6bc45}{A\+P\+P\+E\+N\+D\+\_\+\+OP}}~1
+\item 
+\#define \mbox{\hyperlink{gzlog_8c_ae04135e21215ef73058fc5b10bd91012}{C\+O\+M\+P\+R\+E\+S\+S\+\_\+\+OP}}~2
+\item 
+\#define \mbox{\hyperlink{gzlog_8c_a4dd53ad3534446424c997ec7fbf3a9b7}{R\+E\+P\+L\+A\+C\+E\+\_\+\+OP}}~3
+\item 
+\#define \mbox{\hyperlink{gzlog_8c_ac9603b9a6dc9e29ce31134fd5f197909}{P\+U\+L\+L2}}(p)~((p)\mbox{[}0\mbox{]}+((\mbox{\hyperlink{gzlog_8c_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}})((p)\mbox{[}1\mbox{]})$<$$<$8))
+\item 
+\#define \mbox{\hyperlink{gzlog_8c_a8523d3f96b72dbc27bb8dfe596dbba10}{P\+U\+L\+L4}}(p)~(\mbox{\hyperlink{gzlog_8c_ac9603b9a6dc9e29ce31134fd5f197909}{P\+U\+L\+L2}}(p)+((\mbox{\hyperlink{gzlog_8c_a718b4eb2652c286f4d42dc18a8e71a1a}{ulong}})\mbox{\hyperlink{gzlog_8c_ac9603b9a6dc9e29ce31134fd5f197909}{P\+U\+L\+L2}}(p+2)$<$$<$16))
+\item 
+\#define \mbox{\hyperlink{gzlog_8c_a3e83561c19efecaffdd50e25d3eacda3}{P\+U\+L\+L8}}(p)~(\mbox{\hyperlink{gzlog_8c_a8523d3f96b72dbc27bb8dfe596dbba10}{P\+U\+L\+L4}}(p)+((\mbox{\hyperlink{__builder_8h_a53066be3c3a28d8b8ccb3dc95c1e49b1}{off\+\_\+t}})\mbox{\hyperlink{gzlog_8c_a8523d3f96b72dbc27bb8dfe596dbba10}{P\+U\+L\+L4}}(p+4)$<$$<$32))
+\item 
+\#define \mbox{\hyperlink{gzlog_8c_a985fddd765821eb91c6d5ebfc769ec65}{P\+U\+T2}}(p,  \mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}})~do \{(p)\mbox{[}0\mbox{]}=\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}};(p)\mbox{[}1\mbox{]}=(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}})$>$$>$8;\} while(0)
+\item 
+\#define \mbox{\hyperlink{gzlog_8c_aea79f4849965cfccba698674774c327c}{P\+U\+T4}}(p,  \mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}})~do \{\mbox{\hyperlink{gzlog_8c_a985fddd765821eb91c6d5ebfc769ec65}{P\+U\+T2}}(p,\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}});\mbox{\hyperlink{gzlog_8c_a985fddd765821eb91c6d5ebfc769ec65}{P\+U\+T2}}(p+2,\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}}$>$$>$16);\} while(0)
+\item 
+\#define \mbox{\hyperlink{gzlog_8c_a05a93fedc06e7249cd16c8727470d6ef}{P\+U\+T8}}(p,  \mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}})~do \{\mbox{\hyperlink{gzlog_8c_aea79f4849965cfccba698674774c327c}{P\+U\+T4}}(p,\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}});\mbox{\hyperlink{gzlog_8c_aea79f4849965cfccba698674774c327c}{P\+U\+T4}}(p+4,\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}}$>$$>$32);\} while(0)
+\item 
+\#define \mbox{\hyperlink{gzlog_8c_a70318664f9a64c65778a34bae28101d9}{L\+O\+G\+ID}}~\char`\"{}\textbackslash{}106\textbackslash{}035\textbackslash{}172\char`\"{}    /$\ast$ should be three non-\/zero characters $\ast$/
+\item 
+\#define \mbox{\hyperlink{gzlog_8c_a110f3b6cdacd45daee818b3e5965f6da}{H\+E\+AD}}~sizeof(\mbox{\hyperlink{gzlog_8c_a7129a4c02a917045dacfeb636a255062}{log\+\_\+gzhead}})     /$\ast$ should be 16 $\ast$/
+\item 
+\#define \mbox{\hyperlink{gzlog_8c_af4d98da13b92f926914c4a759759b393}{E\+X\+T\+RA}}~sizeof(\mbox{\hyperlink{gzlog_8c_a4e361847a570e6c281ba3abaa4659c85}{log\+\_\+gzext}})     /$\ast$ should be 35 $\ast$/
+\item 
+\#define \mbox{\hyperlink{gzlog_8c_aa6bdf6a6d9916c343e1e17774d84a156}{B\+O\+DY}}~sizeof(\mbox{\hyperlink{gzlog_8c_afc26c65f513613eef733fb2e6df5697f}{log\+\_\+gzbody}})
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzlog_8c_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}
+\item 
+typedef unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} \mbox{\hyperlink{gzlog_8c_a718b4eb2652c286f4d42dc18a8e71a1a}{ulong}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzlog_8c_ad93b63e2b80f051b294278c543b3cfd3}{log\+\_\+lock}} (struct log $\ast$log)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{gzlog_8c_a00be8bce7eaeaa48a38c86f05b7d6e11}{log\+\_\+touch}} (struct log $\ast$log)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzlog_8c_a1887a790c9449992aadc4b98a9df1983}{log\+\_\+check}} (struct log $\ast$log)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{gzlog_8c_a41c3c6e46bc38fd22a8de5c57868bc3b}{log\+\_\+unlock}} (struct log $\ast$log)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzlog_8c_a9f70840a4da39bed3def61bbfd787cfe}{log\+\_\+head}} (struct log $\ast$log)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzlog_8c_a01b481aef7e564199f45f09fa02e288f}{log\+\_\+mark}} (struct log $\ast$log, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} op)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzlog_8c_a58a53f636026d37d9536942bb8e7cd03}{log\+\_\+last}} (struct log $\ast$log, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} last)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzlog_8c_a443b09f5d771e24771cd89ef94e6a63b}{log\+\_\+append}} (struct log $\ast$log, unsigned char $\ast$\mbox{\hyperlink{libretro_8c_a735984d41155bc1032e09bece8f8d66d}{data}}, size\+\_\+t len)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzlog_8c_aefe1125563e958c5ce79567779e7a31a}{log\+\_\+replace}} (struct log $\ast$log)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzlog_8c_a10ff83db227c52317c4168fb7be8c9a6}{log\+\_\+compress}} (struct log $\ast$log, unsigned char $\ast$\mbox{\hyperlink{libretro_8c_a735984d41155bc1032e09bece8f8d66d}{data}}, size\+\_\+t len)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{gzlog_8c_a38f051990b3723669d34a278cd188b8f}{log\+\_\+log}} (struct log $\ast$log, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} op, char $\ast$record)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzlog_8c_a2bde11914247547dcee20d788295d86f}{log\+\_\+recover}} (struct log $\ast$log, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} op)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{gzlog_8c_a536437328b837f61ef0bfb1c45549232}{log\+\_\+close}} (struct log $\ast$log)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzlog_8c_a850b9f34599da731960a24b2a3e4f0c5}{log\+\_\+open}} (struct log $\ast$log)
+\item 
+\mbox{\hyperlink{gzlog_8h_a06e0b52f396bdf030c9b1ef1e20fbc0e}{gzlog}} $\ast$ \mbox{\hyperlink{gzlog_8c_abb1427c5ea3ace896e07f824ba2ae1cb}{gzlog\+\_\+open}} (char $\ast$path)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzlog_8c_a0a4dc90354f7dc41dfa68c9dd6a6a2ca}{gzlog\+\_\+compress}} (\mbox{\hyperlink{gzlog_8h_a06e0b52f396bdf030c9b1ef1e20fbc0e}{gzlog}} $\ast$logd)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzlog_8c_a34123011fe74655ddcf1cdfc3ce18ccc}{gzlog\+\_\+write}} (\mbox{\hyperlink{gzlog_8h_a06e0b52f396bdf030c9b1ef1e20fbc0e}{gzlog}} $\ast$logd, void $\ast$\mbox{\hyperlink{libretro_8c_a735984d41155bc1032e09bece8f8d66d}{data}}, size\+\_\+t len)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzlog_8c_a3ff7187a1b8c3bb7f5594c753a72ed2b}{gzlog\+\_\+close}} (\mbox{\hyperlink{gzlog_8h_a06e0b52f396bdf030c9b1ef1e20fbc0e}{gzlog}} $\ast$logd)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} unsigned char \mbox{\hyperlink{gzlog_8c_a7129a4c02a917045dacfeb636a255062}{log\+\_\+gzhead}} \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} unsigned char \mbox{\hyperlink{gzlog_8c_a4e361847a570e6c281ba3abaa4659c85}{log\+\_\+gzext}} \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} unsigned char \mbox{\hyperlink{gzlog_8c_afc26c65f513613eef733fb2e6df5697f}{log\+\_\+gzbody}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{gzlog_8c_a85b1745eef08a412829d33eff0d6bc45}\label{gzlog_8c_a85b1745eef08a412829d33eff0d6bc45}} 
+\index{gzlog.\+c@{gzlog.\+c}!A\+P\+P\+E\+N\+D\+\_\+\+OP@{A\+P\+P\+E\+N\+D\+\_\+\+OP}}
+\index{A\+P\+P\+E\+N\+D\+\_\+\+OP@{A\+P\+P\+E\+N\+D\+\_\+\+OP}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{A\+P\+P\+E\+N\+D\+\_\+\+OP}{APPEND\_OP}}
+{\footnotesize\ttfamily \#define A\+P\+P\+E\+N\+D\+\_\+\+OP~1}
+
+\mbox{\Hypertarget{gzlog_8c_a0d8eb6704165bdbea0a82d347f065d83}\label{gzlog_8c_a0d8eb6704165bdbea0a82d347f065d83}} 
+\index{gzlog.\+c@{gzlog.\+c}!B\+A\+IL@{B\+A\+IL}}
+\index{B\+A\+IL@{B\+A\+IL}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{B\+A\+IL}{BAIL}}
+{\footnotesize\ttfamily \#define B\+A\+IL(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gzlog_8c_aa6bdf6a6d9916c343e1e17774d84a156}\label{gzlog_8c_aa6bdf6a6d9916c343e1e17774d84a156}} 
+\index{gzlog.\+c@{gzlog.\+c}!B\+O\+DY@{B\+O\+DY}}
+\index{B\+O\+DY@{B\+O\+DY}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{B\+O\+DY}{BODY}}
+{\footnotesize\ttfamily \#define B\+O\+DY~sizeof(\mbox{\hyperlink{gzlog_8c_afc26c65f513613eef733fb2e6df5697f}{log\+\_\+gzbody}})}
+
+\mbox{\Hypertarget{gzlog_8c_ae04135e21215ef73058fc5b10bd91012}\label{gzlog_8c_ae04135e21215ef73058fc5b10bd91012}} 
+\index{gzlog.\+c@{gzlog.\+c}!C\+O\+M\+P\+R\+E\+S\+S\+\_\+\+OP@{C\+O\+M\+P\+R\+E\+S\+S\+\_\+\+OP}}
+\index{C\+O\+M\+P\+R\+E\+S\+S\+\_\+\+OP@{C\+O\+M\+P\+R\+E\+S\+S\+\_\+\+OP}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{C\+O\+M\+P\+R\+E\+S\+S\+\_\+\+OP}{COMPRESS\_OP}}
+{\footnotesize\ttfamily \#define C\+O\+M\+P\+R\+E\+S\+S\+\_\+\+OP~2}
+
+\mbox{\Hypertarget{gzlog_8c_af12094577cf59e40e4609108aa4bdb11}\label{gzlog_8c_af12094577cf59e40e4609108aa4bdb11}} 
+\index{gzlog.\+c@{gzlog.\+c}!D\+I\+CT@{D\+I\+CT}}
+\index{D\+I\+CT@{D\+I\+CT}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{D\+I\+CT}{DICT}}
+{\footnotesize\ttfamily \#define D\+I\+CT~32768U}
+
+\mbox{\Hypertarget{gzlog_8c_af4d98da13b92f926914c4a759759b393}\label{gzlog_8c_af4d98da13b92f926914c4a759759b393}} 
+\index{gzlog.\+c@{gzlog.\+c}!E\+X\+T\+RA@{E\+X\+T\+RA}}
+\index{E\+X\+T\+RA@{E\+X\+T\+RA}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{E\+X\+T\+RA}{EXTRA}}
+{\footnotesize\ttfamily \#define E\+X\+T\+RA~sizeof(\mbox{\hyperlink{gzlog_8c_a4e361847a570e6c281ba3abaa4659c85}{log\+\_\+gzext}})     /$\ast$ should be 35 $\ast$/}
+
+\mbox{\Hypertarget{gzlog_8c_a110f3b6cdacd45daee818b3e5965f6da}\label{gzlog_8c_a110f3b6cdacd45daee818b3e5965f6da}} 
+\index{gzlog.\+c@{gzlog.\+c}!H\+E\+AD@{H\+E\+AD}}
+\index{H\+E\+AD@{H\+E\+AD}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{H\+E\+AD}{HEAD}}
+{\footnotesize\ttfamily \#define H\+E\+AD~sizeof(\mbox{\hyperlink{gzlog_8c_a7129a4c02a917045dacfeb636a255062}{log\+\_\+gzhead}})     /$\ast$ should be 16 $\ast$/}
+
+\mbox{\Hypertarget{gzlog_8c_a08023ea6765c99d60a6a3840cd07156e}\label{gzlog_8c_a08023ea6765c99d60a6a3840cd07156e}} 
+\index{gzlog.\+c@{gzlog.\+c}!local@{local}}
+\index{local@{local}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{local}{local}}
+{\footnotesize\ttfamily \#define local~static}
+
+\mbox{\Hypertarget{gzlog_8c_a70318664f9a64c65778a34bae28101d9}\label{gzlog_8c_a70318664f9a64c65778a34bae28101d9}} 
+\index{gzlog.\+c@{gzlog.\+c}!L\+O\+G\+ID@{L\+O\+G\+ID}}
+\index{L\+O\+G\+ID@{L\+O\+G\+ID}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{L\+O\+G\+ID}{LOGID}}
+{\footnotesize\ttfamily \#define L\+O\+G\+ID~\char`\"{}\textbackslash{}106\textbackslash{}035\textbackslash{}172\char`\"{}    /$\ast$ should be three non-\/zero characters $\ast$/}
+
+\mbox{\Hypertarget{gzlog_8c_a543bd5ecb483023e2a0d87835fd63050}\label{gzlog_8c_a543bd5ecb483023e2a0d87835fd63050}} 
+\index{gzlog.\+c@{gzlog.\+c}!M\+A\+X\+\_\+\+S\+T\+O\+RE@{M\+A\+X\+\_\+\+S\+T\+O\+RE}}
+\index{M\+A\+X\+\_\+\+S\+T\+O\+RE@{M\+A\+X\+\_\+\+S\+T\+O\+RE}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{M\+A\+X\+\_\+\+S\+T\+O\+RE}{MAX\_STORE}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+S\+T\+O\+RE~16}
+
+\mbox{\Hypertarget{gzlog_8c_a8623d9a06ad6dbcf3aa30c92d35b5cce}\label{gzlog_8c_a8623d9a06ad6dbcf3aa30c92d35b5cce}} 
+\index{gzlog.\+c@{gzlog.\+c}!N\+O\+\_\+\+OP@{N\+O\+\_\+\+OP}}
+\index{N\+O\+\_\+\+OP@{N\+O\+\_\+\+OP}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{N\+O\+\_\+\+OP}{NO\_OP}}
+{\footnotesize\ttfamily \#define N\+O\+\_\+\+OP~0}
+
+\mbox{\Hypertarget{gzlog_8c_af4fb82063ff79b16c303ea9bc3fc7bfa}\label{gzlog_8c_af4fb82063ff79b16c303ea9bc3fc7bfa}} 
+\index{gzlog.\+c@{gzlog.\+c}!P\+A\+T\+I\+E\+N\+CE@{P\+A\+T\+I\+E\+N\+CE}}
+\index{P\+A\+T\+I\+E\+N\+CE@{P\+A\+T\+I\+E\+N\+CE}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{P\+A\+T\+I\+E\+N\+CE}{PATIENCE}}
+{\footnotesize\ttfamily \#define P\+A\+T\+I\+E\+N\+CE~300}
+
+\mbox{\Hypertarget{gzlog_8c_ac9603b9a6dc9e29ce31134fd5f197909}\label{gzlog_8c_ac9603b9a6dc9e29ce31134fd5f197909}} 
+\index{gzlog.\+c@{gzlog.\+c}!P\+U\+L\+L2@{P\+U\+L\+L2}}
+\index{P\+U\+L\+L2@{P\+U\+L\+L2}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{P\+U\+L\+L2}{PULL2}}
+{\footnotesize\ttfamily \#define P\+U\+L\+L2(\begin{DoxyParamCaption}\item[{}]{p }\end{DoxyParamCaption})~((p)\mbox{[}0\mbox{]}+((\mbox{\hyperlink{gzlog_8c_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}})((p)\mbox{[}1\mbox{]})$<$$<$8))}
+
+\mbox{\Hypertarget{gzlog_8c_a8523d3f96b72dbc27bb8dfe596dbba10}\label{gzlog_8c_a8523d3f96b72dbc27bb8dfe596dbba10}} 
+\index{gzlog.\+c@{gzlog.\+c}!P\+U\+L\+L4@{P\+U\+L\+L4}}
+\index{P\+U\+L\+L4@{P\+U\+L\+L4}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{P\+U\+L\+L4}{PULL4}}
+{\footnotesize\ttfamily \#define P\+U\+L\+L4(\begin{DoxyParamCaption}\item[{}]{p }\end{DoxyParamCaption})~(\mbox{\hyperlink{gzlog_8c_ac9603b9a6dc9e29ce31134fd5f197909}{P\+U\+L\+L2}}(p)+((\mbox{\hyperlink{gzlog_8c_a718b4eb2652c286f4d42dc18a8e71a1a}{ulong}})\mbox{\hyperlink{gzlog_8c_ac9603b9a6dc9e29ce31134fd5f197909}{P\+U\+L\+L2}}(p+2)$<$$<$16))}
+
+\mbox{\Hypertarget{gzlog_8c_a3e83561c19efecaffdd50e25d3eacda3}\label{gzlog_8c_a3e83561c19efecaffdd50e25d3eacda3}} 
+\index{gzlog.\+c@{gzlog.\+c}!P\+U\+L\+L8@{P\+U\+L\+L8}}
+\index{P\+U\+L\+L8@{P\+U\+L\+L8}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{P\+U\+L\+L8}{PULL8}}
+{\footnotesize\ttfamily \#define P\+U\+L\+L8(\begin{DoxyParamCaption}\item[{}]{p }\end{DoxyParamCaption})~(\mbox{\hyperlink{gzlog_8c_a8523d3f96b72dbc27bb8dfe596dbba10}{P\+U\+L\+L4}}(p)+((\mbox{\hyperlink{__builder_8h_a53066be3c3a28d8b8ccb3dc95c1e49b1}{off\+\_\+t}})\mbox{\hyperlink{gzlog_8c_a8523d3f96b72dbc27bb8dfe596dbba10}{P\+U\+L\+L4}}(p+4)$<$$<$32))}
+
+\mbox{\Hypertarget{gzlog_8c_a985fddd765821eb91c6d5ebfc769ec65}\label{gzlog_8c_a985fddd765821eb91c6d5ebfc769ec65}} 
+\index{gzlog.\+c@{gzlog.\+c}!P\+U\+T2@{P\+U\+T2}}
+\index{P\+U\+T2@{P\+U\+T2}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{P\+U\+T2}{PUT2}}
+{\footnotesize\ttfamily \#define P\+U\+T2(\begin{DoxyParamCaption}\item[{}]{p,  }\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}} }\end{DoxyParamCaption})~do \{(p)\mbox{[}0\mbox{]}=\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}};(p)\mbox{[}1\mbox{]}=(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}})$>$$>$8;\} while(0)}
+
+\mbox{\Hypertarget{gzlog_8c_aea79f4849965cfccba698674774c327c}\label{gzlog_8c_aea79f4849965cfccba698674774c327c}} 
+\index{gzlog.\+c@{gzlog.\+c}!P\+U\+T4@{P\+U\+T4}}
+\index{P\+U\+T4@{P\+U\+T4}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{P\+U\+T4}{PUT4}}
+{\footnotesize\ttfamily \#define P\+U\+T4(\begin{DoxyParamCaption}\item[{}]{p,  }\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}} }\end{DoxyParamCaption})~do \{\mbox{\hyperlink{gzlog_8c_a985fddd765821eb91c6d5ebfc769ec65}{P\+U\+T2}}(p,\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}});\mbox{\hyperlink{gzlog_8c_a985fddd765821eb91c6d5ebfc769ec65}{P\+U\+T2}}(p+2,\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}}$>$$>$16);\} while(0)}
+
+\mbox{\Hypertarget{gzlog_8c_a05a93fedc06e7249cd16c8727470d6ef}\label{gzlog_8c_a05a93fedc06e7249cd16c8727470d6ef}} 
+\index{gzlog.\+c@{gzlog.\+c}!P\+U\+T8@{P\+U\+T8}}
+\index{P\+U\+T8@{P\+U\+T8}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{P\+U\+T8}{PUT8}}
+{\footnotesize\ttfamily \#define P\+U\+T8(\begin{DoxyParamCaption}\item[{}]{p,  }\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}} }\end{DoxyParamCaption})~do \{\mbox{\hyperlink{gzlog_8c_aea79f4849965cfccba698674774c327c}{P\+U\+T4}}(p,\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}});\mbox{\hyperlink{gzlog_8c_aea79f4849965cfccba698674774c327c}{P\+U\+T4}}(p+4,\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}}$>$$>$32);\} while(0)}
+
+\mbox{\Hypertarget{gzlog_8c_a4dd53ad3534446424c997ec7fbf3a9b7}\label{gzlog_8c_a4dd53ad3534446424c997ec7fbf3a9b7}} 
+\index{gzlog.\+c@{gzlog.\+c}!R\+E\+P\+L\+A\+C\+E\+\_\+\+OP@{R\+E\+P\+L\+A\+C\+E\+\_\+\+OP}}
+\index{R\+E\+P\+L\+A\+C\+E\+\_\+\+OP@{R\+E\+P\+L\+A\+C\+E\+\_\+\+OP}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{R\+E\+P\+L\+A\+C\+E\+\_\+\+OP}{REPLACE\_OP}}
+{\footnotesize\ttfamily \#define R\+E\+P\+L\+A\+C\+E\+\_\+\+OP~3}
+
+\mbox{\Hypertarget{gzlog_8c_a86de85f5177dabb5ff712bf180db43aa}\label{gzlog_8c_a86de85f5177dabb5ff712bf180db43aa}} 
+\index{gzlog.\+c@{gzlog.\+c}!T\+R\+I\+G\+G\+ER@{T\+R\+I\+G\+G\+ER}}
+\index{T\+R\+I\+G\+G\+ER@{T\+R\+I\+G\+G\+ER}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{T\+R\+I\+G\+G\+ER}{TRIGGER}}
+{\footnotesize\ttfamily \#define T\+R\+I\+G\+G\+ER~1024}
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{gzlog_8c_a91ad9478d81a7aaf2593e8d9c3d06a14}\label{gzlog_8c_a91ad9478d81a7aaf2593e8d9c3d06a14}} 
+\index{gzlog.\+c@{gzlog.\+c}!uint@{uint}}
+\index{uint@{uint}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{uint}{uint}}
+{\footnotesize\ttfamily typedef unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzlog_8c_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint}}}
+
+\mbox{\Hypertarget{gzlog_8c_a718b4eb2652c286f4d42dc18a8e71a1a}\label{gzlog_8c_a718b4eb2652c286f4d42dc18a8e71a1a}} 
+\index{gzlog.\+c@{gzlog.\+c}!ulong@{ulong}}
+\index{ulong@{ulong}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{ulong}{ulong}}
+{\footnotesize\ttfamily typedef unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} \mbox{\hyperlink{gzlog_8c_a718b4eb2652c286f4d42dc18a8e71a1a}{ulong}}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{gzlog_8c_a3ff7187a1b8c3bb7f5594c753a72ed2b}\label{gzlog_8c_a3ff7187a1b8c3bb7f5594c753a72ed2b}} 
+\index{gzlog.\+c@{gzlog.\+c}!gzlog\+\_\+close@{gzlog\+\_\+close}}
+\index{gzlog\+\_\+close@{gzlog\+\_\+close}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{gzlog\+\_\+close()}{gzlog\_close()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} gzlog\+\_\+close (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gzlog_8h_a06e0b52f396bdf030c9b1ef1e20fbc0e}{gzlog}} $\ast$}]{logd }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a3ff7187a1b8c3bb7f5594c753a72ed2b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzlog_8c_a0a4dc90354f7dc41dfa68c9dd6a6a2ca}\label{gzlog_8c_a0a4dc90354f7dc41dfa68c9dd6a6a2ca}} 
+\index{gzlog.\+c@{gzlog.\+c}!gzlog\+\_\+compress@{gzlog\+\_\+compress}}
+\index{gzlog\+\_\+compress@{gzlog\+\_\+compress}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{gzlog\+\_\+compress()}{gzlog\_compress()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} gzlog\+\_\+compress (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gzlog_8h_a06e0b52f396bdf030c9b1ef1e20fbc0e}{gzlog}} $\ast$}]{logd }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a0a4dc90354f7dc41dfa68c9dd6a6a2ca_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{gzlog_8c_a0a4dc90354f7dc41dfa68c9dd6a6a2ca_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzlog_8c_abb1427c5ea3ace896e07f824ba2ae1cb}\label{gzlog_8c_abb1427c5ea3ace896e07f824ba2ae1cb}} 
+\index{gzlog.\+c@{gzlog.\+c}!gzlog\+\_\+open@{gzlog\+\_\+open}}
+\index{gzlog\+\_\+open@{gzlog\+\_\+open}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{gzlog\+\_\+open()}{gzlog\_open()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gzlog_8h_a06e0b52f396bdf030c9b1ef1e20fbc0e}{gzlog}}$\ast$ gzlog\+\_\+open (\begin{DoxyParamCaption}\item[{char $\ast$}]{path }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_abb1427c5ea3ace896e07f824ba2ae1cb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzlog_8c_a34123011fe74655ddcf1cdfc3ce18ccc}\label{gzlog_8c_a34123011fe74655ddcf1cdfc3ce18ccc}} 
+\index{gzlog.\+c@{gzlog.\+c}!gzlog\+\_\+write@{gzlog\+\_\+write}}
+\index{gzlog\+\_\+write@{gzlog\+\_\+write}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{gzlog\+\_\+write()}{gzlog\_write()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} gzlog\+\_\+write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gzlog_8h_a06e0b52f396bdf030c9b1ef1e20fbc0e}{gzlog}} $\ast$}]{logd,  }\item[{void $\ast$}]{data,  }\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a34123011fe74655ddcf1cdfc3ce18ccc_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzlog_8c_a443b09f5d771e24771cd89ef94e6a63b}\label{gzlog_8c_a443b09f5d771e24771cd89ef94e6a63b}} 
+\index{gzlog.\+c@{gzlog.\+c}!log\+\_\+append@{log\+\_\+append}}
+\index{log\+\_\+append@{log\+\_\+append}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{log\+\_\+append()}{log\_append()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} log\+\_\+append (\begin{DoxyParamCaption}\item[{struct log $\ast$}]{log,  }\item[{unsigned char $\ast$}]{data,  }\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a443b09f5d771e24771cd89ef94e6a63b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a443b09f5d771e24771cd89ef94e6a63b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzlog_8c_a1887a790c9449992aadc4b98a9df1983}\label{gzlog_8c_a1887a790c9449992aadc4b98a9df1983}} 
+\index{gzlog.\+c@{gzlog.\+c}!log\+\_\+check@{log\+\_\+check}}
+\index{log\+\_\+check@{log\+\_\+check}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{log\+\_\+check()}{log\_check()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} log\+\_\+check (\begin{DoxyParamCaption}\item[{struct log $\ast$}]{log }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=245pt]{gzlog_8c_a1887a790c9449992aadc4b98a9df1983_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a1887a790c9449992aadc4b98a9df1983_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzlog_8c_a536437328b837f61ef0bfb1c45549232}\label{gzlog_8c_a536437328b837f61ef0bfb1c45549232}} 
+\index{gzlog.\+c@{gzlog.\+c}!log\+\_\+close@{log\+\_\+close}}
+\index{log\+\_\+close@{log\+\_\+close}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{log\+\_\+close()}{log\_close()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void log\+\_\+close (\begin{DoxyParamCaption}\item[{struct log $\ast$}]{log }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a536437328b837f61ef0bfb1c45549232_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a536437328b837f61ef0bfb1c45549232_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzlog_8c_a10ff83db227c52317c4168fb7be8c9a6}\label{gzlog_8c_a10ff83db227c52317c4168fb7be8c9a6}} 
+\index{gzlog.\+c@{gzlog.\+c}!log\+\_\+compress@{log\+\_\+compress}}
+\index{log\+\_\+compress@{log\+\_\+compress}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{log\+\_\+compress()}{log\_compress()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} log\+\_\+compress (\begin{DoxyParamCaption}\item[{struct log $\ast$}]{log,  }\item[{unsigned char $\ast$}]{data,  }\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a10ff83db227c52317c4168fb7be8c9a6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a10ff83db227c52317c4168fb7be8c9a6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzlog_8c_a9f70840a4da39bed3def61bbfd787cfe}\label{gzlog_8c_a9f70840a4da39bed3def61bbfd787cfe}} 
+\index{gzlog.\+c@{gzlog.\+c}!log\+\_\+head@{log\+\_\+head}}
+\index{log\+\_\+head@{log\+\_\+head}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{log\+\_\+head()}{log\_head()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} log\+\_\+head (\begin{DoxyParamCaption}\item[{struct log $\ast$}]{log }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a9f70840a4da39bed3def61bbfd787cfe_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a9f70840a4da39bed3def61bbfd787cfe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzlog_8c_a58a53f636026d37d9536942bb8e7cd03}\label{gzlog_8c_a58a53f636026d37d9536942bb8e7cd03}} 
+\index{gzlog.\+c@{gzlog.\+c}!log\+\_\+last@{log\+\_\+last}}
+\index{log\+\_\+last@{log\+\_\+last}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{log\+\_\+last()}{log\_last()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} log\+\_\+last (\begin{DoxyParamCaption}\item[{struct log $\ast$}]{log,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{last }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a58a53f636026d37d9536942bb8e7cd03_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a58a53f636026d37d9536942bb8e7cd03_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzlog_8c_ad93b63e2b80f051b294278c543b3cfd3}\label{gzlog_8c_ad93b63e2b80f051b294278c543b3cfd3}} 
+\index{gzlog.\+c@{gzlog.\+c}!log\+\_\+lock@{log\+\_\+lock}}
+\index{log\+\_\+lock@{log\+\_\+lock}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{log\+\_\+lock()}{log\_lock()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} log\+\_\+lock (\begin{DoxyParamCaption}\item[{struct log $\ast$}]{log }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_ad93b63e2b80f051b294278c543b3cfd3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzlog_8c_a38f051990b3723669d34a278cd188b8f}\label{gzlog_8c_a38f051990b3723669d34a278cd188b8f}} 
+\index{gzlog.\+c@{gzlog.\+c}!log\+\_\+log@{log\+\_\+log}}
+\index{log\+\_\+log@{log\+\_\+log}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{log\+\_\+log()}{log\_log()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void log\+\_\+log (\begin{DoxyParamCaption}\item[{struct log $\ast$}]{log,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{op,  }\item[{char $\ast$}]{record }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a38f051990b3723669d34a278cd188b8f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzlog_8c_a01b481aef7e564199f45f09fa02e288f}\label{gzlog_8c_a01b481aef7e564199f45f09fa02e288f}} 
+\index{gzlog.\+c@{gzlog.\+c}!log\+\_\+mark@{log\+\_\+mark}}
+\index{log\+\_\+mark@{log\+\_\+mark}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{log\+\_\+mark()}{log\_mark()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} log\+\_\+mark (\begin{DoxyParamCaption}\item[{struct log $\ast$}]{log,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{op }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a01b481aef7e564199f45f09fa02e288f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a01b481aef7e564199f45f09fa02e288f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzlog_8c_a850b9f34599da731960a24b2a3e4f0c5}\label{gzlog_8c_a850b9f34599da731960a24b2a3e4f0c5}} 
+\index{gzlog.\+c@{gzlog.\+c}!log\+\_\+open@{log\+\_\+open}}
+\index{log\+\_\+open@{log\+\_\+open}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{log\+\_\+open()}{log\_open()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} log\+\_\+open (\begin{DoxyParamCaption}\item[{struct log $\ast$}]{log }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a850b9f34599da731960a24b2a3e4f0c5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a850b9f34599da731960a24b2a3e4f0c5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzlog_8c_a2bde11914247547dcee20d788295d86f}\label{gzlog_8c_a2bde11914247547dcee20d788295d86f}} 
+\index{gzlog.\+c@{gzlog.\+c}!log\+\_\+recover@{log\+\_\+recover}}
+\index{log\+\_\+recover@{log\+\_\+recover}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{log\+\_\+recover()}{log\_recover()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} log\+\_\+recover (\begin{DoxyParamCaption}\item[{struct log $\ast$}]{log,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{op }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a2bde11914247547dcee20d788295d86f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a2bde11914247547dcee20d788295d86f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzlog_8c_aefe1125563e958c5ce79567779e7a31a}\label{gzlog_8c_aefe1125563e958c5ce79567779e7a31a}} 
+\index{gzlog.\+c@{gzlog.\+c}!log\+\_\+replace@{log\+\_\+replace}}
+\index{log\+\_\+replace@{log\+\_\+replace}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{log\+\_\+replace()}{log\_replace()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} log\+\_\+replace (\begin{DoxyParamCaption}\item[{struct log $\ast$}]{log }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_aefe1125563e958c5ce79567779e7a31a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_aefe1125563e958c5ce79567779e7a31a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzlog_8c_a00be8bce7eaeaa48a38c86f05b7d6e11}\label{gzlog_8c_a00be8bce7eaeaa48a38c86f05b7d6e11}} 
+\index{gzlog.\+c@{gzlog.\+c}!log\+\_\+touch@{log\+\_\+touch}}
+\index{log\+\_\+touch@{log\+\_\+touch}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{log\+\_\+touch()}{log\_touch()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void log\+\_\+touch (\begin{DoxyParamCaption}\item[{struct log $\ast$}]{log }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a00be8bce7eaeaa48a38c86f05b7d6e11_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzlog_8c_a41c3c6e46bc38fd22a8de5c57868bc3b}\label{gzlog_8c_a41c3c6e46bc38fd22a8de5c57868bc3b}} 
+\index{gzlog.\+c@{gzlog.\+c}!log\+\_\+unlock@{log\+\_\+unlock}}
+\index{log\+\_\+unlock@{log\+\_\+unlock}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{log\+\_\+unlock()}{log\_unlock()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void log\+\_\+unlock (\begin{DoxyParamCaption}\item[{struct log $\ast$}]{log }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a41c3c6e46bc38fd22a8de5c57868bc3b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzlog_8c_a41c3c6e46bc38fd22a8de5c57868bc3b_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{gzlog_8c_afc26c65f513613eef733fb2e6df5697f}\label{gzlog_8c_afc26c65f513613eef733fb2e6df5697f}} 
+\index{gzlog.\+c@{gzlog.\+c}!log\+\_\+gzbody@{log\+\_\+gzbody}}
+\index{log\+\_\+gzbody@{log\+\_\+gzbody}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{log\+\_\+gzbody}{log\_gzbody}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} unsigned char log\+\_\+gzbody\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    1, 0, 0, 0xff, 0xff,        
+    0, 0, 0, 0,                 
+    0, 0, 0, 0                  
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{gzlog_8c_a4e361847a570e6c281ba3abaa4659c85}\label{gzlog_8c_a4e361847a570e6c281ba3abaa4659c85}} 
+\index{gzlog.\+c@{gzlog.\+c}!log\+\_\+gzext@{log\+\_\+gzext}}
+\index{log\+\_\+gzext@{log\+\_\+gzext}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{log\+\_\+gzext}{log\_gzext}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} unsigned char log\+\_\+gzext\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    52, 0, 0, 0, 0, 0, 0, 0,    
+    52, 0, 0, 0, 0, 0, 0, 0,    
+    0, 0, 0, 0, 0, 0, 0, 0,     
+    0, 0, 0, 0, 0, 0, 0, 0,     
+    0, 0,                       
+    5                           
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{gzlog_8c_a7129a4c02a917045dacfeb636a255062}\label{gzlog_8c_a7129a4c02a917045dacfeb636a255062}} 
+\index{gzlog.\+c@{gzlog.\+c}!log\+\_\+gzhead@{log\+\_\+gzhead}}
+\index{log\+\_\+gzhead@{log\+\_\+gzhead}!gzlog.\+c@{gzlog.\+c}}
+\subsubsection{\texorpdfstring{log\+\_\+gzhead}{log\_gzhead}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} unsigned char log\+\_\+gzhead\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    0x1f, 0x8b,                 
+    8,                          
+    4,                          
+    0, 0, 0, 0,                 
+    0, 0xff,                    
+    39, 0, \textcolor{charliteral}{'a'}, \textcolor{charliteral}{'p'}, 35, 0      
+                                
+\}
+\end{DoxyCode}

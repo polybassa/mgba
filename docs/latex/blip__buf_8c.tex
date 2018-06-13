@@ -1,0 +1,501 @@
+\hypertarget{blip__buf_8c}{}\section{src/third-\/party/blip\+\_\+buf/blip\+\_\+buf.c File Reference}
+\label{blip__buf_8c}\index{src/third-\/party/blip\+\_\+buf/blip\+\_\+buf.\+c@{src/third-\/party/blip\+\_\+buf/blip\+\_\+buf.\+c}}
+{\ttfamily \#include $<$mgba/core/blip\+\_\+buf.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$limits.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+Include dependency graph for blip\+\_\+buf.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{blip__buf_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{blip__buf_8c_a9c2e0b4b7cf64a5154aed6e2506a1ffc}{S\+A\+M\+P\+L\+ES}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}})~((\mbox{\hyperlink{blip__buf_8c_a69467f38649614ce6b6e264081184ce4}{buf\+\_\+t}}$\ast$) ((\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}) + 1))
+\item 
+\#define \mbox{\hyperlink{blip__buf_8c_a2a97b40f0f77dafbe47d7e1006ca59af}{A\+R\+I\+T\+H\+\_\+\+S\+H\+I\+FT}}(\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}},  shift)~((\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}}) $>$$>$ (shift))
+\item 
+\#define \mbox{\hyperlink{blip__buf_8c_afea88249bb3b55c635d03dd4858fea7c}{C\+L\+A\+MP}}(\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned \mbox{\hyperlink{blip__buf_8c_a86fab84d611ebecb1e566e2e8813d074}{fixed\+\_\+t}}
+\item 
+typedef \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{blip__buf_8c_a69467f38649614ce6b6e264081184ce4}{buf\+\_\+t}}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \mbox{\hyperlink{blip__buf_8c_a0411cd49bb5b71852cecd93bcbf0ca2da41dd4cfbe57318f11566c15877ab6ef7}{pre\+\_\+shift}} = 0
+ \}
+\item 
+enum \{ \mbox{\hyperlink{blip__buf_8c_abed82baf7f470b522273a3e37c24c600a76fb146c4e0d3cb10b1ec83feeafbb74}{time\+\_\+bits}} = pre\+\_\+shift + 20
+ \}
+\item 
+enum \{ \mbox{\hyperlink{blip__buf_8c_ab04a0655cd1e3bcac5e8f48c18df1a57a9c1b0324cadd5bf039853c24d422f7fc}{bass\+\_\+shift}} = 9
+ \}
+\item 
+enum \{ \mbox{\hyperlink{blip__buf_8c_a385c44f6fb256e5716a2302a5b940388aacd2bf8ad9ec8f352daef4ddfaa8835e}{end\+\_\+frame\+\_\+extra}} = 2
+ \}
+\item 
+enum \{ \mbox{\hyperlink{blip__buf_8c_abc5c98fcc1211af2b80116dd6e0a035daafb6b69b7d6a0141c417f5b7834dbb35}{half\+\_\+width}} = 8
+ \}
+\item 
+enum \{ \mbox{\hyperlink{blip__buf_8c_ac36f475ca5b446f4fde4c9b90bec77c8ad2d9d49a39eb4ed5ff959fa525be4419}{buf\+\_\+extra}} = half\+\_\+width$\ast$2 + end\+\_\+frame\+\_\+extra
+ \}
+\item 
+enum \{ \mbox{\hyperlink{blip__buf_8c_a05589fbab0657f08285ebdfe93f5ec9ea77b6e5b28df09a1d1b4a3af19de4344f}{phase\+\_\+bits}} = 5
+ \}
+\item 
+enum \{ \mbox{\hyperlink{blip__buf_8c_a16af7b253440dadd46a80a4b9fddba4dae320e3601408c17429b5eac699f92c99}{phase\+\_\+count}} = 1 $<$$<$ phase\+\_\+bits
+ \}
+\item 
+enum \{ \mbox{\hyperlink{blip__buf_8c_aba01db17f4a2bfbc3db60dc172972a25af906876c4fd508fa2d60ebbdf9026398}{delta\+\_\+bits}} = 15
+ \}
+\item 
+enum \{ \mbox{\hyperlink{blip__buf_8c_aaf105ae5beaca1dee30ae54530691fceadaea71202bcabd9b8534f2a9fa7c9a64}{delta\+\_\+unit}} = 1 $<$$<$ delta\+\_\+bits
+ \}
+\item 
+enum \{ \mbox{\hyperlink{blip__buf_8c_a80155586fa275b28773c9b203f52cabaa58c17b786a4e8bf3d6dd20be2595a93c}{frac\+\_\+bits}} = time\+\_\+bits -\/ pre\+\_\+shift
+ \}
+\item 
+enum \{ \mbox{\hyperlink{blip__buf_8c_a6b7b47dd702d9e331586d485013fd1eaa30514137f83aad17c765bd35c7a8fd77}{max\+\_\+sample}} = +32767
+ \}
+\item 
+enum \{ \mbox{\hyperlink{blip__buf_8c_af9bdc3014f3d54c426b6d2df10de4960a16d8663a9c2abfb198270333ccd428c4}{min\+\_\+sample}} = -\/32768
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{blip__buf_8c_aa8f0762c5301b32d4de9e1d381329619}{check\+\_\+assumptions}} (void)
+\item 
+blip\+\_\+t $\ast$ \mbox{\hyperlink{blip__buf_8c_a43da97d15aa82ace1e247cdaf0c523c3}{blip\+\_\+new}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+void \mbox{\hyperlink{blip__buf_8c_a14385e2e0650d9c72955cef93003ae65}{blip\+\_\+delete}} (blip\+\_\+t $\ast$m)
+\item 
+void \mbox{\hyperlink{blip__buf_8c_a230c7769fff451cc141a0b3b97854951}{blip\+\_\+set\+\_\+rates}} (blip\+\_\+t $\ast$m, double clock\+\_\+rate, double sample\+\_\+rate)
+\item 
+void \mbox{\hyperlink{blip__buf_8c_a5375f86e9403599a4aad1477fcf66af8}{blip\+\_\+clear}} (blip\+\_\+t $\ast$m)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{blip__buf_8c_ac11997205dd863f3639d95051a7f058a}{blip\+\_\+clocks\+\_\+needed}} (const blip\+\_\+t $\ast$m, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} samples)
+\item 
+void \mbox{\hyperlink{blip__buf_8c_a895cd1b06a29093ad84aabf519079df8}{blip\+\_\+end\+\_\+frame}} (blip\+\_\+t $\ast$m, unsigned t)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{blip__buf_8c_a3b36cba62bd13a7b915f7af32b0b1466}{blip\+\_\+samples\+\_\+avail}} (const blip\+\_\+t $\ast$m)
+\item 
+static void \mbox{\hyperlink{blip__buf_8c_a658502fd2cc11939919151183753fb42}{remove\+\_\+samples}} (blip\+\_\+t $\ast$m, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{enough_8c_ab25137bc309ccde185e2628bf4403ec7}{count}})
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{blip__buf_8c_a110b073eb235a17fbfbc0f22484b9055}{blip\+\_\+read\+\_\+samples}} (blip\+\_\+t $\ast$m, short \mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}} \mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{enough_8c_ab25137bc309ccde185e2628bf4403ec7}{count}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} stereo)
+\item 
+void \mbox{\hyperlink{blip__buf_8c_ab697316786a64b8f32dec295a32a0696}{blip\+\_\+add\+\_\+delta}} (blip\+\_\+t $\ast$m, unsigned time, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} delta)
+\item 
+void \mbox{\hyperlink{blip__buf_8c_a05d8910a3a6116240a4f5a5c81f99f84}{blip\+\_\+add\+\_\+delta\+\_\+fast}} (blip\+\_\+t $\ast$m, unsigned time, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} delta)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{blip__buf_8c_a86fab84d611ebecb1e566e2e8813d074}{fixed\+\_\+t}} const \mbox{\hyperlink{blip__buf_8c_abe8ee888293ff975e8e2f68aee2cb8c9}{time\+\_\+unit}} = (\mbox{\hyperlink{blip__buf_8c_a86fab84d611ebecb1e566e2e8813d074}{fixed\+\_\+t}}) 1 $<$$<$ \mbox{\hyperlink{blip__buf_8c_abed82baf7f470b522273a3e37c24c600a76fb146c4e0d3cb10b1ec83feeafbb74}{time\+\_\+bits}}
+\item 
+static short const \mbox{\hyperlink{blip__buf_8c_afc3364239e32ba930610dab6167e4965}{bl\+\_\+step}} \mbox{[}\mbox{\hyperlink{blip__buf_8c_a16af7b253440dadd46a80a4b9fddba4dae320e3601408c17429b5eac699f92c99}{phase\+\_\+count}}+1\mbox{]}\mbox{[}\mbox{\hyperlink{blip__buf_8c_abc5c98fcc1211af2b80116dd6e0a035daafb6b69b7d6a0141c417f5b7834dbb35}{half\+\_\+width}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{blip__buf_8c_a2a97b40f0f77dafbe47d7e1006ca59af}\label{blip__buf_8c_a2a97b40f0f77dafbe47d7e1006ca59af}} 
+\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!A\+R\+I\+T\+H\+\_\+\+S\+H\+I\+FT@{A\+R\+I\+T\+H\+\_\+\+S\+H\+I\+FT}}
+\index{A\+R\+I\+T\+H\+\_\+\+S\+H\+I\+FT@{A\+R\+I\+T\+H\+\_\+\+S\+H\+I\+FT}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+I\+T\+H\+\_\+\+S\+H\+I\+FT}{ARITH\_SHIFT}}
+{\footnotesize\ttfamily \#define A\+R\+I\+T\+H\+\_\+\+S\+H\+I\+FT(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}},  }\item[{}]{shift }\end{DoxyParamCaption})~((\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}}) $>$$>$ (shift))}
+
+\mbox{\Hypertarget{blip__buf_8c_afea88249bb3b55c635d03dd4858fea7c}\label{blip__buf_8c_afea88249bb3b55c635d03dd4858fea7c}} 
+\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!C\+L\+A\+MP@{C\+L\+A\+MP}}
+\index{C\+L\+A\+MP@{C\+L\+A\+MP}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}
+\subsubsection{\texorpdfstring{C\+L\+A\+MP}{CLAMP}}
+{\footnotesize\ttfamily \#define C\+L\+A\+MP(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\{\(\backslash\)
+        if ( (\textcolor{keywordtype}{short}) \mbox{\hyperlink{isa-arm_8c_a4e34aefb3cc5403a07c020131077100a}{n}} != \mbox{\hyperlink{isa-arm_8c_a4e34aefb3cc5403a07c020131077100a}{n}} )\(\backslash\)
+            n = \mbox{\hyperlink{blip__buf_8c_a2a97b40f0f77dafbe47d7e1006ca59af}{ARITH\_SHIFT}}( \mbox{\hyperlink{isa-arm_8c_a4e34aefb3cc5403a07c020131077100a}{n}}, 16 ) ^ \mbox{\hyperlink{blip__buf_8c_a6b7b47dd702d9e331586d485013fd1eaa30514137f83aad17c765bd35c7a8fd77}{max\_sample}};\(\backslash\)
+    \}
+\end{DoxyCode}
+\mbox{\Hypertarget{blip__buf_8c_a9c2e0b4b7cf64a5154aed6e2506a1ffc}\label{blip__buf_8c_a9c2e0b4b7cf64a5154aed6e2506a1ffc}} 
+\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!S\+A\+M\+P\+L\+ES@{S\+A\+M\+P\+L\+ES}}
+\index{S\+A\+M\+P\+L\+ES@{S\+A\+M\+P\+L\+ES}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}
+\subsubsection{\texorpdfstring{S\+A\+M\+P\+L\+ES}{SAMPLES}}
+{\footnotesize\ttfamily \#define S\+A\+M\+P\+L\+ES(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}} }\end{DoxyParamCaption})~((\mbox{\hyperlink{blip__buf_8c_a69467f38649614ce6b6e264081184ce4}{buf\+\_\+t}}$\ast$) ((\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}) + 1))}
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{blip__buf_8c_a69467f38649614ce6b6e264081184ce4}\label{blip__buf_8c_a69467f38649614ce6b6e264081184ce4}} 
+\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!buf\+\_\+t@{buf\+\_\+t}}
+\index{buf\+\_\+t@{buf\+\_\+t}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}
+\subsubsection{\texorpdfstring{buf\+\_\+t}{buf\_t}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{blip__buf_8c_a69467f38649614ce6b6e264081184ce4}{buf\+\_\+t}}}
+
+\mbox{\Hypertarget{blip__buf_8c_a86fab84d611ebecb1e566e2e8813d074}\label{blip__buf_8c_a86fab84d611ebecb1e566e2e8813d074}} 
+\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!fixed\+\_\+t@{fixed\+\_\+t}}
+\index{fixed\+\_\+t@{fixed\+\_\+t}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}
+\subsubsection{\texorpdfstring{fixed\+\_\+t}{fixed\_t}}
+{\footnotesize\ttfamily typedef unsigned \mbox{\hyperlink{blip__buf_8c_a86fab84d611ebecb1e566e2e8813d074}{fixed\+\_\+t}}}
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{blip__buf_8c_a385c44f6fb256e5716a2302a5b940388}\label{blip__buf_8c_a385c44f6fb256e5716a2302a5b940388}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{end\+\_\+frame\+\_\+extra@{end\+\_\+frame\+\_\+extra}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!end\+\_\+frame\+\_\+extra@{end\+\_\+frame\+\_\+extra}}}\mbox{\Hypertarget{blip__buf_8c_a385c44f6fb256e5716a2302a5b940388aacd2bf8ad9ec8f352daef4ddfaa8835e}\label{blip__buf_8c_a385c44f6fb256e5716a2302a5b940388aacd2bf8ad9ec8f352daef4ddfaa8835e}} 
+end\+\_\+frame\+\_\+extra&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{blip__buf_8c_abc5c98fcc1211af2b80116dd6e0a035d}\label{blip__buf_8c_abc5c98fcc1211af2b80116dd6e0a035d}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{half\+\_\+width@{half\+\_\+width}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!half\+\_\+width@{half\+\_\+width}}}\mbox{\Hypertarget{blip__buf_8c_abc5c98fcc1211af2b80116dd6e0a035daafb6b69b7d6a0141c417f5b7834dbb35}\label{blip__buf_8c_abc5c98fcc1211af2b80116dd6e0a035daafb6b69b7d6a0141c417f5b7834dbb35}} 
+half\+\_\+width&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{blip__buf_8c_ac36f475ca5b446f4fde4c9b90bec77c8}\label{blip__buf_8c_ac36f475ca5b446f4fde4c9b90bec77c8}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{buf\+\_\+extra@{buf\+\_\+extra}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!buf\+\_\+extra@{buf\+\_\+extra}}}\mbox{\Hypertarget{blip__buf_8c_ac36f475ca5b446f4fde4c9b90bec77c8ad2d9d49a39eb4ed5ff959fa525be4419}\label{blip__buf_8c_ac36f475ca5b446f4fde4c9b90bec77c8ad2d9d49a39eb4ed5ff959fa525be4419}} 
+buf\+\_\+extra&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{blip__buf_8c_a05589fbab0657f08285ebdfe93f5ec9e}\label{blip__buf_8c_a05589fbab0657f08285ebdfe93f5ec9e}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{phase\+\_\+bits@{phase\+\_\+bits}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!phase\+\_\+bits@{phase\+\_\+bits}}}\mbox{\Hypertarget{blip__buf_8c_a05589fbab0657f08285ebdfe93f5ec9ea77b6e5b28df09a1d1b4a3af19de4344f}\label{blip__buf_8c_a05589fbab0657f08285ebdfe93f5ec9ea77b6e5b28df09a1d1b4a3af19de4344f}} 
+phase\+\_\+bits&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{blip__buf_8c_a16af7b253440dadd46a80a4b9fddba4d}\label{blip__buf_8c_a16af7b253440dadd46a80a4b9fddba4d}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{phase\+\_\+count@{phase\+\_\+count}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!phase\+\_\+count@{phase\+\_\+count}}}\mbox{\Hypertarget{blip__buf_8c_a16af7b253440dadd46a80a4b9fddba4dae320e3601408c17429b5eac699f92c99}\label{blip__buf_8c_a16af7b253440dadd46a80a4b9fddba4dae320e3601408c17429b5eac699f92c99}} 
+phase\+\_\+count&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{blip__buf_8c_aba01db17f4a2bfbc3db60dc172972a25}\label{blip__buf_8c_aba01db17f4a2bfbc3db60dc172972a25}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{delta\+\_\+bits@{delta\+\_\+bits}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!delta\+\_\+bits@{delta\+\_\+bits}}}\mbox{\Hypertarget{blip__buf_8c_aba01db17f4a2bfbc3db60dc172972a25af906876c4fd508fa2d60ebbdf9026398}\label{blip__buf_8c_aba01db17f4a2bfbc3db60dc172972a25af906876c4fd508fa2d60ebbdf9026398}} 
+delta\+\_\+bits&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{blip__buf_8c_aaf105ae5beaca1dee30ae54530691fce}\label{blip__buf_8c_aaf105ae5beaca1dee30ae54530691fce}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{delta\+\_\+unit@{delta\+\_\+unit}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!delta\+\_\+unit@{delta\+\_\+unit}}}\mbox{\Hypertarget{blip__buf_8c_aaf105ae5beaca1dee30ae54530691fceadaea71202bcabd9b8534f2a9fa7c9a64}\label{blip__buf_8c_aaf105ae5beaca1dee30ae54530691fceadaea71202bcabd9b8534f2a9fa7c9a64}} 
+delta\+\_\+unit&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{blip__buf_8c_a80155586fa275b28773c9b203f52caba}\label{blip__buf_8c_a80155586fa275b28773c9b203f52caba}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{frac\+\_\+bits@{frac\+\_\+bits}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!frac\+\_\+bits@{frac\+\_\+bits}}}\mbox{\Hypertarget{blip__buf_8c_a80155586fa275b28773c9b203f52cabaa58c17b786a4e8bf3d6dd20be2595a93c}\label{blip__buf_8c_a80155586fa275b28773c9b203f52cabaa58c17b786a4e8bf3d6dd20be2595a93c}} 
+frac\+\_\+bits&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{blip__buf_8c_a6b7b47dd702d9e331586d485013fd1ea}\label{blip__buf_8c_a6b7b47dd702d9e331586d485013fd1ea}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{max\+\_\+sample@{max\+\_\+sample}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!max\+\_\+sample@{max\+\_\+sample}}}\mbox{\Hypertarget{blip__buf_8c_a6b7b47dd702d9e331586d485013fd1eaa30514137f83aad17c765bd35c7a8fd77}\label{blip__buf_8c_a6b7b47dd702d9e331586d485013fd1eaa30514137f83aad17c765bd35c7a8fd77}} 
+max\+\_\+sample&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{blip__buf_8c_af9bdc3014f3d54c426b6d2df10de4960}\label{blip__buf_8c_af9bdc3014f3d54c426b6d2df10de4960}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{min\+\_\+sample@{min\+\_\+sample}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!min\+\_\+sample@{min\+\_\+sample}}}\mbox{\Hypertarget{blip__buf_8c_af9bdc3014f3d54c426b6d2df10de4960a16d8663a9c2abfb198270333ccd428c4}\label{blip__buf_8c_af9bdc3014f3d54c426b6d2df10de4960a16d8663a9c2abfb198270333ccd428c4}} 
+min\+\_\+sample&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{blip__buf_8c_a0411cd49bb5b71852cecd93bcbf0ca2d}\label{blip__buf_8c_a0411cd49bb5b71852cecd93bcbf0ca2d}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{pre\+\_\+shift@{pre\+\_\+shift}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!pre\+\_\+shift@{pre\+\_\+shift}}}\mbox{\Hypertarget{blip__buf_8c_a0411cd49bb5b71852cecd93bcbf0ca2da41dd4cfbe57318f11566c15877ab6ef7}\label{blip__buf_8c_a0411cd49bb5b71852cecd93bcbf0ca2da41dd4cfbe57318f11566c15877ab6ef7}} 
+pre\+\_\+shift&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{blip__buf_8c_abed82baf7f470b522273a3e37c24c600}\label{blip__buf_8c_abed82baf7f470b522273a3e37c24c600}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{time\+\_\+bits@{time\+\_\+bits}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!time\+\_\+bits@{time\+\_\+bits}}}\mbox{\Hypertarget{blip__buf_8c_abed82baf7f470b522273a3e37c24c600a76fb146c4e0d3cb10b1ec83feeafbb74}\label{blip__buf_8c_abed82baf7f470b522273a3e37c24c600a76fb146c4e0d3cb10b1ec83feeafbb74}} 
+time\+\_\+bits&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{blip__buf_8c_ab04a0655cd1e3bcac5e8f48c18df1a57}\label{blip__buf_8c_ab04a0655cd1e3bcac5e8f48c18df1a57}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{bass\+\_\+shift@{bass\+\_\+shift}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!bass\+\_\+shift@{bass\+\_\+shift}}}\mbox{\Hypertarget{blip__buf_8c_ab04a0655cd1e3bcac5e8f48c18df1a57a9c1b0324cadd5bf039853c24d422f7fc}\label{blip__buf_8c_ab04a0655cd1e3bcac5e8f48c18df1a57a9c1b0324cadd5bf039853c24d422f7fc}} 
+bass\+\_\+shift&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{blip__buf_8c_ab697316786a64b8f32dec295a32a0696}\label{blip__buf_8c_ab697316786a64b8f32dec295a32a0696}} 
+\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!blip\+\_\+add\+\_\+delta@{blip\+\_\+add\+\_\+delta}}
+\index{blip\+\_\+add\+\_\+delta@{blip\+\_\+add\+\_\+delta}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}
+\subsubsection{\texorpdfstring{blip\+\_\+add\+\_\+delta()}{blip\_add\_delta()}}
+{\footnotesize\ttfamily void blip\+\_\+add\+\_\+delta (\begin{DoxyParamCaption}\item[{blip\+\_\+t $\ast$}]{m,  }\item[{unsigned}]{time,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{delta }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{blip__buf_8c_ab697316786a64b8f32dec295a32a0696_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{blip__buf_8c_ab697316786a64b8f32dec295a32a0696_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{blip__buf_8c_a05d8910a3a6116240a4f5a5c81f99f84}\label{blip__buf_8c_a05d8910a3a6116240a4f5a5c81f99f84}} 
+\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!blip\+\_\+add\+\_\+delta\+\_\+fast@{blip\+\_\+add\+\_\+delta\+\_\+fast}}
+\index{blip\+\_\+add\+\_\+delta\+\_\+fast@{blip\+\_\+add\+\_\+delta\+\_\+fast}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}
+\subsubsection{\texorpdfstring{blip\+\_\+add\+\_\+delta\+\_\+fast()}{blip\_add\_delta\_fast()}}
+{\footnotesize\ttfamily void blip\+\_\+add\+\_\+delta\+\_\+fast (\begin{DoxyParamCaption}\item[{blip\+\_\+t $\ast$}]{m,  }\item[{unsigned}]{time,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{delta }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{blip__buf_8c_a05d8910a3a6116240a4f5a5c81f99f84_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{blip__buf_8c_a5375f86e9403599a4aad1477fcf66af8}\label{blip__buf_8c_a5375f86e9403599a4aad1477fcf66af8}} 
+\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!blip\+\_\+clear@{blip\+\_\+clear}}
+\index{blip\+\_\+clear@{blip\+\_\+clear}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}
+\subsubsection{\texorpdfstring{blip\+\_\+clear()}{blip\_clear()}}
+{\footnotesize\ttfamily void blip\+\_\+clear (\begin{DoxyParamCaption}\item[{blip\+\_\+t $\ast$}]{m }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{blip__buf_8c_a5375f86e9403599a4aad1477fcf66af8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{blip__buf_8c_ac11997205dd863f3639d95051a7f058a}\label{blip__buf_8c_ac11997205dd863f3639d95051a7f058a}} 
+\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!blip\+\_\+clocks\+\_\+needed@{blip\+\_\+clocks\+\_\+needed}}
+\index{blip\+\_\+clocks\+\_\+needed@{blip\+\_\+clocks\+\_\+needed}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}
+\subsubsection{\texorpdfstring{blip\+\_\+clocks\+\_\+needed()}{blip\_clocks\_needed()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} blip\+\_\+clocks\+\_\+needed (\begin{DoxyParamCaption}\item[{const blip\+\_\+t $\ast$}]{m,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{samples }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{blip__buf_8c_a14385e2e0650d9c72955cef93003ae65}\label{blip__buf_8c_a14385e2e0650d9c72955cef93003ae65}} 
+\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!blip\+\_\+delete@{blip\+\_\+delete}}
+\index{blip\+\_\+delete@{blip\+\_\+delete}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}
+\subsubsection{\texorpdfstring{blip\+\_\+delete()}{blip\_delete()}}
+{\footnotesize\ttfamily void blip\+\_\+delete (\begin{DoxyParamCaption}\item[{blip\+\_\+t $\ast$}]{m }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{blip__buf_8c_a14385e2e0650d9c72955cef93003ae65_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{blip__buf_8c_a14385e2e0650d9c72955cef93003ae65_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{blip__buf_8c_a895cd1b06a29093ad84aabf519079df8}\label{blip__buf_8c_a895cd1b06a29093ad84aabf519079df8}} 
+\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!blip\+\_\+end\+\_\+frame@{blip\+\_\+end\+\_\+frame}}
+\index{blip\+\_\+end\+\_\+frame@{blip\+\_\+end\+\_\+frame}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}
+\subsubsection{\texorpdfstring{blip\+\_\+end\+\_\+frame()}{blip\_end\_frame()}}
+{\footnotesize\ttfamily void blip\+\_\+end\+\_\+frame (\begin{DoxyParamCaption}\item[{blip\+\_\+t $\ast$}]{m,  }\item[{unsigned}]{t }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{blip__buf_8c_a895cd1b06a29093ad84aabf519079df8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{blip__buf_8c_a43da97d15aa82ace1e247cdaf0c523c3}\label{blip__buf_8c_a43da97d15aa82ace1e247cdaf0c523c3}} 
+\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!blip\+\_\+new@{blip\+\_\+new}}
+\index{blip\+\_\+new@{blip\+\_\+new}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}
+\subsubsection{\texorpdfstring{blip\+\_\+new()}{blip\_new()}}
+{\footnotesize\ttfamily blip\+\_\+t$\ast$ blip\+\_\+new (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{blip__buf_8c_a43da97d15aa82ace1e247cdaf0c523c3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{blip__buf_8c_a43da97d15aa82ace1e247cdaf0c523c3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{blip__buf_8c_a110b073eb235a17fbfbc0f22484b9055}\label{blip__buf_8c_a110b073eb235a17fbfbc0f22484b9055}} 
+\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!blip\+\_\+read\+\_\+samples@{blip\+\_\+read\+\_\+samples}}
+\index{blip\+\_\+read\+\_\+samples@{blip\+\_\+read\+\_\+samples}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}
+\subsubsection{\texorpdfstring{blip\+\_\+read\+\_\+samples()}{blip\_read\_samples()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} blip\+\_\+read\+\_\+samples (\begin{DoxyParamCaption}\item[{blip\+\_\+t $\ast$}]{m,  }\item[{short}]{out\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{count,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{stereo }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{blip__buf_8c_a110b073eb235a17fbfbc0f22484b9055_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{blip__buf_8c_a110b073eb235a17fbfbc0f22484b9055_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{blip__buf_8c_a3b36cba62bd13a7b915f7af32b0b1466}\label{blip__buf_8c_a3b36cba62bd13a7b915f7af32b0b1466}} 
+\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!blip\+\_\+samples\+\_\+avail@{blip\+\_\+samples\+\_\+avail}}
+\index{blip\+\_\+samples\+\_\+avail@{blip\+\_\+samples\+\_\+avail}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}
+\subsubsection{\texorpdfstring{blip\+\_\+samples\+\_\+avail()}{blip\_samples\_avail()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} blip\+\_\+samples\+\_\+avail (\begin{DoxyParamCaption}\item[{const blip\+\_\+t $\ast$}]{m }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{blip__buf_8c_a3b36cba62bd13a7b915f7af32b0b1466_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{blip__buf_8c_a230c7769fff451cc141a0b3b97854951}\label{blip__buf_8c_a230c7769fff451cc141a0b3b97854951}} 
+\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!blip\+\_\+set\+\_\+rates@{blip\+\_\+set\+\_\+rates}}
+\index{blip\+\_\+set\+\_\+rates@{blip\+\_\+set\+\_\+rates}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}
+\subsubsection{\texorpdfstring{blip\+\_\+set\+\_\+rates()}{blip\_set\_rates()}}
+{\footnotesize\ttfamily void blip\+\_\+set\+\_\+rates (\begin{DoxyParamCaption}\item[{blip\+\_\+t $\ast$}]{m,  }\item[{double}]{clock\+\_\+rate,  }\item[{double}]{sample\+\_\+rate }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{blip__buf_8c_a230c7769fff451cc141a0b3b97854951_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{blip__buf_8c_aa8f0762c5301b32d4de9e1d381329619}\label{blip__buf_8c_aa8f0762c5301b32d4de9e1d381329619}} 
+\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!check\+\_\+assumptions@{check\+\_\+assumptions}}
+\index{check\+\_\+assumptions@{check\+\_\+assumptions}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}
+\subsubsection{\texorpdfstring{check\+\_\+assumptions()}{check\_assumptions()}}
+{\footnotesize\ttfamily static void check\+\_\+assumptions (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{blip__buf_8c_aa8f0762c5301b32d4de9e1d381329619_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{blip__buf_8c_a658502fd2cc11939919151183753fb42}\label{blip__buf_8c_a658502fd2cc11939919151183753fb42}} 
+\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!remove\+\_\+samples@{remove\+\_\+samples}}
+\index{remove\+\_\+samples@{remove\+\_\+samples}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}
+\subsubsection{\texorpdfstring{remove\+\_\+samples()}{remove\_samples()}}
+{\footnotesize\ttfamily static void remove\+\_\+samples (\begin{DoxyParamCaption}\item[{blip\+\_\+t $\ast$}]{m,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{blip__buf_8c_a658502fd2cc11939919151183753fb42_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{blip__buf_8c_a658502fd2cc11939919151183753fb42_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{blip__buf_8c_afc3364239e32ba930610dab6167e4965}\label{blip__buf_8c_afc3364239e32ba930610dab6167e4965}} 
+\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!bl\+\_\+step@{bl\+\_\+step}}
+\index{bl\+\_\+step@{bl\+\_\+step}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}
+\subsubsection{\texorpdfstring{bl\+\_\+step}{bl\_step}}
+{\footnotesize\ttfamily short const bl\+\_\+step\mbox{[}\mbox{\hyperlink{blip__buf_8c_a16af7b253440dadd46a80a4b9fddba4dae320e3601408c17429b5eac699f92c99}{phase\+\_\+count}}+1\mbox{]}\mbox{[}\mbox{\hyperlink{blip__buf_8c_abc5c98fcc1211af2b80116dd6e0a035daafb6b69b7d6a0141c417f5b7834dbb35}{half\+\_\+width}}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{blip__buf_8c_abe8ee888293ff975e8e2f68aee2cb8c9}\label{blip__buf_8c_abe8ee888293ff975e8e2f68aee2cb8c9}} 
+\index{blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}!time\+\_\+unit@{time\+\_\+unit}}
+\index{time\+\_\+unit@{time\+\_\+unit}!blip\+\_\+buf.\+c@{blip\+\_\+buf.\+c}}
+\subsubsection{\texorpdfstring{time\+\_\+unit}{time\_unit}}
+{\footnotesize\ttfamily \mbox{\hyperlink{blip__buf_8c_a86fab84d611ebecb1e566e2e8813d074}{fixed\+\_\+t}} const time\+\_\+unit = (\mbox{\hyperlink{blip__buf_8c_a86fab84d611ebecb1e566e2e8813d074}{fixed\+\_\+t}}) 1 $<$$<$ \mbox{\hyperlink{blip__buf_8c_abed82baf7f470b522273a3e37c24c600a76fb146c4e0d3cb10b1ec83feeafbb74}{time\+\_\+bits}}\hspace{0.3cm}{\ttfamily [static]}}
+

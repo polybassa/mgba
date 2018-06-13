@@ -1,0 +1,552 @@
+\hypertarget{sdl-events_8c}{}\section{src/platform/sdl/sdl-\/events.c File Reference}
+\label{sdl-events_8c}\index{src/platform/sdl/sdl-\/events.\+c@{src/platform/sdl/sdl-\/events.\+c}}
+{\ttfamily \#include \char`\"{}sdl-\/events.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/input.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/serialize.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/thread.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/debugger/debugger.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/input.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/configuration.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/formatting.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+Include dependency graph for sdl-\/events.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{sdl-events_8c_a684c816c6f91dd4ba0f8528f8237aa1e}{G\+U\+I\+\_\+\+M\+OD}}~K\+M\+O\+D\+\_\+\+C\+T\+RL
+\item 
+\#define \mbox{\hyperlink{sdl-events_8c_a98c7010e7a9d56a72055e9f49d7166ec}{G\+Y\+R\+O\+\_\+\+S\+T\+E\+PS}}~100
+\item 
+\#define \mbox{\hyperlink{sdl-events_8c_a78991a7c3d24f2e9931a9a40efe5e878}{R\+U\+M\+B\+L\+E\+\_\+\+P\+WM}}~16
+\item 
+\#define \mbox{\hyperlink{sdl-events_8c_a91eca2f29d53a84d3e3a069b821aa04f}{R\+U\+M\+B\+L\+E\+\_\+\+S\+T\+E\+PS}}~2
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{sdl-events_8c_a8d78a407dada6b4cee180d0eba20ef2c}{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}} (S\+D\+L\+\_\+\+E\+V\+E\+N\+TS, \char`\"{}S\+DL Events\char`\"{}, \char`\"{}platform.\+sdl.\+events\char`\"{})
+\item 
+\mbox{\hyperlink{sdl-events_8c_aca1b25e3f45413ba1b117cc84937ede0}{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}} (S\+D\+L\+\_\+\+Joystick\+List, struct \mbox{\hyperlink{sdl-events_8h_struct_s_d_l___joystick_combo}{S\+D\+L\+\_\+\+Joystick\+Combo}})
+\item 
+static int32\+\_\+t \mbox{\hyperlink{sdl-events_8c_a59d9838f0971eeb48f431096dc09f0a1}{\+\_\+m\+S\+D\+L\+Read\+TiltX}} (struct m\+Rotation\+Source $\ast$\mbox{\hyperlink{wii_2main_8c_a0be8203c70a7aa4a9c0029361e5d907b}{rumble}})
+\item 
+static int32\+\_\+t \mbox{\hyperlink{sdl-events_8c_a3fac3449468e84b4d3667c7b9468a1c7}{\+\_\+m\+S\+D\+L\+Read\+TiltY}} (struct m\+Rotation\+Source $\ast$\mbox{\hyperlink{wii_2main_8c_a0be8203c70a7aa4a9c0029361e5d907b}{rumble}})
+\item 
+static int32\+\_\+t \mbox{\hyperlink{sdl-events_8c_a3fc73cbd19f6b72781cd8d546ad22b64}{\+\_\+m\+S\+D\+L\+Read\+GyroZ}} (struct m\+Rotation\+Source $\ast$\mbox{\hyperlink{wii_2main_8c_a0be8203c70a7aa4a9c0029361e5d907b}{rumble}})
+\item 
+static void \mbox{\hyperlink{sdl-events_8c_af2e60a8e9c3fcba1e6310e13341ab656}{\+\_\+m\+S\+D\+L\+Rotation\+Sample}} (struct m\+Rotation\+Source $\ast$source)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{sdl-events_8c_a0529db4419b332c04fea23fff2467774}{m\+S\+D\+L\+Init\+Events}} (struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_events}{m\+S\+D\+L\+Events}} $\ast$context)
+\item 
+void \mbox{\hyperlink{sdl-events_8c_a619d2db362c7cc68e86f0428afc773c9}{m\+S\+D\+L\+Deinit\+Events}} (struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_events}{m\+S\+D\+L\+Events}} $\ast$context)
+\item 
+void \mbox{\hyperlink{sdl-events_8c_aef6ce1dc9e5c4e9541747a55dc1ee383}{m\+S\+D\+L\+Events\+Load\+Config}} (struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_events}{m\+S\+D\+L\+Events}} $\ast$context, const struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+void \mbox{\hyperlink{sdl-events_8c_a254830bd4cde57bec6bf2dade355902f}{m\+S\+D\+L\+Init\+Bindings\+G\+BA}} (struct m\+Input\+Map $\ast$input\+Map)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{sdl-events_8c_acddd18a03f8a08870ffb4e369814425f}{m\+S\+D\+L\+Attach\+Player}} (struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_events}{m\+S\+D\+L\+Events}} $\ast$events, struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$player)
+\item 
+void \mbox{\hyperlink{sdl-events_8c_a64e440a5ad2a51018e3fe003e1b2615e}{m\+S\+D\+L\+Detach\+Player}} (struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_events}{m\+S\+D\+L\+Events}} $\ast$events, struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$player)
+\item 
+void \mbox{\hyperlink{sdl-events_8c_a2e6e0f34192ea8c75aaa522b1cd8ccf6}{m\+S\+D\+L\+Player\+Load\+Config}} (struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$context, const struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+void \mbox{\hyperlink{sdl-events_8c_a337054256f6cb4160128bdfe03bfe3e1}{m\+S\+D\+L\+Player\+Save\+Config}} (const struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$context, struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+void \mbox{\hyperlink{sdl-events_8c_aed738247356e33dc5bf0ba5cff942a42}{m\+S\+D\+L\+Player\+Change\+Joystick}} (struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_events}{m\+S\+D\+L\+Events}} $\ast$events, struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$player, size\+\_\+t \mbox{\hyperlink{isa-lr35902_8c_ac9ee548085af12859cb52a6c757cf73a}{index}})
+\item 
+void \mbox{\hyperlink{sdl-events_8c_aff18d01c9bc92cc366bd2dd53984420a}{m\+S\+D\+L\+Update\+Joysticks}} (struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_events}{m\+S\+D\+L\+Events}} $\ast$events, const struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+static void \mbox{\hyperlink{sdl-events_8c_a9975fd4e100657c0625df03e039dba9d}{\+\_\+pause\+After\+Frame}} (struct m\+Core\+Thread $\ast$context)
+\item 
+static void \mbox{\hyperlink{sdl-events_8c_aa2c971f6d7cf960e3add9bd2252c8da5}{\+\_\+m\+S\+D\+L\+Handle\+Keypress}} (struct m\+Core\+Thread $\ast$context, struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$sdl\+Context, const struct S\+D\+L\+\_\+\+Keyboard\+Event $\ast$event)
+\item 
+static void \mbox{\hyperlink{sdl-events_8c_a8b984affb2018edd5d8ec595f566921c}{\+\_\+m\+S\+D\+L\+Handle\+Joy\+Button}} (struct m\+Core\+Thread $\ast$context, struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$sdl\+Context, const struct S\+D\+L\+\_\+\+Joy\+Button\+Event $\ast$event)
+\item 
+static void \mbox{\hyperlink{sdl-events_8c_a67374fa271dc2b13d5f8ec2d42d2d0ce}{\+\_\+m\+S\+D\+L\+Handle\+Joy\+Hat}} (struct m\+Core\+Thread $\ast$context, struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$sdl\+Context, const struct S\+D\+L\+\_\+\+Joy\+Hat\+Event $\ast$event)
+\item 
+static void \mbox{\hyperlink{sdl-events_8c_a110357fc8005187a13ee71c153747a22}{\+\_\+m\+S\+D\+L\+Handle\+Joy\+Axis}} (struct m\+Core\+Thread $\ast$context, struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$sdl\+Context, const struct S\+D\+L\+\_\+\+Joy\+Axis\+Event $\ast$event)
+\item 
+void \mbox{\hyperlink{sdl-events_8c_a32623e2272fd40a24e3941e351a273a4}{m\+S\+D\+L\+Handle\+Event}} (struct m\+Core\+Thread $\ast$context, struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$sdl\+Context, const union S\+D\+L\+\_\+\+Event $\ast$event)
+\item 
+static int32\+\_\+t \mbox{\hyperlink{sdl-events_8c_a42f03cbde6b9c602263a251937d49567}{\+\_\+read\+Tilt}} (struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$player, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} axis)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{sdl-events_8c_a684c816c6f91dd4ba0f8528f8237aa1e}\label{sdl-events_8c_a684c816c6f91dd4ba0f8528f8237aa1e}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!G\+U\+I\+\_\+\+M\+OD@{G\+U\+I\+\_\+\+M\+OD}}
+\index{G\+U\+I\+\_\+\+M\+OD@{G\+U\+I\+\_\+\+M\+OD}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{G\+U\+I\+\_\+\+M\+OD}{GUI\_MOD}}
+{\footnotesize\ttfamily \#define G\+U\+I\+\_\+\+M\+OD~K\+M\+O\+D\+\_\+\+C\+T\+RL}
+
+\mbox{\Hypertarget{sdl-events_8c_a98c7010e7a9d56a72055e9f49d7166ec}\label{sdl-events_8c_a98c7010e7a9d56a72055e9f49d7166ec}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!G\+Y\+R\+O\+\_\+\+S\+T\+E\+PS@{G\+Y\+R\+O\+\_\+\+S\+T\+E\+PS}}
+\index{G\+Y\+R\+O\+\_\+\+S\+T\+E\+PS@{G\+Y\+R\+O\+\_\+\+S\+T\+E\+PS}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{G\+Y\+R\+O\+\_\+\+S\+T\+E\+PS}{GYRO\_STEPS}}
+{\footnotesize\ttfamily \#define G\+Y\+R\+O\+\_\+\+S\+T\+E\+PS~100}
+
+\mbox{\Hypertarget{sdl-events_8c_a78991a7c3d24f2e9931a9a40efe5e878}\label{sdl-events_8c_a78991a7c3d24f2e9931a9a40efe5e878}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!R\+U\+M\+B\+L\+E\+\_\+\+P\+WM@{R\+U\+M\+B\+L\+E\+\_\+\+P\+WM}}
+\index{R\+U\+M\+B\+L\+E\+\_\+\+P\+WM@{R\+U\+M\+B\+L\+E\+\_\+\+P\+WM}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{R\+U\+M\+B\+L\+E\+\_\+\+P\+WM}{RUMBLE\_PWM}}
+{\footnotesize\ttfamily \#define R\+U\+M\+B\+L\+E\+\_\+\+P\+WM~16}
+
+\mbox{\Hypertarget{sdl-events_8c_a91eca2f29d53a84d3e3a069b821aa04f}\label{sdl-events_8c_a91eca2f29d53a84d3e3a069b821aa04f}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!R\+U\+M\+B\+L\+E\+\_\+\+S\+T\+E\+PS@{R\+U\+M\+B\+L\+E\+\_\+\+S\+T\+E\+PS}}
+\index{R\+U\+M\+B\+L\+E\+\_\+\+S\+T\+E\+PS@{R\+U\+M\+B\+L\+E\+\_\+\+S\+T\+E\+PS}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{R\+U\+M\+B\+L\+E\+\_\+\+S\+T\+E\+PS}{RUMBLE\_STEPS}}
+{\footnotesize\ttfamily \#define R\+U\+M\+B\+L\+E\+\_\+\+S\+T\+E\+PS~2}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{sdl-events_8c_a110357fc8005187a13ee71c153747a22}\label{sdl-events_8c_a110357fc8005187a13ee71c153747a22}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!\+\_\+m\+S\+D\+L\+Handle\+Joy\+Axis@{\+\_\+m\+S\+D\+L\+Handle\+Joy\+Axis}}
+\index{\+\_\+m\+S\+D\+L\+Handle\+Joy\+Axis@{\+\_\+m\+S\+D\+L\+Handle\+Joy\+Axis}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+m\+S\+D\+L\+Handle\+Joy\+Axis()}{\_mSDLHandleJoyAxis()}}
+{\footnotesize\ttfamily static void \+\_\+m\+S\+D\+L\+Handle\+Joy\+Axis (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{context,  }\item[{struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$}]{sdl\+Context,  }\item[{const struct S\+D\+L\+\_\+\+Joy\+Axis\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a110357fc8005187a13ee71c153747a22_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a110357fc8005187a13ee71c153747a22_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-events_8c_a8b984affb2018edd5d8ec595f566921c}\label{sdl-events_8c_a8b984affb2018edd5d8ec595f566921c}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!\+\_\+m\+S\+D\+L\+Handle\+Joy\+Button@{\+\_\+m\+S\+D\+L\+Handle\+Joy\+Button}}
+\index{\+\_\+m\+S\+D\+L\+Handle\+Joy\+Button@{\+\_\+m\+S\+D\+L\+Handle\+Joy\+Button}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+m\+S\+D\+L\+Handle\+Joy\+Button()}{\_mSDLHandleJoyButton()}}
+{\footnotesize\ttfamily static void \+\_\+m\+S\+D\+L\+Handle\+Joy\+Button (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{context,  }\item[{struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$}]{sdl\+Context,  }\item[{const struct S\+D\+L\+\_\+\+Joy\+Button\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a8b984affb2018edd5d8ec595f566921c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a8b984affb2018edd5d8ec595f566921c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-events_8c_a67374fa271dc2b13d5f8ec2d42d2d0ce}\label{sdl-events_8c_a67374fa271dc2b13d5f8ec2d42d2d0ce}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!\+\_\+m\+S\+D\+L\+Handle\+Joy\+Hat@{\+\_\+m\+S\+D\+L\+Handle\+Joy\+Hat}}
+\index{\+\_\+m\+S\+D\+L\+Handle\+Joy\+Hat@{\+\_\+m\+S\+D\+L\+Handle\+Joy\+Hat}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+m\+S\+D\+L\+Handle\+Joy\+Hat()}{\_mSDLHandleJoyHat()}}
+{\footnotesize\ttfamily static void \+\_\+m\+S\+D\+L\+Handle\+Joy\+Hat (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{context,  }\item[{struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$}]{sdl\+Context,  }\item[{const struct S\+D\+L\+\_\+\+Joy\+Hat\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a67374fa271dc2b13d5f8ec2d42d2d0ce_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a67374fa271dc2b13d5f8ec2d42d2d0ce_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-events_8c_aa2c971f6d7cf960e3add9bd2252c8da5}\label{sdl-events_8c_aa2c971f6d7cf960e3add9bd2252c8da5}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!\+\_\+m\+S\+D\+L\+Handle\+Keypress@{\+\_\+m\+S\+D\+L\+Handle\+Keypress}}
+\index{\+\_\+m\+S\+D\+L\+Handle\+Keypress@{\+\_\+m\+S\+D\+L\+Handle\+Keypress}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+m\+S\+D\+L\+Handle\+Keypress()}{\_mSDLHandleKeypress()}}
+{\footnotesize\ttfamily static void \+\_\+m\+S\+D\+L\+Handle\+Keypress (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{context,  }\item[{struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$}]{sdl\+Context,  }\item[{const struct S\+D\+L\+\_\+\+Keyboard\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_aa2c971f6d7cf960e3add9bd2252c8da5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_aa2c971f6d7cf960e3add9bd2252c8da5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-events_8c_a3fc73cbd19f6b72781cd8d546ad22b64}\label{sdl-events_8c_a3fc73cbd19f6b72781cd8d546ad22b64}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!\+\_\+m\+S\+D\+L\+Read\+GyroZ@{\+\_\+m\+S\+D\+L\+Read\+GyroZ}}
+\index{\+\_\+m\+S\+D\+L\+Read\+GyroZ@{\+\_\+m\+S\+D\+L\+Read\+GyroZ}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+m\+S\+D\+L\+Read\+Gyro\+Z()}{\_mSDLReadGyroZ()}}
+{\footnotesize\ttfamily static int32\+\_\+t \+\_\+m\+S\+D\+L\+Read\+GyroZ (\begin{DoxyParamCaption}\item[{struct m\+Rotation\+Source $\ast$}]{rumble }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a3fc73cbd19f6b72781cd8d546ad22b64_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-events_8c_a59d9838f0971eeb48f431096dc09f0a1}\label{sdl-events_8c_a59d9838f0971eeb48f431096dc09f0a1}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!\+\_\+m\+S\+D\+L\+Read\+TiltX@{\+\_\+m\+S\+D\+L\+Read\+TiltX}}
+\index{\+\_\+m\+S\+D\+L\+Read\+TiltX@{\+\_\+m\+S\+D\+L\+Read\+TiltX}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+m\+S\+D\+L\+Read\+Tilt\+X()}{\_mSDLReadTiltX()}}
+{\footnotesize\ttfamily static int32\+\_\+t \+\_\+m\+S\+D\+L\+Read\+TiltX (\begin{DoxyParamCaption}\item[{struct m\+Rotation\+Source $\ast$}]{rumble }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{sdl-events_8c_a59d9838f0971eeb48f431096dc09f0a1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a59d9838f0971eeb48f431096dc09f0a1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-events_8c_a3fac3449468e84b4d3667c7b9468a1c7}\label{sdl-events_8c_a3fac3449468e84b4d3667c7b9468a1c7}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!\+\_\+m\+S\+D\+L\+Read\+TiltY@{\+\_\+m\+S\+D\+L\+Read\+TiltY}}
+\index{\+\_\+m\+S\+D\+L\+Read\+TiltY@{\+\_\+m\+S\+D\+L\+Read\+TiltY}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+m\+S\+D\+L\+Read\+Tilt\+Y()}{\_mSDLReadTiltY()}}
+{\footnotesize\ttfamily static int32\+\_\+t \+\_\+m\+S\+D\+L\+Read\+TiltY (\begin{DoxyParamCaption}\item[{struct m\+Rotation\+Source $\ast$}]{rumble }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{sdl-events_8c_a3fac3449468e84b4d3667c7b9468a1c7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a3fac3449468e84b4d3667c7b9468a1c7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-events_8c_af2e60a8e9c3fcba1e6310e13341ab656}\label{sdl-events_8c_af2e60a8e9c3fcba1e6310e13341ab656}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!\+\_\+m\+S\+D\+L\+Rotation\+Sample@{\+\_\+m\+S\+D\+L\+Rotation\+Sample}}
+\index{\+\_\+m\+S\+D\+L\+Rotation\+Sample@{\+\_\+m\+S\+D\+L\+Rotation\+Sample}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+m\+S\+D\+L\+Rotation\+Sample()}{\_mSDLRotationSample()}}
+{\footnotesize\ttfamily static void \+\_\+m\+S\+D\+L\+Rotation\+Sample (\begin{DoxyParamCaption}\item[{struct m\+Rotation\+Source $\ast$}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_af2e60a8e9c3fcba1e6310e13341ab656_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_af2e60a8e9c3fcba1e6310e13341ab656_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-events_8c_a9975fd4e100657c0625df03e039dba9d}\label{sdl-events_8c_a9975fd4e100657c0625df03e039dba9d}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!\+\_\+pause\+After\+Frame@{\+\_\+pause\+After\+Frame}}
+\index{\+\_\+pause\+After\+Frame@{\+\_\+pause\+After\+Frame}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+pause\+After\+Frame()}{\_pauseAfterFrame()}}
+{\footnotesize\ttfamily static void \+\_\+pause\+After\+Frame (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a9975fd4e100657c0625df03e039dba9d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a9975fd4e100657c0625df03e039dba9d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-events_8c_a42f03cbde6b9c602263a251937d49567}\label{sdl-events_8c_a42f03cbde6b9c602263a251937d49567}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!\+\_\+read\+Tilt@{\+\_\+read\+Tilt}}
+\index{\+\_\+read\+Tilt@{\+\_\+read\+Tilt}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Tilt()}{\_readTilt()}}
+{\footnotesize\ttfamily static int32\+\_\+t \+\_\+read\+Tilt (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$}]{player,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{axis }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a42f03cbde6b9c602263a251937d49567_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-events_8c_aca1b25e3f45413ba1b117cc84937ede0}\label{sdl-events_8c_aca1b25e3f45413ba1b117cc84937ede0}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}}
+\index{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+O\+R()}{DEFINE\_VECTOR()}}
+{\footnotesize\ttfamily D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+Joystick\+List}]{,  }\item[{struct \mbox{\hyperlink{sdl-events_8h_struct_s_d_l___joystick_combo}{S\+D\+L\+\_\+\+Joystick\+Combo}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sdl-events_8c_a8d78a407dada6b4cee180d0eba20ef2c}\label{sdl-events_8c_a8d78a407dada6b4cee180d0eba20ef2c}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}}
+\index{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+R\+Y()}{mLOG\_DEFINE\_CATEGORY()}}
+{\footnotesize\ttfamily m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY (\begin{DoxyParamCaption}\item[{S\+D\+L\+\_\+\+E\+V\+E\+N\+TS}]{,  }\item[{\char`\"{}S\+DL Events\char`\"{}}]{,  }\item[{\char`\"{}platform.\+sdl.\+events\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sdl-events_8c_acddd18a03f8a08870ffb4e369814425f}\label{sdl-events_8c_acddd18a03f8a08870ffb4e369814425f}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!m\+S\+D\+L\+Attach\+Player@{m\+S\+D\+L\+Attach\+Player}}
+\index{m\+S\+D\+L\+Attach\+Player@{m\+S\+D\+L\+Attach\+Player}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Attach\+Player()}{mSDLAttachPlayer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+S\+D\+L\+Attach\+Player (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_events}{m\+S\+D\+L\+Events}} $\ast$}]{events,  }\item[{struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$}]{player }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_acddd18a03f8a08870ffb4e369814425f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_acddd18a03f8a08870ffb4e369814425f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-events_8c_a619d2db362c7cc68e86f0428afc773c9}\label{sdl-events_8c_a619d2db362c7cc68e86f0428afc773c9}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!m\+S\+D\+L\+Deinit\+Events@{m\+S\+D\+L\+Deinit\+Events}}
+\index{m\+S\+D\+L\+Deinit\+Events@{m\+S\+D\+L\+Deinit\+Events}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Deinit\+Events()}{mSDLDeinitEvents()}}
+{\footnotesize\ttfamily void m\+S\+D\+L\+Deinit\+Events (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_events}{m\+S\+D\+L\+Events}} $\ast$}]{context }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a619d2db362c7cc68e86f0428afc773c9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-events_8c_a64e440a5ad2a51018e3fe003e1b2615e}\label{sdl-events_8c_a64e440a5ad2a51018e3fe003e1b2615e}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!m\+S\+D\+L\+Detach\+Player@{m\+S\+D\+L\+Detach\+Player}}
+\index{m\+S\+D\+L\+Detach\+Player@{m\+S\+D\+L\+Detach\+Player}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Detach\+Player()}{mSDLDetachPlayer()}}
+{\footnotesize\ttfamily void m\+S\+D\+L\+Detach\+Player (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_events}{m\+S\+D\+L\+Events}} $\ast$}]{events,  }\item[{struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$}]{player }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a64e440a5ad2a51018e3fe003e1b2615e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a64e440a5ad2a51018e3fe003e1b2615e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-events_8c_aef6ce1dc9e5c4e9541747a55dc1ee383}\label{sdl-events_8c_aef6ce1dc9e5c4e9541747a55dc1ee383}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!m\+S\+D\+L\+Events\+Load\+Config@{m\+S\+D\+L\+Events\+Load\+Config}}
+\index{m\+S\+D\+L\+Events\+Load\+Config@{m\+S\+D\+L\+Events\+Load\+Config}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Events\+Load\+Config()}{mSDLEventsLoadConfig()}}
+{\footnotesize\ttfamily void m\+S\+D\+L\+Events\+Load\+Config (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_events}{m\+S\+D\+L\+Events}} $\ast$}]{context,  }\item[{const struct Configuration $\ast$}]{config }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_aef6ce1dc9e5c4e9541747a55dc1ee383_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_aef6ce1dc9e5c4e9541747a55dc1ee383_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-events_8c_a32623e2272fd40a24e3941e351a273a4}\label{sdl-events_8c_a32623e2272fd40a24e3941e351a273a4}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!m\+S\+D\+L\+Handle\+Event@{m\+S\+D\+L\+Handle\+Event}}
+\index{m\+S\+D\+L\+Handle\+Event@{m\+S\+D\+L\+Handle\+Event}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Handle\+Event()}{mSDLHandleEvent()}}
+{\footnotesize\ttfamily void m\+S\+D\+L\+Handle\+Event (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{context,  }\item[{struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$}]{sdl\+Context,  }\item[{const union S\+D\+L\+\_\+\+Event $\ast$}]{event }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a32623e2272fd40a24e3941e351a273a4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a32623e2272fd40a24e3941e351a273a4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-events_8c_a254830bd4cde57bec6bf2dade355902f}\label{sdl-events_8c_a254830bd4cde57bec6bf2dade355902f}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!m\+S\+D\+L\+Init\+Bindings\+G\+BA@{m\+S\+D\+L\+Init\+Bindings\+G\+BA}}
+\index{m\+S\+D\+L\+Init\+Bindings\+G\+BA@{m\+S\+D\+L\+Init\+Bindings\+G\+BA}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Init\+Bindings\+G\+B\+A()}{mSDLInitBindingsGBA()}}
+{\footnotesize\ttfamily void m\+S\+D\+L\+Init\+Bindings\+G\+BA (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{input\+Map }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a254830bd4cde57bec6bf2dade355902f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a254830bd4cde57bec6bf2dade355902f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-events_8c_a0529db4419b332c04fea23fff2467774}\label{sdl-events_8c_a0529db4419b332c04fea23fff2467774}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!m\+S\+D\+L\+Init\+Events@{m\+S\+D\+L\+Init\+Events}}
+\index{m\+S\+D\+L\+Init\+Events@{m\+S\+D\+L\+Init\+Events}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Init\+Events()}{mSDLInitEvents()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+S\+D\+L\+Init\+Events (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_events}{m\+S\+D\+L\+Events}} $\ast$}]{context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a0529db4419b332c04fea23fff2467774_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{sdl-events_8c_a0529db4419b332c04fea23fff2467774_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-events_8c_aed738247356e33dc5bf0ba5cff942a42}\label{sdl-events_8c_aed738247356e33dc5bf0ba5cff942a42}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!m\+S\+D\+L\+Player\+Change\+Joystick@{m\+S\+D\+L\+Player\+Change\+Joystick}}
+\index{m\+S\+D\+L\+Player\+Change\+Joystick@{m\+S\+D\+L\+Player\+Change\+Joystick}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Player\+Change\+Joystick()}{mSDLPlayerChangeJoystick()}}
+{\footnotesize\ttfamily void m\+S\+D\+L\+Player\+Change\+Joystick (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_events}{m\+S\+D\+L\+Events}} $\ast$}]{events,  }\item[{struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$}]{player,  }\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_aed738247356e33dc5bf0ba5cff942a42_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-events_8c_a2e6e0f34192ea8c75aaa522b1cd8ccf6}\label{sdl-events_8c_a2e6e0f34192ea8c75aaa522b1cd8ccf6}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!m\+S\+D\+L\+Player\+Load\+Config@{m\+S\+D\+L\+Player\+Load\+Config}}
+\index{m\+S\+D\+L\+Player\+Load\+Config@{m\+S\+D\+L\+Player\+Load\+Config}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Player\+Load\+Config()}{mSDLPlayerLoadConfig()}}
+{\footnotesize\ttfamily void m\+S\+D\+L\+Player\+Load\+Config (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$}]{context,  }\item[{const struct Configuration $\ast$}]{config }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a2e6e0f34192ea8c75aaa522b1cd8ccf6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a2e6e0f34192ea8c75aaa522b1cd8ccf6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-events_8c_a337054256f6cb4160128bdfe03bfe3e1}\label{sdl-events_8c_a337054256f6cb4160128bdfe03bfe3e1}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!m\+S\+D\+L\+Player\+Save\+Config@{m\+S\+D\+L\+Player\+Save\+Config}}
+\index{m\+S\+D\+L\+Player\+Save\+Config@{m\+S\+D\+L\+Player\+Save\+Config}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Player\+Save\+Config()}{mSDLPlayerSaveConfig()}}
+{\footnotesize\ttfamily void m\+S\+D\+L\+Player\+Save\+Config (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_player}{m\+S\+D\+L\+Player}} $\ast$}]{context,  }\item[{struct Configuration $\ast$}]{config }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a337054256f6cb4160128bdfe03bfe3e1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_a337054256f6cb4160128bdfe03bfe3e1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl-events_8c_aff18d01c9bc92cc366bd2dd53984420a}\label{sdl-events_8c_aff18d01c9bc92cc366bd2dd53984420a}} 
+\index{sdl-\/events.\+c@{sdl-\/events.\+c}!m\+S\+D\+L\+Update\+Joysticks@{m\+S\+D\+L\+Update\+Joysticks}}
+\index{m\+S\+D\+L\+Update\+Joysticks@{m\+S\+D\+L\+Update\+Joysticks}!sdl-\/events.\+c@{sdl-\/events.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Update\+Joysticks()}{mSDLUpdateJoysticks()}}
+{\footnotesize\ttfamily void m\+S\+D\+L\+Update\+Joysticks (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{sdl-events_8h_structm_s_d_l_events}{m\+S\+D\+L\+Events}} $\ast$}]{events,  }\item[{const struct Configuration $\ast$}]{config }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_aff18d01c9bc92cc366bd2dd53984420a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl-events_8c_aff18d01c9bc92cc366bd2dd53984420a_icgraph}
+\end{center}
+\end{figure}

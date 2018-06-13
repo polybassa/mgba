@@ -1,0 +1,257 @@
+\hypertarget{cli-el-backend_8c}{}\section{src/feature/editline/cli-\/el-\/backend.c File Reference}
+\label{cli-el-backend_8c}\index{src/feature/editline/cli-\/el-\/backend.\+c@{src/feature/editline/cli-\/el-\/backend.\+c}}
+{\ttfamily \#include \char`\"{}cli-\/el-\/backend.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba/core/version.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+Include dependency graph for cli-\/el-\/backend.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cli-el-backend_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static char $\ast$ \mbox{\hyperlink{cli-el-backend_8c_a5e71c0be13cd0712fef8e1cb99cd2248}{\+\_\+prompt}} (Edit\+Line $\ast$el)
+\item 
+static void \mbox{\hyperlink{cli-el-backend_8c_ae0f25b9ee80b2ca1d806da7e83dd70da}{\+\_\+break\+Into\+Default}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} signal)
+\item 
+static unsigned char \mbox{\hyperlink{cli-el-backend_8c_ac8fc3ad07748126ae6a19a218f312411}{\+\_\+tab\+Complete}} (Edit\+Line $\ast$elstate, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} ch)
+\item 
+void \mbox{\hyperlink{cli-el-backend_8c_aba43aaf665d3cead03a590a728d3480d}{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Printf}} (struct C\+L\+I\+Debugger\+Backend $\ast$be, const char $\ast$fmt,...)
+\item 
+void \mbox{\hyperlink{cli-el-backend_8c_a3dbc196c9232924e24cd18830e794588}{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Init}} (struct C\+L\+I\+Debugger\+Backend $\ast$be)
+\item 
+void \mbox{\hyperlink{cli-el-backend_8c_a4ec593c2e2450412eed1176366439efe}{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Deinit}} (struct C\+L\+I\+Debugger\+Backend $\ast$be)
+\item 
+const char $\ast$ \mbox{\hyperlink{cli-el-backend_8c_a3b2c1f4a09f7b764a00cd8864cefae82}{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Read\+Line}} (struct C\+L\+I\+Debugger\+Backend $\ast$be, size\+\_\+t $\ast$len)
+\item 
+void \mbox{\hyperlink{cli-el-backend_8c_a0e5a0d606481fcc309020708f0163dfc}{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Line\+Append}} (struct C\+L\+I\+Debugger\+Backend $\ast$be, const char $\ast$line)
+\item 
+const char $\ast$ \mbox{\hyperlink{cli-el-backend_8c_a57e17a93bb3ab3f8c5c9226aeb775d57}{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+History\+Last}} (struct C\+L\+I\+Debugger\+Backend $\ast$be, size\+\_\+t $\ast$len)
+\item 
+void \mbox{\hyperlink{cli-el-backend_8c_a5676d6c82d7fd2e118185b8abe763611}{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+History\+Append}} (struct C\+L\+I\+Debugger\+Backend $\ast$be, const char $\ast$line)
+\item 
+struct C\+L\+I\+Debugger\+Backend $\ast$ \mbox{\hyperlink{cli-el-backend_8c_aea9ca36da1b56d3b608e61aba06b9044}{C\+L\+I\+Debugger\+Edit\+Line\+Backend\+Create}} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static struct C\+L\+I\+Debugger $\ast$ \mbox{\hyperlink{cli-el-backend_8c_aad6d36371c8ad26b4c9a901bafa8d03c}{\+\_\+active\+Debugger}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{cli-el-backend_8c_ae0f25b9ee80b2ca1d806da7e83dd70da}\label{cli-el-backend_8c_ae0f25b9ee80b2ca1d806da7e83dd70da}} 
+\index{cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}!\+\_\+break\+Into\+Default@{\+\_\+break\+Into\+Default}}
+\index{\+\_\+break\+Into\+Default@{\+\_\+break\+Into\+Default}!cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+break\+Into\+Default()}{\_breakIntoDefault()}}
+{\footnotesize\ttfamily static void \+\_\+break\+Into\+Default (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{signal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{cli-el-backend_8c_ae0f25b9ee80b2ca1d806da7e83dd70da_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cli-el-backend_8c_ae0f25b9ee80b2ca1d806da7e83dd70da_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{cli-el-backend_8c_a4ec593c2e2450412eed1176366439efe}\label{cli-el-backend_8c_a4ec593c2e2450412eed1176366439efe}} 
+\index{cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}!\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Deinit@{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Deinit}}
+\index{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Deinit@{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Deinit}!cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Deinit()}{\_CLIDebuggerEditLineDeinit()}}
+{\footnotesize\ttfamily void \+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Deinit (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger\+Backend $\ast$}]{be }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{cli-el-backend_8c_a4ec593c2e2450412eed1176366439efe_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cli-el-backend_8c_a4ec593c2e2450412eed1176366439efe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{cli-el-backend_8c_a5676d6c82d7fd2e118185b8abe763611}\label{cli-el-backend_8c_a5676d6c82d7fd2e118185b8abe763611}} 
+\index{cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}!\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+History\+Append@{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+History\+Append}}
+\index{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+History\+Append@{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+History\+Append}!cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+History\+Append()}{\_CLIDebuggerEditLineHistoryAppend()}}
+{\footnotesize\ttfamily void \+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+History\+Append (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger\+Backend $\ast$}]{be,  }\item[{const char $\ast$}]{line }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cli-el-backend_8c_a5676d6c82d7fd2e118185b8abe763611_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{cli-el-backend_8c_a57e17a93bb3ab3f8c5c9226aeb775d57}\label{cli-el-backend_8c_a57e17a93bb3ab3f8c5c9226aeb775d57}} 
+\index{cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}!\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+History\+Last@{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+History\+Last}}
+\index{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+History\+Last@{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+History\+Last}!cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+History\+Last()}{\_CLIDebuggerEditLineHistoryLast()}}
+{\footnotesize\ttfamily const char$\ast$ \+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+History\+Last (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger\+Backend $\ast$}]{be,  }\item[{size\+\_\+t $\ast$}]{len }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cli-el-backend_8c_a57e17a93bb3ab3f8c5c9226aeb775d57_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{cli-el-backend_8c_a3dbc196c9232924e24cd18830e794588}\label{cli-el-backend_8c_a3dbc196c9232924e24cd18830e794588}} 
+\index{cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}!\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Init@{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Init}}
+\index{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Init@{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Init}!cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Init()}{\_CLIDebuggerEditLineInit()}}
+{\footnotesize\ttfamily void \+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Init (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger\+Backend $\ast$}]{be }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cli-el-backend_8c_a3dbc196c9232924e24cd18830e794588_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cli-el-backend_8c_a3dbc196c9232924e24cd18830e794588_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{cli-el-backend_8c_a0e5a0d606481fcc309020708f0163dfc}\label{cli-el-backend_8c_a0e5a0d606481fcc309020708f0163dfc}} 
+\index{cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}!\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Line\+Append@{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Line\+Append}}
+\index{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Line\+Append@{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Line\+Append}!cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Line\+Append()}{\_CLIDebuggerEditLineLineAppend()}}
+{\footnotesize\ttfamily void \+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Line\+Append (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger\+Backend $\ast$}]{be,  }\item[{const char $\ast$}]{line }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cli-el-backend_8c_a0e5a0d606481fcc309020708f0163dfc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{cli-el-backend_8c_aba43aaf665d3cead03a590a728d3480d}\label{cli-el-backend_8c_aba43aaf665d3cead03a590a728d3480d}} 
+\index{cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}!\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Printf@{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Printf}}
+\index{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Printf@{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Printf}!cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Printf()}{\_CLIDebuggerEditLinePrintf()}}
+{\footnotesize\ttfamily void \+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Printf (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger\+Backend $\ast$}]{be,  }\item[{const char $\ast$}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cli-el-backend_8c_aba43aaf665d3cead03a590a728d3480d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{cli-el-backend_8c_a3b2c1f4a09f7b764a00cd8864cefae82}\label{cli-el-backend_8c_a3b2c1f4a09f7b764a00cd8864cefae82}} 
+\index{cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}!\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Read\+Line@{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Read\+Line}}
+\index{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Read\+Line@{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Read\+Line}!cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Read\+Line()}{\_CLIDebuggerEditLineReadLine()}}
+{\footnotesize\ttfamily const char$\ast$ \+\_\+\+C\+L\+I\+Debugger\+Edit\+Line\+Read\+Line (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger\+Backend $\ast$}]{be,  }\item[{size\+\_\+t $\ast$}]{len }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{cli-el-backend_8c_a3b2c1f4a09f7b764a00cd8864cefae82_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cli-el-backend_8c_a3b2c1f4a09f7b764a00cd8864cefae82_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{cli-el-backend_8c_a5e71c0be13cd0712fef8e1cb99cd2248}\label{cli-el-backend_8c_a5e71c0be13cd0712fef8e1cb99cd2248}} 
+\index{cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}!\+\_\+prompt@{\+\_\+prompt}}
+\index{\+\_\+prompt@{\+\_\+prompt}!cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+prompt()}{\_prompt()}}
+{\footnotesize\ttfamily static char$\ast$ \+\_\+prompt (\begin{DoxyParamCaption}\item[{Edit\+Line $\ast$}]{el }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cli-el-backend_8c_a5e71c0be13cd0712fef8e1cb99cd2248_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{cli-el-backend_8c_ac8fc3ad07748126ae6a19a218f312411}\label{cli-el-backend_8c_ac8fc3ad07748126ae6a19a218f312411}} 
+\index{cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}!\+\_\+tab\+Complete@{\+\_\+tab\+Complete}}
+\index{\+\_\+tab\+Complete@{\+\_\+tab\+Complete}!cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+tab\+Complete()}{\_tabComplete()}}
+{\footnotesize\ttfamily static unsigned char \+\_\+tab\+Complete (\begin{DoxyParamCaption}\item[{Edit\+Line $\ast$}]{elstate,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{ch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cli-el-backend_8c_ac8fc3ad07748126ae6a19a218f312411_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cli-el-backend_8c_ac8fc3ad07748126ae6a19a218f312411_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{cli-el-backend_8c_aea9ca36da1b56d3b608e61aba06b9044}\label{cli-el-backend_8c_aea9ca36da1b56d3b608e61aba06b9044}} 
+\index{cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}!C\+L\+I\+Debugger\+Edit\+Line\+Backend\+Create@{C\+L\+I\+Debugger\+Edit\+Line\+Backend\+Create}}
+\index{C\+L\+I\+Debugger\+Edit\+Line\+Backend\+Create@{C\+L\+I\+Debugger\+Edit\+Line\+Backend\+Create}!cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}}
+\subsubsection{\texorpdfstring{C\+L\+I\+Debugger\+Edit\+Line\+Backend\+Create()}{CLIDebuggerEditLineBackendCreate()}}
+{\footnotesize\ttfamily struct C\+L\+I\+Debugger\+Backend$\ast$ C\+L\+I\+Debugger\+Edit\+Line\+Backend\+Create (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cli-el-backend_8c_aea9ca36da1b56d3b608e61aba06b9044_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cli-el-backend_8c_aea9ca36da1b56d3b608e61aba06b9044_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{cli-el-backend_8c_aad6d36371c8ad26b4c9a901bafa8d03c}\label{cli-el-backend_8c_aad6d36371c8ad26b4c9a901bafa8d03c}} 
+\index{cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}!\+\_\+active\+Debugger@{\+\_\+active\+Debugger}}
+\index{\+\_\+active\+Debugger@{\+\_\+active\+Debugger}!cli-\/el-\/backend.\+c@{cli-\/el-\/backend.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+active\+Debugger}{\_activeDebugger}}
+{\footnotesize\ttfamily struct C\+L\+I\+Debugger$\ast$ \+\_\+active\+Debugger\hspace{0.3cm}{\ttfamily [static]}}
+

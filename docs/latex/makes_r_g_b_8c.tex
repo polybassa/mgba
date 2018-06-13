@@ -1,0 +1,209 @@
+\hypertarget{makes_r_g_b_8c}{}\section{src/third-\/party/libpng/contrib/tools/makes\+R\+GB.c File Reference}
+\label{makes_r_g_b_8c}\index{src/third-\/party/libpng/contrib/tools/makes\+R\+G\+B.\+c@{src/third-\/party/libpng/contrib/tools/makes\+R\+G\+B.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../../pngpriv.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}s\+R\+G\+B.\+h\char`\"{}}\newline
+Include dependency graph for makes\+R\+G\+B.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makes_r_g_b_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{makes_r_g_b_8c_a27409d12aadb2cffbccf891c79e2cb73}{\+\_\+\+C99\+\_\+\+S\+O\+U\+R\+CE}}~1
+\item 
+\#define \mbox{\hyperlink{makes_r_g_b_8c_ad91c45cf046250cb796f598a423d061c}{png\+\_\+s\+R\+G\+B\+\_\+table}}~s\+R\+G\+B\+\_\+table
+\item 
+\#define \mbox{\hyperlink{makes_r_g_b_8c_a37016c6661dcededf1f12d8ae672a0f3}{png\+\_\+s\+R\+G\+B\+\_\+base}}~s\+R\+G\+B\+\_\+base
+\item 
+\#define \mbox{\hyperlink{makes_r_g_b_8c_ad138f884a468113f06bb527b2bba074b}{png\+\_\+s\+R\+G\+B\+\_\+delta}}~s\+R\+G\+B\+\_\+delta
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{makes_r_g_b_8c_a3adf795116f031640eb742c263416bd7}{fs\+R\+GB}} (double \mbox{\hyperlink{isa-lr35902_8c_af12785b4fbc4858d3685aad0d49fdce6}{l}})
+\item 
+double \mbox{\hyperlink{makes_r_g_b_8c_a968440174a8dd895e4bcb6b0c0efabca}{s\+R\+GB}} (unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} i)
+\item 
+double \mbox{\hyperlink{makes_r_g_b_8c_aa479e73a7c9ed588c7bbf34bd37ac3fe}{finvs\+R\+GB}} (unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} i)
+\item 
+png\+\_\+uint\+\_\+16 \mbox{\hyperlink{makes_r_g_b_8c_a410604c38d3961e2440aed854dcf43f3}{invs\+R\+GB}} (unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} i)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{makes_r_g_b_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static png\+\_\+uint\+\_\+16 \mbox{\hyperlink{makes_r_g_b_8c_acbe5928cfd5b8fbdb545143fdf547d9a}{png\+\_\+s\+R\+G\+B\+\_\+table}} \mbox{[}256\mbox{]}
+\item 
+static png\+\_\+uint\+\_\+16 \mbox{\hyperlink{makes_r_g_b_8c_a1a7ca60a61b4522f7039678dc43d452a}{png\+\_\+s\+R\+G\+B\+\_\+base}} \mbox{[}512\mbox{]}
+\item 
+static png\+\_\+byte \mbox{\hyperlink{makes_r_g_b_8c_a2cf6e4e56394d966a3ce25a8cdd85406}{png\+\_\+s\+R\+G\+B\+\_\+delta}} \mbox{[}512\mbox{]}
+\item 
+static const unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{makes_r_g_b_8c_a6df2292dd2a5afc013d29330b4020ef0}{max\+\_\+input}} = 255$\ast$65535
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{makes_r_g_b_8c_a27409d12aadb2cffbccf891c79e2cb73}\label{makes_r_g_b_8c_a27409d12aadb2cffbccf891c79e2cb73}} 
+\index{makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}!\+\_\+\+C99\+\_\+\+S\+O\+U\+R\+CE@{\+\_\+\+C99\+\_\+\+S\+O\+U\+R\+CE}}
+\index{\+\_\+\+C99\+\_\+\+S\+O\+U\+R\+CE@{\+\_\+\+C99\+\_\+\+S\+O\+U\+R\+CE}!makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+C99\+\_\+\+S\+O\+U\+R\+CE}{\_C99\_SOURCE}}
+{\footnotesize\ttfamily \#define \+\_\+\+C99\+\_\+\+S\+O\+U\+R\+CE~1}
+
+\mbox{\Hypertarget{makes_r_g_b_8c_a37016c6661dcededf1f12d8ae672a0f3}\label{makes_r_g_b_8c_a37016c6661dcededf1f12d8ae672a0f3}} 
+\index{makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}!png\+\_\+s\+R\+G\+B\+\_\+base@{png\+\_\+s\+R\+G\+B\+\_\+base}}
+\index{png\+\_\+s\+R\+G\+B\+\_\+base@{png\+\_\+s\+R\+G\+B\+\_\+base}!makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+s\+R\+G\+B\+\_\+base}{png\_sRGB\_base}}
+{\footnotesize\ttfamily \#define png\+\_\+s\+R\+G\+B\+\_\+base~s\+R\+G\+B\+\_\+base}
+
+\mbox{\Hypertarget{makes_r_g_b_8c_ad138f884a468113f06bb527b2bba074b}\label{makes_r_g_b_8c_ad138f884a468113f06bb527b2bba074b}} 
+\index{makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}!png\+\_\+s\+R\+G\+B\+\_\+delta@{png\+\_\+s\+R\+G\+B\+\_\+delta}}
+\index{png\+\_\+s\+R\+G\+B\+\_\+delta@{png\+\_\+s\+R\+G\+B\+\_\+delta}!makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+s\+R\+G\+B\+\_\+delta}{png\_sRGB\_delta}}
+{\footnotesize\ttfamily \#define png\+\_\+s\+R\+G\+B\+\_\+delta~s\+R\+G\+B\+\_\+delta}
+
+\mbox{\Hypertarget{makes_r_g_b_8c_ad91c45cf046250cb796f598a423d061c}\label{makes_r_g_b_8c_ad91c45cf046250cb796f598a423d061c}} 
+\index{makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}!png\+\_\+s\+R\+G\+B\+\_\+table@{png\+\_\+s\+R\+G\+B\+\_\+table}}
+\index{png\+\_\+s\+R\+G\+B\+\_\+table@{png\+\_\+s\+R\+G\+B\+\_\+table}!makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+s\+R\+G\+B\+\_\+table}{png\_sRGB\_table}}
+{\footnotesize\ttfamily \#define png\+\_\+s\+R\+G\+B\+\_\+table~s\+R\+G\+B\+\_\+table}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{makes_r_g_b_8c_aa479e73a7c9ed588c7bbf34bd37ac3fe}\label{makes_r_g_b_8c_aa479e73a7c9ed588c7bbf34bd37ac3fe}} 
+\index{makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}!finvs\+R\+GB@{finvs\+R\+GB}}
+\index{finvs\+R\+GB@{finvs\+R\+GB}!makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}}
+\subsubsection{\texorpdfstring{finvs\+R\+G\+B()}{finvsRGB()}}
+{\footnotesize\ttfamily double finvs\+R\+GB (\begin{DoxyParamCaption}\item[{unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{i }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{makes_r_g_b_8c_aa479e73a7c9ed588c7bbf34bd37ac3fe_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{makes_r_g_b_8c_aa479e73a7c9ed588c7bbf34bd37ac3fe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makes_r_g_b_8c_a3adf795116f031640eb742c263416bd7}\label{makes_r_g_b_8c_a3adf795116f031640eb742c263416bd7}} 
+\index{makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}!fs\+R\+GB@{fs\+R\+GB}}
+\index{fs\+R\+GB@{fs\+R\+GB}!makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}}
+\subsubsection{\texorpdfstring{fs\+R\+G\+B()}{fsRGB()}}
+{\footnotesize\ttfamily double fs\+R\+GB (\begin{DoxyParamCaption}\item[{double}]{l }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{makes_r_g_b_8c_a3adf795116f031640eb742c263416bd7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=283pt]{makes_r_g_b_8c_a3adf795116f031640eb742c263416bd7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makes_r_g_b_8c_a410604c38d3961e2440aed854dcf43f3}\label{makes_r_g_b_8c_a410604c38d3961e2440aed854dcf43f3}} 
+\index{makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}!invs\+R\+GB@{invs\+R\+GB}}
+\index{invs\+R\+GB@{invs\+R\+GB}!makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}}
+\subsubsection{\texorpdfstring{invs\+R\+G\+B()}{invsRGB()}}
+{\footnotesize\ttfamily png\+\_\+uint\+\_\+16 invs\+R\+GB (\begin{DoxyParamCaption}\item[{unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{i }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makes_r_g_b_8c_a410604c38d3961e2440aed854dcf43f3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{makes_r_g_b_8c_a410604c38d3961e2440aed854dcf43f3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makes_r_g_b_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{makes_r_g_b_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}!main@{main}}
+\index{main@{main}!makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{makes_r_g_b_8c_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{makes_r_g_b_8c_a968440174a8dd895e4bcb6b0c0efabca}\label{makes_r_g_b_8c_a968440174a8dd895e4bcb6b0c0efabca}} 
+\index{makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}!s\+R\+GB@{s\+R\+GB}}
+\index{s\+R\+GB@{s\+R\+GB}!makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}}
+\subsubsection{\texorpdfstring{s\+R\+G\+B()}{sRGB()}}
+{\footnotesize\ttfamily double s\+R\+GB (\begin{DoxyParamCaption}\item[{unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{i }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{makes_r_g_b_8c_a968440174a8dd895e4bcb6b0c0efabca_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{makes_r_g_b_8c_a968440174a8dd895e4bcb6b0c0efabca_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{makes_r_g_b_8c_a6df2292dd2a5afc013d29330b4020ef0}\label{makes_r_g_b_8c_a6df2292dd2a5afc013d29330b4020ef0}} 
+\index{makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}!max\+\_\+input@{max\+\_\+input}}
+\index{max\+\_\+input@{max\+\_\+input}!makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}}
+\subsubsection{\texorpdfstring{max\+\_\+input}{max\_input}}
+{\footnotesize\ttfamily const unsigned \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} max\+\_\+input = 255$\ast$65535\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{makes_r_g_b_8c_a1a7ca60a61b4522f7039678dc43d452a}\label{makes_r_g_b_8c_a1a7ca60a61b4522f7039678dc43d452a}} 
+\index{makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}!png\+\_\+s\+R\+G\+B\+\_\+base@{png\+\_\+s\+R\+G\+B\+\_\+base}}
+\index{png\+\_\+s\+R\+G\+B\+\_\+base@{png\+\_\+s\+R\+G\+B\+\_\+base}!makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+s\+R\+G\+B\+\_\+base}{png\_sRGB\_base}}
+{\footnotesize\ttfamily png\+\_\+uint\+\_\+16 png\+\_\+s\+R\+G\+B\+\_\+base\mbox{[}512\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{makes_r_g_b_8c_a2cf6e4e56394d966a3ce25a8cdd85406}\label{makes_r_g_b_8c_a2cf6e4e56394d966a3ce25a8cdd85406}} 
+\index{makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}!png\+\_\+s\+R\+G\+B\+\_\+delta@{png\+\_\+s\+R\+G\+B\+\_\+delta}}
+\index{png\+\_\+s\+R\+G\+B\+\_\+delta@{png\+\_\+s\+R\+G\+B\+\_\+delta}!makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+s\+R\+G\+B\+\_\+delta}{png\_sRGB\_delta}}
+{\footnotesize\ttfamily png\+\_\+byte png\+\_\+s\+R\+G\+B\+\_\+delta\mbox{[}512\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{makes_r_g_b_8c_acbe5928cfd5b8fbdb545143fdf547d9a}\label{makes_r_g_b_8c_acbe5928cfd5b8fbdb545143fdf547d9a}} 
+\index{makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}!png\+\_\+s\+R\+G\+B\+\_\+table@{png\+\_\+s\+R\+G\+B\+\_\+table}}
+\index{png\+\_\+s\+R\+G\+B\+\_\+table@{png\+\_\+s\+R\+G\+B\+\_\+table}!makes\+R\+G\+B.\+c@{makes\+R\+G\+B.\+c}}
+\subsubsection{\texorpdfstring{png\+\_\+s\+R\+G\+B\+\_\+table}{png\_sRGB\_table}}
+{\footnotesize\ttfamily png\+\_\+uint\+\_\+16 png\+\_\+s\+R\+G\+B\+\_\+table\mbox{[}256\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+

@@ -1,0 +1,289 @@
+\hypertarget{infback_8c}{}\section{src/third-\/party/zlib/infback.c File Reference}
+\label{infback_8c}\index{src/third-\/party/zlib/infback.\+c@{src/third-\/party/zlib/infback.\+c}}
+{\ttfamily \#include \char`\"{}zutil.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}inftrees.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}inflate.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}inffast.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}inffixed.\+h\char`\"{}}\newline
+Include dependency graph for infback.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infback_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{infback_8c_a03dae42536f97b08183620a910f9b204}{L\+O\+AD}}()
+\item 
+\#define \mbox{\hyperlink{infback_8c_af3b6db2fe8b54bb9edf88c2002e4bf34}{R\+E\+S\+T\+O\+RE}}()
+\item 
+\#define \mbox{\hyperlink{infback_8c_a3ffcbdd4824c339e07ea67dd412636fd}{I\+N\+I\+T\+B\+I\+TS}}()
+\item 
+\#define \mbox{\hyperlink{infback_8c_a37e17e8237dadaefecf8b92ad2370561}{P\+U\+LL}}()
+\item 
+\#define \mbox{\hyperlink{infback_8c_add54302c739466e0e4a204fa1015694b}{P\+U\+L\+L\+B\+Y\+TE}}()
+\item 
+\#define \mbox{\hyperlink{infback_8c_ab3731a4aa4bb04481dc95069bbfb7156}{N\+E\+E\+D\+B\+I\+TS}}(\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})
+\item 
+\#define \mbox{\hyperlink{infback_8c_a5967693540f086cfa357f68978bf0be7}{B\+I\+TS}}(\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})~((unsigned)hold \& ((1\+U $<$$<$ (n)) -\/ 1))
+\item 
+\#define \mbox{\hyperlink{infback_8c_a65312e68bdf918e606b0deaf69793523}{D\+R\+O\+P\+B\+I\+TS}}(\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})
+\item 
+\#define \mbox{\hyperlink{infback_8c_aa1e478b107abaccc428d6266ea5ca595}{B\+Y\+T\+E\+B\+I\+TS}}()
+\item 
+\#define \mbox{\hyperlink{infback_8c_aa86fac2e845f337d5369513dea1759b0}{R\+O\+OM}}()
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{inflate_8c_a4493a4d633ce7f2dd463edc3a9bce72f}{fixedtables}} \mbox{\hyperlink{infback_8c_a53ea906bc5582e6dcc143b749202cfef}{OF}} ((struct \mbox{\hyperlink{inflate_8h_structinflate__state}{inflate\+\_\+state}} F\+AR $\ast$state))
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{infback_8c_a00558519755e3bab13ee6f8378973913}{inflate\+Back\+Init\+\_\+}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} window\+Bits, unsigned char F\+AR $\ast$\mbox{\hyperlink{rpng2-x_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}}, const char $\ast$\mbox{\hyperlink{commandline_8c_a77c86c2f67610437b2fd6182ded85bd2}{version}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} stream\+\_\+size)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{infback_8c_a4493a4d633ce7f2dd463edc3a9bce72f}{fixedtables}} (struct \mbox{\hyperlink{inflate_8h_structinflate__state}{inflate\+\_\+state}} F\+AR $\ast$state)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{infback_8c_a6568b72b098ada9bd162fc0365943f5c}{inflate\+Back}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm, in\+\_\+func \mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}, void F\+AR $\ast$in\+\_\+desc, out\+\_\+func \mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}}, void F\+AR $\ast$out\+\_\+desc)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{infback_8c_a6fe1a0debff7933ce382bfd5348f2b2b}{inflate\+Back\+End}} (\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}} strm)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{infback_8c_a5967693540f086cfa357f68978bf0be7}\label{infback_8c_a5967693540f086cfa357f68978bf0be7}} 
+\index{infback.\+c@{infback.\+c}!B\+I\+TS@{B\+I\+TS}}
+\index{B\+I\+TS@{B\+I\+TS}!infback.\+c@{infback.\+c}}
+\subsubsection{\texorpdfstring{B\+I\+TS}{BITS}}
+{\footnotesize\ttfamily \#define B\+I\+TS(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}} }\end{DoxyParamCaption})~((unsigned)hold \& ((1\+U $<$$<$ (n)) -\/ 1))}
+
+\mbox{\Hypertarget{infback_8c_aa1e478b107abaccc428d6266ea5ca595}\label{infback_8c_aa1e478b107abaccc428d6266ea5ca595}} 
+\index{infback.\+c@{infback.\+c}!B\+Y\+T\+E\+B\+I\+TS@{B\+Y\+T\+E\+B\+I\+TS}}
+\index{B\+Y\+T\+E\+B\+I\+TS@{B\+Y\+T\+E\+B\+I\+TS}!infback.\+c@{infback.\+c}}
+\subsubsection{\texorpdfstring{B\+Y\+T\+E\+B\+I\+TS}{BYTEBITS}}
+{\footnotesize\ttfamily \#define B\+Y\+T\+E\+B\+I\+TS(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        hold >>= \mbox{\hyperlink{blast_8c_af23433d9d58fb31d4a1ac224e3bc46e8}{bits}} & 7; \(\backslash\)
+        bits -= \mbox{\hyperlink{blast_8c_af23433d9d58fb31d4a1ac224e3bc46e8}{bits}} & 7; \(\backslash\)
+    \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\mbox{\Hypertarget{infback_8c_a65312e68bdf918e606b0deaf69793523}\label{infback_8c_a65312e68bdf918e606b0deaf69793523}} 
+\index{infback.\+c@{infback.\+c}!D\+R\+O\+P\+B\+I\+TS@{D\+R\+O\+P\+B\+I\+TS}}
+\index{D\+R\+O\+P\+B\+I\+TS@{D\+R\+O\+P\+B\+I\+TS}!infback.\+c@{infback.\+c}}
+\subsubsection{\texorpdfstring{D\+R\+O\+P\+B\+I\+TS}{DROPBITS}}
+{\footnotesize\ttfamily \#define D\+R\+O\+P\+B\+I\+TS(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        hold >>= (\mbox{\hyperlink{isa-arm_8c_a4e34aefb3cc5403a07c020131077100a}{n}}); \(\backslash\)
+        bits -= (unsigned)(\mbox{\hyperlink{isa-arm_8c_a4e34aefb3cc5403a07c020131077100a}{n}}); \(\backslash\)
+    \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\mbox{\Hypertarget{infback_8c_a3ffcbdd4824c339e07ea67dd412636fd}\label{infback_8c_a3ffcbdd4824c339e07ea67dd412636fd}} 
+\index{infback.\+c@{infback.\+c}!I\+N\+I\+T\+B\+I\+TS@{I\+N\+I\+T\+B\+I\+TS}}
+\index{I\+N\+I\+T\+B\+I\+TS@{I\+N\+I\+T\+B\+I\+TS}!infback.\+c@{infback.\+c}}
+\subsubsection{\texorpdfstring{I\+N\+I\+T\+B\+I\+TS}{INITBITS}}
+{\footnotesize\ttfamily \#define I\+N\+I\+T\+B\+I\+TS(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        hold = 0; \(\backslash\)
+        bits = 0; \(\backslash\)
+    \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\mbox{\Hypertarget{infback_8c_a03dae42536f97b08183620a910f9b204}\label{infback_8c_a03dae42536f97b08183620a910f9b204}} 
+\index{infback.\+c@{infback.\+c}!L\+O\+AD@{L\+O\+AD}}
+\index{L\+O\+AD@{L\+O\+AD}!infback.\+c@{infback.\+c}}
+\subsubsection{\texorpdfstring{L\+O\+AD}{LOAD}}
+{\footnotesize\ttfamily \#define L\+O\+AD(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        put = strm->next\_out; \(\backslash\)
+        left = strm->avail\_out; \(\backslash\)
+        next = strm->next\_in; \(\backslash\)
+        have = strm->avail\_in; \(\backslash\)
+        hold = state->hold; \(\backslash\)
+        bits = state->bits; \(\backslash\)
+    \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\mbox{\Hypertarget{infback_8c_ab3731a4aa4bb04481dc95069bbfb7156}\label{infback_8c_ab3731a4aa4bb04481dc95069bbfb7156}} 
+\index{infback.\+c@{infback.\+c}!N\+E\+E\+D\+B\+I\+TS@{N\+E\+E\+D\+B\+I\+TS}}
+\index{N\+E\+E\+D\+B\+I\+TS@{N\+E\+E\+D\+B\+I\+TS}!infback.\+c@{infback.\+c}}
+\subsubsection{\texorpdfstring{N\+E\+E\+D\+B\+I\+TS}{NEEDBITS}}
+{\footnotesize\ttfamily \#define N\+E\+E\+D\+B\+I\+TS(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        while (\mbox{\hyperlink{blast_8c_af23433d9d58fb31d4a1ac224e3bc46e8}{bits}} < (\textcolor{keywordtype}{unsigned})(\mbox{\hyperlink{isa-arm_8c_a4e34aefb3cc5403a07c020131077100a}{n}})) \(\backslash\)
+            PULLBYTE(); \(\backslash\)
+    \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\mbox{\Hypertarget{infback_8c_a37e17e8237dadaefecf8b92ad2370561}\label{infback_8c_a37e17e8237dadaefecf8b92ad2370561}} 
+\index{infback.\+c@{infback.\+c}!P\+U\+LL@{P\+U\+LL}}
+\index{P\+U\+LL@{P\+U\+LL}!infback.\+c@{infback.\+c}}
+\subsubsection{\texorpdfstring{P\+U\+LL}{PULL}}
+{\footnotesize\ttfamily \#define P\+U\+LL(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        if (have == 0) \{ \(\backslash\)
+            have = \mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}(in\_desc, &next); \(\backslash\)
+            if (have == 0) \{ \(\backslash\)
+                next = \mbox{\hyperlink{zlib_8h_ad15afa2776b41b2f4d8582dd152bd736}{Z\_NULL}}; \(\backslash\)
+                ret = \mbox{\hyperlink{zlib_8h_a425e2f0664e1b1f75bf2bffab88d353d}{Z\_BUF\_ERROR}}; \(\backslash\)
+                goto inf\_leave; \(\backslash\)
+            \} \(\backslash\)
+        \} \(\backslash\)
+    \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\mbox{\Hypertarget{infback_8c_add54302c739466e0e4a204fa1015694b}\label{infback_8c_add54302c739466e0e4a204fa1015694b}} 
+\index{infback.\+c@{infback.\+c}!P\+U\+L\+L\+B\+Y\+TE@{P\+U\+L\+L\+B\+Y\+TE}}
+\index{P\+U\+L\+L\+B\+Y\+TE@{P\+U\+L\+L\+B\+Y\+TE}!infback.\+c@{infback.\+c}}
+\subsubsection{\texorpdfstring{P\+U\+L\+L\+B\+Y\+TE}{PULLBYTE}}
+{\footnotesize\ttfamily \#define P\+U\+L\+L\+B\+Y\+TE(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        PULL(); \(\backslash\)
+        have--; \(\backslash\)
+        hold += (\textcolor{keywordtype}{unsigned} \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}})(*next++) << \mbox{\hyperlink{blast_8c_af23433d9d58fb31d4a1ac224e3bc46e8}{bits}}; \(\backslash\)
+        bits += 8; \(\backslash\)
+    \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\mbox{\Hypertarget{infback_8c_af3b6db2fe8b54bb9edf88c2002e4bf34}\label{infback_8c_af3b6db2fe8b54bb9edf88c2002e4bf34}} 
+\index{infback.\+c@{infback.\+c}!R\+E\+S\+T\+O\+RE@{R\+E\+S\+T\+O\+RE}}
+\index{R\+E\+S\+T\+O\+RE@{R\+E\+S\+T\+O\+RE}!infback.\+c@{infback.\+c}}
+\subsubsection{\texorpdfstring{R\+E\+S\+T\+O\+RE}{RESTORE}}
+{\footnotesize\ttfamily \#define R\+E\+S\+T\+O\+RE(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        strm->next\_out = put; \(\backslash\)
+        strm->avail\_out = left; \(\backslash\)
+        strm->next\_in = next; \(\backslash\)
+        strm->avail\_in = have; \(\backslash\)
+        state->hold = hold; \(\backslash\)
+        state->bits = \mbox{\hyperlink{blast_8c_af23433d9d58fb31d4a1ac224e3bc46e8}{bits}}; \(\backslash\)
+    \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\mbox{\Hypertarget{infback_8c_aa86fac2e845f337d5369513dea1759b0}\label{infback_8c_aa86fac2e845f337d5369513dea1759b0}} 
+\index{infback.\+c@{infback.\+c}!R\+O\+OM@{R\+O\+OM}}
+\index{R\+O\+OM@{R\+O\+OM}!infback.\+c@{infback.\+c}}
+\subsubsection{\texorpdfstring{R\+O\+OM}{ROOM}}
+{\footnotesize\ttfamily \#define R\+O\+OM(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        if (left == 0) \{ \(\backslash\)
+            put = state->window; \(\backslash\)
+            left = state->wsize; \(\backslash\)
+            state->whave = left; \(\backslash\)
+            if (\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}}(out\_desc, put, left)) \{ \(\backslash\)
+                ret = \mbox{\hyperlink{zlib_8h_a425e2f0664e1b1f75bf2bffab88d353d}{Z\_BUF\_ERROR}}; \(\backslash\)
+                goto inf\_leave; \(\backslash\)
+            \} \(\backslash\)
+        \} \(\backslash\)
+    \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{infback_8c_a4493a4d633ce7f2dd463edc3a9bce72f}\label{infback_8c_a4493a4d633ce7f2dd463edc3a9bce72f}} 
+\index{infback.\+c@{infback.\+c}!fixedtables@{fixedtables}}
+\index{fixedtables@{fixedtables}!infback.\+c@{infback.\+c}}
+\subsubsection{\texorpdfstring{fixedtables()}{fixedtables()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void fixedtables (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{inflate_8h_structinflate__state}{inflate\+\_\+state}} F\+AR $\ast$}]{state }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infback_8c_a4493a4d633ce7f2dd463edc3a9bce72f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infback_8c_a4493a4d633ce7f2dd463edc3a9bce72f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infback_8c_a6568b72b098ada9bd162fc0365943f5c}\label{infback_8c_a6568b72b098ada9bd162fc0365943f5c}} 
+\index{infback.\+c@{infback.\+c}!inflate\+Back@{inflate\+Back}}
+\index{inflate\+Back@{inflate\+Back}!infback.\+c@{infback.\+c}}
+\subsubsection{\texorpdfstring{inflate\+Back()}{inflateBack()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT inflate\+Back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{strm,  }\item[{in\+\_\+func}]{in,  }\item[{void F\+AR $\ast$}]{in\+\_\+desc,  }\item[{out\+\_\+func}]{out,  }\item[{void F\+AR $\ast$}]{out\+\_\+desc }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infback_8c_a6568b72b098ada9bd162fc0365943f5c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infback_8c_a6568b72b098ada9bd162fc0365943f5c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infback_8c_a6fe1a0debff7933ce382bfd5348f2b2b}\label{infback_8c_a6fe1a0debff7933ce382bfd5348f2b2b}} 
+\index{infback.\+c@{infback.\+c}!inflate\+Back\+End@{inflate\+Back\+End}}
+\index{inflate\+Back\+End@{inflate\+Back\+End}!infback.\+c@{infback.\+c}}
+\subsubsection{\texorpdfstring{inflate\+Back\+End()}{inflateBackEnd()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT inflate\+Back\+End (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{strm }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infback_8c_a6fe1a0debff7933ce382bfd5348f2b2b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infback_8c_a00558519755e3bab13ee6f8378973913}\label{infback_8c_a00558519755e3bab13ee6f8378973913}} 
+\index{infback.\+c@{infback.\+c}!inflate\+Back\+Init\+\_\+@{inflate\+Back\+Init\+\_\+}}
+\index{inflate\+Back\+Init\+\_\+@{inflate\+Back\+Init\+\_\+}!infback.\+c@{infback.\+c}}
+\subsubsection{\texorpdfstring{inflate\+Back\+Init\+\_\+()}{inflateBackInit\_()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT inflate\+Back\+Init\+\_\+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\+\_\+streamp}}}]{strm,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{window\+Bits,  }\item[{unsigned char F\+AR $\ast$}]{window,  }\item[{const char $\ast$}]{version,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{stream\+\_\+size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{infback_8c_a00558519755e3bab13ee6f8378973913_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infback_8c_a00558519755e3bab13ee6f8378973913_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infback_8c_a53ea906bc5582e6dcc143b749202cfef}\label{infback_8c_a53ea906bc5582e6dcc143b749202cfef}} 
+\index{infback.\+c@{infback.\+c}!OF@{OF}}
+\index{OF@{OF}!infback.\+c@{infback.\+c}}
+\subsubsection{\texorpdfstring{O\+F()}{OF()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{inflate_8c_a4493a4d633ce7f2dd463edc3a9bce72f}{fixedtables}} OF (\begin{DoxyParamCaption}\item[{(struct \mbox{\hyperlink{inflate_8h_structinflate__state}{inflate\+\_\+state}} F\+AR $\ast$state)}]{ }\end{DoxyParamCaption})}
+

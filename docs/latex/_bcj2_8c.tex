@@ -1,0 +1,129 @@
+\hypertarget{_bcj2_8c}{}\section{src/third-\/party/lzma/\+Bcj2.c File Reference}
+\label{_bcj2_8c}\index{src/third-\/party/lzma/\+Bcj2.\+c@{src/third-\/party/lzma/\+Bcj2.\+c}}
+{\ttfamily \#include \char`\"{}Precomp.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Bcj2.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Cpu\+Arch.\+h\char`\"{}}\newline
+Include dependency graph for Bcj2.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=299pt]{_bcj2_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_bcj2_8c_a7ba6a3784be247ebcd81a51353047ac1}{C\+Prob}}~\mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}}
+\item 
+\#define \mbox{\hyperlink{_bcj2_8c_ae668f35d44d0e8b31daf6479d19a5e3f}{k\+Top\+Value}}~((\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}})1 $<$$<$ 24)
+\item 
+\#define \mbox{\hyperlink{_bcj2_8c_a4d160f4bbfb4ffdc45a56c7b583af85d}{k\+Num\+Model\+Bits}}~11
+\item 
+\#define \mbox{\hyperlink{_bcj2_8c_a42683bb56128d7ca273fcfe69e7c6c37}{k\+Bit\+Model\+Total}}~(1 $<$$<$ \mbox{\hyperlink{_bcj2_enc_8c_a4d160f4bbfb4ffdc45a56c7b583af85d}{k\+Num\+Model\+Bits}})
+\item 
+\#define \mbox{\hyperlink{_bcj2_8c_a55103390b17634adcf9551ba1f5103b4}{k\+Num\+Move\+Bits}}~5
+\item 
+\#define \mbox{\hyperlink{_bcj2_8c_ac827276d67ffeabdc40051d3edf43bae}{\+\_\+\+I\+F\+\_\+\+B\+I\+T\+\_\+0}}~ttt = $\ast$prob; bound = (p-\/$>$range $>$$>$ \mbox{\hyperlink{_bcj2_enc_8c_a4d160f4bbfb4ffdc45a56c7b583af85d}{k\+Num\+Model\+Bits}}) $\ast$ ttt; \mbox{\hyperlink{isa-lr35902_8c_a2eb27369cb3dbac14564f95cd51effdf}{if}} (p-\/$>$\mbox{\hyperlink{inftrees_8h_structcode}{code}} $<$ bound)
+\item 
+\#define \mbox{\hyperlink{_bcj2_8c_a8771eed6764b904e873c81831b026067}{\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+0}}~p-\/$>$range = bound; $\ast$prob = (\mbox{\hyperlink{_bcj2_enc_8c_a7ba6a3784be247ebcd81a51353047ac1}{C\+Prob}})(ttt + ((\mbox{\hyperlink{_lzma_enc_8c_a42683bb56128d7ca273fcfe69e7c6c37}{k\+Bit\+Model\+Total}} -\/ ttt) $>$$>$ \mbox{\hyperlink{_lzma_enc_8c_a55103390b17634adcf9551ba1f5103b4}{k\+Num\+Move\+Bits}}));
+\item 
+\#define \mbox{\hyperlink{_bcj2_8c_a61ac3e33c721125b0f9ca4bb36b3dcaf}{\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+1}}~p-\/$>$range -\/= bound; p-\/$>$\mbox{\hyperlink{inftrees_8h_structcode}{code}} -\/= bound; $\ast$prob = (\mbox{\hyperlink{_bcj2_enc_8c_a7ba6a3784be247ebcd81a51353047ac1}{C\+Prob}})(ttt -\/ (ttt $>$$>$ \mbox{\hyperlink{_lzma_enc_8c_a55103390b17634adcf9551ba1f5103b4}{k\+Num\+Move\+Bits}}));
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_bcj2_8c_ad84acbe7b8246ddb4a46d1a7df6e3339}{Bcj2\+Dec\+\_\+\+Init}} (\mbox{\hyperlink{_bcj2_8h_struct_c_bcj2_dec}{C\+Bcj2\+Dec}} $\ast$p)
+\item 
+\mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_bcj2_8c_a1bc766837fd814924c00452a88ff7533}{Bcj2\+Dec\+\_\+\+Decode}} (\mbox{\hyperlink{_bcj2_8h_struct_c_bcj2_dec}{C\+Bcj2\+Dec}} $\ast$p)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_bcj2_8c_ac827276d67ffeabdc40051d3edf43bae}\label{_bcj2_8c_ac827276d67ffeabdc40051d3edf43bae}} 
+\index{Bcj2.\+c@{Bcj2.\+c}!\+\_\+\+I\+F\+\_\+\+B\+I\+T\+\_\+0@{\+\_\+\+I\+F\+\_\+\+B\+I\+T\+\_\+0}}
+\index{\+\_\+\+I\+F\+\_\+\+B\+I\+T\+\_\+0@{\+\_\+\+I\+F\+\_\+\+B\+I\+T\+\_\+0}!Bcj2.\+c@{Bcj2.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+I\+F\+\_\+\+B\+I\+T\+\_\+0}{\_IF\_BIT\_0}}
+{\footnotesize\ttfamily \#define \+\_\+\+I\+F\+\_\+\+B\+I\+T\+\_\+0~ttt = $\ast$prob; bound = (p-\/$>$range $>$$>$ \mbox{\hyperlink{_bcj2_enc_8c_a4d160f4bbfb4ffdc45a56c7b583af85d}{k\+Num\+Model\+Bits}}) $\ast$ ttt; \mbox{\hyperlink{isa-lr35902_8c_a2eb27369cb3dbac14564f95cd51effdf}{if}} (p-\/$>$\mbox{\hyperlink{inftrees_8h_structcode}{code}} $<$ bound)}
+
+\mbox{\Hypertarget{_bcj2_8c_a8771eed6764b904e873c81831b026067}\label{_bcj2_8c_a8771eed6764b904e873c81831b026067}} 
+\index{Bcj2.\+c@{Bcj2.\+c}!\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+0@{\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+0}}
+\index{\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+0@{\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+0}!Bcj2.\+c@{Bcj2.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+0}{\_UPDATE\_0}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+P\+D\+A\+T\+E\+\_\+0~p-\/$>$range = bound; $\ast$prob = (\mbox{\hyperlink{_bcj2_enc_8c_a7ba6a3784be247ebcd81a51353047ac1}{C\+Prob}})(ttt + ((\mbox{\hyperlink{_lzma_enc_8c_a42683bb56128d7ca273fcfe69e7c6c37}{k\+Bit\+Model\+Total}} -\/ ttt) $>$$>$ \mbox{\hyperlink{_lzma_enc_8c_a55103390b17634adcf9551ba1f5103b4}{k\+Num\+Move\+Bits}}));}
+
+\mbox{\Hypertarget{_bcj2_8c_a61ac3e33c721125b0f9ca4bb36b3dcaf}\label{_bcj2_8c_a61ac3e33c721125b0f9ca4bb36b3dcaf}} 
+\index{Bcj2.\+c@{Bcj2.\+c}!\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+1@{\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+1}}
+\index{\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+1@{\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+1}!Bcj2.\+c@{Bcj2.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+U\+P\+D\+A\+T\+E\+\_\+1}{\_UPDATE\_1}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+P\+D\+A\+T\+E\+\_\+1~p-\/$>$range -\/= bound; p-\/$>$\mbox{\hyperlink{inftrees_8h_structcode}{code}} -\/= bound; $\ast$prob = (\mbox{\hyperlink{_bcj2_enc_8c_a7ba6a3784be247ebcd81a51353047ac1}{C\+Prob}})(ttt -\/ (ttt $>$$>$ \mbox{\hyperlink{_lzma_enc_8c_a55103390b17634adcf9551ba1f5103b4}{k\+Num\+Move\+Bits}}));}
+
+\mbox{\Hypertarget{_bcj2_8c_a7ba6a3784be247ebcd81a51353047ac1}\label{_bcj2_8c_a7ba6a3784be247ebcd81a51353047ac1}} 
+\index{Bcj2.\+c@{Bcj2.\+c}!C\+Prob@{C\+Prob}}
+\index{C\+Prob@{C\+Prob}!Bcj2.\+c@{Bcj2.\+c}}
+\subsubsection{\texorpdfstring{C\+Prob}{CProb}}
+{\footnotesize\ttfamily \#define C\+Prob~\mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}}}
+
+\mbox{\Hypertarget{_bcj2_8c_a42683bb56128d7ca273fcfe69e7c6c37}\label{_bcj2_8c_a42683bb56128d7ca273fcfe69e7c6c37}} 
+\index{Bcj2.\+c@{Bcj2.\+c}!k\+Bit\+Model\+Total@{k\+Bit\+Model\+Total}}
+\index{k\+Bit\+Model\+Total@{k\+Bit\+Model\+Total}!Bcj2.\+c@{Bcj2.\+c}}
+\subsubsection{\texorpdfstring{k\+Bit\+Model\+Total}{kBitModelTotal}}
+{\footnotesize\ttfamily \#define k\+Bit\+Model\+Total~(1 $<$$<$ \mbox{\hyperlink{_bcj2_enc_8c_a4d160f4bbfb4ffdc45a56c7b583af85d}{k\+Num\+Model\+Bits}})}
+
+\mbox{\Hypertarget{_bcj2_8c_a4d160f4bbfb4ffdc45a56c7b583af85d}\label{_bcj2_8c_a4d160f4bbfb4ffdc45a56c7b583af85d}} 
+\index{Bcj2.\+c@{Bcj2.\+c}!k\+Num\+Model\+Bits@{k\+Num\+Model\+Bits}}
+\index{k\+Num\+Model\+Bits@{k\+Num\+Model\+Bits}!Bcj2.\+c@{Bcj2.\+c}}
+\subsubsection{\texorpdfstring{k\+Num\+Model\+Bits}{kNumModelBits}}
+{\footnotesize\ttfamily \#define k\+Num\+Model\+Bits~11}
+
+\mbox{\Hypertarget{_bcj2_8c_a55103390b17634adcf9551ba1f5103b4}\label{_bcj2_8c_a55103390b17634adcf9551ba1f5103b4}} 
+\index{Bcj2.\+c@{Bcj2.\+c}!k\+Num\+Move\+Bits@{k\+Num\+Move\+Bits}}
+\index{k\+Num\+Move\+Bits@{k\+Num\+Move\+Bits}!Bcj2.\+c@{Bcj2.\+c}}
+\subsubsection{\texorpdfstring{k\+Num\+Move\+Bits}{kNumMoveBits}}
+{\footnotesize\ttfamily \#define k\+Num\+Move\+Bits~5}
+
+\mbox{\Hypertarget{_bcj2_8c_ae668f35d44d0e8b31daf6479d19a5e3f}\label{_bcj2_8c_ae668f35d44d0e8b31daf6479d19a5e3f}} 
+\index{Bcj2.\+c@{Bcj2.\+c}!k\+Top\+Value@{k\+Top\+Value}}
+\index{k\+Top\+Value@{k\+Top\+Value}!Bcj2.\+c@{Bcj2.\+c}}
+\subsubsection{\texorpdfstring{k\+Top\+Value}{kTopValue}}
+{\footnotesize\ttfamily \#define k\+Top\+Value~((\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}})1 $<$$<$ 24)}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_bcj2_8c_a1bc766837fd814924c00452a88ff7533}\label{_bcj2_8c_a1bc766837fd814924c00452a88ff7533}} 
+\index{Bcj2.\+c@{Bcj2.\+c}!Bcj2\+Dec\+\_\+\+Decode@{Bcj2\+Dec\+\_\+\+Decode}}
+\index{Bcj2\+Dec\+\_\+\+Decode@{Bcj2\+Dec\+\_\+\+Decode}!Bcj2.\+c@{Bcj2.\+c}}
+\subsubsection{\texorpdfstring{Bcj2\+Dec\+\_\+\+Decode()}{Bcj2Dec\_Decode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Bcj2\+Dec\+\_\+\+Decode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_bcj2_8h_struct_c_bcj2_dec}{C\+Bcj2\+Dec}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{_bcj2_8c_a1bc766837fd814924c00452a88ff7533_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_bcj2_8c_a1bc766837fd814924c00452a88ff7533_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_bcj2_8c_ad84acbe7b8246ddb4a46d1a7df6e3339}\label{_bcj2_8c_ad84acbe7b8246ddb4a46d1a7df6e3339}} 
+\index{Bcj2.\+c@{Bcj2.\+c}!Bcj2\+Dec\+\_\+\+Init@{Bcj2\+Dec\+\_\+\+Init}}
+\index{Bcj2\+Dec\+\_\+\+Init@{Bcj2\+Dec\+\_\+\+Init}!Bcj2.\+c@{Bcj2.\+c}}
+\subsubsection{\texorpdfstring{Bcj2\+Dec\+\_\+\+Init()}{Bcj2Dec\_Init()}}
+{\footnotesize\ttfamily void Bcj2\+Dec\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_bcj2_8h_struct_c_bcj2_dec}{C\+Bcj2\+Dec}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_bcj2_8c_ad84acbe7b8246ddb4a46d1a7df6e3339_icgraph}
+\end{center}
+\end{figure}

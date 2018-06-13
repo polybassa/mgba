@@ -1,0 +1,212 @@
+\hypertarget{vfs-dirent_8c}{}\section{src/util/vfs/vfs-\/dirent.c File Reference}
+\label{vfs-dirent_8c}\index{src/util/vfs/vfs-\/dirent.\+c@{src/util/vfs/vfs-\/dirent.\+c}}
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+{\ttfamily \#include $<$dirent.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+Include dependency graph for vfs-\/dirent.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-dirent_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{vfs-dirent_8c_a4db83fb68c14cbfd915859885902b17b}{\+\_\+vd\+Close}} (struct V\+Dir $\ast$vd)
+\item 
+static void \mbox{\hyperlink{vfs-dirent_8c_ac13693dbfa8a872101cf5d88b66ab87f}{\+\_\+vd\+Rewind}} (struct V\+Dir $\ast$vd)
+\item 
+static struct V\+Dir\+Entry $\ast$ \mbox{\hyperlink{vfs-dirent_8c_a1bce38da5091375ead1437ed86074c0e}{\+\_\+vd\+List\+Next}} (struct V\+Dir $\ast$vd)
+\item 
+static struct V\+File $\ast$ \mbox{\hyperlink{vfs-dirent_8c_af98a3b7223717a0c978ed248a6f0310b}{\+\_\+vd\+Open\+File}} (struct V\+Dir $\ast$vd, const char $\ast$path, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})
+\item 
+static struct V\+Dir $\ast$ \mbox{\hyperlink{vfs-dirent_8c_a9d6bc6a6c2255b69ab39ee64c4da8456}{\+\_\+vd\+Open\+Dir}} (struct V\+Dir $\ast$vd, const char $\ast$path)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{vfs-dirent_8c_aa33820d98e66f15533027d25a4aa76ca}{\+\_\+vd\+Delete\+File}} (struct V\+Dir $\ast$vd, const char $\ast$path)
+\item 
+static const char $\ast$ \mbox{\hyperlink{vfs-dirent_8c_a13ca1b5e641080df5395524454ec2dd1}{\+\_\+vde\+Name}} (struct V\+Dir\+Entry $\ast$vde)
+\item 
+static enum V\+F\+S\+Type \mbox{\hyperlink{vfs-dirent_8c_a81778a0511632136f6bfb33d00cba047}{\+\_\+vde\+Type}} (struct V\+Dir\+Entry $\ast$vde)
+\item 
+struct V\+Dir $\ast$ \mbox{\hyperlink{vfs-dirent_8c_a2966065604f0fcfa278b5246d4d653b9}{V\+Dir\+Open}} (const char $\ast$path)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{vfs-dirent_8c_a4db83fb68c14cbfd915859885902b17b}\label{vfs-dirent_8c_a4db83fb68c14cbfd915859885902b17b}} 
+\index{vfs-\/dirent.\+c@{vfs-\/dirent.\+c}!\+\_\+vd\+Close@{\+\_\+vd\+Close}}
+\index{\+\_\+vd\+Close@{\+\_\+vd\+Close}!vfs-\/dirent.\+c@{vfs-\/dirent.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vd\+Close()}{\_vdClose()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+vd\+Close (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{vfs-dirent_8c_a4db83fb68c14cbfd915859885902b17b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-dirent_8c_a4db83fb68c14cbfd915859885902b17b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-dirent_8c_aa33820d98e66f15533027d25a4aa76ca}\label{vfs-dirent_8c_aa33820d98e66f15533027d25a4aa76ca}} 
+\index{vfs-\/dirent.\+c@{vfs-\/dirent.\+c}!\+\_\+vd\+Delete\+File@{\+\_\+vd\+Delete\+File}}
+\index{\+\_\+vd\+Delete\+File@{\+\_\+vd\+Delete\+File}!vfs-\/dirent.\+c@{vfs-\/dirent.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vd\+Delete\+File()}{\_vdDeleteFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+vd\+Delete\+File (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd,  }\item[{const char $\ast$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{vfs-dirent_8c_aa33820d98e66f15533027d25a4aa76ca_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-dirent_8c_aa33820d98e66f15533027d25a4aa76ca_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-dirent_8c_a13ca1b5e641080df5395524454ec2dd1}\label{vfs-dirent_8c_a13ca1b5e641080df5395524454ec2dd1}} 
+\index{vfs-\/dirent.\+c@{vfs-\/dirent.\+c}!\+\_\+vde\+Name@{\+\_\+vde\+Name}}
+\index{\+\_\+vde\+Name@{\+\_\+vde\+Name}!vfs-\/dirent.\+c@{vfs-\/dirent.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vde\+Name()}{\_vdeName()}}
+{\footnotesize\ttfamily const char $\ast$ \+\_\+vde\+Name (\begin{DoxyParamCaption}\item[{struct V\+Dir\+Entry $\ast$}]{vde }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-dirent_8c_a13ca1b5e641080df5395524454ec2dd1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-dirent_8c_a81778a0511632136f6bfb33d00cba047}\label{vfs-dirent_8c_a81778a0511632136f6bfb33d00cba047}} 
+\index{vfs-\/dirent.\+c@{vfs-\/dirent.\+c}!\+\_\+vde\+Type@{\+\_\+vde\+Type}}
+\index{\+\_\+vde\+Type@{\+\_\+vde\+Type}!vfs-\/dirent.\+c@{vfs-\/dirent.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vde\+Type()}{\_vdeType()}}
+{\footnotesize\ttfamily static enum V\+F\+S\+Type \+\_\+vde\+Type (\begin{DoxyParamCaption}\item[{struct V\+Dir\+Entry $\ast$}]{vde }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{vfs-dirent_8c_a81778a0511632136f6bfb33d00cba047_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-dirent_8c_a81778a0511632136f6bfb33d00cba047_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-dirent_8c_a1bce38da5091375ead1437ed86074c0e}\label{vfs-dirent_8c_a1bce38da5091375ead1437ed86074c0e}} 
+\index{vfs-\/dirent.\+c@{vfs-\/dirent.\+c}!\+\_\+vd\+List\+Next@{\+\_\+vd\+List\+Next}}
+\index{\+\_\+vd\+List\+Next@{\+\_\+vd\+List\+Next}!vfs-\/dirent.\+c@{vfs-\/dirent.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vd\+List\+Next()}{\_vdListNext()}}
+{\footnotesize\ttfamily struct V\+Dir\+Entry $\ast$ \+\_\+vd\+List\+Next (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-dirent_8c_a1bce38da5091375ead1437ed86074c0e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-dirent_8c_a9d6bc6a6c2255b69ab39ee64c4da8456}\label{vfs-dirent_8c_a9d6bc6a6c2255b69ab39ee64c4da8456}} 
+\index{vfs-\/dirent.\+c@{vfs-\/dirent.\+c}!\+\_\+vd\+Open\+Dir@{\+\_\+vd\+Open\+Dir}}
+\index{\+\_\+vd\+Open\+Dir@{\+\_\+vd\+Open\+Dir}!vfs-\/dirent.\+c@{vfs-\/dirent.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vd\+Open\+Dir()}{\_vdOpenDir()}}
+{\footnotesize\ttfamily struct V\+Dir $\ast$ \+\_\+vd\+Open\+Dir (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd,  }\item[{const char $\ast$}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-dirent_8c_a9d6bc6a6c2255b69ab39ee64c4da8456_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{vfs-dirent_8c_a9d6bc6a6c2255b69ab39ee64c4da8456_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-dirent_8c_af98a3b7223717a0c978ed248a6f0310b}\label{vfs-dirent_8c_af98a3b7223717a0c978ed248a6f0310b}} 
+\index{vfs-\/dirent.\+c@{vfs-\/dirent.\+c}!\+\_\+vd\+Open\+File@{\+\_\+vd\+Open\+File}}
+\index{\+\_\+vd\+Open\+File@{\+\_\+vd\+Open\+File}!vfs-\/dirent.\+c@{vfs-\/dirent.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vd\+Open\+File()}{\_vdOpenFile()}}
+{\footnotesize\ttfamily struct V\+File $\ast$ \+\_\+vd\+Open\+File (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd,  }\item[{const char $\ast$}]{path,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-dirent_8c_af98a3b7223717a0c978ed248a6f0310b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-dirent_8c_af98a3b7223717a0c978ed248a6f0310b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-dirent_8c_ac13693dbfa8a872101cf5d88b66ab87f}\label{vfs-dirent_8c_ac13693dbfa8a872101cf5d88b66ab87f}} 
+\index{vfs-\/dirent.\+c@{vfs-\/dirent.\+c}!\+\_\+vd\+Rewind@{\+\_\+vd\+Rewind}}
+\index{\+\_\+vd\+Rewind@{\+\_\+vd\+Rewind}!vfs-\/dirent.\+c@{vfs-\/dirent.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vd\+Rewind()}{\_vdRewind()}}
+{\footnotesize\ttfamily void \+\_\+vd\+Rewind (\begin{DoxyParamCaption}\item[{struct V\+Dir $\ast$}]{vd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-dirent_8c_ac13693dbfa8a872101cf5d88b66ab87f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfs-dirent_8c_a2966065604f0fcfa278b5246d4d653b9}\label{vfs-dirent_8c_a2966065604f0fcfa278b5246d4d653b9}} 
+\index{vfs-\/dirent.\+c@{vfs-\/dirent.\+c}!V\+Dir\+Open@{V\+Dir\+Open}}
+\index{V\+Dir\+Open@{V\+Dir\+Open}!vfs-\/dirent.\+c@{vfs-\/dirent.\+c}}
+\subsubsection{\texorpdfstring{V\+Dir\+Open()}{VDirOpen()}}
+{\footnotesize\ttfamily struct V\+Dir$\ast$ V\+Dir\+Open (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfs-dirent_8c_a2966065604f0fcfa278b5246d4d653b9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{vfs-dirent_8c_a2966065604f0fcfa278b5246d4d653b9_icgraph}
+\end{center}
+\end{figure}

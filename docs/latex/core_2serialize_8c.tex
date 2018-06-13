@@ -1,0 +1,214 @@
+\hypertarget{core_2serialize_8c}{}\section{src/core/serialize.c File Reference}
+\label{core_2serialize_8c}\index{src/core/serialize.\+c@{src/core/serialize.\+c}}
+{\ttfamily \#include $<$mgba/core/serialize.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/cheats.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/interface.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/memory.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+Include dependency graph for serialize.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2serialize_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{core_2serialize_8c_a6526a16f8b1fe9a12dd6e0e5c471c1c4}{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}} (S\+A\+V\+E\+S\+T\+A\+TE, \char`\"{}Savestate\char`\"{}, \char`\"{}core.\+serialize\char`\"{})
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2serialize_8c_af5d5ed53ded79db833917e06d1894011}{m\+State\+Extdata\+Init}} (struct m\+State\+Extdata $\ast$extdata)
+\item 
+void \mbox{\hyperlink{core_2serialize_8c_a5d695ae47e1973ec613329df9270c5a4}{m\+State\+Extdata\+Deinit}} (struct m\+State\+Extdata $\ast$extdata)
+\item 
+void \mbox{\hyperlink{core_2serialize_8c_aa9a65f334d19dfa5594c4509ed68a47b}{m\+State\+Extdata\+Put}} (struct m\+State\+Extdata $\ast$extdata, enum m\+State\+Extdata\+Tag tag, struct m\+State\+Extdata\+Item $\ast$item)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2serialize_8c_a9665d00a73c67af72b0b51d979bb0bc0}{m\+State\+Extdata\+Get}} (struct m\+State\+Extdata $\ast$extdata, enum m\+State\+Extdata\+Tag tag, struct m\+State\+Extdata\+Item $\ast$item)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2serialize_8c_a15f1d0d1af71caf22374f3664553b280}{m\+State\+Extdata\+Serialize}} (struct m\+State\+Extdata $\ast$extdata, struct V\+File $\ast$vf)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2serialize_8c_a4e2aa0d10c8c1ef615a91748b8b7fef2}{m\+State\+Extdata\+Deserialize}} (struct m\+State\+Extdata $\ast$extdata, struct V\+File $\ast$vf)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2serialize_8c_a7b0471e8047f99b1c72a84822989439b}{m\+Core\+Save\+State\+Named}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, struct V\+File $\ast$vf, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{lr35902_2decoder_8c_a11f29eea941556f0630cfd3285f565c0}{flags}})
+\item 
+void $\ast$ \mbox{\hyperlink{core_2serialize_8c_a4da7ee4409e13a827c208fb7d6aa48bb}{m\+Core\+Extract\+State}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, struct V\+File $\ast$vf, struct m\+State\+Extdata $\ast$extdata)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2serialize_8c_a7d22e881252510d02d1514bcf255ad5d}{m\+Core\+Load\+State\+Named}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, struct V\+File $\ast$vf, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{lr35902_2decoder_8c_a11f29eea941556f0630cfd3285f565c0}{flags}})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{core_2serialize_8c_a4da7ee4409e13a827c208fb7d6aa48bb}\label{core_2serialize_8c_a4da7ee4409e13a827c208fb7d6aa48bb}} 
+\index{core/serialize.\+c@{core/serialize.\+c}!m\+Core\+Extract\+State@{m\+Core\+Extract\+State}}
+\index{m\+Core\+Extract\+State@{m\+Core\+Extract\+State}!core/serialize.\+c@{core/serialize.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Extract\+State()}{mCoreExtractState()}}
+{\footnotesize\ttfamily void$\ast$ m\+Core\+Extract\+State (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{struct V\+File $\ast$}]{vf,  }\item[{struct m\+State\+Extdata $\ast$}]{extdata }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2serialize_8c_a4da7ee4409e13a827c208fb7d6aa48bb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2serialize_8c_a4da7ee4409e13a827c208fb7d6aa48bb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2serialize_8c_a7d22e881252510d02d1514bcf255ad5d}\label{core_2serialize_8c_a7d22e881252510d02d1514bcf255ad5d}} 
+\index{core/serialize.\+c@{core/serialize.\+c}!m\+Core\+Load\+State\+Named@{m\+Core\+Load\+State\+Named}}
+\index{m\+Core\+Load\+State\+Named@{m\+Core\+Load\+State\+Named}!core/serialize.\+c@{core/serialize.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Load\+State\+Named()}{mCoreLoadStateNamed()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Load\+State\+Named (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{struct V\+File $\ast$}]{vf,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{flags }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2serialize_8c_a7d22e881252510d02d1514bcf255ad5d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2serialize_8c_a7d22e881252510d02d1514bcf255ad5d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2serialize_8c_a7b0471e8047f99b1c72a84822989439b}\label{core_2serialize_8c_a7b0471e8047f99b1c72a84822989439b}} 
+\index{core/serialize.\+c@{core/serialize.\+c}!m\+Core\+Save\+State\+Named@{m\+Core\+Save\+State\+Named}}
+\index{m\+Core\+Save\+State\+Named@{m\+Core\+Save\+State\+Named}!core/serialize.\+c@{core/serialize.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Save\+State\+Named()}{mCoreSaveStateNamed()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Save\+State\+Named (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{struct V\+File $\ast$}]{vf,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{flags }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2serialize_8c_a7b0471e8047f99b1c72a84822989439b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2serialize_8c_a7b0471e8047f99b1c72a84822989439b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2serialize_8c_a6526a16f8b1fe9a12dd6e0e5c471c1c4}\label{core_2serialize_8c_a6526a16f8b1fe9a12dd6e0e5c471c1c4}} 
+\index{core/serialize.\+c@{core/serialize.\+c}!m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}}
+\index{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}!core/serialize.\+c@{core/serialize.\+c}}
+\subsubsection{\texorpdfstring{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+R\+Y()}{mLOG\_DEFINE\_CATEGORY()}}
+{\footnotesize\ttfamily m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY (\begin{DoxyParamCaption}\item[{S\+A\+V\+E\+S\+T\+A\+TE}]{,  }\item[{\char`\"{}Savestate\char`\"{}}]{,  }\item[{\char`\"{}core.\+serialize\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{core_2serialize_8c_a5d695ae47e1973ec613329df9270c5a4}\label{core_2serialize_8c_a5d695ae47e1973ec613329df9270c5a4}} 
+\index{core/serialize.\+c@{core/serialize.\+c}!m\+State\+Extdata\+Deinit@{m\+State\+Extdata\+Deinit}}
+\index{m\+State\+Extdata\+Deinit@{m\+State\+Extdata\+Deinit}!core/serialize.\+c@{core/serialize.\+c}}
+\subsubsection{\texorpdfstring{m\+State\+Extdata\+Deinit()}{mStateExtdataDeinit()}}
+{\footnotesize\ttfamily void m\+State\+Extdata\+Deinit (\begin{DoxyParamCaption}\item[{struct m\+State\+Extdata $\ast$}]{extdata }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2serialize_8c_a5d695ae47e1973ec613329df9270c5a4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2serialize_8c_a4e2aa0d10c8c1ef615a91748b8b7fef2}\label{core_2serialize_8c_a4e2aa0d10c8c1ef615a91748b8b7fef2}} 
+\index{core/serialize.\+c@{core/serialize.\+c}!m\+State\+Extdata\+Deserialize@{m\+State\+Extdata\+Deserialize}}
+\index{m\+State\+Extdata\+Deserialize@{m\+State\+Extdata\+Deserialize}!core/serialize.\+c@{core/serialize.\+c}}
+\subsubsection{\texorpdfstring{m\+State\+Extdata\+Deserialize()}{mStateExtdataDeserialize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+State\+Extdata\+Deserialize (\begin{DoxyParamCaption}\item[{struct m\+State\+Extdata $\ast$}]{extdata,  }\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2serialize_8c_a4e2aa0d10c8c1ef615a91748b8b7fef2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2serialize_8c_a4e2aa0d10c8c1ef615a91748b8b7fef2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2serialize_8c_a9665d00a73c67af72b0b51d979bb0bc0}\label{core_2serialize_8c_a9665d00a73c67af72b0b51d979bb0bc0}} 
+\index{core/serialize.\+c@{core/serialize.\+c}!m\+State\+Extdata\+Get@{m\+State\+Extdata\+Get}}
+\index{m\+State\+Extdata\+Get@{m\+State\+Extdata\+Get}!core/serialize.\+c@{core/serialize.\+c}}
+\subsubsection{\texorpdfstring{m\+State\+Extdata\+Get()}{mStateExtdataGet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+State\+Extdata\+Get (\begin{DoxyParamCaption}\item[{struct m\+State\+Extdata $\ast$}]{extdata,  }\item[{enum m\+State\+Extdata\+Tag}]{tag,  }\item[{struct m\+State\+Extdata\+Item $\ast$}]{item }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2serialize_8c_a9665d00a73c67af72b0b51d979bb0bc0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2serialize_8c_af5d5ed53ded79db833917e06d1894011}\label{core_2serialize_8c_af5d5ed53ded79db833917e06d1894011}} 
+\index{core/serialize.\+c@{core/serialize.\+c}!m\+State\+Extdata\+Init@{m\+State\+Extdata\+Init}}
+\index{m\+State\+Extdata\+Init@{m\+State\+Extdata\+Init}!core/serialize.\+c@{core/serialize.\+c}}
+\subsubsection{\texorpdfstring{m\+State\+Extdata\+Init()}{mStateExtdataInit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+State\+Extdata\+Init (\begin{DoxyParamCaption}\item[{struct m\+State\+Extdata $\ast$}]{extdata }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2serialize_8c_af5d5ed53ded79db833917e06d1894011_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2serialize_8c_aa9a65f334d19dfa5594c4509ed68a47b}\label{core_2serialize_8c_aa9a65f334d19dfa5594c4509ed68a47b}} 
+\index{core/serialize.\+c@{core/serialize.\+c}!m\+State\+Extdata\+Put@{m\+State\+Extdata\+Put}}
+\index{m\+State\+Extdata\+Put@{m\+State\+Extdata\+Put}!core/serialize.\+c@{core/serialize.\+c}}
+\subsubsection{\texorpdfstring{m\+State\+Extdata\+Put()}{mStateExtdataPut()}}
+{\footnotesize\ttfamily void m\+State\+Extdata\+Put (\begin{DoxyParamCaption}\item[{struct m\+State\+Extdata $\ast$}]{extdata,  }\item[{enum m\+State\+Extdata\+Tag}]{tag,  }\item[{struct m\+State\+Extdata\+Item $\ast$}]{item }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2serialize_8c_aa9a65f334d19dfa5594c4509ed68a47b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2serialize_8c_a15f1d0d1af71caf22374f3664553b280}\label{core_2serialize_8c_a15f1d0d1af71caf22374f3664553b280}} 
+\index{core/serialize.\+c@{core/serialize.\+c}!m\+State\+Extdata\+Serialize@{m\+State\+Extdata\+Serialize}}
+\index{m\+State\+Extdata\+Serialize@{m\+State\+Extdata\+Serialize}!core/serialize.\+c@{core/serialize.\+c}}
+\subsubsection{\texorpdfstring{m\+State\+Extdata\+Serialize()}{mStateExtdataSerialize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+State\+Extdata\+Serialize (\begin{DoxyParamCaption}\item[{struct m\+State\+Extdata $\ast$}]{extdata,  }\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=283pt]{core_2serialize_8c_a15f1d0d1af71caf22374f3664553b280_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2serialize_8c_a15f1d0d1af71caf22374f3664553b280_icgraph}
+\end{center}
+\end{figure}

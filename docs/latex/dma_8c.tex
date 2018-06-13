@@ -1,0 +1,369 @@
+\hypertarget{dma_8c}{}\section{src/gba/dma.c File Reference}
+\label{dma_8c}\index{src/gba/dma.\+c@{src/gba/dma.\+c}}
+{\ttfamily \#include $<$mgba/internal/gba/dma.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/gba.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/io.\+h$>$}\newline
+Include dependency graph for dma.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{dma_8c_a0da9683d4b7a50c87e34718fc2ce59e7}{\+\_\+dma\+Event}} (struct m\+Timing $\ast$timing, void $\ast$context, uint32\+\_\+t cycles\+Late)
+\item 
+static void \mbox{\hyperlink{dma_8c_a75b830a553b8dcbf937504576f4ba901}{G\+B\+A\+D\+M\+A\+Service}} (struct G\+BA $\ast$gba, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} number, struct G\+B\+A\+D\+MA $\ast$\mbox{\hyperlink{libretro_8h_a283ad41e4809f9c0ebe736a9861d8a91}{info}})
+\item 
+void \mbox{\hyperlink{dma_8c_a0ca41c47a7ea36f7809bfa5e4edce2c5}{G\+B\+A\+D\+M\+A\+Init}} (struct G\+BA $\ast$gba)
+\item 
+void \mbox{\hyperlink{dma_8c_aa43a617912b4b311b18c7aff398acf0e}{G\+B\+A\+D\+M\+A\+Reset}} (struct G\+BA $\ast$gba)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{dma_8c_acf3192138b2c5bb14b7374d292fbf15d}{\+\_\+is\+Valid\+D\+M\+A\+S\+AD}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} dma, uint32\+\_\+t address)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{dma_8c_a9ce9e850dbac04ffe37b6c5566c95c46}{\+\_\+is\+Valid\+D\+M\+A\+D\+AD}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} dma, uint32\+\_\+t address)
+\item 
+uint32\+\_\+t \mbox{\hyperlink{dma_8c_aee2f7ef6aee1174e6072eb5fd7e97fc5}{G\+B\+A\+D\+M\+A\+Write\+S\+AD}} (struct G\+BA $\ast$gba, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} dma, uint32\+\_\+t address)
+\item 
+uint32\+\_\+t \mbox{\hyperlink{dma_8c_a0e698ddb8217a1407c5939d2cb45fec6}{G\+B\+A\+D\+M\+A\+Write\+D\+AD}} (struct G\+BA $\ast$gba, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} dma, uint32\+\_\+t address)
+\item 
+void \mbox{\hyperlink{dma_8c_a831dfee90d244f83642aea23b7a1d490}{G\+B\+A\+D\+M\+A\+Write\+C\+N\+T\+\_\+\+LO}} (struct G\+BA $\ast$gba, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} dma, uint16\+\_\+t \mbox{\hyperlink{enough_8c_ab25137bc309ccde185e2628bf4403ec7}{count}})
+\item 
+uint16\+\_\+t \mbox{\hyperlink{dma_8c_acfc59d0bb0048388398e4a7b25f6e874}{G\+B\+A\+D\+M\+A\+Write\+C\+N\+T\+\_\+\+HI}} (struct G\+BA $\ast$gba, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} dma, uint16\+\_\+t control)
+\item 
+void \mbox{\hyperlink{dma_8c_a98bfe758ec75d812d5a63a60309018c7}{G\+B\+A\+D\+M\+A\+Schedule}} (struct G\+BA $\ast$gba, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} number, struct G\+B\+A\+D\+MA $\ast$\mbox{\hyperlink{libretro_8h_a283ad41e4809f9c0ebe736a9861d8a91}{info}})
+\item 
+void \mbox{\hyperlink{dma_8c_a4896197df9d5ed403c1ce5d92c43e380}{G\+B\+A\+D\+M\+A\+Run\+Hblank}} (struct G\+BA $\ast$gba, int32\+\_\+t cycles)
+\item 
+void \mbox{\hyperlink{dma_8c_a1f5acb32eaf68fdf028159f38f6f60dd}{G\+B\+A\+D\+M\+A\+Run\+Vblank}} (struct G\+BA $\ast$gba, int32\+\_\+t cycles)
+\item 
+void \mbox{\hyperlink{dma_8c_a71dd69e42775a815357027694c938330}{G\+B\+A\+D\+M\+A\+Run\+Display\+Start}} (struct G\+BA $\ast$gba, int32\+\_\+t cycles)
+\item 
+void \mbox{\hyperlink{dma_8c_a36f6a93237311ebb0a4d23666d0ac73b}{G\+B\+A\+D\+M\+A\+Update}} (struct G\+BA $\ast$gba)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{dma_8c_a4c201bc0b28912f71b26fe3d9efccbef}{D\+M\+A\+\_\+\+O\+F\+F\+S\+ET}} \mbox{[}$\,$\mbox{]} = \{ 1, -\/1, 0, 1 \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{dma_8c_a0da9683d4b7a50c87e34718fc2ce59e7}\label{dma_8c_a0da9683d4b7a50c87e34718fc2ce59e7}} 
+\index{dma.\+c@{dma.\+c}!\+\_\+dma\+Event@{\+\_\+dma\+Event}}
+\index{\+\_\+dma\+Event@{\+\_\+dma\+Event}!dma.\+c@{dma.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+dma\+Event()}{\_dmaEvent()}}
+{\footnotesize\ttfamily void \+\_\+dma\+Event (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing,  }\item[{void $\ast$}]{context,  }\item[{uint32\+\_\+t}]{cycles\+Late }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_a0da9683d4b7a50c87e34718fc2ce59e7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_a0da9683d4b7a50c87e34718fc2ce59e7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{dma_8c_a9ce9e850dbac04ffe37b6c5566c95c46}\label{dma_8c_a9ce9e850dbac04ffe37b6c5566c95c46}} 
+\index{dma.\+c@{dma.\+c}!\+\_\+is\+Valid\+D\+M\+A\+D\+AD@{\+\_\+is\+Valid\+D\+M\+A\+D\+AD}}
+\index{\+\_\+is\+Valid\+D\+M\+A\+D\+AD@{\+\_\+is\+Valid\+D\+M\+A\+D\+AD}!dma.\+c@{dma.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+is\+Valid\+D\+M\+A\+D\+A\+D()}{\_isValidDMADAD()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+is\+Valid\+D\+M\+A\+D\+AD (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{dma,  }\item[{uint32\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_a9ce9e850dbac04ffe37b6c5566c95c46_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{dma_8c_acf3192138b2c5bb14b7374d292fbf15d}\label{dma_8c_acf3192138b2c5bb14b7374d292fbf15d}} 
+\index{dma.\+c@{dma.\+c}!\+\_\+is\+Valid\+D\+M\+A\+S\+AD@{\+\_\+is\+Valid\+D\+M\+A\+S\+AD}}
+\index{\+\_\+is\+Valid\+D\+M\+A\+S\+AD@{\+\_\+is\+Valid\+D\+M\+A\+S\+AD}!dma.\+c@{dma.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+is\+Valid\+D\+M\+A\+S\+A\+D()}{\_isValidDMASAD()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+is\+Valid\+D\+M\+A\+S\+AD (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{dma,  }\item[{uint32\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_acf3192138b2c5bb14b7374d292fbf15d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{dma_8c_a0ca41c47a7ea36f7809bfa5e4edce2c5}\label{dma_8c_a0ca41c47a7ea36f7809bfa5e4edce2c5}} 
+\index{dma.\+c@{dma.\+c}!G\+B\+A\+D\+M\+A\+Init@{G\+B\+A\+D\+M\+A\+Init}}
+\index{G\+B\+A\+D\+M\+A\+Init@{G\+B\+A\+D\+M\+A\+Init}!dma.\+c@{dma.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+D\+M\+A\+Init()}{GBADMAInit()}}
+{\footnotesize\ttfamily void G\+B\+A\+D\+M\+A\+Init (\begin{DoxyParamCaption}\item[{struct G\+BA $\ast$}]{gba }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_a0ca41c47a7ea36f7809bfa5e4edce2c5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_a0ca41c47a7ea36f7809bfa5e4edce2c5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{dma_8c_aa43a617912b4b311b18c7aff398acf0e}\label{dma_8c_aa43a617912b4b311b18c7aff398acf0e}} 
+\index{dma.\+c@{dma.\+c}!G\+B\+A\+D\+M\+A\+Reset@{G\+B\+A\+D\+M\+A\+Reset}}
+\index{G\+B\+A\+D\+M\+A\+Reset@{G\+B\+A\+D\+M\+A\+Reset}!dma.\+c@{dma.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+D\+M\+A\+Reset()}{GBADMAReset()}}
+{\footnotesize\ttfamily void G\+B\+A\+D\+M\+A\+Reset (\begin{DoxyParamCaption}\item[{struct G\+BA $\ast$}]{gba }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_aa43a617912b4b311b18c7aff398acf0e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{dma_8c_a71dd69e42775a815357027694c938330}\label{dma_8c_a71dd69e42775a815357027694c938330}} 
+\index{dma.\+c@{dma.\+c}!G\+B\+A\+D\+M\+A\+Run\+Display\+Start@{G\+B\+A\+D\+M\+A\+Run\+Display\+Start}}
+\index{G\+B\+A\+D\+M\+A\+Run\+Display\+Start@{G\+B\+A\+D\+M\+A\+Run\+Display\+Start}!dma.\+c@{dma.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+D\+M\+A\+Run\+Display\+Start()}{GBADMARunDisplayStart()}}
+{\footnotesize\ttfamily void G\+B\+A\+D\+M\+A\+Run\+Display\+Start (\begin{DoxyParamCaption}\item[{struct G\+BA $\ast$}]{gba,  }\item[{int32\+\_\+t}]{cycles }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_a71dd69e42775a815357027694c938330_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_a71dd69e42775a815357027694c938330_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{dma_8c_a4896197df9d5ed403c1ce5d92c43e380}\label{dma_8c_a4896197df9d5ed403c1ce5d92c43e380}} 
+\index{dma.\+c@{dma.\+c}!G\+B\+A\+D\+M\+A\+Run\+Hblank@{G\+B\+A\+D\+M\+A\+Run\+Hblank}}
+\index{G\+B\+A\+D\+M\+A\+Run\+Hblank@{G\+B\+A\+D\+M\+A\+Run\+Hblank}!dma.\+c@{dma.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+D\+M\+A\+Run\+Hblank()}{GBADMARunHblank()}}
+{\footnotesize\ttfamily void G\+B\+A\+D\+M\+A\+Run\+Hblank (\begin{DoxyParamCaption}\item[{struct G\+BA $\ast$}]{gba,  }\item[{int32\+\_\+t}]{cycles }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_a4896197df9d5ed403c1ce5d92c43e380_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_a4896197df9d5ed403c1ce5d92c43e380_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{dma_8c_a1f5acb32eaf68fdf028159f38f6f60dd}\label{dma_8c_a1f5acb32eaf68fdf028159f38f6f60dd}} 
+\index{dma.\+c@{dma.\+c}!G\+B\+A\+D\+M\+A\+Run\+Vblank@{G\+B\+A\+D\+M\+A\+Run\+Vblank}}
+\index{G\+B\+A\+D\+M\+A\+Run\+Vblank@{G\+B\+A\+D\+M\+A\+Run\+Vblank}!dma.\+c@{dma.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+D\+M\+A\+Run\+Vblank()}{GBADMARunVblank()}}
+{\footnotesize\ttfamily void G\+B\+A\+D\+M\+A\+Run\+Vblank (\begin{DoxyParamCaption}\item[{struct G\+BA $\ast$}]{gba,  }\item[{int32\+\_\+t}]{cycles }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_a1f5acb32eaf68fdf028159f38f6f60dd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_a1f5acb32eaf68fdf028159f38f6f60dd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{dma_8c_a98bfe758ec75d812d5a63a60309018c7}\label{dma_8c_a98bfe758ec75d812d5a63a60309018c7}} 
+\index{dma.\+c@{dma.\+c}!G\+B\+A\+D\+M\+A\+Schedule@{G\+B\+A\+D\+M\+A\+Schedule}}
+\index{G\+B\+A\+D\+M\+A\+Schedule@{G\+B\+A\+D\+M\+A\+Schedule}!dma.\+c@{dma.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+D\+M\+A\+Schedule()}{GBADMASchedule()}}
+{\footnotesize\ttfamily void G\+B\+A\+D\+M\+A\+Schedule (\begin{DoxyParamCaption}\item[{struct G\+BA $\ast$}]{gba,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{number,  }\item[{struct G\+B\+A\+D\+MA $\ast$}]{info }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_a98bfe758ec75d812d5a63a60309018c7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_a98bfe758ec75d812d5a63a60309018c7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{dma_8c_a75b830a553b8dcbf937504576f4ba901}\label{dma_8c_a75b830a553b8dcbf937504576f4ba901}} 
+\index{dma.\+c@{dma.\+c}!G\+B\+A\+D\+M\+A\+Service@{G\+B\+A\+D\+M\+A\+Service}}
+\index{G\+B\+A\+D\+M\+A\+Service@{G\+B\+A\+D\+M\+A\+Service}!dma.\+c@{dma.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+D\+M\+A\+Service()}{GBADMAService()}}
+{\footnotesize\ttfamily void G\+B\+A\+D\+M\+A\+Service (\begin{DoxyParamCaption}\item[{struct G\+BA $\ast$}]{gba,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{number,  }\item[{struct G\+B\+A\+D\+MA $\ast$}]{info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_a75b830a553b8dcbf937504576f4ba901_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_a75b830a553b8dcbf937504576f4ba901_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{dma_8c_a36f6a93237311ebb0a4d23666d0ac73b}\label{dma_8c_a36f6a93237311ebb0a4d23666d0ac73b}} 
+\index{dma.\+c@{dma.\+c}!G\+B\+A\+D\+M\+A\+Update@{G\+B\+A\+D\+M\+A\+Update}}
+\index{G\+B\+A\+D\+M\+A\+Update@{G\+B\+A\+D\+M\+A\+Update}!dma.\+c@{dma.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+D\+M\+A\+Update()}{GBADMAUpdate()}}
+{\footnotesize\ttfamily void G\+B\+A\+D\+M\+A\+Update (\begin{DoxyParamCaption}\item[{struct G\+BA $\ast$}]{gba }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{dma_8c_a36f6a93237311ebb0a4d23666d0ac73b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_a36f6a93237311ebb0a4d23666d0ac73b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{dma_8c_acfc59d0bb0048388398e4a7b25f6e874}\label{dma_8c_acfc59d0bb0048388398e4a7b25f6e874}} 
+\index{dma.\+c@{dma.\+c}!G\+B\+A\+D\+M\+A\+Write\+C\+N\+T\+\_\+\+HI@{G\+B\+A\+D\+M\+A\+Write\+C\+N\+T\+\_\+\+HI}}
+\index{G\+B\+A\+D\+M\+A\+Write\+C\+N\+T\+\_\+\+HI@{G\+B\+A\+D\+M\+A\+Write\+C\+N\+T\+\_\+\+HI}!dma.\+c@{dma.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+D\+M\+A\+Write\+C\+N\+T\+\_\+\+H\+I()}{GBADMAWriteCNT\_HI()}}
+{\footnotesize\ttfamily uint16\+\_\+t G\+B\+A\+D\+M\+A\+Write\+C\+N\+T\+\_\+\+HI (\begin{DoxyParamCaption}\item[{struct G\+BA $\ast$}]{gba,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{dma,  }\item[{uint16\+\_\+t}]{control }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_acfc59d0bb0048388398e4a7b25f6e874_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_acfc59d0bb0048388398e4a7b25f6e874_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{dma_8c_a831dfee90d244f83642aea23b7a1d490}\label{dma_8c_a831dfee90d244f83642aea23b7a1d490}} 
+\index{dma.\+c@{dma.\+c}!G\+B\+A\+D\+M\+A\+Write\+C\+N\+T\+\_\+\+LO@{G\+B\+A\+D\+M\+A\+Write\+C\+N\+T\+\_\+\+LO}}
+\index{G\+B\+A\+D\+M\+A\+Write\+C\+N\+T\+\_\+\+LO@{G\+B\+A\+D\+M\+A\+Write\+C\+N\+T\+\_\+\+LO}!dma.\+c@{dma.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+D\+M\+A\+Write\+C\+N\+T\+\_\+\+L\+O()}{GBADMAWriteCNT\_LO()}}
+{\footnotesize\ttfamily void G\+B\+A\+D\+M\+A\+Write\+C\+N\+T\+\_\+\+LO (\begin{DoxyParamCaption}\item[{struct G\+BA $\ast$}]{gba,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{dma,  }\item[{uint16\+\_\+t}]{count }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{dma_8c_a831dfee90d244f83642aea23b7a1d490_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_a831dfee90d244f83642aea23b7a1d490_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{dma_8c_a0e698ddb8217a1407c5939d2cb45fec6}\label{dma_8c_a0e698ddb8217a1407c5939d2cb45fec6}} 
+\index{dma.\+c@{dma.\+c}!G\+B\+A\+D\+M\+A\+Write\+D\+AD@{G\+B\+A\+D\+M\+A\+Write\+D\+AD}}
+\index{G\+B\+A\+D\+M\+A\+Write\+D\+AD@{G\+B\+A\+D\+M\+A\+Write\+D\+AD}!dma.\+c@{dma.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+D\+M\+A\+Write\+D\+A\+D()}{GBADMAWriteDAD()}}
+{\footnotesize\ttfamily uint32\+\_\+t G\+B\+A\+D\+M\+A\+Write\+D\+AD (\begin{DoxyParamCaption}\item[{struct G\+BA $\ast$}]{gba,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{dma,  }\item[{uint32\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=323pt]{dma_8c_a0e698ddb8217a1407c5939d2cb45fec6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_a0e698ddb8217a1407c5939d2cb45fec6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{dma_8c_aee2f7ef6aee1174e6072eb5fd7e97fc5}\label{dma_8c_aee2f7ef6aee1174e6072eb5fd7e97fc5}} 
+\index{dma.\+c@{dma.\+c}!G\+B\+A\+D\+M\+A\+Write\+S\+AD@{G\+B\+A\+D\+M\+A\+Write\+S\+AD}}
+\index{G\+B\+A\+D\+M\+A\+Write\+S\+AD@{G\+B\+A\+D\+M\+A\+Write\+S\+AD}!dma.\+c@{dma.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+D\+M\+A\+Write\+S\+A\+D()}{GBADMAWriteSAD()}}
+{\footnotesize\ttfamily uint32\+\_\+t G\+B\+A\+D\+M\+A\+Write\+S\+AD (\begin{DoxyParamCaption}\item[{struct G\+BA $\ast$}]{gba,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{dma,  }\item[{uint32\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{dma_8c_aee2f7ef6aee1174e6072eb5fd7e97fc5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c_aee2f7ef6aee1174e6072eb5fd7e97fc5_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{dma_8c_a4c201bc0b28912f71b26fe3d9efccbef}\label{dma_8c_a4c201bc0b28912f71b26fe3d9efccbef}} 
+\index{dma.\+c@{dma.\+c}!D\+M\+A\+\_\+\+O\+F\+F\+S\+ET@{D\+M\+A\+\_\+\+O\+F\+F\+S\+ET}}
+\index{D\+M\+A\+\_\+\+O\+F\+F\+S\+ET@{D\+M\+A\+\_\+\+O\+F\+F\+S\+ET}!dma.\+c@{dma.\+c}}
+\subsubsection{\texorpdfstring{D\+M\+A\+\_\+\+O\+F\+F\+S\+ET}{DMA\_OFFSET}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} D\+M\+A\+\_\+\+O\+F\+F\+S\+ET\mbox{[}$\,$\mbox{]} = \{ 1, -\/1, 0, 1 \}\hspace{0.3cm}{\ttfamily [static]}}
+

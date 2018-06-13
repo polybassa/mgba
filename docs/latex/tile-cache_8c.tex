@@ -1,0 +1,322 @@
+\hypertarget{tile-cache_8c}{}\section{src/core/tile-\/cache.c File Reference}
+\label{tile-cache_8c}\index{src/core/tile-\/cache.\+c@{src/core/tile-\/cache.\+c}}
+{\ttfamily \#include $<$mgba/core/tile-\/cache.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/memory.\+h$>$}\newline
+Include dependency graph for tile-\/cache.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{tile-cache_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{tile-cache_8c_ae11c387e6cfd9f19218653824ee13308}{m\+Tile\+Cache\+Init}} (struct m\+Tile\+Cache $\ast$cache)
+\item 
+static void \mbox{\hyperlink{tile-cache_8c_a4f35746d84b7aef07507094ca898748f}{\+\_\+free\+Cache}} (struct m\+Tile\+Cache $\ast$cache)
+\item 
+static void \mbox{\hyperlink{tile-cache_8c_a153de28ed2867a57b6de1dff09c616b2}{\+\_\+redo\+Cache\+Size}} (struct m\+Tile\+Cache $\ast$cache)
+\item 
+void \mbox{\hyperlink{tile-cache_8c_aac84a3d9543f7c4b29734b064d88bc53}{m\+Tile\+Cache\+Configure}} (struct m\+Tile\+Cache $\ast$cache, m\+Tile\+Cache\+Configuration \mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+void \mbox{\hyperlink{tile-cache_8c_a17c8e2e1e7c0b387bcf886e51b3c1fa1}{m\+Tile\+Cache\+Configure\+System}} (struct m\+Tile\+Cache $\ast$cache, m\+Tile\+Cache\+System\+Info \mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, uint32\+\_\+t tile\+Base, uint32\+\_\+t palette\+Base)
+\item 
+void \mbox{\hyperlink{tile-cache_8c_a1426fbd1e5ca5db4617a2fc1745e2590}{m\+Tile\+Cache\+Deinit}} (struct m\+Tile\+Cache $\ast$cache)
+\item 
+void \mbox{\hyperlink{tile-cache_8c_a8234621c3fb1acb87f216401cce3f173}{m\+Tile\+Cache\+Write\+V\+R\+AM}} (struct m\+Tile\+Cache $\ast$cache, uint32\+\_\+t address)
+\item 
+void \mbox{\hyperlink{tile-cache_8c_a49ed123bd2aa01fafd4affa947ed5a62}{m\+Tile\+Cache\+Write\+Palette}} (struct m\+Tile\+Cache $\ast$cache, uint32\+\_\+t entry, color\+\_\+t color)
+\item 
+static void \mbox{\hyperlink{tile-cache_8c_a2ce7618147b6635261531801824ce86c}{\+\_\+regenerate\+Tile4}} (struct m\+Tile\+Cache $\ast$cache, color\+\_\+t $\ast$tile, unsigned tile\+Id, unsigned palette\+Id)
+\item 
+static void \mbox{\hyperlink{tile-cache_8c_ac73c7b43d4ecb49d64c6e6f47d5295a6}{\+\_\+regenerate\+Tile16}} (struct m\+Tile\+Cache $\ast$cache, color\+\_\+t $\ast$tile, unsigned tile\+Id, unsigned palette\+Id)
+\item 
+static void \mbox{\hyperlink{tile-cache_8c_aa8513c1bab92e82135f641819efb62ef}{\+\_\+regenerate\+Tile256}} (struct m\+Tile\+Cache $\ast$cache, color\+\_\+t $\ast$tile, unsigned tile\+Id, unsigned palette\+Id)
+\item 
+static color\+\_\+t $\ast$ \mbox{\hyperlink{tile-cache_8c_a643519288c92eb6c00a5f6694984f6d0}{\+\_\+tile\+Lookup}} (struct m\+Tile\+Cache $\ast$cache, unsigned tile\+Id, unsigned palette\+Id)
+\item 
+const color\+\_\+t $\ast$ \mbox{\hyperlink{tile-cache_8c_a095b4a1a63027962105a30a6197db22d}{m\+Tile\+Cache\+Get\+Tile}} (struct m\+Tile\+Cache $\ast$cache, unsigned tile\+Id, unsigned palette\+Id)
+\item 
+const color\+\_\+t $\ast$ \mbox{\hyperlink{tile-cache_8c_ac03a3bf273a14e0a825221dce2343a9d}{m\+Tile\+Cache\+Get\+Tile\+If\+Dirty}} (struct m\+Tile\+Cache $\ast$cache, struct m\+Tile\+Cache\+Entry $\ast$entry, unsigned tile\+Id, unsigned palette\+Id)
+\item 
+const color\+\_\+t $\ast$ \mbox{\hyperlink{tile-cache_8c_a1d3812aa56af3faee81d8fd4b9d76213}{m\+Tile\+Cache\+Get\+Palette}} (struct m\+Tile\+Cache $\ast$cache, unsigned palette\+Id)
+\item 
+const uint16\+\_\+t $\ast$ \mbox{\hyperlink{tile-cache_8c_a5bf34d1c79ff5b95ad75b72e5082856d}{m\+Tile\+Cache\+Get\+V\+R\+AM}} (struct m\+Tile\+Cache $\ast$cache, unsigned tile\+Id)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{tile-cache_8c_a4f35746d84b7aef07507094ca898748f}\label{tile-cache_8c_a4f35746d84b7aef07507094ca898748f}} 
+\index{tile-\/cache.\+c@{tile-\/cache.\+c}!\+\_\+free\+Cache@{\+\_\+free\+Cache}}
+\index{\+\_\+free\+Cache@{\+\_\+free\+Cache}!tile-\/cache.\+c@{tile-\/cache.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+free\+Cache()}{\_freeCache()}}
+{\footnotesize\ttfamily static void \+\_\+free\+Cache (\begin{DoxyParamCaption}\item[{struct m\+Tile\+Cache $\ast$}]{cache }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{tile-cache_8c_a4f35746d84b7aef07507094ca898748f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tile-cache_8c_a4f35746d84b7aef07507094ca898748f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tile-cache_8c_a153de28ed2867a57b6de1dff09c616b2}\label{tile-cache_8c_a153de28ed2867a57b6de1dff09c616b2}} 
+\index{tile-\/cache.\+c@{tile-\/cache.\+c}!\+\_\+redo\+Cache\+Size@{\+\_\+redo\+Cache\+Size}}
+\index{\+\_\+redo\+Cache\+Size@{\+\_\+redo\+Cache\+Size}!tile-\/cache.\+c@{tile-\/cache.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+redo\+Cache\+Size()}{\_redoCacheSize()}}
+{\footnotesize\ttfamily static void \+\_\+redo\+Cache\+Size (\begin{DoxyParamCaption}\item[{struct m\+Tile\+Cache $\ast$}]{cache }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{tile-cache_8c_a153de28ed2867a57b6de1dff09c616b2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tile-cache_8c_a153de28ed2867a57b6de1dff09c616b2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tile-cache_8c_ac73c7b43d4ecb49d64c6e6f47d5295a6}\label{tile-cache_8c_ac73c7b43d4ecb49d64c6e6f47d5295a6}} 
+\index{tile-\/cache.\+c@{tile-\/cache.\+c}!\+\_\+regenerate\+Tile16@{\+\_\+regenerate\+Tile16}}
+\index{\+\_\+regenerate\+Tile16@{\+\_\+regenerate\+Tile16}!tile-\/cache.\+c@{tile-\/cache.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+regenerate\+Tile16()}{\_regenerateTile16()}}
+{\footnotesize\ttfamily static void \+\_\+regenerate\+Tile16 (\begin{DoxyParamCaption}\item[{struct m\+Tile\+Cache $\ast$}]{cache,  }\item[{color\+\_\+t $\ast$}]{tile,  }\item[{unsigned}]{tile\+Id,  }\item[{unsigned}]{palette\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tile-cache_8c_ac73c7b43d4ecb49d64c6e6f47d5295a6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tile-cache_8c_aa8513c1bab92e82135f641819efb62ef}\label{tile-cache_8c_aa8513c1bab92e82135f641819efb62ef}} 
+\index{tile-\/cache.\+c@{tile-\/cache.\+c}!\+\_\+regenerate\+Tile256@{\+\_\+regenerate\+Tile256}}
+\index{\+\_\+regenerate\+Tile256@{\+\_\+regenerate\+Tile256}!tile-\/cache.\+c@{tile-\/cache.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+regenerate\+Tile256()}{\_regenerateTile256()}}
+{\footnotesize\ttfamily static void \+\_\+regenerate\+Tile256 (\begin{DoxyParamCaption}\item[{struct m\+Tile\+Cache $\ast$}]{cache,  }\item[{color\+\_\+t $\ast$}]{tile,  }\item[{unsigned}]{tile\+Id,  }\item[{unsigned}]{palette\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tile-cache_8c_aa8513c1bab92e82135f641819efb62ef_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tile-cache_8c_a2ce7618147b6635261531801824ce86c}\label{tile-cache_8c_a2ce7618147b6635261531801824ce86c}} 
+\index{tile-\/cache.\+c@{tile-\/cache.\+c}!\+\_\+regenerate\+Tile4@{\+\_\+regenerate\+Tile4}}
+\index{\+\_\+regenerate\+Tile4@{\+\_\+regenerate\+Tile4}!tile-\/cache.\+c@{tile-\/cache.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+regenerate\+Tile4()}{\_regenerateTile4()}}
+{\footnotesize\ttfamily static void \+\_\+regenerate\+Tile4 (\begin{DoxyParamCaption}\item[{struct m\+Tile\+Cache $\ast$}]{cache,  }\item[{color\+\_\+t $\ast$}]{tile,  }\item[{unsigned}]{tile\+Id,  }\item[{unsigned}]{palette\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tile-cache_8c_a2ce7618147b6635261531801824ce86c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tile-cache_8c_a643519288c92eb6c00a5f6694984f6d0}\label{tile-cache_8c_a643519288c92eb6c00a5f6694984f6d0}} 
+\index{tile-\/cache.\+c@{tile-\/cache.\+c}!\+\_\+tile\+Lookup@{\+\_\+tile\+Lookup}}
+\index{\+\_\+tile\+Lookup@{\+\_\+tile\+Lookup}!tile-\/cache.\+c@{tile-\/cache.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+tile\+Lookup()}{\_tileLookup()}}
+{\footnotesize\ttfamily static color\+\_\+t$\ast$ \+\_\+tile\+Lookup (\begin{DoxyParamCaption}\item[{struct m\+Tile\+Cache $\ast$}]{cache,  }\item[{unsigned}]{tile\+Id,  }\item[{unsigned}]{palette\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tile-cache_8c_a643519288c92eb6c00a5f6694984f6d0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tile-cache_8c_aac84a3d9543f7c4b29734b064d88bc53}\label{tile-cache_8c_aac84a3d9543f7c4b29734b064d88bc53}} 
+\index{tile-\/cache.\+c@{tile-\/cache.\+c}!m\+Tile\+Cache\+Configure@{m\+Tile\+Cache\+Configure}}
+\index{m\+Tile\+Cache\+Configure@{m\+Tile\+Cache\+Configure}!tile-\/cache.\+c@{tile-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Tile\+Cache\+Configure()}{mTileCacheConfigure()}}
+{\footnotesize\ttfamily void m\+Tile\+Cache\+Configure (\begin{DoxyParamCaption}\item[{struct m\+Tile\+Cache $\ast$}]{cache,  }\item[{m\+Tile\+Cache\+Configuration}]{config }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tile-cache_8c_aac84a3d9543f7c4b29734b064d88bc53_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tile-cache_8c_aac84a3d9543f7c4b29734b064d88bc53_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tile-cache_8c_a17c8e2e1e7c0b387bcf886e51b3c1fa1}\label{tile-cache_8c_a17c8e2e1e7c0b387bcf886e51b3c1fa1}} 
+\index{tile-\/cache.\+c@{tile-\/cache.\+c}!m\+Tile\+Cache\+Configure\+System@{m\+Tile\+Cache\+Configure\+System}}
+\index{m\+Tile\+Cache\+Configure\+System@{m\+Tile\+Cache\+Configure\+System}!tile-\/cache.\+c@{tile-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Tile\+Cache\+Configure\+System()}{mTileCacheConfigureSystem()}}
+{\footnotesize\ttfamily void m\+Tile\+Cache\+Configure\+System (\begin{DoxyParamCaption}\item[{struct m\+Tile\+Cache $\ast$}]{cache,  }\item[{m\+Tile\+Cache\+System\+Info}]{config,  }\item[{uint32\+\_\+t}]{tile\+Base,  }\item[{uint32\+\_\+t}]{palette\+Base }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tile-cache_8c_a17c8e2e1e7c0b387bcf886e51b3c1fa1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tile-cache_8c_a17c8e2e1e7c0b387bcf886e51b3c1fa1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tile-cache_8c_a1426fbd1e5ca5db4617a2fc1745e2590}\label{tile-cache_8c_a1426fbd1e5ca5db4617a2fc1745e2590}} 
+\index{tile-\/cache.\+c@{tile-\/cache.\+c}!m\+Tile\+Cache\+Deinit@{m\+Tile\+Cache\+Deinit}}
+\index{m\+Tile\+Cache\+Deinit@{m\+Tile\+Cache\+Deinit}!tile-\/cache.\+c@{tile-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Tile\+Cache\+Deinit()}{mTileCacheDeinit()}}
+{\footnotesize\ttfamily void m\+Tile\+Cache\+Deinit (\begin{DoxyParamCaption}\item[{struct m\+Tile\+Cache $\ast$}]{cache }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tile-cache_8c_a1426fbd1e5ca5db4617a2fc1745e2590_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tile-cache_8c_a1426fbd1e5ca5db4617a2fc1745e2590_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tile-cache_8c_a1d3812aa56af3faee81d8fd4b9d76213}\label{tile-cache_8c_a1d3812aa56af3faee81d8fd4b9d76213}} 
+\index{tile-\/cache.\+c@{tile-\/cache.\+c}!m\+Tile\+Cache\+Get\+Palette@{m\+Tile\+Cache\+Get\+Palette}}
+\index{m\+Tile\+Cache\+Get\+Palette@{m\+Tile\+Cache\+Get\+Palette}!tile-\/cache.\+c@{tile-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Tile\+Cache\+Get\+Palette()}{mTileCacheGetPalette()}}
+{\footnotesize\ttfamily const color\+\_\+t$\ast$ m\+Tile\+Cache\+Get\+Palette (\begin{DoxyParamCaption}\item[{struct m\+Tile\+Cache $\ast$}]{cache,  }\item[{unsigned}]{palette\+Id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tile-cache_8c_a095b4a1a63027962105a30a6197db22d}\label{tile-cache_8c_a095b4a1a63027962105a30a6197db22d}} 
+\index{tile-\/cache.\+c@{tile-\/cache.\+c}!m\+Tile\+Cache\+Get\+Tile@{m\+Tile\+Cache\+Get\+Tile}}
+\index{m\+Tile\+Cache\+Get\+Tile@{m\+Tile\+Cache\+Get\+Tile}!tile-\/cache.\+c@{tile-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Tile\+Cache\+Get\+Tile()}{mTileCacheGetTile()}}
+{\footnotesize\ttfamily const color\+\_\+t$\ast$ m\+Tile\+Cache\+Get\+Tile (\begin{DoxyParamCaption}\item[{struct m\+Tile\+Cache $\ast$}]{cache,  }\item[{unsigned}]{tile\+Id,  }\item[{unsigned}]{palette\+Id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{tile-cache_8c_a095b4a1a63027962105a30a6197db22d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tile-cache_8c_a095b4a1a63027962105a30a6197db22d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tile-cache_8c_ac03a3bf273a14e0a825221dce2343a9d}\label{tile-cache_8c_ac03a3bf273a14e0a825221dce2343a9d}} 
+\index{tile-\/cache.\+c@{tile-\/cache.\+c}!m\+Tile\+Cache\+Get\+Tile\+If\+Dirty@{m\+Tile\+Cache\+Get\+Tile\+If\+Dirty}}
+\index{m\+Tile\+Cache\+Get\+Tile\+If\+Dirty@{m\+Tile\+Cache\+Get\+Tile\+If\+Dirty}!tile-\/cache.\+c@{tile-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Tile\+Cache\+Get\+Tile\+If\+Dirty()}{mTileCacheGetTileIfDirty()}}
+{\footnotesize\ttfamily const color\+\_\+t$\ast$ m\+Tile\+Cache\+Get\+Tile\+If\+Dirty (\begin{DoxyParamCaption}\item[{struct m\+Tile\+Cache $\ast$}]{cache,  }\item[{struct m\+Tile\+Cache\+Entry $\ast$}]{entry,  }\item[{unsigned}]{tile\+Id,  }\item[{unsigned}]{palette\+Id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tile-cache_8c_ac03a3bf273a14e0a825221dce2343a9d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tile-cache_8c_ac03a3bf273a14e0a825221dce2343a9d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tile-cache_8c_a5bf34d1c79ff5b95ad75b72e5082856d}\label{tile-cache_8c_a5bf34d1c79ff5b95ad75b72e5082856d}} 
+\index{tile-\/cache.\+c@{tile-\/cache.\+c}!m\+Tile\+Cache\+Get\+V\+R\+AM@{m\+Tile\+Cache\+Get\+V\+R\+AM}}
+\index{m\+Tile\+Cache\+Get\+V\+R\+AM@{m\+Tile\+Cache\+Get\+V\+R\+AM}!tile-\/cache.\+c@{tile-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Tile\+Cache\+Get\+V\+R\+A\+M()}{mTileCacheGetVRAM()}}
+{\footnotesize\ttfamily const uint16\+\_\+t$\ast$ m\+Tile\+Cache\+Get\+V\+R\+AM (\begin{DoxyParamCaption}\item[{struct m\+Tile\+Cache $\ast$}]{cache,  }\item[{unsigned}]{tile\+Id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{tile-cache_8c_ae11c387e6cfd9f19218653824ee13308}\label{tile-cache_8c_ae11c387e6cfd9f19218653824ee13308}} 
+\index{tile-\/cache.\+c@{tile-\/cache.\+c}!m\+Tile\+Cache\+Init@{m\+Tile\+Cache\+Init}}
+\index{m\+Tile\+Cache\+Init@{m\+Tile\+Cache\+Init}!tile-\/cache.\+c@{tile-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Tile\+Cache\+Init()}{mTileCacheInit()}}
+{\footnotesize\ttfamily void m\+Tile\+Cache\+Init (\begin{DoxyParamCaption}\item[{struct m\+Tile\+Cache $\ast$}]{cache }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tile-cache_8c_ae11c387e6cfd9f19218653824ee13308_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tile-cache_8c_a49ed123bd2aa01fafd4affa947ed5a62}\label{tile-cache_8c_a49ed123bd2aa01fafd4affa947ed5a62}} 
+\index{tile-\/cache.\+c@{tile-\/cache.\+c}!m\+Tile\+Cache\+Write\+Palette@{m\+Tile\+Cache\+Write\+Palette}}
+\index{m\+Tile\+Cache\+Write\+Palette@{m\+Tile\+Cache\+Write\+Palette}!tile-\/cache.\+c@{tile-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Tile\+Cache\+Write\+Palette()}{mTileCacheWritePalette()}}
+{\footnotesize\ttfamily void m\+Tile\+Cache\+Write\+Palette (\begin{DoxyParamCaption}\item[{struct m\+Tile\+Cache $\ast$}]{cache,  }\item[{uint32\+\_\+t}]{entry,  }\item[{color\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tile-cache_8c_a49ed123bd2aa01fafd4affa947ed5a62_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{tile-cache_8c_a8234621c3fb1acb87f216401cce3f173}\label{tile-cache_8c_a8234621c3fb1acb87f216401cce3f173}} 
+\index{tile-\/cache.\+c@{tile-\/cache.\+c}!m\+Tile\+Cache\+Write\+V\+R\+AM@{m\+Tile\+Cache\+Write\+V\+R\+AM}}
+\index{m\+Tile\+Cache\+Write\+V\+R\+AM@{m\+Tile\+Cache\+Write\+V\+R\+AM}!tile-\/cache.\+c@{tile-\/cache.\+c}}
+\subsubsection{\texorpdfstring{m\+Tile\+Cache\+Write\+V\+R\+A\+M()}{mTileCacheWriteVRAM()}}
+{\footnotesize\ttfamily void m\+Tile\+Cache\+Write\+V\+R\+AM (\begin{DoxyParamCaption}\item[{struct m\+Tile\+Cache $\ast$}]{cache,  }\item[{uint32\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{tile-cache_8c_a8234621c3fb1acb87f216401cce3f173_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{tile-cache_8c_a8234621c3fb1acb87f216401cce3f173_icgraph}
+\end{center}
+\end{figure}

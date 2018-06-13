@@ -1,0 +1,288 @@
+\hypertarget{_xz_in_8c}{}\section{src/third-\/party/lzma/\+Xz\+In.c File Reference}
+\label{_xz_in_8c}\index{src/third-\/party/lzma/\+Xz\+In.\+c@{src/third-\/party/lzma/\+Xz\+In.\+c}}
+{\ttfamily \#include \char`\"{}Precomp.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}7z\+Crc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Cpu\+Arch.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Xz.\+h\char`\"{}}\newline
+Include dependency graph for Xz\+In.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_xz_in_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_xz_in_8c_abf7247b3e5a35bf47b454380efff7caf}{R\+E\+A\+D\+\_\+\+V\+A\+R\+I\+N\+T\+\_\+\+A\+N\+D\+\_\+\+C\+H\+E\+CK}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},  pos,  \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}},  res)
+\item 
+\#define \mbox{\hyperlink{_xz_in_8c_aac02f5533d807d9b951daca1c1f77272}{A\+D\+D\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+H\+E\+CH}}(\mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}},  val)~\{ \mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} new\+Size = \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}} + (val); \mbox{\hyperlink{isa-lr35902_8c_a2eb27369cb3dbac14564f95cd51effdf}{if}} (new\+Size $<$ \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}) \mbox{\hyperlink{lr35902_2decoder_8c_a9717e7bbecb906637e86cef6da3d83c2}{return}} \mbox{\hyperlink{_xz_8h_a52fc30c2503ef9e27a119c301e3db3c2}{X\+Z\+\_\+\+S\+I\+Z\+E\+\_\+\+O\+V\+E\+R\+F\+L\+OW}}; \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}} = new\+Size; \}
+\item 
+\#define \mbox{\hyperlink{_xz_in_8c_ac597026bf0084ee98c9906541a4c202b}{T\+E\+M\+P\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE}}~(1 $<$$<$ 10)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_xz_in_8c_afab6b310d7efa7247ceec2c36e4f3e17}{Xz\+\_\+\+Read\+Header}} (\mbox{\hyperlink{_xz_8h_a80f5d0cba1813b2cf72d2360dc42eb75}{C\+Xz\+Stream\+Flags}} $\ast$p, \mbox{\hyperlink{struct_i_seq_in_stream}{I\+Seq\+In\+Stream}} $\ast$in\+Stream)
+\item 
+\mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_xz_in_8c_a9bdf7cec4bb80198ac94c31581a456f0}{Xz\+Block\+\_\+\+Read\+Header}} (\mbox{\hyperlink{_xz_8h_struct_c_xz_block}{C\+Xz\+Block}} $\ast$p, \mbox{\hyperlink{struct_i_seq_in_stream}{I\+Seq\+In\+Stream}} $\ast$in\+Stream, \mbox{\hyperlink{7z_types_8h_afdcfe6db5bea87bd493a3fe2c513d5ef}{Bool}} $\ast$is\+Index, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$header\+Size\+Res)
+\item 
+\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} \mbox{\hyperlink{_xz_in_8c_a250052811da7e47f00d899ea7a885824}{Xz\+\_\+\+Get\+Unpack\+Size}} (const \mbox{\hyperlink{_xz_8h_struct_c_xz_stream}{C\+Xz\+Stream}} $\ast$p)
+\item 
+\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} \mbox{\hyperlink{_xz_in_8c_ae26a434a64f086aa04b8bf5fa26fca37}{Xz\+\_\+\+Get\+Pack\+Size}} (const \mbox{\hyperlink{_xz_8h_struct_c_xz_stream}{C\+Xz\+Stream}} $\ast$p)
+\item 
+static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_xz_in_8c_a58807465b72a3220d3f92da43f996f4d}{Xz\+\_\+\+Read\+Index2}} (\mbox{\hyperlink{_xz_8h_struct_c_xz_stream}{C\+Xz\+Stream}} $\ast$p, const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}, \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$alloc)
+\item 
+static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_xz_in_8c_a4f05fbb04498afc4c26360cac341d8a4}{Xz\+\_\+\+Read\+Index}} (\mbox{\hyperlink{_xz_8h_struct_c_xz_stream}{C\+Xz\+Stream}} $\ast$p, \mbox{\hyperlink{struct_i_look_in_stream}{I\+Look\+In\+Stream}} $\ast$\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, \mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} index\+Size, \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$alloc)
+\item 
+static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_xz_in_8c_a611ee47b8dff12ce517d5536f8ddd3cd}{Look\+In\+Stream\+\_\+\+Seek\+Read\+\_\+\+For\+Arc}} (\mbox{\hyperlink{struct_i_look_in_stream}{I\+Look\+In\+Stream}} $\ast$\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, \mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} \mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}}, void $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_xz_in_8c_a09f4cafefe8aa0414abc2aa73b37980f}{Xz\+\_\+\+Read\+Backward}} (\mbox{\hyperlink{_xz_8h_struct_c_xz_stream}{C\+Xz\+Stream}} $\ast$p, \mbox{\hyperlink{struct_i_look_in_stream}{I\+Look\+In\+Stream}} $\ast$\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, \mbox{\hyperlink{7z_types_8h_ade5ca5eec203b16d15253b7c422808bf}{Int64}} $\ast$start\+Offset, \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$alloc)
+\item 
+void \mbox{\hyperlink{_xz_in_8c_a84bfa49e18e4cd08f1e90f2a82bae3bb}{Xzs\+\_\+\+Construct}} (\mbox{\hyperlink{_xz_8h_struct_c_xzs}{C\+Xzs}} $\ast$p)
+\item 
+void \mbox{\hyperlink{_xz_in_8c_ae91972640c329401292933b0253e155f}{Xzs\+\_\+\+Free}} (\mbox{\hyperlink{_xz_8h_struct_c_xzs}{C\+Xzs}} $\ast$p, \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$alloc)
+\item 
+\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} \mbox{\hyperlink{_xz_in_8c_a8bb155ec49f2fd9bc33552cbcb67e36a}{Xzs\+\_\+\+Get\+Num\+Blocks}} (const \mbox{\hyperlink{_xz_8h_struct_c_xzs}{C\+Xzs}} $\ast$p)
+\item 
+\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} \mbox{\hyperlink{_xz_in_8c_a02c1ff3e160d7f33d7f2e9e2137b5252}{Xzs\+\_\+\+Get\+Unpack\+Size}} (const \mbox{\hyperlink{_xz_8h_struct_c_xzs}{C\+Xzs}} $\ast$p)
+\item 
+\mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_xz_in_8c_a2c1273528fd7ffbd3c617295869d8b21}{Xzs\+\_\+\+Read\+Backward}} (\mbox{\hyperlink{_xz_8h_struct_c_xzs}{C\+Xzs}} $\ast$p, \mbox{\hyperlink{struct_i_look_in_stream}{I\+Look\+In\+Stream}} $\ast$\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, \mbox{\hyperlink{7z_types_8h_ade5ca5eec203b16d15253b7c422808bf}{Int64}} $\ast$start\+Offset, \mbox{\hyperlink{struct_i_compress_progress}{I\+Compress\+Progress}} $\ast$progress, \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$alloc)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_xz_in_8c_aac02f5533d807d9b951daca1c1f77272}\label{_xz_in_8c_aac02f5533d807d9b951daca1c1f77272}} 
+\index{Xz\+In.\+c@{Xz\+In.\+c}!A\+D\+D\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+H\+E\+CH@{A\+D\+D\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+H\+E\+CH}}
+\index{A\+D\+D\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+H\+E\+CH@{A\+D\+D\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+H\+E\+CH}!Xz\+In.\+c@{Xz\+In.\+c}}
+\subsubsection{\texorpdfstring{A\+D\+D\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+H\+E\+CH}{ADD\_SIZE\_CHECH}}
+{\footnotesize\ttfamily \#define A\+D\+D\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+H\+E\+CH(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}},  }\item[{}]{val }\end{DoxyParamCaption})~\{ \mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} new\+Size = \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}} + (val); \mbox{\hyperlink{isa-lr35902_8c_a2eb27369cb3dbac14564f95cd51effdf}{if}} (new\+Size $<$ \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}) \mbox{\hyperlink{lr35902_2decoder_8c_a9717e7bbecb906637e86cef6da3d83c2}{return}} \mbox{\hyperlink{_xz_8h_a52fc30c2503ef9e27a119c301e3db3c2}{X\+Z\+\_\+\+S\+I\+Z\+E\+\_\+\+O\+V\+E\+R\+F\+L\+OW}}; \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}} = new\+Size; \}}
+
+\mbox{\Hypertarget{_xz_in_8c_abf7247b3e5a35bf47b454380efff7caf}\label{_xz_in_8c_abf7247b3e5a35bf47b454380efff7caf}} 
+\index{Xz\+In.\+c@{Xz\+In.\+c}!R\+E\+A\+D\+\_\+\+V\+A\+R\+I\+N\+T\+\_\+\+A\+N\+D\+\_\+\+C\+H\+E\+CK@{R\+E\+A\+D\+\_\+\+V\+A\+R\+I\+N\+T\+\_\+\+A\+N\+D\+\_\+\+C\+H\+E\+CK}}
+\index{R\+E\+A\+D\+\_\+\+V\+A\+R\+I\+N\+T\+\_\+\+A\+N\+D\+\_\+\+C\+H\+E\+CK@{R\+E\+A\+D\+\_\+\+V\+A\+R\+I\+N\+T\+\_\+\+A\+N\+D\+\_\+\+C\+H\+E\+CK}!Xz\+In.\+c@{Xz\+In.\+c}}
+\subsubsection{\texorpdfstring{R\+E\+A\+D\+\_\+\+V\+A\+R\+I\+N\+T\+\_\+\+A\+N\+D\+\_\+\+C\+H\+E\+CK}{READ\_VARINT\_AND\_CHECK}}
+{\footnotesize\ttfamily \#define R\+E\+A\+D\+\_\+\+V\+A\+R\+I\+N\+T\+\_\+\+A\+N\+D\+\_\+\+C\+H\+E\+CK(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},  }\item[{}]{pos,  }\item[{}]{\mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}},  }\item[{}]{res }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\{ \textcolor{keywordtype}{unsigned} s = \mbox{\hyperlink{_xz_8h_af26ff2f89e38efa22b65d9030b4cf23d}{Xz\_ReadVarInt}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}} + pos, \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}} - pos, res); \(\backslash\)
+  if (s == 0) \mbox{\hyperlink{lr35902_2decoder_8c_a9717e7bbecb906637e86cef6da3d83c2}{return}} \mbox{\hyperlink{7z_types_8h_aaff96c18a42a227e6d84d1a28bd301fa}{SZ\_ERROR\_ARCHIVE}}; pos += s; \}
+\end{DoxyCode}
+\mbox{\Hypertarget{_xz_in_8c_ac597026bf0084ee98c9906541a4c202b}\label{_xz_in_8c_ac597026bf0084ee98c9906541a4c202b}} 
+\index{Xz\+In.\+c@{Xz\+In.\+c}!T\+E\+M\+P\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE@{T\+E\+M\+P\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE}}
+\index{T\+E\+M\+P\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE@{T\+E\+M\+P\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE}!Xz\+In.\+c@{Xz\+In.\+c}}
+\subsubsection{\texorpdfstring{T\+E\+M\+P\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE}{TEMP\_BUF\_SIZE}}
+{\footnotesize\ttfamily \#define T\+E\+M\+P\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE~(1 $<$$<$ 10)}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_xz_in_8c_a611ee47b8dff12ce517d5536f8ddd3cd}\label{_xz_in_8c_a611ee47b8dff12ce517d5536f8ddd3cd}} 
+\index{Xz\+In.\+c@{Xz\+In.\+c}!Look\+In\+Stream\+\_\+\+Seek\+Read\+\_\+\+For\+Arc@{Look\+In\+Stream\+\_\+\+Seek\+Read\+\_\+\+For\+Arc}}
+\index{Look\+In\+Stream\+\_\+\+Seek\+Read\+\_\+\+For\+Arc@{Look\+In\+Stream\+\_\+\+Seek\+Read\+\_\+\+For\+Arc}!Xz\+In.\+c@{Xz\+In.\+c}}
+\subsubsection{\texorpdfstring{Look\+In\+Stream\+\_\+\+Seek\+Read\+\_\+\+For\+Arc()}{LookInStream\_SeekRead\_ForArc()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Look\+In\+Stream\+\_\+\+Seek\+Read\+\_\+\+For\+Arc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_i_look_in_stream}{I\+Look\+In\+Stream}} $\ast$}]{stream,  }\item[{\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}}}]{offset,  }\item[{void $\ast$}]{buf,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_xz_in_8c_a611ee47b8dff12ce517d5536f8ddd3cd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_xz_in_8c_a611ee47b8dff12ce517d5536f8ddd3cd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_xz_in_8c_ae26a434a64f086aa04b8bf5fa26fca37}\label{_xz_in_8c_ae26a434a64f086aa04b8bf5fa26fca37}} 
+\index{Xz\+In.\+c@{Xz\+In.\+c}!Xz\+\_\+\+Get\+Pack\+Size@{Xz\+\_\+\+Get\+Pack\+Size}}
+\index{Xz\+\_\+\+Get\+Pack\+Size@{Xz\+\_\+\+Get\+Pack\+Size}!Xz\+In.\+c@{Xz\+In.\+c}}
+\subsubsection{\texorpdfstring{Xz\+\_\+\+Get\+Pack\+Size()}{Xz\_GetPackSize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} Xz\+\_\+\+Get\+Pack\+Size (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_xz_8h_struct_c_xz_stream}{C\+Xz\+Stream}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_xz_in_8c_ae26a434a64f086aa04b8bf5fa26fca37_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_xz_in_8c_a250052811da7e47f00d899ea7a885824}\label{_xz_in_8c_a250052811da7e47f00d899ea7a885824}} 
+\index{Xz\+In.\+c@{Xz\+In.\+c}!Xz\+\_\+\+Get\+Unpack\+Size@{Xz\+\_\+\+Get\+Unpack\+Size}}
+\index{Xz\+\_\+\+Get\+Unpack\+Size@{Xz\+\_\+\+Get\+Unpack\+Size}!Xz\+In.\+c@{Xz\+In.\+c}}
+\subsubsection{\texorpdfstring{Xz\+\_\+\+Get\+Unpack\+Size()}{Xz\_GetUnpackSize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} Xz\+\_\+\+Get\+Unpack\+Size (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_xz_8h_struct_c_xz_stream}{C\+Xz\+Stream}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{_xz_in_8c_a250052811da7e47f00d899ea7a885824_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_xz_in_8c_a09f4cafefe8aa0414abc2aa73b37980f}\label{_xz_in_8c_a09f4cafefe8aa0414abc2aa73b37980f}} 
+\index{Xz\+In.\+c@{Xz\+In.\+c}!Xz\+\_\+\+Read\+Backward@{Xz\+\_\+\+Read\+Backward}}
+\index{Xz\+\_\+\+Read\+Backward@{Xz\+\_\+\+Read\+Backward}!Xz\+In.\+c@{Xz\+In.\+c}}
+\subsubsection{\texorpdfstring{Xz\+\_\+\+Read\+Backward()}{Xz\_ReadBackward()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Xz\+\_\+\+Read\+Backward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_xz_8h_struct_c_xz_stream}{C\+Xz\+Stream}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{struct_i_look_in_stream}{I\+Look\+In\+Stream}} $\ast$}]{stream,  }\item[{\mbox{\hyperlink{7z_types_8h_ade5ca5eec203b16d15253b7c422808bf}{Int64}} $\ast$}]{start\+Offset,  }\item[{\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$}]{alloc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_xz_in_8c_a09f4cafefe8aa0414abc2aa73b37980f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{_xz_in_8c_a09f4cafefe8aa0414abc2aa73b37980f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_xz_in_8c_afab6b310d7efa7247ceec2c36e4f3e17}\label{_xz_in_8c_afab6b310d7efa7247ceec2c36e4f3e17}} 
+\index{Xz\+In.\+c@{Xz\+In.\+c}!Xz\+\_\+\+Read\+Header@{Xz\+\_\+\+Read\+Header}}
+\index{Xz\+\_\+\+Read\+Header@{Xz\+\_\+\+Read\+Header}!Xz\+In.\+c@{Xz\+In.\+c}}
+\subsubsection{\texorpdfstring{Xz\+\_\+\+Read\+Header()}{Xz\_ReadHeader()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Xz\+\_\+\+Read\+Header (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_xz_8h_a80f5d0cba1813b2cf72d2360dc42eb75}{C\+Xz\+Stream\+Flags}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{struct_i_seq_in_stream}{I\+Seq\+In\+Stream}} $\ast$}]{in\+Stream }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_xz_in_8c_afab6b310d7efa7247ceec2c36e4f3e17_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_xz_in_8c_afab6b310d7efa7247ceec2c36e4f3e17_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_xz_in_8c_a4f05fbb04498afc4c26360cac341d8a4}\label{_xz_in_8c_a4f05fbb04498afc4c26360cac341d8a4}} 
+\index{Xz\+In.\+c@{Xz\+In.\+c}!Xz\+\_\+\+Read\+Index@{Xz\+\_\+\+Read\+Index}}
+\index{Xz\+\_\+\+Read\+Index@{Xz\+\_\+\+Read\+Index}!Xz\+In.\+c@{Xz\+In.\+c}}
+\subsubsection{\texorpdfstring{Xz\+\_\+\+Read\+Index()}{Xz\_ReadIndex()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Xz\+\_\+\+Read\+Index (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_xz_8h_struct_c_xz_stream}{C\+Xz\+Stream}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{struct_i_look_in_stream}{I\+Look\+In\+Stream}} $\ast$}]{stream,  }\item[{\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}}}]{index\+Size,  }\item[{\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$}]{alloc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_xz_in_8c_a4f05fbb04498afc4c26360cac341d8a4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_xz_in_8c_a4f05fbb04498afc4c26360cac341d8a4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_xz_in_8c_a58807465b72a3220d3f92da43f996f4d}\label{_xz_in_8c_a58807465b72a3220d3f92da43f996f4d}} 
+\index{Xz\+In.\+c@{Xz\+In.\+c}!Xz\+\_\+\+Read\+Index2@{Xz\+\_\+\+Read\+Index2}}
+\index{Xz\+\_\+\+Read\+Index2@{Xz\+\_\+\+Read\+Index2}!Xz\+In.\+c@{Xz\+In.\+c}}
+\subsubsection{\texorpdfstring{Xz\+\_\+\+Read\+Index2()}{Xz\_ReadIndex2()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Xz\+\_\+\+Read\+Index2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_xz_8h_struct_c_xz_stream}{C\+Xz\+Stream}} $\ast$}]{p,  }\item[{const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$}]{buf,  }\item[{size\+\_\+t}]{size,  }\item[{\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$}]{alloc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{_xz_in_8c_a58807465b72a3220d3f92da43f996f4d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_xz_in_8c_a58807465b72a3220d3f92da43f996f4d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_xz_in_8c_a9bdf7cec4bb80198ac94c31581a456f0}\label{_xz_in_8c_a9bdf7cec4bb80198ac94c31581a456f0}} 
+\index{Xz\+In.\+c@{Xz\+In.\+c}!Xz\+Block\+\_\+\+Read\+Header@{Xz\+Block\+\_\+\+Read\+Header}}
+\index{Xz\+Block\+\_\+\+Read\+Header@{Xz\+Block\+\_\+\+Read\+Header}!Xz\+In.\+c@{Xz\+In.\+c}}
+\subsubsection{\texorpdfstring{Xz\+Block\+\_\+\+Read\+Header()}{XzBlock\_ReadHeader()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Xz\+Block\+\_\+\+Read\+Header (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_xz_8h_struct_c_xz_block}{C\+Xz\+Block}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{struct_i_seq_in_stream}{I\+Seq\+In\+Stream}} $\ast$}]{in\+Stream,  }\item[{\mbox{\hyperlink{7z_types_8h_afdcfe6db5bea87bd493a3fe2c513d5ef}{Bool}} $\ast$}]{is\+Index,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$}]{header\+Size\+Res }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_xz_in_8c_a9bdf7cec4bb80198ac94c31581a456f0_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_xz_in_8c_a84bfa49e18e4cd08f1e90f2a82bae3bb}\label{_xz_in_8c_a84bfa49e18e4cd08f1e90f2a82bae3bb}} 
+\index{Xz\+In.\+c@{Xz\+In.\+c}!Xzs\+\_\+\+Construct@{Xzs\+\_\+\+Construct}}
+\index{Xzs\+\_\+\+Construct@{Xzs\+\_\+\+Construct}!Xz\+In.\+c@{Xz\+In.\+c}}
+\subsubsection{\texorpdfstring{Xzs\+\_\+\+Construct()}{Xzs\_Construct()}}
+{\footnotesize\ttfamily void Xzs\+\_\+\+Construct (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_xz_8h_struct_c_xzs}{C\+Xzs}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_xz_in_8c_ae91972640c329401292933b0253e155f}\label{_xz_in_8c_ae91972640c329401292933b0253e155f}} 
+\index{Xz\+In.\+c@{Xz\+In.\+c}!Xzs\+\_\+\+Free@{Xzs\+\_\+\+Free}}
+\index{Xzs\+\_\+\+Free@{Xzs\+\_\+\+Free}!Xz\+In.\+c@{Xz\+In.\+c}}
+\subsubsection{\texorpdfstring{Xzs\+\_\+\+Free()}{Xzs\_Free()}}
+{\footnotesize\ttfamily void Xzs\+\_\+\+Free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_xz_8h_struct_c_xzs}{C\+Xzs}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$}]{alloc }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{_xz_in_8c_ae91972640c329401292933b0253e155f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_xz_in_8c_a8bb155ec49f2fd9bc33552cbcb67e36a}\label{_xz_in_8c_a8bb155ec49f2fd9bc33552cbcb67e36a}} 
+\index{Xz\+In.\+c@{Xz\+In.\+c}!Xzs\+\_\+\+Get\+Num\+Blocks@{Xzs\+\_\+\+Get\+Num\+Blocks}}
+\index{Xzs\+\_\+\+Get\+Num\+Blocks@{Xzs\+\_\+\+Get\+Num\+Blocks}!Xz\+In.\+c@{Xz\+In.\+c}}
+\subsubsection{\texorpdfstring{Xzs\+\_\+\+Get\+Num\+Blocks()}{Xzs\_GetNumBlocks()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} Xzs\+\_\+\+Get\+Num\+Blocks (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_xz_8h_struct_c_xzs}{C\+Xzs}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_xz_in_8c_a02c1ff3e160d7f33d7f2e9e2137b5252}\label{_xz_in_8c_a02c1ff3e160d7f33d7f2e9e2137b5252}} 
+\index{Xz\+In.\+c@{Xz\+In.\+c}!Xzs\+\_\+\+Get\+Unpack\+Size@{Xzs\+\_\+\+Get\+Unpack\+Size}}
+\index{Xzs\+\_\+\+Get\+Unpack\+Size@{Xzs\+\_\+\+Get\+Unpack\+Size}!Xz\+In.\+c@{Xz\+In.\+c}}
+\subsubsection{\texorpdfstring{Xzs\+\_\+\+Get\+Unpack\+Size()}{Xzs\_GetUnpackSize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} Xzs\+\_\+\+Get\+Unpack\+Size (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_xz_8h_struct_c_xzs}{C\+Xzs}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{_xz_in_8c_a02c1ff3e160d7f33d7f2e9e2137b5252_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_xz_in_8c_a2c1273528fd7ffbd3c617295869d8b21}\label{_xz_in_8c_a2c1273528fd7ffbd3c617295869d8b21}} 
+\index{Xz\+In.\+c@{Xz\+In.\+c}!Xzs\+\_\+\+Read\+Backward@{Xzs\+\_\+\+Read\+Backward}}
+\index{Xzs\+\_\+\+Read\+Backward@{Xzs\+\_\+\+Read\+Backward}!Xz\+In.\+c@{Xz\+In.\+c}}
+\subsubsection{\texorpdfstring{Xzs\+\_\+\+Read\+Backward()}{Xzs\_ReadBackward()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Xzs\+\_\+\+Read\+Backward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_xz_8h_struct_c_xzs}{C\+Xzs}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{struct_i_look_in_stream}{I\+Look\+In\+Stream}} $\ast$}]{stream,  }\item[{\mbox{\hyperlink{7z_types_8h_ade5ca5eec203b16d15253b7c422808bf}{Int64}} $\ast$}]{start\+Offset,  }\item[{\mbox{\hyperlink{struct_i_compress_progress}{I\+Compress\+Progress}} $\ast$}]{progress,  }\item[{\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$}]{alloc }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_xz_in_8c_a2c1273528fd7ffbd3c617295869d8b21_cgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,168 @@
+\hypertarget{_ppmd7_enc_8c}{}\section{src/third-\/party/lzma/\+Ppmd7\+Enc.c File Reference}
+\label{_ppmd7_enc_8c}\index{src/third-\/party/lzma/\+Ppmd7\+Enc.\+c@{src/third-\/party/lzma/\+Ppmd7\+Enc.\+c}}
+{\ttfamily \#include \char`\"{}Precomp.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Ppmd7.\+h\char`\"{}}\newline
+Include dependency graph for Ppmd7\+Enc.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{_ppmd7_enc_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_ppmd7_enc_8c_ae668f35d44d0e8b31daf6479d19a5e3f}{k\+Top\+Value}}~(1 $<$$<$ 24)
+\item 
+\#define \mbox{\hyperlink{_ppmd7_enc_8c_abef70980671ba4fd0d811f4076704189}{M\+A\+SK}}(sym)~((signed char $\ast$)char\+Mask)\mbox{[}sym\mbox{]}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_ppmd7_enc_8c_a7eea05842cdb94808ee8cdaecd197902}{Ppmd7z\+\_\+\+Range\+Enc\+\_\+\+Init}} (\mbox{\hyperlink{_ppmd7_8h_struct_c_ppmd7z___range_enc}{C\+Ppmd7z\+\_\+\+Range\+Enc}} $\ast$p)
+\item 
+static void \mbox{\hyperlink{_ppmd7_enc_8c_af91125a66ce5b9f0def7d3260971c664}{Range\+Enc\+\_\+\+Shift\+Low}} (\mbox{\hyperlink{_ppmd7_8h_struct_c_ppmd7z___range_enc}{C\+Ppmd7z\+\_\+\+Range\+Enc}} $\ast$p)
+\item 
+static void \mbox{\hyperlink{_ppmd7_enc_8c_ac987617439189bf84d6b57fdf98459dd}{Range\+Enc\+\_\+\+Encode}} (\mbox{\hyperlink{_ppmd7_8h_struct_c_ppmd7z___range_enc}{C\+Ppmd7z\+\_\+\+Range\+Enc}} $\ast$p, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} \mbox{\hyperlink{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2a0e97c69c73117f6c0109b2d7d1d9cedc}{start}}, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} total)
+\item 
+static void \mbox{\hyperlink{_ppmd7_enc_8c_ac7e4ad63e8ae745cf7712c2cfc1d1981}{Range\+Enc\+\_\+\+Encode\+Bit\+\_\+0}} (\mbox{\hyperlink{_ppmd7_8h_struct_c_ppmd7z___range_enc}{C\+Ppmd7z\+\_\+\+Range\+Enc}} $\ast$p, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} size0)
+\item 
+static void \mbox{\hyperlink{_ppmd7_enc_8c_aefef7fc0f0fa1e92f09a2d5def7264b7}{Range\+Enc\+\_\+\+Encode\+Bit\+\_\+1}} (\mbox{\hyperlink{_ppmd7_8h_struct_c_ppmd7z___range_enc}{C\+Ppmd7z\+\_\+\+Range\+Enc}} $\ast$p, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} size0)
+\item 
+void \mbox{\hyperlink{_ppmd7_enc_8c_a882c4f9b5b9518b8a49e8bbc4315ddec}{Ppmd7z\+\_\+\+Range\+Enc\+\_\+\+Flush\+Data}} (\mbox{\hyperlink{_ppmd7_8h_struct_c_ppmd7z___range_enc}{C\+Ppmd7z\+\_\+\+Range\+Enc}} $\ast$p)
+\item 
+void \mbox{\hyperlink{_ppmd7_enc_8c_a9c161c80c044c5162fb4166d73c57e54}{Ppmd7\+\_\+\+Encode\+Symbol}} (\mbox{\hyperlink{_ppmd7_8h_struct_c_ppmd7}{C\+Ppmd7}} $\ast$p, \mbox{\hyperlink{_ppmd7_8h_struct_c_ppmd7z___range_enc}{C\+Ppmd7z\+\_\+\+Range\+Enc}} $\ast$rc, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} symbol)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_ppmd7_enc_8c_ae668f35d44d0e8b31daf6479d19a5e3f}\label{_ppmd7_enc_8c_ae668f35d44d0e8b31daf6479d19a5e3f}} 
+\index{Ppmd7\+Enc.\+c@{Ppmd7\+Enc.\+c}!k\+Top\+Value@{k\+Top\+Value}}
+\index{k\+Top\+Value@{k\+Top\+Value}!Ppmd7\+Enc.\+c@{Ppmd7\+Enc.\+c}}
+\subsubsection{\texorpdfstring{k\+Top\+Value}{kTopValue}}
+{\footnotesize\ttfamily \#define k\+Top\+Value~(1 $<$$<$ 24)}
+
+\mbox{\Hypertarget{_ppmd7_enc_8c_abef70980671ba4fd0d811f4076704189}\label{_ppmd7_enc_8c_abef70980671ba4fd0d811f4076704189}} 
+\index{Ppmd7\+Enc.\+c@{Ppmd7\+Enc.\+c}!M\+A\+SK@{M\+A\+SK}}
+\index{M\+A\+SK@{M\+A\+SK}!Ppmd7\+Enc.\+c@{Ppmd7\+Enc.\+c}}
+\subsubsection{\texorpdfstring{M\+A\+SK}{MASK}}
+{\footnotesize\ttfamily \#define M\+A\+SK(\begin{DoxyParamCaption}\item[{}]{sym }\end{DoxyParamCaption})~((signed char $\ast$)char\+Mask)\mbox{[}sym\mbox{]}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_ppmd7_enc_8c_a9c161c80c044c5162fb4166d73c57e54}\label{_ppmd7_enc_8c_a9c161c80c044c5162fb4166d73c57e54}} 
+\index{Ppmd7\+Enc.\+c@{Ppmd7\+Enc.\+c}!Ppmd7\+\_\+\+Encode\+Symbol@{Ppmd7\+\_\+\+Encode\+Symbol}}
+\index{Ppmd7\+\_\+\+Encode\+Symbol@{Ppmd7\+\_\+\+Encode\+Symbol}!Ppmd7\+Enc.\+c@{Ppmd7\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Ppmd7\+\_\+\+Encode\+Symbol()}{Ppmd7\_EncodeSymbol()}}
+{\footnotesize\ttfamily void Ppmd7\+\_\+\+Encode\+Symbol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_ppmd7_8h_struct_c_ppmd7}{C\+Ppmd7}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{_ppmd7_8h_struct_c_ppmd7z___range_enc}{C\+Ppmd7z\+\_\+\+Range\+Enc}} $\ast$}]{rc,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{symbol }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_ppmd7_enc_8c_a9c161c80c044c5162fb4166d73c57e54_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_ppmd7_enc_8c_a882c4f9b5b9518b8a49e8bbc4315ddec}\label{_ppmd7_enc_8c_a882c4f9b5b9518b8a49e8bbc4315ddec}} 
+\index{Ppmd7\+Enc.\+c@{Ppmd7\+Enc.\+c}!Ppmd7z\+\_\+\+Range\+Enc\+\_\+\+Flush\+Data@{Ppmd7z\+\_\+\+Range\+Enc\+\_\+\+Flush\+Data}}
+\index{Ppmd7z\+\_\+\+Range\+Enc\+\_\+\+Flush\+Data@{Ppmd7z\+\_\+\+Range\+Enc\+\_\+\+Flush\+Data}!Ppmd7\+Enc.\+c@{Ppmd7\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Ppmd7z\+\_\+\+Range\+Enc\+\_\+\+Flush\+Data()}{Ppmd7z\_RangeEnc\_FlushData()}}
+{\footnotesize\ttfamily void Ppmd7z\+\_\+\+Range\+Enc\+\_\+\+Flush\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_ppmd7_8h_struct_c_ppmd7z___range_enc}{C\+Ppmd7z\+\_\+\+Range\+Enc}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_ppmd7_enc_8c_a882c4f9b5b9518b8a49e8bbc4315ddec_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_ppmd7_enc_8c_a7eea05842cdb94808ee8cdaecd197902}\label{_ppmd7_enc_8c_a7eea05842cdb94808ee8cdaecd197902}} 
+\index{Ppmd7\+Enc.\+c@{Ppmd7\+Enc.\+c}!Ppmd7z\+\_\+\+Range\+Enc\+\_\+\+Init@{Ppmd7z\+\_\+\+Range\+Enc\+\_\+\+Init}}
+\index{Ppmd7z\+\_\+\+Range\+Enc\+\_\+\+Init@{Ppmd7z\+\_\+\+Range\+Enc\+\_\+\+Init}!Ppmd7\+Enc.\+c@{Ppmd7\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Ppmd7z\+\_\+\+Range\+Enc\+\_\+\+Init()}{Ppmd7z\_RangeEnc\_Init()}}
+{\footnotesize\ttfamily void Ppmd7z\+\_\+\+Range\+Enc\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_ppmd7_8h_struct_c_ppmd7z___range_enc}{C\+Ppmd7z\+\_\+\+Range\+Enc}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_ppmd7_enc_8c_ac987617439189bf84d6b57fdf98459dd}\label{_ppmd7_enc_8c_ac987617439189bf84d6b57fdf98459dd}} 
+\index{Ppmd7\+Enc.\+c@{Ppmd7\+Enc.\+c}!Range\+Enc\+\_\+\+Encode@{Range\+Enc\+\_\+\+Encode}}
+\index{Range\+Enc\+\_\+\+Encode@{Range\+Enc\+\_\+\+Encode}!Ppmd7\+Enc.\+c@{Ppmd7\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Range\+Enc\+\_\+\+Encode()}{RangeEnc\_Encode()}}
+{\footnotesize\ttfamily static void Range\+Enc\+\_\+\+Encode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_ppmd7_8h_struct_c_ppmd7z___range_enc}{C\+Ppmd7z\+\_\+\+Range\+Enc}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{start,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{size,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{total }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{_ppmd7_enc_8c_ac987617439189bf84d6b57fdf98459dd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{_ppmd7_enc_8c_ac987617439189bf84d6b57fdf98459dd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_ppmd7_enc_8c_ac7e4ad63e8ae745cf7712c2cfc1d1981}\label{_ppmd7_enc_8c_ac7e4ad63e8ae745cf7712c2cfc1d1981}} 
+\index{Ppmd7\+Enc.\+c@{Ppmd7\+Enc.\+c}!Range\+Enc\+\_\+\+Encode\+Bit\+\_\+0@{Range\+Enc\+\_\+\+Encode\+Bit\+\_\+0}}
+\index{Range\+Enc\+\_\+\+Encode\+Bit\+\_\+0@{Range\+Enc\+\_\+\+Encode\+Bit\+\_\+0}!Ppmd7\+Enc.\+c@{Ppmd7\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Range\+Enc\+\_\+\+Encode\+Bit\+\_\+0()}{RangeEnc\_EncodeBit\_0()}}
+{\footnotesize\ttfamily static void Range\+Enc\+\_\+\+Encode\+Bit\+\_\+0 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_ppmd7_8h_struct_c_ppmd7z___range_enc}{C\+Ppmd7z\+\_\+\+Range\+Enc}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{size0 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_ppmd7_enc_8c_ac7e4ad63e8ae745cf7712c2cfc1d1981_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_ppmd7_enc_8c_ac7e4ad63e8ae745cf7712c2cfc1d1981_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_ppmd7_enc_8c_aefef7fc0f0fa1e92f09a2d5def7264b7}\label{_ppmd7_enc_8c_aefef7fc0f0fa1e92f09a2d5def7264b7}} 
+\index{Ppmd7\+Enc.\+c@{Ppmd7\+Enc.\+c}!Range\+Enc\+\_\+\+Encode\+Bit\+\_\+1@{Range\+Enc\+\_\+\+Encode\+Bit\+\_\+1}}
+\index{Range\+Enc\+\_\+\+Encode\+Bit\+\_\+1@{Range\+Enc\+\_\+\+Encode\+Bit\+\_\+1}!Ppmd7\+Enc.\+c@{Ppmd7\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Range\+Enc\+\_\+\+Encode\+Bit\+\_\+1()}{RangeEnc\_EncodeBit\_1()}}
+{\footnotesize\ttfamily static void Range\+Enc\+\_\+\+Encode\+Bit\+\_\+1 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_ppmd7_8h_struct_c_ppmd7z___range_enc}{C\+Ppmd7z\+\_\+\+Range\+Enc}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{size0 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_ppmd7_enc_8c_aefef7fc0f0fa1e92f09a2d5def7264b7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_ppmd7_enc_8c_aefef7fc0f0fa1e92f09a2d5def7264b7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_ppmd7_enc_8c_af91125a66ce5b9f0def7d3260971c664}\label{_ppmd7_enc_8c_af91125a66ce5b9f0def7d3260971c664}} 
+\index{Ppmd7\+Enc.\+c@{Ppmd7\+Enc.\+c}!Range\+Enc\+\_\+\+Shift\+Low@{Range\+Enc\+\_\+\+Shift\+Low}}
+\index{Range\+Enc\+\_\+\+Shift\+Low@{Range\+Enc\+\_\+\+Shift\+Low}!Ppmd7\+Enc.\+c@{Ppmd7\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Range\+Enc\+\_\+\+Shift\+Low()}{RangeEnc\_ShiftLow()}}
+{\footnotesize\ttfamily static void Range\+Enc\+\_\+\+Shift\+Low (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_ppmd7_8h_struct_c_ppmd7z___range_enc}{C\+Ppmd7z\+\_\+\+Range\+Enc}} $\ast$}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_ppmd7_enc_8c_af91125a66ce5b9f0def7d3260971c664_icgraph}
+\end{center}
+\end{figure}

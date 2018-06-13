@@ -1,0 +1,111 @@
+\hypertarget{mztools_8c}{}\section{src/third-\/party/zlib/contrib/minizip/mztools.c File Reference}
+\label{mztools_8c}\index{src/third-\/party/zlib/contrib/minizip/mztools.\+c@{src/third-\/party/zlib/contrib/minizip/mztools.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}zlib.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}unzip.\+h\char`\"{}}\newline
+Include dependency graph for mztools.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mztools_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mztools_8c_a5933c5f9b2f3e1fe13094198f8c2fd4c}{R\+E\+A\+D\+\_\+8}}(adr)~((unsigned char)$\ast$(adr))
+\item 
+\#define \mbox{\hyperlink{mztools_8c_a7e352dcd7ba356ada024e87187b837ed}{R\+E\+A\+D\+\_\+16}}(adr)~( \mbox{\hyperlink{mztools_8c_a5933c5f9b2f3e1fe13094198f8c2fd4c}{R\+E\+A\+D\+\_\+8}}(adr) $\vert$ (\mbox{\hyperlink{mztools_8c_a5933c5f9b2f3e1fe13094198f8c2fd4c}{R\+E\+A\+D\+\_\+8}}(adr+1) $<$$<$ 8) )
+\item 
+\#define \mbox{\hyperlink{mztools_8c_a2bbb4339784122a493e95dd6eba94508}{R\+E\+A\+D\+\_\+32}}(adr)~( \mbox{\hyperlink{mztools_8c_a7e352dcd7ba356ada024e87187b837ed}{R\+E\+A\+D\+\_\+16}}(adr) $\vert$ (\mbox{\hyperlink{mztools_8c_a7e352dcd7ba356ada024e87187b837ed}{R\+E\+A\+D\+\_\+16}}((adr)+2) $<$$<$ 16) )
+\item 
+\#define \mbox{\hyperlink{mztools_8c_ae814f887399c9d71fbd5d78791916693}{W\+R\+I\+T\+E\+\_\+8}}(buff,  \mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})
+\item 
+\#define \mbox{\hyperlink{mztools_8c_a9a9f04a546dff7e41b4b9625d71e3b72}{W\+R\+I\+T\+E\+\_\+16}}(buff,  \mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})
+\item 
+\#define \mbox{\hyperlink{mztools_8c_ac97e9469aa775dda942ffc8246d4a582}{W\+R\+I\+T\+E\+\_\+32}}(buff,  \mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{mztools_8c_aa4d6ad280a8dc9fe1af55c1a32b81c7d}{unz\+Repair}} (char $\ast$file, const char $\ast$file\+Out, const char $\ast$file\+Out\+Tmp, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} $\ast$n\+Recovered, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} $\ast$bytes\+Recovered) const
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mztools_8c_a7e352dcd7ba356ada024e87187b837ed}\label{mztools_8c_a7e352dcd7ba356ada024e87187b837ed}} 
+\index{mztools.\+c@{mztools.\+c}!R\+E\+A\+D\+\_\+16@{R\+E\+A\+D\+\_\+16}}
+\index{R\+E\+A\+D\+\_\+16@{R\+E\+A\+D\+\_\+16}!mztools.\+c@{mztools.\+c}}
+\subsubsection{\texorpdfstring{R\+E\+A\+D\+\_\+16}{READ\_16}}
+{\footnotesize\ttfamily \#define R\+E\+A\+D\+\_\+16(\begin{DoxyParamCaption}\item[{}]{adr }\end{DoxyParamCaption})~( \mbox{\hyperlink{mztools_8c_a5933c5f9b2f3e1fe13094198f8c2fd4c}{R\+E\+A\+D\+\_\+8}}(adr) $\vert$ (\mbox{\hyperlink{mztools_8c_a5933c5f9b2f3e1fe13094198f8c2fd4c}{R\+E\+A\+D\+\_\+8}}(adr+1) $<$$<$ 8) )}
+
+\mbox{\Hypertarget{mztools_8c_a2bbb4339784122a493e95dd6eba94508}\label{mztools_8c_a2bbb4339784122a493e95dd6eba94508}} 
+\index{mztools.\+c@{mztools.\+c}!R\+E\+A\+D\+\_\+32@{R\+E\+A\+D\+\_\+32}}
+\index{R\+E\+A\+D\+\_\+32@{R\+E\+A\+D\+\_\+32}!mztools.\+c@{mztools.\+c}}
+\subsubsection{\texorpdfstring{R\+E\+A\+D\+\_\+32}{READ\_32}}
+{\footnotesize\ttfamily \#define R\+E\+A\+D\+\_\+32(\begin{DoxyParamCaption}\item[{}]{adr }\end{DoxyParamCaption})~( \mbox{\hyperlink{mztools_8c_a7e352dcd7ba356ada024e87187b837ed}{R\+E\+A\+D\+\_\+16}}(adr) $\vert$ (\mbox{\hyperlink{mztools_8c_a7e352dcd7ba356ada024e87187b837ed}{R\+E\+A\+D\+\_\+16}}((adr)+2) $<$$<$ 16) )}
+
+\mbox{\Hypertarget{mztools_8c_a5933c5f9b2f3e1fe13094198f8c2fd4c}\label{mztools_8c_a5933c5f9b2f3e1fe13094198f8c2fd4c}} 
+\index{mztools.\+c@{mztools.\+c}!R\+E\+A\+D\+\_\+8@{R\+E\+A\+D\+\_\+8}}
+\index{R\+E\+A\+D\+\_\+8@{R\+E\+A\+D\+\_\+8}!mztools.\+c@{mztools.\+c}}
+\subsubsection{\texorpdfstring{R\+E\+A\+D\+\_\+8}{READ\_8}}
+{\footnotesize\ttfamily \#define R\+E\+A\+D\+\_\+8(\begin{DoxyParamCaption}\item[{}]{adr }\end{DoxyParamCaption})~((unsigned char)$\ast$(adr))}
+
+\mbox{\Hypertarget{mztools_8c_a9a9f04a546dff7e41b4b9625d71e3b72}\label{mztools_8c_a9a9f04a546dff7e41b4b9625d71e3b72}} 
+\index{mztools.\+c@{mztools.\+c}!W\+R\+I\+T\+E\+\_\+16@{W\+R\+I\+T\+E\+\_\+16}}
+\index{W\+R\+I\+T\+E\+\_\+16@{W\+R\+I\+T\+E\+\_\+16}!mztools.\+c@{mztools.\+c}}
+\subsubsection{\texorpdfstring{W\+R\+I\+T\+E\+\_\+16}{WRITE\_16}}
+{\footnotesize\ttfamily \#define W\+R\+I\+T\+E\+\_\+16(\begin{DoxyParamCaption}\item[{}]{buff,  }\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+  WRITE\_8((\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}*)(buff), \mbox{\hyperlink{isa-arm_8c_a4e34aefb3cc5403a07c020131077100a}{n}}); \(\backslash\)
+  WRITE\_8(((\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}*)(buff)) + 1, (\mbox{\hyperlink{isa-arm_8c_a4e34aefb3cc5403a07c020131077100a}{n}}) >> 8); \(\backslash\)
+\} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\mbox{\Hypertarget{mztools_8c_ac97e9469aa775dda942ffc8246d4a582}\label{mztools_8c_ac97e9469aa775dda942ffc8246d4a582}} 
+\index{mztools.\+c@{mztools.\+c}!W\+R\+I\+T\+E\+\_\+32@{W\+R\+I\+T\+E\+\_\+32}}
+\index{W\+R\+I\+T\+E\+\_\+32@{W\+R\+I\+T\+E\+\_\+32}!mztools.\+c@{mztools.\+c}}
+\subsubsection{\texorpdfstring{W\+R\+I\+T\+E\+\_\+32}{WRITE\_32}}
+{\footnotesize\ttfamily \#define W\+R\+I\+T\+E\+\_\+32(\begin{DoxyParamCaption}\item[{}]{buff,  }\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+  WRITE\_16((\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}*)(buff), (\mbox{\hyperlink{isa-arm_8c_a4e34aefb3cc5403a07c020131077100a}{n}}) & 0xffff); \(\backslash\)
+  WRITE\_16((\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}*)(buff) + 2, (\mbox{\hyperlink{isa-arm_8c_a4e34aefb3cc5403a07c020131077100a}{n}}) >> 16); \(\backslash\)
+\} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+\mbox{\Hypertarget{mztools_8c_ae814f887399c9d71fbd5d78791916693}\label{mztools_8c_ae814f887399c9d71fbd5d78791916693}} 
+\index{mztools.\+c@{mztools.\+c}!W\+R\+I\+T\+E\+\_\+8@{W\+R\+I\+T\+E\+\_\+8}}
+\index{W\+R\+I\+T\+E\+\_\+8@{W\+R\+I\+T\+E\+\_\+8}!mztools.\+c@{mztools.\+c}}
+\subsubsection{\texorpdfstring{W\+R\+I\+T\+E\+\_\+8}{WRITE\_8}}
+{\footnotesize\ttfamily \#define W\+R\+I\+T\+E\+\_\+8(\begin{DoxyParamCaption}\item[{}]{buff,  }\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+  *((\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}*)(buff)) = (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char}) ((\mbox{\hyperlink{isa-arm_8c_a4e34aefb3cc5403a07c020131077100a}{n}}) & 0xff); \(\backslash\)
+\} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{mztools_8c_aa4d6ad280a8dc9fe1af55c1a32b81c7d}\label{mztools_8c_aa4d6ad280a8dc9fe1af55c1a32b81c7d}} 
+\index{mztools.\+c@{mztools.\+c}!unz\+Repair@{unz\+Repair}}
+\index{unz\+Repair@{unz\+Repair}!mztools.\+c@{mztools.\+c}}
+\subsubsection{\texorpdfstring{unz\+Repair()}{unzRepair()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Repair (\begin{DoxyParamCaption}\item[{char$\ast$}]{file,  }\item[{const char$\ast$}]{file\+Out,  }\item[{const char$\ast$}]{file\+Out\+Tmp,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}$\ast$}]{n\+Recovered,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}$\ast$}]{bytes\+Recovered }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{mztools_8c_aa4d6ad280a8dc9fe1af55c1a32b81c7d_cgraph}
+\end{center}
+\end{figure}

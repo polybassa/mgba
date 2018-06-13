@@ -1,0 +1,183 @@
+\hypertarget{adler32_8c}{}\section{src/third-\/party/zlib/adler32.c File Reference}
+\label{adler32_8c}\index{src/third-\/party/zlib/adler32.\+c@{src/third-\/party/zlib/adler32.\+c}}
+{\ttfamily \#include \char`\"{}zutil.\+h\char`\"{}}\newline
+Include dependency graph for adler32.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{adler32_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{adler32_8c_a08023ea6765c99d60a6a3840cd07156e}{local}}~static
+\item 
+\#define \mbox{\hyperlink{adler32_8c_a79bcfb6bde984f42d1124b068a509af7}{B\+A\+SE}}~65521      /$\ast$ largest prime \mbox{\hyperlink{trees_8c_a78d1ce835d96eb110f23c580ad7fab7c}{smaller}} than 65536 $\ast$/
+\item 
+\#define \mbox{\hyperlink{adler32_8c_a5de5d183f9a6a8d53316f743e1ca6dc2}{N\+M\+AX}}~5552
+\item 
+\#define \mbox{\hyperlink{adler32_8c_a465ff70ce96dfc2e84b0e87548b4ecb4}{D\+O1}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},  i)~\{adler += (\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}})\mbox{[}i\mbox{]}; sum2 += adler;\}
+\item 
+\#define \mbox{\hyperlink{adler32_8c_a3d7044f8ea7e75164fe5108048fd87eb}{D\+O2}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},  i)~\mbox{\hyperlink{third-party_2zlib_2crc32_8c_aff265ea9630e020c8ac850c18d5d972f}{D\+O1}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},i); \mbox{\hyperlink{third-party_2zlib_2crc32_8c_aff265ea9630e020c8ac850c18d5d972f}{D\+O1}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},i+1);
+\item 
+\#define \mbox{\hyperlink{adler32_8c_aef9bafc8b3d89e98b6e26320f99b9e31}{D\+O4}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},  i)~\mbox{\hyperlink{adler32_8c_a3d7044f8ea7e75164fe5108048fd87eb}{D\+O2}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},i); \mbox{\hyperlink{adler32_8c_a3d7044f8ea7e75164fe5108048fd87eb}{D\+O2}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},i+2);
+\item 
+\#define \mbox{\hyperlink{adler32_8c_a9aafc447614bf5c4dc0d484aba9edb89}{D\+O8}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},  i)~\mbox{\hyperlink{adler32_8c_aef9bafc8b3d89e98b6e26320f99b9e31}{D\+O4}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},i); \mbox{\hyperlink{adler32_8c_aef9bafc8b3d89e98b6e26320f99b9e31}{D\+O4}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},i+4);
+\item 
+\#define \mbox{\hyperlink{adler32_8c_a6912c3e78e2b797f42f214d1b508aa0c}{D\+O16}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}})~\mbox{\hyperlink{third-party_2zlib_2crc32_8c_aed1b41414efee0773c67c28e09317455}{D\+O8}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},0); \mbox{\hyperlink{third-party_2zlib_2crc32_8c_aed1b41414efee0773c67c28e09317455}{D\+O8}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},8);
+\item 
+\#define \mbox{\hyperlink{adler32_8c_aa1e26f19f1e6cf348e41511e7db90881}{M\+OD}}(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}})~\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}} \%= \mbox{\hyperlink{adler32_8c_a79bcfb6bde984f42d1124b068a509af7}{B\+A\+SE}}
+\item 
+\#define \mbox{\hyperlink{adler32_8c_a24f911eb19c0c08f2e4323ae5829a6b1}{M\+O\+D28}}(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}})~\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}} \%= \mbox{\hyperlink{adler32_8c_a79bcfb6bde984f42d1124b068a509af7}{B\+A\+SE}}
+\item 
+\#define \mbox{\hyperlink{adler32_8c_a86e81b1e1c063cd8d10a1b6ddb82552e}{M\+O\+D63}}(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}})~\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}} \%= \mbox{\hyperlink{adler32_8c_a79bcfb6bde984f42d1124b068a509af7}{B\+A\+SE}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{adler32_8c_adca6931a2239061c7a6d2c0a05600a05}{adler32\+\_\+combine\+\_\+}} \mbox{\hyperlink{adler32_8c_aab4348af15ae8a3fc99c2019339797f7}{OF}} ((\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} adler1, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} adler2, z\+\_\+off64\+\_\+t len2))
+\item 
+\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{adler32_8c_a86607743a4b76949b24cf5cc2f01a40d}{adler32}} (\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} adler, const Bytef $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, u\+Int len)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{adler32_8c_adca6931a2239061c7a6d2c0a05600a05}{adler32\+\_\+combine\+\_\+}} (\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} adler1, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} adler2, z\+\_\+off64\+\_\+t len2)
+\item 
+\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{adler32_8c_af4a8b45f615e831c56b08da530870e59}{adler32\+\_\+combine}} (\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} adler1, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} adler2, z\+\_\+off\+\_\+t len2)
+\item 
+\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{adler32_8c_a02d5e6475de540c47e56fe0c37178c22}{adler32\+\_\+combine64}} (\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} adler1, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} adler2, z\+\_\+off64\+\_\+t len2)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{adler32_8c_a79bcfb6bde984f42d1124b068a509af7}\label{adler32_8c_a79bcfb6bde984f42d1124b068a509af7}} 
+\index{adler32.\+c@{adler32.\+c}!B\+A\+SE@{B\+A\+SE}}
+\index{B\+A\+SE@{B\+A\+SE}!adler32.\+c@{adler32.\+c}}
+\subsubsection{\texorpdfstring{B\+A\+SE}{BASE}}
+{\footnotesize\ttfamily \#define B\+A\+SE~65521      /$\ast$ largest prime \mbox{\hyperlink{trees_8c_a78d1ce835d96eb110f23c580ad7fab7c}{smaller}} than 65536 $\ast$/}
+
+\mbox{\Hypertarget{adler32_8c_a465ff70ce96dfc2e84b0e87548b4ecb4}\label{adler32_8c_a465ff70ce96dfc2e84b0e87548b4ecb4}} 
+\index{adler32.\+c@{adler32.\+c}!D\+O1@{D\+O1}}
+\index{D\+O1@{D\+O1}!adler32.\+c@{adler32.\+c}}
+\subsubsection{\texorpdfstring{D\+O1}{DO1}}
+{\footnotesize\ttfamily \#define D\+O1(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},  }\item[{}]{i }\end{DoxyParamCaption})~\{adler += (\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}})\mbox{[}i\mbox{]}; sum2 += adler;\}}
+
+\mbox{\Hypertarget{adler32_8c_a6912c3e78e2b797f42f214d1b508aa0c}\label{adler32_8c_a6912c3e78e2b797f42f214d1b508aa0c}} 
+\index{adler32.\+c@{adler32.\+c}!D\+O16@{D\+O16}}
+\index{D\+O16@{D\+O16}!adler32.\+c@{adler32.\+c}}
+\subsubsection{\texorpdfstring{D\+O16}{DO16}}
+{\footnotesize\ttfamily \#define D\+O16(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}} }\end{DoxyParamCaption})~\mbox{\hyperlink{third-party_2zlib_2crc32_8c_aed1b41414efee0773c67c28e09317455}{D\+O8}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},0); \mbox{\hyperlink{third-party_2zlib_2crc32_8c_aed1b41414efee0773c67c28e09317455}{D\+O8}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},8);}
+
+\mbox{\Hypertarget{adler32_8c_a3d7044f8ea7e75164fe5108048fd87eb}\label{adler32_8c_a3d7044f8ea7e75164fe5108048fd87eb}} 
+\index{adler32.\+c@{adler32.\+c}!D\+O2@{D\+O2}}
+\index{D\+O2@{D\+O2}!adler32.\+c@{adler32.\+c}}
+\subsubsection{\texorpdfstring{D\+O2}{DO2}}
+{\footnotesize\ttfamily \#define D\+O2(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},  }\item[{}]{i }\end{DoxyParamCaption})~\mbox{\hyperlink{third-party_2zlib_2crc32_8c_aff265ea9630e020c8ac850c18d5d972f}{D\+O1}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},i); \mbox{\hyperlink{third-party_2zlib_2crc32_8c_aff265ea9630e020c8ac850c18d5d972f}{D\+O1}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},i+1);}
+
+\mbox{\Hypertarget{adler32_8c_aef9bafc8b3d89e98b6e26320f99b9e31}\label{adler32_8c_aef9bafc8b3d89e98b6e26320f99b9e31}} 
+\index{adler32.\+c@{adler32.\+c}!D\+O4@{D\+O4}}
+\index{D\+O4@{D\+O4}!adler32.\+c@{adler32.\+c}}
+\subsubsection{\texorpdfstring{D\+O4}{DO4}}
+{\footnotesize\ttfamily \#define D\+O4(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},  }\item[{}]{i }\end{DoxyParamCaption})~\mbox{\hyperlink{adler32_8c_a3d7044f8ea7e75164fe5108048fd87eb}{D\+O2}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},i); \mbox{\hyperlink{adler32_8c_a3d7044f8ea7e75164fe5108048fd87eb}{D\+O2}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},i+2);}
+
+\mbox{\Hypertarget{adler32_8c_a9aafc447614bf5c4dc0d484aba9edb89}\label{adler32_8c_a9aafc447614bf5c4dc0d484aba9edb89}} 
+\index{adler32.\+c@{adler32.\+c}!D\+O8@{D\+O8}}
+\index{D\+O8@{D\+O8}!adler32.\+c@{adler32.\+c}}
+\subsubsection{\texorpdfstring{D\+O8}{DO8}}
+{\footnotesize\ttfamily \#define D\+O8(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},  }\item[{}]{i }\end{DoxyParamCaption})~\mbox{\hyperlink{adler32_8c_aef9bafc8b3d89e98b6e26320f99b9e31}{D\+O4}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},i); \mbox{\hyperlink{adler32_8c_aef9bafc8b3d89e98b6e26320f99b9e31}{D\+O4}}(\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}},i+4);}
+
+\mbox{\Hypertarget{adler32_8c_a08023ea6765c99d60a6a3840cd07156e}\label{adler32_8c_a08023ea6765c99d60a6a3840cd07156e}} 
+\index{adler32.\+c@{adler32.\+c}!local@{local}}
+\index{local@{local}!adler32.\+c@{adler32.\+c}}
+\subsubsection{\texorpdfstring{local}{local}}
+{\footnotesize\ttfamily \#define local~static}
+
+\mbox{\Hypertarget{adler32_8c_aa1e26f19f1e6cf348e41511e7db90881}\label{adler32_8c_aa1e26f19f1e6cf348e41511e7db90881}} 
+\index{adler32.\+c@{adler32.\+c}!M\+OD@{M\+OD}}
+\index{M\+OD@{M\+OD}!adler32.\+c@{adler32.\+c}}
+\subsubsection{\texorpdfstring{M\+OD}{MOD}}
+{\footnotesize\ttfamily \#define M\+OD(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}} }\end{DoxyParamCaption})~\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}} \%= \mbox{\hyperlink{adler32_8c_a79bcfb6bde984f42d1124b068a509af7}{B\+A\+SE}}}
+
+\mbox{\Hypertarget{adler32_8c_a24f911eb19c0c08f2e4323ae5829a6b1}\label{adler32_8c_a24f911eb19c0c08f2e4323ae5829a6b1}} 
+\index{adler32.\+c@{adler32.\+c}!M\+O\+D28@{M\+O\+D28}}
+\index{M\+O\+D28@{M\+O\+D28}!adler32.\+c@{adler32.\+c}}
+\subsubsection{\texorpdfstring{M\+O\+D28}{MOD28}}
+{\footnotesize\ttfamily \#define M\+O\+D28(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}} }\end{DoxyParamCaption})~\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}} \%= \mbox{\hyperlink{adler32_8c_a79bcfb6bde984f42d1124b068a509af7}{B\+A\+SE}}}
+
+\mbox{\Hypertarget{adler32_8c_a86e81b1e1c063cd8d10a1b6ddb82552e}\label{adler32_8c_a86e81b1e1c063cd8d10a1b6ddb82552e}} 
+\index{adler32.\+c@{adler32.\+c}!M\+O\+D63@{M\+O\+D63}}
+\index{M\+O\+D63@{M\+O\+D63}!adler32.\+c@{adler32.\+c}}
+\subsubsection{\texorpdfstring{M\+O\+D63}{MOD63}}
+{\footnotesize\ttfamily \#define M\+O\+D63(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}} }\end{DoxyParamCaption})~\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}} \%= \mbox{\hyperlink{adler32_8c_a79bcfb6bde984f42d1124b068a509af7}{B\+A\+SE}}}
+
+\mbox{\Hypertarget{adler32_8c_a5de5d183f9a6a8d53316f743e1ca6dc2}\label{adler32_8c_a5de5d183f9a6a8d53316f743e1ca6dc2}} 
+\index{adler32.\+c@{adler32.\+c}!N\+M\+AX@{N\+M\+AX}}
+\index{N\+M\+AX@{N\+M\+AX}!adler32.\+c@{adler32.\+c}}
+\subsubsection{\texorpdfstring{N\+M\+AX}{NMAX}}
+{\footnotesize\ttfamily \#define N\+M\+AX~5552}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{adler32_8c_a86607743a4b76949b24cf5cc2f01a40d}\label{adler32_8c_a86607743a4b76949b24cf5cc2f01a40d}} 
+\index{adler32.\+c@{adler32.\+c}!adler32@{adler32}}
+\index{adler32@{adler32}!adler32.\+c@{adler32.\+c}}
+\subsubsection{\texorpdfstring{adler32()}{adler32()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} Z\+E\+X\+P\+O\+RT adler32 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{adler,  }\item[{const Bytef $\ast$}]{buf,  }\item[{u\+Int}]{len }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{adler32_8c_a86607743a4b76949b24cf5cc2f01a40d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{adler32_8c_af4a8b45f615e831c56b08da530870e59}\label{adler32_8c_af4a8b45f615e831c56b08da530870e59}} 
+\index{adler32.\+c@{adler32.\+c}!adler32\+\_\+combine@{adler32\+\_\+combine}}
+\index{adler32\+\_\+combine@{adler32\+\_\+combine}!adler32.\+c@{adler32.\+c}}
+\subsubsection{\texorpdfstring{adler32\+\_\+combine()}{adler32\_combine()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} Z\+E\+X\+P\+O\+RT adler32\+\_\+combine (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{adler1,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{adler2,  }\item[{z\+\_\+off\+\_\+t}]{len2 }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=323pt]{adler32_8c_af4a8b45f615e831c56b08da530870e59_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{adler32_8c_a02d5e6475de540c47e56fe0c37178c22}\label{adler32_8c_a02d5e6475de540c47e56fe0c37178c22}} 
+\index{adler32.\+c@{adler32.\+c}!adler32\+\_\+combine64@{adler32\+\_\+combine64}}
+\index{adler32\+\_\+combine64@{adler32\+\_\+combine64}!adler32.\+c@{adler32.\+c}}
+\subsubsection{\texorpdfstring{adler32\+\_\+combine64()}{adler32\_combine64()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} Z\+E\+X\+P\+O\+RT adler32\+\_\+combine64 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{adler1,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{adler2,  }\item[{z\+\_\+off64\+\_\+t}]{len2 }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{adler32_8c_a02d5e6475de540c47e56fe0c37178c22_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{adler32_8c_adca6931a2239061c7a6d2c0a05600a05}\label{adler32_8c_adca6931a2239061c7a6d2c0a05600a05}} 
+\index{adler32.\+c@{adler32.\+c}!adler32\+\_\+combine\+\_\+@{adler32\+\_\+combine\+\_\+}}
+\index{adler32\+\_\+combine\+\_\+@{adler32\+\_\+combine\+\_\+}!adler32.\+c@{adler32.\+c}}
+\subsubsection{\texorpdfstring{adler32\+\_\+combine\+\_\+()}{adler32\_combine\_()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} adler32\+\_\+combine\+\_\+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{adler1,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{adler2,  }\item[{z\+\_\+off64\+\_\+t}]{len2 }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{adler32_8c_adca6931a2239061c7a6d2c0a05600a05_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{adler32_8c_aab4348af15ae8a3fc99c2019339797f7}\label{adler32_8c_aab4348af15ae8a3fc99c2019339797f7}} 
+\index{adler32.\+c@{adler32.\+c}!OF@{OF}}
+\index{OF@{OF}!adler32.\+c@{adler32.\+c}}
+\subsubsection{\texorpdfstring{O\+F()}{OF()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{adler32_8c_adca6931a2239061c7a6d2c0a05600a05}{adler32\+\_\+combine\+\_\+}} OF (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} adler1, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} adler2, z\+\_\+off64\+\_\+t len2)}]{ }\end{DoxyParamCaption})}
+

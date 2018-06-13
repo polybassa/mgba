@@ -1,0 +1,188 @@
+\hypertarget{codebreaker_8c}{}\section{src/gba/cheats/codebreaker.c File Reference}
+\label{codebreaker_8c}\index{src/gba/cheats/codebreaker.\+c@{src/gba/cheats/codebreaker.\+c}}
+{\ttfamily \#include $<$mgba/internal/gba/cheats.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/gba.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/io.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+Include dependency graph for codebreaker.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{codebreaker_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{codebreaker_8c_a6dca41ce063bc5af1efc174a33dd99f0}{\+\_\+cb\+Load\+Byteswap}} (uint8\+\_\+t $\ast$buffer, uint32\+\_\+t op1, uint16\+\_\+t op2)
+\item 
+static void \mbox{\hyperlink{codebreaker_8c_a37af8c362222a3ed63102ef7af8fef21}{\+\_\+cb\+Store\+Byteswap}} (uint8\+\_\+t $\ast$buffer, uint32\+\_\+t $\ast$op1, uint16\+\_\+t $\ast$op2)
+\item 
+static void \mbox{\hyperlink{codebreaker_8c_acefa713ad91eb1a79e65f1a6f661af8e}{\+\_\+cb\+Decrypt}} (struct G\+B\+A\+Cheat\+Set $\ast$cheats, uint32\+\_\+t $\ast$op1, uint16\+\_\+t $\ast$op2)
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{codebreaker_8c_aedb8b085652dc1d203db018faa5b19f3}{\+\_\+cb\+Rand}} (struct G\+B\+A\+Cheat\+Set $\ast$cheats)
+\item 
+static size\+\_\+t \mbox{\hyperlink{codebreaker_8c_a976bb576d9ee05bfb43ce0c0c27d19c9}{\+\_\+cb\+Swap\+Index}} (struct G\+B\+A\+Cheat\+Set $\ast$cheats)
+\item 
+static void \mbox{\hyperlink{codebreaker_8c_aa0277f3b7918271263c96a3d7268536b}{\+\_\+cb\+Reseed}} (struct G\+B\+A\+Cheat\+Set $\ast$cheats, uint32\+\_\+t op1, uint16\+\_\+t op2)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{codebreaker_8c_afb5bc4f93e7e63571309474235018f6c}{G\+B\+A\+Cheat\+Add\+Code\+Breaker}} (struct G\+B\+A\+Cheat\+Set $\ast$cheats, uint32\+\_\+t op1, uint16\+\_\+t op2)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{codebreaker_8c_a5371b860c626b8dc52b9a995b715b487}{G\+B\+A\+Cheat\+Add\+Code\+Breaker\+Line}} (struct G\+B\+A\+Cheat\+Set $\ast$cheats, const char $\ast$line)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{codebreaker_8c_acefa713ad91eb1a79e65f1a6f661af8e}\label{codebreaker_8c_acefa713ad91eb1a79e65f1a6f661af8e}} 
+\index{codebreaker.\+c@{codebreaker.\+c}!\+\_\+cb\+Decrypt@{\+\_\+cb\+Decrypt}}
+\index{\+\_\+cb\+Decrypt@{\+\_\+cb\+Decrypt}!codebreaker.\+c@{codebreaker.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+cb\+Decrypt()}{\_cbDecrypt()}}
+{\footnotesize\ttfamily static void \+\_\+cb\+Decrypt (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cheat\+Set $\ast$}]{cheats,  }\item[{uint32\+\_\+t $\ast$}]{op1,  }\item[{uint16\+\_\+t $\ast$}]{op2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{codebreaker_8c_acefa713ad91eb1a79e65f1a6f661af8e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{codebreaker_8c_acefa713ad91eb1a79e65f1a6f661af8e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{codebreaker_8c_a6dca41ce063bc5af1efc174a33dd99f0}\label{codebreaker_8c_a6dca41ce063bc5af1efc174a33dd99f0}} 
+\index{codebreaker.\+c@{codebreaker.\+c}!\+\_\+cb\+Load\+Byteswap@{\+\_\+cb\+Load\+Byteswap}}
+\index{\+\_\+cb\+Load\+Byteswap@{\+\_\+cb\+Load\+Byteswap}!codebreaker.\+c@{codebreaker.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+cb\+Load\+Byteswap()}{\_cbLoadByteswap()}}
+{\footnotesize\ttfamily static void \+\_\+cb\+Load\+Byteswap (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{buffer,  }\item[{uint32\+\_\+t}]{op1,  }\item[{uint16\+\_\+t}]{op2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{codebreaker_8c_a6dca41ce063bc5af1efc174a33dd99f0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{codebreaker_8c_aedb8b085652dc1d203db018faa5b19f3}\label{codebreaker_8c_aedb8b085652dc1d203db018faa5b19f3}} 
+\index{codebreaker.\+c@{codebreaker.\+c}!\+\_\+cb\+Rand@{\+\_\+cb\+Rand}}
+\index{\+\_\+cb\+Rand@{\+\_\+cb\+Rand}!codebreaker.\+c@{codebreaker.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+cb\+Rand()}{\_cbRand()}}
+{\footnotesize\ttfamily static uint32\+\_\+t \+\_\+cb\+Rand (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cheat\+Set $\ast$}]{cheats }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{codebreaker_8c_aedb8b085652dc1d203db018faa5b19f3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{codebreaker_8c_aa0277f3b7918271263c96a3d7268536b}\label{codebreaker_8c_aa0277f3b7918271263c96a3d7268536b}} 
+\index{codebreaker.\+c@{codebreaker.\+c}!\+\_\+cb\+Reseed@{\+\_\+cb\+Reseed}}
+\index{\+\_\+cb\+Reseed@{\+\_\+cb\+Reseed}!codebreaker.\+c@{codebreaker.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+cb\+Reseed()}{\_cbReseed()}}
+{\footnotesize\ttfamily static void \+\_\+cb\+Reseed (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cheat\+Set $\ast$}]{cheats,  }\item[{uint32\+\_\+t}]{op1,  }\item[{uint16\+\_\+t}]{op2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{codebreaker_8c_aa0277f3b7918271263c96a3d7268536b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{codebreaker_8c_aa0277f3b7918271263c96a3d7268536b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{codebreaker_8c_a37af8c362222a3ed63102ef7af8fef21}\label{codebreaker_8c_a37af8c362222a3ed63102ef7af8fef21}} 
+\index{codebreaker.\+c@{codebreaker.\+c}!\+\_\+cb\+Store\+Byteswap@{\+\_\+cb\+Store\+Byteswap}}
+\index{\+\_\+cb\+Store\+Byteswap@{\+\_\+cb\+Store\+Byteswap}!codebreaker.\+c@{codebreaker.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+cb\+Store\+Byteswap()}{\_cbStoreByteswap()}}
+{\footnotesize\ttfamily static void \+\_\+cb\+Store\+Byteswap (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{buffer,  }\item[{uint32\+\_\+t $\ast$}]{op1,  }\item[{uint16\+\_\+t $\ast$}]{op2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{codebreaker_8c_a37af8c362222a3ed63102ef7af8fef21_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{codebreaker_8c_a976bb576d9ee05bfb43ce0c0c27d19c9}\label{codebreaker_8c_a976bb576d9ee05bfb43ce0c0c27d19c9}} 
+\index{codebreaker.\+c@{codebreaker.\+c}!\+\_\+cb\+Swap\+Index@{\+\_\+cb\+Swap\+Index}}
+\index{\+\_\+cb\+Swap\+Index@{\+\_\+cb\+Swap\+Index}!codebreaker.\+c@{codebreaker.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+cb\+Swap\+Index()}{\_cbSwapIndex()}}
+{\footnotesize\ttfamily static size\+\_\+t \+\_\+cb\+Swap\+Index (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cheat\+Set $\ast$}]{cheats }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{codebreaker_8c_a976bb576d9ee05bfb43ce0c0c27d19c9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{codebreaker_8c_a976bb576d9ee05bfb43ce0c0c27d19c9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{codebreaker_8c_afb5bc4f93e7e63571309474235018f6c}\label{codebreaker_8c_afb5bc4f93e7e63571309474235018f6c}} 
+\index{codebreaker.\+c@{codebreaker.\+c}!G\+B\+A\+Cheat\+Add\+Code\+Breaker@{G\+B\+A\+Cheat\+Add\+Code\+Breaker}}
+\index{G\+B\+A\+Cheat\+Add\+Code\+Breaker@{G\+B\+A\+Cheat\+Add\+Code\+Breaker}!codebreaker.\+c@{codebreaker.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Cheat\+Add\+Code\+Breaker()}{GBACheatAddCodeBreaker()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+A\+Cheat\+Add\+Code\+Breaker (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cheat\+Set $\ast$}]{cheats,  }\item[{uint32\+\_\+t}]{op1,  }\item[{uint16\+\_\+t}]{op2 }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{codebreaker_8c_afb5bc4f93e7e63571309474235018f6c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{codebreaker_8c_afb5bc4f93e7e63571309474235018f6c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{codebreaker_8c_a5371b860c626b8dc52b9a995b715b487}\label{codebreaker_8c_a5371b860c626b8dc52b9a995b715b487}} 
+\index{codebreaker.\+c@{codebreaker.\+c}!G\+B\+A\+Cheat\+Add\+Code\+Breaker\+Line@{G\+B\+A\+Cheat\+Add\+Code\+Breaker\+Line}}
+\index{G\+B\+A\+Cheat\+Add\+Code\+Breaker\+Line@{G\+B\+A\+Cheat\+Add\+Code\+Breaker\+Line}!codebreaker.\+c@{codebreaker.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Cheat\+Add\+Code\+Breaker\+Line()}{GBACheatAddCodeBreakerLine()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+A\+Cheat\+Add\+Code\+Breaker\+Line (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cheat\+Set $\ast$}]{cheats,  }\item[{const char $\ast$}]{line }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{codebreaker_8c_a5371b860c626b8dc52b9a995b715b487_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{codebreaker_8c_a5371b860c626b8dc52b9a995b715b487_icgraph}
+\end{center}
+\end{figure}

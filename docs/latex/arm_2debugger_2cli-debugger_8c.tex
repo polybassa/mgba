@@ -1,0 +1,252 @@
+\hypertarget{arm_2debugger_2cli-debugger_8c}{}\section{src/arm/debugger/cli-\/debugger.c File Reference}
+\label{arm_2debugger_2cli-debugger_8c}\index{src/arm/debugger/cli-\/debugger.\+c@{src/arm/debugger/cli-\/debugger.\+c}}
+{\ttfamily \#include $<$mgba/internal/arm/debugger/cli-\/debugger.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/arm/debugger/debugger.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/arm/debugger/memory-\/debugger.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/arm/decoder.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/debugger/cli-\/debugger.\+h$>$}\newline
+Include dependency graph for cli-\/debugger.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2cli-debugger_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_a1bce4490785068fd42fca65db1fb21ad}{\+\_\+print\+Status}} (struct C\+L\+I\+Debugger\+System $\ast$)
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_ab0bbaa1e92b7c34f955f91a60e2bce71}{\+\_\+disassemble\+Arm}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_ae4976961ac2fc2199fc3fd2ad59f368c}{\+\_\+disassemble\+Thumb}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_ae37b285f8c652414bf1f0aafa2d4909b}{\+\_\+set\+Breakpoint\+A\+RM}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_acad8c99d24d754d1ff65c79fdb18cf0e}{\+\_\+set\+Breakpoint\+Thumb}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_a0ff9ed2f86427256fde0a97dafb94b3c}{\+\_\+disassemble\+Mode}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$, enum Execution\+Mode \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_a1e0fedf60889558dc8c188a2ac725c88}{\+\_\+print\+Line}} (struct C\+L\+I\+Debugger $\ast$debugger, uint32\+\_\+t address, enum Execution\+Mode \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_abc2146e29b6db97677ad3a8321d42ffe}{\+\_\+print\+P\+SR}} (struct C\+L\+I\+Debugger\+Backend $\ast$be, union P\+SR psr)
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_ab744a20db75c627a6cf552eee9339cc0}{\+\_\+disassemble}} (struct C\+L\+I\+Debugger\+System $\ast$debugger, struct C\+L\+I\+Debug\+Vector $\ast$dv)
+\item 
+void \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_a045f36ee0ea5e0ee4fbf4622bfb140ca}{A\+R\+M\+C\+L\+I\+Debugger\+Create}} (struct C\+L\+I\+Debugger\+System $\ast$debugger)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static struct C\+L\+I\+Debugger\+Command\+Summary \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_a4369077d6b3042008429e77a98dbd444}{\+\_\+arm\+Commands}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{arm_2debugger_2cli-debugger_8c_ab744a20db75c627a6cf552eee9339cc0}\label{arm_2debugger_2cli-debugger_8c_ab744a20db75c627a6cf552eee9339cc0}} 
+\index{arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}!\+\_\+disassemble@{\+\_\+disassemble}}
+\index{\+\_\+disassemble@{\+\_\+disassemble}!arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+disassemble()}{\_disassemble()}}
+{\footnotesize\ttfamily static void \+\_\+disassemble (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger\+System $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2cli-debugger_8c_ab744a20db75c627a6cf552eee9339cc0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2cli-debugger_8c_ab744a20db75c627a6cf552eee9339cc0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2cli-debugger_8c_ab0bbaa1e92b7c34f955f91a60e2bce71}\label{arm_2debugger_2cli-debugger_8c_ab0bbaa1e92b7c34f955f91a60e2bce71}} 
+\index{arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}!\+\_\+disassemble\+Arm@{\+\_\+disassemble\+Arm}}
+\index{\+\_\+disassemble\+Arm@{\+\_\+disassemble\+Arm}!arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+disassemble\+Arm()}{\_disassembleArm()}}
+{\footnotesize\ttfamily static void \+\_\+disassemble\+Arm (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2cli-debugger_8c_ab0bbaa1e92b7c34f955f91a60e2bce71_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2cli-debugger_8c_a0ff9ed2f86427256fde0a97dafb94b3c}\label{arm_2debugger_2cli-debugger_8c_a0ff9ed2f86427256fde0a97dafb94b3c}} 
+\index{arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}!\+\_\+disassemble\+Mode@{\+\_\+disassemble\+Mode}}
+\index{\+\_\+disassemble\+Mode@{\+\_\+disassemble\+Mode}!arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+disassemble\+Mode()}{\_disassembleMode()}}
+{\footnotesize\ttfamily static void \+\_\+disassemble\+Mode (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv,  }\item[{enum Execution\+Mode}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2cli-debugger_8c_a0ff9ed2f86427256fde0a97dafb94b3c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2cli-debugger_8c_a0ff9ed2f86427256fde0a97dafb94b3c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2cli-debugger_8c_ae4976961ac2fc2199fc3fd2ad59f368c}\label{arm_2debugger_2cli-debugger_8c_ae4976961ac2fc2199fc3fd2ad59f368c}} 
+\index{arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}!\+\_\+disassemble\+Thumb@{\+\_\+disassemble\+Thumb}}
+\index{\+\_\+disassemble\+Thumb@{\+\_\+disassemble\+Thumb}!arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+disassemble\+Thumb()}{\_disassembleThumb()}}
+{\footnotesize\ttfamily static void \+\_\+disassemble\+Thumb (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2cli-debugger_8c_ae4976961ac2fc2199fc3fd2ad59f368c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2cli-debugger_8c_a1e0fedf60889558dc8c188a2ac725c88}\label{arm_2debugger_2cli-debugger_8c_a1e0fedf60889558dc8c188a2ac725c88}} 
+\index{arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}!\+\_\+print\+Line@{\+\_\+print\+Line}}
+\index{\+\_\+print\+Line@{\+\_\+print\+Line}!arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+print\+Line()}{\_printLine()}}
+{\footnotesize\ttfamily static uint32\+\_\+t \+\_\+print\+Line (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{uint32\+\_\+t}]{address,  }\item[{enum Execution\+Mode}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2cli-debugger_8c_a1e0fedf60889558dc8c188a2ac725c88_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2cli-debugger_8c_a1e0fedf60889558dc8c188a2ac725c88_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2cli-debugger_8c_abc2146e29b6db97677ad3a8321d42ffe}\label{arm_2debugger_2cli-debugger_8c_abc2146e29b6db97677ad3a8321d42ffe}} 
+\index{arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}!\+\_\+print\+P\+SR@{\+\_\+print\+P\+SR}}
+\index{\+\_\+print\+P\+SR@{\+\_\+print\+P\+SR}!arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+print\+P\+S\+R()}{\_printPSR()}}
+{\footnotesize\ttfamily static void \+\_\+print\+P\+SR (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger\+Backend $\ast$}]{be,  }\item[{union P\+SR}]{psr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2cli-debugger_8c_abc2146e29b6db97677ad3a8321d42ffe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2cli-debugger_8c_a1bce4490785068fd42fca65db1fb21ad}\label{arm_2debugger_2cli-debugger_8c_a1bce4490785068fd42fca65db1fb21ad}} 
+\index{arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}!\+\_\+print\+Status@{\+\_\+print\+Status}}
+\index{\+\_\+print\+Status@{\+\_\+print\+Status}!arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+print\+Status()}{\_printStatus()}}
+{\footnotesize\ttfamily static void \+\_\+print\+Status (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger\+System $\ast$}]{debugger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2cli-debugger_8c_a1bce4490785068fd42fca65db1fb21ad_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2cli-debugger_8c_a1bce4490785068fd42fca65db1fb21ad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2cli-debugger_8c_ae37b285f8c652414bf1f0aafa2d4909b}\label{arm_2debugger_2cli-debugger_8c_ae37b285f8c652414bf1f0aafa2d4909b}} 
+\index{arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}!\+\_\+set\+Breakpoint\+A\+RM@{\+\_\+set\+Breakpoint\+A\+RM}}
+\index{\+\_\+set\+Breakpoint\+A\+RM@{\+\_\+set\+Breakpoint\+A\+RM}!arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+set\+Breakpoint\+A\+R\+M()}{\_setBreakpointARM()}}
+{\footnotesize\ttfamily static void \+\_\+set\+Breakpoint\+A\+RM (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2cli-debugger_8c_ae37b285f8c652414bf1f0aafa2d4909b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2cli-debugger_8c_acad8c99d24d754d1ff65c79fdb18cf0e}\label{arm_2debugger_2cli-debugger_8c_acad8c99d24d754d1ff65c79fdb18cf0e}} 
+\index{arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}!\+\_\+set\+Breakpoint\+Thumb@{\+\_\+set\+Breakpoint\+Thumb}}
+\index{\+\_\+set\+Breakpoint\+Thumb@{\+\_\+set\+Breakpoint\+Thumb}!arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+set\+Breakpoint\+Thumb()}{\_setBreakpointThumb()}}
+{\footnotesize\ttfamily static void \+\_\+set\+Breakpoint\+Thumb (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2cli-debugger_8c_acad8c99d24d754d1ff65c79fdb18cf0e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2cli-debugger_8c_a045f36ee0ea5e0ee4fbf4622bfb140ca}\label{arm_2debugger_2cli-debugger_8c_a045f36ee0ea5e0ee4fbf4622bfb140ca}} 
+\index{arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}!A\+R\+M\+C\+L\+I\+Debugger\+Create@{A\+R\+M\+C\+L\+I\+Debugger\+Create}}
+\index{A\+R\+M\+C\+L\+I\+Debugger\+Create@{A\+R\+M\+C\+L\+I\+Debugger\+Create}!arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+C\+L\+I\+Debugger\+Create()}{ARMCLIDebuggerCreate()}}
+{\footnotesize\ttfamily void A\+R\+M\+C\+L\+I\+Debugger\+Create (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger\+System $\ast$}]{debugger }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2cli-debugger_8c_a045f36ee0ea5e0ee4fbf4622bfb140ca_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2cli-debugger_8c_a045f36ee0ea5e0ee4fbf4622bfb140ca_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{arm_2debugger_2cli-debugger_8c_a4369077d6b3042008429e77a98dbd444}\label{arm_2debugger_2cli-debugger_8c_a4369077d6b3042008429e77a98dbd444}} 
+\index{arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}!\+\_\+arm\+Commands@{\+\_\+arm\+Commands}}
+\index{\+\_\+arm\+Commands@{\+\_\+arm\+Commands}!arm/debugger/cli-\/debugger.\+c@{arm/debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+arm\+Commands}{\_armCommands}}
+{\footnotesize\ttfamily struct C\+L\+I\+Debugger\+Command\+Summary \+\_\+arm\+Commands\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    \{ \textcolor{stringliteral}{"b/a"}, \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_ae37b285f8c652414bf1f0aafa2d4909b}{\_setBreakpointARM}}, \textcolor{stringliteral}{"I"}, \textcolor{stringliteral}{"Set a software breakpoint as ARM"} \},
+    \{ \textcolor{stringliteral}{"b/t"}, \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_acad8c99d24d754d1ff65c79fdb18cf0e}{\_setBreakpointThumb}}, \textcolor{stringliteral}{"I"}, \textcolor{stringliteral}{"Set a software breakpoint as Thumb"} \},
+    \{ \textcolor{stringliteral}{"break/a"}, \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_ae37b285f8c652414bf1f0aafa2d4909b}{\_setBreakpointARM}}, \textcolor{stringliteral}{"I"}, \textcolor{stringliteral}{"Set a software breakpoint as ARM"} \},
+    \{ \textcolor{stringliteral}{"break/t"}, \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_acad8c99d24d754d1ff65c79fdb18cf0e}{\_setBreakpointThumb}}, \textcolor{stringliteral}{"I"}, \textcolor{stringliteral}{"Set a software breakpoint as Thumb"} \},
+    \{ \textcolor{stringliteral}{"dis/a"}, \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_ab0bbaa1e92b7c34f955f91a60e2bce71}{\_disassembleArm}}, \textcolor{stringliteral}{"Ii"}, \textcolor{stringliteral}{"Disassemble instructions as ARM"} \},
+    \{ \textcolor{stringliteral}{"dis/t"}, \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_ae4976961ac2fc2199fc3fd2ad59f368c}{\_disassembleThumb}}, \textcolor{stringliteral}{"Ii"}, \textcolor{stringliteral}{"Disassemble instructions as Thumb"} \},
+    \{ \textcolor{stringliteral}{"disasm/a"}, \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_ab0bbaa1e92b7c34f955f91a60e2bce71}{\_disassembleArm}}, \textcolor{stringliteral}{"Ii"}, \textcolor{stringliteral}{"Disassemble instructions as ARM"} \},
+    \{ \textcolor{stringliteral}{"disasm/t"}, \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_ae4976961ac2fc2199fc3fd2ad59f368c}{\_disassembleThumb}}, \textcolor{stringliteral}{"Ii"}, \textcolor{stringliteral}{"Disassemble instructions as Thumb"} \},
+    \{ \textcolor{stringliteral}{"disassemble/a"}, \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_ab0bbaa1e92b7c34f955f91a60e2bce71}{\_disassembleArm}}, \textcolor{stringliteral}{"Ii"}, \textcolor{stringliteral}{"Disassemble instructions as ARM"} \},
+    \{ \textcolor{stringliteral}{"disassemble/t"}, \mbox{\hyperlink{arm_2debugger_2cli-debugger_8c_ae4976961ac2fc2199fc3fd2ad59f368c}{\_disassembleThumb}}, \textcolor{stringliteral}{"Ii"}, \textcolor{stringliteral}{"Disassemble instructions as Thumb"} \},
+    \{ 0, 0, 0, 0 \}
+\}
+\end{DoxyCode}

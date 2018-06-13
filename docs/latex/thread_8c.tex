@@ -1,0 +1,725 @@
+\hypertarget{thread_8c}{}\section{src/core/thread.c File Reference}
+\label{thread_8c}\index{src/core/thread.\+c@{src/core/thread.\+c}}
+{\ttfamily \#include $<$mgba/core/thread.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/blip\+\_\+buf.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/serialize.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/patch.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+Include dependency graph for thread.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{thread_8c_a978ad3fd9b1899757717bca663bad710}{\+\_\+m\+Core\+Log}} (struct m\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} category, enum m\+Log\+Level level, const char $\ast$format, \mbox{\hyperlink{__builder_8h_a2b7adf9b9fd4a58a693dc7cfba5b9006}{va\+\_\+list}} args)
+\item 
+static void \mbox{\hyperlink{thread_8c_ad9548177a8cb3684b65ff38526a55561}{\+\_\+change\+State}} (struct m\+Core\+Thread\+Internal $\ast$thread\+Context, enum m\+Core\+Thread\+State new\+State, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} broadcast)
+\item 
+static void \mbox{\hyperlink{thread_8c_ae6aafd1106c7ff428c2bcf715eec5a99}{\+\_\+wait\+On\+Interrupt}} (struct m\+Core\+Thread\+Internal $\ast$thread\+Context)
+\item 
+static void \mbox{\hyperlink{thread_8c_a56b9bdcfd6f10fd2953b05b3c0a1f79a}{\+\_\+wait\+Until\+Not\+State}} (struct m\+Core\+Thread\+Internal $\ast$thread\+Context, enum m\+Core\+Thread\+State old\+State)
+\item 
+static void \mbox{\hyperlink{thread_8c_a55f132c6c41c0949023ec57d31b2d5ec}{\+\_\+pause\+Thread}} (struct m\+Core\+Thread\+Internal $\ast$thread\+Context)
+\item 
+void \mbox{\hyperlink{thread_8c_a69420064c90aa81e0f0018672d28fa97}{\+\_\+frame\+Started}} (void $\ast$context)
+\item 
+void \mbox{\hyperlink{thread_8c_a6b78ba71b19d1265a59d21311b42bd39}{\+\_\+frame\+Ended}} (void $\ast$context)
+\item 
+void \mbox{\hyperlink{thread_8c_a6e1a526b0951bb9e122d3692fbb07b25}{\+\_\+crashed}} (void $\ast$context)
+\item 
+void \mbox{\hyperlink{thread_8c_ae4abddde7bd1e961e49d72157eacb137}{\+\_\+core\+Sleep}} (void $\ast$context)
+\item 
+static T\+H\+R\+E\+A\+D\+\_\+\+E\+N\+T\+RY \mbox{\hyperlink{thread_8c_a54a22ad831ff517abe3f1157bd1e02d9}{\+\_\+m\+Core\+Thread\+Run}} (void $\ast$context)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{thread_8c_a841078589b3ba163cbccf7460f645002}{m\+Core\+Thread\+Start}} (struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{thread_8c_aa6f24160c0a06b477d0d97978078e848}{m\+Core\+Thread\+Has\+Started}} (struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{thread_8c_abf510300a8cfc188a7ec74dea62495e6}{m\+Core\+Thread\+Has\+Exited}} (struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{thread_8c_ae5c6529baa592d890d8fa5d88bde07e6}{m\+Core\+Thread\+Has\+Crashed}} (struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+void \mbox{\hyperlink{thread_8c_aff3e2b10f6b3b75c9ac5570255506f95}{m\+Core\+Thread\+Mark\+Crashed}} (struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+void \mbox{\hyperlink{thread_8c_a0b95c3fab78052781fb08421bdd01467}{m\+Core\+Thread\+End}} (struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+void \mbox{\hyperlink{thread_8c_a3f592796d977344868ffaa578d157ade}{m\+Core\+Thread\+Reset}} (struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+void \mbox{\hyperlink{thread_8c_abb4e8be804cb22cbd71f44f019450b61}{m\+Core\+Thread\+Join}} (struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{thread_8c_a3d9938a4b6c8ae26768c49636f1e1c07}{m\+Core\+Thread\+Is\+Active}} (struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+void \mbox{\hyperlink{thread_8c_a3d4a7ba45dad32fd51a54d179b259f7c}{m\+Core\+Thread\+Interrupt}} (struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+void \mbox{\hyperlink{thread_8c_ad9cd229fddd21661479e307c2c24e199}{m\+Core\+Thread\+Interrupt\+From\+Thread}} (struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+void \mbox{\hyperlink{thread_8c_a0be9da5e5b7cc037281f9cacae03dc7c}{m\+Core\+Thread\+Continue}} (struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+void \mbox{\hyperlink{thread_8c_ab5bdb20cb7ef090acbb9a6055a079d66}{m\+Core\+Thread\+Run\+Function}} (struct m\+Core\+Thread $\ast$thread\+Context, void($\ast$run)(struct m\+Core\+Thread $\ast$))
+\item 
+void \mbox{\hyperlink{thread_8c_ad3c3e4e49828af75b24d513590751ec5}{m\+Core\+Thread\+Pause}} (struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+void \mbox{\hyperlink{thread_8c_a11539de135d96b1f8de9a807cb1d3812}{m\+Core\+Thread\+Unpause}} (struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{thread_8c_abbb15fe7eaaf6b11c3c7d192756d0376}{m\+Core\+Thread\+Is\+Paused}} (struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+void \mbox{\hyperlink{thread_8c_a60107c199bfd3ce81f161c97d93e64f2}{m\+Core\+Thread\+Toggle\+Pause}} (struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+void \mbox{\hyperlink{thread_8c_a52daf1f20ccbe0785a4619cc51ee71a3}{m\+Core\+Thread\+Pause\+From\+Thread}} (struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+void \mbox{\hyperlink{thread_8c_ae19a5b32944c96737d80d4dc79d19bd8}{m\+Core\+Thread\+Set\+Rewinding}} (struct m\+Core\+Thread $\ast$thread\+Context, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} rewinding)
+\item 
+void \mbox{\hyperlink{thread_8c_aa308a9613aef1d4d4fd98fd25f69180b}{m\+Core\+Thread\+Rewind\+Params\+Changed}} (struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+void \mbox{\hyperlink{thread_8c_ad3d954bdb0610cebe70efcb1949e822a}{m\+Core\+Thread\+Wait\+From\+Thread}} (struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+void \mbox{\hyperlink{thread_8c_ad10c44b45b1479cc8c45136314575317}{m\+Core\+Thread\+Stop\+Waiting}} (struct m\+Core\+Thread $\ast$thread\+Context)
+\item 
+struct m\+Core\+Thread $\ast$ \mbox{\hyperlink{thread_8c_a638fc4d54fd25277f9ce9ec0f27e62cd}{m\+Core\+Thread\+Get}} (void)
+\item 
+struct m\+Logger $\ast$ \mbox{\hyperlink{thread_8c_a3b0474ffa73f72d1ef655f8b4d236e13}{m\+Core\+Thread\+Logger}} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const float \mbox{\hyperlink{thread_8c_aa8b690c2d30d43a8f4a2f509a8fa72e6}{\+\_\+default\+F\+P\+S\+Target}} = 60.\mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{thread_8c_ad9548177a8cb3684b65ff38526a55561}\label{thread_8c_ad9548177a8cb3684b65ff38526a55561}} 
+\index{thread.\+c@{thread.\+c}!\+\_\+change\+State@{\+\_\+change\+State}}
+\index{\+\_\+change\+State@{\+\_\+change\+State}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+change\+State()}{\_changeState()}}
+{\footnotesize\ttfamily static void \+\_\+change\+State (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread\+Internal $\ast$}]{thread\+Context,  }\item[{enum m\+Core\+Thread\+State}]{new\+State,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{broadcast }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_ad9548177a8cb3684b65ff38526a55561_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_ae4abddde7bd1e961e49d72157eacb137}\label{thread_8c_ae4abddde7bd1e961e49d72157eacb137}} 
+\index{thread.\+c@{thread.\+c}!\+\_\+core\+Sleep@{\+\_\+core\+Sleep}}
+\index{\+\_\+core\+Sleep@{\+\_\+core\+Sleep}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+core\+Sleep()}{\_coreSleep()}}
+{\footnotesize\ttfamily void \+\_\+core\+Sleep (\begin{DoxyParamCaption}\item[{void $\ast$}]{context }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_ae4abddde7bd1e961e49d72157eacb137_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_a6e1a526b0951bb9e122d3692fbb07b25}\label{thread_8c_a6e1a526b0951bb9e122d3692fbb07b25}} 
+\index{thread.\+c@{thread.\+c}!\+\_\+crashed@{\+\_\+crashed}}
+\index{\+\_\+crashed@{\+\_\+crashed}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+crashed()}{\_crashed()}}
+{\footnotesize\ttfamily void \+\_\+crashed (\begin{DoxyParamCaption}\item[{void $\ast$}]{context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=259pt]{thread_8c_a6e1a526b0951bb9e122d3692fbb07b25_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a6e1a526b0951bb9e122d3692fbb07b25_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_a6b78ba71b19d1265a59d21311b42bd39}\label{thread_8c_a6b78ba71b19d1265a59d21311b42bd39}} 
+\index{thread.\+c@{thread.\+c}!\+\_\+frame\+Ended@{\+\_\+frame\+Ended}}
+\index{\+\_\+frame\+Ended@{\+\_\+frame\+Ended}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+frame\+Ended()}{\_frameEnded()}}
+{\footnotesize\ttfamily void \+\_\+frame\+Ended (\begin{DoxyParamCaption}\item[{void $\ast$}]{context }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a6b78ba71b19d1265a59d21311b42bd39_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_a69420064c90aa81e0f0018672d28fa97}\label{thread_8c_a69420064c90aa81e0f0018672d28fa97}} 
+\index{thread.\+c@{thread.\+c}!\+\_\+frame\+Started@{\+\_\+frame\+Started}}
+\index{\+\_\+frame\+Started@{\+\_\+frame\+Started}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+frame\+Started()}{\_frameStarted()}}
+{\footnotesize\ttfamily void \+\_\+frame\+Started (\begin{DoxyParamCaption}\item[{void $\ast$}]{context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a69420064c90aa81e0f0018672d28fa97_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a69420064c90aa81e0f0018672d28fa97_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_a978ad3fd9b1899757717bca663bad710}\label{thread_8c_a978ad3fd9b1899757717bca663bad710}} 
+\index{thread.\+c@{thread.\+c}!\+\_\+m\+Core\+Log@{\+\_\+m\+Core\+Log}}
+\index{\+\_\+m\+Core\+Log@{\+\_\+m\+Core\+Log}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+m\+Core\+Log()}{\_mCoreLog()}}
+{\footnotesize\ttfamily static void \+\_\+m\+Core\+Log (\begin{DoxyParamCaption}\item[{struct m\+Logger $\ast$}]{logger,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{category,  }\item[{enum m\+Log\+Level}]{level,  }\item[{const char $\ast$}]{format,  }\item[{\mbox{\hyperlink{__builder_8h_a2b7adf9b9fd4a58a693dc7cfba5b9006}{va\+\_\+list}}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{thread_8c_a978ad3fd9b1899757717bca663bad710_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a978ad3fd9b1899757717bca663bad710_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_a54a22ad831ff517abe3f1157bd1e02d9}\label{thread_8c_a54a22ad831ff517abe3f1157bd1e02d9}} 
+\index{thread.\+c@{thread.\+c}!\+\_\+m\+Core\+Thread\+Run@{\+\_\+m\+Core\+Thread\+Run}}
+\index{\+\_\+m\+Core\+Thread\+Run@{\+\_\+m\+Core\+Thread\+Run}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+m\+Core\+Thread\+Run()}{\_mCoreThreadRun()}}
+{\footnotesize\ttfamily static T\+H\+R\+E\+A\+D\+\_\+\+E\+N\+T\+RY \+\_\+m\+Core\+Thread\+Run (\begin{DoxyParamCaption}\item[{void $\ast$}]{context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a54a22ad831ff517abe3f1157bd1e02d9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a54a22ad831ff517abe3f1157bd1e02d9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_a55f132c6c41c0949023ec57d31b2d5ec}\label{thread_8c_a55f132c6c41c0949023ec57d31b2d5ec}} 
+\index{thread.\+c@{thread.\+c}!\+\_\+pause\+Thread@{\+\_\+pause\+Thread}}
+\index{\+\_\+pause\+Thread@{\+\_\+pause\+Thread}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+pause\+Thread()}{\_pauseThread()}}
+{\footnotesize\ttfamily static void \+\_\+pause\+Thread (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread\+Internal $\ast$}]{thread\+Context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{thread_8c_a55f132c6c41c0949023ec57d31b2d5ec_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a55f132c6c41c0949023ec57d31b2d5ec_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_ae6aafd1106c7ff428c2bcf715eec5a99}\label{thread_8c_ae6aafd1106c7ff428c2bcf715eec5a99}} 
+\index{thread.\+c@{thread.\+c}!\+\_\+wait\+On\+Interrupt@{\+\_\+wait\+On\+Interrupt}}
+\index{\+\_\+wait\+On\+Interrupt@{\+\_\+wait\+On\+Interrupt}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+wait\+On\+Interrupt()}{\_waitOnInterrupt()}}
+{\footnotesize\ttfamily static void \+\_\+wait\+On\+Interrupt (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread\+Internal $\ast$}]{thread\+Context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_ae6aafd1106c7ff428c2bcf715eec5a99_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_a56b9bdcfd6f10fd2953b05b3c0a1f79a}\label{thread_8c_a56b9bdcfd6f10fd2953b05b3c0a1f79a}} 
+\index{thread.\+c@{thread.\+c}!\+\_\+wait\+Until\+Not\+State@{\+\_\+wait\+Until\+Not\+State}}
+\index{\+\_\+wait\+Until\+Not\+State@{\+\_\+wait\+Until\+Not\+State}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+wait\+Until\+Not\+State()}{\_waitUntilNotState()}}
+{\footnotesize\ttfamily static void \+\_\+wait\+Until\+Not\+State (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread\+Internal $\ast$}]{thread\+Context,  }\item[{enum m\+Core\+Thread\+State}]{old\+State }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a56b9bdcfd6f10fd2953b05b3c0a1f79a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_a0be9da5e5b7cc037281f9cacae03dc7c}\label{thread_8c_a0be9da5e5b7cc037281f9cacae03dc7c}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Continue@{m\+Core\+Thread\+Continue}}
+\index{m\+Core\+Thread\+Continue@{m\+Core\+Thread\+Continue}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Continue()}{mCoreThreadContinue()}}
+{\footnotesize\ttfamily void m\+Core\+Thread\+Continue (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a0be9da5e5b7cc037281f9cacae03dc7c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a0be9da5e5b7cc037281f9cacae03dc7c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_a0b95c3fab78052781fb08421bdd01467}\label{thread_8c_a0b95c3fab78052781fb08421bdd01467}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+End@{m\+Core\+Thread\+End}}
+\index{m\+Core\+Thread\+End@{m\+Core\+Thread\+End}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+End()}{mCoreThreadEnd()}}
+{\footnotesize\ttfamily void m\+Core\+Thread\+End (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{thread_8c_a0b95c3fab78052781fb08421bdd01467_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a0b95c3fab78052781fb08421bdd01467_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_a638fc4d54fd25277f9ce9ec0f27e62cd}\label{thread_8c_a638fc4d54fd25277f9ce9ec0f27e62cd}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Get@{m\+Core\+Thread\+Get}}
+\index{m\+Core\+Thread\+Get@{m\+Core\+Thread\+Get}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Get()}{mCoreThreadGet()}}
+{\footnotesize\ttfamily struct m\+Core\+Thread$\ast$ m\+Core\+Thread\+Get (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a638fc4d54fd25277f9ce9ec0f27e62cd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_ae5c6529baa592d890d8fa5d88bde07e6}\label{thread_8c_ae5c6529baa592d890d8fa5d88bde07e6}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Has\+Crashed@{m\+Core\+Thread\+Has\+Crashed}}
+\index{m\+Core\+Thread\+Has\+Crashed@{m\+Core\+Thread\+Has\+Crashed}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Has\+Crashed()}{mCoreThreadHasCrashed()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Thread\+Has\+Crashed (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_ae5c6529baa592d890d8fa5d88bde07e6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_abf510300a8cfc188a7ec74dea62495e6}\label{thread_8c_abf510300a8cfc188a7ec74dea62495e6}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Has\+Exited@{m\+Core\+Thread\+Has\+Exited}}
+\index{m\+Core\+Thread\+Has\+Exited@{m\+Core\+Thread\+Has\+Exited}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Has\+Exited()}{mCoreThreadHasExited()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Thread\+Has\+Exited (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{thread_8c_aa6f24160c0a06b477d0d97978078e848}\label{thread_8c_aa6f24160c0a06b477d0d97978078e848}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Has\+Started@{m\+Core\+Thread\+Has\+Started}}
+\index{m\+Core\+Thread\+Has\+Started@{m\+Core\+Thread\+Has\+Started}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Has\+Started()}{mCoreThreadHasStarted()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Thread\+Has\+Started (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_aa6f24160c0a06b477d0d97978078e848_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_a3d4a7ba45dad32fd51a54d179b259f7c}\label{thread_8c_a3d4a7ba45dad32fd51a54d179b259f7c}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Interrupt@{m\+Core\+Thread\+Interrupt}}
+\index{m\+Core\+Thread\+Interrupt@{m\+Core\+Thread\+Interrupt}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Interrupt()}{mCoreThreadInterrupt()}}
+{\footnotesize\ttfamily void m\+Core\+Thread\+Interrupt (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a3d4a7ba45dad32fd51a54d179b259f7c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a3d4a7ba45dad32fd51a54d179b259f7c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_ad9cd229fddd21661479e307c2c24e199}\label{thread_8c_ad9cd229fddd21661479e307c2c24e199}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Interrupt\+From\+Thread@{m\+Core\+Thread\+Interrupt\+From\+Thread}}
+\index{m\+Core\+Thread\+Interrupt\+From\+Thread@{m\+Core\+Thread\+Interrupt\+From\+Thread}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Interrupt\+From\+Thread()}{mCoreThreadInterruptFromThread()}}
+{\footnotesize\ttfamily void m\+Core\+Thread\+Interrupt\+From\+Thread (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_ad9cd229fddd21661479e307c2c24e199_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_ad9cd229fddd21661479e307c2c24e199_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_a3d9938a4b6c8ae26768c49636f1e1c07}\label{thread_8c_a3d9938a4b6c8ae26768c49636f1e1c07}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Is\+Active@{m\+Core\+Thread\+Is\+Active}}
+\index{m\+Core\+Thread\+Is\+Active@{m\+Core\+Thread\+Is\+Active}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Is\+Active()}{mCoreThreadIsActive()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Thread\+Is\+Active (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a3d9938a4b6c8ae26768c49636f1e1c07_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_abbb15fe7eaaf6b11c3c7d192756d0376}\label{thread_8c_abbb15fe7eaaf6b11c3c7d192756d0376}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Is\+Paused@{m\+Core\+Thread\+Is\+Paused}}
+\index{m\+Core\+Thread\+Is\+Paused@{m\+Core\+Thread\+Is\+Paused}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Is\+Paused()}{mCoreThreadIsPaused()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Thread\+Is\+Paused (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_abbb15fe7eaaf6b11c3c7d192756d0376_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_abb4e8be804cb22cbd71f44f019450b61}\label{thread_8c_abb4e8be804cb22cbd71f44f019450b61}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Join@{m\+Core\+Thread\+Join}}
+\index{m\+Core\+Thread\+Join@{m\+Core\+Thread\+Join}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Join()}{mCoreThreadJoin()}}
+{\footnotesize\ttfamily void m\+Core\+Thread\+Join (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{thread_8c_abb4e8be804cb22cbd71f44f019450b61_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_abb4e8be804cb22cbd71f44f019450b61_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_a3b0474ffa73f72d1ef655f8b4d236e13}\label{thread_8c_a3b0474ffa73f72d1ef655f8b4d236e13}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Logger@{m\+Core\+Thread\+Logger}}
+\index{m\+Core\+Thread\+Logger@{m\+Core\+Thread\+Logger}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Logger()}{mCoreThreadLogger()}}
+{\footnotesize\ttfamily struct m\+Logger$\ast$ m\+Core\+Thread\+Logger (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{thread_8c_a3b0474ffa73f72d1ef655f8b4d236e13_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a3b0474ffa73f72d1ef655f8b4d236e13_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_aff3e2b10f6b3b75c9ac5570255506f95}\label{thread_8c_aff3e2b10f6b3b75c9ac5570255506f95}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Mark\+Crashed@{m\+Core\+Thread\+Mark\+Crashed}}
+\index{m\+Core\+Thread\+Mark\+Crashed@{m\+Core\+Thread\+Mark\+Crashed}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Mark\+Crashed()}{mCoreThreadMarkCrashed()}}
+{\footnotesize\ttfamily void m\+Core\+Thread\+Mark\+Crashed (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_aff3e2b10f6b3b75c9ac5570255506f95_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_ad3c3e4e49828af75b24d513590751ec5}\label{thread_8c_ad3c3e4e49828af75b24d513590751ec5}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Pause@{m\+Core\+Thread\+Pause}}
+\index{m\+Core\+Thread\+Pause@{m\+Core\+Thread\+Pause}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Pause()}{mCoreThreadPause()}}
+{\footnotesize\ttfamily void m\+Core\+Thread\+Pause (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_ad3c3e4e49828af75b24d513590751ec5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_ad3c3e4e49828af75b24d513590751ec5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_a52daf1f20ccbe0785a4619cc51ee71a3}\label{thread_8c_a52daf1f20ccbe0785a4619cc51ee71a3}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Pause\+From\+Thread@{m\+Core\+Thread\+Pause\+From\+Thread}}
+\index{m\+Core\+Thread\+Pause\+From\+Thread@{m\+Core\+Thread\+Pause\+From\+Thread}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Pause\+From\+Thread()}{mCoreThreadPauseFromThread()}}
+{\footnotesize\ttfamily void m\+Core\+Thread\+Pause\+From\+Thread (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a52daf1f20ccbe0785a4619cc51ee71a3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a52daf1f20ccbe0785a4619cc51ee71a3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_a3f592796d977344868ffaa578d157ade}\label{thread_8c_a3f592796d977344868ffaa578d157ade}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Reset@{m\+Core\+Thread\+Reset}}
+\index{m\+Core\+Thread\+Reset@{m\+Core\+Thread\+Reset}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Reset()}{mCoreThreadReset()}}
+{\footnotesize\ttfamily void m\+Core\+Thread\+Reset (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a3f592796d977344868ffaa578d157ade_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_aa308a9613aef1d4d4fd98fd25f69180b}\label{thread_8c_aa308a9613aef1d4d4fd98fd25f69180b}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Rewind\+Params\+Changed@{m\+Core\+Thread\+Rewind\+Params\+Changed}}
+\index{m\+Core\+Thread\+Rewind\+Params\+Changed@{m\+Core\+Thread\+Rewind\+Params\+Changed}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Rewind\+Params\+Changed()}{mCoreThreadRewindParamsChanged()}}
+{\footnotesize\ttfamily void m\+Core\+Thread\+Rewind\+Params\+Changed (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_aa308a9613aef1d4d4fd98fd25f69180b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_aa308a9613aef1d4d4fd98fd25f69180b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_ab5bdb20cb7ef090acbb9a6055a079d66}\label{thread_8c_ab5bdb20cb7ef090acbb9a6055a079d66}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Run\+Function@{m\+Core\+Thread\+Run\+Function}}
+\index{m\+Core\+Thread\+Run\+Function@{m\+Core\+Thread\+Run\+Function}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Run\+Function()}{mCoreThreadRunFunction()}}
+{\footnotesize\ttfamily void m\+Core\+Thread\+Run\+Function (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context,  }\item[{void($\ast$)(struct m\+Core\+Thread $\ast$)}]{run }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_ab5bdb20cb7ef090acbb9a6055a079d66_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_ab5bdb20cb7ef090acbb9a6055a079d66_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_ae19a5b32944c96737d80d4dc79d19bd8}\label{thread_8c_ae19a5b32944c96737d80d4dc79d19bd8}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Set\+Rewinding@{m\+Core\+Thread\+Set\+Rewinding}}
+\index{m\+Core\+Thread\+Set\+Rewinding@{m\+Core\+Thread\+Set\+Rewinding}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Set\+Rewinding()}{mCoreThreadSetRewinding()}}
+{\footnotesize\ttfamily void m\+Core\+Thread\+Set\+Rewinding (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{rewinding }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_ae19a5b32944c96737d80d4dc79d19bd8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_ae19a5b32944c96737d80d4dc79d19bd8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_a841078589b3ba163cbccf7460f645002}\label{thread_8c_a841078589b3ba163cbccf7460f645002}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Start@{m\+Core\+Thread\+Start}}
+\index{m\+Core\+Thread\+Start@{m\+Core\+Thread\+Start}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Start()}{mCoreThreadStart()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Thread\+Start (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a841078589b3ba163cbccf7460f645002_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a841078589b3ba163cbccf7460f645002_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_ad10c44b45b1479cc8c45136314575317}\label{thread_8c_ad10c44b45b1479cc8c45136314575317}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Stop\+Waiting@{m\+Core\+Thread\+Stop\+Waiting}}
+\index{m\+Core\+Thread\+Stop\+Waiting@{m\+Core\+Thread\+Stop\+Waiting}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Stop\+Waiting()}{mCoreThreadStopWaiting()}}
+{\footnotesize\ttfamily void m\+Core\+Thread\+Stop\+Waiting (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_ad10c44b45b1479cc8c45136314575317_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_a60107c199bfd3ce81f161c97d93e64f2}\label{thread_8c_a60107c199bfd3ce81f161c97d93e64f2}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Toggle\+Pause@{m\+Core\+Thread\+Toggle\+Pause}}
+\index{m\+Core\+Thread\+Toggle\+Pause@{m\+Core\+Thread\+Toggle\+Pause}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Toggle\+Pause()}{mCoreThreadTogglePause()}}
+{\footnotesize\ttfamily void m\+Core\+Thread\+Toggle\+Pause (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a60107c199bfd3ce81f161c97d93e64f2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a60107c199bfd3ce81f161c97d93e64f2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_a11539de135d96b1f8de9a807cb1d3812}\label{thread_8c_a11539de135d96b1f8de9a807cb1d3812}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Unpause@{m\+Core\+Thread\+Unpause}}
+\index{m\+Core\+Thread\+Unpause@{m\+Core\+Thread\+Unpause}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Unpause()}{mCoreThreadUnpause()}}
+{\footnotesize\ttfamily void m\+Core\+Thread\+Unpause (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a11539de135d96b1f8de9a807cb1d3812_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_a11539de135d96b1f8de9a807cb1d3812_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{thread_8c_ad3d954bdb0610cebe70efcb1949e822a}\label{thread_8c_ad3d954bdb0610cebe70efcb1949e822a}} 
+\index{thread.\+c@{thread.\+c}!m\+Core\+Thread\+Wait\+From\+Thread@{m\+Core\+Thread\+Wait\+From\+Thread}}
+\index{m\+Core\+Thread\+Wait\+From\+Thread@{m\+Core\+Thread\+Wait\+From\+Thread}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Thread\+Wait\+From\+Thread()}{mCoreThreadWaitFromThread()}}
+{\footnotesize\ttfamily void m\+Core\+Thread\+Wait\+From\+Thread (\begin{DoxyParamCaption}\item[{struct m\+Core\+Thread $\ast$}]{thread\+Context }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{thread_8c_ad3d954bdb0610cebe70efcb1949e822a_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{thread_8c_aa8b690c2d30d43a8f4a2f509a8fa72e6}\label{thread_8c_aa8b690c2d30d43a8f4a2f509a8fa72e6}} 
+\index{thread.\+c@{thread.\+c}!\+\_\+default\+F\+P\+S\+Target@{\+\_\+default\+F\+P\+S\+Target}}
+\index{\+\_\+default\+F\+P\+S\+Target@{\+\_\+default\+F\+P\+S\+Target}!thread.\+c@{thread.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+default\+F\+P\+S\+Target}{\_defaultFPSTarget}}
+{\footnotesize\ttfamily const float \+\_\+default\+F\+P\+S\+Target = 60.\mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}}\hspace{0.3cm}{\ttfamily [static]}}
+

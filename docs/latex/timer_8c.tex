@@ -1,0 +1,213 @@
+\hypertarget{timer_8c}{}\section{src/gb/timer.c File Reference}
+\label{timer_8c}\index{src/gb/timer.\+c@{src/gb/timer.\+c}}
+{\ttfamily \#include $<$mgba/internal/gb/timer.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/lr35902/lr35902.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/gb.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/io.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/serialize.\+h$>$}\newline
+Include dependency graph for timer.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timer_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{timer_8c_aa019e9ded2c71fbafc46b334f121db29}{\+\_\+\+G\+B\+Timer\+I\+RQ}} (struct m\+Timing $\ast$timing, void $\ast$context, uint32\+\_\+t cycles\+Late)
+\item 
+static void \mbox{\hyperlink{timer_8c_aba8cf299e4874e75aa7580a7ea03f58f}{\+\_\+\+G\+B\+Timer\+Div\+Increment}} (struct G\+B\+Timer $\ast$timer, uint32\+\_\+t cycles\+Late)
+\item 
+void \mbox{\hyperlink{timer_8c_a0c2107db2eb9b19fea19c476c1e86cec}{\+\_\+\+G\+B\+Timer\+Update}} (struct m\+Timing $\ast$timing, void $\ast$context, uint32\+\_\+t cycles\+Late)
+\item 
+void \mbox{\hyperlink{timer_8c_a96fdfecb2c369cf1adccd4c1e4a22917}{G\+B\+Timer\+Reset}} (struct G\+B\+Timer $\ast$timer)
+\item 
+void \mbox{\hyperlink{timer_8c_afa5f50fc2a8a1e3ffbb44e358c0d39b2}{G\+B\+Timer\+Div\+Reset}} (struct G\+B\+Timer $\ast$timer)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{timer_8c_ae434b990f7d7bcdbe781e0fdaef6af83}{G\+B\+Timer\+Update\+T\+AC}} (struct G\+B\+Timer $\ast$timer, G\+B\+Register\+T\+AC tac)
+\item 
+void \mbox{\hyperlink{timer_8c_a7ba6c488b9b00e0c4c261e60acdfc023}{G\+B\+Timer\+Serialize}} (const struct G\+B\+Timer $\ast$timer, struct G\+B\+Serialized\+State $\ast$state)
+\item 
+void \mbox{\hyperlink{timer_8c_a2506b13be77f513f76bc0cf5be87a508}{G\+B\+Timer\+Deserialize}} (struct G\+B\+Timer $\ast$timer, const struct G\+B\+Serialized\+State $\ast$state)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{timer_8c_aba8cf299e4874e75aa7580a7ea03f58f}\label{timer_8c_aba8cf299e4874e75aa7580a7ea03f58f}} 
+\index{timer.\+c@{timer.\+c}!\+\_\+\+G\+B\+Timer\+Div\+Increment@{\+\_\+\+G\+B\+Timer\+Div\+Increment}}
+\index{\+\_\+\+G\+B\+Timer\+Div\+Increment@{\+\_\+\+G\+B\+Timer\+Div\+Increment}!timer.\+c@{timer.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+Timer\+Div\+Increment()}{\_GBTimerDivIncrement()}}
+{\footnotesize\ttfamily static void \+\_\+\+G\+B\+Timer\+Div\+Increment (\begin{DoxyParamCaption}\item[{struct G\+B\+Timer $\ast$}]{timer,  }\item[{uint32\+\_\+t}]{cycles\+Late }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timer_8c_aba8cf299e4874e75aa7580a7ea03f58f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timer_8c_aba8cf299e4874e75aa7580a7ea03f58f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{timer_8c_aa019e9ded2c71fbafc46b334f121db29}\label{timer_8c_aa019e9ded2c71fbafc46b334f121db29}} 
+\index{timer.\+c@{timer.\+c}!\+\_\+\+G\+B\+Timer\+I\+RQ@{\+\_\+\+G\+B\+Timer\+I\+RQ}}
+\index{\+\_\+\+G\+B\+Timer\+I\+RQ@{\+\_\+\+G\+B\+Timer\+I\+RQ}!timer.\+c@{timer.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+Timer\+I\+R\+Q()}{\_GBTimerIRQ()}}
+{\footnotesize\ttfamily void \+\_\+\+G\+B\+Timer\+I\+RQ (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing,  }\item[{void $\ast$}]{context,  }\item[{uint32\+\_\+t}]{cycles\+Late }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timer_8c_aa019e9ded2c71fbafc46b334f121db29_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timer_8c_aa019e9ded2c71fbafc46b334f121db29_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{timer_8c_a0c2107db2eb9b19fea19c476c1e86cec}\label{timer_8c_a0c2107db2eb9b19fea19c476c1e86cec}} 
+\index{timer.\+c@{timer.\+c}!\+\_\+\+G\+B\+Timer\+Update@{\+\_\+\+G\+B\+Timer\+Update}}
+\index{\+\_\+\+G\+B\+Timer\+Update@{\+\_\+\+G\+B\+Timer\+Update}!timer.\+c@{timer.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+Timer\+Update()}{\_GBTimerUpdate()}}
+{\footnotesize\ttfamily void \+\_\+\+G\+B\+Timer\+Update (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing,  }\item[{void $\ast$}]{context,  }\item[{uint32\+\_\+t}]{cycles\+Late }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timer_8c_a0c2107db2eb9b19fea19c476c1e86cec_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timer_8c_a0c2107db2eb9b19fea19c476c1e86cec_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{timer_8c_a2506b13be77f513f76bc0cf5be87a508}\label{timer_8c_a2506b13be77f513f76bc0cf5be87a508}} 
+\index{timer.\+c@{timer.\+c}!G\+B\+Timer\+Deserialize@{G\+B\+Timer\+Deserialize}}
+\index{G\+B\+Timer\+Deserialize@{G\+B\+Timer\+Deserialize}!timer.\+c@{timer.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Timer\+Deserialize()}{GBTimerDeserialize()}}
+{\footnotesize\ttfamily void G\+B\+Timer\+Deserialize (\begin{DoxyParamCaption}\item[{struct G\+B\+Timer $\ast$}]{timer,  }\item[{const struct G\+B\+Serialized\+State $\ast$}]{state }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{timer_8c_a2506b13be77f513f76bc0cf5be87a508_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timer_8c_a2506b13be77f513f76bc0cf5be87a508_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{timer_8c_afa5f50fc2a8a1e3ffbb44e358c0d39b2}\label{timer_8c_afa5f50fc2a8a1e3ffbb44e358c0d39b2}} 
+\index{timer.\+c@{timer.\+c}!G\+B\+Timer\+Div\+Reset@{G\+B\+Timer\+Div\+Reset}}
+\index{G\+B\+Timer\+Div\+Reset@{G\+B\+Timer\+Div\+Reset}!timer.\+c@{timer.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Timer\+Div\+Reset()}{GBTimerDivReset()}}
+{\footnotesize\ttfamily void G\+B\+Timer\+Div\+Reset (\begin{DoxyParamCaption}\item[{struct G\+B\+Timer $\ast$}]{timer }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timer_8c_afa5f50fc2a8a1e3ffbb44e358c0d39b2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timer_8c_afa5f50fc2a8a1e3ffbb44e358c0d39b2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{timer_8c_a96fdfecb2c369cf1adccd4c1e4a22917}\label{timer_8c_a96fdfecb2c369cf1adccd4c1e4a22917}} 
+\index{timer.\+c@{timer.\+c}!G\+B\+Timer\+Reset@{G\+B\+Timer\+Reset}}
+\index{G\+B\+Timer\+Reset@{G\+B\+Timer\+Reset}!timer.\+c@{timer.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Timer\+Reset()}{GBTimerReset()}}
+{\footnotesize\ttfamily void G\+B\+Timer\+Reset (\begin{DoxyParamCaption}\item[{struct G\+B\+Timer $\ast$}]{timer }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timer_8c_a96fdfecb2c369cf1adccd4c1e4a22917_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timer_8c_a96fdfecb2c369cf1adccd4c1e4a22917_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{timer_8c_a7ba6c488b9b00e0c4c261e60acdfc023}\label{timer_8c_a7ba6c488b9b00e0c4c261e60acdfc023}} 
+\index{timer.\+c@{timer.\+c}!G\+B\+Timer\+Serialize@{G\+B\+Timer\+Serialize}}
+\index{G\+B\+Timer\+Serialize@{G\+B\+Timer\+Serialize}!timer.\+c@{timer.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Timer\+Serialize()}{GBTimerSerialize()}}
+{\footnotesize\ttfamily void G\+B\+Timer\+Serialize (\begin{DoxyParamCaption}\item[{const struct G\+B\+Timer $\ast$}]{timer,  }\item[{struct G\+B\+Serialized\+State $\ast$}]{state }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{timer_8c_a7ba6c488b9b00e0c4c261e60acdfc023_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timer_8c_a7ba6c488b9b00e0c4c261e60acdfc023_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{timer_8c_ae434b990f7d7bcdbe781e0fdaef6af83}\label{timer_8c_ae434b990f7d7bcdbe781e0fdaef6af83}} 
+\index{timer.\+c@{timer.\+c}!G\+B\+Timer\+Update\+T\+AC@{G\+B\+Timer\+Update\+T\+AC}}
+\index{G\+B\+Timer\+Update\+T\+AC@{G\+B\+Timer\+Update\+T\+AC}!timer.\+c@{timer.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Timer\+Update\+T\+A\+C()}{GBTimerUpdateTAC()}}
+{\footnotesize\ttfamily uint8\+\_\+t G\+B\+Timer\+Update\+T\+AC (\begin{DoxyParamCaption}\item[{struct G\+B\+Timer $\ast$}]{timer,  }\item[{G\+B\+Register\+T\+AC}]{tac }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timer_8c_ae434b990f7d7bcdbe781e0fdaef6af83_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timer_8c_ae434b990f7d7bcdbe781e0fdaef6af83_icgraph}
+\end{center}
+\end{figure}

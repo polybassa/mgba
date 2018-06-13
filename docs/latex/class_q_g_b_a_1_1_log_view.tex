@@ -1,0 +1,273 @@
+\hypertarget{class_q_g_b_a_1_1_log_view}{}\section{Q\+G\+BA\+:\+:Log\+View Class Reference}
+\label{class_q_g_b_a_1_1_log_view}\index{Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}}
+
+
+{\ttfamily \#include $<$Log\+View.\+h$>$}
+
+
+
+Inheritance diagram for Q\+G\+BA\+:\+:Log\+View\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{class_q_g_b_a_1_1_log_view__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Q\+G\+BA\+:\+:Log\+View\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{class_q_g_b_a_1_1_log_view__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_log_view_ac55c68cf058ed26900803ad7bec30445}{post\+Log}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} level, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} category, const Q\+String \&log)
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_log_view_a813aa9ea6e209b95f0b467610b528e08}{set\+Levels}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} levels)
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_log_view_af5262551d0e5839cbc13b53c36574bf0}{clear}} ()
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_log_view_a57c60f4751bc52c34c3126ff5ab8ac27}{levels\+Enabled}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} levels)
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_log_view_a7f3fe25b1a984eb71814990bbf4a8358}{levels\+Disabled}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} levels)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_q_g_b_a_1_1_log_view_a7bccf99af2ec77e478716a72b8b790e5}{Log\+View}} (\mbox{\hyperlink{class_q_g_b_a_1_1_log_controller}{Log\+Controller}} $\ast$log, Q\+Widget $\ast$parent=nullptr)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_q_g_b_a_1_1_log_view_afba18823777f16c5423e19a2b5379e82}{paint\+Event}} (Q\+Paint\+Event $\ast$) override
+\end{DoxyCompactItemize}
+\subsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_log_view_a237ab0cd2c41fe85a3a8b254fb029c44}{set\+Max\+Lines}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}})
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_log_view_a7c661fd0b6316bc62f71df6c39a1a715}{set\+Level}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} level, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}})
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_log_view_ab58e52a5c481261805b6b0f3a08b22a3}{clear\+Line}} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Ui\+::\+Log\+View \mbox{\hyperlink{class_q_g_b_a_1_1_log_view_ad14d2319c553761effb0dcfa47ead0b3}{m\+\_\+ui}}
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{class_q_g_b_a_1_1_log_view_af520c8df95517a41cf269ba91be23a15}{m\+\_\+lines}} = 0
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{class_q_g_b_a_1_1_log_view_a7500c6dca5556014b72ad664fe8b5700}{m\+\_\+line\+Limit}} = \mbox{\hyperlink{class_q_g_b_a_1_1_log_view_a7bbb7148e2dca4f2ac6b25d8def4b196}{D\+E\+F\+A\+U\+L\+T\+\_\+\+L\+I\+N\+E\+\_\+\+L\+I\+M\+IT}}
+\item 
+Q\+Queue$<$ Q\+String $>$ \mbox{\hyperlink{class_q_g_b_a_1_1_log_view_a77842da472ca74e8b5b54ea865beaf17}{m\+\_\+pending\+Lines}}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{class_q_g_b_a_1_1_log_view_a7bbb7148e2dca4f2ac6b25d8def4b196}{D\+E\+F\+A\+U\+L\+T\+\_\+\+L\+I\+N\+E\+\_\+\+L\+I\+M\+IT}} = 1000
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_log_view_a7bccf99af2ec77e478716a72b8b790e5}\label{class_q_g_b_a_1_1_log_view_a7bccf99af2ec77e478716a72b8b790e5}} 
+\index{Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}!Log\+View@{Log\+View}}
+\index{Log\+View@{Log\+View}!Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}}
+\subsubsection{\texorpdfstring{Log\+View()}{LogView()}}
+{\footnotesize\ttfamily Log\+View\+::\+Log\+View (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_q_g_b_a_1_1_log_controller}{Log\+Controller}} $\ast$}]{log,  }\item[{Q\+Widget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_log_view_a7bccf99af2ec77e478716a72b8b790e5_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_log_view_af5262551d0e5839cbc13b53c36574bf0}\label{class_q_g_b_a_1_1_log_view_af5262551d0e5839cbc13b53c36574bf0}} 
+\index{Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}!clear@{clear}}
+\index{clear@{clear}!Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}}
+\subsubsection{\texorpdfstring{clear}{clear}}
+{\footnotesize\ttfamily void Log\+View\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_log_view_af5262551d0e5839cbc13b53c36574bf0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_log_view_ab58e52a5c481261805b6b0f3a08b22a3}\label{class_q_g_b_a_1_1_log_view_ab58e52a5c481261805b6b0f3a08b22a3}} 
+\index{Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}!clear\+Line@{clear\+Line}}
+\index{clear\+Line@{clear\+Line}!Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}}
+\subsubsection{\texorpdfstring{clear\+Line()}{clearLine()}}
+{\footnotesize\ttfamily void Log\+View\+::clear\+Line (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_log_view_ab58e52a5c481261805b6b0f3a08b22a3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_log_view_a7f3fe25b1a984eb71814990bbf4a8358}\label{class_q_g_b_a_1_1_log_view_a7f3fe25b1a984eb71814990bbf4a8358}} 
+\index{Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}!levels\+Disabled@{levels\+Disabled}}
+\index{levels\+Disabled@{levels\+Disabled}!Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}}
+\subsubsection{\texorpdfstring{levels\+Disabled}{levelsDisabled}}
+{\footnotesize\ttfamily void Q\+G\+B\+A\+::\+Log\+View\+::levels\+Disabled (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{levels }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_log_view_a7f3fe25b1a984eb71814990bbf4a8358_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_log_view_a57c60f4751bc52c34c3126ff5ab8ac27}\label{class_q_g_b_a_1_1_log_view_a57c60f4751bc52c34c3126ff5ab8ac27}} 
+\index{Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}!levels\+Enabled@{levels\+Enabled}}
+\index{levels\+Enabled@{levels\+Enabled}!Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}}
+\subsubsection{\texorpdfstring{levels\+Enabled}{levelsEnabled}}
+{\footnotesize\ttfamily void Q\+G\+B\+A\+::\+Log\+View\+::levels\+Enabled (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{levels }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_log_view_a57c60f4751bc52c34c3126ff5ab8ac27_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_log_view_afba18823777f16c5423e19a2b5379e82}\label{class_q_g_b_a_1_1_log_view_afba18823777f16c5423e19a2b5379e82}} 
+\index{Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}!paint\+Event@{paint\+Event}}
+\index{paint\+Event@{paint\+Event}!Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}}
+\subsubsection{\texorpdfstring{paint\+Event()}{paintEvent()}}
+{\footnotesize\ttfamily void Log\+View\+::paint\+Event (\begin{DoxyParamCaption}\item[{Q\+Paint\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_log_view_ac55c68cf058ed26900803ad7bec30445}\label{class_q_g_b_a_1_1_log_view_ac55c68cf058ed26900803ad7bec30445}} 
+\index{Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}!post\+Log@{post\+Log}}
+\index{post\+Log@{post\+Log}!Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}}
+\subsubsection{\texorpdfstring{post\+Log}{postLog}}
+{\footnotesize\ttfamily void Log\+View\+::post\+Log (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{level,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{category,  }\item[{const Q\+String \&}]{log }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_log_view_ac55c68cf058ed26900803ad7bec30445_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_log_view_ac55c68cf058ed26900803ad7bec30445_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_log_view_a7c661fd0b6316bc62f71df6c39a1a715}\label{class_q_g_b_a_1_1_log_view_a7c661fd0b6316bc62f71df6c39a1a715}} 
+\index{Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}!set\+Level@{set\+Level}}
+\index{set\+Level@{set\+Level}!Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}}
+\subsubsection{\texorpdfstring{set\+Level()}{setLevel()}}
+{\footnotesize\ttfamily void Log\+View\+::set\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{level,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_log_view_a7c661fd0b6316bc62f71df6c39a1a715_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_log_view_a813aa9ea6e209b95f0b467610b528e08}\label{class_q_g_b_a_1_1_log_view_a813aa9ea6e209b95f0b467610b528e08}} 
+\index{Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}!set\+Levels@{set\+Levels}}
+\index{set\+Levels@{set\+Levels}!Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}}
+\subsubsection{\texorpdfstring{set\+Levels}{setLevels}}
+{\footnotesize\ttfamily void Log\+View\+::set\+Levels (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{levels }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_log_view_a813aa9ea6e209b95f0b467610b528e08_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_log_view_a237ab0cd2c41fe85a3a8b254fb029c44}\label{class_q_g_b_a_1_1_log_view_a237ab0cd2c41fe85a3a8b254fb029c44}} 
+\index{Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}!set\+Max\+Lines@{set\+Max\+Lines}}
+\index{set\+Max\+Lines@{set\+Max\+Lines}!Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}}
+\subsubsection{\texorpdfstring{set\+Max\+Lines}{setMaxLines}}
+{\footnotesize\ttfamily void Log\+View\+::set\+Max\+Lines (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{limit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_log_view_a237ab0cd2c41fe85a3a8b254fb029c44_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_log_view_a237ab0cd2c41fe85a3a8b254fb029c44_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_log_view_a7bbb7148e2dca4f2ac6b25d8def4b196}\label{class_q_g_b_a_1_1_log_view_a7bbb7148e2dca4f2ac6b25d8def4b196}} 
+\index{Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}!D\+E\+F\+A\+U\+L\+T\+\_\+\+L\+I\+N\+E\+\_\+\+L\+I\+M\+IT@{D\+E\+F\+A\+U\+L\+T\+\_\+\+L\+I\+N\+E\+\_\+\+L\+I\+M\+IT}}
+\index{D\+E\+F\+A\+U\+L\+T\+\_\+\+L\+I\+N\+E\+\_\+\+L\+I\+M\+IT@{D\+E\+F\+A\+U\+L\+T\+\_\+\+L\+I\+N\+E\+\_\+\+L\+I\+M\+IT}!Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}}
+\subsubsection{\texorpdfstring{D\+E\+F\+A\+U\+L\+T\+\_\+\+L\+I\+N\+E\+\_\+\+L\+I\+M\+IT}{DEFAULT\_LINE\_LIMIT}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Q\+G\+B\+A\+::\+Log\+View\+::\+D\+E\+F\+A\+U\+L\+T\+\_\+\+L\+I\+N\+E\+\_\+\+L\+I\+M\+IT = 1000\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_log_view_a7500c6dca5556014b72ad664fe8b5700}\label{class_q_g_b_a_1_1_log_view_a7500c6dca5556014b72ad664fe8b5700}} 
+\index{Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}!m\+\_\+line\+Limit@{m\+\_\+line\+Limit}}
+\index{m\+\_\+line\+Limit@{m\+\_\+line\+Limit}!Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}}
+\subsubsection{\texorpdfstring{m\+\_\+line\+Limit}{m\_lineLimit}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Q\+G\+B\+A\+::\+Log\+View\+::m\+\_\+line\+Limit = \mbox{\hyperlink{class_q_g_b_a_1_1_log_view_a7bbb7148e2dca4f2ac6b25d8def4b196}{D\+E\+F\+A\+U\+L\+T\+\_\+\+L\+I\+N\+E\+\_\+\+L\+I\+M\+IT}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_log_view_af520c8df95517a41cf269ba91be23a15}\label{class_q_g_b_a_1_1_log_view_af520c8df95517a41cf269ba91be23a15}} 
+\index{Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}!m\+\_\+lines@{m\+\_\+lines}}
+\index{m\+\_\+lines@{m\+\_\+lines}!Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}}
+\subsubsection{\texorpdfstring{m\+\_\+lines}{m\_lines}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Q\+G\+B\+A\+::\+Log\+View\+::m\+\_\+lines = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_log_view_a77842da472ca74e8b5b54ea865beaf17}\label{class_q_g_b_a_1_1_log_view_a77842da472ca74e8b5b54ea865beaf17}} 
+\index{Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}!m\+\_\+pending\+Lines@{m\+\_\+pending\+Lines}}
+\index{m\+\_\+pending\+Lines@{m\+\_\+pending\+Lines}!Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}}
+\subsubsection{\texorpdfstring{m\+\_\+pending\+Lines}{m\_pendingLines}}
+{\footnotesize\ttfamily Q\+Queue$<$Q\+String$>$ Q\+G\+B\+A\+::\+Log\+View\+::m\+\_\+pending\+Lines\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_log_view_ad14d2319c553761effb0dcfa47ead0b3}\label{class_q_g_b_a_1_1_log_view_ad14d2319c553761effb0dcfa47ead0b3}} 
+\index{Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}!m\+\_\+ui@{m\+\_\+ui}}
+\index{m\+\_\+ui@{m\+\_\+ui}!Q\+G\+B\+A\+::\+Log\+View@{Q\+G\+B\+A\+::\+Log\+View}}
+\subsubsection{\texorpdfstring{m\+\_\+ui}{m\_ui}}
+{\footnotesize\ttfamily Ui\+::\+Log\+View Q\+G\+B\+A\+::\+Log\+View\+::m\+\_\+ui\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/platform/qt/\mbox{\hyperlink{_log_view_8h}{Log\+View.\+h}}\item 
+src/platform/qt/\mbox{\hyperlink{_log_view_8cpp}{Log\+View.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,269 @@
+\hypertarget{_lzma_util_8c}{}\section{src/third-\/party/lzma/\+Util/\+Lzma/\+Lzma\+Util.c File Reference}
+\label{_lzma_util_8c}\index{src/third-\/party/lzma/\+Util/\+Lzma/\+Lzma\+Util.\+c@{src/third-\/party/lzma/\+Util/\+Lzma/\+Lzma\+Util.\+c}}
+{\ttfamily \#include \char`\"{}../../\+Precomp.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../../\+Alloc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../7z\+File.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../7z\+Version.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../\+Lzma\+Dec.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../\+Lzma\+Enc.\+h\char`\"{}}\newline
+Include dependency graph for Lzma\+Util.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma_util_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_lzma_util_8c_a08a7e8a6abdc5cf6d2ac4e978e084d1a}{I\+N\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE}}~(1 $<$$<$ 16)
+\item 
+\#define \mbox{\hyperlink{_lzma_util_8c_a8abd3ebb6e18277a43604c06f41e77a8}{O\+U\+T\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE}}~(1 $<$$<$ 16)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_lzma_util_8c_ae1e2653d3fc68bc1422f84f551e9db3a}{Print\+Help}} (char $\ast$buffer)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{_lzma_util_8c_a6bb5c0e400758ed138b26d83e75afc41}{Print\+Error}} (char $\ast$buffer, const char $\ast$message)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{_lzma_util_8c_ab7f3fe631e0fe0ba1f05559488c0c842}{Print\+Error\+Number}} (char $\ast$buffer, \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} val)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{_lzma_util_8c_a93d1b355d66aaa3bc636c1fcf459c066}{Print\+User\+Error}} (char $\ast$buffer)
+\item 
+static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_lzma_util_8c_ab7358b7eed2400801922978fd23d56ae}{Decode2}} (\mbox{\hyperlink{_lzma_dec_8h_struct_c_lzma_dec}{C\+Lzma\+Dec}} $\ast$state, \mbox{\hyperlink{struct_i_seq_out_stream}{I\+Seq\+Out\+Stream}} $\ast$out\+Stream, \mbox{\hyperlink{struct_i_seq_in_stream}{I\+Seq\+In\+Stream}} $\ast$in\+Stream, \mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} unpack\+Size)
+\item 
+static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_lzma_util_8c_a46d9c057754f50a9bdce087aea3a292e}{Decode}} (\mbox{\hyperlink{struct_i_seq_out_stream}{I\+Seq\+Out\+Stream}} $\ast$out\+Stream, \mbox{\hyperlink{struct_i_seq_in_stream}{I\+Seq\+In\+Stream}} $\ast$in\+Stream)
+\item 
+static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_lzma_util_8c_ad90eaa5f126829278d53aae311bb4eff}{Encode}} (\mbox{\hyperlink{struct_i_seq_out_stream}{I\+Seq\+Out\+Stream}} $\ast$out\+Stream, \mbox{\hyperlink{struct_i_seq_in_stream}{I\+Seq\+In\+Stream}} $\ast$in\+Stream, \mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} file\+Size, char $\ast$\mbox{\hyperlink{isa-thumb_8c_a03b78d51ad860bbea2f9c98276d0b70b}{rs}})
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{_lzma_util_8c_a17a931c0fa78befd935168db2ff723f5}{main2}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} num\+Args, const char $\ast$args\mbox{[}$\,$\mbox{]}, char $\ast$\mbox{\hyperlink{isa-thumb_8c_a03b78d51ad860bbea2f9c98276d0b70b}{rs}})
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{7z_types_8h_a959aa84c48968de4bf433c8ff1df79f1}{M\+Y\+\_\+\+C\+D\+E\+CL}} \mbox{\hyperlink{_lzma_util_8c_a681c63fcb7d70cc231abb537d7601d81}{main}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} num\+Args, const char $\ast$args\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \mbox{\hyperlink{_lzma_util_8c_af63f39642f8a383c8f3d76fd5aef27eb}{k\+Cant\+Read\+Message}} = \char`\"{}Can not \mbox{\hyperlink{zstream_8h_afe0bb0c451d445ad18368c4f7cf7cd2e}{read}} input file\char`\"{}
+\item 
+const char $\ast$ \mbox{\hyperlink{_lzma_util_8c_af982a1b6e260ce47b1fd185afc25ca8c}{k\+Cant\+Write\+Message}} = \char`\"{}Can not \mbox{\hyperlink{zstream_8h_a734527d08852c736d737b94507d5a521}{write}} output file\char`\"{}
+\item 
+const char $\ast$ \mbox{\hyperlink{_lzma_util_8c_adacfd85acf01d9b7352f8a5769ab6512}{k\+Cant\+Allocate\+Message}} = \char`\"{}Can not allocate memory\char`\"{}
+\item 
+const char $\ast$ \mbox{\hyperlink{_lzma_util_8c_a0279047c658af2312c8388b0b092ae11}{k\+Data\+Error\+Message}} = \char`\"{}Data \mbox{\hyperlink{minigzip_8c_aee763da2c1c9da197307bad1d009513d}{error}}\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_lzma_util_8c_a08a7e8a6abdc5cf6d2ac4e978e084d1a}\label{_lzma_util_8c_a08a7e8a6abdc5cf6d2ac4e978e084d1a}} 
+\index{Lzma\+Util.\+c@{Lzma\+Util.\+c}!I\+N\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE@{I\+N\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE}}
+\index{I\+N\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE@{I\+N\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE}!Lzma\+Util.\+c@{Lzma\+Util.\+c}}
+\subsubsection{\texorpdfstring{I\+N\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE}{IN\_BUF\_SIZE}}
+{\footnotesize\ttfamily \#define I\+N\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE~(1 $<$$<$ 16)}
+
+\mbox{\Hypertarget{_lzma_util_8c_a8abd3ebb6e18277a43604c06f41e77a8}\label{_lzma_util_8c_a8abd3ebb6e18277a43604c06f41e77a8}} 
+\index{Lzma\+Util.\+c@{Lzma\+Util.\+c}!O\+U\+T\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE@{O\+U\+T\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE}}
+\index{O\+U\+T\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE@{O\+U\+T\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE}!Lzma\+Util.\+c@{Lzma\+Util.\+c}}
+\subsubsection{\texorpdfstring{O\+U\+T\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE}{OUT\_BUF\_SIZE}}
+{\footnotesize\ttfamily \#define O\+U\+T\+\_\+\+B\+U\+F\+\_\+\+S\+I\+ZE~(1 $<$$<$ 16)}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_lzma_util_8c_a46d9c057754f50a9bdce087aea3a292e}\label{_lzma_util_8c_a46d9c057754f50a9bdce087aea3a292e}} 
+\index{Lzma\+Util.\+c@{Lzma\+Util.\+c}!Decode@{Decode}}
+\index{Decode@{Decode}!Lzma\+Util.\+c@{Lzma\+Util.\+c}}
+\subsubsection{\texorpdfstring{Decode()}{Decode()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Decode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_i_seq_out_stream}{I\+Seq\+Out\+Stream}} $\ast$}]{out\+Stream,  }\item[{\mbox{\hyperlink{struct_i_seq_in_stream}{I\+Seq\+In\+Stream}} $\ast$}]{in\+Stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma_util_8c_a46d9c057754f50a9bdce087aea3a292e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=293pt]{_lzma_util_8c_a46d9c057754f50a9bdce087aea3a292e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma_util_8c_ab7358b7eed2400801922978fd23d56ae}\label{_lzma_util_8c_ab7358b7eed2400801922978fd23d56ae}} 
+\index{Lzma\+Util.\+c@{Lzma\+Util.\+c}!Decode2@{Decode2}}
+\index{Decode2@{Decode2}!Lzma\+Util.\+c@{Lzma\+Util.\+c}}
+\subsubsection{\texorpdfstring{Decode2()}{Decode2()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Decode2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lzma_dec_8h_struct_c_lzma_dec}{C\+Lzma\+Dec}} $\ast$}]{state,  }\item[{\mbox{\hyperlink{struct_i_seq_out_stream}{I\+Seq\+Out\+Stream}} $\ast$}]{out\+Stream,  }\item[{\mbox{\hyperlink{struct_i_seq_in_stream}{I\+Seq\+In\+Stream}} $\ast$}]{in\+Stream,  }\item[{\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}}}]{unpack\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma_util_8c_ab7358b7eed2400801922978fd23d56ae_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma_util_8c_ab7358b7eed2400801922978fd23d56ae_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma_util_8c_ad90eaa5f126829278d53aae311bb4eff}\label{_lzma_util_8c_ad90eaa5f126829278d53aae311bb4eff}} 
+\index{Lzma\+Util.\+c@{Lzma\+Util.\+c}!Encode@{Encode}}
+\index{Encode@{Encode}!Lzma\+Util.\+c@{Lzma\+Util.\+c}}
+\subsubsection{\texorpdfstring{Encode()}{Encode()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Encode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_i_seq_out_stream}{I\+Seq\+Out\+Stream}} $\ast$}]{out\+Stream,  }\item[{\mbox{\hyperlink{struct_i_seq_in_stream}{I\+Seq\+In\+Stream}} $\ast$}]{in\+Stream,  }\item[{\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}}}]{file\+Size,  }\item[{char $\ast$}]{rs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma_util_8c_ad90eaa5f126829278d53aae311bb4eff_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{_lzma_util_8c_ad90eaa5f126829278d53aae311bb4eff_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma_util_8c_a681c63fcb7d70cc231abb537d7601d81}\label{_lzma_util_8c_a681c63fcb7d70cc231abb537d7601d81}} 
+\index{Lzma\+Util.\+c@{Lzma\+Util.\+c}!main@{main}}
+\index{main@{main}!Lzma\+Util.\+c@{Lzma\+Util.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{7z_types_8h_a959aa84c48968de4bf433c8ff1df79f1}{M\+Y\+\_\+\+C\+D\+E\+CL}} main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{num\+Args,  }\item[{const char $\ast$}]{args\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma_util_8c_a681c63fcb7d70cc231abb537d7601d81_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma_util_8c_a17a931c0fa78befd935168db2ff723f5}\label{_lzma_util_8c_a17a931c0fa78befd935168db2ff723f5}} 
+\index{Lzma\+Util.\+c@{Lzma\+Util.\+c}!main2@{main2}}
+\index{main2@{main2}!Lzma\+Util.\+c@{Lzma\+Util.\+c}}
+\subsubsection{\texorpdfstring{main2()}{main2()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} main2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{num\+Args,  }\item[{const char $\ast$}]{args\mbox{[}$\,$\mbox{]},  }\item[{char $\ast$}]{rs }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma_util_8c_a17a931c0fa78befd935168db2ff723f5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{_lzma_util_8c_a17a931c0fa78befd935168db2ff723f5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma_util_8c_a6bb5c0e400758ed138b26d83e75afc41}\label{_lzma_util_8c_a6bb5c0e400758ed138b26d83e75afc41}} 
+\index{Lzma\+Util.\+c@{Lzma\+Util.\+c}!Print\+Error@{Print\+Error}}
+\index{Print\+Error@{Print\+Error}!Lzma\+Util.\+c@{Lzma\+Util.\+c}}
+\subsubsection{\texorpdfstring{Print\+Error()}{PrintError()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Print\+Error (\begin{DoxyParamCaption}\item[{char $\ast$}]{buffer,  }\item[{const char $\ast$}]{message }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma_util_8c_a6bb5c0e400758ed138b26d83e75afc41_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma_util_8c_ab7f3fe631e0fe0ba1f05559488c0c842}\label{_lzma_util_8c_ab7f3fe631e0fe0ba1f05559488c0c842}} 
+\index{Lzma\+Util.\+c@{Lzma\+Util.\+c}!Print\+Error\+Number@{Print\+Error\+Number}}
+\index{Print\+Error\+Number@{Print\+Error\+Number}!Lzma\+Util.\+c@{Lzma\+Util.\+c}}
+\subsubsection{\texorpdfstring{Print\+Error\+Number()}{PrintErrorNumber()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Print\+Error\+Number (\begin{DoxyParamCaption}\item[{char $\ast$}]{buffer,  }\item[{\mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}}}]{val }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{_lzma_util_8c_ab7f3fe631e0fe0ba1f05559488c0c842_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma_util_8c_ae1e2653d3fc68bc1422f84f551e9db3a}\label{_lzma_util_8c_ae1e2653d3fc68bc1422f84f551e9db3a}} 
+\index{Lzma\+Util.\+c@{Lzma\+Util.\+c}!Print\+Help@{Print\+Help}}
+\index{Print\+Help@{Print\+Help}!Lzma\+Util.\+c@{Lzma\+Util.\+c}}
+\subsubsection{\texorpdfstring{Print\+Help()}{PrintHelp()}}
+{\footnotesize\ttfamily void Print\+Help (\begin{DoxyParamCaption}\item[{char $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{_lzma_util_8c_ae1e2653d3fc68bc1422f84f551e9db3a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma_util_8c_a93d1b355d66aaa3bc636c1fcf459c066}\label{_lzma_util_8c_a93d1b355d66aaa3bc636c1fcf459c066}} 
+\index{Lzma\+Util.\+c@{Lzma\+Util.\+c}!Print\+User\+Error@{Print\+User\+Error}}
+\index{Print\+User\+Error@{Print\+User\+Error}!Lzma\+Util.\+c@{Lzma\+Util.\+c}}
+\subsubsection{\texorpdfstring{Print\+User\+Error()}{PrintUserError()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Print\+User\+Error (\begin{DoxyParamCaption}\item[{char $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{_lzma_util_8c_a93d1b355d66aaa3bc636c1fcf459c066_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{_lzma_util_8c_a93d1b355d66aaa3bc636c1fcf459c066_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_lzma_util_8c_adacfd85acf01d9b7352f8a5769ab6512}\label{_lzma_util_8c_adacfd85acf01d9b7352f8a5769ab6512}} 
+\index{Lzma\+Util.\+c@{Lzma\+Util.\+c}!k\+Cant\+Allocate\+Message@{k\+Cant\+Allocate\+Message}}
+\index{k\+Cant\+Allocate\+Message@{k\+Cant\+Allocate\+Message}!Lzma\+Util.\+c@{Lzma\+Util.\+c}}
+\subsubsection{\texorpdfstring{k\+Cant\+Allocate\+Message}{kCantAllocateMessage}}
+{\footnotesize\ttfamily const char$\ast$ k\+Cant\+Allocate\+Message = \char`\"{}Can not allocate memory\char`\"{}}
+
+\mbox{\Hypertarget{_lzma_util_8c_af63f39642f8a383c8f3d76fd5aef27eb}\label{_lzma_util_8c_af63f39642f8a383c8f3d76fd5aef27eb}} 
+\index{Lzma\+Util.\+c@{Lzma\+Util.\+c}!k\+Cant\+Read\+Message@{k\+Cant\+Read\+Message}}
+\index{k\+Cant\+Read\+Message@{k\+Cant\+Read\+Message}!Lzma\+Util.\+c@{Lzma\+Util.\+c}}
+\subsubsection{\texorpdfstring{k\+Cant\+Read\+Message}{kCantReadMessage}}
+{\footnotesize\ttfamily const char$\ast$ k\+Cant\+Read\+Message = \char`\"{}Can not \mbox{\hyperlink{zstream_8h_afe0bb0c451d445ad18368c4f7cf7cd2e}{read}} input file\char`\"{}}
+
+\mbox{\Hypertarget{_lzma_util_8c_af982a1b6e260ce47b1fd185afc25ca8c}\label{_lzma_util_8c_af982a1b6e260ce47b1fd185afc25ca8c}} 
+\index{Lzma\+Util.\+c@{Lzma\+Util.\+c}!k\+Cant\+Write\+Message@{k\+Cant\+Write\+Message}}
+\index{k\+Cant\+Write\+Message@{k\+Cant\+Write\+Message}!Lzma\+Util.\+c@{Lzma\+Util.\+c}}
+\subsubsection{\texorpdfstring{k\+Cant\+Write\+Message}{kCantWriteMessage}}
+{\footnotesize\ttfamily const char$\ast$ k\+Cant\+Write\+Message = \char`\"{}Can not \mbox{\hyperlink{zstream_8h_a734527d08852c736d737b94507d5a521}{write}} output file\char`\"{}}
+
+\mbox{\Hypertarget{_lzma_util_8c_a0279047c658af2312c8388b0b092ae11}\label{_lzma_util_8c_a0279047c658af2312c8388b0b092ae11}} 
+\index{Lzma\+Util.\+c@{Lzma\+Util.\+c}!k\+Data\+Error\+Message@{k\+Data\+Error\+Message}}
+\index{k\+Data\+Error\+Message@{k\+Data\+Error\+Message}!Lzma\+Util.\+c@{Lzma\+Util.\+c}}
+\subsubsection{\texorpdfstring{k\+Data\+Error\+Message}{kDataErrorMessage}}
+{\footnotesize\ttfamily const char$\ast$ k\+Data\+Error\+Message = \char`\"{}Data \mbox{\hyperlink{minigzip_8c_aee763da2c1c9da197307bad1d009513d}{error}}\char`\"{}}
+

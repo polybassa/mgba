@@ -1,0 +1,285 @@
+\hypertarget{arm_2decoder_8c}{}\section{src/arm/decoder.c File Reference}
+\label{arm_2decoder_8c}\index{src/arm/decoder.\+c@{src/arm/decoder.\+c}}
+{\ttfamily \#include $<$mgba/internal/arm/decoder.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/arm/decoder-\/inlines.\+h$>$}\newline
+Include dependency graph for decoder.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2decoder_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{arm_2decoder_8c_a31c08b889d955a0b94d383d3224c157d}{A\+D\+V\+A\+N\+CE}}(A\+M\+O\+U\+NT)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{arm_2decoder_8c_abcce90d72be4e6d07dd7f4834b95755b}{\+\_\+decode\+Register}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{lr35902_2decoder_8c_af44c02f7785479603f59b662f3dfae6a}{reg}}, char $\ast$buffer, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} blen)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{arm_2decoder_8c_a5ec1b8f45b3de928ba0802a9ffd0a73e}{\+\_\+decode\+Register\+List}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} list, char $\ast$buffer, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} blen)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{arm_2decoder_8c_a0d91899271a546e117f7ad7675f4d8b0}{\+\_\+decode\+P\+SR}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{puff_8c_af23433d9d58fb31d4a1ac224e3bc46e8}{bits}}, char $\ast$buffer, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} blen)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{arm_2decoder_8c_a54caa9e5cca6ef85a65b45230b1798ad}{\+\_\+decode\+P\+C\+Relative}} (uint32\+\_\+t address, uint32\+\_\+t pc, char $\ast$buffer, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} blen)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{arm_2decoder_8c_aaf2220eac9f27aad64d9c080efd95484}{\+\_\+decode\+Memory}} (struct A\+R\+M\+Memory\+Access memory, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} pc, char $\ast$buffer, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} blen)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{arm_2decoder_8c_a8a8a51c2c2636f13f9fa570ade328a3e}{\+\_\+decode\+Shift}} (union A\+R\+M\+Operand \mbox{\hyperlink{isa-arm_8c_ab96c60b54bef12d0edc21e03c79be1ac}{operand}}, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{lr35902_2decoder_8c_af44c02f7785479603f59b662f3dfae6a}{reg}}, char $\ast$buffer, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} blen)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{arm_2decoder_8c_affb2ff6a0027684a260b66f929bd171e}{A\+R\+M\+Disassemble}} (struct A\+R\+M\+Instruction\+Info $\ast$\mbox{\hyperlink{libretro_8h_a283ad41e4809f9c0ebe736a9861d8a91}{info}}, uint32\+\_\+t pc, char $\ast$buffer, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} blen)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const char $\ast$ \mbox{\hyperlink{arm_2decoder_8c_af4628fb3a70faf6f79558c593fbf223f}{\+\_\+arm\+Conditions}} \mbox{[}$\,$\mbox{]}
+\item 
+static const char $\ast$ \mbox{\hyperlink{arm_2decoder_8c_a005bdeb6c0535b310cc474b488694cfb}{\+\_\+arm\+Mnemonic\+Strings}} \mbox{[}$\,$\mbox{]}
+\item 
+static const char $\ast$ \mbox{\hyperlink{arm_2decoder_8c_a2e68046fbff60f76b2a8c139646fabe4}{\+\_\+arm\+Direction\+Strings}} \mbox{[}$\,$\mbox{]}
+\item 
+static const char $\ast$ \mbox{\hyperlink{arm_2decoder_8c_a4ee66cc61dbc96d565827df091ef82c8}{\+\_\+arm\+Access\+Type\+Strings}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{arm_2decoder_8c_a31c08b889d955a0b94d383d3224c157d}\label{arm_2decoder_8c_a31c08b889d955a0b94d383d3224c157d}} 
+\index{arm/decoder.\+c@{arm/decoder.\+c}!A\+D\+V\+A\+N\+CE@{A\+D\+V\+A\+N\+CE}}
+\index{A\+D\+V\+A\+N\+CE@{A\+D\+V\+A\+N\+CE}!arm/decoder.\+c@{arm/decoder.\+c}}
+\subsubsection{\texorpdfstring{A\+D\+V\+A\+N\+CE}{ADVANCE}}
+{\footnotesize\ttfamily \#define A\+D\+V\+A\+N\+CE(\begin{DoxyParamCaption}\item[{}]{A\+M\+O\+U\+NT }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{if} (AMOUNT >= blen) \{ \(\backslash\)
+        buffer[blen - 1] = \textcolor{charliteral}{'\(\backslash\)0'}; \(\backslash\)
+        return total; \(\backslash\)
+    \} \(\backslash\)
+    total += AMOUNT; \(\backslash\)
+    buffer += AMOUNT; \(\backslash\)
+    blen -= AMOUNT;
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{arm_2decoder_8c_aaf2220eac9f27aad64d9c080efd95484}\label{arm_2decoder_8c_aaf2220eac9f27aad64d9c080efd95484}} 
+\index{arm/decoder.\+c@{arm/decoder.\+c}!\+\_\+decode\+Memory@{\+\_\+decode\+Memory}}
+\index{\+\_\+decode\+Memory@{\+\_\+decode\+Memory}!arm/decoder.\+c@{arm/decoder.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+decode\+Memory()}{\_decodeMemory()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \+\_\+decode\+Memory (\begin{DoxyParamCaption}\item[{struct A\+R\+M\+Memory\+Access}]{memory,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{pc,  }\item[{char $\ast$}]{buffer,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{blen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2decoder_8c_aaf2220eac9f27aad64d9c080efd95484_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2decoder_8c_aaf2220eac9f27aad64d9c080efd95484_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2decoder_8c_a54caa9e5cca6ef85a65b45230b1798ad}\label{arm_2decoder_8c_a54caa9e5cca6ef85a65b45230b1798ad}} 
+\index{arm/decoder.\+c@{arm/decoder.\+c}!\+\_\+decode\+P\+C\+Relative@{\+\_\+decode\+P\+C\+Relative}}
+\index{\+\_\+decode\+P\+C\+Relative@{\+\_\+decode\+P\+C\+Relative}!arm/decoder.\+c@{arm/decoder.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+decode\+P\+C\+Relative()}{\_decodePCRelative()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \+\_\+decode\+P\+C\+Relative (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{address,  }\item[{uint32\+\_\+t}]{pc,  }\item[{char $\ast$}]{buffer,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{blen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2decoder_8c_a54caa9e5cca6ef85a65b45230b1798ad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2decoder_8c_a0d91899271a546e117f7ad7675f4d8b0}\label{arm_2decoder_8c_a0d91899271a546e117f7ad7675f4d8b0}} 
+\index{arm/decoder.\+c@{arm/decoder.\+c}!\+\_\+decode\+P\+SR@{\+\_\+decode\+P\+SR}}
+\index{\+\_\+decode\+P\+SR@{\+\_\+decode\+P\+SR}!arm/decoder.\+c@{arm/decoder.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+decode\+P\+S\+R()}{\_decodePSR()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \+\_\+decode\+P\+SR (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{bits,  }\item[{char $\ast$}]{buffer,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{blen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2decoder_8c_a0d91899271a546e117f7ad7675f4d8b0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2decoder_8c_abcce90d72be4e6d07dd7f4834b95755b}\label{arm_2decoder_8c_abcce90d72be4e6d07dd7f4834b95755b}} 
+\index{arm/decoder.\+c@{arm/decoder.\+c}!\+\_\+decode\+Register@{\+\_\+decode\+Register}}
+\index{\+\_\+decode\+Register@{\+\_\+decode\+Register}!arm/decoder.\+c@{arm/decoder.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+decode\+Register()}{\_decodeRegister()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \+\_\+decode\+Register (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{reg,  }\item[{char $\ast$}]{buffer,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{blen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2decoder_8c_abcce90d72be4e6d07dd7f4834b95755b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2decoder_8c_a5ec1b8f45b3de928ba0802a9ffd0a73e}\label{arm_2decoder_8c_a5ec1b8f45b3de928ba0802a9ffd0a73e}} 
+\index{arm/decoder.\+c@{arm/decoder.\+c}!\+\_\+decode\+Register\+List@{\+\_\+decode\+Register\+List}}
+\index{\+\_\+decode\+Register\+List@{\+\_\+decode\+Register\+List}!arm/decoder.\+c@{arm/decoder.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+decode\+Register\+List()}{\_decodeRegisterList()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \+\_\+decode\+Register\+List (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{list,  }\item[{char $\ast$}]{buffer,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{blen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{arm_2decoder_8c_a5ec1b8f45b3de928ba0802a9ffd0a73e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2decoder_8c_a5ec1b8f45b3de928ba0802a9ffd0a73e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2decoder_8c_a8a8a51c2c2636f13f9fa570ade328a3e}\label{arm_2decoder_8c_a8a8a51c2c2636f13f9fa570ade328a3e}} 
+\index{arm/decoder.\+c@{arm/decoder.\+c}!\+\_\+decode\+Shift@{\+\_\+decode\+Shift}}
+\index{\+\_\+decode\+Shift@{\+\_\+decode\+Shift}!arm/decoder.\+c@{arm/decoder.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+decode\+Shift()}{\_decodeShift()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \+\_\+decode\+Shift (\begin{DoxyParamCaption}\item[{union A\+R\+M\+Operand}]{operand,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{reg,  }\item[{char $\ast$}]{buffer,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{blen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{arm_2decoder_8c_a8a8a51c2c2636f13f9fa570ade328a3e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2decoder_8c_a8a8a51c2c2636f13f9fa570ade328a3e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2decoder_8c_affb2ff6a0027684a260b66f929bd171e}\label{arm_2decoder_8c_affb2ff6a0027684a260b66f929bd171e}} 
+\index{arm/decoder.\+c@{arm/decoder.\+c}!A\+R\+M\+Disassemble@{A\+R\+M\+Disassemble}}
+\index{A\+R\+M\+Disassemble@{A\+R\+M\+Disassemble}!arm/decoder.\+c@{arm/decoder.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Disassemble()}{ARMDisassemble()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} A\+R\+M\+Disassemble (\begin{DoxyParamCaption}\item[{struct A\+R\+M\+Instruction\+Info $\ast$}]{info,  }\item[{uint32\+\_\+t}]{pc,  }\item[{char $\ast$}]{buffer,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{blen }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2decoder_8c_affb2ff6a0027684a260b66f929bd171e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2decoder_8c_affb2ff6a0027684a260b66f929bd171e_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{arm_2decoder_8c_a4ee66cc61dbc96d565827df091ef82c8}\label{arm_2decoder_8c_a4ee66cc61dbc96d565827df091ef82c8}} 
+\index{arm/decoder.\+c@{arm/decoder.\+c}!\+\_\+arm\+Access\+Type\+Strings@{\+\_\+arm\+Access\+Type\+Strings}}
+\index{\+\_\+arm\+Access\+Type\+Strings@{\+\_\+arm\+Access\+Type\+Strings}!arm/decoder.\+c@{arm/decoder.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+arm\+Access\+Type\+Strings}{\_armAccessTypeStrings}}
+{\footnotesize\ttfamily const char$\ast$ \+\_\+arm\+Access\+Type\+Strings\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    \textcolor{stringliteral}{""},
+    \textcolor{stringliteral}{"b"},
+    \textcolor{stringliteral}{"h"},
+    \textcolor{stringliteral}{""},
+    \textcolor{stringliteral}{""},
+    \textcolor{stringliteral}{""},
+    \textcolor{stringliteral}{""},
+    \textcolor{stringliteral}{""},
+
+    \textcolor{stringliteral}{""},
+    \textcolor{stringliteral}{"sb"},
+    \textcolor{stringliteral}{"sh"},
+    \textcolor{stringliteral}{""},
+    \textcolor{stringliteral}{""},
+    \textcolor{stringliteral}{""},
+    \textcolor{stringliteral}{""},
+    \textcolor{stringliteral}{""},
+
+    \textcolor{stringliteral}{""},
+    \textcolor{stringliteral}{"bt"},
+    \textcolor{stringliteral}{""},
+    \textcolor{stringliteral}{""},
+    \textcolor{stringliteral}{"t"},
+    \textcolor{stringliteral}{""},
+    \textcolor{stringliteral}{""},
+    \textcolor{stringliteral}{""}
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{arm_2decoder_8c_af4628fb3a70faf6f79558c593fbf223f}\label{arm_2decoder_8c_af4628fb3a70faf6f79558c593fbf223f}} 
+\index{arm/decoder.\+c@{arm/decoder.\+c}!\+\_\+arm\+Conditions@{\+\_\+arm\+Conditions}}
+\index{\+\_\+arm\+Conditions@{\+\_\+arm\+Conditions}!arm/decoder.\+c@{arm/decoder.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+arm\+Conditions}{\_armConditions}}
+{\footnotesize\ttfamily const char$\ast$ \+\_\+arm\+Conditions\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    \textcolor{stringliteral}{"eq"},
+    \textcolor{stringliteral}{"ne"},
+    \textcolor{stringliteral}{"cs"},
+    \textcolor{stringliteral}{"cc"},
+    \textcolor{stringliteral}{"mi"},
+    \textcolor{stringliteral}{"pl"},
+    \textcolor{stringliteral}{"vs"},
+    \textcolor{stringliteral}{"vc"},
+    \textcolor{stringliteral}{"hi"},
+    \textcolor{stringliteral}{"ls"},
+    \textcolor{stringliteral}{"ge"},
+    \textcolor{stringliteral}{"lt"},
+    \textcolor{stringliteral}{"gt"},
+    \textcolor{stringliteral}{"le"},
+    \textcolor{stringliteral}{"al"},
+    \textcolor{stringliteral}{"nv"}
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{arm_2decoder_8c_a2e68046fbff60f76b2a8c139646fabe4}\label{arm_2decoder_8c_a2e68046fbff60f76b2a8c139646fabe4}} 
+\index{arm/decoder.\+c@{arm/decoder.\+c}!\+\_\+arm\+Direction\+Strings@{\+\_\+arm\+Direction\+Strings}}
+\index{\+\_\+arm\+Direction\+Strings@{\+\_\+arm\+Direction\+Strings}!arm/decoder.\+c@{arm/decoder.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+arm\+Direction\+Strings}{\_armDirectionStrings}}
+{\footnotesize\ttfamily const char$\ast$ \+\_\+arm\+Direction\+Strings\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    \textcolor{stringliteral}{"da"},
+    \textcolor{stringliteral}{"ia"},
+    \textcolor{stringliteral}{"db"},
+    \textcolor{stringliteral}{"ib"}
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{arm_2decoder_8c_a005bdeb6c0535b310cc474b488694cfb}\label{arm_2decoder_8c_a005bdeb6c0535b310cc474b488694cfb}} 
+\index{arm/decoder.\+c@{arm/decoder.\+c}!\+\_\+arm\+Mnemonic\+Strings@{\+\_\+arm\+Mnemonic\+Strings}}
+\index{\+\_\+arm\+Mnemonic\+Strings@{\+\_\+arm\+Mnemonic\+Strings}!arm/decoder.\+c@{arm/decoder.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+arm\+Mnemonic\+Strings}{\_armMnemonicStrings}}
+{\footnotesize\ttfamily const char$\ast$ \+\_\+arm\+Mnemonic\+Strings\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+

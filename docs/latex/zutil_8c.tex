@@ -1,0 +1,589 @@
+\hypertarget{zutil_8c}{}\section{src/third-\/party/zlib/zutil.c File Reference}
+\label{zutil_8c}\index{src/third-\/party/zlib/zutil.\+c@{src/third-\/party/zlib/zutil.\+c}}
+{\ttfamily \#include \char`\"{}zutil.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gzguts.\+h\char`\"{}}\newline
+Include dependency graph for zutil.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{zutil_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{zutil_8c_structinternal__state}{internal\+\_\+state}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{zutil_8c_a705cd706dfe534aa9161a253a1c9a81a}{zlib\+Version}} ()
+\item 
+\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{zutil_8c_a864d90914dbbc92e246503b147b553eb}{zlib\+Compile\+Flags}} ()
+\item 
+const char $\ast$Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{zutil_8c_a43d0ecf9c894ba2ed44845a6ffc36209}{z\+Error}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} err)
+\item 
+void \mbox{\hyperlink{zutil_8h_a59d4d7ef4d73655c759211ec33a5d44f}{Z\+L\+I\+B\+\_\+\+I\+N\+T\+E\+R\+N\+AL}} \mbox{\hyperlink{zutil_8c_aac7aa2bbd8584b96c89e311b6c3409a5}{zmemcpy}} (Bytef $\ast$dest, const Bytef $\ast$source, u\+Int len)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{zutil_8h_a59d4d7ef4d73655c759211ec33a5d44f}{Z\+L\+I\+B\+\_\+\+I\+N\+T\+E\+R\+N\+AL}} \mbox{\hyperlink{zutil_8c_afa24e136b162a10f0ad3b2ed3000b413}{zmemcmp}} (Bytef $\ast$\mbox{\hyperlink{_sha256_8c_ac1e4ed4e56436a432900cad5a1225731}{s1}}, const Bytef $\ast$s2, u\+Int len) const
+\item 
+void \mbox{\hyperlink{zutil_8h_a59d4d7ef4d73655c759211ec33a5d44f}{Z\+L\+I\+B\+\_\+\+I\+N\+T\+E\+R\+N\+AL}} \mbox{\hyperlink{zutil_8c_a9d1ad31f82b89b791ce9c70c24d3947c}{zmemzero}} (Bytef $\ast$dest, u\+Int len)
+\item 
+voidp malloc \mbox{\hyperlink{zutil_8c_add8b03ae5c2c602b728ebb3b21931371}{OF}} ((u\+Int \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}))
+\item 
+voidp calloc \mbox{\hyperlink{zutil_8c_a2be754c5363f22e1db3e80698a568ead}{OF}} ((u\+Int items, u\+Int \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}))
+\item 
+void \mbox{\hyperlink{__builder_8h_af07d89f5ceaea0c7c8252cc41fd75f37}{free}} \mbox{\hyperlink{zutil_8c_a8f8149fe81b707d93e4b55388d11a430}{OF}} ((\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} ptr))
+\item 
+\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{zutil_8h_a59d4d7ef4d73655c759211ec33a5d44f}{Z\+L\+I\+B\+\_\+\+I\+N\+T\+E\+R\+N\+AL}} \mbox{\hyperlink{zutil_8c_a41dc53193e9af4588e7bcbe459f4f834}{zcalloc}} (\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, unsigned items, unsigned \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+void \mbox{\hyperlink{zutil_8h_a59d4d7ef4d73655c759211ec33a5d44f}{Z\+L\+I\+B\+\_\+\+I\+N\+T\+E\+R\+N\+AL}} \mbox{\hyperlink{zutil_8c_a03a8230ad4ec43e8916fa91aad05bfd3}{zcfree}} (\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} opaque, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} ptr)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+z\+\_\+const char $\ast$const \mbox{\hyperlink{zutil_8c_a6eca777f454e3ba74a93593c4731a434}{z\+\_\+errmsg}} \mbox{[}10\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Class Documentation}
+\index{internal\+\_\+state@{internal\+\_\+state}}\label{structinternal__state}
+\Hypertarget{zutil_8c_structinternal__state}
+\subsubsection{struct internal\+\_\+state}
+
+
+Collaboration diagram for internal\+\_\+state\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{structinternal__state__coll__graph}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\mbox{\Hypertarget{zutil_8c_a6880946d081053778f5f544b04603d13}\label{zutil_8c_a6880946d081053778f5f544b04603d13}} 
+\mbox{\hyperlink{readpng_8h_a3754180d606d4ed15468d15d9665aa2e}{ush}}&
+bi\_buf&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a241f3606e41a3aa0ef22868a41bd9a0f}\label{zutil_8c_a241f3606e41a3aa0ef22868a41bd9a0f}} 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}&
+bi\_valid&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_abf9e786c8e5b4ab5d620ab123208034c}\label{zutil_8c_abf9e786c8e5b4ab5d620ab123208034c}} 
+\mbox{\hyperlink{readpng_8h_a3754180d606d4ed15468d15d9665aa2e}{ush}}&
+bl\_count\mbox{[}\mbox{\hyperlink{deflate_8h_a51c241e7ad52441b8d4c1fd5f498b3b9}{MAX\_BITS}}+1\mbox{]}&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_aa0e5da102c35a7e7d22dd1894039393b}\label{zutil_8c_aa0e5da102c35a7e7d22dd1894039393b}} 
+struct \mbox{\hyperlink{deflate_8h_structtree__desc__s}{tree\_desc\_s}}&
+bl\_desc&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a98131fc5b64d0d7542bc3621aef19854}\label{zutil_8c_a98131fc5b64d0d7542bc3621aef19854}} 
+struct \mbox{\hyperlink{deflate_8h_structct__data__s}{ct\_data\_s}}&
+bl\_tree\mbox{[}2 $\ast$\mbox{\hyperlink{deflate_8h_a9e19158a493307d4f211cdf223da8319}{BL\_CODES}}+1\mbox{]}&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a4ba16849758dfa969066693ca2cae880}\label{zutil_8c_a4ba16849758dfa969066693ca2cae880}} 
+\mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}}&
+block\_start&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_ac636c34c1c08dc9d2f9c199ce2caa99d}\label{zutil_8c_ac636c34c1c08dc9d2f9c199ce2caa99d}} 
+\mbox{\hyperlink{zutil_8h_ab854e4722acf30ada8a7a71b58d1b238}{ushf}} $\ast$&
+d\_buf&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_ab2fddb383d3055b6ec81c7fef14e99d8}\label{zutil_8c_ab2fddb383d3055b6ec81c7fef14e99d8}} 
+struct \mbox{\hyperlink{deflate_8h_structtree__desc__s}{tree\_desc\_s}}&
+d\_desc&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a8e525b4f3dfa38b3bbcb8b427e333570}\label{zutil_8c_a8e525b4f3dfa38b3bbcb8b427e333570}} 
+\mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}}&
+depth\mbox{[}2 $\ast$\mbox{\hyperlink{deflate_8h_a2b0cc00cc6a7d521fba8d208a1cae477}{L\_CODES}}+1\mbox{]}&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_ab000a3e3c901dd063859521988ad7e52}\label{zutil_8c_ab000a3e3c901dd063859521988ad7e52}} 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}&
+dummy&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a42a52476d3cde41e57a6ef2a6a78008f}\label{zutil_8c_a42a52476d3cde41e57a6ef2a6a78008f}} 
+struct \mbox{\hyperlink{deflate_8h_structct__data__s}{ct\_data\_s}}&
+dyn\_dtree\mbox{[}2 $\ast$\mbox{\hyperlink{deflate_8h_a8798a9a526623abbd88fedb0727e21aa}{D\_CODES}}+1\mbox{]}&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_ae11867c05d54c575dbc713bbea71266c}\label{zutil_8c_ae11867c05d54c575dbc713bbea71266c}} 
+struct \mbox{\hyperlink{deflate_8h_structct__data__s}{ct\_data\_s}}&
+dyn\_ltree\mbox{[}\mbox{\hyperlink{deflate_8h_a1b45302695680930829cac31d65e41e1}{HEAP\_SIZE}}\mbox{]}&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a68ba00254242017f330dca5e0191bca4}\label{zutil_8c_a68ba00254242017f330dca5e0191bca4}} 
+uInt&
+good\_match&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_ac023d0c9e6112dfe6cbd049a56484997}\label{zutil_8c_ac023d0c9e6112dfe6cbd049a56484997}} 
+\mbox{\hyperlink{zlib_8h_a40e9dcc294796d99b25e98fb06477fc8}{gz\_headerp}}&
+gzhead&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a5e09188a83aadfcb0db60b0765596aa1}\label{zutil_8c_a5e09188a83aadfcb0db60b0765596aa1}} 
+uInt&
+gzindex&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a5dbd3a26550651a746a8829210252715}\label{zutil_8c_a5dbd3a26550651a746a8829210252715}} 
+uInt&
+hash\_bits&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a824166a384dcbf6d508c0f6b97a1cb89}\label{zutil_8c_a824166a384dcbf6d508c0f6b97a1cb89}} 
+uInt&
+hash\_mask&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_aec996517ec9d4c0741647c487d2c513c}\label{zutil_8c_aec996517ec9d4c0741647c487d2c513c}} 
+uInt&
+hash\_shift&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_aad05d6c37eb87eefafca51e05468f349}\label{zutil_8c_aad05d6c37eb87eefafca51e05468f349}} 
+uInt&
+hash\_size&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_aafd9ba338599f15de29386ff7a0218f4}\label{zutil_8c_aafd9ba338599f15de29386ff7a0218f4}} 
+\mbox{\hyperlink{deflate_8h_a7fc422ecb86afdd5f330dad6f7c1136b}{Posf}} $\ast$&
+head&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_ad7edb9b1d387e631bc6fde1cad0af758}\label{zutil_8c_ad7edb9b1d387e631bc6fde1cad0af758}} 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}&
+heap\mbox{[}2 $\ast$\mbox{\hyperlink{deflate_8h_a2b0cc00cc6a7d521fba8d208a1cae477}{L\_CODES}}+1\mbox{]}&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a0659e23b0188ac16db58f98ae2b67b6b}\label{zutil_8c_a0659e23b0188ac16db58f98ae2b67b6b}} 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}&
+heap\_len&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_aa8c78bbfa5d71f3ccc55445a62897f47}\label{zutil_8c_aa8c78bbfa5d71f3ccc55445a62897f47}} 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}&
+heap\_max&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a85439cd585435b2590039339139d25cb}\label{zutil_8c_a85439cd585435b2590039339139d25cb}} 
+\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}}&
+high\_water&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a8cf437698f428195122d3c530929a80c}\label{zutil_8c_a8cf437698f428195122d3c530929a80c}} 
+uInt&
+ins\_h&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a315b7281f725e5729fbbafada48fc70a}\label{zutil_8c_a315b7281f725e5729fbbafada48fc70a}} 
+uInt&
+insert&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a5e6c4269e29696b192e02fd01381e400}\label{zutil_8c_a5e6c4269e29696b192e02fd01381e400}} 
+\mbox{\hyperlink{zutil_8h_aaa6fdf02a2fdaf3731f17a19920ddb0b}{uchf}} $\ast$&
+l\_buf&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a0266c4e0250652904e6b4908d8da84a9}\label{zutil_8c_a0266c4e0250652904e6b4908d8da84a9}} 
+struct \mbox{\hyperlink{deflate_8h_structtree__desc__s}{tree\_desc\_s}}&
+l\_desc&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_aa9517fd4120306e1f07a05563a6fe40b}\label{zutil_8c_aa9517fd4120306e1f07a05563a6fe40b}} 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}&
+last\_flush&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a01689001a8f8c7dfa46a439b7ae0708a}\label{zutil_8c_a01689001a8f8c7dfa46a439b7ae0708a}} 
+uInt&
+last\_lit&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a7ad2ab1df80c8cab4ffb97ff84e88c62}\label{zutil_8c_a7ad2ab1df80c8cab4ffb97ff84e88c62}} 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}&
+level&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a25ad7fc0094e412144b4201df2126bbb}\label{zutil_8c_a25ad7fc0094e412144b4201df2126bbb}} 
+uInt&
+lit\_bufsize&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a3a826064126ee19a77f78919e2f9bb1e}\label{zutil_8c_a3a826064126ee19a77f78919e2f9bb1e}} 
+uInt&
+lookahead&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_accddba15d8b54ca3f10163fa920599f4}\label{zutil_8c_accddba15d8b54ca3f10163fa920599f4}} 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}&
+match\_available&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_aa1506e6907be6f3d4273a1386206ae0c}\label{zutil_8c_aa1506e6907be6f3d4273a1386206ae0c}} 
+uInt&
+match\_length&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_aced58a85c56daa1c5de41fa5ce75d2e8}\label{zutil_8c_aced58a85c56daa1c5de41fa5ce75d2e8}} 
+uInt&
+match\_start&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_ac0f10ec7237615f6b632f2f4d14872ef}\label{zutil_8c_ac0f10ec7237615f6b632f2f4d14872ef}} 
+uInt&
+matches&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_ab1ffa7feb159edec170574813fae3279}\label{zutil_8c_ab1ffa7feb159edec170574813fae3279}} 
+uInt&
+max\_chain\_length&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_ab74215ec1c106bf588a7642927d47b84}\label{zutil_8c_ab74215ec1c106bf588a7642927d47b84}} 
+uInt&
+max\_lazy\_match&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_aeb38f8a255e975e703595577ea43220b}\label{zutil_8c_aeb38f8a255e975e703595577ea43220b}} 
+\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}}&
+method&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a39ab99e52138c0628f645bc1e0c69a04}\label{zutil_8c_a39ab99e52138c0628f645bc1e0c69a04}} 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}&
+nice\_match&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a2f6efee5d2057aba8bca2c1a58cf418a}\label{zutil_8c_a2f6efee5d2057aba8bca2c1a58cf418a}} 
+\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}}&
+opt\_len&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_ac92f5b70c269be4685539daef10b15a3}\label{zutil_8c_ac92f5b70c269be4685539daef10b15a3}} 
+uInt&
+pending&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_ae5f393e8d0d569da6038749768f65b94}\label{zutil_8c_ae5f393e8d0d569da6038749768f65b94}} 
+Bytef $\ast$&
+pending\_buf&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a9100ecccf2f8bb474f0bcc7c69f55c27}\label{zutil_8c_a9100ecccf2f8bb474f0bcc7c69f55c27}} 
+\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}}&
+pending\_buf\_size&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a6e15ed78675c3c7bdb312623b5eceb7a}\label{zutil_8c_a6e15ed78675c3c7bdb312623b5eceb7a}} 
+Bytef $\ast$&
+pending\_out&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a93a7407be4c9df81f71a389eb1ff6c57}\label{zutil_8c_a93a7407be4c9df81f71a389eb1ff6c57}} 
+\mbox{\hyperlink{deflate_8h_a7fc422ecb86afdd5f330dad6f7c1136b}{Posf}} $\ast$&
+prev&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a7619fb70f9f66ff21b419b8ceac4904c}\label{zutil_8c_a7619fb70f9f66ff21b419b8ceac4904c}} 
+uInt&
+prev\_length&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a0f5871de1be252ed0496a8b7a30464ef}\label{zutil_8c_a0f5871de1be252ed0496a8b7a30464ef}} 
+\mbox{\hyperlink{deflate_8h_ada696b787a46d01634b6365afcec1a9e}{IPos}}&
+prev\_match&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a8a83e269866761afa3a7b4641ba5ff91}\label{zutil_8c_a8a83e269866761afa3a7b4641ba5ff91}} 
+\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}}&
+static\_len&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a8756cacdbac452a2633f87e06fae6c52}\label{zutil_8c_a8756cacdbac452a2633f87e06fae6c52}} 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}&
+status&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a67219312df7fd2f86e06e6f14700eb28}\label{zutil_8c_a67219312df7fd2f86e06e6f14700eb28}} 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}&
+strategy&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_aaf558a49ab8c6caea3d131c6b913db42}\label{zutil_8c_aaf558a49ab8c6caea3d131c6b913db42}} 
+\mbox{\hyperlink{zlib_8h_a6ede25c84d3c9f8632305866acffb1d6}{z\_streamp}}&
+strm&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a946579b9b86ee466424ffb0a67eb7060}\label{zutil_8c_a946579b9b86ee466424ffb0a67eb7060}} 
+uInt&
+strstart&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a016f4538a10e71ab601017a052c0a05f}\label{zutil_8c_a016f4538a10e71ab601017a052c0a05f}} 
+uInt&
+w\_bits&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a19aca516cb19d15cd0c2ea3c72cbe9a5}\label{zutil_8c_a19aca516cb19d15cd0c2ea3c72cbe9a5}} 
+uInt&
+w\_mask&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a875579bf4d0e9d9f9c04ff288d22bb90}\label{zutil_8c_a875579bf4d0e9d9f9c04ff288d22bb90}} 
+uInt&
+w\_size&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a8d5cccc7e4dd85927c84bb8efc645533}\label{zutil_8c_a8d5cccc7e4dd85927c84bb8efc645533}} 
+Bytef $\ast$&
+window&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_a4e45f5ef1c4d9d599a5fb11fa283806c}\label{zutil_8c_a4e45f5ef1c4d9d599a5fb11fa283806c}} 
+\mbox{\hyperlink{readpng_8h_abd6f60bf9450af2ecb94097a32c19a64}{ulg}}&
+window\_size&
+\\
+\hline
+
+\mbox{\Hypertarget{zutil_8c_ae80327ea7ad4ad0ef5baeef5ef3a6807}\label{zutil_8c_ae80327ea7ad4ad0ef5baeef5ef3a6807}} 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}&
+wrap&
+\\
+\hline
+
+\end{DoxyFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{zutil_8c_add8b03ae5c2c602b728ebb3b21931371}\label{zutil_8c_add8b03ae5c2c602b728ebb3b21931371}} 
+\index{zutil.\+c@{zutil.\+c}!OF@{OF}}
+\index{OF@{OF}!zutil.\+c@{zutil.\+c}}
+\subsubsection{\texorpdfstring{O\+F()}{OF()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily voidp malloc OF (\begin{DoxyParamCaption}\item[{(u\+Int \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{zutil_8c_a2be754c5363f22e1db3e80698a568ead}\label{zutil_8c_a2be754c5363f22e1db3e80698a568ead}} 
+\index{zutil.\+c@{zutil.\+c}!OF@{OF}}
+\index{OF@{OF}!zutil.\+c@{zutil.\+c}}
+\subsubsection{\texorpdfstring{O\+F()}{OF()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily voidp calloc OF (\begin{DoxyParamCaption}\item[{(u\+Int items, u\+Int \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{zutil_8c_a8f8149fe81b707d93e4b55388d11a430}\label{zutil_8c_a8f8149fe81b707d93e4b55388d11a430}} 
+\index{zutil.\+c@{zutil.\+c}!OF@{OF}}
+\index{OF@{OF}!zutil.\+c@{zutil.\+c}}
+\subsubsection{\texorpdfstring{O\+F()}{OF()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{__builder_8h_af07d89f5ceaea0c7c8252cc41fd75f37}{free}} OF (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} ptr)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{zutil_8c_a41dc53193e9af4588e7bcbe459f4f834}\label{zutil_8c_a41dc53193e9af4588e7bcbe459f4f834}} 
+\index{zutil.\+c@{zutil.\+c}!zcalloc@{zcalloc}}
+\index{zcalloc@{zcalloc}!zutil.\+c@{zutil.\+c}}
+\subsubsection{\texorpdfstring{zcalloc()}{zcalloc()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} \mbox{\hyperlink{zutil_8h_a59d4d7ef4d73655c759211ec33a5d44f}{Z\+L\+I\+B\+\_\+\+I\+N\+T\+E\+R\+N\+AL}} zcalloc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{opaque,  }\item[{unsigned}]{items,  }\item[{unsigned}]{size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{zutil_8c_a41dc53193e9af4588e7bcbe459f4f834_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{zutil_8c_a41dc53193e9af4588e7bcbe459f4f834_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{zutil_8c_a03a8230ad4ec43e8916fa91aad05bfd3}\label{zutil_8c_a03a8230ad4ec43e8916fa91aad05bfd3}} 
+\index{zutil.\+c@{zutil.\+c}!zcfree@{zcfree}}
+\index{zcfree@{zcfree}!zutil.\+c@{zutil.\+c}}
+\subsubsection{\texorpdfstring{zcfree()}{zcfree()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{zutil_8h_a59d4d7ef4d73655c759211ec33a5d44f}{Z\+L\+I\+B\+\_\+\+I\+N\+T\+E\+R\+N\+AL}} zcfree (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{opaque,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{ptr }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{zutil_8c_a03a8230ad4ec43e8916fa91aad05bfd3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{zutil_8c_a03a8230ad4ec43e8916fa91aad05bfd3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{zutil_8c_a43d0ecf9c894ba2ed44845a6ffc36209}\label{zutil_8c_a43d0ecf9c894ba2ed44845a6ffc36209}} 
+\index{zutil.\+c@{zutil.\+c}!z\+Error@{z\+Error}}
+\index{z\+Error@{z\+Error}!zutil.\+c@{zutil.\+c}}
+\subsubsection{\texorpdfstring{z\+Error()}{zError()}}
+{\footnotesize\ttfamily const char$\ast$ Z\+E\+X\+P\+O\+RT z\+Error (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{err }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{zutil_8c_a864d90914dbbc92e246503b147b553eb}\label{zutil_8c_a864d90914dbbc92e246503b147b553eb}} 
+\index{zutil.\+c@{zutil.\+c}!zlib\+Compile\+Flags@{zlib\+Compile\+Flags}}
+\index{zlib\+Compile\+Flags@{zlib\+Compile\+Flags}!zutil.\+c@{zutil.\+c}}
+\subsubsection{\texorpdfstring{zlib\+Compile\+Flags()}{zlibCompileFlags()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} Z\+E\+X\+P\+O\+RT zlib\+Compile\+Flags (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{zutil_8c_a864d90914dbbc92e246503b147b553eb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{zutil_8c_a864d90914dbbc92e246503b147b553eb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{zutil_8c_a705cd706dfe534aa9161a253a1c9a81a}\label{zutil_8c_a705cd706dfe534aa9161a253a1c9a81a}} 
+\index{zutil.\+c@{zutil.\+c}!zlib\+Version@{zlib\+Version}}
+\index{zlib\+Version@{zlib\+Version}!zutil.\+c@{zutil.\+c}}
+\subsubsection{\texorpdfstring{zlib\+Version()}{zlibVersion()}}
+{\footnotesize\ttfamily const char$\ast$ Z\+E\+X\+P\+O\+RT zlib\+Version (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{zutil_8c_a705cd706dfe534aa9161a253a1c9a81a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{zutil_8c_afa24e136b162a10f0ad3b2ed3000b413}\label{zutil_8c_afa24e136b162a10f0ad3b2ed3000b413}} 
+\index{zutil.\+c@{zutil.\+c}!zmemcmp@{zmemcmp}}
+\index{zmemcmp@{zmemcmp}!zutil.\+c@{zutil.\+c}}
+\subsubsection{\texorpdfstring{zmemcmp()}{zmemcmp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{zutil_8h_a59d4d7ef4d73655c759211ec33a5d44f}{Z\+L\+I\+B\+\_\+\+I\+N\+T\+E\+R\+N\+AL}} zmemcmp (\begin{DoxyParamCaption}\item[{Bytef$\ast$}]{s1,  }\item[{const Bytef$\ast$}]{s2,  }\item[{u\+Int}]{len }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{zutil_8c_aac7aa2bbd8584b96c89e311b6c3409a5}\label{zutil_8c_aac7aa2bbd8584b96c89e311b6c3409a5}} 
+\index{zutil.\+c@{zutil.\+c}!zmemcpy@{zmemcpy}}
+\index{zmemcpy@{zmemcpy}!zutil.\+c@{zutil.\+c}}
+\subsubsection{\texorpdfstring{zmemcpy()}{zmemcpy()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{zutil_8h_a59d4d7ef4d73655c759211ec33a5d44f}{Z\+L\+I\+B\+\_\+\+I\+N\+T\+E\+R\+N\+AL}} zmemcpy (\begin{DoxyParamCaption}\item[{Bytef$\ast$}]{dest,  }\item[{const Bytef$\ast$}]{source,  }\item[{u\+Int}]{len }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{zutil_8c_aac7aa2bbd8584b96c89e311b6c3409a5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{zutil_8c_a9d1ad31f82b89b791ce9c70c24d3947c}\label{zutil_8c_a9d1ad31f82b89b791ce9c70c24d3947c}} 
+\index{zutil.\+c@{zutil.\+c}!zmemzero@{zmemzero}}
+\index{zmemzero@{zmemzero}!zutil.\+c@{zutil.\+c}}
+\subsubsection{\texorpdfstring{zmemzero()}{zmemzero()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{zutil_8h_a59d4d7ef4d73655c759211ec33a5d44f}{Z\+L\+I\+B\+\_\+\+I\+N\+T\+E\+R\+N\+AL}} zmemzero (\begin{DoxyParamCaption}\item[{Bytef$\ast$}]{dest,  }\item[{u\+Int}]{len }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{zutil_8c_a9d1ad31f82b89b791ce9c70c24d3947c_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{zutil_8c_a6eca777f454e3ba74a93593c4731a434}\label{zutil_8c_a6eca777f454e3ba74a93593c4731a434}} 
+\index{zutil.\+c@{zutil.\+c}!z\+\_\+errmsg@{z\+\_\+errmsg}}
+\index{z\+\_\+errmsg@{z\+\_\+errmsg}!zutil.\+c@{zutil.\+c}}
+\subsubsection{\texorpdfstring{z\+\_\+errmsg}{z\_errmsg}}
+{\footnotesize\ttfamily z\+\_\+const char$\ast$ const z\+\_\+errmsg\mbox{[}10\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+\textcolor{stringliteral}{"need dictionary"},     
+\textcolor{stringliteral}{"stream end"},          
+\textcolor{stringliteral}{""},                    
+\textcolor{stringliteral}{"file error"},          
+\textcolor{stringliteral}{"stream error"},        
+\textcolor{stringliteral}{"data error"},          
+\textcolor{stringliteral}{"insufficient memory"}, 
+\textcolor{stringliteral}{"buffer error"},        
+\textcolor{stringliteral}{"incompatible version"},
+\textcolor{stringliteral}{""}\}
+\end{DoxyCode}

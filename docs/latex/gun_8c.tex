@@ -1,0 +1,288 @@
+\hypertarget{gun_8c}{}\section{src/third-\/party/zlib/examples/gun.c File Reference}
+\label{gun_8c}\index{src/third-\/party/zlib/examples/gun.\+c@{src/third-\/party/zlib/examples/gun.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$utime.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}zlib.\+h\char`\"{}}\newline
+Include dependency graph for gun.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gun_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gun_8c_a08023ea6765c99d60a6a3840cd07156e}{local}}~static
+\item 
+\#define \mbox{\hyperlink{gun_8c_a70ed59adcb4159ac551058053e649640}{S\+I\+ZE}}~32768\+U         /$\ast$ input and output buffer sizes $\ast$/
+\item 
+\#define \mbox{\hyperlink{gun_8c_aed8b6e0ed4063c3f37022a1f676c36e7}{P\+I\+E\+CE}}~16384         /$\ast$ limits i/o chunks for 16-\/bit \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} case $\ast$/
+\item 
+\#define \mbox{\hyperlink{gun_8c_afa19e2eadb751f3599e443d073862a2f}{N\+E\+XT}}()
+\item 
+\#define \mbox{\hyperlink{gun_8c_a2476600d18a986007308d733126b1280}{F\+L\+U\+S\+H\+C\+O\+DE}}()
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} unsigned \mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}} (void $\ast$in\+\_\+desc, z\+\_\+const unsigned char $\ast$$\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}} (void $\ast$out\+\_\+desc, unsigned char $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, unsigned len)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gun_8c_aa3f761af43deaa5e14757df4b7da2344}{lunpipe}} (unsigned have, z\+\_\+const unsigned char $\ast$next, struct ind $\ast$indp, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} outfile, \mbox{\hyperlink{zlib_8h_afa60092f4e0b9bc4f23b41c6930463f0}{z\+\_\+stream}} $\ast$strm)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gun_8c_a70712ac76f1fd857664d8cab1332cb0c}{gunpipe}} (\mbox{\hyperlink{zlib_8h_afa60092f4e0b9bc4f23b41c6930463f0}{z\+\_\+stream}} $\ast$strm, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_af19157da745ecb3f2b088c8f3a10c0a7}{infile}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} outfile)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{gun_8c_a4045bf219ee9c7ead9b2d49d1b82260a}{copymeta}} (char $\ast$from, char $\ast$to)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gun_8c_aaa7062e7d81d5bada0aa1980b05e066f}{gunzip}} (\mbox{\hyperlink{zlib_8h_afa60092f4e0b9bc4f23b41c6930463f0}{z\+\_\+stream}} $\ast$strm, char $\ast$inname, char $\ast$outname, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} test)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gun_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \mbox{\hyperlink{gun_8c_ae272c939af066c306dd6c491efc32add}{inbuf}} \mbox{[}\mbox{\hyperlink{gun_8c_a70ed59adcb4159ac551058053e649640}{S\+I\+ZE}}\mbox{]}
+\item 
+unsigned char \mbox{\hyperlink{gun_8c_a39930321a199330d37e05ca07fb7b093}{outbuf}} \mbox{[}\mbox{\hyperlink{gun_8c_a70ed59adcb4159ac551058053e649640}{S\+I\+ZE}}\mbox{]}
+\item 
+unsigned short \mbox{\hyperlink{gun_8c_ada2f6550a9ffe8e311af824df31c6064}{prefix}} \mbox{[}65536\mbox{]}
+\item 
+unsigned char \mbox{\hyperlink{gun_8c_a143c3ff770154542cc6bd4602c3148a9}{suffix}} \mbox{[}65536\mbox{]}
+\item 
+unsigned char \mbox{\hyperlink{gun_8c_a3ec837ef2cea696af366fcfb455094c6}{match}} \mbox{[}65280+2\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{gun_8c_a2476600d18a986007308d733126b1280}\label{gun_8c_a2476600d18a986007308d733126b1280}} 
+\index{gun.\+c@{gun.\+c}!F\+L\+U\+S\+H\+C\+O\+DE@{F\+L\+U\+S\+H\+C\+O\+DE}}
+\index{F\+L\+U\+S\+H\+C\+O\+DE@{F\+L\+U\+S\+H\+C\+O\+DE}!gun.\+c@{gun.\+c}}
+\subsubsection{\texorpdfstring{F\+L\+U\+S\+H\+C\+O\+DE}{FLUSHCODE}}
+{\footnotesize\ttfamily \#define F\+L\+U\+S\+H\+C\+O\+DE(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+        left = 0; \(\backslash\)
+        rem = 0; \(\backslash\)
+        if (chunk > have) \{ \(\backslash\)
+            chunk -= have; \(\backslash\)
+            have = 0; \(\backslash\)
+            if (\mbox{\hyperlink{gun_8c_afa19e2eadb751f3599e443d073862a2f}{NEXT}}() == -1) \(\backslash\)
+                break; \(\backslash\)
+            chunk--; \(\backslash\)
+            if (chunk > have) \{ \(\backslash\)
+                chunk = have = 0; \(\backslash\)
+                break; \(\backslash\)
+            \} \(\backslash\)
+        \} \(\backslash\)
+        have -= chunk; \(\backslash\)
+        next += chunk; \(\backslash\)
+        chunk = 0; \(\backslash\)
+    \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+\mbox{\Hypertarget{gun_8c_a08023ea6765c99d60a6a3840cd07156e}\label{gun_8c_a08023ea6765c99d60a6a3840cd07156e}} 
+\index{gun.\+c@{gun.\+c}!local@{local}}
+\index{local@{local}!gun.\+c@{gun.\+c}}
+\subsubsection{\texorpdfstring{local}{local}}
+{\footnotesize\ttfamily \#define local~static}
+
+\mbox{\Hypertarget{gun_8c_afa19e2eadb751f3599e443d073862a2f}\label{gun_8c_afa19e2eadb751f3599e443d073862a2f}} 
+\index{gun.\+c@{gun.\+c}!N\+E\+XT@{N\+E\+XT}}
+\index{N\+E\+XT@{N\+E\+XT}!gun.\+c@{gun.\+c}}
+\subsubsection{\texorpdfstring{N\+E\+XT}{NEXT}}
+{\footnotesize\ttfamily \#define N\+E\+XT(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+(have ? 0 : (have = \mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}(indp, &next)), \(\backslash\)
+                last = have ? (have--, (\textcolor{keywordtype}{int})(*next++)) : -1)
+\end{DoxyCode}
+\mbox{\Hypertarget{gun_8c_aed8b6e0ed4063c3f37022a1f676c36e7}\label{gun_8c_aed8b6e0ed4063c3f37022a1f676c36e7}} 
+\index{gun.\+c@{gun.\+c}!P\+I\+E\+CE@{P\+I\+E\+CE}}
+\index{P\+I\+E\+CE@{P\+I\+E\+CE}!gun.\+c@{gun.\+c}}
+\subsubsection{\texorpdfstring{P\+I\+E\+CE}{PIECE}}
+{\footnotesize\ttfamily \#define P\+I\+E\+CE~16384         /$\ast$ limits i/o chunks for 16-\/bit \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} case $\ast$/}
+
+\mbox{\Hypertarget{gun_8c_a70ed59adcb4159ac551058053e649640}\label{gun_8c_a70ed59adcb4159ac551058053e649640}} 
+\index{gun.\+c@{gun.\+c}!S\+I\+ZE@{S\+I\+ZE}}
+\index{S\+I\+ZE@{S\+I\+ZE}!gun.\+c@{gun.\+c}}
+\subsubsection{\texorpdfstring{S\+I\+ZE}{SIZE}}
+{\footnotesize\ttfamily \#define S\+I\+ZE~32768\+U         /$\ast$ input and output buffer sizes $\ast$/}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{gun_8c_a4045bf219ee9c7ead9b2d49d1b82260a}\label{gun_8c_a4045bf219ee9c7ead9b2d49d1b82260a}} 
+\index{gun.\+c@{gun.\+c}!copymeta@{copymeta}}
+\index{copymeta@{copymeta}!gun.\+c@{gun.\+c}}
+\subsubsection{\texorpdfstring{copymeta()}{copymeta()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void copymeta (\begin{DoxyParamCaption}\item[{char $\ast$}]{from,  }\item[{char $\ast$}]{to }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{gun_8c_a4045bf219ee9c7ead9b2d49d1b82260a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gun_8c_a70712ac76f1fd857664d8cab1332cb0c}\label{gun_8c_a70712ac76f1fd857664d8cab1332cb0c}} 
+\index{gun.\+c@{gun.\+c}!gunpipe@{gunpipe}}
+\index{gunpipe@{gunpipe}!gun.\+c@{gun.\+c}}
+\subsubsection{\texorpdfstring{gunpipe()}{gunpipe()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} gunpipe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_afa60092f4e0b9bc4f23b41c6930463f0}{z\+\_\+stream}} $\ast$}]{strm,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{infile,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{outfile }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gun_8c_a70712ac76f1fd857664d8cab1332cb0c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{gun_8c_a70712ac76f1fd857664d8cab1332cb0c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gun_8c_aaa7062e7d81d5bada0aa1980b05e066f}\label{gun_8c_aaa7062e7d81d5bada0aa1980b05e066f}} 
+\index{gun.\+c@{gun.\+c}!gunzip@{gunzip}}
+\index{gunzip@{gunzip}!gun.\+c@{gun.\+c}}
+\subsubsection{\texorpdfstring{gunzip()}{gunzip()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} gunzip (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_afa60092f4e0b9bc4f23b41c6930463f0}{z\+\_\+stream}} $\ast$}]{strm,  }\item[{char $\ast$}]{inname,  }\item[{char $\ast$}]{outname,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{test }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gun_8c_aaa7062e7d81d5bada0aa1980b05e066f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{gun_8c_aaa7062e7d81d5bada0aa1980b05e066f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}\label{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}} 
+\index{gun.\+c@{gun.\+c}!in@{in}}
+\index{in@{in}!gun.\+c@{gun.\+c}}
+\subsubsection{\texorpdfstring{in()}{in()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} unsigned in (\begin{DoxyParamCaption}\item[{void $\ast$}]{in\+\_\+desc,  }\item[{z\+\_\+const unsigned char $\ast$$\ast$}]{buf }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gun_8c_aa3f761af43deaa5e14757df4b7da2344}\label{gun_8c_aa3f761af43deaa5e14757df4b7da2344}} 
+\index{gun.\+c@{gun.\+c}!lunpipe@{lunpipe}}
+\index{lunpipe@{lunpipe}!gun.\+c@{gun.\+c}}
+\subsubsection{\texorpdfstring{lunpipe()}{lunpipe()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} lunpipe (\begin{DoxyParamCaption}\item[{unsigned}]{have,  }\item[{z\+\_\+const unsigned char $\ast$}]{next,  }\item[{struct ind $\ast$}]{indp,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{outfile,  }\item[{\mbox{\hyperlink{zlib_8h_afa60092f4e0b9bc4f23b41c6930463f0}{z\+\_\+stream}} $\ast$}]{strm }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gun_8c_aa3f761af43deaa5e14757df4b7da2344_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gun_8c_aa3f761af43deaa5e14757df4b7da2344_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gun_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{gun_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{gun.\+c@{gun.\+c}!main@{main}}
+\index{main@{main}!gun.\+c@{gun.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gun_8c_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gun_8c_acb2d4658684492100bc328998f52ae82}\label{gun_8c_acb2d4658684492100bc328998f52ae82}} 
+\index{gun.\+c@{gun.\+c}!out@{out}}
+\index{out@{out}!gun.\+c@{gun.\+c}}
+\subsubsection{\texorpdfstring{out()}{out()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} out (\begin{DoxyParamCaption}\item[{void $\ast$}]{out\+\_\+desc,  }\item[{unsigned char $\ast$}]{buf,  }\item[{unsigned}]{len }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gun_8c_acb2d4658684492100bc328998f52ae82_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{gun_8c_ae272c939af066c306dd6c491efc32add}\label{gun_8c_ae272c939af066c306dd6c491efc32add}} 
+\index{gun.\+c@{gun.\+c}!inbuf@{inbuf}}
+\index{inbuf@{inbuf}!gun.\+c@{gun.\+c}}
+\subsubsection{\texorpdfstring{inbuf}{inbuf}}
+{\footnotesize\ttfamily unsigned char inbuf\mbox{[}\mbox{\hyperlink{gun_8c_a70ed59adcb4159ac551058053e649640}{S\+I\+ZE}}\mbox{]}}
+
+\mbox{\Hypertarget{gun_8c_a3ec837ef2cea696af366fcfb455094c6}\label{gun_8c_a3ec837ef2cea696af366fcfb455094c6}} 
+\index{gun.\+c@{gun.\+c}!match@{match}}
+\index{match@{match}!gun.\+c@{gun.\+c}}
+\subsubsection{\texorpdfstring{match}{match}}
+{\footnotesize\ttfamily unsigned char match\mbox{[}65280+2\mbox{]}}
+
+\mbox{\Hypertarget{gun_8c_a39930321a199330d37e05ca07fb7b093}\label{gun_8c_a39930321a199330d37e05ca07fb7b093}} 
+\index{gun.\+c@{gun.\+c}!outbuf@{outbuf}}
+\index{outbuf@{outbuf}!gun.\+c@{gun.\+c}}
+\subsubsection{\texorpdfstring{outbuf}{outbuf}}
+{\footnotesize\ttfamily unsigned char outbuf\mbox{[}\mbox{\hyperlink{gun_8c_a70ed59adcb4159ac551058053e649640}{S\+I\+ZE}}\mbox{]}}
+
+\mbox{\Hypertarget{gun_8c_ada2f6550a9ffe8e311af824df31c6064}\label{gun_8c_ada2f6550a9ffe8e311af824df31c6064}} 
+\index{gun.\+c@{gun.\+c}!prefix@{prefix}}
+\index{prefix@{prefix}!gun.\+c@{gun.\+c}}
+\subsubsection{\texorpdfstring{prefix}{prefix}}
+{\footnotesize\ttfamily unsigned short prefix\mbox{[}65536\mbox{]}}
+
+\mbox{\Hypertarget{gun_8c_a143c3ff770154542cc6bd4602c3148a9}\label{gun_8c_a143c3ff770154542cc6bd4602c3148a9}} 
+\index{gun.\+c@{gun.\+c}!suffix@{suffix}}
+\index{suffix@{suffix}!gun.\+c@{gun.\+c}}
+\subsubsection{\texorpdfstring{suffix}{suffix}}
+{\footnotesize\ttfamily unsigned char suffix\mbox{[}65536\mbox{]}}
+

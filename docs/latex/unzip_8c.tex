@@ -1,0 +1,1053 @@
+\hypertarget{unzip_8c}{}\section{src/third-\/party/zlib/contrib/minizip/unzip.c File Reference}
+\label{unzip_8c}\index{src/third-\/party/zlib/contrib/minizip/unzip.\+c@{src/third-\/party/zlib/contrib/minizip/unzip.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}zlib.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}unzip.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+Include dependency graph for unzip.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{unzip_8c_a0516a83a256d8589d28c316a2e13725e}{N\+O\+U\+N\+C\+R\+Y\+PT}}
+\item 
+\#define \mbox{\hyperlink{unzip_8c_a08023ea6765c99d60a6a3840cd07156e}{local}}~static
+\item 
+\#define \mbox{\hyperlink{unzip_8c_ac01c3d5519b2ebeb874e4db73b09fd6f}{C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+T\+Y\+D\+E\+F\+A\+U\+L\+T\+\_\+\+NO}}
+\item 
+\#define \mbox{\hyperlink{unzip_8c_ac88907609a3408a8ee6544287b6c9880}{U\+N\+Z\+\_\+\+B\+U\+F\+S\+I\+ZE}}~(16384)
+\item 
+\#define \mbox{\hyperlink{unzip_8c_a97ef86322b25dcc3d0fc5eb50d386b54}{U\+N\+Z\+\_\+\+M\+A\+X\+F\+I\+L\+E\+N\+A\+M\+E\+I\+N\+Z\+IP}}~(256)
+\item 
+\#define \mbox{\hyperlink{unzip_8c_ac5c822e3692a95451e8f70a5916f05a3}{A\+L\+L\+OC}}(\mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})~(malloc(\mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}))
+\item 
+\#define \mbox{\hyperlink{unzip_8c_a5fb23c00a00f3856832e660edc2ab03d}{T\+R\+Y\+F\+R\+EE}}(p)~\{\mbox{\hyperlink{isa-lr35902_8c_a2eb27369cb3dbac14564f95cd51effdf}{if}} (p) \mbox{\hyperlink{__builder_8h_af07d89f5ceaea0c7c8252cc41fd75f37}{free}}(p);\}
+\item 
+\#define \mbox{\hyperlink{unzip_8c_ad43fed5cb489b2075313779a757e5c03}{S\+I\+Z\+E\+C\+E\+N\+T\+R\+A\+L\+D\+I\+R\+I\+T\+EM}}~(0x2e)
+\item 
+\#define \mbox{\hyperlink{unzip_8c_a3c43e42371a71abc3db1b5a013382e77}{S\+I\+Z\+E\+Z\+I\+P\+L\+O\+C\+A\+L\+H\+E\+A\+D\+ER}}~(0x1e)
+\item 
+\#define \mbox{\hyperlink{unzip_8c_a211c212a9634c4a42e21d04861c0bdd5}{C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+T\+Y\+D\+E\+F\+A\+U\+L\+T\+V\+A\+L\+UE}}~2
+\item 
+\#define \mbox{\hyperlink{unzip_8c_a245d2af04dc8b6d6617f21d34635b033}{S\+T\+R\+C\+M\+P\+C\+A\+S\+E\+N\+O\+S\+E\+N\+T\+I\+V\+E\+F\+U\+N\+C\+T\+I\+ON}}~\mbox{\hyperlink{unzip_8c_a87020390a71a0591c13e22b1b529573b}{strcmpcasenosensitive\+\_\+internal}}
+\item 
+\#define \mbox{\hyperlink{unzip_8c_a11acfc377461094b27681612f0bd277d}{B\+U\+F\+R\+E\+A\+D\+C\+O\+M\+M\+E\+NT}}~(0x400)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct unz\+\_\+file\+\_\+info64\+\_\+internal\+\_\+s \mbox{\hyperlink{unzip_8c_a89d570ebee13d675ed0aee4462a77edc}{unz\+\_\+file\+\_\+info64\+\_\+internal}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{unzip_8c_a4fdc20c5d880511c727c425b1f11ef68}{unz64local\+\_\+get\+Byte}} \mbox{\hyperlink{unzip_8c_aa8884fa294aac2bc70a31c17af6a69ac}{OF}} ((const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$pzlib\+\_\+filefunc\+\_\+def, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} filestream, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$pi))
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{unzip_8c_a4fdc20c5d880511c727c425b1f11ef68}{unz64local\+\_\+get\+Byte}} (const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$pzlib\+\_\+filefunc\+\_\+def, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} filestream, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$pi)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{unzip_8c_aca92d6709924f9c82ce13f0c18cc26b1}{unz64local\+\_\+get\+Short}} \mbox{\hyperlink{unzip_8c_aa12972735b3d4d9a5249f319591bbfe3}{OF}} ((const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$pzlib\+\_\+filefunc\+\_\+def, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} filestream, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} $\ast$pX))
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{unzip_8c_aca92d6709924f9c82ce13f0c18cc26b1}{unz64local\+\_\+get\+Short}} (const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$pzlib\+\_\+filefunc\+\_\+def, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} filestream, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} $\ast$pX)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{unzip_8c_ad3fe51136556c1c4a1e964a157d153ba}{unz64local\+\_\+get\+Long}} (const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$pzlib\+\_\+filefunc\+\_\+def, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} filestream, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} $\ast$pX)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{unzip_8c_a65165fb74a10780ee7b66e9c6c57da3c}{unz64local\+\_\+get\+Long64}} \mbox{\hyperlink{unzip_8c_ae3cfabfa77d9335e54aee4d59a3543ef}{OF}} ((const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$pzlib\+\_\+filefunc\+\_\+def, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} filestream, \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} $\ast$pX))
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{unzip_8c_a65165fb74a10780ee7b66e9c6c57da3c}{unz64local\+\_\+get\+Long64}} (const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$pzlib\+\_\+filefunc\+\_\+def, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} filestream, \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} $\ast$pX)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{unzip_8c_a87020390a71a0591c13e22b1b529573b}{strcmpcasenosensitive\+\_\+internal}} (const char $\ast$file\+Name1, const char $\ast$file\+Name2)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a271f325759b3251ee728a8f850291dcf}{unz\+String\+File\+Name\+Compare}} (const char $\ast$file\+Name1, const char $\ast$file\+Name2, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} i\+Case\+Sensitivity)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} \mbox{\hyperlink{unzip_8c_a62c48825905347807e4daaf8451809e7}{unz64local\+\_\+\+Search\+Central\+Dir}} \mbox{\hyperlink{unzip_8c_a0eebc7b5cbbcbee0df2bc38aae1354ba}{OF}} ((const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$pzlib\+\_\+filefunc\+\_\+def, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} filestream))
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} \mbox{\hyperlink{unzip_8c_a62c48825905347807e4daaf8451809e7}{unz64local\+\_\+\+Search\+Central\+Dir}} (const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$pzlib\+\_\+filefunc\+\_\+def, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} filestream)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} \mbox{\hyperlink{unzip_8c_a1b7974745bce776bf8df4ffa6d79a3f5}{unz64local\+\_\+\+Search\+Central\+Dir64}} (const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$pzlib\+\_\+filefunc\+\_\+def, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} filestream)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} \mbox{\hyperlink{unzip_8c_abf9f03bc622c0405d398cc0088216290}{unz\+Open\+Internal}} (const void $\ast$path, \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$pzlib\+\_\+filefunc64\+\_\+32\+\_\+def, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} is64bit\+Open\+Function)
+\item 
+\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a920361c17f591352b947778d75249d5d}{unz\+Open2}} (const char $\ast$path, \mbox{\hyperlink{ioapi_8h_a269f2bded66a7ee4052a60025afebd7e}{zlib\+\_\+filefunc\+\_\+def}} $\ast$pzlib\+\_\+filefunc32\+\_\+def)
+\item 
+\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a3c2961b4d84447e2d4ab06835c30fa23}{unz\+Open2\+\_\+64}} (const void $\ast$path, \mbox{\hyperlink{ioapi_8h_a6be8577ecdaf6c1f57fb75006aa2b56c}{zlib\+\_\+filefunc64\+\_\+def}} $\ast$pzlib\+\_\+filefunc\+\_\+def)
+\item 
+\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a4efe7bf26960a0a0c66122788b175f97}{unz\+Open}} (const char $\ast$path)
+\item 
+\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_aa531745d380211390eb114f1870ef824}{unz\+Open64}} (const void $\ast$path)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_af6ab0ba88ab5da62747df8f9336f1bb3}{unz\+Close}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a81a5c686e1ee59531e4aa9f592310dc3}{unz\+Get\+Global\+Info64}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file, \mbox{\hyperlink{unzip_8h_a1140782768ded8fec84aa9c468d91cf3}{unz\+\_\+global\+\_\+info64}} $\ast$pglobal\+\_\+info)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_aa08deeedabf2d231d22c1126d3d4b951}{unz\+Get\+Global\+Info}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file, \mbox{\hyperlink{unzip_8h_a18c3b238618ea86ef503ecbd4092dbce}{unz\+\_\+global\+\_\+info}} $\ast$pglobal\+\_\+info32)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{unzip_8c_a48f0609b270f39b1243d76e69cc6173f}{unz64local\+\_\+\+Dos\+Date\+To\+Tmu\+Date}} (\mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} ul\+Dos\+Date, \mbox{\hyperlink{unzip_8h_a369a14c48c4b71afa6bf6cf95c6b9160}{tm\+\_\+unz}} $\ast$ptm)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{unzip_8c_a632cfc9d1fc0178786e7a2ab3032f040}{unz64local\+\_\+\+Get\+Current\+File\+Info\+Internal}} \mbox{\hyperlink{unzip_8c_a8ef6607beb581fc68a425b1e60235546}{OF}} ((\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file, \mbox{\hyperlink{unzip_8h_ae09c616960557f906aafdcbe9ebf4e48}{unz\+\_\+file\+\_\+info64}} $\ast$pfile\+\_\+info, \mbox{\hyperlink{unzip_8c_a89d570ebee13d675ed0aee4462a77edc}{unz\+\_\+file\+\_\+info64\+\_\+internal}} $\ast$pfile\+\_\+info\+\_\+internal, char $\ast$sz\+File\+Name, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} file\+Name\+Buffer\+Size, void $\ast$extra\+Field, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} extra\+Field\+Buffer\+Size, char $\ast$sz\+Comment, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} comment\+Buffer\+Size))
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{unzip_8c_a632cfc9d1fc0178786e7a2ab3032f040}{unz64local\+\_\+\+Get\+Current\+File\+Info\+Internal}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file, \mbox{\hyperlink{unzip_8h_ae09c616960557f906aafdcbe9ebf4e48}{unz\+\_\+file\+\_\+info64}} $\ast$pfile\+\_\+info, \mbox{\hyperlink{unzip_8c_a89d570ebee13d675ed0aee4462a77edc}{unz\+\_\+file\+\_\+info64\+\_\+internal}} $\ast$pfile\+\_\+info\+\_\+internal, char $\ast$sz\+File\+Name, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} file\+Name\+Buffer\+Size, void $\ast$extra\+Field, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} extra\+Field\+Buffer\+Size, char $\ast$sz\+Comment, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} comment\+Buffer\+Size)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a530654c7abbcd1c432942eb41f613d48}{unz\+Get\+Current\+File\+Info64}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file, \mbox{\hyperlink{unzip_8h_ae09c616960557f906aafdcbe9ebf4e48}{unz\+\_\+file\+\_\+info64}} $\ast$pfile\+\_\+info, char $\ast$sz\+File\+Name, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} file\+Name\+Buffer\+Size, void $\ast$extra\+Field, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} extra\+Field\+Buffer\+Size, char $\ast$sz\+Comment, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} comment\+Buffer\+Size)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_ac99166540260b60340f4787af0a90029}{unz\+Get\+Current\+File\+Info}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file, \mbox{\hyperlink{unzip_8h_a03b3ec1a8745daa96699ac49f193b177}{unz\+\_\+file\+\_\+info}} $\ast$pfile\+\_\+info, char $\ast$sz\+File\+Name, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} file\+Name\+Buffer\+Size, void $\ast$extra\+Field, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} extra\+Field\+Buffer\+Size, char $\ast$sz\+Comment, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} comment\+Buffer\+Size)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a54821c0b6da683800164a56f2ae14f33}{unz\+Go\+To\+First\+File}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_acb457ebeaee7cb850c11a4a3d4b58201}{unz\+Go\+To\+Next\+File}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a22730edef5a8a98b367bb30a0d619608}{unz\+Locate\+File}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file, const char $\ast$sz\+File\+Name, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} i\+Case\+Sensitivity)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a455a15e23936251eb614675b2e7bae64}{unz\+Get\+File\+Pos64}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file, \mbox{\hyperlink{unzip_8h_a381daf0e29873fcf96db4ca274d1a04c}{unz64\+\_\+file\+\_\+pos}} $\ast$file\+\_\+pos)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a236d033d9a360b7753fcb0fcef988cbf}{unz\+Get\+File\+Pos}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file, \mbox{\hyperlink{unzip_8h_aade219d06703540be04aff72624b3891}{unz\+\_\+file\+\_\+pos}} $\ast$file\+\_\+pos)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a667afaf715015b8195e2f6f22390202d}{unz\+Go\+To\+File\+Pos64}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file, const \mbox{\hyperlink{unzip_8h_a381daf0e29873fcf96db4ca274d1a04c}{unz64\+\_\+file\+\_\+pos}} $\ast$file\+\_\+pos)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a67559097ba938e4e85257da3fc6d827d}{unz\+Go\+To\+File\+Pos}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file, \mbox{\hyperlink{unzip_8h_aade219d06703540be04aff72624b3891}{unz\+\_\+file\+\_\+pos}} $\ast$file\+\_\+pos)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{unzip_8c_a907fed0cb410e6a8ab58c69f13738aee}{unz64local\+\_\+\+Check\+Current\+File\+Coherency\+Header}} (unz64\+\_\+s $\ast$s, u\+Int $\ast$pi\+Size\+Var, \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} $\ast$poffset\+\_\+local\+\_\+extrafield, u\+Int $\ast$psize\+\_\+local\+\_\+extrafield)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a5eb86267fb9a5e4f52a123df606b2af5}{unz\+Open\+Current\+File3}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$method, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$level, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} raw, const char $\ast$password)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a65deebb4ecb3ba110c343c21a4cd9a75}{unz\+Open\+Current\+File}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a0c26b010e6cf7e58cd558426f280fa98}{unz\+Open\+Current\+File\+Password}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file, const char $\ast$password)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a5881cddc4d4941ff604508ee4a564c25}{unz\+Open\+Current\+File2}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$method, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$level, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} raw)
+\item 
+\mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_aa2ffdf3d549d332acfe742a9198b730c}{unz\+Get\+Current\+File\+Z\+Stream\+Pos64}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a782029e380dc5ab5dab00361c9c14f58}{unz\+Read\+Current\+File}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file, voidp \mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, unsigned len)
+\item 
+z\+\_\+off\+\_\+t Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a17362e5016023e9424a318d93c0475d4}{unztell}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file)
+\item 
+\mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a325d191701e096aa0bc171069eba5ff2}{unztell64}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a564f8ada96a5b2e3c5815306fa146d68}{unzeof}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a012cad9a0262291930ec7e34cd7c5bea}{unz\+Get\+Local\+Extrafield}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file, voidp \mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, unsigned len)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_ac48279e5325cfdabbc67a312b1d32700}{unz\+Close\+Current\+File}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_adc36ff0866254ca420c9cd9d7dccfa99}{unz\+Get\+Global\+Comment}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file, char $\ast$sz\+Comment, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} u\+Size\+Buf)
+\item 
+\mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a647d2a5638d133b58a868d9d2c4d33ab}{unz\+Get\+Offset64}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file)
+\item 
+\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a1c325877d63ca4e205424add563ae01d}{unz\+Get\+Offset}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a9e2be3b57e0041c3da2c15277c4e85c1}{unz\+Set\+Offset64}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file, \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} pos)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT \mbox{\hyperlink{unzip_8c_a12c4062aa3dae4cddf7527c3caf8c519}{unz\+Set\+Offset}} (\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} pos)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char \mbox{\hyperlink{unzip_8c_aee9e9bcd4db86fe55bcc3685fafa5990}{unz\+\_\+copyright}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{unzip_8c_ac5c822e3692a95451e8f70a5916f05a3}\label{unzip_8c_ac5c822e3692a95451e8f70a5916f05a3}} 
+\index{unzip.\+c@{unzip.\+c}!A\+L\+L\+OC@{A\+L\+L\+OC}}
+\index{A\+L\+L\+OC@{A\+L\+L\+OC}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{A\+L\+L\+OC}{ALLOC}}
+{\footnotesize\ttfamily \#define A\+L\+L\+OC(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}} }\end{DoxyParamCaption})~(malloc(\mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}))}
+
+\mbox{\Hypertarget{unzip_8c_a11acfc377461094b27681612f0bd277d}\label{unzip_8c_a11acfc377461094b27681612f0bd277d}} 
+\index{unzip.\+c@{unzip.\+c}!B\+U\+F\+R\+E\+A\+D\+C\+O\+M\+M\+E\+NT@{B\+U\+F\+R\+E\+A\+D\+C\+O\+M\+M\+E\+NT}}
+\index{B\+U\+F\+R\+E\+A\+D\+C\+O\+M\+M\+E\+NT@{B\+U\+F\+R\+E\+A\+D\+C\+O\+M\+M\+E\+NT}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{B\+U\+F\+R\+E\+A\+D\+C\+O\+M\+M\+E\+NT}{BUFREADCOMMENT}}
+{\footnotesize\ttfamily \#define B\+U\+F\+R\+E\+A\+D\+C\+O\+M\+M\+E\+NT~(0x400)}
+
+\mbox{\Hypertarget{unzip_8c_ac01c3d5519b2ebeb874e4db73b09fd6f}\label{unzip_8c_ac01c3d5519b2ebeb874e4db73b09fd6f}} 
+\index{unzip.\+c@{unzip.\+c}!C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+T\+Y\+D\+E\+F\+A\+U\+L\+T\+\_\+\+NO@{C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+T\+Y\+D\+E\+F\+A\+U\+L\+T\+\_\+\+NO}}
+\index{C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+T\+Y\+D\+E\+F\+A\+U\+L\+T\+\_\+\+NO@{C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+T\+Y\+D\+E\+F\+A\+U\+L\+T\+\_\+\+NO}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+T\+Y\+D\+E\+F\+A\+U\+L\+T\+\_\+\+NO}{CASESENSITIVITYDEFAULT\_NO}}
+{\footnotesize\ttfamily \#define C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+T\+Y\+D\+E\+F\+A\+U\+L\+T\+\_\+\+NO}
+
+\mbox{\Hypertarget{unzip_8c_a211c212a9634c4a42e21d04861c0bdd5}\label{unzip_8c_a211c212a9634c4a42e21d04861c0bdd5}} 
+\index{unzip.\+c@{unzip.\+c}!C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+T\+Y\+D\+E\+F\+A\+U\+L\+T\+V\+A\+L\+UE@{C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+T\+Y\+D\+E\+F\+A\+U\+L\+T\+V\+A\+L\+UE}}
+\index{C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+T\+Y\+D\+E\+F\+A\+U\+L\+T\+V\+A\+L\+UE@{C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+T\+Y\+D\+E\+F\+A\+U\+L\+T\+V\+A\+L\+UE}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+T\+Y\+D\+E\+F\+A\+U\+L\+T\+V\+A\+L\+UE}{CASESENSITIVITYDEFAULTVALUE}}
+{\footnotesize\ttfamily \#define C\+A\+S\+E\+S\+E\+N\+S\+I\+T\+I\+V\+I\+T\+Y\+D\+E\+F\+A\+U\+L\+T\+V\+A\+L\+UE~2}
+
+\mbox{\Hypertarget{unzip_8c_a08023ea6765c99d60a6a3840cd07156e}\label{unzip_8c_a08023ea6765c99d60a6a3840cd07156e}} 
+\index{unzip.\+c@{unzip.\+c}!local@{local}}
+\index{local@{local}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{local}{local}}
+{\footnotesize\ttfamily \#define local~static}
+
+\mbox{\Hypertarget{unzip_8c_a0516a83a256d8589d28c316a2e13725e}\label{unzip_8c_a0516a83a256d8589d28c316a2e13725e}} 
+\index{unzip.\+c@{unzip.\+c}!N\+O\+U\+N\+C\+R\+Y\+PT@{N\+O\+U\+N\+C\+R\+Y\+PT}}
+\index{N\+O\+U\+N\+C\+R\+Y\+PT@{N\+O\+U\+N\+C\+R\+Y\+PT}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{N\+O\+U\+N\+C\+R\+Y\+PT}{NOUNCRYPT}}
+{\footnotesize\ttfamily \#define N\+O\+U\+N\+C\+R\+Y\+PT}
+
+\mbox{\Hypertarget{unzip_8c_ad43fed5cb489b2075313779a757e5c03}\label{unzip_8c_ad43fed5cb489b2075313779a757e5c03}} 
+\index{unzip.\+c@{unzip.\+c}!S\+I\+Z\+E\+C\+E\+N\+T\+R\+A\+L\+D\+I\+R\+I\+T\+EM@{S\+I\+Z\+E\+C\+E\+N\+T\+R\+A\+L\+D\+I\+R\+I\+T\+EM}}
+\index{S\+I\+Z\+E\+C\+E\+N\+T\+R\+A\+L\+D\+I\+R\+I\+T\+EM@{S\+I\+Z\+E\+C\+E\+N\+T\+R\+A\+L\+D\+I\+R\+I\+T\+EM}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{S\+I\+Z\+E\+C\+E\+N\+T\+R\+A\+L\+D\+I\+R\+I\+T\+EM}{SIZECENTRALDIRITEM}}
+{\footnotesize\ttfamily \#define S\+I\+Z\+E\+C\+E\+N\+T\+R\+A\+L\+D\+I\+R\+I\+T\+EM~(0x2e)}
+
+\mbox{\Hypertarget{unzip_8c_a3c43e42371a71abc3db1b5a013382e77}\label{unzip_8c_a3c43e42371a71abc3db1b5a013382e77}} 
+\index{unzip.\+c@{unzip.\+c}!S\+I\+Z\+E\+Z\+I\+P\+L\+O\+C\+A\+L\+H\+E\+A\+D\+ER@{S\+I\+Z\+E\+Z\+I\+P\+L\+O\+C\+A\+L\+H\+E\+A\+D\+ER}}
+\index{S\+I\+Z\+E\+Z\+I\+P\+L\+O\+C\+A\+L\+H\+E\+A\+D\+ER@{S\+I\+Z\+E\+Z\+I\+P\+L\+O\+C\+A\+L\+H\+E\+A\+D\+ER}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{S\+I\+Z\+E\+Z\+I\+P\+L\+O\+C\+A\+L\+H\+E\+A\+D\+ER}{SIZEZIPLOCALHEADER}}
+{\footnotesize\ttfamily \#define S\+I\+Z\+E\+Z\+I\+P\+L\+O\+C\+A\+L\+H\+E\+A\+D\+ER~(0x1e)}
+
+\mbox{\Hypertarget{unzip_8c_a245d2af04dc8b6d6617f21d34635b033}\label{unzip_8c_a245d2af04dc8b6d6617f21d34635b033}} 
+\index{unzip.\+c@{unzip.\+c}!S\+T\+R\+C\+M\+P\+C\+A\+S\+E\+N\+O\+S\+E\+N\+T\+I\+V\+E\+F\+U\+N\+C\+T\+I\+ON@{S\+T\+R\+C\+M\+P\+C\+A\+S\+E\+N\+O\+S\+E\+N\+T\+I\+V\+E\+F\+U\+N\+C\+T\+I\+ON}}
+\index{S\+T\+R\+C\+M\+P\+C\+A\+S\+E\+N\+O\+S\+E\+N\+T\+I\+V\+E\+F\+U\+N\+C\+T\+I\+ON@{S\+T\+R\+C\+M\+P\+C\+A\+S\+E\+N\+O\+S\+E\+N\+T\+I\+V\+E\+F\+U\+N\+C\+T\+I\+ON}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{S\+T\+R\+C\+M\+P\+C\+A\+S\+E\+N\+O\+S\+E\+N\+T\+I\+V\+E\+F\+U\+N\+C\+T\+I\+ON}{STRCMPCASENOSENTIVEFUNCTION}}
+{\footnotesize\ttfamily \#define S\+T\+R\+C\+M\+P\+C\+A\+S\+E\+N\+O\+S\+E\+N\+T\+I\+V\+E\+F\+U\+N\+C\+T\+I\+ON~\mbox{\hyperlink{unzip_8c_a87020390a71a0591c13e22b1b529573b}{strcmpcasenosensitive\+\_\+internal}}}
+
+\mbox{\Hypertarget{unzip_8c_a5fb23c00a00f3856832e660edc2ab03d}\label{unzip_8c_a5fb23c00a00f3856832e660edc2ab03d}} 
+\index{unzip.\+c@{unzip.\+c}!T\+R\+Y\+F\+R\+EE@{T\+R\+Y\+F\+R\+EE}}
+\index{T\+R\+Y\+F\+R\+EE@{T\+R\+Y\+F\+R\+EE}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{T\+R\+Y\+F\+R\+EE}{TRYFREE}}
+{\footnotesize\ttfamily \#define T\+R\+Y\+F\+R\+EE(\begin{DoxyParamCaption}\item[{}]{p }\end{DoxyParamCaption})~\{\mbox{\hyperlink{isa-lr35902_8c_a2eb27369cb3dbac14564f95cd51effdf}{if}} (p) \mbox{\hyperlink{__builder_8h_af07d89f5ceaea0c7c8252cc41fd75f37}{free}}(p);\}}
+
+\mbox{\Hypertarget{unzip_8c_ac88907609a3408a8ee6544287b6c9880}\label{unzip_8c_ac88907609a3408a8ee6544287b6c9880}} 
+\index{unzip.\+c@{unzip.\+c}!U\+N\+Z\+\_\+\+B\+U\+F\+S\+I\+ZE@{U\+N\+Z\+\_\+\+B\+U\+F\+S\+I\+ZE}}
+\index{U\+N\+Z\+\_\+\+B\+U\+F\+S\+I\+ZE@{U\+N\+Z\+\_\+\+B\+U\+F\+S\+I\+ZE}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{U\+N\+Z\+\_\+\+B\+U\+F\+S\+I\+ZE}{UNZ\_BUFSIZE}}
+{\footnotesize\ttfamily \#define U\+N\+Z\+\_\+\+B\+U\+F\+S\+I\+ZE~(16384)}
+
+\mbox{\Hypertarget{unzip_8c_a97ef86322b25dcc3d0fc5eb50d386b54}\label{unzip_8c_a97ef86322b25dcc3d0fc5eb50d386b54}} 
+\index{unzip.\+c@{unzip.\+c}!U\+N\+Z\+\_\+\+M\+A\+X\+F\+I\+L\+E\+N\+A\+M\+E\+I\+N\+Z\+IP@{U\+N\+Z\+\_\+\+M\+A\+X\+F\+I\+L\+E\+N\+A\+M\+E\+I\+N\+Z\+IP}}
+\index{U\+N\+Z\+\_\+\+M\+A\+X\+F\+I\+L\+E\+N\+A\+M\+E\+I\+N\+Z\+IP@{U\+N\+Z\+\_\+\+M\+A\+X\+F\+I\+L\+E\+N\+A\+M\+E\+I\+N\+Z\+IP}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{U\+N\+Z\+\_\+\+M\+A\+X\+F\+I\+L\+E\+N\+A\+M\+E\+I\+N\+Z\+IP}{UNZ\_MAXFILENAMEINZIP}}
+{\footnotesize\ttfamily \#define U\+N\+Z\+\_\+\+M\+A\+X\+F\+I\+L\+E\+N\+A\+M\+E\+I\+N\+Z\+IP~(256)}
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{unzip_8c_a89d570ebee13d675ed0aee4462a77edc}\label{unzip_8c_a89d570ebee13d675ed0aee4462a77edc}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+\_\+file\+\_\+info64\+\_\+internal@{unz\+\_\+file\+\_\+info64\+\_\+internal}}
+\index{unz\+\_\+file\+\_\+info64\+\_\+internal@{unz\+\_\+file\+\_\+info64\+\_\+internal}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+\_\+file\+\_\+info64\+\_\+internal}{unz\_file\_info64\_internal}}
+{\footnotesize\ttfamily typedef struct unz\+\_\+file\+\_\+info64\+\_\+internal\+\_\+s  \mbox{\hyperlink{unzip_8c_a89d570ebee13d675ed0aee4462a77edc}{unz\+\_\+file\+\_\+info64\+\_\+internal}}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{unzip_8c_aa8884fa294aac2bc70a31c17af6a69ac}\label{unzip_8c_aa8884fa294aac2bc70a31c17af6a69ac}} 
+\index{unzip.\+c@{unzip.\+c}!OF@{OF}}
+\index{OF@{OF}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{O\+F()}{OF()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{unzip_8c_a4fdc20c5d880511c727c425b1f11ef68}{unz64local\+\_\+get\+Byte}} OF (\begin{DoxyParamCaption}\item[{(const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$pzlib\+\_\+filefunc\+\_\+def, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} filestream, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$pi)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{unzip_8c_aa12972735b3d4d9a5249f319591bbfe3}\label{unzip_8c_aa12972735b3d4d9a5249f319591bbfe3}} 
+\index{unzip.\+c@{unzip.\+c}!OF@{OF}}
+\index{OF@{OF}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{O\+F()}{OF()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{unzip_8c_aca92d6709924f9c82ce13f0c18cc26b1}{unz64local\+\_\+get\+Short}} OF (\begin{DoxyParamCaption}\item[{(const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$pzlib\+\_\+filefunc\+\_\+def, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} filestream, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} $\ast$pX)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{unzip_8c_ae3cfabfa77d9335e54aee4d59a3543ef}\label{unzip_8c_ae3cfabfa77d9335e54aee4d59a3543ef}} 
+\index{unzip.\+c@{unzip.\+c}!OF@{OF}}
+\index{OF@{OF}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{O\+F()}{OF()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{unzip_8c_a65165fb74a10780ee7b66e9c6c57da3c}{unz64local\+\_\+get\+Long64}} OF (\begin{DoxyParamCaption}\item[{(const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$pzlib\+\_\+filefunc\+\_\+def, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} filestream, \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} $\ast$pX)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{unzip_8c_a0eebc7b5cbbcbee0df2bc38aae1354ba}\label{unzip_8c_a0eebc7b5cbbcbee0df2bc38aae1354ba}} 
+\index{unzip.\+c@{unzip.\+c}!OF@{OF}}
+\index{OF@{OF}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{O\+F()}{OF()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} \mbox{\hyperlink{unzip_8c_a62c48825905347807e4daaf8451809e7}{unz64local\+\_\+\+Search\+Central\+Dir}} OF (\begin{DoxyParamCaption}\item[{(const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$pzlib\+\_\+filefunc\+\_\+def, \mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}} filestream)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{unzip_8c_a8ef6607beb581fc68a425b1e60235546}\label{unzip_8c_a8ef6607beb581fc68a425b1e60235546}} 
+\index{unzip.\+c@{unzip.\+c}!OF@{OF}}
+\index{OF@{OF}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{O\+F()}{OF()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{unzip_8c_a632cfc9d1fc0178786e7a2ab3032f040}{unz64local\+\_\+\+Get\+Current\+File\+Info\+Internal}} OF (\begin{DoxyParamCaption}\item[{(\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} file, \mbox{\hyperlink{unzip_8h_ae09c616960557f906aafdcbe9ebf4e48}{unz\+\_\+file\+\_\+info64}} $\ast$pfile\+\_\+info, \mbox{\hyperlink{unzip_8c_a89d570ebee13d675ed0aee4462a77edc}{unz\+\_\+file\+\_\+info64\+\_\+internal}} $\ast$pfile\+\_\+info\+\_\+internal, char $\ast$sz\+File\+Name, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} file\+Name\+Buffer\+Size, void $\ast$extra\+Field, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} extra\+Field\+Buffer\+Size, char $\ast$sz\+Comment, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} comment\+Buffer\+Size)}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{unzip_8c_a87020390a71a0591c13e22b1b529573b}\label{unzip_8c_a87020390a71a0591c13e22b1b529573b}} 
+\index{unzip.\+c@{unzip.\+c}!strcmpcasenosensitive\+\_\+internal@{strcmpcasenosensitive\+\_\+internal}}
+\index{strcmpcasenosensitive\+\_\+internal@{strcmpcasenosensitive\+\_\+internal}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{strcmpcasenosensitive\+\_\+internal()}{strcmpcasenosensitive\_internal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} strcmpcasenosensitive\+\_\+internal (\begin{DoxyParamCaption}\item[{const char $\ast$}]{file\+Name1,  }\item[{const char $\ast$}]{file\+Name2 }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{unzip_8c_a907fed0cb410e6a8ab58c69f13738aee}\label{unzip_8c_a907fed0cb410e6a8ab58c69f13738aee}} 
+\index{unzip.\+c@{unzip.\+c}!unz64local\+\_\+\+Check\+Current\+File\+Coherency\+Header@{unz64local\+\_\+\+Check\+Current\+File\+Coherency\+Header}}
+\index{unz64local\+\_\+\+Check\+Current\+File\+Coherency\+Header@{unz64local\+\_\+\+Check\+Current\+File\+Coherency\+Header}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz64local\+\_\+\+Check\+Current\+File\+Coherency\+Header()}{unz64local\_CheckCurrentFileCoherencyHeader()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} unz64local\+\_\+\+Check\+Current\+File\+Coherency\+Header (\begin{DoxyParamCaption}\item[{unz64\+\_\+s $\ast$}]{s,  }\item[{u\+Int $\ast$}]{pi\+Size\+Var,  }\item[{\mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} $\ast$}]{poffset\+\_\+local\+\_\+extrafield,  }\item[{u\+Int $\ast$}]{psize\+\_\+local\+\_\+extrafield }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a907fed0cb410e6a8ab58c69f13738aee_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a907fed0cb410e6a8ab58c69f13738aee_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a48f0609b270f39b1243d76e69cc6173f}\label{unzip_8c_a48f0609b270f39b1243d76e69cc6173f}} 
+\index{unzip.\+c@{unzip.\+c}!unz64local\+\_\+\+Dos\+Date\+To\+Tmu\+Date@{unz64local\+\_\+\+Dos\+Date\+To\+Tmu\+Date}}
+\index{unz64local\+\_\+\+Dos\+Date\+To\+Tmu\+Date@{unz64local\+\_\+\+Dos\+Date\+To\+Tmu\+Date}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz64local\+\_\+\+Dos\+Date\+To\+Tmu\+Date()}{unz64local\_DosDateToTmuDate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void unz64local\+\_\+\+Dos\+Date\+To\+Tmu\+Date (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}}}]{ul\+Dos\+Date,  }\item[{\mbox{\hyperlink{unzip_8h_a369a14c48c4b71afa6bf6cf95c6b9160}{tm\+\_\+unz}} $\ast$}]{ptm }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a48f0609b270f39b1243d76e69cc6173f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a4fdc20c5d880511c727c425b1f11ef68}\label{unzip_8c_a4fdc20c5d880511c727c425b1f11ef68}} 
+\index{unzip.\+c@{unzip.\+c}!unz64local\+\_\+get\+Byte@{unz64local\+\_\+get\+Byte}}
+\index{unz64local\+\_\+get\+Byte@{unz64local\+\_\+get\+Byte}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz64local\+\_\+get\+Byte()}{unz64local\_getByte()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} unz64local\+\_\+get\+Byte (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$}]{pzlib\+\_\+filefunc\+\_\+def,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{filestream,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{pi }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{unzip_8c_a4fdc20c5d880511c727c425b1f11ef68_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a4fdc20c5d880511c727c425b1f11ef68_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a632cfc9d1fc0178786e7a2ab3032f040}\label{unzip_8c_a632cfc9d1fc0178786e7a2ab3032f040}} 
+\index{unzip.\+c@{unzip.\+c}!unz64local\+\_\+\+Get\+Current\+File\+Info\+Internal@{unz64local\+\_\+\+Get\+Current\+File\+Info\+Internal}}
+\index{unz64local\+\_\+\+Get\+Current\+File\+Info\+Internal@{unz64local\+\_\+\+Get\+Current\+File\+Info\+Internal}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz64local\+\_\+\+Get\+Current\+File\+Info\+Internal()}{unz64local\_GetCurrentFileInfoInternal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} unz64local\+\_\+\+Get\+Current\+File\+Info\+Internal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file,  }\item[{\mbox{\hyperlink{unzip_8h_ae09c616960557f906aafdcbe9ebf4e48}{unz\+\_\+file\+\_\+info64}} $\ast$}]{pfile\+\_\+info,  }\item[{\mbox{\hyperlink{unzip_8c_a89d570ebee13d675ed0aee4462a77edc}{unz\+\_\+file\+\_\+info64\+\_\+internal}} $\ast$}]{pfile\+\_\+info\+\_\+internal,  }\item[{char $\ast$}]{sz\+File\+Name,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{file\+Name\+Buffer\+Size,  }\item[{void $\ast$}]{extra\+Field,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{extra\+Field\+Buffer\+Size,  }\item[{char $\ast$}]{sz\+Comment,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{comment\+Buffer\+Size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a632cfc9d1fc0178786e7a2ab3032f040_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a632cfc9d1fc0178786e7a2ab3032f040_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_ad3fe51136556c1c4a1e964a157d153ba}\label{unzip_8c_ad3fe51136556c1c4a1e964a157d153ba}} 
+\index{unzip.\+c@{unzip.\+c}!unz64local\+\_\+get\+Long@{unz64local\+\_\+get\+Long}}
+\index{unz64local\+\_\+get\+Long@{unz64local\+\_\+get\+Long}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz64local\+\_\+get\+Long()}{unz64local\_getLong()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} unz64local\+\_\+get\+Long (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$}]{pzlib\+\_\+filefunc\+\_\+def,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{filestream,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} $\ast$}]{pX }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_ad3fe51136556c1c4a1e964a157d153ba_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_ad3fe51136556c1c4a1e964a157d153ba_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a65165fb74a10780ee7b66e9c6c57da3c}\label{unzip_8c_a65165fb74a10780ee7b66e9c6c57da3c}} 
+\index{unzip.\+c@{unzip.\+c}!unz64local\+\_\+get\+Long64@{unz64local\+\_\+get\+Long64}}
+\index{unz64local\+\_\+get\+Long64@{unz64local\+\_\+get\+Long64}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz64local\+\_\+get\+Long64()}{unz64local\_getLong64()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} unz64local\+\_\+get\+Long64 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$}]{pzlib\+\_\+filefunc\+\_\+def,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{filestream,  }\item[{\mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} $\ast$}]{pX }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a65165fb74a10780ee7b66e9c6c57da3c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a65165fb74a10780ee7b66e9c6c57da3c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_aca92d6709924f9c82ce13f0c18cc26b1}\label{unzip_8c_aca92d6709924f9c82ce13f0c18cc26b1}} 
+\index{unzip.\+c@{unzip.\+c}!unz64local\+\_\+get\+Short@{unz64local\+\_\+get\+Short}}
+\index{unz64local\+\_\+get\+Short@{unz64local\+\_\+get\+Short}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz64local\+\_\+get\+Short()}{unz64local\_getShort()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} unz64local\+\_\+get\+Short (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$}]{pzlib\+\_\+filefunc\+\_\+def,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{filestream,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} $\ast$}]{pX }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_aca92d6709924f9c82ce13f0c18cc26b1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_aca92d6709924f9c82ce13f0c18cc26b1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a62c48825905347807e4daaf8451809e7}\label{unzip_8c_a62c48825905347807e4daaf8451809e7}} 
+\index{unzip.\+c@{unzip.\+c}!unz64local\+\_\+\+Search\+Central\+Dir@{unz64local\+\_\+\+Search\+Central\+Dir}}
+\index{unz64local\+\_\+\+Search\+Central\+Dir@{unz64local\+\_\+\+Search\+Central\+Dir}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz64local\+\_\+\+Search\+Central\+Dir()}{unz64local\_SearchCentralDir()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} unz64local\+\_\+\+Search\+Central\+Dir (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$}]{pzlib\+\_\+filefunc\+\_\+def,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{filestream }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{unzip_8c_a62c48825905347807e4daaf8451809e7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a62c48825905347807e4daaf8451809e7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a1b7974745bce776bf8df4ffa6d79a3f5}\label{unzip_8c_a1b7974745bce776bf8df4ffa6d79a3f5}} 
+\index{unzip.\+c@{unzip.\+c}!unz64local\+\_\+\+Search\+Central\+Dir64@{unz64local\+\_\+\+Search\+Central\+Dir64}}
+\index{unz64local\+\_\+\+Search\+Central\+Dir64@{unz64local\+\_\+\+Search\+Central\+Dir64}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz64local\+\_\+\+Search\+Central\+Dir64()}{unz64local\_SearchCentralDir64()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} unz64local\+\_\+\+Search\+Central\+Dir64 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$}]{pzlib\+\_\+filefunc\+\_\+def,  }\item[{\mbox{\hyperlink{ioapi_8h_a39ab6d73c1cd44bc17064c2dcbb3e753}{voidpf}}}]{filestream }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a1b7974745bce776bf8df4ffa6d79a3f5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a1b7974745bce776bf8df4ffa6d79a3f5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_af6ab0ba88ab5da62747df8f9336f1bb3}\label{unzip_8c_af6ab0ba88ab5da62747df8f9336f1bb3}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Close@{unz\+Close}}
+\index{unz\+Close@{unz\+Close}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Close()}{unzClose()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Close (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_af6ab0ba88ab5da62747df8f9336f1bb3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_af6ab0ba88ab5da62747df8f9336f1bb3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_ac48279e5325cfdabbc67a312b1d32700}\label{unzip_8c_ac48279e5325cfdabbc67a312b1d32700}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Close\+Current\+File@{unz\+Close\+Current\+File}}
+\index{unz\+Close\+Current\+File@{unz\+Close\+Current\+File}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Close\+Current\+File()}{unzCloseCurrentFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Close\+Current\+File (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_ac48279e5325cfdabbc67a312b1d32700_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_ac48279e5325cfdabbc67a312b1d32700_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a564f8ada96a5b2e3c5815306fa146d68}\label{unzip_8c_a564f8ada96a5b2e3c5815306fa146d68}} 
+\index{unzip.\+c@{unzip.\+c}!unzeof@{unzeof}}
+\index{unzeof@{unzeof}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unzeof()}{unzeof()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unzeof (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{unzip_8c_ac99166540260b60340f4787af0a90029}\label{unzip_8c_ac99166540260b60340f4787af0a90029}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Get\+Current\+File\+Info@{unz\+Get\+Current\+File\+Info}}
+\index{unz\+Get\+Current\+File\+Info@{unz\+Get\+Current\+File\+Info}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Get\+Current\+File\+Info()}{unzGetCurrentFileInfo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Get\+Current\+File\+Info (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file,  }\item[{\mbox{\hyperlink{unzip_8h_a03b3ec1a8745daa96699ac49f193b177}{unz\+\_\+file\+\_\+info}} $\ast$}]{pfile\+\_\+info,  }\item[{char $\ast$}]{sz\+File\+Name,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{file\+Name\+Buffer\+Size,  }\item[{void $\ast$}]{extra\+Field,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{extra\+Field\+Buffer\+Size,  }\item[{char $\ast$}]{sz\+Comment,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{comment\+Buffer\+Size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_ac99166540260b60340f4787af0a90029_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a530654c7abbcd1c432942eb41f613d48}\label{unzip_8c_a530654c7abbcd1c432942eb41f613d48}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Get\+Current\+File\+Info64@{unz\+Get\+Current\+File\+Info64}}
+\index{unz\+Get\+Current\+File\+Info64@{unz\+Get\+Current\+File\+Info64}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Get\+Current\+File\+Info64()}{unzGetCurrentFileInfo64()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Get\+Current\+File\+Info64 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file,  }\item[{\mbox{\hyperlink{unzip_8h_ae09c616960557f906aafdcbe9ebf4e48}{unz\+\_\+file\+\_\+info64}} $\ast$}]{pfile\+\_\+info,  }\item[{char $\ast$}]{sz\+File\+Name,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{file\+Name\+Buffer\+Size,  }\item[{void $\ast$}]{extra\+Field,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{extra\+Field\+Buffer\+Size,  }\item[{char $\ast$}]{sz\+Comment,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{comment\+Buffer\+Size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a530654c7abbcd1c432942eb41f613d48_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a530654c7abbcd1c432942eb41f613d48_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_aa2ffdf3d549d332acfe742a9198b730c}\label{unzip_8c_aa2ffdf3d549d332acfe742a9198b730c}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Get\+Current\+File\+Z\+Stream\+Pos64@{unz\+Get\+Current\+File\+Z\+Stream\+Pos64}}
+\index{unz\+Get\+Current\+File\+Z\+Stream\+Pos64@{unz\+Get\+Current\+File\+Z\+Stream\+Pos64}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Get\+Current\+File\+Z\+Stream\+Pos64()}{unzGetCurrentFileZStreamPos64()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} Z\+E\+X\+P\+O\+RT unz\+Get\+Current\+File\+Z\+Stream\+Pos64 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file }\end{DoxyParamCaption})}
+
+Addition for G\+D\+AL \+: S\+T\+A\+RT \mbox{\Hypertarget{unzip_8c_a236d033d9a360b7753fcb0fcef988cbf}\label{unzip_8c_a236d033d9a360b7753fcb0fcef988cbf}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Get\+File\+Pos@{unz\+Get\+File\+Pos}}
+\index{unz\+Get\+File\+Pos@{unz\+Get\+File\+Pos}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Get\+File\+Pos()}{unzGetFilePos()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Get\+File\+Pos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file,  }\item[{\mbox{\hyperlink{unzip_8h_aade219d06703540be04aff72624b3891}{unz\+\_\+file\+\_\+pos}} $\ast$}]{file\+\_\+pos }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{unzip_8c_a236d033d9a360b7753fcb0fcef988cbf_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a455a15e23936251eb614675b2e7bae64}\label{unzip_8c_a455a15e23936251eb614675b2e7bae64}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Get\+File\+Pos64@{unz\+Get\+File\+Pos64}}
+\index{unz\+Get\+File\+Pos64@{unz\+Get\+File\+Pos64}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Get\+File\+Pos64()}{unzGetFilePos64()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Get\+File\+Pos64 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file,  }\item[{\mbox{\hyperlink{unzip_8h_a381daf0e29873fcf96db4ca274d1a04c}{unz64\+\_\+file\+\_\+pos}} $\ast$}]{file\+\_\+pos }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{unzip_8c_a455a15e23936251eb614675b2e7bae64_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_adc36ff0866254ca420c9cd9d7dccfa99}\label{unzip_8c_adc36ff0866254ca420c9cd9d7dccfa99}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Get\+Global\+Comment@{unz\+Get\+Global\+Comment}}
+\index{unz\+Get\+Global\+Comment@{unz\+Get\+Global\+Comment}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Get\+Global\+Comment()}{unzGetGlobalComment()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Get\+Global\+Comment (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file,  }\item[{char $\ast$}]{sz\+Comment,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{u\+Size\+Buf }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=293pt]{unzip_8c_adc36ff0866254ca420c9cd9d7dccfa99_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_aa08deeedabf2d231d22c1126d3d4b951}\label{unzip_8c_aa08deeedabf2d231d22c1126d3d4b951}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Get\+Global\+Info@{unz\+Get\+Global\+Info}}
+\index{unz\+Get\+Global\+Info@{unz\+Get\+Global\+Info}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Get\+Global\+Info()}{unzGetGlobalInfo()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Get\+Global\+Info (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file,  }\item[{\mbox{\hyperlink{unzip_8h_a18c3b238618ea86ef503ecbd4092dbce}{unz\+\_\+global\+\_\+info}} $\ast$}]{pglobal\+\_\+info32 }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{unzip_8c_aa08deeedabf2d231d22c1126d3d4b951_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a81a5c686e1ee59531e4aa9f592310dc3}\label{unzip_8c_a81a5c686e1ee59531e4aa9f592310dc3}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Get\+Global\+Info64@{unz\+Get\+Global\+Info64}}
+\index{unz\+Get\+Global\+Info64@{unz\+Get\+Global\+Info64}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Get\+Global\+Info64()}{unzGetGlobalInfo64()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Get\+Global\+Info64 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file,  }\item[{\mbox{\hyperlink{unzip_8h_a1140782768ded8fec84aa9c468d91cf3}{unz\+\_\+global\+\_\+info64}} $\ast$}]{pglobal\+\_\+info }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a81a5c686e1ee59531e4aa9f592310dc3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a012cad9a0262291930ec7e34cd7c5bea}\label{unzip_8c_a012cad9a0262291930ec7e34cd7c5bea}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Get\+Local\+Extrafield@{unz\+Get\+Local\+Extrafield}}
+\index{unz\+Get\+Local\+Extrafield@{unz\+Get\+Local\+Extrafield}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Get\+Local\+Extrafield()}{unzGetLocalExtrafield()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Get\+Local\+Extrafield (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file,  }\item[{voidp}]{buf,  }\item[{unsigned}]{len }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{unzip_8c_a1c325877d63ca4e205424add563ae01d}\label{unzip_8c_a1c325877d63ca4e205424add563ae01d}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Get\+Offset@{unz\+Get\+Offset}}
+\index{unz\+Get\+Offset@{unz\+Get\+Offset}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Get\+Offset()}{unzGetOffset()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} Z\+E\+X\+P\+O\+RT unz\+Get\+Offset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{unzip_8c_a1c325877d63ca4e205424add563ae01d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a647d2a5638d133b58a868d9d2c4d33ab}\label{unzip_8c_a647d2a5638d133b58a868d9d2c4d33ab}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Get\+Offset64@{unz\+Get\+Offset64}}
+\index{unz\+Get\+Offset64@{unz\+Get\+Offset64}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Get\+Offset64()}{unzGetOffset64()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} Z\+E\+X\+P\+O\+RT unz\+Get\+Offset64 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{unzip_8c_a647d2a5638d133b58a868d9d2c4d33ab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a67559097ba938e4e85257da3fc6d827d}\label{unzip_8c_a67559097ba938e4e85257da3fc6d827d}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Go\+To\+File\+Pos@{unz\+Go\+To\+File\+Pos}}
+\index{unz\+Go\+To\+File\+Pos@{unz\+Go\+To\+File\+Pos}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Go\+To\+File\+Pos()}{unzGoToFilePos()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Go\+To\+File\+Pos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file,  }\item[{\mbox{\hyperlink{unzip_8h_aade219d06703540be04aff72624b3891}{unz\+\_\+file\+\_\+pos}} $\ast$}]{file\+\_\+pos }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a67559097ba938e4e85257da3fc6d827d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a667afaf715015b8195e2f6f22390202d}\label{unzip_8c_a667afaf715015b8195e2f6f22390202d}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Go\+To\+File\+Pos64@{unz\+Go\+To\+File\+Pos64}}
+\index{unz\+Go\+To\+File\+Pos64@{unz\+Go\+To\+File\+Pos64}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Go\+To\+File\+Pos64()}{unzGoToFilePos64()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Go\+To\+File\+Pos64 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file,  }\item[{const \mbox{\hyperlink{unzip_8h_a381daf0e29873fcf96db4ca274d1a04c}{unz64\+\_\+file\+\_\+pos}} $\ast$}]{file\+\_\+pos }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a667afaf715015b8195e2f6f22390202d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{unzip_8c_a667afaf715015b8195e2f6f22390202d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a54821c0b6da683800164a56f2ae14f33}\label{unzip_8c_a54821c0b6da683800164a56f2ae14f33}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Go\+To\+First\+File@{unz\+Go\+To\+First\+File}}
+\index{unz\+Go\+To\+First\+File@{unz\+Go\+To\+First\+File}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Go\+To\+First\+File()}{unzGoToFirstFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Go\+To\+First\+File (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a54821c0b6da683800164a56f2ae14f33_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a54821c0b6da683800164a56f2ae14f33_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_acb457ebeaee7cb850c11a4a3d4b58201}\label{unzip_8c_acb457ebeaee7cb850c11a4a3d4b58201}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Go\+To\+Next\+File@{unz\+Go\+To\+Next\+File}}
+\index{unz\+Go\+To\+Next\+File@{unz\+Go\+To\+Next\+File}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Go\+To\+Next\+File()}{unzGoToNextFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Go\+To\+Next\+File (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_acb457ebeaee7cb850c11a4a3d4b58201_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_acb457ebeaee7cb850c11a4a3d4b58201_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a22730edef5a8a98b367bb30a0d619608}\label{unzip_8c_a22730edef5a8a98b367bb30a0d619608}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Locate\+File@{unz\+Locate\+File}}
+\index{unz\+Locate\+File@{unz\+Locate\+File}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Locate\+File()}{unzLocateFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Locate\+File (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file,  }\item[{const char $\ast$}]{sz\+File\+Name,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{i\+Case\+Sensitivity }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a22730edef5a8a98b367bb30a0d619608_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a22730edef5a8a98b367bb30a0d619608_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a4efe7bf26960a0a0c66122788b175f97}\label{unzip_8c_a4efe7bf26960a0a0c66122788b175f97}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Open@{unz\+Open}}
+\index{unz\+Open@{unz\+Open}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Open()}{unzOpen()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} Z\+E\+X\+P\+O\+RT unz\+Open (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a4efe7bf26960a0a0c66122788b175f97_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a920361c17f591352b947778d75249d5d}\label{unzip_8c_a920361c17f591352b947778d75249d5d}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Open2@{unz\+Open2}}
+\index{unz\+Open2@{unz\+Open2}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Open2()}{unzOpen2()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} Z\+E\+X\+P\+O\+RT unz\+Open2 (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path,  }\item[{\mbox{\hyperlink{ioapi_8h_a269f2bded66a7ee4052a60025afebd7e}{zlib\+\_\+filefunc\+\_\+def}} $\ast$}]{pzlib\+\_\+filefunc32\+\_\+def }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a920361c17f591352b947778d75249d5d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a920361c17f591352b947778d75249d5d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a3c2961b4d84447e2d4ab06835c30fa23}\label{unzip_8c_a3c2961b4d84447e2d4ab06835c30fa23}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Open2\+\_\+64@{unz\+Open2\+\_\+64}}
+\index{unz\+Open2\+\_\+64@{unz\+Open2\+\_\+64}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Open2\+\_\+64()}{unzOpen2\_64()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} Z\+E\+X\+P\+O\+RT unz\+Open2\+\_\+64 (\begin{DoxyParamCaption}\item[{const void $\ast$}]{path,  }\item[{\mbox{\hyperlink{ioapi_8h_a6be8577ecdaf6c1f57fb75006aa2b56c}{zlib\+\_\+filefunc64\+\_\+def}} $\ast$}]{pzlib\+\_\+filefunc\+\_\+def }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a3c2961b4d84447e2d4ab06835c30fa23_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{unzip_8c_a3c2961b4d84447e2d4ab06835c30fa23_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_aa531745d380211390eb114f1870ef824}\label{unzip_8c_aa531745d380211390eb114f1870ef824}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Open64@{unz\+Open64}}
+\index{unz\+Open64@{unz\+Open64}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Open64()}{unzOpen64()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} Z\+E\+X\+P\+O\+RT unz\+Open64 (\begin{DoxyParamCaption}\item[{const void $\ast$}]{path }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_aa531745d380211390eb114f1870ef824_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{unzip_8c_aa531745d380211390eb114f1870ef824_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a65deebb4ecb3ba110c343c21a4cd9a75}\label{unzip_8c_a65deebb4ecb3ba110c343c21a4cd9a75}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Open\+Current\+File@{unz\+Open\+Current\+File}}
+\index{unz\+Open\+Current\+File@{unz\+Open\+Current\+File}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Open\+Current\+File()}{unzOpenCurrentFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Open\+Current\+File (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a65deebb4ecb3ba110c343c21a4cd9a75_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a65deebb4ecb3ba110c343c21a4cd9a75_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a5881cddc4d4941ff604508ee4a564c25}\label{unzip_8c_a5881cddc4d4941ff604508ee4a564c25}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Open\+Current\+File2@{unz\+Open\+Current\+File2}}
+\index{unz\+Open\+Current\+File2@{unz\+Open\+Current\+File2}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Open\+Current\+File2()}{unzOpenCurrentFile2()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Open\+Current\+File2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{method,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{level,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{raw }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a5881cddc4d4941ff604508ee4a564c25_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a5eb86267fb9a5e4f52a123df606b2af5}\label{unzip_8c_a5eb86267fb9a5e4f52a123df606b2af5}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Open\+Current\+File3@{unz\+Open\+Current\+File3}}
+\index{unz\+Open\+Current\+File3@{unz\+Open\+Current\+File3}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Open\+Current\+File3()}{unzOpenCurrentFile3()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Open\+Current\+File3 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{method,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{level,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{raw,  }\item[{const char $\ast$}]{password }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a5eb86267fb9a5e4f52a123df606b2af5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a5eb86267fb9a5e4f52a123df606b2af5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a0c26b010e6cf7e58cd558426f280fa98}\label{unzip_8c_a0c26b010e6cf7e58cd558426f280fa98}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Open\+Current\+File\+Password@{unz\+Open\+Current\+File\+Password}}
+\index{unz\+Open\+Current\+File\+Password@{unz\+Open\+Current\+File\+Password}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Open\+Current\+File\+Password()}{unzOpenCurrentFilePassword()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Open\+Current\+File\+Password (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file,  }\item[{const char $\ast$}]{password }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a0c26b010e6cf7e58cd558426f280fa98_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a0c26b010e6cf7e58cd558426f280fa98_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_abf9f03bc622c0405d398cc0088216290}\label{unzip_8c_abf9f03bc622c0405d398cc0088216290}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Open\+Internal@{unz\+Open\+Internal}}
+\index{unz\+Open\+Internal@{unz\+Open\+Internal}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Open\+Internal()}{unzOpenInternal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}} unz\+Open\+Internal (\begin{DoxyParamCaption}\item[{const void $\ast$}]{path,  }\item[{\mbox{\hyperlink{ioapi_8h_a8c8220262859e65c0b52c93669a089b2}{zlib\+\_\+filefunc64\+\_\+32\+\_\+def}} $\ast$}]{pzlib\+\_\+filefunc64\+\_\+32\+\_\+def,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{is64bit\+Open\+Function }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_abf9f03bc622c0405d398cc0088216290_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_abf9f03bc622c0405d398cc0088216290_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a782029e380dc5ab5dab00361c9c14f58}\label{unzip_8c_a782029e380dc5ab5dab00361c9c14f58}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Read\+Current\+File@{unz\+Read\+Current\+File}}
+\index{unz\+Read\+Current\+File@{unz\+Read\+Current\+File}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Read\+Current\+File()}{unzReadCurrentFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Read\+Current\+File (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file,  }\item[{voidp}]{buf,  }\item[{unsigned}]{len }\end{DoxyParamCaption})}
+
+Addition for G\+D\+AL \+: E\+ND Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a782029e380dc5ab5dab00361c9c14f58_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a782029e380dc5ab5dab00361c9c14f58_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a12c4062aa3dae4cddf7527c3caf8c519}\label{unzip_8c_a12c4062aa3dae4cddf7527c3caf8c519}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Set\+Offset@{unz\+Set\+Offset}}
+\index{unz\+Set\+Offset@{unz\+Set\+Offset}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Set\+Offset()}{unzSetOffset()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Set\+Offset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}}}]{pos }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a12c4062aa3dae4cddf7527c3caf8c519_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a9e2be3b57e0041c3da2c15277c4e85c1}\label{unzip_8c_a9e2be3b57e0041c3da2c15277c4e85c1}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+Set\+Offset64@{unz\+Set\+Offset64}}
+\index{unz\+Set\+Offset64@{unz\+Set\+Offset64}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+Set\+Offset64()}{unzSetOffset64()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+Set\+Offset64 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file,  }\item[{\mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}}}]{pos }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a9e2be3b57e0041c3da2c15277c4e85c1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{unzip_8c_a9e2be3b57e0041c3da2c15277c4e85c1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a271f325759b3251ee728a8f850291dcf}\label{unzip_8c_a271f325759b3251ee728a8f850291dcf}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+String\+File\+Name\+Compare@{unz\+String\+File\+Name\+Compare}}
+\index{unz\+String\+File\+Name\+Compare@{unz\+String\+File\+Name\+Compare}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+String\+File\+Name\+Compare()}{unzStringFileNameCompare()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Z\+E\+X\+P\+O\+RT unz\+String\+File\+Name\+Compare (\begin{DoxyParamCaption}\item[{const char $\ast$}]{file\+Name1,  }\item[{const char $\ast$}]{file\+Name2,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{i\+Case\+Sensitivity }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a271f325759b3251ee728a8f850291dcf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{unzip_8c_a17362e5016023e9424a318d93c0475d4}\label{unzip_8c_a17362e5016023e9424a318d93c0475d4}} 
+\index{unzip.\+c@{unzip.\+c}!unztell@{unztell}}
+\index{unztell@{unztell}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unztell()}{unztell()}}
+{\footnotesize\ttfamily z\+\_\+off\+\_\+t Z\+E\+X\+P\+O\+RT unztell (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{unzip_8c_a325d191701e096aa0bc171069eba5ff2}\label{unzip_8c_a325d191701e096aa0bc171069eba5ff2}} 
+\index{unzip.\+c@{unzip.\+c}!unztell64@{unztell64}}
+\index{unztell64@{unztell64}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unztell64()}{unztell64()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_afffed08ed7f2413fa38e12a223ae0e72}{Z\+P\+O\+S64\+\_\+T}} Z\+E\+X\+P\+O\+RT unztell64 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unzip_8h_ad578db1d36691a2a244482a3b2360ca3}{unz\+File}}}]{file }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unzip_8c_a325d191701e096aa0bc171069eba5ff2_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{unzip_8c_aee9e9bcd4db86fe55bcc3685fafa5990}\label{unzip_8c_aee9e9bcd4db86fe55bcc3685fafa5990}} 
+\index{unzip.\+c@{unzip.\+c}!unz\+\_\+copyright@{unz\+\_\+copyright}}
+\index{unz\+\_\+copyright@{unz\+\_\+copyright}!unzip.\+c@{unzip.\+c}}
+\subsubsection{\texorpdfstring{unz\+\_\+copyright}{unz\_copyright}}
+{\footnotesize\ttfamily const char unz\+\_\+copyright\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+   \textcolor{stringliteral}{" unzip 1.01 Copyright 1998-2004 Gilles Vollant - http://www.winimage.com/zLibDll"}
+\end{DoxyCode}

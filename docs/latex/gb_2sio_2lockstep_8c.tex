@@ -1,0 +1,297 @@
+\hypertarget{gb_2sio_2lockstep_8c}{}\section{src/gb/sio/lockstep.c File Reference}
+\label{gb_2sio_2lockstep_8c}\index{src/gb/sio/lockstep.\+c@{src/gb/sio/lockstep.\+c}}
+{\ttfamily \#include $<$mgba/internal/gb/sio/lockstep.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/gb.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/io.\+h$>$}\newline
+Include dependency graph for lockstep.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_2lockstep_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gb_2sio_2lockstep_8c_af9b39ab6b2e8ca139ae3e814ce12355b}{L\+O\+C\+K\+S\+T\+E\+P\+\_\+\+I\+N\+C\+R\+E\+M\+E\+NT}}~512
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{gb_2sio_2lockstep_8c_ab91e8ec9c042458629ff8a3fc9ad7a89}{G\+B\+S\+I\+O\+Lockstep\+Node\+Init}} (struct G\+B\+S\+I\+O\+Driver $\ast$driver)
+\item 
+static void \mbox{\hyperlink{gb_2sio_2lockstep_8c_a77a7e624966ed087be38eb81bffbcad2}{G\+B\+S\+I\+O\+Lockstep\+Node\+Deinit}} (struct G\+B\+S\+I\+O\+Driver $\ast$driver)
+\item 
+static void \mbox{\hyperlink{gb_2sio_2lockstep_8c_ab4de585d7b8fab65980ee9599df2ae04}{G\+B\+S\+I\+O\+Lockstep\+Node\+Write\+SB}} (struct G\+B\+S\+I\+O\+Driver $\ast$driver, uint8\+\_\+t value)
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{gb_2sio_2lockstep_8c_a5f80ef8ceca557ce71da75c72dd63b63}{G\+B\+S\+I\+O\+Lockstep\+Node\+Write\+SC}} (struct G\+B\+S\+I\+O\+Driver $\ast$driver, uint8\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{gb_2sio_2lockstep_8c_add98859736f9ca3e23c95c50ca15de9a}{\+\_\+\+G\+B\+S\+I\+O\+Lockstep\+Node\+Process\+Events}} (struct m\+Timing $\ast$timing, void $\ast$driver, uint32\+\_\+t cycles\+Late)
+\item 
+void \mbox{\hyperlink{gb_2sio_2lockstep_8c_a844395a420d0b1c5c88f5bc0c92ccf02}{G\+B\+S\+I\+O\+Lockstep\+Init}} (struct G\+B\+S\+I\+O\+Lockstep $\ast$lockstep)
+\item 
+void \mbox{\hyperlink{gb_2sio_2lockstep_8c_a6aec374b3c22b85f7aa5391d71a10b2d}{G\+B\+S\+I\+O\+Lockstep\+Node\+Create}} (struct G\+B\+S\+I\+O\+Lockstep\+Node $\ast$node)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{gb_2sio_2lockstep_8c_a916b120aa00ba261b4cf2e3269d917f0}{G\+B\+S\+I\+O\+Lockstep\+Attach\+Node}} (struct G\+B\+S\+I\+O\+Lockstep $\ast$lockstep, struct G\+B\+S\+I\+O\+Lockstep\+Node $\ast$node)
+\item 
+void \mbox{\hyperlink{gb_2sio_2lockstep_8c_a4d3baff58e649a0b243bb984d4ae4bba}{G\+B\+S\+I\+O\+Lockstep\+Detach\+Node}} (struct G\+B\+S\+I\+O\+Lockstep $\ast$lockstep, struct G\+B\+S\+I\+O\+Lockstep\+Node $\ast$node)
+\item 
+static void \mbox{\hyperlink{gb_2sio_2lockstep_8c_a36847e1bc1cd5fe02c621fbda43bbed9}{\+\_\+finish\+Transfer}} (struct G\+B\+S\+I\+O\+Lockstep\+Node $\ast$node)
+\item 
+static int32\+\_\+t \mbox{\hyperlink{gb_2sio_2lockstep_8c_ac7ef6635e0ce4569806096b77b245932}{\+\_\+master\+Update}} (struct G\+B\+S\+I\+O\+Lockstep\+Node $\ast$node)
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{gb_2sio_2lockstep_8c_a3bdeeb9843503f04310f7efc46d48d5d}{\+\_\+slave\+Update}} (struct G\+B\+S\+I\+O\+Lockstep\+Node $\ast$node)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{gb_2sio_2lockstep_8c_af9b39ab6b2e8ca139ae3e814ce12355b}\label{gb_2sio_2lockstep_8c_af9b39ab6b2e8ca139ae3e814ce12355b}} 
+\index{gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}!L\+O\+C\+K\+S\+T\+E\+P\+\_\+\+I\+N\+C\+R\+E\+M\+E\+NT@{L\+O\+C\+K\+S\+T\+E\+P\+\_\+\+I\+N\+C\+R\+E\+M\+E\+NT}}
+\index{L\+O\+C\+K\+S\+T\+E\+P\+\_\+\+I\+N\+C\+R\+E\+M\+E\+NT@{L\+O\+C\+K\+S\+T\+E\+P\+\_\+\+I\+N\+C\+R\+E\+M\+E\+NT}!gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}}
+\subsubsection{\texorpdfstring{L\+O\+C\+K\+S\+T\+E\+P\+\_\+\+I\+N\+C\+R\+E\+M\+E\+NT}{LOCKSTEP\_INCREMENT}}
+{\footnotesize\ttfamily \#define L\+O\+C\+K\+S\+T\+E\+P\+\_\+\+I\+N\+C\+R\+E\+M\+E\+NT~512}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{gb_2sio_2lockstep_8c_a36847e1bc1cd5fe02c621fbda43bbed9}\label{gb_2sio_2lockstep_8c_a36847e1bc1cd5fe02c621fbda43bbed9}} 
+\index{gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}!\+\_\+finish\+Transfer@{\+\_\+finish\+Transfer}}
+\index{\+\_\+finish\+Transfer@{\+\_\+finish\+Transfer}!gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+finish\+Transfer()}{\_finishTransfer()}}
+{\footnotesize\ttfamily static void \+\_\+finish\+Transfer (\begin{DoxyParamCaption}\item[{struct G\+B\+S\+I\+O\+Lockstep\+Node $\ast$}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{gb_2sio_2lockstep_8c_a36847e1bc1cd5fe02c621fbda43bbed9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_2lockstep_8c_a36847e1bc1cd5fe02c621fbda43bbed9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2sio_2lockstep_8c_add98859736f9ca3e23c95c50ca15de9a}\label{gb_2sio_2lockstep_8c_add98859736f9ca3e23c95c50ca15de9a}} 
+\index{gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}!\+\_\+\+G\+B\+S\+I\+O\+Lockstep\+Node\+Process\+Events@{\+\_\+\+G\+B\+S\+I\+O\+Lockstep\+Node\+Process\+Events}}
+\index{\+\_\+\+G\+B\+S\+I\+O\+Lockstep\+Node\+Process\+Events@{\+\_\+\+G\+B\+S\+I\+O\+Lockstep\+Node\+Process\+Events}!gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+G\+B\+S\+I\+O\+Lockstep\+Node\+Process\+Events()}{\_GBSIOLockstepNodeProcessEvents()}}
+{\footnotesize\ttfamily static void \+\_\+\+G\+B\+S\+I\+O\+Lockstep\+Node\+Process\+Events (\begin{DoxyParamCaption}\item[{struct m\+Timing $\ast$}]{timing,  }\item[{void $\ast$}]{driver,  }\item[{uint32\+\_\+t}]{cycles\+Late }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_2lockstep_8c_add98859736f9ca3e23c95c50ca15de9a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_2lockstep_8c_add98859736f9ca3e23c95c50ca15de9a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2sio_2lockstep_8c_ac7ef6635e0ce4569806096b77b245932}\label{gb_2sio_2lockstep_8c_ac7ef6635e0ce4569806096b77b245932}} 
+\index{gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}!\+\_\+master\+Update@{\+\_\+master\+Update}}
+\index{\+\_\+master\+Update@{\+\_\+master\+Update}!gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+master\+Update()}{\_masterUpdate()}}
+{\footnotesize\ttfamily static int32\+\_\+t \+\_\+master\+Update (\begin{DoxyParamCaption}\item[{struct G\+B\+S\+I\+O\+Lockstep\+Node $\ast$}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_2lockstep_8c_ac7ef6635e0ce4569806096b77b245932_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_2lockstep_8c_ac7ef6635e0ce4569806096b77b245932_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2sio_2lockstep_8c_a3bdeeb9843503f04310f7efc46d48d5d}\label{gb_2sio_2lockstep_8c_a3bdeeb9843503f04310f7efc46d48d5d}} 
+\index{gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}!\+\_\+slave\+Update@{\+\_\+slave\+Update}}
+\index{\+\_\+slave\+Update@{\+\_\+slave\+Update}!gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+slave\+Update()}{\_slaveUpdate()}}
+{\footnotesize\ttfamily static uint32\+\_\+t \+\_\+slave\+Update (\begin{DoxyParamCaption}\item[{struct G\+B\+S\+I\+O\+Lockstep\+Node $\ast$}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_2lockstep_8c_a3bdeeb9843503f04310f7efc46d48d5d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_2lockstep_8c_a3bdeeb9843503f04310f7efc46d48d5d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2sio_2lockstep_8c_a916b120aa00ba261b4cf2e3269d917f0}\label{gb_2sio_2lockstep_8c_a916b120aa00ba261b4cf2e3269d917f0}} 
+\index{gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}!G\+B\+S\+I\+O\+Lockstep\+Attach\+Node@{G\+B\+S\+I\+O\+Lockstep\+Attach\+Node}}
+\index{G\+B\+S\+I\+O\+Lockstep\+Attach\+Node@{G\+B\+S\+I\+O\+Lockstep\+Attach\+Node}!gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+S\+I\+O\+Lockstep\+Attach\+Node()}{GBSIOLockstepAttachNode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+S\+I\+O\+Lockstep\+Attach\+Node (\begin{DoxyParamCaption}\item[{struct G\+B\+S\+I\+O\+Lockstep $\ast$}]{lockstep,  }\item[{struct G\+B\+S\+I\+O\+Lockstep\+Node $\ast$}]{node }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_2lockstep_8c_a916b120aa00ba261b4cf2e3269d917f0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2sio_2lockstep_8c_a4d3baff58e649a0b243bb984d4ae4bba}\label{gb_2sio_2lockstep_8c_a4d3baff58e649a0b243bb984d4ae4bba}} 
+\index{gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}!G\+B\+S\+I\+O\+Lockstep\+Detach\+Node@{G\+B\+S\+I\+O\+Lockstep\+Detach\+Node}}
+\index{G\+B\+S\+I\+O\+Lockstep\+Detach\+Node@{G\+B\+S\+I\+O\+Lockstep\+Detach\+Node}!gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+S\+I\+O\+Lockstep\+Detach\+Node()}{GBSIOLockstepDetachNode()}}
+{\footnotesize\ttfamily void G\+B\+S\+I\+O\+Lockstep\+Detach\+Node (\begin{DoxyParamCaption}\item[{struct G\+B\+S\+I\+O\+Lockstep $\ast$}]{lockstep,  }\item[{struct G\+B\+S\+I\+O\+Lockstep\+Node $\ast$}]{node }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_2lockstep_8c_a4d3baff58e649a0b243bb984d4ae4bba_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2sio_2lockstep_8c_a844395a420d0b1c5c88f5bc0c92ccf02}\label{gb_2sio_2lockstep_8c_a844395a420d0b1c5c88f5bc0c92ccf02}} 
+\index{gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}!G\+B\+S\+I\+O\+Lockstep\+Init@{G\+B\+S\+I\+O\+Lockstep\+Init}}
+\index{G\+B\+S\+I\+O\+Lockstep\+Init@{G\+B\+S\+I\+O\+Lockstep\+Init}!gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+S\+I\+O\+Lockstep\+Init()}{GBSIOLockstepInit()}}
+{\footnotesize\ttfamily void G\+B\+S\+I\+O\+Lockstep\+Init (\begin{DoxyParamCaption}\item[{struct G\+B\+S\+I\+O\+Lockstep $\ast$}]{lockstep }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{gb_2sio_2lockstep_8c_a844395a420d0b1c5c88f5bc0c92ccf02_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_2lockstep_8c_a844395a420d0b1c5c88f5bc0c92ccf02_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2sio_2lockstep_8c_a6aec374b3c22b85f7aa5391d71a10b2d}\label{gb_2sio_2lockstep_8c_a6aec374b3c22b85f7aa5391d71a10b2d}} 
+\index{gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}!G\+B\+S\+I\+O\+Lockstep\+Node\+Create@{G\+B\+S\+I\+O\+Lockstep\+Node\+Create}}
+\index{G\+B\+S\+I\+O\+Lockstep\+Node\+Create@{G\+B\+S\+I\+O\+Lockstep\+Node\+Create}!gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+S\+I\+O\+Lockstep\+Node\+Create()}{GBSIOLockstepNodeCreate()}}
+{\footnotesize\ttfamily void G\+B\+S\+I\+O\+Lockstep\+Node\+Create (\begin{DoxyParamCaption}\item[{struct G\+B\+S\+I\+O\+Lockstep\+Node $\ast$}]{node }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_2lockstep_8c_a6aec374b3c22b85f7aa5391d71a10b2d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_2lockstep_8c_a6aec374b3c22b85f7aa5391d71a10b2d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2sio_2lockstep_8c_a77a7e624966ed087be38eb81bffbcad2}\label{gb_2sio_2lockstep_8c_a77a7e624966ed087be38eb81bffbcad2}} 
+\index{gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}!G\+B\+S\+I\+O\+Lockstep\+Node\+Deinit@{G\+B\+S\+I\+O\+Lockstep\+Node\+Deinit}}
+\index{G\+B\+S\+I\+O\+Lockstep\+Node\+Deinit@{G\+B\+S\+I\+O\+Lockstep\+Node\+Deinit}!gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+S\+I\+O\+Lockstep\+Node\+Deinit()}{GBSIOLockstepNodeDeinit()}}
+{\footnotesize\ttfamily void G\+B\+S\+I\+O\+Lockstep\+Node\+Deinit (\begin{DoxyParamCaption}\item[{struct G\+B\+S\+I\+O\+Driver $\ast$}]{driver }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_2lockstep_8c_a77a7e624966ed087be38eb81bffbcad2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_2lockstep_8c_a77a7e624966ed087be38eb81bffbcad2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2sio_2lockstep_8c_ab91e8ec9c042458629ff8a3fc9ad7a89}\label{gb_2sio_2lockstep_8c_ab91e8ec9c042458629ff8a3fc9ad7a89}} 
+\index{gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}!G\+B\+S\+I\+O\+Lockstep\+Node\+Init@{G\+B\+S\+I\+O\+Lockstep\+Node\+Init}}
+\index{G\+B\+S\+I\+O\+Lockstep\+Node\+Init@{G\+B\+S\+I\+O\+Lockstep\+Node\+Init}!gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+S\+I\+O\+Lockstep\+Node\+Init()}{GBSIOLockstepNodeInit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+S\+I\+O\+Lockstep\+Node\+Init (\begin{DoxyParamCaption}\item[{struct G\+B\+S\+I\+O\+Driver $\ast$}]{driver }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_2lockstep_8c_ab91e8ec9c042458629ff8a3fc9ad7a89_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_2lockstep_8c_ab91e8ec9c042458629ff8a3fc9ad7a89_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2sio_2lockstep_8c_ab4de585d7b8fab65980ee9599df2ae04}\label{gb_2sio_2lockstep_8c_ab4de585d7b8fab65980ee9599df2ae04}} 
+\index{gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}!G\+B\+S\+I\+O\+Lockstep\+Node\+Write\+SB@{G\+B\+S\+I\+O\+Lockstep\+Node\+Write\+SB}}
+\index{G\+B\+S\+I\+O\+Lockstep\+Node\+Write\+SB@{G\+B\+S\+I\+O\+Lockstep\+Node\+Write\+SB}!gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+S\+I\+O\+Lockstep\+Node\+Write\+S\+B()}{GBSIOLockstepNodeWriteSB()}}
+{\footnotesize\ttfamily static void G\+B\+S\+I\+O\+Lockstep\+Node\+Write\+SB (\begin{DoxyParamCaption}\item[{struct G\+B\+S\+I\+O\+Driver $\ast$}]{driver,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_2lockstep_8c_ab4de585d7b8fab65980ee9599df2ae04_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2sio_2lockstep_8c_a5f80ef8ceca557ce71da75c72dd63b63}\label{gb_2sio_2lockstep_8c_a5f80ef8ceca557ce71da75c72dd63b63}} 
+\index{gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}!G\+B\+S\+I\+O\+Lockstep\+Node\+Write\+SC@{G\+B\+S\+I\+O\+Lockstep\+Node\+Write\+SC}}
+\index{G\+B\+S\+I\+O\+Lockstep\+Node\+Write\+SC@{G\+B\+S\+I\+O\+Lockstep\+Node\+Write\+SC}!gb/sio/lockstep.\+c@{gb/sio/lockstep.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+S\+I\+O\+Lockstep\+Node\+Write\+S\+C()}{GBSIOLockstepNodeWriteSC()}}
+{\footnotesize\ttfamily static uint8\+\_\+t G\+B\+S\+I\+O\+Lockstep\+Node\+Write\+SC (\begin{DoxyParamCaption}\item[{struct G\+B\+S\+I\+O\+Driver $\ast$}]{driver,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_2lockstep_8c_a5f80ef8ceca557ce71da75c72dd63b63_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2sio_2lockstep_8c_a5f80ef8ceca557ce71da75c72dd63b63_icgraph}
+\end{center}
+\end{figure}

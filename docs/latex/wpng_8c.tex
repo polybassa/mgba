@@ -1,0 +1,131 @@
+\hypertarget{wpng_8c}{}\section{src/third-\/party/libpng/contrib/gregbook/wpng.c File Reference}
+\label{wpng_8c}\index{src/third-\/party/libpng/contrib/gregbook/wpng.\+c@{src/third-\/party/libpng/contrib/gregbook/wpng.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$setjmp.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}writepng.\+h\char`\"{}}\newline
+Include dependency graph for wpng.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{wpng_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{wpng_8c_a8c9afb758de9a0355c93fc926b8ce6b1}{P\+R\+O\+G\+N\+A\+ME}}~\char`\"{}wpng\char`\"{}
+\item 
+\#define \mbox{\hyperlink{wpng_8c_a1c6d5de492ac61ad29aec7aa9a436bbf}{V\+E\+R\+S\+I\+ON}}~\char`\"{}2.\+00 of 2 June 2007\char`\"{}
+\item 
+\#define \mbox{\hyperlink{wpng_8c_a237e4d19d7046d08c4cc00a45808feaf}{A\+P\+P\+N\+A\+ME}}~\char`\"{}Simple P\+GM/P\+PM/P\+AM to P\+NG Converter\char`\"{}
+\item 
+\#define \mbox{\hyperlink{wpng_8c_aafe51a969290adcb257d24addc99c3a3}{F\+G\+E\+TS}}~fgets
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{wpng_8c_ae13d974853d4c49c8fd7946223c469ef}{wpng\+\_\+isvalid\+\_\+latin1}} (\mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$p, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} len)
+\item 
+static void \mbox{\hyperlink{wpng_8c_af53d5af2700e5c5c7fe26ccfd4df5943}{wpng\+\_\+cleanup}} (void)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{wpng_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{readpng2_8h_a1b06d069c8b16f46dd13c65e745bbdcb}{mainprog\+\_\+info}} \mbox{\hyperlink{wpng_8c_abf177d0bc194f763260214834d116407}{wpng\+\_\+info}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{wpng_8c_a237e4d19d7046d08c4cc00a45808feaf}\label{wpng_8c_a237e4d19d7046d08c4cc00a45808feaf}} 
+\index{wpng.\+c@{wpng.\+c}!A\+P\+P\+N\+A\+ME@{A\+P\+P\+N\+A\+ME}}
+\index{A\+P\+P\+N\+A\+ME@{A\+P\+P\+N\+A\+ME}!wpng.\+c@{wpng.\+c}}
+\subsubsection{\texorpdfstring{A\+P\+P\+N\+A\+ME}{APPNAME}}
+{\footnotesize\ttfamily \#define A\+P\+P\+N\+A\+ME~\char`\"{}Simple P\+GM/P\+PM/P\+AM to P\+NG Converter\char`\"{}}
+
+\mbox{\Hypertarget{wpng_8c_aafe51a969290adcb257d24addc99c3a3}\label{wpng_8c_aafe51a969290adcb257d24addc99c3a3}} 
+\index{wpng.\+c@{wpng.\+c}!F\+G\+E\+TS@{F\+G\+E\+TS}}
+\index{F\+G\+E\+TS@{F\+G\+E\+TS}!wpng.\+c@{wpng.\+c}}
+\subsubsection{\texorpdfstring{F\+G\+E\+TS}{FGETS}}
+{\footnotesize\ttfamily \#define F\+G\+E\+TS~fgets}
+
+\mbox{\Hypertarget{wpng_8c_a8c9afb758de9a0355c93fc926b8ce6b1}\label{wpng_8c_a8c9afb758de9a0355c93fc926b8ce6b1}} 
+\index{wpng.\+c@{wpng.\+c}!P\+R\+O\+G\+N\+A\+ME@{P\+R\+O\+G\+N\+A\+ME}}
+\index{P\+R\+O\+G\+N\+A\+ME@{P\+R\+O\+G\+N\+A\+ME}!wpng.\+c@{wpng.\+c}}
+\subsubsection{\texorpdfstring{P\+R\+O\+G\+N\+A\+ME}{PROGNAME}}
+{\footnotesize\ttfamily \#define P\+R\+O\+G\+N\+A\+ME~\char`\"{}wpng\char`\"{}}
+
+\mbox{\Hypertarget{wpng_8c_a1c6d5de492ac61ad29aec7aa9a436bbf}\label{wpng_8c_a1c6d5de492ac61ad29aec7aa9a436bbf}} 
+\index{wpng.\+c@{wpng.\+c}!V\+E\+R\+S\+I\+ON@{V\+E\+R\+S\+I\+ON}}
+\index{V\+E\+R\+S\+I\+ON@{V\+E\+R\+S\+I\+ON}!wpng.\+c@{wpng.\+c}}
+\subsubsection{\texorpdfstring{V\+E\+R\+S\+I\+ON}{VERSION}}
+{\footnotesize\ttfamily \#define V\+E\+R\+S\+I\+ON~\char`\"{}2.\+00 of 2 June 2007\char`\"{}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{wpng_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{wpng_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{wpng.\+c@{wpng.\+c}!main@{main}}
+\index{main@{main}!wpng.\+c@{wpng.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{wpng_8c_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wpng_8c_af53d5af2700e5c5c7fe26ccfd4df5943}\label{wpng_8c_af53d5af2700e5c5c7fe26ccfd4df5943}} 
+\index{wpng.\+c@{wpng.\+c}!wpng\+\_\+cleanup@{wpng\+\_\+cleanup}}
+\index{wpng\+\_\+cleanup@{wpng\+\_\+cleanup}!wpng.\+c@{wpng.\+c}}
+\subsubsection{\texorpdfstring{wpng\+\_\+cleanup()}{wpng\_cleanup()}}
+{\footnotesize\ttfamily static void wpng\+\_\+cleanup (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{wpng_8c_af53d5af2700e5c5c7fe26ccfd4df5943_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{wpng_8c_af53d5af2700e5c5c7fe26ccfd4df5943_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wpng_8c_ae13d974853d4c49c8fd7946223c469ef}\label{wpng_8c_ae13d974853d4c49c8fd7946223c469ef}} 
+\index{wpng.\+c@{wpng.\+c}!wpng\+\_\+isvalid\+\_\+latin1@{wpng\+\_\+isvalid\+\_\+latin1}}
+\index{wpng\+\_\+isvalid\+\_\+latin1@{wpng\+\_\+isvalid\+\_\+latin1}!wpng.\+c@{wpng.\+c}}
+\subsubsection{\texorpdfstring{wpng\+\_\+isvalid\+\_\+latin1()}{wpng\_isvalid\_latin1()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} wpng\+\_\+isvalid\+\_\+latin1 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{readpng_8h_af3307af5922c72924a837559c801a8a4}{uch}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{wpng_8c_ae13d974853d4c49c8fd7946223c469ef_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{wpng_8c_abf177d0bc194f763260214834d116407}\label{wpng_8c_abf177d0bc194f763260214834d116407}} 
+\index{wpng.\+c@{wpng.\+c}!wpng\+\_\+info@{wpng\+\_\+info}}
+\index{wpng\+\_\+info@{wpng\+\_\+info}!wpng.\+c@{wpng.\+c}}
+\subsubsection{\texorpdfstring{wpng\+\_\+info}{wpng\_info}}
+{\footnotesize\ttfamily \mbox{\hyperlink{readpng2_8h_a1b06d069c8b16f46dd13c65e745bbdcb}{mainprog\+\_\+info}} wpng\+\_\+info\hspace{0.3cm}{\ttfamily [static]}}
+

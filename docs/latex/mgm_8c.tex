@@ -1,0 +1,725 @@
+\hypertarget{mgm_8c}{}\section{src/gba/rr/mgm.c File Reference}
+\label{mgm_8c}\index{src/gba/rr/mgm.\+c@{src/gba/rr/mgm.\+c}}
+{\ttfamily \#include $<$mgba/internal/gba/rr/mgm.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/gba.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/serialize.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+Include dependency graph for mgm.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mgm_8c_a33221a22bc4fd9183788b7a02eb21a1b}{B\+I\+N\+A\+R\+Y\+\_\+\+E\+XT}}~\char`\"{}.mgm\char`\"{}
+\item 
+\#define \mbox{\hyperlink{mgm_8c_a221a7ae00016dfba47b26170021fba1b}{B\+I\+N\+A\+R\+Y\+\_\+\+M\+A\+G\+IC}}~\char`\"{}G\+B\+Ab\char`\"{}
+\item 
+\#define \mbox{\hyperlink{mgm_8c_afd9a0a7bd0543322a95bdda18928adcf}{M\+E\+T\+A\+D\+A\+T\+A\+\_\+\+F\+I\+L\+E\+N\+A\+ME}}~\char`\"{}metadata\char`\"{} B\+I\+N\+A\+R\+Y\+\_\+\+E\+XT
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \mbox{\hyperlink{mgm_8c_abc6126af1d45847bc59afa0aa3216b04aebebbb844ff2f348a2e038508132f403}{I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+P\+UT}} = 0x8000
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{mgm_8c_a29e5abd4948053ff8b28974fef4d48b6}{G\+B\+A\+M\+G\+M\+Context\+Destroy}} (struct G\+B\+A\+R\+R\+Context $\ast$)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mgm_8c_a15042be22e1dfbee7929b63fcfedb793}{G\+B\+A\+M\+G\+M\+Start\+Playing}} (struct G\+B\+A\+R\+R\+Context $\ast$, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} autorecord)
+\item 
+static void \mbox{\hyperlink{mgm_8c_af6951d3d08e56a25a404153799c418ab}{G\+B\+A\+M\+G\+M\+Stop\+Playing}} (struct G\+B\+A\+R\+R\+Context $\ast$)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mgm_8c_ab3e223a09bb974fafa51063e1844357b}{G\+B\+A\+M\+G\+M\+Start\+Recording}} (struct G\+B\+A\+R\+R\+Context $\ast$)
+\item 
+static void \mbox{\hyperlink{mgm_8c_add2d0e03c3fe6203fa9117ae8dfa7211}{G\+B\+A\+M\+G\+M\+Stop\+Recording}} (struct G\+B\+A\+R\+R\+Context $\ast$)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mgm_8c_a369d04f54d91167df45a9ea5d20c02ac}{G\+B\+A\+M\+G\+M\+Is\+Playing}} (const struct G\+B\+A\+R\+R\+Context $\ast$)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mgm_8c_abeb0d4e0685210cc0f5826cdabcf7682}{G\+B\+A\+M\+G\+M\+Is\+Recording}} (const struct G\+B\+A\+R\+R\+Context $\ast$)
+\item 
+static void \mbox{\hyperlink{mgm_8c_aeeaba4bfc8ba854cb7552aa374004278}{G\+B\+A\+M\+G\+M\+Next\+Frame}} (struct G\+B\+A\+R\+R\+Context $\ast$)
+\item 
+static void \mbox{\hyperlink{mgm_8c_a8618b696206de1046379c29f83324d8b}{G\+B\+A\+M\+G\+M\+Log\+Input}} (struct G\+B\+A\+R\+R\+Context $\ast$, uint16\+\_\+t input)
+\item 
+static uint16\+\_\+t \mbox{\hyperlink{mgm_8c_a47137049ff87dd5031fedb5e0a3a3a19}{G\+B\+A\+M\+G\+M\+Query\+Input}} (struct G\+B\+A\+R\+R\+Context $\ast$)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mgm_8c_ada387ba65b34f76de740e6c72b8e5a94}{G\+B\+A\+M\+G\+M\+Query\+Reset}} (struct G\+B\+A\+R\+R\+Context $\ast$)
+\item 
+static void \mbox{\hyperlink{mgm_8c_af0b03fa191287fbd6ab12f9a09c967a3}{G\+B\+A\+M\+G\+M\+State\+Saved}} (struct G\+B\+A\+R\+R\+Context $\ast$rr, struct G\+B\+A\+Serialized\+State $\ast$state)
+\item 
+static void \mbox{\hyperlink{mgm_8c_acad53333f5ae3256637f45da53590890}{G\+B\+A\+M\+G\+M\+State\+Loaded}} (struct G\+B\+A\+R\+R\+Context $\ast$rr, const struct G\+B\+A\+Serialized\+State $\ast$state)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mgm_8c_aa26447ce2a0458ca576ab3a1d43cd389}{\+\_\+load\+Stream}} (struct G\+B\+A\+M\+G\+M\+Context $\ast$, uint32\+\_\+t stream\+Id)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mgm_8c_a576e0104d27de96fb2da40627ae21960}{\+\_\+increment\+Stream}} (struct G\+B\+A\+M\+G\+M\+Context $\ast$, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} recursive)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mgm_8c_a5ec9abe44a7cf54ebf0a834e497e7b00}{\+\_\+finish\+Segment}} (struct G\+B\+A\+M\+G\+M\+Context $\ast$)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mgm_8c_a4129d9c2cdd4789e293e23083c2119f3}{\+\_\+skip\+Segment}} (struct G\+B\+A\+M\+G\+M\+Context $\ast$)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mgm_8c_a9128edea31de3271999efec1e647f9fd}{\+\_\+mark\+Rerecord}} (struct G\+B\+A\+M\+G\+M\+Context $\ast$)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mgm_8c_a807268d3471d4f60e538998c110c86d5}{\+\_\+emit\+Magic}} (struct G\+B\+A\+M\+G\+M\+Context $\ast$, struct V\+File $\ast$vf)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mgm_8c_ab617dfdb3b465e860e5fb20f36554ab2}{\+\_\+verify\+Magic}} (struct G\+B\+A\+M\+G\+M\+Context $\ast$, struct V\+File $\ast$vf)
+\item 
+static enum G\+B\+A\+M\+G\+M\+Tag \mbox{\hyperlink{mgm_8c_a91f6c79d2c07379eb9f550763e3f502d}{\+\_\+read\+Tag}} (struct G\+B\+A\+M\+G\+M\+Context $\ast$, struct V\+File $\ast$vf)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mgm_8c_a4e692eb712510f354de1fd0af28d86a3}{\+\_\+seek\+Tag}} (struct G\+B\+A\+M\+G\+M\+Context $\ast$, struct V\+File $\ast$vf, enum G\+B\+A\+M\+G\+M\+Tag tag)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mgm_8c_a12648fb3938d678b6113225247fec4e0}{\+\_\+emit\+Tag}} (struct G\+B\+A\+M\+G\+M\+Context $\ast$, struct V\+File $\ast$vf, uint8\+\_\+t tag)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mgm_8c_a1adb9501ae21899147a139198cf26537}{\+\_\+emit\+End}} (struct G\+B\+A\+M\+G\+M\+Context $\ast$, struct V\+File $\ast$vf)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mgm_8c_ab3be782d0e19890240c0dcf3641c9b2b}{\+\_\+parse\+Metadata}} (struct G\+B\+A\+M\+G\+M\+Context $\ast$, struct V\+File $\ast$vf)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mgm_8c_ae543846fa8f4748e8de4bd14ff38d228}{\+\_\+mark\+Stream\+Next}} (struct G\+B\+A\+M\+G\+M\+Context $\ast$, uint32\+\_\+t new\+Stream\+Id, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} recursive)
+\item 
+static void \mbox{\hyperlink{mgm_8c_adc78be715d939cac8e61962492f552e9}{\+\_\+stream\+End\+Reached}} (struct G\+B\+A\+M\+G\+M\+Context $\ast$)
+\item 
+static struct V\+File $\ast$ \mbox{\hyperlink{mgm_8c_a1b6660fb6d5ba6b36644d7b5b73d82fa}{G\+B\+A\+M\+G\+M\+Open\+Savedata}} (struct G\+B\+A\+R\+R\+Context $\ast$, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{lr35902_2decoder_8c_a11f29eea941556f0630cfd3285f565c0}{flags}})
+\item 
+static struct V\+File $\ast$ \mbox{\hyperlink{mgm_8c_a280ef046a51f3e039c3e4b81ac69dfbc}{G\+B\+A\+M\+G\+M\+Open\+Savestate}} (struct G\+B\+A\+R\+R\+Context $\ast$, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{lr35902_2decoder_8c_a11f29eea941556f0630cfd3285f565c0}{flags}})
+\item 
+void \mbox{\hyperlink{mgm_8c_ad2bdafdc17f11665f229c05e89cabbaf}{G\+B\+A\+M\+G\+M\+Context\+Create}} (struct G\+B\+A\+M\+G\+M\+Context $\ast$mgm)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mgm_8c_ab420585b6605238b5b6cbba0bc44f2e7}{G\+B\+A\+M\+G\+M\+Set\+Stream}} (struct G\+B\+A\+M\+G\+M\+Context $\ast$mgm, struct V\+Dir $\ast$\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}})
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{mgm_8c_a4307d407d6d70f68ee93fc92e467555e}{G\+B\+A\+M\+G\+M\+Create\+Stream}} (struct G\+B\+A\+M\+G\+M\+Context $\ast$mgm, enum G\+B\+A\+R\+R\+Init\+From init\+From)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{mgm_8c_a33221a22bc4fd9183788b7a02eb21a1b}\label{mgm_8c_a33221a22bc4fd9183788b7a02eb21a1b}} 
+\index{mgm.\+c@{mgm.\+c}!B\+I\+N\+A\+R\+Y\+\_\+\+E\+XT@{B\+I\+N\+A\+R\+Y\+\_\+\+E\+XT}}
+\index{B\+I\+N\+A\+R\+Y\+\_\+\+E\+XT@{B\+I\+N\+A\+R\+Y\+\_\+\+E\+XT}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{B\+I\+N\+A\+R\+Y\+\_\+\+E\+XT}{BINARY\_EXT}}
+{\footnotesize\ttfamily \#define B\+I\+N\+A\+R\+Y\+\_\+\+E\+XT~\char`\"{}.mgm\char`\"{}}
+
+\mbox{\Hypertarget{mgm_8c_a221a7ae00016dfba47b26170021fba1b}\label{mgm_8c_a221a7ae00016dfba47b26170021fba1b}} 
+\index{mgm.\+c@{mgm.\+c}!B\+I\+N\+A\+R\+Y\+\_\+\+M\+A\+G\+IC@{B\+I\+N\+A\+R\+Y\+\_\+\+M\+A\+G\+IC}}
+\index{B\+I\+N\+A\+R\+Y\+\_\+\+M\+A\+G\+IC@{B\+I\+N\+A\+R\+Y\+\_\+\+M\+A\+G\+IC}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{B\+I\+N\+A\+R\+Y\+\_\+\+M\+A\+G\+IC}{BINARY\_MAGIC}}
+{\footnotesize\ttfamily \#define B\+I\+N\+A\+R\+Y\+\_\+\+M\+A\+G\+IC~\char`\"{}G\+B\+Ab\char`\"{}}
+
+\mbox{\Hypertarget{mgm_8c_afd9a0a7bd0543322a95bdda18928adcf}\label{mgm_8c_afd9a0a7bd0543322a95bdda18928adcf}} 
+\index{mgm.\+c@{mgm.\+c}!M\+E\+T\+A\+D\+A\+T\+A\+\_\+\+F\+I\+L\+E\+N\+A\+ME@{M\+E\+T\+A\+D\+A\+T\+A\+\_\+\+F\+I\+L\+E\+N\+A\+ME}}
+\index{M\+E\+T\+A\+D\+A\+T\+A\+\_\+\+F\+I\+L\+E\+N\+A\+ME@{M\+E\+T\+A\+D\+A\+T\+A\+\_\+\+F\+I\+L\+E\+N\+A\+ME}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{M\+E\+T\+A\+D\+A\+T\+A\+\_\+\+F\+I\+L\+E\+N\+A\+ME}{METADATA\_FILENAME}}
+{\footnotesize\ttfamily \#define M\+E\+T\+A\+D\+A\+T\+A\+\_\+\+F\+I\+L\+E\+N\+A\+ME~\char`\"{}metadata\char`\"{} B\+I\+N\+A\+R\+Y\+\_\+\+E\+XT}
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{mgm_8c_abc6126af1d45847bc59afa0aa3216b04}\label{mgm_8c_abc6126af1d45847bc59afa0aa3216b04}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+P\+UT@{I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+P\+UT}!mgm.\+c@{mgm.\+c}}\index{mgm.\+c@{mgm.\+c}!I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+P\+UT@{I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+P\+UT}}}\mbox{\Hypertarget{mgm_8c_abc6126af1d45847bc59afa0aa3216b04aebebbb844ff2f348a2e038508132f403}\label{mgm_8c_abc6126af1d45847bc59afa0aa3216b04aebebbb844ff2f348a2e038508132f403}} 
+I\+N\+V\+A\+L\+I\+D\+\_\+\+I\+N\+P\+UT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{mgm_8c_a1adb9501ae21899147a139198cf26537}\label{mgm_8c_a1adb9501ae21899147a139198cf26537}} 
+\index{mgm.\+c@{mgm.\+c}!\+\_\+emit\+End@{\+\_\+emit\+End}}
+\index{\+\_\+emit\+End@{\+\_\+emit\+End}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+emit\+End()}{\_emitEnd()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+emit\+End (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+M\+G\+M\+Context $\ast$}]{mgm,  }\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{mgm_8c_a1adb9501ae21899147a139198cf26537_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a1adb9501ae21899147a139198cf26537_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_a807268d3471d4f60e538998c110c86d5}\label{mgm_8c_a807268d3471d4f60e538998c110c86d5}} 
+\index{mgm.\+c@{mgm.\+c}!\+\_\+emit\+Magic@{\+\_\+emit\+Magic}}
+\index{\+\_\+emit\+Magic@{\+\_\+emit\+Magic}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+emit\+Magic()}{\_emitMagic()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+emit\+Magic (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+M\+G\+M\+Context $\ast$}]{mgm,  }\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a807268d3471d4f60e538998c110c86d5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_a12648fb3938d678b6113225247fec4e0}\label{mgm_8c_a12648fb3938d678b6113225247fec4e0}} 
+\index{mgm.\+c@{mgm.\+c}!\+\_\+emit\+Tag@{\+\_\+emit\+Tag}}
+\index{\+\_\+emit\+Tag@{\+\_\+emit\+Tag}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+emit\+Tag()}{\_emitTag()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+emit\+Tag (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+M\+G\+M\+Context $\ast$}]{mgm,  }\item[{struct V\+File $\ast$}]{vf,  }\item[{uint8\+\_\+t}]{tag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a12648fb3938d678b6113225247fec4e0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_a5ec9abe44a7cf54ebf0a834e497e7b00}\label{mgm_8c_a5ec9abe44a7cf54ebf0a834e497e7b00}} 
+\index{mgm.\+c@{mgm.\+c}!\+\_\+finish\+Segment@{\+\_\+finish\+Segment}}
+\index{\+\_\+finish\+Segment@{\+\_\+finish\+Segment}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+finish\+Segment()}{\_finishSegment()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+finish\+Segment (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+M\+G\+M\+Context $\ast$}]{mgm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a5ec9abe44a7cf54ebf0a834e497e7b00_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a5ec9abe44a7cf54ebf0a834e497e7b00_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_a576e0104d27de96fb2da40627ae21960}\label{mgm_8c_a576e0104d27de96fb2da40627ae21960}} 
+\index{mgm.\+c@{mgm.\+c}!\+\_\+increment\+Stream@{\+\_\+increment\+Stream}}
+\index{\+\_\+increment\+Stream@{\+\_\+increment\+Stream}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+increment\+Stream()}{\_incrementStream()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+increment\+Stream (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+M\+G\+M\+Context $\ast$}]{mgm,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{recursive }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a576e0104d27de96fb2da40627ae21960_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a576e0104d27de96fb2da40627ae21960_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_aa26447ce2a0458ca576ab3a1d43cd389}\label{mgm_8c_aa26447ce2a0458ca576ab3a1d43cd389}} 
+\index{mgm.\+c@{mgm.\+c}!\+\_\+load\+Stream@{\+\_\+load\+Stream}}
+\index{\+\_\+load\+Stream@{\+\_\+load\+Stream}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+load\+Stream()}{\_loadStream()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+load\+Stream (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+M\+G\+M\+Context $\ast$}]{mgm,  }\item[{uint32\+\_\+t}]{stream\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_aa26447ce2a0458ca576ab3a1d43cd389_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_aa26447ce2a0458ca576ab3a1d43cd389_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_a9128edea31de3271999efec1e647f9fd}\label{mgm_8c_a9128edea31de3271999efec1e647f9fd}} 
+\index{mgm.\+c@{mgm.\+c}!\+\_\+mark\+Rerecord@{\+\_\+mark\+Rerecord}}
+\index{\+\_\+mark\+Rerecord@{\+\_\+mark\+Rerecord}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+mark\+Rerecord()}{\_markRerecord()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+mark\+Rerecord (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+M\+G\+M\+Context $\ast$}]{mgm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a9128edea31de3271999efec1e647f9fd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_ae543846fa8f4748e8de4bd14ff38d228}\label{mgm_8c_ae543846fa8f4748e8de4bd14ff38d228}} 
+\index{mgm.\+c@{mgm.\+c}!\+\_\+mark\+Stream\+Next@{\+\_\+mark\+Stream\+Next}}
+\index{\+\_\+mark\+Stream\+Next@{\+\_\+mark\+Stream\+Next}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+mark\+Stream\+Next()}{\_markStreamNext()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+mark\+Stream\+Next (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+M\+G\+M\+Context $\ast$}]{mgm,  }\item[{uint32\+\_\+t}]{new\+Stream\+Id,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{recursive }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_ae543846fa8f4748e8de4bd14ff38d228_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_ae543846fa8f4748e8de4bd14ff38d228_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_ab3be782d0e19890240c0dcf3641c9b2b}\label{mgm_8c_ab3be782d0e19890240c0dcf3641c9b2b}} 
+\index{mgm.\+c@{mgm.\+c}!\+\_\+parse\+Metadata@{\+\_\+parse\+Metadata}}
+\index{\+\_\+parse\+Metadata@{\+\_\+parse\+Metadata}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+parse\+Metadata()}{\_parseMetadata()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+parse\+Metadata (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+M\+G\+M\+Context $\ast$}]{mgm,  }\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_ab3be782d0e19890240c0dcf3641c9b2b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{mgm_8c_ab3be782d0e19890240c0dcf3641c9b2b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_a91f6c79d2c07379eb9f550763e3f502d}\label{mgm_8c_a91f6c79d2c07379eb9f550763e3f502d}} 
+\index{mgm.\+c@{mgm.\+c}!\+\_\+read\+Tag@{\+\_\+read\+Tag}}
+\index{\+\_\+read\+Tag@{\+\_\+read\+Tag}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Tag()}{\_readTag()}}
+{\footnotesize\ttfamily enum G\+B\+A\+M\+G\+M\+Tag \+\_\+read\+Tag (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+M\+G\+M\+Context $\ast$}]{mgm,  }\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a91f6c79d2c07379eb9f550763e3f502d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a91f6c79d2c07379eb9f550763e3f502d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_a4e692eb712510f354de1fd0af28d86a3}\label{mgm_8c_a4e692eb712510f354de1fd0af28d86a3}} 
+\index{mgm.\+c@{mgm.\+c}!\+\_\+seek\+Tag@{\+\_\+seek\+Tag}}
+\index{\+\_\+seek\+Tag@{\+\_\+seek\+Tag}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+seek\+Tag()}{\_seekTag()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+seek\+Tag (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+M\+G\+M\+Context $\ast$}]{mgm,  }\item[{struct V\+File $\ast$}]{vf,  }\item[{enum G\+B\+A\+M\+G\+M\+Tag}]{tag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a4e692eb712510f354de1fd0af28d86a3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a4e692eb712510f354de1fd0af28d86a3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_a4129d9c2cdd4789e293e23083c2119f3}\label{mgm_8c_a4129d9c2cdd4789e293e23083c2119f3}} 
+\index{mgm.\+c@{mgm.\+c}!\+\_\+skip\+Segment@{\+\_\+skip\+Segment}}
+\index{\+\_\+skip\+Segment@{\+\_\+skip\+Segment}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+skip\+Segment()}{\_skipSegment()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+skip\+Segment (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+M\+G\+M\+Context $\ast$}]{mgm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a4129d9c2cdd4789e293e23083c2119f3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a4129d9c2cdd4789e293e23083c2119f3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_adc78be715d939cac8e61962492f552e9}\label{mgm_8c_adc78be715d939cac8e61962492f552e9}} 
+\index{mgm.\+c@{mgm.\+c}!\+\_\+stream\+End\+Reached@{\+\_\+stream\+End\+Reached}}
+\index{\+\_\+stream\+End\+Reached@{\+\_\+stream\+End\+Reached}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+stream\+End\+Reached()}{\_streamEndReached()}}
+{\footnotesize\ttfamily void \+\_\+stream\+End\+Reached (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+M\+G\+M\+Context $\ast$}]{mgm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_adc78be715d939cac8e61962492f552e9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_adc78be715d939cac8e61962492f552e9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_ab617dfdb3b465e860e5fb20f36554ab2}\label{mgm_8c_ab617dfdb3b465e860e5fb20f36554ab2}} 
+\index{mgm.\+c@{mgm.\+c}!\+\_\+verify\+Magic@{\+\_\+verify\+Magic}}
+\index{\+\_\+verify\+Magic@{\+\_\+verify\+Magic}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+verify\+Magic()}{\_verifyMagic()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+verify\+Magic (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+M\+G\+M\+Context $\ast$}]{mgm,  }\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_ab617dfdb3b465e860e5fb20f36554ab2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_ad2bdafdc17f11665f229c05e89cabbaf}\label{mgm_8c_ad2bdafdc17f11665f229c05e89cabbaf}} 
+\index{mgm.\+c@{mgm.\+c}!G\+B\+A\+M\+G\+M\+Context\+Create@{G\+B\+A\+M\+G\+M\+Context\+Create}}
+\index{G\+B\+A\+M\+G\+M\+Context\+Create@{G\+B\+A\+M\+G\+M\+Context\+Create}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+M\+G\+M\+Context\+Create()}{GBAMGMContextCreate()}}
+{\footnotesize\ttfamily void G\+B\+A\+M\+G\+M\+Context\+Create (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+M\+G\+M\+Context $\ast$}]{mgm }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_ad2bdafdc17f11665f229c05e89cabbaf_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_a29e5abd4948053ff8b28974fef4d48b6}\label{mgm_8c_a29e5abd4948053ff8b28974fef4d48b6}} 
+\index{mgm.\+c@{mgm.\+c}!G\+B\+A\+M\+G\+M\+Context\+Destroy@{G\+B\+A\+M\+G\+M\+Context\+Destroy}}
+\index{G\+B\+A\+M\+G\+M\+Context\+Destroy@{G\+B\+A\+M\+G\+M\+Context\+Destroy}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+M\+G\+M\+Context\+Destroy()}{GBAMGMContextDestroy()}}
+{\footnotesize\ttfamily void G\+B\+A\+M\+G\+M\+Context\+Destroy (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+R\+R\+Context $\ast$}]{rr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a29e5abd4948053ff8b28974fef4d48b6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_a4307d407d6d70f68ee93fc92e467555e}\label{mgm_8c_a4307d407d6d70f68ee93fc92e467555e}} 
+\index{mgm.\+c@{mgm.\+c}!G\+B\+A\+M\+G\+M\+Create\+Stream@{G\+B\+A\+M\+G\+M\+Create\+Stream}}
+\index{G\+B\+A\+M\+G\+M\+Create\+Stream@{G\+B\+A\+M\+G\+M\+Create\+Stream}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+M\+G\+M\+Create\+Stream()}{GBAMGMCreateStream()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+A\+M\+G\+M\+Create\+Stream (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+M\+G\+M\+Context $\ast$}]{mgm,  }\item[{enum G\+B\+A\+R\+R\+Init\+From}]{init\+From }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{mgm_8c_a4307d407d6d70f68ee93fc92e467555e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_a369d04f54d91167df45a9ea5d20c02ac}\label{mgm_8c_a369d04f54d91167df45a9ea5d20c02ac}} 
+\index{mgm.\+c@{mgm.\+c}!G\+B\+A\+M\+G\+M\+Is\+Playing@{G\+B\+A\+M\+G\+M\+Is\+Playing}}
+\index{G\+B\+A\+M\+G\+M\+Is\+Playing@{G\+B\+A\+M\+G\+M\+Is\+Playing}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+M\+G\+M\+Is\+Playing()}{GBAMGMIsPlaying()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+A\+M\+G\+M\+Is\+Playing (\begin{DoxyParamCaption}\item[{const struct G\+B\+A\+R\+R\+Context $\ast$}]{rr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a369d04f54d91167df45a9ea5d20c02ac_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_abeb0d4e0685210cc0f5826cdabcf7682}\label{mgm_8c_abeb0d4e0685210cc0f5826cdabcf7682}} 
+\index{mgm.\+c@{mgm.\+c}!G\+B\+A\+M\+G\+M\+Is\+Recording@{G\+B\+A\+M\+G\+M\+Is\+Recording}}
+\index{G\+B\+A\+M\+G\+M\+Is\+Recording@{G\+B\+A\+M\+G\+M\+Is\+Recording}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+M\+G\+M\+Is\+Recording()}{GBAMGMIsRecording()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+A\+M\+G\+M\+Is\+Recording (\begin{DoxyParamCaption}\item[{const struct G\+B\+A\+R\+R\+Context $\ast$}]{rr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_abeb0d4e0685210cc0f5826cdabcf7682_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_a8618b696206de1046379c29f83324d8b}\label{mgm_8c_a8618b696206de1046379c29f83324d8b}} 
+\index{mgm.\+c@{mgm.\+c}!G\+B\+A\+M\+G\+M\+Log\+Input@{G\+B\+A\+M\+G\+M\+Log\+Input}}
+\index{G\+B\+A\+M\+G\+M\+Log\+Input@{G\+B\+A\+M\+G\+M\+Log\+Input}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+M\+G\+M\+Log\+Input()}{GBAMGMLogInput()}}
+{\footnotesize\ttfamily void G\+B\+A\+M\+G\+M\+Log\+Input (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+R\+R\+Context $\ast$}]{rr,  }\item[{uint16\+\_\+t}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{mgm_8c_a8618b696206de1046379c29f83324d8b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a8618b696206de1046379c29f83324d8b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_aeeaba4bfc8ba854cb7552aa374004278}\label{mgm_8c_aeeaba4bfc8ba854cb7552aa374004278}} 
+\index{mgm.\+c@{mgm.\+c}!G\+B\+A\+M\+G\+M\+Next\+Frame@{G\+B\+A\+M\+G\+M\+Next\+Frame}}
+\index{G\+B\+A\+M\+G\+M\+Next\+Frame@{G\+B\+A\+M\+G\+M\+Next\+Frame}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+M\+G\+M\+Next\+Frame()}{GBAMGMNextFrame()}}
+{\footnotesize\ttfamily void G\+B\+A\+M\+G\+M\+Next\+Frame (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+R\+R\+Context $\ast$}]{rr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_aeeaba4bfc8ba854cb7552aa374004278_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_aeeaba4bfc8ba854cb7552aa374004278_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_a1b6660fb6d5ba6b36644d7b5b73d82fa}\label{mgm_8c_a1b6660fb6d5ba6b36644d7b5b73d82fa}} 
+\index{mgm.\+c@{mgm.\+c}!G\+B\+A\+M\+G\+M\+Open\+Savedata@{G\+B\+A\+M\+G\+M\+Open\+Savedata}}
+\index{G\+B\+A\+M\+G\+M\+Open\+Savedata@{G\+B\+A\+M\+G\+M\+Open\+Savedata}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+M\+G\+M\+Open\+Savedata()}{GBAMGMOpenSavedata()}}
+{\footnotesize\ttfamily struct V\+File $\ast$ G\+B\+A\+M\+G\+M\+Open\+Savedata (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+R\+R\+Context $\ast$}]{rr,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{flags }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a1b6660fb6d5ba6b36644d7b5b73d82fa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_a280ef046a51f3e039c3e4b81ac69dfbc}\label{mgm_8c_a280ef046a51f3e039c3e4b81ac69dfbc}} 
+\index{mgm.\+c@{mgm.\+c}!G\+B\+A\+M\+G\+M\+Open\+Savestate@{G\+B\+A\+M\+G\+M\+Open\+Savestate}}
+\index{G\+B\+A\+M\+G\+M\+Open\+Savestate@{G\+B\+A\+M\+G\+M\+Open\+Savestate}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+M\+G\+M\+Open\+Savestate()}{GBAMGMOpenSavestate()}}
+{\footnotesize\ttfamily struct V\+File $\ast$ G\+B\+A\+M\+G\+M\+Open\+Savestate (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+R\+R\+Context $\ast$}]{rr,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{flags }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a280ef046a51f3e039c3e4b81ac69dfbc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_a47137049ff87dd5031fedb5e0a3a3a19}\label{mgm_8c_a47137049ff87dd5031fedb5e0a3a3a19}} 
+\index{mgm.\+c@{mgm.\+c}!G\+B\+A\+M\+G\+M\+Query\+Input@{G\+B\+A\+M\+G\+M\+Query\+Input}}
+\index{G\+B\+A\+M\+G\+M\+Query\+Input@{G\+B\+A\+M\+G\+M\+Query\+Input}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+M\+G\+M\+Query\+Input()}{GBAMGMQueryInput()}}
+{\footnotesize\ttfamily uint16\+\_\+t G\+B\+A\+M\+G\+M\+Query\+Input (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+R\+R\+Context $\ast$}]{rr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a47137049ff87dd5031fedb5e0a3a3a19_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a47137049ff87dd5031fedb5e0a3a3a19_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_ada387ba65b34f76de740e6c72b8e5a94}\label{mgm_8c_ada387ba65b34f76de740e6c72b8e5a94}} 
+\index{mgm.\+c@{mgm.\+c}!G\+B\+A\+M\+G\+M\+Query\+Reset@{G\+B\+A\+M\+G\+M\+Query\+Reset}}
+\index{G\+B\+A\+M\+G\+M\+Query\+Reset@{G\+B\+A\+M\+G\+M\+Query\+Reset}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+M\+G\+M\+Query\+Reset()}{GBAMGMQueryReset()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+A\+M\+G\+M\+Query\+Reset (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+R\+R\+Context $\ast$}]{rr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_ada387ba65b34f76de740e6c72b8e5a94_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_ab420585b6605238b5b6cbba0bc44f2e7}\label{mgm_8c_ab420585b6605238b5b6cbba0bc44f2e7}} 
+\index{mgm.\+c@{mgm.\+c}!G\+B\+A\+M\+G\+M\+Set\+Stream@{G\+B\+A\+M\+G\+M\+Set\+Stream}}
+\index{G\+B\+A\+M\+G\+M\+Set\+Stream@{G\+B\+A\+M\+G\+M\+Set\+Stream}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+M\+G\+M\+Set\+Stream()}{GBAMGMSetStream()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+A\+M\+G\+M\+Set\+Stream (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+M\+G\+M\+Context $\ast$}]{mgm,  }\item[{struct V\+Dir $\ast$}]{stream }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_ab420585b6605238b5b6cbba0bc44f2e7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_a15042be22e1dfbee7929b63fcfedb793}\label{mgm_8c_a15042be22e1dfbee7929b63fcfedb793}} 
+\index{mgm.\+c@{mgm.\+c}!G\+B\+A\+M\+G\+M\+Start\+Playing@{G\+B\+A\+M\+G\+M\+Start\+Playing}}
+\index{G\+B\+A\+M\+G\+M\+Start\+Playing@{G\+B\+A\+M\+G\+M\+Start\+Playing}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+M\+G\+M\+Start\+Playing()}{GBAMGMStartPlaying()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+A\+M\+G\+M\+Start\+Playing (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+R\+R\+Context $\ast$}]{rr,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{autorecord }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a15042be22e1dfbee7929b63fcfedb793_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_a15042be22e1dfbee7929b63fcfedb793_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_ab3e223a09bb974fafa51063e1844357b}\label{mgm_8c_ab3e223a09bb974fafa51063e1844357b}} 
+\index{mgm.\+c@{mgm.\+c}!G\+B\+A\+M\+G\+M\+Start\+Recording@{G\+B\+A\+M\+G\+M\+Start\+Recording}}
+\index{G\+B\+A\+M\+G\+M\+Start\+Recording@{G\+B\+A\+M\+G\+M\+Start\+Recording}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+M\+G\+M\+Start\+Recording()}{GBAMGMStartRecording()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+A\+M\+G\+M\+Start\+Recording (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+R\+R\+Context $\ast$}]{rr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_ab3e223a09bb974fafa51063e1844357b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_ab3e223a09bb974fafa51063e1844357b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_acad53333f5ae3256637f45da53590890}\label{mgm_8c_acad53333f5ae3256637f45da53590890}} 
+\index{mgm.\+c@{mgm.\+c}!G\+B\+A\+M\+G\+M\+State\+Loaded@{G\+B\+A\+M\+G\+M\+State\+Loaded}}
+\index{G\+B\+A\+M\+G\+M\+State\+Loaded@{G\+B\+A\+M\+G\+M\+State\+Loaded}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+M\+G\+M\+State\+Loaded()}{GBAMGMStateLoaded()}}
+{\footnotesize\ttfamily void G\+B\+A\+M\+G\+M\+State\+Loaded (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+R\+R\+Context $\ast$}]{rr,  }\item[{const struct G\+B\+A\+Serialized\+State $\ast$}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_acad53333f5ae3256637f45da53590890_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_acad53333f5ae3256637f45da53590890_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_af0b03fa191287fbd6ab12f9a09c967a3}\label{mgm_8c_af0b03fa191287fbd6ab12f9a09c967a3}} 
+\index{mgm.\+c@{mgm.\+c}!G\+B\+A\+M\+G\+M\+State\+Saved@{G\+B\+A\+M\+G\+M\+State\+Saved}}
+\index{G\+B\+A\+M\+G\+M\+State\+Saved@{G\+B\+A\+M\+G\+M\+State\+Saved}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+M\+G\+M\+State\+Saved()}{GBAMGMStateSaved()}}
+{\footnotesize\ttfamily void G\+B\+A\+M\+G\+M\+State\+Saved (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+R\+R\+Context $\ast$}]{rr,  }\item[{struct G\+B\+A\+Serialized\+State $\ast$}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_af0b03fa191287fbd6ab12f9a09c967a3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_af0b03fa191287fbd6ab12f9a09c967a3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_af6951d3d08e56a25a404153799c418ab}\label{mgm_8c_af6951d3d08e56a25a404153799c418ab}} 
+\index{mgm.\+c@{mgm.\+c}!G\+B\+A\+M\+G\+M\+Stop\+Playing@{G\+B\+A\+M\+G\+M\+Stop\+Playing}}
+\index{G\+B\+A\+M\+G\+M\+Stop\+Playing@{G\+B\+A\+M\+G\+M\+Stop\+Playing}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+M\+G\+M\+Stop\+Playing()}{GBAMGMStopPlaying()}}
+{\footnotesize\ttfamily void G\+B\+A\+M\+G\+M\+Stop\+Playing (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+R\+R\+Context $\ast$}]{rr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_af6951d3d08e56a25a404153799c418ab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{mgm_8c_add2d0e03c3fe6203fa9117ae8dfa7211}\label{mgm_8c_add2d0e03c3fe6203fa9117ae8dfa7211}} 
+\index{mgm.\+c@{mgm.\+c}!G\+B\+A\+M\+G\+M\+Stop\+Recording@{G\+B\+A\+M\+G\+M\+Stop\+Recording}}
+\index{G\+B\+A\+M\+G\+M\+Stop\+Recording@{G\+B\+A\+M\+G\+M\+Stop\+Recording}!mgm.\+c@{mgm.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+M\+G\+M\+Stop\+Recording()}{GBAMGMStopRecording()}}
+{\footnotesize\ttfamily void G\+B\+A\+M\+G\+M\+Stop\+Recording (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+R\+R\+Context $\ast$}]{rr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_add2d0e03c3fe6203fa9117ae8dfa7211_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mgm_8c_add2d0e03c3fe6203fa9117ae8dfa7211_icgraph}
+\end{center}
+\end{figure}

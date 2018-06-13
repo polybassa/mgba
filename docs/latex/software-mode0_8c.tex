@@ -1,0 +1,147 @@
+\hypertarget{software-mode0_8c}{}\section{src/gba/renderers/software-\/mode0.c File Reference}
+\label{software-mode0_8c}\index{src/gba/renderers/software-\/mode0.\+c@{src/gba/renderers/software-\/mode0.\+c}}
+{\ttfamily \#include \char`\"{}gba/renderers/software-\/private.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba/internal/gba/gba.\+h$>$}\newline
+Include dependency graph for software-\/mode0.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{software-mode0_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{software-mode0_8c_a81ef9dd218c0b78163b655d61b0edb94}{B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+T\+E\+X\+T\+\_\+\+S\+E\+L\+E\+C\+T\+\_\+\+C\+H\+A\+R\+A\+C\+T\+ER}}
+\item 
+\#define \mbox{\hyperlink{software-mode0_8c_a87f2ad1608705428548eb03e8ed11194}{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+S\+U\+F\+F\+I\+X\+\_\+16}}(B\+L\+E\+ND,  O\+B\+J\+W\+IN)
+\item 
+\#define \mbox{\hyperlink{software-mode0_8c_ae44c4d75a60ee6293921b72c7ba43d89}{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+P\+R\+E\+F\+I\+X\+\_\+16}}(B\+L\+E\+ND,  O\+B\+J\+W\+IN)
+\item 
+\#define \mbox{\hyperlink{software-mode0_8c_a4919086cda52c574d8f29f01797d6a4f}{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+16}}(B\+L\+E\+ND,  O\+B\+J\+W\+IN)
+\item 
+\#define \mbox{\hyperlink{software-mode0_8c_ab2f5569ef06185a741711d4273fe993c}{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+S\+\_\+16}}(B\+L\+E\+ND,  O\+B\+J\+W\+IN)
+\item 
+\#define \mbox{\hyperlink{software-mode0_8c_ac9efee9d62a467359f1f44b406fd2ee9}{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+S\+U\+F\+F\+I\+X\+\_\+256}}(B\+L\+E\+ND,  O\+B\+J\+W\+IN)
+\item 
+\#define \mbox{\hyperlink{software-mode0_8c_a8d6e496bcecd9afb58313191690b7a61}{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+P\+R\+E\+F\+I\+X\+\_\+256}}(B\+L\+E\+ND,  O\+B\+J\+W\+IN)
+\item 
+\#define \mbox{\hyperlink{software-mode0_8c_a1f656520069a3c48c676fb09c8cb43cd}{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+S\+\_\+256}}(B\+L\+E\+ND,  O\+B\+J\+W\+IN)
+\item 
+\#define \mbox{\hyperlink{software-mode0_8c_ab8263fc92dea7cce980f4d77410c19fa}{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+256}}(B\+L\+E\+ND,  O\+B\+J\+W\+IN)
+\item 
+\#define \mbox{\hyperlink{software-mode0_8c_a5f4b00b153673d229da521c59005f7c8}{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0}}(B\+PP,  B\+L\+E\+ND,  O\+B\+J\+W\+IN)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{software-mode0_8c_aa2ad56e185c8e2391b4fd6bbc6835e22}{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode0}} (struct G\+B\+A\+Video\+Software\+Renderer $\ast$renderer, struct G\+B\+A\+Video\+Software\+Background $\ast$background, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} y)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{software-mode0_8c_a81ef9dd218c0b78163b655d61b0edb94}\label{software-mode0_8c_a81ef9dd218c0b78163b655d61b0edb94}} 
+\index{software-\/mode0.\+c@{software-\/mode0.\+c}!B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+T\+E\+X\+T\+\_\+\+S\+E\+L\+E\+C\+T\+\_\+\+C\+H\+A\+R\+A\+C\+T\+ER@{B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+T\+E\+X\+T\+\_\+\+S\+E\+L\+E\+C\+T\+\_\+\+C\+H\+A\+R\+A\+C\+T\+ER}}
+\index{B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+T\+E\+X\+T\+\_\+\+S\+E\+L\+E\+C\+T\+\_\+\+C\+H\+A\+R\+A\+C\+T\+ER@{B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+T\+E\+X\+T\+\_\+\+S\+E\+L\+E\+C\+T\+\_\+\+C\+H\+A\+R\+A\+C\+T\+ER}!software-\/mode0.\+c@{software-\/mode0.\+c}}
+\subsubsection{\texorpdfstring{B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+T\+E\+X\+T\+\_\+\+S\+E\+L\+E\+C\+T\+\_\+\+C\+H\+A\+R\+A\+C\+T\+ER}{BACKGROUND\_TEXT\_SELECT\_CHARACTER}}
+{\footnotesize\ttfamily \#define B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+T\+E\+X\+T\+\_\+\+S\+E\+L\+E\+C\+T\+\_\+\+C\+H\+A\+R\+A\+C\+T\+ER}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+xBase = localX & 0xF8; \(\backslash\)
+    if (background->size & 1) \{ \(\backslash\)
+        xBase += (localX & 0x100) << 5; \(\backslash\)
+    \} \(\backslash\)
+    screenBase = yBase + (xBase >> 3); \(\backslash\)
+    LOAD\_16(mapData, screenBase << 1, vram); \(\backslash\)
+\end{DoxyCode}
+\mbox{\Hypertarget{software-mode0_8c_a5f4b00b153673d229da521c59005f7c8}\label{software-mode0_8c_a5f4b00b153673d229da521c59005f7c8}} 
+\index{software-\/mode0.\+c@{software-\/mode0.\+c}!D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0@{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0}}
+\index{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0@{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0}!software-\/mode0.\+c@{software-\/mode0.\+c}}
+\subsubsection{\texorpdfstring{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0}{DRAW\_BACKGROUND\_MODE\_0}}
+{\footnotesize\ttfamily \#define D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0(\begin{DoxyParamCaption}\item[{}]{B\+PP,  }\item[{}]{B\+L\+E\+ND,  }\item[{}]{O\+B\+J\+W\+IN }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{software-mode0_8c_a4919086cda52c574d8f29f01797d6a4f}\label{software-mode0_8c_a4919086cda52c574d8f29f01797d6a4f}} 
+\index{software-\/mode0.\+c@{software-\/mode0.\+c}!D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+16@{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+16}}
+\index{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+16@{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+16}!software-\/mode0.\+c@{software-\/mode0.\+c}}
+\subsubsection{\texorpdfstring{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+16}{DRAW\_BACKGROUND\_MODE\_0\_MOSAIC\_16}}
+{\footnotesize\ttfamily \#define D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+16(\begin{DoxyParamCaption}\item[{}]{B\+L\+E\+ND,  }\item[{}]{O\+B\+J\+W\+IN }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{software-mode0_8c_ab8263fc92dea7cce980f4d77410c19fa}\label{software-mode0_8c_ab8263fc92dea7cce980f4d77410c19fa}} 
+\index{software-\/mode0.\+c@{software-\/mode0.\+c}!D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+256@{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+256}}
+\index{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+256@{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+256}!software-\/mode0.\+c@{software-\/mode0.\+c}}
+\subsubsection{\texorpdfstring{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+256}{DRAW\_BACKGROUND\_MODE\_0\_MOSAIC\_256}}
+{\footnotesize\ttfamily \#define D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+M\+O\+S\+A\+I\+C\+\_\+256(\begin{DoxyParamCaption}\item[{}]{B\+L\+E\+ND,  }\item[{}]{O\+B\+J\+W\+IN }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{software-mode0_8c_ae44c4d75a60ee6293921b72c7ba43d89}\label{software-mode0_8c_ae44c4d75a60ee6293921b72c7ba43d89}} 
+\index{software-\/mode0.\+c@{software-\/mode0.\+c}!D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+P\+R\+E\+F\+I\+X\+\_\+16@{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+P\+R\+E\+F\+I\+X\+\_\+16}}
+\index{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+P\+R\+E\+F\+I\+X\+\_\+16@{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+P\+R\+E\+F\+I\+X\+\_\+16}!software-\/mode0.\+c@{software-\/mode0.\+c}}
+\subsubsection{\texorpdfstring{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+P\+R\+E\+F\+I\+X\+\_\+16}{DRAW\_BACKGROUND\_MODE\_0\_TILE\_PREFIX\_16}}
+{\footnotesize\ttfamily \#define D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+P\+R\+E\+F\+I\+X\+\_\+16(\begin{DoxyParamCaption}\item[{}]{B\+L\+E\+ND,  }\item[{}]{O\+B\+J\+W\+IN }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{software-mode0_8c_a8d6e496bcecd9afb58313191690b7a61}\label{software-mode0_8c_a8d6e496bcecd9afb58313191690b7a61}} 
+\index{software-\/mode0.\+c@{software-\/mode0.\+c}!D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+P\+R\+E\+F\+I\+X\+\_\+256@{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+P\+R\+E\+F\+I\+X\+\_\+256}}
+\index{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+P\+R\+E\+F\+I\+X\+\_\+256@{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+P\+R\+E\+F\+I\+X\+\_\+256}!software-\/mode0.\+c@{software-\/mode0.\+c}}
+\subsubsection{\texorpdfstring{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+P\+R\+E\+F\+I\+X\+\_\+256}{DRAW\_BACKGROUND\_MODE\_0\_TILE\_PREFIX\_256}}
+{\footnotesize\ttfamily \#define D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+P\+R\+E\+F\+I\+X\+\_\+256(\begin{DoxyParamCaption}\item[{}]{B\+L\+E\+ND,  }\item[{}]{O\+B\+J\+W\+IN }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{software-mode0_8c_a87f2ad1608705428548eb03e8ed11194}\label{software-mode0_8c_a87f2ad1608705428548eb03e8ed11194}} 
+\index{software-\/mode0.\+c@{software-\/mode0.\+c}!D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+S\+U\+F\+F\+I\+X\+\_\+16@{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+S\+U\+F\+F\+I\+X\+\_\+16}}
+\index{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+S\+U\+F\+F\+I\+X\+\_\+16@{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+S\+U\+F\+F\+I\+X\+\_\+16}!software-\/mode0.\+c@{software-\/mode0.\+c}}
+\subsubsection{\texorpdfstring{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+S\+U\+F\+F\+I\+X\+\_\+16}{DRAW\_BACKGROUND\_MODE\_0\_TILE\_SUFFIX\_16}}
+{\footnotesize\ttfamily \#define D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+S\+U\+F\+F\+I\+X\+\_\+16(\begin{DoxyParamCaption}\item[{}]{B\+L\+E\+ND,  }\item[{}]{O\+B\+J\+W\+IN }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+paletteData = GBA\_TEXT\_MAP\_PALETTE(mapData) << 4; \(\backslash\)
+    palette = &mainPalette[paletteData]; \(\backslash\)
+    charBase = (background->charBase + (GBA\_TEXT\_MAP\_TILE(mapData) << 5)) + (localY << 2); \(\backslash\)
+    LOAD\_32(tileData, charBase, vram); \(\backslash\)
+    if (!GBA\_TEXT\_MAP\_HFLIP(mapData)) \{ \(\backslash\)
+        tileData >>= 4 * mod8; \(\backslash\)
+        for (; outX < end; ++outX, ++pixel) \{ \(\backslash\)
+            BACKGROUND\_DRAW\_PIXEL\_16(BLEND, OBJWIN, 0); \(\backslash\)
+        \} \(\backslash\)
+    \} \textcolor{keywordflow}{else} \{ \(\backslash\)
+        for (outX = end - 1; outX >= renderer->start; --outX) \{ \(\backslash\)
+            uint32\_t* pixel = &renderer->row[outX]; \(\backslash\)
+            BACKGROUND\_DRAW\_PIXEL\_16(BLEND, OBJWIN, 0); \(\backslash\)
+        \} \(\backslash\)
+    \}
+\end{DoxyCode}
+\mbox{\Hypertarget{software-mode0_8c_ac9efee9d62a467359f1f44b406fd2ee9}\label{software-mode0_8c_ac9efee9d62a467359f1f44b406fd2ee9}} 
+\index{software-\/mode0.\+c@{software-\/mode0.\+c}!D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+S\+U\+F\+F\+I\+X\+\_\+256@{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+S\+U\+F\+F\+I\+X\+\_\+256}}
+\index{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+S\+U\+F\+F\+I\+X\+\_\+256@{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+S\+U\+F\+F\+I\+X\+\_\+256}!software-\/mode0.\+c@{software-\/mode0.\+c}}
+\subsubsection{\texorpdfstring{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+S\+U\+F\+F\+I\+X\+\_\+256}{DRAW\_BACKGROUND\_MODE\_0\_TILE\_SUFFIX\_256}}
+{\footnotesize\ttfamily \#define D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+\_\+\+S\+U\+F\+F\+I\+X\+\_\+256(\begin{DoxyParamCaption}\item[{}]{B\+L\+E\+ND,  }\item[{}]{O\+B\+J\+W\+IN }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{software-mode0_8c_ab2f5569ef06185a741711d4273fe993c}\label{software-mode0_8c_ab2f5569ef06185a741711d4273fe993c}} 
+\index{software-\/mode0.\+c@{software-\/mode0.\+c}!D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+S\+\_\+16@{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+S\+\_\+16}}
+\index{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+S\+\_\+16@{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+S\+\_\+16}!software-\/mode0.\+c@{software-\/mode0.\+c}}
+\subsubsection{\texorpdfstring{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+S\+\_\+16}{DRAW\_BACKGROUND\_MODE\_0\_TILES\_16}}
+{\footnotesize\ttfamily \#define D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+S\+\_\+16(\begin{DoxyParamCaption}\item[{}]{B\+L\+E\+ND,  }\item[{}]{O\+B\+J\+W\+IN }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{software-mode0_8c_a1f656520069a3c48c676fb09c8cb43cd}\label{software-mode0_8c_a1f656520069a3c48c676fb09c8cb43cd}} 
+\index{software-\/mode0.\+c@{software-\/mode0.\+c}!D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+S\+\_\+256@{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+S\+\_\+256}}
+\index{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+S\+\_\+256@{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+S\+\_\+256}!software-\/mode0.\+c@{software-\/mode0.\+c}}
+\subsubsection{\texorpdfstring{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+S\+\_\+256}{DRAW\_BACKGROUND\_MODE\_0\_TILES\_256}}
+{\footnotesize\ttfamily \#define D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+0\+\_\+\+T\+I\+L\+E\+S\+\_\+256(\begin{DoxyParamCaption}\item[{}]{B\+L\+E\+ND,  }\item[{}]{O\+B\+J\+W\+IN }\end{DoxyParamCaption})}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{software-mode0_8c_aa2ad56e185c8e2391b4fd6bbc6835e22}\label{software-mode0_8c_aa2ad56e185c8e2391b4fd6bbc6835e22}} 
+\index{software-\/mode0.\+c@{software-\/mode0.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode0@{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode0}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode0@{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode0}!software-\/mode0.\+c@{software-\/mode0.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode0()}{GBAVideoSoftwareRendererDrawBackgroundMode0()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode0 (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Renderer $\ast$}]{renderer,  }\item[{struct G\+B\+A\+Video\+Software\+Background $\ast$}]{background,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{y }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{software-mode0_8c_aa2ad56e185c8e2391b4fd6bbc6835e22_icgraph}
+\end{center}
+\end{figure}

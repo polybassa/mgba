@@ -1,0 +1,709 @@
+\hypertarget{debugger_2cli-debugger_8c}{}\section{src/debugger/cli-\/debugger.c File Reference}
+\label{debugger_2cli-debugger_8c}\index{src/debugger/cli-\/debugger.\+c@{src/debugger/cli-\/debugger.\+c}}
+{\ttfamily \#include $<$mgba/internal/debugger/cli-\/debugger.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/debugger/symbols.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/version.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/debugger/parser.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+Include dependency graph for cli-\/debugger.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_ae3b40515b8220fab94d8b674d572a630}{\+\_\+break\+Into}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_ad40afb46823b93907981724d646a3f1f}{\+\_\+continue}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_a4b92eb025348b2a060a49ffffff5f07d}{\+\_\+disassemble}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_a6494b4411028b9b2f2f443f8b66dc486}{\+\_\+next}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_a87cc8a3ae9b66a7eb6ca4c6564140b39}{\+\_\+print}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_a50725d8ec0b31f2bcebf08ef23658a80}{\+\_\+print\+Bin}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_a2fde78deebc6a470f03e908a50303f36}{\+\_\+print\+Hex}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_af4bcea6a68691146acc3116bc2c5406b}{\+\_\+print\+Status}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_a3ed6b81951be65abc8107383fd7fe43e}{\+\_\+print\+Help}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_a93058b201875100e456b7b215a5bcc0a}{\+\_\+quit}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_aaca9f6a750269caaf5af45ac030d97ee}{\+\_\+read\+Byte}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_ab05ea35fc2d35b4a05bad6c08c1d8336}{\+\_\+reset}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_af10209f39f98d7d0cc72b9d00a556c7a}{\+\_\+read\+Halfword}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_abb342e8169f294b6f362d32712732c68}{\+\_\+read\+Word}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_a0a52c3456f6b68ef9b560a42b816794c}{\+\_\+set\+Breakpoint}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_add7707dc6faa04d636e11df0566a18f3}{\+\_\+clear\+Breakpoint}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_a17749710370e117b89191f855280b6a1}{\+\_\+set\+Watchpoint}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_a0f7e98d855bf3ce2a7114f3f24336dfb}{\+\_\+set\+Read\+Watchpoint}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_af6aec1b47f652b1a4dd4f98d9e1dacc1}{\+\_\+set\+Write\+Watchpoint}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_a80cf5fb5ee6e64803683a6b205b36d57}{\+\_\+trace}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_ac5ac1c482e79eff2eab004ce9383e849}{\+\_\+write\+Byte}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_a96e516203d239d2cb3ca1dfc1651fba0}{\+\_\+write\+Halfword}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_aea6200b640b85462b66907e252c9b7cd}{\+\_\+write\+Register}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_aff03320d22a8e46d1af7c43cb84919da}{\+\_\+write\+Word}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_aa3f29a9b8e86f5f883ecf4653be807ea}{\+\_\+dump\+Byte}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_ac233be27c06307973bd28ec5ca5a8138}{\+\_\+dump\+Halfword}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_aaf2f27557df7f8fda64782c14eb6fc0a}{\+\_\+dump\+Word}} (struct C\+L\+I\+Debugger $\ast$, struct C\+L\+I\+Debug\+Vector $\ast$)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_a829639f778965123a1bd18bf71a3ffb0}{\+\_\+handle\+Death}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} sig)
+\item 
+static struct Parse\+Tree $\ast$ \mbox{\hyperlink{debugger_2cli-debugger_8c_a27934628b83d6ccd96e46e1765075a98}{\+\_\+parse\+Tree}} (const char $\ast$string)
+\item 
+struct C\+L\+I\+Debug\+Vector $\ast$ \mbox{\hyperlink{debugger_2cli-debugger_8c_a12f3a50d17ea7ee9edd8703a1e57f1ad}{C\+L\+I\+D\+V\+Parse}} (struct C\+L\+I\+Debugger $\ast$debugger, const char $\ast$string, size\+\_\+t length)
+\item 
+struct C\+L\+I\+Debug\+Vector $\ast$ \mbox{\hyperlink{debugger_2cli-debugger_8c_a98d7c3768ef0af611a57d21782b34ca1}{C\+L\+I\+D\+V\+String\+Parse}} (struct C\+L\+I\+Debugger $\ast$debugger, const char $\ast$string, size\+\_\+t length)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_aba2bca6a3f7315fff75dd95a9f866970}{\+\_\+\+D\+V\+Free}} (struct C\+L\+I\+Debug\+Vector $\ast$dv)
+\item 
+static struct C\+L\+I\+Debug\+Vector $\ast$ \mbox{\hyperlink{debugger_2cli-debugger_8c_a5fda3702140fba9e4cc65c283462e28b}{\+\_\+parse\+Arg}} (struct C\+L\+I\+Debugger $\ast$debugger, const char $\ast$args, size\+\_\+t args\+Len, char type)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{debugger_2cli-debugger_8c_afe13a4b051acdd4ffee4a8bdaf89651b}{\+\_\+try\+Commands}} (struct C\+L\+I\+Debugger $\ast$debugger, struct C\+L\+I\+Debugger\+Command\+Summary $\ast$commands, const char $\ast$command, size\+\_\+t command\+Len, const char $\ast$args, size\+\_\+t args\+Len)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{debugger_2cli-debugger_8c_a0d63a2c337b6190b0b5488e84b39beb6}{\+\_\+parse}} (struct C\+L\+I\+Debugger $\ast$debugger, const char $\ast$line, size\+\_\+t \mbox{\hyperlink{enough_8c_ab25137bc309ccde185e2628bf4403ec7}{count}})
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_ab978c53f9260e7091de8564374a914bb}{\+\_\+command\+Line}} (struct m\+Debugger $\ast$debugger)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_a12aa54a009f9bc0715f9a506c13a3ce8}{\+\_\+report\+Entry}} (struct m\+Debugger $\ast$debugger, enum m\+Debugger\+Entry\+Reason reason, struct m\+Debugger\+Entry\+Info $\ast$\mbox{\hyperlink{libretro_8h_a283ad41e4809f9c0ebe736a9861d8a91}{info}})
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_a8fc8c3e7e849f47910d638e282575262}{\+\_\+cli\+Debugger\+Init}} (struct m\+Debugger $\ast$debugger)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_a3c33653a15d0b7731137bd69b02ce538}{\+\_\+cli\+Debugger\+Deinit}} (struct m\+Debugger $\ast$debugger)
+\item 
+static void \mbox{\hyperlink{debugger_2cli-debugger_8c_a510220aead524d147cc3f8877336c028}{\+\_\+cli\+Debugger\+Custom}} (struct m\+Debugger $\ast$debugger)
+\item 
+void \mbox{\hyperlink{debugger_2cli-debugger_8c_a26b35228e120f0d18563af7b57826e30}{C\+L\+I\+Debugger\+Create}} (struct C\+L\+I\+Debugger $\ast$debugger)
+\item 
+void \mbox{\hyperlink{debugger_2cli-debugger_8c_a9b5442362cea68ef05c1568aba4a0716}{C\+L\+I\+Debugger\+Attach\+System}} (struct C\+L\+I\+Debugger $\ast$debugger, struct C\+L\+I\+Debugger\+System $\ast$system)
+\item 
+void \mbox{\hyperlink{debugger_2cli-debugger_8c_a4fb26a94cca83e72a28abbb0136c80cc}{C\+L\+I\+Debugger\+Attach\+Backend}} (struct C\+L\+I\+Debugger $\ast$debugger, struct C\+L\+I\+Debugger\+Backend $\ast$backend)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{debugger_2cli-debugger_8c_aa4166246fff2288dedfb505e6f5936bc}{C\+L\+I\+Debugger\+Tab\+Complete}} (struct C\+L\+I\+Debugger $\ast$debugger, const char $\ast$token, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} initial, size\+\_\+t token\+Len)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \mbox{\hyperlink{debugger_2cli-debugger_8c_a9383b9ccd0a465e305a5132bb1c24fe1}{E\+R\+R\+O\+R\+\_\+\+M\+I\+S\+S\+I\+N\+G\+\_\+\+A\+R\+GS}} = \char`\"{}Arguments missing\char`\"{}
+\item 
+const char $\ast$ \mbox{\hyperlink{debugger_2cli-debugger_8c_aef2690a57fa9a85d0c8c25aca30b88cd}{E\+R\+R\+O\+R\+\_\+\+O\+V\+E\+R\+F\+L\+OW}} = \char`\"{}Arguments overflow\char`\"{}
+\item 
+const char $\ast$ \mbox{\hyperlink{debugger_2cli-debugger_8c_a9ffa083a9ebdc0a00f1a8dc9314e269d}{E\+R\+R\+O\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+R\+GS}} = \char`\"{}Invalid arguments\char`\"{}
+\item 
+static struct C\+L\+I\+Debugger\+Command\+Summary \mbox{\hyperlink{debugger_2cli-debugger_8c_a3c6f5f79f16164bd29e68ea0d7ddab2a}{\+\_\+debugger\+Commands}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_ae3b40515b8220fab94d8b674d572a630}\label{debugger_2cli-debugger_8c_ae3b40515b8220fab94d8b674d572a630}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+break\+Into@{\+\_\+break\+Into}}
+\index{\+\_\+break\+Into@{\+\_\+break\+Into}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+break\+Into()}{\_breakInto()}}
+{\footnotesize\ttfamily static void \+\_\+break\+Into (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{debugger_2cli-debugger_8c_ae3b40515b8220fab94d8b674d572a630_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_add7707dc6faa04d636e11df0566a18f3}\label{debugger_2cli-debugger_8c_add7707dc6faa04d636e11df0566a18f3}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+clear\+Breakpoint@{\+\_\+clear\+Breakpoint}}
+\index{\+\_\+clear\+Breakpoint@{\+\_\+clear\+Breakpoint}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+clear\+Breakpoint()}{\_clearBreakpoint()}}
+{\footnotesize\ttfamily static void \+\_\+clear\+Breakpoint (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a510220aead524d147cc3f8877336c028}\label{debugger_2cli-debugger_8c_a510220aead524d147cc3f8877336c028}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+cli\+Debugger\+Custom@{\+\_\+cli\+Debugger\+Custom}}
+\index{\+\_\+cli\+Debugger\+Custom@{\+\_\+cli\+Debugger\+Custom}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+cli\+Debugger\+Custom()}{\_cliDebuggerCustom()}}
+{\footnotesize\ttfamily static void \+\_\+cli\+Debugger\+Custom (\begin{DoxyParamCaption}\item[{struct m\+Debugger $\ast$}]{debugger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_a510220aead524d147cc3f8877336c028_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a3c33653a15d0b7731137bd69b02ce538}\label{debugger_2cli-debugger_8c_a3c33653a15d0b7731137bd69b02ce538}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+cli\+Debugger\+Deinit@{\+\_\+cli\+Debugger\+Deinit}}
+\index{\+\_\+cli\+Debugger\+Deinit@{\+\_\+cli\+Debugger\+Deinit}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+cli\+Debugger\+Deinit()}{\_cliDebuggerDeinit()}}
+{\footnotesize\ttfamily static void \+\_\+cli\+Debugger\+Deinit (\begin{DoxyParamCaption}\item[{struct m\+Debugger $\ast$}]{debugger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{debugger_2cli-debugger_8c_a3c33653a15d0b7731137bd69b02ce538_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_a3c33653a15d0b7731137bd69b02ce538_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a8fc8c3e7e849f47910d638e282575262}\label{debugger_2cli-debugger_8c_a8fc8c3e7e849f47910d638e282575262}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+cli\+Debugger\+Init@{\+\_\+cli\+Debugger\+Init}}
+\index{\+\_\+cli\+Debugger\+Init@{\+\_\+cli\+Debugger\+Init}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+cli\+Debugger\+Init()}{\_cliDebuggerInit()}}
+{\footnotesize\ttfamily static void \+\_\+cli\+Debugger\+Init (\begin{DoxyParamCaption}\item[{struct m\+Debugger $\ast$}]{debugger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_a8fc8c3e7e849f47910d638e282575262_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_ab978c53f9260e7091de8564374a914bb}\label{debugger_2cli-debugger_8c_ab978c53f9260e7091de8564374a914bb}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+command\+Line@{\+\_\+command\+Line}}
+\index{\+\_\+command\+Line@{\+\_\+command\+Line}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+command\+Line()}{\_commandLine()}}
+{\footnotesize\ttfamily static void \+\_\+command\+Line (\begin{DoxyParamCaption}\item[{struct m\+Debugger $\ast$}]{debugger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_ab978c53f9260e7091de8564374a914bb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_ab978c53f9260e7091de8564374a914bb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_ad40afb46823b93907981724d646a3f1f}\label{debugger_2cli-debugger_8c_ad40afb46823b93907981724d646a3f1f}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+continue@{\+\_\+continue}}
+\index{\+\_\+continue@{\+\_\+continue}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+continue()}{\_continue()}}
+{\footnotesize\ttfamily static void \+\_\+continue (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a4b92eb025348b2a060a49ffffff5f07d}\label{debugger_2cli-debugger_8c_a4b92eb025348b2a060a49ffffff5f07d}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+disassemble@{\+\_\+disassemble}}
+\index{\+\_\+disassemble@{\+\_\+disassemble}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+disassemble()}{\_disassemble()}}
+{\footnotesize\ttfamily static void \+\_\+disassemble (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_aa3f29a9b8e86f5f883ecf4653be807ea}\label{debugger_2cli-debugger_8c_aa3f29a9b8e86f5f883ecf4653be807ea}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+dump\+Byte@{\+\_\+dump\+Byte}}
+\index{\+\_\+dump\+Byte@{\+\_\+dump\+Byte}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+dump\+Byte()}{\_dumpByte()}}
+{\footnotesize\ttfamily static void \+\_\+dump\+Byte (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_ac233be27c06307973bd28ec5ca5a8138}\label{debugger_2cli-debugger_8c_ac233be27c06307973bd28ec5ca5a8138}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+dump\+Halfword@{\+\_\+dump\+Halfword}}
+\index{\+\_\+dump\+Halfword@{\+\_\+dump\+Halfword}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+dump\+Halfword()}{\_dumpHalfword()}}
+{\footnotesize\ttfamily static void \+\_\+dump\+Halfword (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_aaf2f27557df7f8fda64782c14eb6fc0a}\label{debugger_2cli-debugger_8c_aaf2f27557df7f8fda64782c14eb6fc0a}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+dump\+Word@{\+\_\+dump\+Word}}
+\index{\+\_\+dump\+Word@{\+\_\+dump\+Word}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+dump\+Word()}{\_dumpWord()}}
+{\footnotesize\ttfamily static void \+\_\+dump\+Word (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_aba2bca6a3f7315fff75dd95a9f866970}\label{debugger_2cli-debugger_8c_aba2bca6a3f7315fff75dd95a9f866970}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+\+D\+V\+Free@{\+\_\+\+D\+V\+Free}}
+\index{\+\_\+\+D\+V\+Free@{\+\_\+\+D\+V\+Free}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+D\+V\+Free()}{\_DVFree()}}
+{\footnotesize\ttfamily static void \+\_\+\+D\+V\+Free (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{debugger_2cli-debugger_8c_aba2bca6a3f7315fff75dd95a9f866970_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_aba2bca6a3f7315fff75dd95a9f866970_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a829639f778965123a1bd18bf71a3ffb0}\label{debugger_2cli-debugger_8c_a829639f778965123a1bd18bf71a3ffb0}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+handle\+Death@{\+\_\+handle\+Death}}
+\index{\+\_\+handle\+Death@{\+\_\+handle\+Death}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+handle\+Death()}{\_handleDeath()}}
+{\footnotesize\ttfamily static void \+\_\+handle\+Death (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{sig }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{debugger_2cli-debugger_8c_a829639f778965123a1bd18bf71a3ffb0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a6494b4411028b9b2f2f443f8b66dc486}\label{debugger_2cli-debugger_8c_a6494b4411028b9b2f2f443f8b66dc486}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+next@{\+\_\+next}}
+\index{\+\_\+next@{\+\_\+next}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+next()}{\_next()}}
+{\footnotesize\ttfamily static void \+\_\+next (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{debugger_2cli-debugger_8c_a6494b4411028b9b2f2f443f8b66dc486_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a0d63a2c337b6190b0b5488e84b39beb6}\label{debugger_2cli-debugger_8c_a0d63a2c337b6190b0b5488e84b39beb6}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+parse@{\+\_\+parse}}
+\index{\+\_\+parse@{\+\_\+parse}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+parse()}{\_parse()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+parse (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{const char $\ast$}]{line,  }\item[{size\+\_\+t}]{count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_a0d63a2c337b6190b0b5488e84b39beb6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_a0d63a2c337b6190b0b5488e84b39beb6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a5fda3702140fba9e4cc65c283462e28b}\label{debugger_2cli-debugger_8c_a5fda3702140fba9e4cc65c283462e28b}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+parse\+Arg@{\+\_\+parse\+Arg}}
+\index{\+\_\+parse\+Arg@{\+\_\+parse\+Arg}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+parse\+Arg()}{\_parseArg()}}
+{\footnotesize\ttfamily static struct C\+L\+I\+Debug\+Vector$\ast$ \+\_\+parse\+Arg (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{const char $\ast$}]{args,  }\item[{size\+\_\+t}]{args\+Len,  }\item[{char}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_a5fda3702140fba9e4cc65c283462e28b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_a5fda3702140fba9e4cc65c283462e28b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a27934628b83d6ccd96e46e1765075a98}\label{debugger_2cli-debugger_8c_a27934628b83d6ccd96e46e1765075a98}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+parse\+Tree@{\+\_\+parse\+Tree}}
+\index{\+\_\+parse\+Tree@{\+\_\+parse\+Tree}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+parse\+Tree()}{\_parseTree()}}
+{\footnotesize\ttfamily static struct Parse\+Tree$\ast$ \+\_\+parse\+Tree (\begin{DoxyParamCaption}\item[{const char $\ast$}]{string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_a27934628b83d6ccd96e46e1765075a98_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{debugger_2cli-debugger_8c_a27934628b83d6ccd96e46e1765075a98_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a87cc8a3ae9b66a7eb6ca4c6564140b39}\label{debugger_2cli-debugger_8c_a87cc8a3ae9b66a7eb6ca4c6564140b39}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+print@{\+\_\+print}}
+\index{\+\_\+print@{\+\_\+print}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+print()}{\_print()}}
+{\footnotesize\ttfamily static void \+\_\+print (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a50725d8ec0b31f2bcebf08ef23658a80}\label{debugger_2cli-debugger_8c_a50725d8ec0b31f2bcebf08ef23658a80}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+print\+Bin@{\+\_\+print\+Bin}}
+\index{\+\_\+print\+Bin@{\+\_\+print\+Bin}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+print\+Bin()}{\_printBin()}}
+{\footnotesize\ttfamily static void \+\_\+print\+Bin (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a3ed6b81951be65abc8107383fd7fe43e}\label{debugger_2cli-debugger_8c_a3ed6b81951be65abc8107383fd7fe43e}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+print\+Help@{\+\_\+print\+Help}}
+\index{\+\_\+print\+Help@{\+\_\+print\+Help}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+print\+Help()}{\_printHelp()}}
+{\footnotesize\ttfamily static void \+\_\+print\+Help (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a2fde78deebc6a470f03e908a50303f36}\label{debugger_2cli-debugger_8c_a2fde78deebc6a470f03e908a50303f36}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+print\+Hex@{\+\_\+print\+Hex}}
+\index{\+\_\+print\+Hex@{\+\_\+print\+Hex}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+print\+Hex()}{\_printHex()}}
+{\footnotesize\ttfamily static void \+\_\+print\+Hex (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_af4bcea6a68691146acc3116bc2c5406b}\label{debugger_2cli-debugger_8c_af4bcea6a68691146acc3116bc2c5406b}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+print\+Status@{\+\_\+print\+Status}}
+\index{\+\_\+print\+Status@{\+\_\+print\+Status}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+print\+Status()}{\_printStatus()}}
+{\footnotesize\ttfamily static void \+\_\+print\+Status (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_af4bcea6a68691146acc3116bc2c5406b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a93058b201875100e456b7b215a5bcc0a}\label{debugger_2cli-debugger_8c_a93058b201875100e456b7b215a5bcc0a}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+quit@{\+\_\+quit}}
+\index{\+\_\+quit@{\+\_\+quit}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+quit()}{\_quit()}}
+{\footnotesize\ttfamily static void \+\_\+quit (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_aaca9f6a750269caaf5af45ac030d97ee}\label{debugger_2cli-debugger_8c_aaca9f6a750269caaf5af45ac030d97ee}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+read\+Byte@{\+\_\+read\+Byte}}
+\index{\+\_\+read\+Byte@{\+\_\+read\+Byte}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Byte()}{\_readByte()}}
+{\footnotesize\ttfamily static void \+\_\+read\+Byte (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_af10209f39f98d7d0cc72b9d00a556c7a}\label{debugger_2cli-debugger_8c_af10209f39f98d7d0cc72b9d00a556c7a}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+read\+Halfword@{\+\_\+read\+Halfword}}
+\index{\+\_\+read\+Halfword@{\+\_\+read\+Halfword}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Halfword()}{\_readHalfword()}}
+{\footnotesize\ttfamily static void \+\_\+read\+Halfword (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_abb342e8169f294b6f362d32712732c68}\label{debugger_2cli-debugger_8c_abb342e8169f294b6f362d32712732c68}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+read\+Word@{\+\_\+read\+Word}}
+\index{\+\_\+read\+Word@{\+\_\+read\+Word}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Word()}{\_readWord()}}
+{\footnotesize\ttfamily static void \+\_\+read\+Word (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a12aa54a009f9bc0715f9a506c13a3ce8}\label{debugger_2cli-debugger_8c_a12aa54a009f9bc0715f9a506c13a3ce8}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+report\+Entry@{\+\_\+report\+Entry}}
+\index{\+\_\+report\+Entry@{\+\_\+report\+Entry}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+report\+Entry()}{\_reportEntry()}}
+{\footnotesize\ttfamily static void \+\_\+report\+Entry (\begin{DoxyParamCaption}\item[{struct m\+Debugger $\ast$}]{debugger,  }\item[{enum m\+Debugger\+Entry\+Reason}]{reason,  }\item[{struct m\+Debugger\+Entry\+Info $\ast$}]{info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_a12aa54a009f9bc0715f9a506c13a3ce8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_ab05ea35fc2d35b4a05bad6c08c1d8336}\label{debugger_2cli-debugger_8c_ab05ea35fc2d35b4a05bad6c08c1d8336}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+reset@{\+\_\+reset}}
+\index{\+\_\+reset@{\+\_\+reset}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+reset()}{\_reset()}}
+{\footnotesize\ttfamily static void \+\_\+reset (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{debugger_2cli-debugger_8c_ab05ea35fc2d35b4a05bad6c08c1d8336_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a0a52c3456f6b68ef9b560a42b816794c}\label{debugger_2cli-debugger_8c_a0a52c3456f6b68ef9b560a42b816794c}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+set\+Breakpoint@{\+\_\+set\+Breakpoint}}
+\index{\+\_\+set\+Breakpoint@{\+\_\+set\+Breakpoint}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+set\+Breakpoint()}{\_setBreakpoint()}}
+{\footnotesize\ttfamily static void \+\_\+set\+Breakpoint (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_a0a52c3456f6b68ef9b560a42b816794c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a0f7e98d855bf3ce2a7114f3f24336dfb}\label{debugger_2cli-debugger_8c_a0f7e98d855bf3ce2a7114f3f24336dfb}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+set\+Read\+Watchpoint@{\+\_\+set\+Read\+Watchpoint}}
+\index{\+\_\+set\+Read\+Watchpoint@{\+\_\+set\+Read\+Watchpoint}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+set\+Read\+Watchpoint()}{\_setReadWatchpoint()}}
+{\footnotesize\ttfamily static void \+\_\+set\+Read\+Watchpoint (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_a0f7e98d855bf3ce2a7114f3f24336dfb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a17749710370e117b89191f855280b6a1}\label{debugger_2cli-debugger_8c_a17749710370e117b89191f855280b6a1}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+set\+Watchpoint@{\+\_\+set\+Watchpoint}}
+\index{\+\_\+set\+Watchpoint@{\+\_\+set\+Watchpoint}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+set\+Watchpoint()}{\_setWatchpoint()}}
+{\footnotesize\ttfamily static void \+\_\+set\+Watchpoint (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_a17749710370e117b89191f855280b6a1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_af6aec1b47f652b1a4dd4f98d9e1dacc1}\label{debugger_2cli-debugger_8c_af6aec1b47f652b1a4dd4f98d9e1dacc1}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+set\+Write\+Watchpoint@{\+\_\+set\+Write\+Watchpoint}}
+\index{\+\_\+set\+Write\+Watchpoint@{\+\_\+set\+Write\+Watchpoint}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+set\+Write\+Watchpoint()}{\_setWriteWatchpoint()}}
+{\footnotesize\ttfamily static void \+\_\+set\+Write\+Watchpoint (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_af6aec1b47f652b1a4dd4f98d9e1dacc1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a80cf5fb5ee6e64803683a6b205b36d57}\label{debugger_2cli-debugger_8c_a80cf5fb5ee6e64803683a6b205b36d57}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+trace@{\+\_\+trace}}
+\index{\+\_\+trace@{\+\_\+trace}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+trace()}{\_trace()}}
+{\footnotesize\ttfamily static void \+\_\+trace (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_afe13a4b051acdd4ffee4a8bdaf89651b}\label{debugger_2cli-debugger_8c_afe13a4b051acdd4ffee4a8bdaf89651b}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+try\+Commands@{\+\_\+try\+Commands}}
+\index{\+\_\+try\+Commands@{\+\_\+try\+Commands}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+try\+Commands()}{\_tryCommands()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \+\_\+try\+Commands (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debugger\+Command\+Summary $\ast$}]{commands,  }\item[{const char $\ast$}]{command,  }\item[{size\+\_\+t}]{command\+Len,  }\item[{const char $\ast$}]{args,  }\item[{size\+\_\+t}]{args\+Len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_afe13a4b051acdd4ffee4a8bdaf89651b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_afe13a4b051acdd4ffee4a8bdaf89651b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_ac5ac1c482e79eff2eab004ce9383e849}\label{debugger_2cli-debugger_8c_ac5ac1c482e79eff2eab004ce9383e849}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+write\+Byte@{\+\_\+write\+Byte}}
+\index{\+\_\+write\+Byte@{\+\_\+write\+Byte}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+write\+Byte()}{\_writeByte()}}
+{\footnotesize\ttfamily static void \+\_\+write\+Byte (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a96e516203d239d2cb3ca1dfc1651fba0}\label{debugger_2cli-debugger_8c_a96e516203d239d2cb3ca1dfc1651fba0}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+write\+Halfword@{\+\_\+write\+Halfword}}
+\index{\+\_\+write\+Halfword@{\+\_\+write\+Halfword}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+write\+Halfword()}{\_writeHalfword()}}
+{\footnotesize\ttfamily static void \+\_\+write\+Halfword (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_aea6200b640b85462b66907e252c9b7cd}\label{debugger_2cli-debugger_8c_aea6200b640b85462b66907e252c9b7cd}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+write\+Register@{\+\_\+write\+Register}}
+\index{\+\_\+write\+Register@{\+\_\+write\+Register}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+write\+Register()}{\_writeRegister()}}
+{\footnotesize\ttfamily static void \+\_\+write\+Register (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_aff03320d22a8e46d1af7c43cb84919da}\label{debugger_2cli-debugger_8c_aff03320d22a8e46d1af7c43cb84919da}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+write\+Word@{\+\_\+write\+Word}}
+\index{\+\_\+write\+Word@{\+\_\+write\+Word}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+write\+Word()}{\_writeWord()}}
+{\footnotesize\ttfamily static void \+\_\+write\+Word (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a4fb26a94cca83e72a28abbb0136c80cc}\label{debugger_2cli-debugger_8c_a4fb26a94cca83e72a28abbb0136c80cc}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!C\+L\+I\+Debugger\+Attach\+Backend@{C\+L\+I\+Debugger\+Attach\+Backend}}
+\index{C\+L\+I\+Debugger\+Attach\+Backend@{C\+L\+I\+Debugger\+Attach\+Backend}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{C\+L\+I\+Debugger\+Attach\+Backend()}{CLIDebuggerAttachBackend()}}
+{\footnotesize\ttfamily void C\+L\+I\+Debugger\+Attach\+Backend (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debugger\+Backend $\ast$}]{backend }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_a4fb26a94cca83e72a28abbb0136c80cc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a9b5442362cea68ef05c1568aba4a0716}\label{debugger_2cli-debugger_8c_a9b5442362cea68ef05c1568aba4a0716}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!C\+L\+I\+Debugger\+Attach\+System@{C\+L\+I\+Debugger\+Attach\+System}}
+\index{C\+L\+I\+Debugger\+Attach\+System@{C\+L\+I\+Debugger\+Attach\+System}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{C\+L\+I\+Debugger\+Attach\+System()}{CLIDebuggerAttachSystem()}}
+{\footnotesize\ttfamily void C\+L\+I\+Debugger\+Attach\+System (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debugger\+System $\ast$}]{system }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=299pt]{debugger_2cli-debugger_8c_a9b5442362cea68ef05c1568aba4a0716_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_a9b5442362cea68ef05c1568aba4a0716_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a26b35228e120f0d18563af7b57826e30}\label{debugger_2cli-debugger_8c_a26b35228e120f0d18563af7b57826e30}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!C\+L\+I\+Debugger\+Create@{C\+L\+I\+Debugger\+Create}}
+\index{C\+L\+I\+Debugger\+Create@{C\+L\+I\+Debugger\+Create}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{C\+L\+I\+Debugger\+Create()}{CLIDebuggerCreate()}}
+{\footnotesize\ttfamily void C\+L\+I\+Debugger\+Create (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_a26b35228e120f0d18563af7b57826e30_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_a26b35228e120f0d18563af7b57826e30_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_aa4166246fff2288dedfb505e6f5936bc}\label{debugger_2cli-debugger_8c_aa4166246fff2288dedfb505e6f5936bc}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!C\+L\+I\+Debugger\+Tab\+Complete@{C\+L\+I\+Debugger\+Tab\+Complete}}
+\index{C\+L\+I\+Debugger\+Tab\+Complete@{C\+L\+I\+Debugger\+Tab\+Complete}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{C\+L\+I\+Debugger\+Tab\+Complete()}{CLIDebuggerTabComplete()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} C\+L\+I\+Debugger\+Tab\+Complete (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{const char $\ast$}]{token,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{initial,  }\item[{size\+\_\+t}]{token\+Len }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_aa4166246fff2288dedfb505e6f5936bc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_aa4166246fff2288dedfb505e6f5936bc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a12f3a50d17ea7ee9edd8703a1e57f1ad}\label{debugger_2cli-debugger_8c_a12f3a50d17ea7ee9edd8703a1e57f1ad}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!C\+L\+I\+D\+V\+Parse@{C\+L\+I\+D\+V\+Parse}}
+\index{C\+L\+I\+D\+V\+Parse@{C\+L\+I\+D\+V\+Parse}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{C\+L\+I\+D\+V\+Parse()}{CLIDVParse()}}
+{\footnotesize\ttfamily struct C\+L\+I\+Debug\+Vector$\ast$ C\+L\+I\+D\+V\+Parse (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{const char $\ast$}]{string,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_a12f3a50d17ea7ee9edd8703a1e57f1ad_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_a12f3a50d17ea7ee9edd8703a1e57f1ad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a98d7c3768ef0af611a57d21782b34ca1}\label{debugger_2cli-debugger_8c_a98d7c3768ef0af611a57d21782b34ca1}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!C\+L\+I\+D\+V\+String\+Parse@{C\+L\+I\+D\+V\+String\+Parse}}
+\index{C\+L\+I\+D\+V\+String\+Parse@{C\+L\+I\+D\+V\+String\+Parse}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{C\+L\+I\+D\+V\+String\+Parse()}{CLIDVStringParse()}}
+{\footnotesize\ttfamily struct C\+L\+I\+Debug\+Vector$\ast$ C\+L\+I\+D\+V\+String\+Parse (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{const char $\ast$}]{string,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_a98d7c3768ef0af611a57d21782b34ca1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{debugger_2cli-debugger_8c_a98d7c3768ef0af611a57d21782b34ca1_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a3c6f5f79f16164bd29e68ea0d7ddab2a}\label{debugger_2cli-debugger_8c_a3c6f5f79f16164bd29e68ea0d7ddab2a}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!\+\_\+debugger\+Commands@{\+\_\+debugger\+Commands}}
+\index{\+\_\+debugger\+Commands@{\+\_\+debugger\+Commands}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+debugger\+Commands}{\_debuggerCommands}}
+{\footnotesize\ttfamily struct C\+L\+I\+Debugger\+Command\+Summary \+\_\+debugger\+Commands\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a9ffa083a9ebdc0a00f1a8dc9314e269d}\label{debugger_2cli-debugger_8c_a9ffa083a9ebdc0a00f1a8dc9314e269d}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!E\+R\+R\+O\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+R\+GS@{E\+R\+R\+O\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+R\+GS}}
+\index{E\+R\+R\+O\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+R\+GS@{E\+R\+R\+O\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+R\+GS}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{E\+R\+R\+O\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+R\+GS}{ERROR\_INVALID\_ARGS}}
+{\footnotesize\ttfamily const char$\ast$ E\+R\+R\+O\+R\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+R\+GS = \char`\"{}Invalid arguments\char`\"{}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_a9383b9ccd0a465e305a5132bb1c24fe1}\label{debugger_2cli-debugger_8c_a9383b9ccd0a465e305a5132bb1c24fe1}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!E\+R\+R\+O\+R\+\_\+\+M\+I\+S\+S\+I\+N\+G\+\_\+\+A\+R\+GS@{E\+R\+R\+O\+R\+\_\+\+M\+I\+S\+S\+I\+N\+G\+\_\+\+A\+R\+GS}}
+\index{E\+R\+R\+O\+R\+\_\+\+M\+I\+S\+S\+I\+N\+G\+\_\+\+A\+R\+GS@{E\+R\+R\+O\+R\+\_\+\+M\+I\+S\+S\+I\+N\+G\+\_\+\+A\+R\+GS}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{E\+R\+R\+O\+R\+\_\+\+M\+I\+S\+S\+I\+N\+G\+\_\+\+A\+R\+GS}{ERROR\_MISSING\_ARGS}}
+{\footnotesize\ttfamily const char$\ast$ E\+R\+R\+O\+R\+\_\+\+M\+I\+S\+S\+I\+N\+G\+\_\+\+A\+R\+GS = \char`\"{}Arguments missing\char`\"{}}
+
+\mbox{\Hypertarget{debugger_2cli-debugger_8c_aef2690a57fa9a85d0c8c25aca30b88cd}\label{debugger_2cli-debugger_8c_aef2690a57fa9a85d0c8c25aca30b88cd}} 
+\index{debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}!E\+R\+R\+O\+R\+\_\+\+O\+V\+E\+R\+F\+L\+OW@{E\+R\+R\+O\+R\+\_\+\+O\+V\+E\+R\+F\+L\+OW}}
+\index{E\+R\+R\+O\+R\+\_\+\+O\+V\+E\+R\+F\+L\+OW@{E\+R\+R\+O\+R\+\_\+\+O\+V\+E\+R\+F\+L\+OW}!debugger/cli-\/debugger.\+c@{debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{E\+R\+R\+O\+R\+\_\+\+O\+V\+E\+R\+F\+L\+OW}{ERROR\_OVERFLOW}}
+{\footnotesize\ttfamily const char$\ast$ E\+R\+R\+O\+R\+\_\+\+O\+V\+E\+R\+F\+L\+OW = \char`\"{}Arguments overflow\char`\"{}}
+

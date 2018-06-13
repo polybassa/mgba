@@ -1,0 +1,290 @@
+\hypertarget{lr35902_8c}{}\section{src/lr35902/lr35902.c File Reference}
+\label{lr35902_8c}\index{src/lr35902/lr35902.\+c@{src/lr35902/lr35902.\+c}}
+{\ttfamily \#include $<$mgba/internal/lr35902/lr35902.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/lr35902/isa-\/lr35902.\+h$>$}\newline
+Include dependency graph for lr35902.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{lr35902_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{lr35902_8c_a312f0dafb087e49767c3eaa9b86c55bb}{L\+R35902\+Init}} (struct L\+R35902\+Core $\ast$cpu)
+\item 
+void \mbox{\hyperlink{lr35902_8c_a0b9dfee0b0be31a88ce7bb7143013d8c}{L\+R35902\+Deinit}} (struct L\+R35902\+Core $\ast$cpu)
+\item 
+void \mbox{\hyperlink{lr35902_8c_af068c2ce7e2085f51c275e3baaff5f8d}{L\+R35902\+Set\+Components}} (struct L\+R35902\+Core $\ast$cpu, struct m\+C\+P\+U\+Component $\ast$master, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} extra, struct m\+C\+P\+U\+Component $\ast$$\ast$extras)
+\item 
+void \mbox{\hyperlink{lr35902_8c_a8691a9e1377669f6d8914f14bd145a52}{L\+R35902\+Hotplug\+Attach}} (struct L\+R35902\+Core $\ast$cpu, size\+\_\+t slot)
+\item 
+void \mbox{\hyperlink{lr35902_8c_a606aba6444941bc0944c5e40f9fa0bc9}{L\+R35902\+Hotplug\+Detach}} (struct L\+R35902\+Core $\ast$cpu, size\+\_\+t slot)
+\item 
+void \mbox{\hyperlink{lr35902_8c_afd486dda09ef65aa91fc5eb0002e800d}{L\+R35902\+Reset}} (struct L\+R35902\+Core $\ast$cpu)
+\item 
+void \mbox{\hyperlink{lr35902_8c_afcf844e47b4faf07366e3d311f213da6}{L\+R35902\+Raise\+I\+RQ}} (struct L\+R35902\+Core $\ast$cpu)
+\item 
+static void \mbox{\hyperlink{lr35902_8c_a8c48e3378153fc90d418f97eac7b490f}{\+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Stall}} (struct L\+R35902\+Core $\ast$cpu)
+\item 
+static void \mbox{\hyperlink{lr35902_8c_a2311bafa1ba1854926ff19b71a49b70c}{\+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Finish}} (struct L\+R35902\+Core $\ast$cpu)
+\item 
+static void \mbox{\hyperlink{lr35902_8c_a0f217b10997cc33ef452d19e75c6dc06}{\+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Delay}} (struct L\+R35902\+Core $\ast$cpu)
+\item 
+static void \mbox{\hyperlink{lr35902_8c_a460084a1ad1593233f7c7bfd5df376c3}{\+\_\+\+L\+R35902\+Instruction\+I\+RQ}} (struct L\+R35902\+Core $\ast$cpu)
+\item 
+static void \mbox{\hyperlink{lr35902_8c_a1adf4a7d2df9d0e389688994c55010d6}{\+\_\+\+L\+R35902\+Step}} (struct L\+R35902\+Core $\ast$cpu)
+\item 
+void \mbox{\hyperlink{lr35902_8c_ab14ddfe613a36cc49dfafc79a016c4f0}{L\+R35902\+Tick}} (struct L\+R35902\+Core $\ast$cpu)
+\item 
+void \mbox{\hyperlink{lr35902_8c_a29b4cfecc302aebb6df7e61be6d3c963}{L\+R35902\+Run}} (struct L\+R35902\+Core $\ast$cpu)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{lr35902_8c_a460084a1ad1593233f7c7bfd5df376c3}\label{lr35902_8c_a460084a1ad1593233f7c7bfd5df376c3}} 
+\index{lr35902.\+c@{lr35902.\+c}!\+\_\+\+L\+R35902\+Instruction\+I\+RQ@{\+\_\+\+L\+R35902\+Instruction\+I\+RQ}}
+\index{\+\_\+\+L\+R35902\+Instruction\+I\+RQ@{\+\_\+\+L\+R35902\+Instruction\+I\+RQ}!lr35902.\+c@{lr35902.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+L\+R35902\+Instruction\+I\+R\+Q()}{\_LR35902InstructionIRQ()}}
+{\footnotesize\ttfamily static void \+\_\+\+L\+R35902\+Instruction\+I\+RQ (\begin{DoxyParamCaption}\item[{struct L\+R35902\+Core $\ast$}]{cpu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_8c_a460084a1ad1593233f7c7bfd5df376c3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_8c_a460084a1ad1593233f7c7bfd5df376c3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lr35902_8c_a0f217b10997cc33ef452d19e75c6dc06}\label{lr35902_8c_a0f217b10997cc33ef452d19e75c6dc06}} 
+\index{lr35902.\+c@{lr35902.\+c}!\+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Delay@{\+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Delay}}
+\index{\+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Delay@{\+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Delay}!lr35902.\+c@{lr35902.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Delay()}{\_LR35902InstructionIRQDelay()}}
+{\footnotesize\ttfamily static void \+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Delay (\begin{DoxyParamCaption}\item[{struct L\+R35902\+Core $\ast$}]{cpu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_8c_a0f217b10997cc33ef452d19e75c6dc06_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_8c_a0f217b10997cc33ef452d19e75c6dc06_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lr35902_8c_a2311bafa1ba1854926ff19b71a49b70c}\label{lr35902_8c_a2311bafa1ba1854926ff19b71a49b70c}} 
+\index{lr35902.\+c@{lr35902.\+c}!\+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Finish@{\+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Finish}}
+\index{\+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Finish@{\+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Finish}!lr35902.\+c@{lr35902.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Finish()}{\_LR35902InstructionIRQFinish()}}
+{\footnotesize\ttfamily static void \+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Finish (\begin{DoxyParamCaption}\item[{struct L\+R35902\+Core $\ast$}]{cpu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_8c_a2311bafa1ba1854926ff19b71a49b70c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_8c_a2311bafa1ba1854926ff19b71a49b70c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lr35902_8c_a8c48e3378153fc90d418f97eac7b490f}\label{lr35902_8c_a8c48e3378153fc90d418f97eac7b490f}} 
+\index{lr35902.\+c@{lr35902.\+c}!\+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Stall@{\+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Stall}}
+\index{\+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Stall@{\+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Stall}!lr35902.\+c@{lr35902.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Stall()}{\_LR35902InstructionIRQStall()}}
+{\footnotesize\ttfamily static void \+\_\+\+L\+R35902\+Instruction\+I\+R\+Q\+Stall (\begin{DoxyParamCaption}\item[{struct L\+R35902\+Core $\ast$}]{cpu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_8c_a8c48e3378153fc90d418f97eac7b490f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lr35902_8c_a1adf4a7d2df9d0e389688994c55010d6}\label{lr35902_8c_a1adf4a7d2df9d0e389688994c55010d6}} 
+\index{lr35902.\+c@{lr35902.\+c}!\+\_\+\+L\+R35902\+Step@{\+\_\+\+L\+R35902\+Step}}
+\index{\+\_\+\+L\+R35902\+Step@{\+\_\+\+L\+R35902\+Step}!lr35902.\+c@{lr35902.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+L\+R35902\+Step()}{\_LR35902Step()}}
+{\footnotesize\ttfamily static void \+\_\+\+L\+R35902\+Step (\begin{DoxyParamCaption}\item[{struct L\+R35902\+Core $\ast$}]{cpu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_8c_a1adf4a7d2df9d0e389688994c55010d6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_8c_a1adf4a7d2df9d0e389688994c55010d6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lr35902_8c_a0b9dfee0b0be31a88ce7bb7143013d8c}\label{lr35902_8c_a0b9dfee0b0be31a88ce7bb7143013d8c}} 
+\index{lr35902.\+c@{lr35902.\+c}!L\+R35902\+Deinit@{L\+R35902\+Deinit}}
+\index{L\+R35902\+Deinit@{L\+R35902\+Deinit}!lr35902.\+c@{lr35902.\+c}}
+\subsubsection{\texorpdfstring{L\+R35902\+Deinit()}{LR35902Deinit()}}
+{\footnotesize\ttfamily void L\+R35902\+Deinit (\begin{DoxyParamCaption}\item[{struct L\+R35902\+Core $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_8c_a0b9dfee0b0be31a88ce7bb7143013d8c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lr35902_8c_a8691a9e1377669f6d8914f14bd145a52}\label{lr35902_8c_a8691a9e1377669f6d8914f14bd145a52}} 
+\index{lr35902.\+c@{lr35902.\+c}!L\+R35902\+Hotplug\+Attach@{L\+R35902\+Hotplug\+Attach}}
+\index{L\+R35902\+Hotplug\+Attach@{L\+R35902\+Hotplug\+Attach}!lr35902.\+c@{lr35902.\+c}}
+\subsubsection{\texorpdfstring{L\+R35902\+Hotplug\+Attach()}{LR35902HotplugAttach()}}
+{\footnotesize\ttfamily void L\+R35902\+Hotplug\+Attach (\begin{DoxyParamCaption}\item[{struct L\+R35902\+Core $\ast$}]{cpu,  }\item[{size\+\_\+t}]{slot }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_8c_a8691a9e1377669f6d8914f14bd145a52_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lr35902_8c_a606aba6444941bc0944c5e40f9fa0bc9}\label{lr35902_8c_a606aba6444941bc0944c5e40f9fa0bc9}} 
+\index{lr35902.\+c@{lr35902.\+c}!L\+R35902\+Hotplug\+Detach@{L\+R35902\+Hotplug\+Detach}}
+\index{L\+R35902\+Hotplug\+Detach@{L\+R35902\+Hotplug\+Detach}!lr35902.\+c@{lr35902.\+c}}
+\subsubsection{\texorpdfstring{L\+R35902\+Hotplug\+Detach()}{LR35902HotplugDetach()}}
+{\footnotesize\ttfamily void L\+R35902\+Hotplug\+Detach (\begin{DoxyParamCaption}\item[{struct L\+R35902\+Core $\ast$}]{cpu,  }\item[{size\+\_\+t}]{slot }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_8c_a606aba6444941bc0944c5e40f9fa0bc9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lr35902_8c_a312f0dafb087e49767c3eaa9b86c55bb}\label{lr35902_8c_a312f0dafb087e49767c3eaa9b86c55bb}} 
+\index{lr35902.\+c@{lr35902.\+c}!L\+R35902\+Init@{L\+R35902\+Init}}
+\index{L\+R35902\+Init@{L\+R35902\+Init}!lr35902.\+c@{lr35902.\+c}}
+\subsubsection{\texorpdfstring{L\+R35902\+Init()}{LR35902Init()}}
+{\footnotesize\ttfamily void L\+R35902\+Init (\begin{DoxyParamCaption}\item[{struct L\+R35902\+Core $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_8c_a312f0dafb087e49767c3eaa9b86c55bb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lr35902_8c_afcf844e47b4faf07366e3d311f213da6}\label{lr35902_8c_afcf844e47b4faf07366e3d311f213da6}} 
+\index{lr35902.\+c@{lr35902.\+c}!L\+R35902\+Raise\+I\+RQ@{L\+R35902\+Raise\+I\+RQ}}
+\index{L\+R35902\+Raise\+I\+RQ@{L\+R35902\+Raise\+I\+RQ}!lr35902.\+c@{lr35902.\+c}}
+\subsubsection{\texorpdfstring{L\+R35902\+Raise\+I\+R\+Q()}{LR35902RaiseIRQ()}}
+{\footnotesize\ttfamily void L\+R35902\+Raise\+I\+RQ (\begin{DoxyParamCaption}\item[{struct L\+R35902\+Core $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_8c_afcf844e47b4faf07366e3d311f213da6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lr35902_8c_afd486dda09ef65aa91fc5eb0002e800d}\label{lr35902_8c_afd486dda09ef65aa91fc5eb0002e800d}} 
+\index{lr35902.\+c@{lr35902.\+c}!L\+R35902\+Reset@{L\+R35902\+Reset}}
+\index{L\+R35902\+Reset@{L\+R35902\+Reset}!lr35902.\+c@{lr35902.\+c}}
+\subsubsection{\texorpdfstring{L\+R35902\+Reset()}{LR35902Reset()}}
+{\footnotesize\ttfamily void L\+R35902\+Reset (\begin{DoxyParamCaption}\item[{struct L\+R35902\+Core $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_8c_afd486dda09ef65aa91fc5eb0002e800d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lr35902_8c_a29b4cfecc302aebb6df7e61be6d3c963}\label{lr35902_8c_a29b4cfecc302aebb6df7e61be6d3c963}} 
+\index{lr35902.\+c@{lr35902.\+c}!L\+R35902\+Run@{L\+R35902\+Run}}
+\index{L\+R35902\+Run@{L\+R35902\+Run}!lr35902.\+c@{lr35902.\+c}}
+\subsubsection{\texorpdfstring{L\+R35902\+Run()}{LR35902Run()}}
+{\footnotesize\ttfamily void L\+R35902\+Run (\begin{DoxyParamCaption}\item[{struct L\+R35902\+Core $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_8c_a29b4cfecc302aebb6df7e61be6d3c963_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_8c_a29b4cfecc302aebb6df7e61be6d3c963_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lr35902_8c_af068c2ce7e2085f51c275e3baaff5f8d}\label{lr35902_8c_af068c2ce7e2085f51c275e3baaff5f8d}} 
+\index{lr35902.\+c@{lr35902.\+c}!L\+R35902\+Set\+Components@{L\+R35902\+Set\+Components}}
+\index{L\+R35902\+Set\+Components@{L\+R35902\+Set\+Components}!lr35902.\+c@{lr35902.\+c}}
+\subsubsection{\texorpdfstring{L\+R35902\+Set\+Components()}{LR35902SetComponents()}}
+{\footnotesize\ttfamily void L\+R35902\+Set\+Components (\begin{DoxyParamCaption}\item[{struct L\+R35902\+Core $\ast$}]{cpu,  }\item[{struct m\+C\+P\+U\+Component $\ast$}]{master,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{extra,  }\item[{struct m\+C\+P\+U\+Component $\ast$$\ast$}]{extras }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_8c_af068c2ce7e2085f51c275e3baaff5f8d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lr35902_8c_ab14ddfe613a36cc49dfafc79a016c4f0}\label{lr35902_8c_ab14ddfe613a36cc49dfafc79a016c4f0}} 
+\index{lr35902.\+c@{lr35902.\+c}!L\+R35902\+Tick@{L\+R35902\+Tick}}
+\index{L\+R35902\+Tick@{L\+R35902\+Tick}!lr35902.\+c@{lr35902.\+c}}
+\subsubsection{\texorpdfstring{L\+R35902\+Tick()}{LR35902Tick()}}
+{\footnotesize\ttfamily void L\+R35902\+Tick (\begin{DoxyParamCaption}\item[{struct L\+R35902\+Core $\ast$}]{cpu }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_8c_ab14ddfe613a36cc49dfafc79a016c4f0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_8c_ab14ddfe613a36cc49dfafc79a016c4f0_icgraph}
+\end{center}
+\end{figure}

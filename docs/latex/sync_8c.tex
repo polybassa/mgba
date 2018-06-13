@@ -1,0 +1,186 @@
+\hypertarget{sync_8c}{}\section{src/core/sync.c File Reference}
+\label{sync_8c}\index{src/core/sync.\+c@{src/core/sync.\+c}}
+{\ttfamily \#include $<$mgba/core/sync.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/blip\+\_\+buf.\+h$>$}\newline
+Include dependency graph for sync.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{sync_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{sync_8c_a4254b06413a2bc6e66f2044157161348}{\+\_\+change\+Video\+Sync}} (struct m\+Core\+Sync $\ast$sync, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} frame\+On)
+\item 
+void \mbox{\hyperlink{sync_8c_a053de68c9bf6e93fa51117b6553c6d8b}{m\+Core\+Sync\+Post\+Frame}} (struct m\+Core\+Sync $\ast$sync)
+\item 
+void \mbox{\hyperlink{sync_8c_a7a399260e46d89fa4a6ca7264f9a0441}{m\+Core\+Sync\+Force\+Frame}} (struct m\+Core\+Sync $\ast$sync)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{sync_8c_aa84574949753c4daa3923cf54353deba}{m\+Core\+Sync\+Wait\+Frame\+Start}} (struct m\+Core\+Sync $\ast$sync)
+\item 
+void \mbox{\hyperlink{sync_8c_a1a9f2ac481d7ca56966c3d1ce54d7bfa}{m\+Core\+Sync\+Wait\+Frame\+End}} (struct m\+Core\+Sync $\ast$sync)
+\item 
+void \mbox{\hyperlink{sync_8c_a80da79f14f414a68b83e5aefd2749023}{m\+Core\+Sync\+Set\+Video\+Sync}} (struct m\+Core\+Sync $\ast$sync, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} wait)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{sync_8c_ae8b577c92d4162dbd71434c154830732}{m\+Core\+Sync\+Produce\+Audio}} (struct m\+Core\+Sync $\ast$sync, const struct blip\+\_\+t $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, size\+\_\+t samples)
+\item 
+void \mbox{\hyperlink{sync_8c_a1236d0ed44b0dcf6aef8893d7b4a6631}{m\+Core\+Sync\+Lock\+Audio}} (struct m\+Core\+Sync $\ast$sync)
+\item 
+void \mbox{\hyperlink{sync_8c_a6de8f9ef4c83c1248a41ad812854f32a}{m\+Core\+Sync\+Unlock\+Audio}} (struct m\+Core\+Sync $\ast$sync)
+\item 
+void \mbox{\hyperlink{sync_8c_a85046284bd7b54d3aa0a99cbf774c210}{m\+Core\+Sync\+Consume\+Audio}} (struct m\+Core\+Sync $\ast$sync)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{sync_8c_a4254b06413a2bc6e66f2044157161348}\label{sync_8c_a4254b06413a2bc6e66f2044157161348}} 
+\index{sync.\+c@{sync.\+c}!\+\_\+change\+Video\+Sync@{\+\_\+change\+Video\+Sync}}
+\index{\+\_\+change\+Video\+Sync@{\+\_\+change\+Video\+Sync}!sync.\+c@{sync.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+change\+Video\+Sync()}{\_changeVideoSync()}}
+{\footnotesize\ttfamily static void \+\_\+change\+Video\+Sync (\begin{DoxyParamCaption}\item[{struct m\+Core\+Sync $\ast$}]{sync,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{frame\+On }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sync_8c_a4254b06413a2bc6e66f2044157161348_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sync_8c_a85046284bd7b54d3aa0a99cbf774c210}\label{sync_8c_a85046284bd7b54d3aa0a99cbf774c210}} 
+\index{sync.\+c@{sync.\+c}!m\+Core\+Sync\+Consume\+Audio@{m\+Core\+Sync\+Consume\+Audio}}
+\index{m\+Core\+Sync\+Consume\+Audio@{m\+Core\+Sync\+Consume\+Audio}!sync.\+c@{sync.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Sync\+Consume\+Audio()}{mCoreSyncConsumeAudio()}}
+{\footnotesize\ttfamily void m\+Core\+Sync\+Consume\+Audio (\begin{DoxyParamCaption}\item[{struct m\+Core\+Sync $\ast$}]{sync }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sync_8c_a85046284bd7b54d3aa0a99cbf774c210_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sync_8c_a7a399260e46d89fa4a6ca7264f9a0441}\label{sync_8c_a7a399260e46d89fa4a6ca7264f9a0441}} 
+\index{sync.\+c@{sync.\+c}!m\+Core\+Sync\+Force\+Frame@{m\+Core\+Sync\+Force\+Frame}}
+\index{m\+Core\+Sync\+Force\+Frame@{m\+Core\+Sync\+Force\+Frame}!sync.\+c@{sync.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Sync\+Force\+Frame()}{mCoreSyncForceFrame()}}
+{\footnotesize\ttfamily void m\+Core\+Sync\+Force\+Frame (\begin{DoxyParamCaption}\item[{struct m\+Core\+Sync $\ast$}]{sync }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{sync_8c_a1236d0ed44b0dcf6aef8893d7b4a6631}\label{sync_8c_a1236d0ed44b0dcf6aef8893d7b4a6631}} 
+\index{sync.\+c@{sync.\+c}!m\+Core\+Sync\+Lock\+Audio@{m\+Core\+Sync\+Lock\+Audio}}
+\index{m\+Core\+Sync\+Lock\+Audio@{m\+Core\+Sync\+Lock\+Audio}!sync.\+c@{sync.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Sync\+Lock\+Audio()}{mCoreSyncLockAudio()}}
+{\footnotesize\ttfamily void m\+Core\+Sync\+Lock\+Audio (\begin{DoxyParamCaption}\item[{struct m\+Core\+Sync $\ast$}]{sync }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sync_8c_a1236d0ed44b0dcf6aef8893d7b4a6631_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sync_8c_a053de68c9bf6e93fa51117b6553c6d8b}\label{sync_8c_a053de68c9bf6e93fa51117b6553c6d8b}} 
+\index{sync.\+c@{sync.\+c}!m\+Core\+Sync\+Post\+Frame@{m\+Core\+Sync\+Post\+Frame}}
+\index{m\+Core\+Sync\+Post\+Frame@{m\+Core\+Sync\+Post\+Frame}!sync.\+c@{sync.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Sync\+Post\+Frame()}{mCoreSyncPostFrame()}}
+{\footnotesize\ttfamily void m\+Core\+Sync\+Post\+Frame (\begin{DoxyParamCaption}\item[{struct m\+Core\+Sync $\ast$}]{sync }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sync_8c_a053de68c9bf6e93fa51117b6553c6d8b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sync_8c_ae8b577c92d4162dbd71434c154830732}\label{sync_8c_ae8b577c92d4162dbd71434c154830732}} 
+\index{sync.\+c@{sync.\+c}!m\+Core\+Sync\+Produce\+Audio@{m\+Core\+Sync\+Produce\+Audio}}
+\index{m\+Core\+Sync\+Produce\+Audio@{m\+Core\+Sync\+Produce\+Audio}!sync.\+c@{sync.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Sync\+Produce\+Audio()}{mCoreSyncProduceAudio()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Sync\+Produce\+Audio (\begin{DoxyParamCaption}\item[{struct m\+Core\+Sync $\ast$}]{sync,  }\item[{const struct blip\+\_\+t $\ast$}]{buf,  }\item[{size\+\_\+t}]{samples }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sync_8c_ae8b577c92d4162dbd71434c154830732_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sync_8c_ae8b577c92d4162dbd71434c154830732_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sync_8c_a80da79f14f414a68b83e5aefd2749023}\label{sync_8c_a80da79f14f414a68b83e5aefd2749023}} 
+\index{sync.\+c@{sync.\+c}!m\+Core\+Sync\+Set\+Video\+Sync@{m\+Core\+Sync\+Set\+Video\+Sync}}
+\index{m\+Core\+Sync\+Set\+Video\+Sync@{m\+Core\+Sync\+Set\+Video\+Sync}!sync.\+c@{sync.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Sync\+Set\+Video\+Sync()}{mCoreSyncSetVideoSync()}}
+{\footnotesize\ttfamily void m\+Core\+Sync\+Set\+Video\+Sync (\begin{DoxyParamCaption}\item[{struct m\+Core\+Sync $\ast$}]{sync,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{wait }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sync_8c_a80da79f14f414a68b83e5aefd2749023_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sync_8c_a80da79f14f414a68b83e5aefd2749023_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sync_8c_a6de8f9ef4c83c1248a41ad812854f32a}\label{sync_8c_a6de8f9ef4c83c1248a41ad812854f32a}} 
+\index{sync.\+c@{sync.\+c}!m\+Core\+Sync\+Unlock\+Audio@{m\+Core\+Sync\+Unlock\+Audio}}
+\index{m\+Core\+Sync\+Unlock\+Audio@{m\+Core\+Sync\+Unlock\+Audio}!sync.\+c@{sync.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Sync\+Unlock\+Audio()}{mCoreSyncUnlockAudio()}}
+{\footnotesize\ttfamily void m\+Core\+Sync\+Unlock\+Audio (\begin{DoxyParamCaption}\item[{struct m\+Core\+Sync $\ast$}]{sync }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sync_8c_a6de8f9ef4c83c1248a41ad812854f32a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sync_8c_a1a9f2ac481d7ca56966c3d1ce54d7bfa}\label{sync_8c_a1a9f2ac481d7ca56966c3d1ce54d7bfa}} 
+\index{sync.\+c@{sync.\+c}!m\+Core\+Sync\+Wait\+Frame\+End@{m\+Core\+Sync\+Wait\+Frame\+End}}
+\index{m\+Core\+Sync\+Wait\+Frame\+End@{m\+Core\+Sync\+Wait\+Frame\+End}!sync.\+c@{sync.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Sync\+Wait\+Frame\+End()}{mCoreSyncWaitFrameEnd()}}
+{\footnotesize\ttfamily void m\+Core\+Sync\+Wait\+Frame\+End (\begin{DoxyParamCaption}\item[{struct m\+Core\+Sync $\ast$}]{sync }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sync_8c_a1a9f2ac481d7ca56966c3d1ce54d7bfa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sync_8c_aa84574949753c4daa3923cf54353deba}\label{sync_8c_aa84574949753c4daa3923cf54353deba}} 
+\index{sync.\+c@{sync.\+c}!m\+Core\+Sync\+Wait\+Frame\+Start@{m\+Core\+Sync\+Wait\+Frame\+Start}}
+\index{m\+Core\+Sync\+Wait\+Frame\+Start@{m\+Core\+Sync\+Wait\+Frame\+Start}!sync.\+c@{sync.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Sync\+Wait\+Frame\+Start()}{mCoreSyncWaitFrameStart()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Sync\+Wait\+Frame\+Start (\begin{DoxyParamCaption}\item[{struct m\+Core\+Sync $\ast$}]{sync }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sync_8c_aa84574949753c4daa3923cf54353deba_icgraph}
+\end{center}
+\end{figure}

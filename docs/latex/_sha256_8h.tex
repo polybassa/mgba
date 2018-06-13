@@ -1,0 +1,144 @@
+\hypertarget{_sha256_8h}{}\section{src/third-\/party/lzma/\+Sha256.h File Reference}
+\label{_sha256_8h}\index{src/third-\/party/lzma/\+Sha256.\+h@{src/third-\/party/lzma/\+Sha256.\+h}}
+{\ttfamily \#include \char`\"{}7z\+Types.\+h\char`\"{}}\newline
+Include dependency graph for Sha256.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{_sha256_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_sha256_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{_sha256_8h_struct_c_sha256}{C\+Sha256}}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_sha256_8h_a81efbc0fc101b06a914f7ff9e2fbc0e9}{S\+H\+A256\+\_\+\+D\+I\+G\+E\+S\+T\+\_\+\+S\+I\+ZE}}~32
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_sha256_8h_a1bd92d0f1c846be3b85821d3d7c843e1}{Sha256\+\_\+\+Init}} (\mbox{\hyperlink{_sha256_8h_struct_c_sha256}{C\+Sha256}} $\ast$p)
+\item 
+void \mbox{\hyperlink{_sha256_8h_ac632efca1b359f192018d756f85e3881}{Sha256\+\_\+\+Update}} (\mbox{\hyperlink{_sha256_8h_struct_c_sha256}{C\+Sha256}} $\ast$p, const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$\mbox{\hyperlink{libretro_8c_a735984d41155bc1032e09bece8f8d66d}{data}}, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+void \mbox{\hyperlink{_sha256_8h_a86bcc06098c61639c7e66daa2e959dce}{Sha256\+\_\+\+Final}} (\mbox{\hyperlink{_sha256_8h_struct_c_sha256}{C\+Sha256}} $\ast$p, \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$digest)
+\end{DoxyCompactItemize}
+
+
+\subsection{Class Documentation}
+\index{C\+Sha256@{C\+Sha256}}\label{struct_c_sha256}
+\Hypertarget{_sha256_8h_struct_c_sha256}
+\subsubsection{struct C\+Sha256}
+
+
+Collaboration diagram for C\+Sha256\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=139pt]{struct_c_sha256__coll__graph}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\mbox{\Hypertarget{_sha256_8h_aafc29d5e2feedb7104d89d4e97f282b1}\label{_sha256_8h_aafc29d5e2feedb7104d89d4e97f282b1}} 
+\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}}&
+buffer\mbox{[}64\mbox{]}&
+\\
+\hline
+
+\mbox{\Hypertarget{_sha256_8h_ab7356f46393159ef126d9ace616465dd}\label{_sha256_8h_ab7356f46393159ef126d9ace616465dd}} 
+\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{UInt64}}&
+count&
+\\
+\hline
+
+\mbox{\Hypertarget{_sha256_8h_aadff755989d4b55f500c7677c63dfe1c}\label{_sha256_8h_aadff755989d4b55f500c7677c63dfe1c}} 
+\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}}&
+state\mbox{[}8\mbox{]}&
+\\
+\hline
+
+\end{DoxyFields}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_sha256_8h_a81efbc0fc101b06a914f7ff9e2fbc0e9}\label{_sha256_8h_a81efbc0fc101b06a914f7ff9e2fbc0e9}} 
+\index{Sha256.\+h@{Sha256.\+h}!S\+H\+A256\+\_\+\+D\+I\+G\+E\+S\+T\+\_\+\+S\+I\+ZE@{S\+H\+A256\+\_\+\+D\+I\+G\+E\+S\+T\+\_\+\+S\+I\+ZE}}
+\index{S\+H\+A256\+\_\+\+D\+I\+G\+E\+S\+T\+\_\+\+S\+I\+ZE@{S\+H\+A256\+\_\+\+D\+I\+G\+E\+S\+T\+\_\+\+S\+I\+ZE}!Sha256.\+h@{Sha256.\+h}}
+\subsubsection{\texorpdfstring{S\+H\+A256\+\_\+\+D\+I\+G\+E\+S\+T\+\_\+\+S\+I\+ZE}{SHA256\_DIGEST\_SIZE}}
+{\footnotesize\ttfamily \#define S\+H\+A256\+\_\+\+D\+I\+G\+E\+S\+T\+\_\+\+S\+I\+ZE~32}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_sha256_8h_a86bcc06098c61639c7e66daa2e959dce}\label{_sha256_8h_a86bcc06098c61639c7e66daa2e959dce}} 
+\index{Sha256.\+h@{Sha256.\+h}!Sha256\+\_\+\+Final@{Sha256\+\_\+\+Final}}
+\index{Sha256\+\_\+\+Final@{Sha256\+\_\+\+Final}!Sha256.\+h@{Sha256.\+h}}
+\subsubsection{\texorpdfstring{Sha256\+\_\+\+Final()}{Sha256\_Final()}}
+{\footnotesize\ttfamily void Sha256\+\_\+\+Final (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_sha256_8h_struct_c_sha256}{C\+Sha256}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$}]{digest }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{_sha256_8h_a86bcc06098c61639c7e66daa2e959dce_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_sha256_8h_a86bcc06098c61639c7e66daa2e959dce_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_sha256_8h_a1bd92d0f1c846be3b85821d3d7c843e1}\label{_sha256_8h_a1bd92d0f1c846be3b85821d3d7c843e1}} 
+\index{Sha256.\+h@{Sha256.\+h}!Sha256\+\_\+\+Init@{Sha256\+\_\+\+Init}}
+\index{Sha256\+\_\+\+Init@{Sha256\+\_\+\+Init}!Sha256.\+h@{Sha256.\+h}}
+\subsubsection{\texorpdfstring{Sha256\+\_\+\+Init()}{Sha256\_Init()}}
+{\footnotesize\ttfamily void Sha256\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_sha256_8h_struct_c_sha256}{C\+Sha256}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_sha256_8h_a1bd92d0f1c846be3b85821d3d7c843e1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_sha256_8h_ac632efca1b359f192018d756f85e3881}\label{_sha256_8h_ac632efca1b359f192018d756f85e3881}} 
+\index{Sha256.\+h@{Sha256.\+h}!Sha256\+\_\+\+Update@{Sha256\+\_\+\+Update}}
+\index{Sha256\+\_\+\+Update@{Sha256\+\_\+\+Update}!Sha256.\+h@{Sha256.\+h}}
+\subsubsection{\texorpdfstring{Sha256\+\_\+\+Update()}{Sha256\_Update()}}
+{\footnotesize\ttfamily void Sha256\+\_\+\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_sha256_8h_struct_c_sha256}{C\+Sha256}} $\ast$}]{p,  }\item[{const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$}]{data,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{_sha256_8h_ac632efca1b359f192018d756f85e3881_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_sha256_8h_ac632efca1b359f192018d756f85e3881_icgraph}
+\end{center}
+\end{figure}

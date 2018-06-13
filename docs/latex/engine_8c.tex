@@ -1,0 +1,221 @@
+\hypertarget{engine_8c}{}\section{src/platform/python/engine.c File Reference}
+\label{engine_8c}\index{src/platform/python/engine.\+c@{src/platform/python/engine.\+c}}
+{\ttfamily \#include \char`\"{}engine.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba/core/scripting.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib.\+h\char`\"{}}\newline
+Include dependency graph for engine.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{engine_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static const char $\ast$ \mbox{\hyperlink{engine_8c_aaa9a8eb4e09bc76e5a99a27f2bd57433}{m\+Python\+Script\+Engine\+Name}} (struct m\+Script\+Engine $\ast$)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{engine_8c_a48d9fb18caca9c37fd341848e6846381}{m\+Python\+Script\+Engine\+Init}} (struct m\+Script\+Engine $\ast$, struct m\+Script\+Bridge $\ast$)
+\item 
+static void \mbox{\hyperlink{engine_8c_ae0ec91b95809c084f936d853c638cd4d}{m\+Python\+Script\+Engine\+Deinit}} (struct m\+Script\+Engine $\ast$)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{engine_8c_ad1502a7c475c4a4fc2b86f73104e7f48}{m\+Python\+Script\+Engine\+Is\+Script}} (struct m\+Script\+Engine $\ast$, const char $\ast$name, struct V\+File $\ast$vf)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{engine_8c_ae355ae819950eb6bc89821b500538dcf}{m\+Python\+Script\+Engine\+Load\+Script}} (struct m\+Script\+Engine $\ast$, const char $\ast$name, struct V\+File $\ast$vf)
+\item 
+static void \mbox{\hyperlink{engine_8c_ae1ab3aec5d5b0af82888e0e79b86188a}{m\+Python\+Script\+Engine\+Run}} (struct m\+Script\+Engine $\ast$)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{engine_8c_a8f35f447679257bdb95207dc58cf6b1b}{m\+Python\+Script\+Engine\+Lookup\+Symbol}} (struct m\+Script\+Engine $\ast$, const char $\ast$name, int32\+\_\+t $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\item 
+struct m\+Python\+Script\+Engine $\ast$ \mbox{\hyperlink{engine_8c_a58dc03772ba1f719cdaeb24216d1dd6e}{m\+Python\+Create\+Script\+Engine}} (void)
+\item 
+void \mbox{\hyperlink{engine_8c_a0512d89e8d2e607b2c8b1afdf33620a2}{m\+Python\+Setup}} (struct m\+Script\+Bridge $\ast$sb)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{engine_8c_a58dc03772ba1f719cdaeb24216d1dd6e}\label{engine_8c_a58dc03772ba1f719cdaeb24216d1dd6e}} 
+\index{engine.\+c@{engine.\+c}!m\+Python\+Create\+Script\+Engine@{m\+Python\+Create\+Script\+Engine}}
+\index{m\+Python\+Create\+Script\+Engine@{m\+Python\+Create\+Script\+Engine}!engine.\+c@{engine.\+c}}
+\subsubsection{\texorpdfstring{m\+Python\+Create\+Script\+Engine()}{mPythonCreateScriptEngine()}}
+{\footnotesize\ttfamily struct m\+Python\+Script\+Engine$\ast$ m\+Python\+Create\+Script\+Engine (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{engine_8c_a58dc03772ba1f719cdaeb24216d1dd6e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{engine_8c_a58dc03772ba1f719cdaeb24216d1dd6e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{engine_8c_ae0ec91b95809c084f936d853c638cd4d}\label{engine_8c_ae0ec91b95809c084f936d853c638cd4d}} 
+\index{engine.\+c@{engine.\+c}!m\+Python\+Script\+Engine\+Deinit@{m\+Python\+Script\+Engine\+Deinit}}
+\index{m\+Python\+Script\+Engine\+Deinit@{m\+Python\+Script\+Engine\+Deinit}!engine.\+c@{engine.\+c}}
+\subsubsection{\texorpdfstring{m\+Python\+Script\+Engine\+Deinit()}{mPythonScriptEngineDeinit()}}
+{\footnotesize\ttfamily void m\+Python\+Script\+Engine\+Deinit (\begin{DoxyParamCaption}\item[{struct m\+Script\+Engine $\ast$}]{se }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{engine_8c_ae0ec91b95809c084f936d853c638cd4d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{engine_8c_ae0ec91b95809c084f936d853c638cd4d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{engine_8c_a48d9fb18caca9c37fd341848e6846381}\label{engine_8c_a48d9fb18caca9c37fd341848e6846381}} 
+\index{engine.\+c@{engine.\+c}!m\+Python\+Script\+Engine\+Init@{m\+Python\+Script\+Engine\+Init}}
+\index{m\+Python\+Script\+Engine\+Init@{m\+Python\+Script\+Engine\+Init}!engine.\+c@{engine.\+c}}
+\subsubsection{\texorpdfstring{m\+Python\+Script\+Engine\+Init()}{mPythonScriptEngineInit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Python\+Script\+Engine\+Init (\begin{DoxyParamCaption}\item[{struct m\+Script\+Engine $\ast$}]{se,  }\item[{struct m\+Script\+Bridge $\ast$}]{sb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{engine_8c_a48d9fb18caca9c37fd341848e6846381_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{engine_8c_ad1502a7c475c4a4fc2b86f73104e7f48}\label{engine_8c_ad1502a7c475c4a4fc2b86f73104e7f48}} 
+\index{engine.\+c@{engine.\+c}!m\+Python\+Script\+Engine\+Is\+Script@{m\+Python\+Script\+Engine\+Is\+Script}}
+\index{m\+Python\+Script\+Engine\+Is\+Script@{m\+Python\+Script\+Engine\+Is\+Script}!engine.\+c@{engine.\+c}}
+\subsubsection{\texorpdfstring{m\+Python\+Script\+Engine\+Is\+Script()}{mPythonScriptEngineIsScript()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Python\+Script\+Engine\+Is\+Script (\begin{DoxyParamCaption}\item[{struct m\+Script\+Engine $\ast$}]{se,  }\item[{const char $\ast$}]{name,  }\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{engine_8c_ad1502a7c475c4a4fc2b86f73104e7f48_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{engine_8c_ad1502a7c475c4a4fc2b86f73104e7f48_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{engine_8c_ae355ae819950eb6bc89821b500538dcf}\label{engine_8c_ae355ae819950eb6bc89821b500538dcf}} 
+\index{engine.\+c@{engine.\+c}!m\+Python\+Script\+Engine\+Load\+Script@{m\+Python\+Script\+Engine\+Load\+Script}}
+\index{m\+Python\+Script\+Engine\+Load\+Script@{m\+Python\+Script\+Engine\+Load\+Script}!engine.\+c@{engine.\+c}}
+\subsubsection{\texorpdfstring{m\+Python\+Script\+Engine\+Load\+Script()}{mPythonScriptEngineLoadScript()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Python\+Script\+Engine\+Load\+Script (\begin{DoxyParamCaption}\item[{struct m\+Script\+Engine $\ast$}]{se,  }\item[{const char $\ast$}]{name,  }\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{engine_8c_ae355ae819950eb6bc89821b500538dcf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{engine_8c_ae355ae819950eb6bc89821b500538dcf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{engine_8c_a8f35f447679257bdb95207dc58cf6b1b}\label{engine_8c_a8f35f447679257bdb95207dc58cf6b1b}} 
+\index{engine.\+c@{engine.\+c}!m\+Python\+Script\+Engine\+Lookup\+Symbol@{m\+Python\+Script\+Engine\+Lookup\+Symbol}}
+\index{m\+Python\+Script\+Engine\+Lookup\+Symbol@{m\+Python\+Script\+Engine\+Lookup\+Symbol}!engine.\+c@{engine.\+c}}
+\subsubsection{\texorpdfstring{m\+Python\+Script\+Engine\+Lookup\+Symbol()}{mPythonScriptEngineLookupSymbol()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Python\+Script\+Engine\+Lookup\+Symbol (\begin{DoxyParamCaption}\item[{struct m\+Script\+Engine $\ast$}]{se,  }\item[{const char $\ast$}]{name,  }\item[{int32\+\_\+t $\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{engine_8c_a8f35f447679257bdb95207dc58cf6b1b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{engine_8c_a8f35f447679257bdb95207dc58cf6b1b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{engine_8c_aaa9a8eb4e09bc76e5a99a27f2bd57433}\label{engine_8c_aaa9a8eb4e09bc76e5a99a27f2bd57433}} 
+\index{engine.\+c@{engine.\+c}!m\+Python\+Script\+Engine\+Name@{m\+Python\+Script\+Engine\+Name}}
+\index{m\+Python\+Script\+Engine\+Name@{m\+Python\+Script\+Engine\+Name}!engine.\+c@{engine.\+c}}
+\subsubsection{\texorpdfstring{m\+Python\+Script\+Engine\+Name()}{mPythonScriptEngineName()}}
+{\footnotesize\ttfamily const char $\ast$ m\+Python\+Script\+Engine\+Name (\begin{DoxyParamCaption}\item[{struct m\+Script\+Engine $\ast$}]{se }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{engine_8c_aaa9a8eb4e09bc76e5a99a27f2bd57433_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{engine_8c_ae1ab3aec5d5b0af82888e0e79b86188a}\label{engine_8c_ae1ab3aec5d5b0af82888e0e79b86188a}} 
+\index{engine.\+c@{engine.\+c}!m\+Python\+Script\+Engine\+Run@{m\+Python\+Script\+Engine\+Run}}
+\index{m\+Python\+Script\+Engine\+Run@{m\+Python\+Script\+Engine\+Run}!engine.\+c@{engine.\+c}}
+\subsubsection{\texorpdfstring{m\+Python\+Script\+Engine\+Run()}{mPythonScriptEngineRun()}}
+{\footnotesize\ttfamily void m\+Python\+Script\+Engine\+Run (\begin{DoxyParamCaption}\item[{struct m\+Script\+Engine $\ast$}]{se }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{engine_8c_ae1ab3aec5d5b0af82888e0e79b86188a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{engine_8c_ae1ab3aec5d5b0af82888e0e79b86188a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{engine_8c_a0512d89e8d2e607b2c8b1afdf33620a2}\label{engine_8c_a0512d89e8d2e607b2c8b1afdf33620a2}} 
+\index{engine.\+c@{engine.\+c}!m\+Python\+Setup@{m\+Python\+Setup}}
+\index{m\+Python\+Setup@{m\+Python\+Setup}!engine.\+c@{engine.\+c}}
+\subsubsection{\texorpdfstring{m\+Python\+Setup()}{mPythonSetup()}}
+{\footnotesize\ttfamily void m\+Python\+Setup (\begin{DoxyParamCaption}\item[{struct m\+Script\+Bridge $\ast$}]{sb }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{engine_8c_a0512d89e8d2e607b2c8b1afdf33620a2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{engine_8c_a0512d89e8d2e607b2c8b1afdf33620a2_icgraph}
+\end{center}
+\end{figure}

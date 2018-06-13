@@ -1,0 +1,170 @@
+\hypertarget{zran_8c}{}\section{src/third-\/party/zlib/examples/zran.c File Reference}
+\label{zran_8c}\index{src/third-\/party/zlib/examples/zran.\+c@{src/third-\/party/zlib/examples/zran.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}zlib.\+h\char`\"{}}\newline
+Include dependency graph for zran.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{zran_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{zran_8c_a08023ea6765c99d60a6a3840cd07156e}{local}}~static
+\item 
+\#define \mbox{\hyperlink{zran_8c_af99e64b08af1fcb2e8edfeb54290eed3}{S\+P\+AN}}~1048576\+L       /$\ast$ desired distance between access points $\ast$/
+\item 
+\#define \mbox{\hyperlink{zran_8c_ae503004492a3af248faa09d61b4ee4b4}{W\+I\+N\+S\+I\+ZE}}~32768\+U      /$\ast$ sliding window size $\ast$/
+\item 
+\#define \mbox{\hyperlink{zran_8c_a25022864dfc8ec428e7128282e57b136}{C\+H\+U\+NK}}~16384         /$\ast$ file input buffer \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}} $\ast$/
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{zran_8c_ae774a5e885674a6c0b9f46332f4d9eb3}{free\+\_\+index}} (struct access $\ast$\mbox{\hyperlink{isa-lr35902_8c_ac9ee548085af12859cb52a6c757cf73a}{index}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} struct access $\ast$ \mbox{\hyperlink{zran_8c_a23d896a68705c32276e1a571ba4b13c9}{addpoint}} (struct access $\ast$\mbox{\hyperlink{isa-lr35902_8c_ac9ee548085af12859cb52a6c757cf73a}{index}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{puff_8c_af23433d9d58fb31d4a1ac224e3bc46e8}{bits}}, \mbox{\hyperlink{__builder_8h_a53066be3c3a28d8b8ccb3dc95c1e49b1}{off\+\_\+t}} \mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}, \mbox{\hyperlink{__builder_8h_a53066be3c3a28d8b8ccb3dc95c1e49b1}{off\+\_\+t}} \mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}}, unsigned left, unsigned char $\ast$\mbox{\hyperlink{rpng2-x_8c_ac5b0b3c19d476a314bb68af9bc4a0ee0}{window}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{zran_8c_a397d00639412ac3ce0c85e1f8779bda8}{build\+\_\+index}} (F\+I\+LE $\ast$\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}, \mbox{\hyperlink{__builder_8h_a53066be3c3a28d8b8ccb3dc95c1e49b1}{off\+\_\+t}} span, struct access $\ast$$\ast$built)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{zran_8c_af53a3b1c5bbe8a79fffda70fbb179e29}{extract}} (F\+I\+LE $\ast$\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}, struct access $\ast$\mbox{\hyperlink{isa-lr35902_8c_ac9ee548085af12859cb52a6c757cf73a}{index}}, \mbox{\hyperlink{__builder_8h_a53066be3c3a28d8b8ccb3dc95c1e49b1}{off\+\_\+t}} \mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}}, unsigned char $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} len)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{zran_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{zran_8c_a25022864dfc8ec428e7128282e57b136}\label{zran_8c_a25022864dfc8ec428e7128282e57b136}} 
+\index{zran.\+c@{zran.\+c}!C\+H\+U\+NK@{C\+H\+U\+NK}}
+\index{C\+H\+U\+NK@{C\+H\+U\+NK}!zran.\+c@{zran.\+c}}
+\subsubsection{\texorpdfstring{C\+H\+U\+NK}{CHUNK}}
+{\footnotesize\ttfamily \#define C\+H\+U\+NK~16384         /$\ast$ file input buffer \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}} $\ast$/}
+
+\mbox{\Hypertarget{zran_8c_a08023ea6765c99d60a6a3840cd07156e}\label{zran_8c_a08023ea6765c99d60a6a3840cd07156e}} 
+\index{zran.\+c@{zran.\+c}!local@{local}}
+\index{local@{local}!zran.\+c@{zran.\+c}}
+\subsubsection{\texorpdfstring{local}{local}}
+{\footnotesize\ttfamily \#define local~static}
+
+\mbox{\Hypertarget{zran_8c_af99e64b08af1fcb2e8edfeb54290eed3}\label{zran_8c_af99e64b08af1fcb2e8edfeb54290eed3}} 
+\index{zran.\+c@{zran.\+c}!S\+P\+AN@{S\+P\+AN}}
+\index{S\+P\+AN@{S\+P\+AN}!zran.\+c@{zran.\+c}}
+\subsubsection{\texorpdfstring{S\+P\+AN}{SPAN}}
+{\footnotesize\ttfamily \#define S\+P\+AN~1048576\+L       /$\ast$ desired distance between access points $\ast$/}
+
+\mbox{\Hypertarget{zran_8c_ae503004492a3af248faa09d61b4ee4b4}\label{zran_8c_ae503004492a3af248faa09d61b4ee4b4}} 
+\index{zran.\+c@{zran.\+c}!W\+I\+N\+S\+I\+ZE@{W\+I\+N\+S\+I\+ZE}}
+\index{W\+I\+N\+S\+I\+ZE@{W\+I\+N\+S\+I\+ZE}!zran.\+c@{zran.\+c}}
+\subsubsection{\texorpdfstring{W\+I\+N\+S\+I\+ZE}{WINSIZE}}
+{\footnotesize\ttfamily \#define W\+I\+N\+S\+I\+ZE~32768\+U      /$\ast$ sliding window size $\ast$/}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{zran_8c_a23d896a68705c32276e1a571ba4b13c9}\label{zran_8c_a23d896a68705c32276e1a571ba4b13c9}} 
+\index{zran.\+c@{zran.\+c}!addpoint@{addpoint}}
+\index{addpoint@{addpoint}!zran.\+c@{zran.\+c}}
+\subsubsection{\texorpdfstring{addpoint()}{addpoint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} struct access$\ast$ addpoint (\begin{DoxyParamCaption}\item[{struct access $\ast$}]{index,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{bits,  }\item[{\mbox{\hyperlink{__builder_8h_a53066be3c3a28d8b8ccb3dc95c1e49b1}{off\+\_\+t}}}]{in,  }\item[{\mbox{\hyperlink{__builder_8h_a53066be3c3a28d8b8ccb3dc95c1e49b1}{off\+\_\+t}}}]{out,  }\item[{unsigned}]{left,  }\item[{unsigned char $\ast$}]{window }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{zran_8c_a23d896a68705c32276e1a571ba4b13c9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{zran_8c_a23d896a68705c32276e1a571ba4b13c9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{zran_8c_a397d00639412ac3ce0c85e1f8779bda8}\label{zran_8c_a397d00639412ac3ce0c85e1f8779bda8}} 
+\index{zran.\+c@{zran.\+c}!build\+\_\+index@{build\+\_\+index}}
+\index{build\+\_\+index@{build\+\_\+index}!zran.\+c@{zran.\+c}}
+\subsubsection{\texorpdfstring{build\+\_\+index()}{build\_index()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} build\+\_\+index (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{in,  }\item[{\mbox{\hyperlink{__builder_8h_a53066be3c3a28d8b8ccb3dc95c1e49b1}{off\+\_\+t}}}]{span,  }\item[{struct access $\ast$$\ast$}]{built }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{zran_8c_a397d00639412ac3ce0c85e1f8779bda8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{zran_8c_a397d00639412ac3ce0c85e1f8779bda8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{zran_8c_af53a3b1c5bbe8a79fffda70fbb179e29}\label{zran_8c_af53a3b1c5bbe8a79fffda70fbb179e29}} 
+\index{zran.\+c@{zran.\+c}!extract@{extract}}
+\index{extract@{extract}!zran.\+c@{zran.\+c}}
+\subsubsection{\texorpdfstring{extract()}{extract()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} extract (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{in,  }\item[{struct access $\ast$}]{index,  }\item[{\mbox{\hyperlink{__builder_8h_a53066be3c3a28d8b8ccb3dc95c1e49b1}{off\+\_\+t}}}]{offset,  }\item[{unsigned char $\ast$}]{buf,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{len }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{zran_8c_af53a3b1c5bbe8a79fffda70fbb179e29_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{zran_8c_af53a3b1c5bbe8a79fffda70fbb179e29_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{zran_8c_ae774a5e885674a6c0b9f46332f4d9eb3}\label{zran_8c_ae774a5e885674a6c0b9f46332f4d9eb3}} 
+\index{zran.\+c@{zran.\+c}!free\+\_\+index@{free\+\_\+index}}
+\index{free\+\_\+index@{free\+\_\+index}!zran.\+c@{zran.\+c}}
+\subsubsection{\texorpdfstring{free\+\_\+index()}{free\_index()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void free\+\_\+index (\begin{DoxyParamCaption}\item[{struct access $\ast$}]{index }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{zran_8c_ae774a5e885674a6c0b9f46332f4d9eb3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{zran_8c_ae774a5e885674a6c0b9f46332f4d9eb3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{zran_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{zran_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{zran.\+c@{zran.\+c}!main@{main}}
+\index{main@{main}!zran.\+c@{zran.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{zran_8c_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['center',['CENTER',['../class_q_g_b_a_1_1_gamepad_hat_event.html#ae3f20662c61b054e5344aafb9d843837af37fc69d62bd1fb2392313ce300829e6',1,'QGBA::GamepadHatEvent']]],
+  ['check',['CHECK',['../inflate_8h.html#a164ea0159d5f0b5f12a646f25f99eceaaed65b7dfe470f4e500b15f7074bb7fa2',1,'inflate.h']]],
+  ['codelens',['CODELENS',['../inflate_8h.html#a164ea0159d5f0b5f12a646f25f99eceaa77b9f2ec0ee4bb6570ef4f42d8f2a492',1,'inflate.h']]],
+  ['coder_5ffinish_5fany',['CODER_FINISH_ANY',['../_xz_8h.html#ac449eaa46953542d10dbe2919e817e8eadb9170e0906f138f19efc66422fe1e64',1,'Xz.h']]],
+  ['coder_5ffinish_5fend',['CODER_FINISH_END',['../_xz_8h.html#ac449eaa46953542d10dbe2919e817e8ea3421ff053a9a10e689c10cf0dcc40808',1,'Xz.h']]],
+  ['coder_5fstatus_5ffinished_5fwith_5fmark',['CODER_STATUS_FINISHED_WITH_MARK',['../_xz_8h.html#a0cc45a16a4259ae8ce3108c6c4d2067ca1de3319d9ae59dff19b79fd29aaedab6',1,'Xz.h']]],
+  ['coder_5fstatus_5fneeds_5fmore_5finput',['CODER_STATUS_NEEDS_MORE_INPUT',['../_xz_8h.html#a0cc45a16a4259ae8ce3108c6c4d2067ca05ac90b9579f50b785620b6c1901f178',1,'Xz.h']]],
+  ['coder_5fstatus_5fnot_5ffinished',['CODER_STATUS_NOT_FINISHED',['../_xz_8h.html#a0cc45a16a4259ae8ce3108c6c4d2067cab4605226dea6ff371a7d138d369b50b2',1,'Xz.h']]],
+  ['coder_5fstatus_5fnot_5fspecified',['CODER_STATUS_NOT_SPECIFIED',['../_xz_8h.html#a0cc45a16a4259ae8ce3108c6c4d2067caf6234c192657319b80b2b1f6d8aa2223',1,'Xz.h']]],
+  ['codes',['CODES',['../inftree9_8h.html#a0f33f5acf9079ff1f054fa235df2443ba4f2ec4135d8cf82c6c35780e470cac28',1,'CODES():&#160;inftree9.h'],['../inftrees_8h.html#a0f33f5acf9079ff1f054fa235df2443ba4f2ec4135d8cf82c6c35780e470cac28',1,'CODES():&#160;inftrees.h']]],
+  ['col_5fcrc32',['COL_CRC32',['../class_q_g_b_a_1_1_library_tree.html#a019d167b263ccb0a08d0be54a13f11e3a54b6d0bab5b54918e9a18d9ffd1c3ac1',1,'QGBA::LibraryTree']]],
+  ['col_5flocation',['COL_LOCATION',['../class_q_g_b_a_1_1_library_tree.html#a019d167b263ccb0a08d0be54a13f11e3a47c161448baa27081c4df6571daad2fa',1,'QGBA::LibraryTree']]],
+  ['col_5fname',['COL_NAME',['../class_q_g_b_a_1_1_library_tree.html#a019d167b263ccb0a08d0be54a13f11e3a16ce9c5f99617bd18761d6cca9a696a5',1,'QGBA::LibraryTree']]],
+  ['col_5fplatform',['COL_PLATFORM',['../class_q_g_b_a_1_1_library_tree.html#a019d167b263ccb0a08d0be54a13f11e3ad76b3bd08bbecd26cfde87ad85598c4c',1,'QGBA::LibraryTree']]],
+  ['col_5fsize',['COL_SIZE',['../class_q_g_b_a_1_1_library_tree.html#a019d167b263ccb0a08d0be54a13f11e3a28a9e02f2f60b2c9fd0e8a654073fea3',1,'QGBA::LibraryTree']]],
+  ['comment',['COMMENT',['../inflate_8h.html#a164ea0159d5f0b5f12a646f25f99eceaaae696377c19e507b64e16be78ce3bbdb',1,'inflate.h']]],
+  ['copy',['COPY',['../inflate_8h.html#a164ea0159d5f0b5f12a646f25f99eceaaba6788019f0f871f0aefcd5644635785',1,'inflate.h']]],
+  ['copy_5f',['COPY_',['../inflate_8h.html#a164ea0159d5f0b5f12a646f25f99eceaabf17f496021fb9357faed8247beb3926',1,'inflate.h']]]
+];

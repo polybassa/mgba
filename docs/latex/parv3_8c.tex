@@ -1,0 +1,284 @@
+\hypertarget{parv3_8c}{}\section{src/gba/cheats/parv3.c File Reference}
+\label{parv3_8c}\index{src/gba/cheats/parv3.\+c@{src/gba/cheats/parv3.\+c}}
+{\ttfamily \#include $<$mgba/internal/gba/cheats.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}gba/cheats/gameshark.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba/internal/gba/gba.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+Include dependency graph for parv3.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parv3_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{parv3_8c_ad3a44057d351b141aec1019c213bbb4f}{\+\_\+par\+Addr}} (uint32\+\_\+t x)
+\item 
+static void \mbox{\hyperlink{parv3_8c_ac7e7f8a8c58af0d070babcc467661fe3}{\+\_\+par\+End\+Block}} (struct G\+B\+A\+Cheat\+Set $\ast$cheats)
+\item 
+static void \mbox{\hyperlink{parv3_8c_a1ff4831abed3dc975663b45f060b5e25}{\+\_\+par\+Else\+Block}} (struct G\+B\+A\+Cheat\+Set $\ast$cheats)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{parv3_8c_a2a873865cd1b65201a6bed01599945e3}{\+\_\+add\+P\+A\+R3\+Cond}} (struct G\+B\+A\+Cheat\+Set $\ast$cheats, uint32\+\_\+t op1, uint32\+\_\+t op2)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{parv3_8c_a25166c7e5540f8c3f0abc65a280c8f93}{\+\_\+add\+P\+A\+R3\+Special}} (struct G\+B\+A\+Cheat\+Set $\ast$cheats, uint32\+\_\+t op2)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{parv3_8c_a4a6f16514eec7e3d9abaaec861b94570}{G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay\+Raw}} (struct G\+B\+A\+Cheat\+Set $\ast$cheats, uint32\+\_\+t op1, uint32\+\_\+t op2)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{parv3_8c_a80eb7d4d8142073b47f29fb72fe2a7a6}{G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay}} (struct G\+B\+A\+Cheat\+Set $\ast$set, uint32\+\_\+t op1, uint32\+\_\+t op2)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{parv3_8c_a8adf611ade561069a2d39f7a8dcbbd42}{G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay\+Line}} (struct G\+B\+A\+Cheat\+Set $\ast$cheats, const char $\ast$line)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{parv3_8c_a23310b7c461b0018d8ef94f22a7a1dbd}{G\+B\+A\+Cheat\+Pro\+Action\+Replay\+Probability}} (uint32\+\_\+t op1, uint32\+\_\+t op2)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const uint32\+\_\+t \mbox{\hyperlink{parv3_8c_a52cb10817c45d603b4c828fbb7baa074}{G\+B\+A\+Cheat\+Pro\+Action\+Replay\+Seeds}} \mbox{[}4\mbox{]} = \{ 0x7\+A\+A9648\+F, 0x7\+F\+A\+E6994, 0x\+C0\+E\+F\+A\+A\+D5, 0x42712\+C57 \}
+\item 
+static const uint8\+\_\+t \mbox{\hyperlink{parv3_8c_acea91f8889076d36329af70fe31a8b87}{\+\_\+par3\+T1}} \mbox{[}256\mbox{]}
+\item 
+static const uint8\+\_\+t \mbox{\hyperlink{parv3_8c_a307a1e16f3c69a397338eb9b25041d64}{\+\_\+par3\+T2}} \mbox{[}256\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{parv3_8c_a2a873865cd1b65201a6bed01599945e3}\label{parv3_8c_a2a873865cd1b65201a6bed01599945e3}} 
+\index{parv3.\+c@{parv3.\+c}!\+\_\+add\+P\+A\+R3\+Cond@{\+\_\+add\+P\+A\+R3\+Cond}}
+\index{\+\_\+add\+P\+A\+R3\+Cond@{\+\_\+add\+P\+A\+R3\+Cond}!parv3.\+c@{parv3.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+add\+P\+A\+R3\+Cond()}{\_addPAR3Cond()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+add\+P\+A\+R3\+Cond (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cheat\+Set $\ast$}]{cheats,  }\item[{uint32\+\_\+t}]{op1,  }\item[{uint32\+\_\+t}]{op2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{parv3_8c_a2a873865cd1b65201a6bed01599945e3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parv3_8c_a2a873865cd1b65201a6bed01599945e3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{parv3_8c_a25166c7e5540f8c3f0abc65a280c8f93}\label{parv3_8c_a25166c7e5540f8c3f0abc65a280c8f93}} 
+\index{parv3.\+c@{parv3.\+c}!\+\_\+add\+P\+A\+R3\+Special@{\+\_\+add\+P\+A\+R3\+Special}}
+\index{\+\_\+add\+P\+A\+R3\+Special@{\+\_\+add\+P\+A\+R3\+Special}!parv3.\+c@{parv3.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+add\+P\+A\+R3\+Special()}{\_addPAR3Special()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+add\+P\+A\+R3\+Special (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cheat\+Set $\ast$}]{cheats,  }\item[{uint32\+\_\+t}]{op2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{parv3_8c_a25166c7e5540f8c3f0abc65a280c8f93_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parv3_8c_a25166c7e5540f8c3f0abc65a280c8f93_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{parv3_8c_ad3a44057d351b141aec1019c213bbb4f}\label{parv3_8c_ad3a44057d351b141aec1019c213bbb4f}} 
+\index{parv3.\+c@{parv3.\+c}!\+\_\+par\+Addr@{\+\_\+par\+Addr}}
+\index{\+\_\+par\+Addr@{\+\_\+par\+Addr}!parv3.\+c@{parv3.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+par\+Addr()}{\_parAddr()}}
+{\footnotesize\ttfamily static uint32\+\_\+t \+\_\+par\+Addr (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parv3_8c_ad3a44057d351b141aec1019c213bbb4f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{parv3_8c_a1ff4831abed3dc975663b45f060b5e25}\label{parv3_8c_a1ff4831abed3dc975663b45f060b5e25}} 
+\index{parv3.\+c@{parv3.\+c}!\+\_\+par\+Else\+Block@{\+\_\+par\+Else\+Block}}
+\index{\+\_\+par\+Else\+Block@{\+\_\+par\+Else\+Block}!parv3.\+c@{parv3.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+par\+Else\+Block()}{\_parElseBlock()}}
+{\footnotesize\ttfamily static void \+\_\+par\+Else\+Block (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cheat\+Set $\ast$}]{cheats }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parv3_8c_a1ff4831abed3dc975663b45f060b5e25_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{parv3_8c_ac7e7f8a8c58af0d070babcc467661fe3}\label{parv3_8c_ac7e7f8a8c58af0d070babcc467661fe3}} 
+\index{parv3.\+c@{parv3.\+c}!\+\_\+par\+End\+Block@{\+\_\+par\+End\+Block}}
+\index{\+\_\+par\+End\+Block@{\+\_\+par\+End\+Block}!parv3.\+c@{parv3.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+par\+End\+Block()}{\_parEndBlock()}}
+{\footnotesize\ttfamily static void \+\_\+par\+End\+Block (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cheat\+Set $\ast$}]{cheats }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parv3_8c_ac7e7f8a8c58af0d070babcc467661fe3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{parv3_8c_a80eb7d4d8142073b47f29fb72fe2a7a6}\label{parv3_8c_a80eb7d4d8142073b47f29fb72fe2a7a6}} 
+\index{parv3.\+c@{parv3.\+c}!G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay@{G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay}}
+\index{G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay@{G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay}!parv3.\+c@{parv3.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay()}{GBACheatAddProActionReplay()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cheat\+Set $\ast$}]{set,  }\item[{uint32\+\_\+t}]{op1,  }\item[{uint32\+\_\+t}]{op2 }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parv3_8c_a80eb7d4d8142073b47f29fb72fe2a7a6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parv3_8c_a80eb7d4d8142073b47f29fb72fe2a7a6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{parv3_8c_a8adf611ade561069a2d39f7a8dcbbd42}\label{parv3_8c_a8adf611ade561069a2d39f7a8dcbbd42}} 
+\index{parv3.\+c@{parv3.\+c}!G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay\+Line@{G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay\+Line}}
+\index{G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay\+Line@{G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay\+Line}!parv3.\+c@{parv3.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay\+Line()}{GBACheatAddProActionReplayLine()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay\+Line (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cheat\+Set $\ast$}]{cheats,  }\item[{const char $\ast$}]{line }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parv3_8c_a8adf611ade561069a2d39f7a8dcbbd42_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parv3_8c_a8adf611ade561069a2d39f7a8dcbbd42_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{parv3_8c_a4a6f16514eec7e3d9abaaec861b94570}\label{parv3_8c_a4a6f16514eec7e3d9abaaec861b94570}} 
+\index{parv3.\+c@{parv3.\+c}!G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay\+Raw@{G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay\+Raw}}
+\index{G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay\+Raw@{G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay\+Raw}!parv3.\+c@{parv3.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay\+Raw()}{GBACheatAddProActionReplayRaw()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+A\+Cheat\+Add\+Pro\+Action\+Replay\+Raw (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Cheat\+Set $\ast$}]{cheats,  }\item[{uint32\+\_\+t}]{op1,  }\item[{uint32\+\_\+t}]{op2 }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parv3_8c_a4a6f16514eec7e3d9abaaec861b94570_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parv3_8c_a4a6f16514eec7e3d9abaaec861b94570_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{parv3_8c_a23310b7c461b0018d8ef94f22a7a1dbd}\label{parv3_8c_a23310b7c461b0018d8ef94f22a7a1dbd}} 
+\index{parv3.\+c@{parv3.\+c}!G\+B\+A\+Cheat\+Pro\+Action\+Replay\+Probability@{G\+B\+A\+Cheat\+Pro\+Action\+Replay\+Probability}}
+\index{G\+B\+A\+Cheat\+Pro\+Action\+Replay\+Probability@{G\+B\+A\+Cheat\+Pro\+Action\+Replay\+Probability}!parv3.\+c@{parv3.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Cheat\+Pro\+Action\+Replay\+Probability()}{GBACheatProActionReplayProbability()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} G\+B\+A\+Cheat\+Pro\+Action\+Replay\+Probability (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{op1,  }\item[{uint32\+\_\+t}]{op2 }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parv3_8c_a23310b7c461b0018d8ef94f22a7a1dbd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parv3_8c_a23310b7c461b0018d8ef94f22a7a1dbd_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{parv3_8c_acea91f8889076d36329af70fe31a8b87}\label{parv3_8c_acea91f8889076d36329af70fe31a8b87}} 
+\index{parv3.\+c@{parv3.\+c}!\+\_\+par3\+T1@{\+\_\+par3\+T1}}
+\index{\+\_\+par3\+T1@{\+\_\+par3\+T1}!parv3.\+c@{parv3.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+par3\+T1}{\_par3T1}}
+{\footnotesize\ttfamily const uint8\+\_\+t \+\_\+par3\+T1\mbox{[}256\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    0xD0, 0xFF, 0xBA, 0xE5, 0xC1, 0xC7, 0xDB, 0x5B, 0x16, 0xE3, 0x6E, 0x26, 0x62, 0x31, 0x2E, 0x2A,
+    0xD1, 0xBB, 0x4A, 0xE6, 0xAE, 0x2F, 0x0A, 0x90, 0x29, 0x90, 0xB6, 0x67, 0x58, 0x2A, 0xB4, 0x45,
+    0x7B, 0xCB, 0xF0, 0x73, 0x84, 0x30, 0x81, 0xC2, 0xD7, 0xBE, 0x89, 0xD7, 0x4E, 0x73, 0x5C, 0xC7,
+    0x80, 0x1B, 0xE5, 0xE4, 0x43, 0xC7, 0x46, 0xD6, 0x6F, 0x7B, 0xBF, 0xED, 0xE5, 0x27, 0xD1, 0xB5,
+    0xD0, 0xD8, 0xA3, 0xCB, 0x2B, 0x30, 0xA4, 0xF0, 0x84, 0x14, 0x72, 0x5C, 0xFF, 0xA4, 0xFB, 0x54,
+    0x9D, 0x70, 0xE2, 0xFF, 0xBE, 0xE8, 0x24, 0x76, 0xE5, 0x15, 0xFB, 0x1A, 0xBC, 0x87, 0x02, 0x2A,
+    0x58, 0x8F, 0x9A, 0x95, 0xBD, 0xAE, 0x8D, 0x0C, 0xA5, 0x4C, 0xF2, 0x5C, 0x7D, 0xAD, 0x51, 0xFB,
+    0xB1, 0x22, 0x07, 0xE0, 0x29, 0x7C, 0xEB, 0x98, 0x14, 0xC6, 0x31, 0x97, 0xE4, 0x34, 0x8F, 0xCC,
+    0x99, 0x56, 0x9F, 0x78, 0x43, 0x91, 0x85, 0x3F, 0xC2, 0xD0, 0xD1, 0x80, 0xD1, 0x77, 0xA7, 0xE2,
+    0x43, 0x99, 0x1D, 0x2F, 0x8B, 0x6A, 0xE4, 0x66, 0x82, 0xF7, 0x2B, 0x0B, 0x65, 0x14, 0xC0, 0xC2,
+    0x1D, 0x96, 0x78, 0x1C, 0xC4, 0xC3, 0xD2, 0xB1, 0x64, 0x07, 0xD7, 0x6F, 0x02, 0xE9, 0x44, 0x31,
+    0xDB, 0x3C, 0xEB, 0x93, 0xED, 0x9A, 0x57, 0x05, 0xB9, 0x0E, 0xAF, 0x1F, 0x48, 0x11, 0xDC, 0x35,
+    0x6C, 0xB8, 0xEE, 0x2A, 0x48, 0x2B, 0xBC, 0x89, 0x12, 0x59, 0xCB, 0xD1, 0x18, 0xEA, 0x72, 0x11,
+    0x01, 0x75, 0x3B, 0xB5, 0x56, 0xF4, 0x8B, 0xA0, 0x41, 0x75, 0x86, 0x7B, 0x94, 0x12, 0x2D, 0x4C,
+    0x0C, 0x22, 0xC9, 0x4A, 0xD8, 0xB1, 0x8D, 0xF0, 0x55, 0x2E, 0x77, 0x50, 0x1C, 0x64, 0x77, 0xAA,
+    0x3E, 0xAC, 0xD3, 0x3D, 0xCE, 0x60, 0xCA, 0x5D, 0xA0, 0x92, 0x78, 0xC6, 0x51, 0xFE, 0xF9, 0x30
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{parv3_8c_a307a1e16f3c69a397338eb9b25041d64}\label{parv3_8c_a307a1e16f3c69a397338eb9b25041d64}} 
+\index{parv3.\+c@{parv3.\+c}!\+\_\+par3\+T2@{\+\_\+par3\+T2}}
+\index{\+\_\+par3\+T2@{\+\_\+par3\+T2}!parv3.\+c@{parv3.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+par3\+T2}{\_par3T2}}
+{\footnotesize\ttfamily const uint8\+\_\+t \+\_\+par3\+T2\mbox{[}256\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    0xAA, 0xAF, 0xF0, 0x72, 0x90, 0xF7, 0x71, 0x27, 0x06, 0x11, 0xEB, 0x9C, 0x37, 0x12, 0x72, 0xAA,
+    0x65, 0xBC, 0x0D, 0x4A, 0x76, 0xF6, 0x5C, 0xAA, 0xB0, 0x7A, 0x7D, 0x81, 0xC1, 0xCE, 0x2F, 0x9F,
+    0x02, 0x75, 0x38, 0xC8, 0xFC, 0x66, 0x05, 0xC2, 0x2C, 0xBD, 0x91, 0xAD, 0x03, 0xB1, 0x88, 0x93,
+    0x31, 0xC6, 0xAB, 0x40, 0x23, 0x43, 0x76, 0x54, 0xCA, 0xE7, 0x00, 0x96, 0x9F, 0xD8, 0x24, 0x8B,
+    0xE4, 0xDC, 0xDE, 0x48, 0x2C, 0xCB, 0xF7, 0x84, 0x1D, 0x45, 0xE5, 0xF1, 0x75, 0xA0, 0xED, 0xCD,
+    0x4B, 0x24, 0x8A, 0xB3, 0x98, 0x7B, 0x12, 0xB8, 0xF5, 0x63, 0x97, 0xB3, 0xA6, 0xA6, 0x0B, 0xDC,
+    0xD8, 0x4C, 0xA8, 0x99, 0x27, 0x0F, 0x8F, 0x94, 0x63, 0x0F, 0xB0, 0x11, 0x94, 0xC7, 0xE9, 0x7F,
+    0x3B, 0x40, 0x72, 0x4C, 0xDB, 0x84, 0x78, 0xFE, 0xB8, 0x56, 0x08, 0x80, 0xDF, 0x20, 0x2F, 0xB9,
+    0x66, 0x2D, 0x60, 0x63, 0xF5, 0x18, 0x15, 0x1B, 0x86, 0x85, 0xB9, 0xB4, 0x68, 0x0E, 0xC6, 0xD1,
+    0x8A, 0x81, 0x2B, 0xB3, 0xF6, 0x48, 0xF0, 0x4F, 0x9C, 0x28, 0x1C, 0xA4, 0x51, 0x2F, 0xD7, 0x4B,
+    0x17, 0xE7, 0xCC, 0x50, 0x9F, 0xD0, 0xD1, 0x40, 0x0C, 0x0D, 0xCA, 0x83, 0xFA, 0x5E, 0xCA, 0xEC,
+    0xBF, 0x4E, 0x7C, 0x8F, 0xF0, 0xAE, 0xC2, 0xD3, 0x28, 0x41, 0x9B, 0xC8, 0x04, 0xB9, 0x4A, 0xBA,
+    0x72, 0xE2, 0xB5, 0x06, 0x2C, 0x1E, 0x0B, 0x2C, 0x7F, 0x11, 0xA9, 0x26, 0x51, 0x9D, 0x3F, 0xF8,
+    0x62, 0x11, 0x2E, 0x89, 0xD2, 0x9D, 0x35, 0xB1, 0xE4, 0x0A, 0x4D, 0x93, 0x01, 0xA7, 0xD1, 0x2D,
+    0x00, 0x87, 0xE2, 0x2D, 0xA4, 0xE9, 0x0A, 0x06, 0x66, 0xF8, 0x1F, 0x44, 0x75, 0xB5, 0x6B, 0x1C,
+    0xFC, 0x31, 0x09, 0x48, 0xA3, 0xFF, 0x92, 0x12, 0x58, 0xE9, 0xFA, 0xAE, 0x4F, 0xE2, 0xB4, 0xCC
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{parv3_8c_a52cb10817c45d603b4c828fbb7baa074}\label{parv3_8c_a52cb10817c45d603b4c828fbb7baa074}} 
+\index{parv3.\+c@{parv3.\+c}!G\+B\+A\+Cheat\+Pro\+Action\+Replay\+Seeds@{G\+B\+A\+Cheat\+Pro\+Action\+Replay\+Seeds}}
+\index{G\+B\+A\+Cheat\+Pro\+Action\+Replay\+Seeds@{G\+B\+A\+Cheat\+Pro\+Action\+Replay\+Seeds}!parv3.\+c@{parv3.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Cheat\+Pro\+Action\+Replay\+Seeds}{GBACheatProActionReplaySeeds}}
+{\footnotesize\ttfamily const uint32\+\_\+t G\+B\+A\+Cheat\+Pro\+Action\+Replay\+Seeds\mbox{[}4\mbox{]} = \{ 0x7\+A\+A9648\+F, 0x7\+F\+A\+E6994, 0x\+C0\+E\+F\+A\+A\+D5, 0x42712\+C57 \}}
+

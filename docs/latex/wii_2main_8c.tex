@@ -1,0 +1,1127 @@
+\hypertarget{wii_2main_8c}{}\section{src/platform/wii/main.c File Reference}
+\label{wii_2main_8c}\index{src/platform/wii/main.\+c@{src/platform/wii/main.\+c}}
+{\ttfamily \#include $<$fat.\+h$>$}\newline
+{\ttfamily \#include $<$gccore.\+h$>$}\newline
+{\ttfamily \#include $<$ogc/machine/processor.\+h$>$}\newline
+{\ttfamily \#include $<$malloc.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$wiiuse/wpad.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/common.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/blip\+\_\+buf.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}feature/gui/gui-\/runner.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba/internal/gba/audio.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/gba.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/input.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/gui.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/gui/file-\/select.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/gui/font.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/gui/menu.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/memory.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+Include dependency graph for main.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{wii_2main_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{wii_2main_8c_a71921cebf4610b0dbb2b7a0daaf3fedf}{asm}}~\+\_\+\+\_\+asm\+\_\+\+\_\+
+\item 
+\#define \mbox{\hyperlink{wii_2main_8c_a488295738b94766804bc91d12c7fb351}{G\+C\+N1\+\_\+\+I\+N\+P\+UT}}~0x47434\+E31
+\item 
+\#define \mbox{\hyperlink{wii_2main_8c_a4d384f5261659f4375a2ecbfdbac21da}{G\+C\+N2\+\_\+\+I\+N\+P\+UT}}~0x47434\+E32
+\item 
+\#define \mbox{\hyperlink{wii_2main_8c_a1c1265d442f5d82e2165f5e478cb5d88}{W\+I\+I\+M\+O\+T\+E\+\_\+\+I\+N\+P\+UT}}~0x5749494D
+\item 
+\#define \mbox{\hyperlink{wii_2main_8c_a95d07fbfe0adfb19a1a88cb8f9f49531}{C\+L\+A\+S\+S\+I\+C\+\_\+\+I\+N\+P\+UT}}~0x57494943
+\item 
+\#define \mbox{\hyperlink{wii_2main_8c_a1e236e5e069816fb4257313f7a705149}{T\+E\+X\+\_\+W}}~256
+\item 
+\#define \mbox{\hyperlink{wii_2main_8c_a9d0325ff9498f81e9f5679b856f4f6dc}{T\+E\+X\+\_\+H}}~224
+\item 
+\#define \mbox{\hyperlink{wii_2main_8c_ad0c329adebc27917fc0a4f51079acf6a}{S\+A\+M\+P\+L\+ES}}~1024
+\item 
+\#define \mbox{\hyperlink{wii_2main_8c_a9715e3a8b6093660ccaeed7de57c241c}{G\+U\+I\+\_\+\+S\+C\+A\+LE}}~1.\+35f
+\item 
+\#define \mbox{\hyperlink{wii_2main_8c_aa37a35e3d26387632d264e35b9a9cd7a}{G\+U\+I\+\_\+\+S\+C\+A\+L\+E\+\_\+240p}}~2.\+0f
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353}{Screen\+Mode}} \{ \newline
+\mbox{\hyperlink{3ds_2main_8c_aefe4cd50ac123b6c800eede74968a353aca1b3a55dbfddfeb68218984a19beb6d}{S\+M\+\_\+\+P\+A\+\_\+\+B\+O\+T\+T\+OM}}, 
+\mbox{\hyperlink{3ds_2main_8c_aefe4cd50ac123b6c800eede74968a353ab888ea2fc282030fb4c98ecefd32df0b}{S\+M\+\_\+\+A\+F\+\_\+\+B\+O\+T\+T\+OM}}, 
+\mbox{\hyperlink{3ds_2main_8c_aefe4cd50ac123b6c800eede74968a353a71678dabe149ea5dea6d4fcdc0fe5191}{S\+M\+\_\+\+S\+F\+\_\+\+B\+O\+T\+T\+OM}}, 
+\mbox{\hyperlink{3ds_2main_8c_aefe4cd50ac123b6c800eede74968a353a2b89cadbb7bad03c80ee30df158e3fe6}{S\+M\+\_\+\+P\+A\+\_\+\+T\+OP}}, 
+\newline
+\mbox{\hyperlink{3ds_2main_8c_aefe4cd50ac123b6c800eede74968a353aedcbb19a0f07eb4a265543ce1403c861}{S\+M\+\_\+\+A\+F\+\_\+\+T\+OP}}, 
+\mbox{\hyperlink{3ds_2main_8c_aefe4cd50ac123b6c800eede74968a353ad64f4dfe249dd2f73f30feab625fddff}{S\+M\+\_\+\+S\+F\+\_\+\+T\+OP}}, 
+\mbox{\hyperlink{3ds_2main_8c_aefe4cd50ac123b6c800eede74968a353aff08e32659fa560ad0a16f3d1b9fdacd}{S\+M\+\_\+\+M\+AX}}, 
+\mbox{\hyperlink{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353ae39f259ab834f2faa529cdac89da5c44}{S\+M\+\_\+\+B\+A\+C\+K\+D\+R\+OP}}, 
+\newline
+\mbox{\hyperlink{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353a55995b0aff33425170f54ee0e8c157df}{S\+M\+\_\+\+P\+L\+A\+IN}}, 
+\mbox{\hyperlink{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353af7279dea12e50376e0d062557101ccbd}{S\+M\+\_\+\+F\+U\+LL}}, 
+\mbox{\hyperlink{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353a2631fa1293eeebd798452c4a8e1bb939}{S\+M\+\_\+\+A\+S\+P\+E\+CT}}, 
+\mbox{\hyperlink{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353aff08e32659fa560ad0a16f3d1b9fdacd}{S\+M\+\_\+\+M\+AX}}, 
+\newline
+\mbox{\hyperlink{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353ac6c34f453cd57936b352cc0c2bf01601}{S\+M\+\_\+\+PA}}, 
+\mbox{\hyperlink{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353a631f5c9fb0a8107465664d09e6d8660f}{S\+M\+\_\+\+SF}}, 
+\mbox{\hyperlink{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353aff08e32659fa560ad0a16f3d1b9fdacd}{S\+M\+\_\+\+M\+AX}}
+ \}
+\item 
+enum \mbox{\hyperlink{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083}{Filter\+Mode}} \{ \newline
+\mbox{\hyperlink{3ds_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a0b5fd789948b5f22fc2dc33db250a0d1}{F\+M\+\_\+\+N\+E\+A\+R\+E\+ST}}, 
+\mbox{\hyperlink{3ds_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a5b3102d9d969a1983120a58544df7dcd}{F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+1x}}, 
+\mbox{\hyperlink{3ds_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a1f7170e1cfc8c253e5a4f59dcbc7c510}{F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+2x}}, 
+\mbox{\hyperlink{3ds_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a4d2c56f52192347cc69ae5ad505b6435}{F\+M\+\_\+\+M\+AX}}, 
+\newline
+\mbox{\hyperlink{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a0b5fd789948b5f22fc2dc33db250a0d1}{F\+M\+\_\+\+N\+E\+A\+R\+E\+ST}}, 
+\mbox{\hyperlink{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a5b3102d9d969a1983120a58544df7dcd}{F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+1x}}, 
+\mbox{\hyperlink{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a1f7170e1cfc8c253e5a4f59dcbc7c510}{F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+2x}}, 
+\mbox{\hyperlink{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a4d2c56f52192347cc69ae5ad505b6435}{F\+M\+\_\+\+M\+AX}}
+ \}
+\item 
+enum \mbox{\hyperlink{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149}{Video\+Mode}} \{ \newline
+\mbox{\hyperlink{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149a0f311ebc6ad3c70f0b43caf81d22ebf2}{V\+M\+\_\+\+A\+U\+T\+O\+D\+E\+T\+E\+CT}}, 
+\mbox{\hyperlink{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149aec05fb3a2a65e1b026738fd9cbc215b7}{V\+M\+\_\+480i}}, 
+\mbox{\hyperlink{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149a03b3cc3b234bf16e690a8d4faf2eb97e}{V\+M\+\_\+480p}}, 
+\mbox{\hyperlink{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149ab16da7242dbb93100074025331ad2048}{V\+M\+\_\+240p}}, 
+\newline
+\mbox{\hyperlink{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149a871039310e6a1c3de4e89e2a23e8d3a5}{V\+M\+\_\+\+M\+AX}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{wii_2main_8c_ad0534b9bfccd8a470e7fa0b79021326f}{\+\_\+map\+Key}} (struct m\+Input\+Map $\ast$map, uint32\+\_\+t binding, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} native\+Key, enum G\+B\+A\+Key key)
+\item 
+static void \mbox{\hyperlink{wii_2main_8c_acd031aebe3debf6a849e824369f6d6d6}{\+\_\+retrace\+Callback}} (\mbox{\hyperlink{sqlite3_8c_a03ad5adfaeb9b7640dde78a0cc390319}{u32}} \mbox{\hyperlink{enough_8c_ab25137bc309ccde185e2628bf4403ec7}{count}})
+\item 
+static void \mbox{\hyperlink{wii_2main_8c_ae27741f8eb230a8a8c93caab3f61a6d3}{\+\_\+audio\+D\+MA}} (void)
+\item 
+static void \mbox{\hyperlink{wii_2main_8c_afcf85590758eced3682cb0347e028ee6}{\+\_\+set\+Rumble}} (struct m\+Rumble $\ast$\mbox{\hyperlink{wii_2main_8c_a0be8203c70a7aa4a9c0029361e5d907b}{rumble}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} enable)
+\item 
+static void \mbox{\hyperlink{wii_2main_8c_a2c62fc0c6b0997c95380cbe59d51b64f}{\+\_\+sample\+Rotation}} (struct m\+Rotation\+Source $\ast$source)
+\item 
+static int32\+\_\+t \mbox{\hyperlink{wii_2main_8c_ab02deb80973e9bd6ae8b0cf04595edfa}{\+\_\+read\+TiltX}} (struct m\+Rotation\+Source $\ast$source)
+\item 
+static int32\+\_\+t \mbox{\hyperlink{wii_2main_8c_ae8f68f518bf94b9dc331bfdbcd384aec}{\+\_\+read\+TiltY}} (struct m\+Rotation\+Source $\ast$source)
+\item 
+static int32\+\_\+t \mbox{\hyperlink{wii_2main_8c_a1efea60f498b6091557f1214b7d42ca1}{\+\_\+read\+GyroZ}} (struct m\+Rotation\+Source $\ast$source)
+\item 
+static void \mbox{\hyperlink{wii_2main_8c_a971ecc7f379baaab90aa7fa59acc9d52}{\+\_\+draw\+Start}} (void)
+\item 
+static void \mbox{\hyperlink{wii_2main_8c_a1d972b1c2c62a05aa9e3bb27fb4b2763}{\+\_\+draw\+End}} (void)
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{wii_2main_8c_a9618cffe030de46b5edc98e7a4d3ddc4}{\+\_\+poll\+Input}} (const struct m\+Input\+Map $\ast$)
+\item 
+static enum G\+U\+I\+Cursor\+State \mbox{\hyperlink{wii_2main_8c_a18e379d7cd5b99e472c96dbeb05d2c19}{\+\_\+poll\+Cursor}} (unsigned $\ast$x, unsigned $\ast$y)
+\item 
+static void \mbox{\hyperlink{wii_2main_8c_aa439d734038da4fad2654f1865c32490}{\+\_\+gui\+Prepare}} (void)
+\item 
+static void \mbox{\hyperlink{wii_2main_8c_ac92413f4871c33aaaf165780503c4e55}{\+\_\+setup}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$runner)
+\item 
+static void \mbox{\hyperlink{wii_2main_8c_af8da102e3fe3be744cabc39b57d4890b}{\+\_\+game\+Loaded}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$runner)
+\item 
+static void \mbox{\hyperlink{wii_2main_8c_a094620a54735bfd7220166de65dd8443}{\+\_\+game\+Unloaded}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$runner)
+\item 
+static void \mbox{\hyperlink{wii_2main_8c_a642e2eac3e3fd79405fb68d6ba150f05}{\+\_\+unpaused}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$runner)
+\item 
+static void \mbox{\hyperlink{wii_2main_8c_a77a048bada70aeeac538c9178266427a}{\+\_\+draw\+Frame}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$runner, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} faded)
+\item 
+static uint16\+\_\+t \mbox{\hyperlink{wii_2main_8c_a23396d09786addf92c657a87c20a12b7}{\+\_\+poll\+Game\+Input}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$runner)
+\item 
+static void \mbox{\hyperlink{wii_2main_8c_a32550cd6f1129400cd7a8fd45864f626}{\+\_\+set\+Frame\+Limiter}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$runner, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} limit)
+\item 
+static void \mbox{\hyperlink{wii_2main_8c_afa3e517ae98271db79f33bdb7587f215}{\+\_\+increment\+Screen\+Mode}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$runner)
+\item 
+static s8 \mbox{\hyperlink{wii_2main_8c_a1a1e171f67a342d6cd8f98934b0dfa79}{W\+P\+A\+D\+\_\+\+StickX}} (\mbox{\hyperlink{sqlite3_8c_a74a0f6424ae628af25f23f0a35f6ead3}{u8}} chan, \mbox{\hyperlink{sqlite3_8c_a74a0f6424ae628af25f23f0a35f6ead3}{u8}} right)
+\item 
+static s8 \mbox{\hyperlink{wii_2main_8c_a4ff41cb037058f9845bdff2f22061d82}{W\+P\+A\+D\+\_\+\+StickY}} (\mbox{\hyperlink{sqlite3_8c_a74a0f6424ae628af25f23f0a35f6ead3}{u8}} chan, \mbox{\hyperlink{sqlite3_8c_a74a0f6424ae628af25f23f0a35f6ead3}{u8}} right)
+\item 
+static struct G\+B\+A\+Stereo\+Sample audio\+Buffer \mbox{[}3\mbox{]}\mbox{[}\mbox{\hyperlink{blip__buf_8c_a9c2e0b4b7cf64a5154aed6e2506a1ffc}{S\+A\+M\+P\+L\+ES}}\mbox{]} \mbox{\hyperlink{wii_2main_8c_a18d6965ee82574c6a6f58e9fc197102d}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}} ((\+\_\+\+\_\+aligned\+\_\+\+\_\+(32)))
+\item 
+static void \mbox{\hyperlink{wii_2main_8c_a5bfc41e18c837803e652539524537f58}{reconfigure\+Screen}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$runner)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{wii_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\item 
+void \mbox{\hyperlink{wii_2main_8c_ab1da59b3822540b30e612c2047fe6c20}{\+\_\+reproj}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} w, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}})
+\item 
+void \mbox{\hyperlink{wii_2main_8c_a10c41a7ecc72645bbf7b4816275e74fe}{\+\_\+reproj2}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} w, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static enum \mbox{\hyperlink{3ds_2main_8c_aefe4cd50ac123b6c800eede74968a353}{Screen\+Mode}} \mbox{\hyperlink{wii_2main_8c_aa6506f4016bae669706872ea621efd8c}{screen\+Mode}} = \mbox{\hyperlink{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353ac6c34f453cd57936b352cc0c2bf01601}{S\+M\+\_\+\+PA}}
+\item 
+static enum \mbox{\hyperlink{3ds_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083}{Filter\+Mode}} \mbox{\hyperlink{wii_2main_8c_a2140810dd6359607526cf84442057094}{filter\+Mode}} = \mbox{\hyperlink{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a0b5fd789948b5f22fc2dc33db250a0d1}{F\+M\+\_\+\+N\+E\+A\+R\+E\+ST}}
+\item 
+static enum \mbox{\hyperlink{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149}{Video\+Mode}} \mbox{\hyperlink{wii_2main_8c_a4d167ba02c1b5c802354cbe61ddc93bb}{video\+Mode}} = \mbox{\hyperlink{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149a0f311ebc6ad3c70f0b43caf81d22ebf2}{V\+M\+\_\+\+A\+U\+T\+O\+D\+E\+T\+E\+CT}}
+\item 
+static void $\ast$ \mbox{\hyperlink{wii_2main_8c_a0779122b7156629157afcf1a35c372ef}{output\+Buffer}}
+\item 
+static struct m\+Rumble \mbox{\hyperlink{wii_2main_8c_a0be8203c70a7aa4a9c0029361e5d907b}{rumble}}
+\item 
+static struct m\+Rotation\+Source \mbox{\hyperlink{wii_2main_8c_a7031a4df8d3c98f2016cb56ce6203cb5}{rotation}}
+\item 
+static G\+X\+R\+Mode\+Obj $\ast$ \mbox{\hyperlink{wii_2main_8c_a143f3eb6984006ae81af6e8878b8562f}{vmode}}
+\item 
+static float \mbox{\hyperlink{wii_2main_8c_a3020321452a57ce3e153e08d6e92cecf}{w\+Adjust}}
+\item 
+static float \mbox{\hyperlink{wii_2main_8c_a007fb5c60d93e1417a935e38d8eb69c7}{h\+Adjust}}
+\item 
+static float \mbox{\hyperlink{wii_2main_8c_a48aa8f40aaf1b014e72a56ec5f6de844}{w\+Stretch}} = 1.\+0f
+\item 
+static float \mbox{\hyperlink{wii_2main_8c_ab6df2213adf797f9146a3b353fb74ccd}{h\+Stretch}} = 0.\+9f
+\item 
+static float \mbox{\hyperlink{wii_2main_8c_afd44bfd8aecf83bb5ce7707bcf337086}{gui\+Scale}} = \mbox{\hyperlink{wii_2main_8c_a9715e3a8b6093660ccaeed7de57c241c}{G\+U\+I\+\_\+\+S\+C\+A\+LE}}
+\item 
+static Mtx \mbox{\hyperlink{wii_2main_8c_a4e9e9b3fadf5464fb21fe18bc1a9061c}{model}}
+\item 
+static Mtx \mbox{\hyperlink{wii_2main_8c_a34a8db1f85827092bbc7df06abde3fd2}{view}}
+\item 
+static Mtx \mbox{\hyperlink{wii_2main_8c_a9757c82848e49036e32eb3d09921eb5b}{modelview}}
+\item 
+static uint16\+\_\+t $\ast$ \mbox{\hyperlink{wii_2main_8c_a4ca44db2f475803e95e679aaa54ebed2}{texmem}}
+\item 
+static G\+X\+Tex\+Obj \mbox{\hyperlink{wii_2main_8c_a8406d7ff715e883b171540ecaa7ea3c4}{tex}}
+\item 
+static uint16\+\_\+t $\ast$ \mbox{\hyperlink{wii_2main_8c_ab6a1b1f05726d63d181546935a856f1f}{rescale\+Texmem}}
+\item 
+static G\+X\+Tex\+Obj \mbox{\hyperlink{wii_2main_8c_a0bcf5201ade3db7e4103e9ac92c103d9}{rescale\+Tex}}
+\item 
+static int32\+\_\+t \mbox{\hyperlink{wii_2main_8c_a2af218f5110dfb9ff56c2ee401c58c4f}{tiltX}}
+\item 
+static int32\+\_\+t \mbox{\hyperlink{wii_2main_8c_a2d49d2ff4d84f91334f6d9a3eafbe5a3}{tiltY}}
+\item 
+static int32\+\_\+t \mbox{\hyperlink{wii_2main_8c_a16279bf7643ec841616669e9be945402}{gyroZ}}
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{wii_2main_8c_aca4812acd44d230309485e86f3f266c0}{retrace\+Count}}
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{wii_2main_8c_a7ed0fc6ea460b70c1b85583c2bd1c4ff}{reference\+Retrace\+Count}}
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{wii_2main_8c_a79ad80572fd8710aecd999faddccfed8}{frame\+Limiter}} = true
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{wii_2main_8c_abf473eae6494d40ce12c72a39f0ca41d}{scale\+Factor}}
+\item 
+static unsigned \mbox{\hyperlink{wii_2main_8c_a39342bb71da6bf9c535ebc51a38413c7}{corew}}
+\item 
+static unsigned \mbox{\hyperlink{wii_2main_8c_a6ef9a5d2326b8649b0a0fc4464a15cf9}{coreh}}
+\item 
+uint32\+\_\+t $\ast$ \mbox{\hyperlink{wii_2main_8c_a9ddc2aeb88953349f8df5508a2d0409e}{rom\+Buffer}}
+\item 
+size\+\_\+t \mbox{\hyperlink{wii_2main_8c_ac8c80ae05c56d2d34b4029e3abde405a}{rom\+Buffer\+Size}}
+\item 
+static void $\ast$ \mbox{\hyperlink{wii_2main_8c_a360425217cfa7f5b82fa655a83f136c6}{framebuffer}} \mbox{[}2\mbox{]} = \{ 0, 0 \}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{wii_2main_8c_a7173698d639000892d41c02a374bb5aa}{which\+Fb}} = 0
+\item 
+static volatile size\+\_\+t \mbox{\hyperlink{wii_2main_8c_a41d4db990aaa6a962a4d330bd5dcaf71}{audio\+Buffer\+Size}} = 0
+\item 
+static volatile \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{wii_2main_8c_a1cc2c60231da28fcde958f13cae37b99}{current\+Audio\+Buffer}} = 0
+\item 
+static double \mbox{\hyperlink{wii_2main_8c_a3839ee1d633b53e1956663dccb48e7d5}{audio\+Sample\+Rate}} = 60.\+0 / 1.\+001
+\item 
+static struct G\+U\+I\+Font $\ast$ \mbox{\hyperlink{wii_2main_8c_adae3f41cbe0ea5e886715661bb739691}{font}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{wii_2main_8c_a71921cebf4610b0dbb2b7a0daaf3fedf}\label{wii_2main_8c_a71921cebf4610b0dbb2b7a0daaf3fedf}} 
+\index{wii/main.\+c@{wii/main.\+c}!asm@{asm}}
+\index{asm@{asm}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{asm}{asm}}
+{\footnotesize\ttfamily \#define asm~\+\_\+\+\_\+asm\+\_\+\+\_\+}
+
+\mbox{\Hypertarget{wii_2main_8c_a95d07fbfe0adfb19a1a88cb8f9f49531}\label{wii_2main_8c_a95d07fbfe0adfb19a1a88cb8f9f49531}} 
+\index{wii/main.\+c@{wii/main.\+c}!C\+L\+A\+S\+S\+I\+C\+\_\+\+I\+N\+P\+UT@{C\+L\+A\+S\+S\+I\+C\+\_\+\+I\+N\+P\+UT}}
+\index{C\+L\+A\+S\+S\+I\+C\+\_\+\+I\+N\+P\+UT@{C\+L\+A\+S\+S\+I\+C\+\_\+\+I\+N\+P\+UT}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{C\+L\+A\+S\+S\+I\+C\+\_\+\+I\+N\+P\+UT}{CLASSIC\_INPUT}}
+{\footnotesize\ttfamily \#define C\+L\+A\+S\+S\+I\+C\+\_\+\+I\+N\+P\+UT~0x57494943}
+
+\mbox{\Hypertarget{wii_2main_8c_a488295738b94766804bc91d12c7fb351}\label{wii_2main_8c_a488295738b94766804bc91d12c7fb351}} 
+\index{wii/main.\+c@{wii/main.\+c}!G\+C\+N1\+\_\+\+I\+N\+P\+UT@{G\+C\+N1\+\_\+\+I\+N\+P\+UT}}
+\index{G\+C\+N1\+\_\+\+I\+N\+P\+UT@{G\+C\+N1\+\_\+\+I\+N\+P\+UT}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{G\+C\+N1\+\_\+\+I\+N\+P\+UT}{GCN1\_INPUT}}
+{\footnotesize\ttfamily \#define G\+C\+N1\+\_\+\+I\+N\+P\+UT~0x47434\+E31}
+
+\mbox{\Hypertarget{wii_2main_8c_a4d384f5261659f4375a2ecbfdbac21da}\label{wii_2main_8c_a4d384f5261659f4375a2ecbfdbac21da}} 
+\index{wii/main.\+c@{wii/main.\+c}!G\+C\+N2\+\_\+\+I\+N\+P\+UT@{G\+C\+N2\+\_\+\+I\+N\+P\+UT}}
+\index{G\+C\+N2\+\_\+\+I\+N\+P\+UT@{G\+C\+N2\+\_\+\+I\+N\+P\+UT}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{G\+C\+N2\+\_\+\+I\+N\+P\+UT}{GCN2\_INPUT}}
+{\footnotesize\ttfamily \#define G\+C\+N2\+\_\+\+I\+N\+P\+UT~0x47434\+E32}
+
+\mbox{\Hypertarget{wii_2main_8c_a9715e3a8b6093660ccaeed7de57c241c}\label{wii_2main_8c_a9715e3a8b6093660ccaeed7de57c241c}} 
+\index{wii/main.\+c@{wii/main.\+c}!G\+U\+I\+\_\+\+S\+C\+A\+LE@{G\+U\+I\+\_\+\+S\+C\+A\+LE}}
+\index{G\+U\+I\+\_\+\+S\+C\+A\+LE@{G\+U\+I\+\_\+\+S\+C\+A\+LE}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{G\+U\+I\+\_\+\+S\+C\+A\+LE}{GUI\_SCALE}}
+{\footnotesize\ttfamily \#define G\+U\+I\+\_\+\+S\+C\+A\+LE~1.\+35f}
+
+\mbox{\Hypertarget{wii_2main_8c_aa37a35e3d26387632d264e35b9a9cd7a}\label{wii_2main_8c_aa37a35e3d26387632d264e35b9a9cd7a}} 
+\index{wii/main.\+c@{wii/main.\+c}!G\+U\+I\+\_\+\+S\+C\+A\+L\+E\+\_\+240p@{G\+U\+I\+\_\+\+S\+C\+A\+L\+E\+\_\+240p}}
+\index{G\+U\+I\+\_\+\+S\+C\+A\+L\+E\+\_\+240p@{G\+U\+I\+\_\+\+S\+C\+A\+L\+E\+\_\+240p}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{G\+U\+I\+\_\+\+S\+C\+A\+L\+E\+\_\+240p}{GUI\_SCALE\_240p}}
+{\footnotesize\ttfamily \#define G\+U\+I\+\_\+\+S\+C\+A\+L\+E\+\_\+240p~2.\+0f}
+
+\mbox{\Hypertarget{wii_2main_8c_ad0c329adebc27917fc0a4f51079acf6a}\label{wii_2main_8c_ad0c329adebc27917fc0a4f51079acf6a}} 
+\index{wii/main.\+c@{wii/main.\+c}!S\+A\+M\+P\+L\+ES@{S\+A\+M\+P\+L\+ES}}
+\index{S\+A\+M\+P\+L\+ES@{S\+A\+M\+P\+L\+ES}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{S\+A\+M\+P\+L\+ES}{SAMPLES}}
+{\footnotesize\ttfamily \#define S\+A\+M\+P\+L\+ES~1024}
+
+\mbox{\Hypertarget{wii_2main_8c_a9d0325ff9498f81e9f5679b856f4f6dc}\label{wii_2main_8c_a9d0325ff9498f81e9f5679b856f4f6dc}} 
+\index{wii/main.\+c@{wii/main.\+c}!T\+E\+X\+\_\+H@{T\+E\+X\+\_\+H}}
+\index{T\+E\+X\+\_\+H@{T\+E\+X\+\_\+H}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{T\+E\+X\+\_\+H}{TEX\_H}}
+{\footnotesize\ttfamily \#define T\+E\+X\+\_\+H~224}
+
+\mbox{\Hypertarget{wii_2main_8c_a1e236e5e069816fb4257313f7a705149}\label{wii_2main_8c_a1e236e5e069816fb4257313f7a705149}} 
+\index{wii/main.\+c@{wii/main.\+c}!T\+E\+X\+\_\+W@{T\+E\+X\+\_\+W}}
+\index{T\+E\+X\+\_\+W@{T\+E\+X\+\_\+W}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{T\+E\+X\+\_\+W}{TEX\_W}}
+{\footnotesize\ttfamily \#define T\+E\+X\+\_\+W~256}
+
+\mbox{\Hypertarget{wii_2main_8c_a1c1265d442f5d82e2165f5e478cb5d88}\label{wii_2main_8c_a1c1265d442f5d82e2165f5e478cb5d88}} 
+\index{wii/main.\+c@{wii/main.\+c}!W\+I\+I\+M\+O\+T\+E\+\_\+\+I\+N\+P\+UT@{W\+I\+I\+M\+O\+T\+E\+\_\+\+I\+N\+P\+UT}}
+\index{W\+I\+I\+M\+O\+T\+E\+\_\+\+I\+N\+P\+UT@{W\+I\+I\+M\+O\+T\+E\+\_\+\+I\+N\+P\+UT}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{W\+I\+I\+M\+O\+T\+E\+\_\+\+I\+N\+P\+UT}{WIIMOTE\_INPUT}}
+{\footnotesize\ttfamily \#define W\+I\+I\+M\+O\+T\+E\+\_\+\+I\+N\+P\+UT~0x5749494D}
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083}\label{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083}} 
+\index{wii/main.\+c@{wii/main.\+c}!Filter\+Mode@{Filter\+Mode}}
+\index{Filter\+Mode@{Filter\+Mode}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{Filter\+Mode}{FilterMode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{3ds_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083}{Filter\+Mode}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+M\+\_\+\+N\+E\+A\+R\+E\+ST@{F\+M\+\_\+\+N\+E\+A\+R\+E\+ST}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!F\+M\+\_\+\+N\+E\+A\+R\+E\+ST@{F\+M\+\_\+\+N\+E\+A\+R\+E\+ST}}}\mbox{\Hypertarget{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a0b5fd789948b5f22fc2dc33db250a0d1}\label{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a0b5fd789948b5f22fc2dc33db250a0d1}} 
+F\+M\+\_\+\+N\+E\+A\+R\+E\+ST&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+1x@{F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+1x}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+1x@{F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+1x}}}\mbox{\Hypertarget{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a5b3102d9d969a1983120a58544df7dcd}\label{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a5b3102d9d969a1983120a58544df7dcd}} 
+F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+1x&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+2x@{F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+2x}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+2x@{F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+2x}}}\mbox{\Hypertarget{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a1f7170e1cfc8c253e5a4f59dcbc7c510}\label{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a1f7170e1cfc8c253e5a4f59dcbc7c510}} 
+F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+2x&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+M\+\_\+\+M\+AX@{F\+M\+\_\+\+M\+AX}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!F\+M\+\_\+\+M\+AX@{F\+M\+\_\+\+M\+AX}}}\mbox{\Hypertarget{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a4d2c56f52192347cc69ae5ad505b6435}\label{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a4d2c56f52192347cc69ae5ad505b6435}} 
+F\+M\+\_\+\+M\+AX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+M\+\_\+\+N\+E\+A\+R\+E\+ST@{F\+M\+\_\+\+N\+E\+A\+R\+E\+ST}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!F\+M\+\_\+\+N\+E\+A\+R\+E\+ST@{F\+M\+\_\+\+N\+E\+A\+R\+E\+ST}}}\mbox{\Hypertarget{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a0b5fd789948b5f22fc2dc33db250a0d1}\label{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a0b5fd789948b5f22fc2dc33db250a0d1}} 
+F\+M\+\_\+\+N\+E\+A\+R\+E\+ST&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+1x@{F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+1x}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+1x@{F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+1x}}}\mbox{\Hypertarget{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a5b3102d9d969a1983120a58544df7dcd}\label{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a5b3102d9d969a1983120a58544df7dcd}} 
+F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+1x&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+2x@{F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+2x}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+2x@{F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+2x}}}\mbox{\Hypertarget{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a1f7170e1cfc8c253e5a4f59dcbc7c510}\label{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a1f7170e1cfc8c253e5a4f59dcbc7c510}} 
+F\+M\+\_\+\+L\+I\+N\+E\+A\+R\+\_\+2x&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+M\+\_\+\+M\+AX@{F\+M\+\_\+\+M\+AX}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!F\+M\+\_\+\+M\+AX@{F\+M\+\_\+\+M\+AX}}}\mbox{\Hypertarget{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a4d2c56f52192347cc69ae5ad505b6435}\label{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a4d2c56f52192347cc69ae5ad505b6435}} 
+F\+M\+\_\+\+M\+AX&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353}\label{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353}} 
+\index{wii/main.\+c@{wii/main.\+c}!Screen\+Mode@{Screen\+Mode}}
+\index{Screen\+Mode@{Screen\+Mode}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{Screen\+Mode}{ScreenMode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{3ds_2main_8c_aefe4cd50ac123b6c800eede74968a353}{Screen\+Mode}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+P\+A\+\_\+\+B\+O\+T\+T\+OM@{S\+M\+\_\+\+P\+A\+\_\+\+B\+O\+T\+T\+OM}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!S\+M\+\_\+\+P\+A\+\_\+\+B\+O\+T\+T\+OM@{S\+M\+\_\+\+P\+A\+\_\+\+B\+O\+T\+T\+OM}}}\mbox{\Hypertarget{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353aca1b3a55dbfddfeb68218984a19beb6d}\label{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353aca1b3a55dbfddfeb68218984a19beb6d}} 
+S\+M\+\_\+\+P\+A\+\_\+\+B\+O\+T\+T\+OM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+A\+F\+\_\+\+B\+O\+T\+T\+OM@{S\+M\+\_\+\+A\+F\+\_\+\+B\+O\+T\+T\+OM}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!S\+M\+\_\+\+A\+F\+\_\+\+B\+O\+T\+T\+OM@{S\+M\+\_\+\+A\+F\+\_\+\+B\+O\+T\+T\+OM}}}\mbox{\Hypertarget{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353ab888ea2fc282030fb4c98ecefd32df0b}\label{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353ab888ea2fc282030fb4c98ecefd32df0b}} 
+S\+M\+\_\+\+A\+F\+\_\+\+B\+O\+T\+T\+OM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+S\+F\+\_\+\+B\+O\+T\+T\+OM@{S\+M\+\_\+\+S\+F\+\_\+\+B\+O\+T\+T\+OM}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!S\+M\+\_\+\+S\+F\+\_\+\+B\+O\+T\+T\+OM@{S\+M\+\_\+\+S\+F\+\_\+\+B\+O\+T\+T\+OM}}}\mbox{\Hypertarget{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353a71678dabe149ea5dea6d4fcdc0fe5191}\label{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353a71678dabe149ea5dea6d4fcdc0fe5191}} 
+S\+M\+\_\+\+S\+F\+\_\+\+B\+O\+T\+T\+OM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+P\+A\+\_\+\+T\+OP@{S\+M\+\_\+\+P\+A\+\_\+\+T\+OP}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!S\+M\+\_\+\+P\+A\+\_\+\+T\+OP@{S\+M\+\_\+\+P\+A\+\_\+\+T\+OP}}}\mbox{\Hypertarget{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353a2b89cadbb7bad03c80ee30df158e3fe6}\label{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353a2b89cadbb7bad03c80ee30df158e3fe6}} 
+S\+M\+\_\+\+P\+A\+\_\+\+T\+OP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+A\+F\+\_\+\+T\+OP@{S\+M\+\_\+\+A\+F\+\_\+\+T\+OP}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!S\+M\+\_\+\+A\+F\+\_\+\+T\+OP@{S\+M\+\_\+\+A\+F\+\_\+\+T\+OP}}}\mbox{\Hypertarget{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353aedcbb19a0f07eb4a265543ce1403c861}\label{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353aedcbb19a0f07eb4a265543ce1403c861}} 
+S\+M\+\_\+\+A\+F\+\_\+\+T\+OP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+S\+F\+\_\+\+T\+OP@{S\+M\+\_\+\+S\+F\+\_\+\+T\+OP}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!S\+M\+\_\+\+S\+F\+\_\+\+T\+OP@{S\+M\+\_\+\+S\+F\+\_\+\+T\+OP}}}\mbox{\Hypertarget{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353ad64f4dfe249dd2f73f30feab625fddff}\label{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353ad64f4dfe249dd2f73f30feab625fddff}} 
+S\+M\+\_\+\+S\+F\+\_\+\+T\+OP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+M\+AX@{S\+M\+\_\+\+M\+AX}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!S\+M\+\_\+\+M\+AX@{S\+M\+\_\+\+M\+AX}}}\mbox{\Hypertarget{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353aff08e32659fa560ad0a16f3d1b9fdacd}\label{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353aff08e32659fa560ad0a16f3d1b9fdacd}} 
+S\+M\+\_\+\+M\+AX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+B\+A\+C\+K\+D\+R\+OP@{S\+M\+\_\+\+B\+A\+C\+K\+D\+R\+OP}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!S\+M\+\_\+\+B\+A\+C\+K\+D\+R\+OP@{S\+M\+\_\+\+B\+A\+C\+K\+D\+R\+OP}}}\mbox{\Hypertarget{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353ae39f259ab834f2faa529cdac89da5c44}\label{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353ae39f259ab834f2faa529cdac89da5c44}} 
+S\+M\+\_\+\+B\+A\+C\+K\+D\+R\+OP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+P\+L\+A\+IN@{S\+M\+\_\+\+P\+L\+A\+IN}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!S\+M\+\_\+\+P\+L\+A\+IN@{S\+M\+\_\+\+P\+L\+A\+IN}}}\mbox{\Hypertarget{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353a55995b0aff33425170f54ee0e8c157df}\label{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353a55995b0aff33425170f54ee0e8c157df}} 
+S\+M\+\_\+\+P\+L\+A\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+F\+U\+LL@{S\+M\+\_\+\+F\+U\+LL}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!S\+M\+\_\+\+F\+U\+LL@{S\+M\+\_\+\+F\+U\+LL}}}\mbox{\Hypertarget{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353af7279dea12e50376e0d062557101ccbd}\label{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353af7279dea12e50376e0d062557101ccbd}} 
+S\+M\+\_\+\+F\+U\+LL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+A\+S\+P\+E\+CT@{S\+M\+\_\+\+A\+S\+P\+E\+CT}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!S\+M\+\_\+\+A\+S\+P\+E\+CT@{S\+M\+\_\+\+A\+S\+P\+E\+CT}}}\mbox{\Hypertarget{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353a2631fa1293eeebd798452c4a8e1bb939}\label{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353a2631fa1293eeebd798452c4a8e1bb939}} 
+S\+M\+\_\+\+A\+S\+P\+E\+CT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+M\+AX@{S\+M\+\_\+\+M\+AX}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!S\+M\+\_\+\+M\+AX@{S\+M\+\_\+\+M\+AX}}}\mbox{\Hypertarget{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353aff08e32659fa560ad0a16f3d1b9fdacd}\label{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353aff08e32659fa560ad0a16f3d1b9fdacd}} 
+S\+M\+\_\+\+M\+AX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+PA@{S\+M\+\_\+\+PA}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!S\+M\+\_\+\+PA@{S\+M\+\_\+\+PA}}}\mbox{\Hypertarget{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353ac6c34f453cd57936b352cc0c2bf01601}\label{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353ac6c34f453cd57936b352cc0c2bf01601}} 
+S\+M\+\_\+\+PA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+SF@{S\+M\+\_\+\+SF}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!S\+M\+\_\+\+SF@{S\+M\+\_\+\+SF}}}\mbox{\Hypertarget{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353a631f5c9fb0a8107465664d09e6d8660f}\label{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353a631f5c9fb0a8107465664d09e6d8660f}} 
+S\+M\+\_\+\+SF&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+M\+AX@{S\+M\+\_\+\+M\+AX}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!S\+M\+\_\+\+M\+AX@{S\+M\+\_\+\+M\+AX}}}\mbox{\Hypertarget{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353aff08e32659fa560ad0a16f3d1b9fdacd}\label{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353aff08e32659fa560ad0a16f3d1b9fdacd}} 
+S\+M\+\_\+\+M\+AX&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149}\label{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149}} 
+\index{wii/main.\+c@{wii/main.\+c}!Video\+Mode@{Video\+Mode}}
+\index{Video\+Mode@{Video\+Mode}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{Video\+Mode}{VideoMode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149}{Video\+Mode}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{V\+M\+\_\+\+A\+U\+T\+O\+D\+E\+T\+E\+CT@{V\+M\+\_\+\+A\+U\+T\+O\+D\+E\+T\+E\+CT}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!V\+M\+\_\+\+A\+U\+T\+O\+D\+E\+T\+E\+CT@{V\+M\+\_\+\+A\+U\+T\+O\+D\+E\+T\+E\+CT}}}\mbox{\Hypertarget{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149a0f311ebc6ad3c70f0b43caf81d22ebf2}\label{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149a0f311ebc6ad3c70f0b43caf81d22ebf2}} 
+V\+M\+\_\+\+A\+U\+T\+O\+D\+E\+T\+E\+CT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{V\+M\+\_\+480i@{V\+M\+\_\+480i}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!V\+M\+\_\+480i@{V\+M\+\_\+480i}}}\mbox{\Hypertarget{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149aec05fb3a2a65e1b026738fd9cbc215b7}\label{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149aec05fb3a2a65e1b026738fd9cbc215b7}} 
+V\+M\+\_\+480i&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{V\+M\+\_\+480p@{V\+M\+\_\+480p}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!V\+M\+\_\+480p@{V\+M\+\_\+480p}}}\mbox{\Hypertarget{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149a03b3cc3b234bf16e690a8d4faf2eb97e}\label{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149a03b3cc3b234bf16e690a8d4faf2eb97e}} 
+V\+M\+\_\+480p&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{V\+M\+\_\+240p@{V\+M\+\_\+240p}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!V\+M\+\_\+240p@{V\+M\+\_\+240p}}}\mbox{\Hypertarget{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149ab16da7242dbb93100074025331ad2048}\label{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149ab16da7242dbb93100074025331ad2048}} 
+V\+M\+\_\+240p&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{V\+M\+\_\+\+M\+AX@{V\+M\+\_\+\+M\+AX}!wii/main.\+c@{wii/main.\+c}}\index{wii/main.\+c@{wii/main.\+c}!V\+M\+\_\+\+M\+AX@{V\+M\+\_\+\+M\+AX}}}\mbox{\Hypertarget{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149a871039310e6a1c3de4e89e2a23e8d3a5}\label{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149a871039310e6a1c3de4e89e2a23e8d3a5}} 
+V\+M\+\_\+\+M\+AX&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{wii_2main_8c_a18d6965ee82574c6a6f58e9fc197102d}\label{wii_2main_8c_a18d6965ee82574c6a6f58e9fc197102d}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}{\_\_attribute\_\_()}}
+{\footnotesize\ttfamily static struct G\+B\+A\+Stereo\+Sample audio\+Buffer \mbox{[}3\mbox{]}\mbox{[}\mbox{\hyperlink{blip__buf_8c_a9c2e0b4b7cf64a5154aed6e2506a1ffc}{S\+A\+M\+P\+L\+ES}}\mbox{]} \+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(\+\_\+\+\_\+aligned\+\_\+\+\_\+(32))}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_ae27741f8eb230a8a8c93caab3f61a6d3}\label{wii_2main_8c_ae27741f8eb230a8a8c93caab3f61a6d3}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+audio\+D\+MA@{\+\_\+audio\+D\+MA}}
+\index{\+\_\+audio\+D\+MA@{\+\_\+audio\+D\+MA}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+audio\+D\+M\+A()}{\_audioDMA()}}
+{\footnotesize\ttfamily static void \+\_\+audio\+D\+MA (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{wii_2main_8c_ae27741f8eb230a8a8c93caab3f61a6d3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_a1d972b1c2c62a05aa9e3bb27fb4b2763}\label{wii_2main_8c_a1d972b1c2c62a05aa9e3bb27fb4b2763}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+draw\+End@{\+\_\+draw\+End}}
+\index{\+\_\+draw\+End@{\+\_\+draw\+End}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+draw\+End()}{\_drawEnd()}}
+{\footnotesize\ttfamily static void \+\_\+draw\+End (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{wii_2main_8c_a1d972b1c2c62a05aa9e3bb27fb4b2763_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_a77a048bada70aeeac538c9178266427a}\label{wii_2main_8c_a77a048bada70aeeac538c9178266427a}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+draw\+Frame@{\+\_\+draw\+Frame}}
+\index{\+\_\+draw\+Frame@{\+\_\+draw\+Frame}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+draw\+Frame()}{\_drawFrame()}}
+{\footnotesize\ttfamily void \+\_\+draw\+Frame (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{runner,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{faded }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{wii_2main_8c_a77a048bada70aeeac538c9178266427a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{wii_2main_8c_a77a048bada70aeeac538c9178266427a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_a971ecc7f379baaab90aa7fa59acc9d52}\label{wii_2main_8c_a971ecc7f379baaab90aa7fa59acc9d52}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+draw\+Start@{\+\_\+draw\+Start}}
+\index{\+\_\+draw\+Start@{\+\_\+draw\+Start}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+draw\+Start()}{\_drawStart()}}
+{\footnotesize\ttfamily static void \+\_\+draw\+Start (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{wii_2main_8c_a971ecc7f379baaab90aa7fa59acc9d52_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_af8da102e3fe3be744cabc39b57d4890b}\label{wii_2main_8c_af8da102e3fe3be744cabc39b57d4890b}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+game\+Loaded@{\+\_\+game\+Loaded}}
+\index{\+\_\+game\+Loaded@{\+\_\+game\+Loaded}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+game\+Loaded()}{\_gameLoaded()}}
+{\footnotesize\ttfamily void \+\_\+game\+Loaded (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{runner }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{wii_2main_8c_af8da102e3fe3be744cabc39b57d4890b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{wii_2main_8c_af8da102e3fe3be744cabc39b57d4890b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_a094620a54735bfd7220166de65dd8443}\label{wii_2main_8c_a094620a54735bfd7220166de65dd8443}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+game\+Unloaded@{\+\_\+game\+Unloaded}}
+\index{\+\_\+game\+Unloaded@{\+\_\+game\+Unloaded}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+game\+Unloaded()}{\_gameUnloaded()}}
+{\footnotesize\ttfamily void \+\_\+game\+Unloaded (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{runner }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{wii_2main_8c_a094620a54735bfd7220166de65dd8443_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_aa439d734038da4fad2654f1865c32490}\label{wii_2main_8c_aa439d734038da4fad2654f1865c32490}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+gui\+Prepare@{\+\_\+gui\+Prepare}}
+\index{\+\_\+gui\+Prepare@{\+\_\+gui\+Prepare}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+gui\+Prepare()}{\_guiPrepare()}}
+{\footnotesize\ttfamily void \+\_\+gui\+Prepare (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{wii_2main_8c_aa439d734038da4fad2654f1865c32490_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{wii_2main_8c_aa439d734038da4fad2654f1865c32490_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_afa3e517ae98271db79f33bdb7587f215}\label{wii_2main_8c_afa3e517ae98271db79f33bdb7587f215}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+increment\+Screen\+Mode@{\+\_\+increment\+Screen\+Mode}}
+\index{\+\_\+increment\+Screen\+Mode@{\+\_\+increment\+Screen\+Mode}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+increment\+Screen\+Mode()}{\_incrementScreenMode()}}
+{\footnotesize\ttfamily void \+\_\+increment\+Screen\+Mode (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{runner }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{wii_2main_8c_afa3e517ae98271db79f33bdb7587f215_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{wii_2main_8c_afa3e517ae98271db79f33bdb7587f215_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_ad0534b9bfccd8a470e7fa0b79021326f}\label{wii_2main_8c_ad0534b9bfccd8a470e7fa0b79021326f}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+map\+Key@{\+\_\+map\+Key}}
+\index{\+\_\+map\+Key@{\+\_\+map\+Key}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+map\+Key()}{\_mapKey()}}
+{\footnotesize\ttfamily static void \+\_\+map\+Key (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{map,  }\item[{uint32\+\_\+t}]{binding,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{native\+Key,  }\item[{enum G\+B\+A\+Key}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{wii_2main_8c_ad0534b9bfccd8a470e7fa0b79021326f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{wii_2main_8c_ad0534b9bfccd8a470e7fa0b79021326f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_a18e379d7cd5b99e472c96dbeb05d2c19}\label{wii_2main_8c_a18e379d7cd5b99e472c96dbeb05d2c19}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+poll\+Cursor@{\+\_\+poll\+Cursor}}
+\index{\+\_\+poll\+Cursor@{\+\_\+poll\+Cursor}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+poll\+Cursor()}{\_pollCursor()}}
+{\footnotesize\ttfamily static enum G\+U\+I\+Cursor\+State \+\_\+poll\+Cursor (\begin{DoxyParamCaption}\item[{unsigned $\ast$}]{x,  }\item[{unsigned $\ast$}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{wii_2main_8c_a18e379d7cd5b99e472c96dbeb05d2c19_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_a23396d09786addf92c657a87c20a12b7}\label{wii_2main_8c_a23396d09786addf92c657a87c20a12b7}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+poll\+Game\+Input@{\+\_\+poll\+Game\+Input}}
+\index{\+\_\+poll\+Game\+Input@{\+\_\+poll\+Game\+Input}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+poll\+Game\+Input()}{\_pollGameInput()}}
+{\footnotesize\ttfamily uint16\+\_\+t \+\_\+poll\+Game\+Input (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{runner }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{wii_2main_8c_a23396d09786addf92c657a87c20a12b7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=251pt]{wii_2main_8c_a23396d09786addf92c657a87c20a12b7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_a9618cffe030de46b5edc98e7a4d3ddc4}\label{wii_2main_8c_a9618cffe030de46b5edc98e7a4d3ddc4}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+poll\+Input@{\+\_\+poll\+Input}}
+\index{\+\_\+poll\+Input@{\+\_\+poll\+Input}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+poll\+Input()}{\_pollInput()}}
+{\footnotesize\ttfamily static uint32\+\_\+t \+\_\+poll\+Input (\begin{DoxyParamCaption}\item[{const struct m\+Input\+Map $\ast$}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{wii_2main_8c_a9618cffe030de46b5edc98e7a4d3ddc4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{wii_2main_8c_a9618cffe030de46b5edc98e7a4d3ddc4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_a1efea60f498b6091557f1214b7d42ca1}\label{wii_2main_8c_a1efea60f498b6091557f1214b7d42ca1}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+read\+GyroZ@{\+\_\+read\+GyroZ}}
+\index{\+\_\+read\+GyroZ@{\+\_\+read\+GyroZ}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Gyro\+Z()}{\_readGyroZ()}}
+{\footnotesize\ttfamily int32\+\_\+t \+\_\+read\+GyroZ (\begin{DoxyParamCaption}\item[{struct m\+Rotation\+Source $\ast$}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{wii_2main_8c_a1efea60f498b6091557f1214b7d42ca1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_ab02deb80973e9bd6ae8b0cf04595edfa}\label{wii_2main_8c_ab02deb80973e9bd6ae8b0cf04595edfa}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+read\+TiltX@{\+\_\+read\+TiltX}}
+\index{\+\_\+read\+TiltX@{\+\_\+read\+TiltX}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Tilt\+X()}{\_readTiltX()}}
+{\footnotesize\ttfamily int32\+\_\+t \+\_\+read\+TiltX (\begin{DoxyParamCaption}\item[{struct m\+Rotation\+Source $\ast$}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{wii_2main_8c_ab02deb80973e9bd6ae8b0cf04595edfa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_ae8f68f518bf94b9dc331bfdbcd384aec}\label{wii_2main_8c_ae8f68f518bf94b9dc331bfdbcd384aec}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+read\+TiltY@{\+\_\+read\+TiltY}}
+\index{\+\_\+read\+TiltY@{\+\_\+read\+TiltY}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Tilt\+Y()}{\_readTiltY()}}
+{\footnotesize\ttfamily int32\+\_\+t \+\_\+read\+TiltY (\begin{DoxyParamCaption}\item[{struct m\+Rotation\+Source $\ast$}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{wii_2main_8c_ae8f68f518bf94b9dc331bfdbcd384aec_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_ab1da59b3822540b30e612c2047fe6c20}\label{wii_2main_8c_ab1da59b3822540b30e612c2047fe6c20}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+reproj@{\+\_\+reproj}}
+\index{\+\_\+reproj@{\+\_\+reproj}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+reproj()}{\_reproj()}}
+{\footnotesize\ttfamily void \+\_\+reproj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{w,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{h }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{wii_2main_8c_ab1da59b3822540b30e612c2047fe6c20_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_a10c41a7ecc72645bbf7b4816275e74fe}\label{wii_2main_8c_a10c41a7ecc72645bbf7b4816275e74fe}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+reproj2@{\+\_\+reproj2}}
+\index{\+\_\+reproj2@{\+\_\+reproj2}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+reproj2()}{\_reproj2()}}
+{\footnotesize\ttfamily void \+\_\+reproj2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{w,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{h }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{wii_2main_8c_a10c41a7ecc72645bbf7b4816275e74fe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_acd031aebe3debf6a849e824369f6d6d6}\label{wii_2main_8c_acd031aebe3debf6a849e824369f6d6d6}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+retrace\+Callback@{\+\_\+retrace\+Callback}}
+\index{\+\_\+retrace\+Callback@{\+\_\+retrace\+Callback}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+retrace\+Callback()}{\_retraceCallback()}}
+{\footnotesize\ttfamily void \+\_\+retrace\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{sqlite3_8c_a03ad5adfaeb9b7640dde78a0cc390319}{u32}}}]{count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{wii_2main_8c_acd031aebe3debf6a849e824369f6d6d6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{wii_2main_8c_acd031aebe3debf6a849e824369f6d6d6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_a2c62fc0c6b0997c95380cbe59d51b64f}\label{wii_2main_8c_a2c62fc0c6b0997c95380cbe59d51b64f}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+sample\+Rotation@{\+\_\+sample\+Rotation}}
+\index{\+\_\+sample\+Rotation@{\+\_\+sample\+Rotation}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+sample\+Rotation()}{\_sampleRotation()}}
+{\footnotesize\ttfamily void \+\_\+sample\+Rotation (\begin{DoxyParamCaption}\item[{struct m\+Rotation\+Source $\ast$}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{wii_2main_8c_a2c62fc0c6b0997c95380cbe59d51b64f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_a32550cd6f1129400cd7a8fd45864f626}\label{wii_2main_8c_a32550cd6f1129400cd7a8fd45864f626}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+set\+Frame\+Limiter@{\+\_\+set\+Frame\+Limiter}}
+\index{\+\_\+set\+Frame\+Limiter@{\+\_\+set\+Frame\+Limiter}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+set\+Frame\+Limiter()}{\_setFrameLimiter()}}
+{\footnotesize\ttfamily static void \+\_\+set\+Frame\+Limiter (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{runner,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{limit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=259pt]{wii_2main_8c_a32550cd6f1129400cd7a8fd45864f626_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_afcf85590758eced3682cb0347e028ee6}\label{wii_2main_8c_afcf85590758eced3682cb0347e028ee6}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+set\+Rumble@{\+\_\+set\+Rumble}}
+\index{\+\_\+set\+Rumble@{\+\_\+set\+Rumble}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+set\+Rumble()}{\_setRumble()}}
+{\footnotesize\ttfamily void \+\_\+set\+Rumble (\begin{DoxyParamCaption}\item[{struct m\+Rumble $\ast$}]{rumble,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{enable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{wii_2main_8c_afcf85590758eced3682cb0347e028ee6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_ac92413f4871c33aaaf165780503c4e55}\label{wii_2main_8c_ac92413f4871c33aaaf165780503c4e55}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+setup@{\+\_\+setup}}
+\index{\+\_\+setup@{\+\_\+setup}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+setup()}{\_setup()}}
+{\footnotesize\ttfamily void \+\_\+setup (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{runner }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{wii_2main_8c_ac92413f4871c33aaaf165780503c4e55_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{wii_2main_8c_ac92413f4871c33aaaf165780503c4e55_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_a642e2eac3e3fd79405fb68d6ba150f05}\label{wii_2main_8c_a642e2eac3e3fd79405fb68d6ba150f05}} 
+\index{wii/main.\+c@{wii/main.\+c}!\+\_\+unpaused@{\+\_\+unpaused}}
+\index{\+\_\+unpaused@{\+\_\+unpaused}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+unpaused()}{\_unpaused()}}
+{\footnotesize\ttfamily void \+\_\+unpaused (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{runner }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{wii_2main_8c_a642e2eac3e3fd79405fb68d6ba150f05_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{wii_2main_8c_a642e2eac3e3fd79405fb68d6ba150f05_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{wii_2main_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{wii/main.\+c@{wii/main.\+c}!main@{main}}
+\index{main@{main}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{wii_2main_8c_a0ddf1224851353fc92bfbff6f499fa97_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_a5bfc41e18c837803e652539524537f58}\label{wii_2main_8c_a5bfc41e18c837803e652539524537f58}} 
+\index{wii/main.\+c@{wii/main.\+c}!reconfigure\+Screen@{reconfigure\+Screen}}
+\index{reconfigure\+Screen@{reconfigure\+Screen}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{reconfigure\+Screen()}{reconfigureScreen()}}
+{\footnotesize\ttfamily static void reconfigure\+Screen (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{runner }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{wii_2main_8c_a5bfc41e18c837803e652539524537f58_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{wii_2main_8c_a5bfc41e18c837803e652539524537f58_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_a1a1e171f67a342d6cd8f98934b0dfa79}\label{wii_2main_8c_a1a1e171f67a342d6cd8f98934b0dfa79}} 
+\index{wii/main.\+c@{wii/main.\+c}!W\+P\+A\+D\+\_\+\+StickX@{W\+P\+A\+D\+\_\+\+StickX}}
+\index{W\+P\+A\+D\+\_\+\+StickX@{W\+P\+A\+D\+\_\+\+StickX}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{W\+P\+A\+D\+\_\+\+Stick\+X()}{WPAD\_StickX()}}
+{\footnotesize\ttfamily static s8 W\+P\+A\+D\+\_\+\+StickX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{sqlite3_8c_a74a0f6424ae628af25f23f0a35f6ead3}{u8}}}]{chan,  }\item[{\mbox{\hyperlink{sqlite3_8c_a74a0f6424ae628af25f23f0a35f6ead3}{u8}}}]{right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{wii_2main_8c_a1a1e171f67a342d6cd8f98934b0dfa79_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{wii_2main_8c_a4ff41cb037058f9845bdff2f22061d82}\label{wii_2main_8c_a4ff41cb037058f9845bdff2f22061d82}} 
+\index{wii/main.\+c@{wii/main.\+c}!W\+P\+A\+D\+\_\+\+StickY@{W\+P\+A\+D\+\_\+\+StickY}}
+\index{W\+P\+A\+D\+\_\+\+StickY@{W\+P\+A\+D\+\_\+\+StickY}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{W\+P\+A\+D\+\_\+\+Stick\+Y()}{WPAD\_StickY()}}
+{\footnotesize\ttfamily static s8 W\+P\+A\+D\+\_\+\+StickY (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{sqlite3_8c_a74a0f6424ae628af25f23f0a35f6ead3}{u8}}}]{chan,  }\item[{\mbox{\hyperlink{sqlite3_8c_a74a0f6424ae628af25f23f0a35f6ead3}{u8}}}]{right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{wii_2main_8c_a4ff41cb037058f9845bdff2f22061d82_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{wii_2main_8c_a41d4db990aaa6a962a4d330bd5dcaf71}\label{wii_2main_8c_a41d4db990aaa6a962a4d330bd5dcaf71}} 
+\index{wii/main.\+c@{wii/main.\+c}!audio\+Buffer\+Size@{audio\+Buffer\+Size}}
+\index{audio\+Buffer\+Size@{audio\+Buffer\+Size}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{audio\+Buffer\+Size}{audioBufferSize}}
+{\footnotesize\ttfamily volatile size\+\_\+t audio\+Buffer\+Size = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a3839ee1d633b53e1956663dccb48e7d5}\label{wii_2main_8c_a3839ee1d633b53e1956663dccb48e7d5}} 
+\index{wii/main.\+c@{wii/main.\+c}!audio\+Sample\+Rate@{audio\+Sample\+Rate}}
+\index{audio\+Sample\+Rate@{audio\+Sample\+Rate}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{audio\+Sample\+Rate}{audioSampleRate}}
+{\footnotesize\ttfamily double audio\+Sample\+Rate = 60.\+0 / 1.\+001\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a6ef9a5d2326b8649b0a0fc4464a15cf9}\label{wii_2main_8c_a6ef9a5d2326b8649b0a0fc4464a15cf9}} 
+\index{wii/main.\+c@{wii/main.\+c}!coreh@{coreh}}
+\index{coreh@{coreh}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{coreh}{coreh}}
+{\footnotesize\ttfamily unsigned coreh\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a39342bb71da6bf9c535ebc51a38413c7}\label{wii_2main_8c_a39342bb71da6bf9c535ebc51a38413c7}} 
+\index{wii/main.\+c@{wii/main.\+c}!corew@{corew}}
+\index{corew@{corew}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{corew}{corew}}
+{\footnotesize\ttfamily unsigned corew\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a1cc2c60231da28fcde958f13cae37b99}\label{wii_2main_8c_a1cc2c60231da28fcde958f13cae37b99}} 
+\index{wii/main.\+c@{wii/main.\+c}!current\+Audio\+Buffer@{current\+Audio\+Buffer}}
+\index{current\+Audio\+Buffer@{current\+Audio\+Buffer}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{current\+Audio\+Buffer}{currentAudioBuffer}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} current\+Audio\+Buffer = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a2140810dd6359607526cf84442057094}\label{wii_2main_8c_a2140810dd6359607526cf84442057094}} 
+\index{wii/main.\+c@{wii/main.\+c}!filter\+Mode@{filter\+Mode}}
+\index{filter\+Mode@{filter\+Mode}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{filter\+Mode}{filterMode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{3ds_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083}{Filter\+Mode}}  filter\+Mode = \mbox{\hyperlink{wii_2main_8c_a36bd51b89b9e0e6e4dbbe565b9155083a0b5fd789948b5f22fc2dc33db250a0d1}{F\+M\+\_\+\+N\+E\+A\+R\+E\+ST}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_adae3f41cbe0ea5e886715661bb739691}\label{wii_2main_8c_adae3f41cbe0ea5e886715661bb739691}} 
+\index{wii/main.\+c@{wii/main.\+c}!font@{font}}
+\index{font@{font}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{font}{font}}
+{\footnotesize\ttfamily struct G\+U\+I\+Font$\ast$ font\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a360425217cfa7f5b82fa655a83f136c6}\label{wii_2main_8c_a360425217cfa7f5b82fa655a83f136c6}} 
+\index{wii/main.\+c@{wii/main.\+c}!framebuffer@{framebuffer}}
+\index{framebuffer@{framebuffer}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{framebuffer}{framebuffer}}
+{\footnotesize\ttfamily void$\ast$ framebuffer\mbox{[}2\mbox{]} = \{ 0, 0 \}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a79ad80572fd8710aecd999faddccfed8}\label{wii_2main_8c_a79ad80572fd8710aecd999faddccfed8}} 
+\index{wii/main.\+c@{wii/main.\+c}!frame\+Limiter@{frame\+Limiter}}
+\index{frame\+Limiter@{frame\+Limiter}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{frame\+Limiter}{frameLimiter}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} frame\+Limiter = true\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_afd44bfd8aecf83bb5ce7707bcf337086}\label{wii_2main_8c_afd44bfd8aecf83bb5ce7707bcf337086}} 
+\index{wii/main.\+c@{wii/main.\+c}!gui\+Scale@{gui\+Scale}}
+\index{gui\+Scale@{gui\+Scale}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{gui\+Scale}{guiScale}}
+{\footnotesize\ttfamily float gui\+Scale = \mbox{\hyperlink{wii_2main_8c_a9715e3a8b6093660ccaeed7de57c241c}{G\+U\+I\+\_\+\+S\+C\+A\+LE}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a16279bf7643ec841616669e9be945402}\label{wii_2main_8c_a16279bf7643ec841616669e9be945402}} 
+\index{wii/main.\+c@{wii/main.\+c}!gyroZ@{gyroZ}}
+\index{gyroZ@{gyroZ}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{gyroZ}{gyroZ}}
+{\footnotesize\ttfamily int32\+\_\+t gyroZ\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a007fb5c60d93e1417a935e38d8eb69c7}\label{wii_2main_8c_a007fb5c60d93e1417a935e38d8eb69c7}} 
+\index{wii/main.\+c@{wii/main.\+c}!h\+Adjust@{h\+Adjust}}
+\index{h\+Adjust@{h\+Adjust}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{h\+Adjust}{hAdjust}}
+{\footnotesize\ttfamily float h\+Adjust\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_ab6df2213adf797f9146a3b353fb74ccd}\label{wii_2main_8c_ab6df2213adf797f9146a3b353fb74ccd}} 
+\index{wii/main.\+c@{wii/main.\+c}!h\+Stretch@{h\+Stretch}}
+\index{h\+Stretch@{h\+Stretch}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{h\+Stretch}{hStretch}}
+{\footnotesize\ttfamily float h\+Stretch = 0.\+9f\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a4e9e9b3fadf5464fb21fe18bc1a9061c}\label{wii_2main_8c_a4e9e9b3fadf5464fb21fe18bc1a9061c}} 
+\index{wii/main.\+c@{wii/main.\+c}!model@{model}}
+\index{model@{model}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{model}{model}}
+{\footnotesize\ttfamily Mtx model\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a9757c82848e49036e32eb3d09921eb5b}\label{wii_2main_8c_a9757c82848e49036e32eb3d09921eb5b}} 
+\index{wii/main.\+c@{wii/main.\+c}!modelview@{modelview}}
+\index{modelview@{modelview}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{modelview}{modelview}}
+{\footnotesize\ttfamily Mtx modelview\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a0779122b7156629157afcf1a35c372ef}\label{wii_2main_8c_a0779122b7156629157afcf1a35c372ef}} 
+\index{wii/main.\+c@{wii/main.\+c}!output\+Buffer@{output\+Buffer}}
+\index{output\+Buffer@{output\+Buffer}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{output\+Buffer}{outputBuffer}}
+{\footnotesize\ttfamily void$\ast$ output\+Buffer\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a7ed0fc6ea460b70c1b85583c2bd1c4ff}\label{wii_2main_8c_a7ed0fc6ea460b70c1b85583c2bd1c4ff}} 
+\index{wii/main.\+c@{wii/main.\+c}!reference\+Retrace\+Count@{reference\+Retrace\+Count}}
+\index{reference\+Retrace\+Count@{reference\+Retrace\+Count}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{reference\+Retrace\+Count}{referenceRetraceCount}}
+{\footnotesize\ttfamily uint32\+\_\+t reference\+Retrace\+Count\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a0bcf5201ade3db7e4103e9ac92c103d9}\label{wii_2main_8c_a0bcf5201ade3db7e4103e9ac92c103d9}} 
+\index{wii/main.\+c@{wii/main.\+c}!rescale\+Tex@{rescale\+Tex}}
+\index{rescale\+Tex@{rescale\+Tex}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{rescale\+Tex}{rescaleTex}}
+{\footnotesize\ttfamily G\+X\+Tex\+Obj rescale\+Tex\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_ab6a1b1f05726d63d181546935a856f1f}\label{wii_2main_8c_ab6a1b1f05726d63d181546935a856f1f}} 
+\index{wii/main.\+c@{wii/main.\+c}!rescale\+Texmem@{rescale\+Texmem}}
+\index{rescale\+Texmem@{rescale\+Texmem}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{rescale\+Texmem}{rescaleTexmem}}
+{\footnotesize\ttfamily uint16\+\_\+t$\ast$ rescale\+Texmem\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_aca4812acd44d230309485e86f3f266c0}\label{wii_2main_8c_aca4812acd44d230309485e86f3f266c0}} 
+\index{wii/main.\+c@{wii/main.\+c}!retrace\+Count@{retrace\+Count}}
+\index{retrace\+Count@{retrace\+Count}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{retrace\+Count}{retraceCount}}
+{\footnotesize\ttfamily uint32\+\_\+t retrace\+Count\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a9ddc2aeb88953349f8df5508a2d0409e}\label{wii_2main_8c_a9ddc2aeb88953349f8df5508a2d0409e}} 
+\index{wii/main.\+c@{wii/main.\+c}!rom\+Buffer@{rom\+Buffer}}
+\index{rom\+Buffer@{rom\+Buffer}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{rom\+Buffer}{romBuffer}}
+{\footnotesize\ttfamily uint32\+\_\+t$\ast$ rom\+Buffer}
+
+\mbox{\Hypertarget{wii_2main_8c_ac8c80ae05c56d2d34b4029e3abde405a}\label{wii_2main_8c_ac8c80ae05c56d2d34b4029e3abde405a}} 
+\index{wii/main.\+c@{wii/main.\+c}!rom\+Buffer\+Size@{rom\+Buffer\+Size}}
+\index{rom\+Buffer\+Size@{rom\+Buffer\+Size}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{rom\+Buffer\+Size}{romBufferSize}}
+{\footnotesize\ttfamily size\+\_\+t rom\+Buffer\+Size}
+
+\mbox{\Hypertarget{wii_2main_8c_a7031a4df8d3c98f2016cb56ce6203cb5}\label{wii_2main_8c_a7031a4df8d3c98f2016cb56ce6203cb5}} 
+\index{wii/main.\+c@{wii/main.\+c}!rotation@{rotation}}
+\index{rotation@{rotation}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{rotation}{rotation}}
+{\footnotesize\ttfamily struct m\+Rotation\+Source rotation\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a0be8203c70a7aa4a9c0029361e5d907b}\label{wii_2main_8c_a0be8203c70a7aa4a9c0029361e5d907b}} 
+\index{wii/main.\+c@{wii/main.\+c}!rumble@{rumble}}
+\index{rumble@{rumble}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{rumble}{rumble}}
+{\footnotesize\ttfamily struct m\+Rumble rumble\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_abf473eae6494d40ce12c72a39f0ca41d}\label{wii_2main_8c_abf473eae6494d40ce12c72a39f0ca41d}} 
+\index{wii/main.\+c@{wii/main.\+c}!scale\+Factor@{scale\+Factor}}
+\index{scale\+Factor@{scale\+Factor}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{scale\+Factor}{scaleFactor}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} scale\+Factor\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_aa6506f4016bae669706872ea621efd8c}\label{wii_2main_8c_aa6506f4016bae669706872ea621efd8c}} 
+\index{wii/main.\+c@{wii/main.\+c}!screen\+Mode@{screen\+Mode}}
+\index{screen\+Mode@{screen\+Mode}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{screen\+Mode}{screenMode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{3ds_2main_8c_aefe4cd50ac123b6c800eede74968a353}{Screen\+Mode}}  screen\+Mode = \mbox{\hyperlink{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353ac6c34f453cd57936b352cc0c2bf01601}{S\+M\+\_\+\+PA}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a8406d7ff715e883b171540ecaa7ea3c4}\label{wii_2main_8c_a8406d7ff715e883b171540ecaa7ea3c4}} 
+\index{wii/main.\+c@{wii/main.\+c}!tex@{tex}}
+\index{tex@{tex}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{tex}{tex}}
+{\footnotesize\ttfamily G\+X\+Tex\+Obj tex\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a4ca44db2f475803e95e679aaa54ebed2}\label{wii_2main_8c_a4ca44db2f475803e95e679aaa54ebed2}} 
+\index{wii/main.\+c@{wii/main.\+c}!texmem@{texmem}}
+\index{texmem@{texmem}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{texmem}{texmem}}
+{\footnotesize\ttfamily uint16\+\_\+t$\ast$ texmem\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a2af218f5110dfb9ff56c2ee401c58c4f}\label{wii_2main_8c_a2af218f5110dfb9ff56c2ee401c58c4f}} 
+\index{wii/main.\+c@{wii/main.\+c}!tiltX@{tiltX}}
+\index{tiltX@{tiltX}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{tiltX}{tiltX}}
+{\footnotesize\ttfamily int32\+\_\+t tiltX\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a2d49d2ff4d84f91334f6d9a3eafbe5a3}\label{wii_2main_8c_a2d49d2ff4d84f91334f6d9a3eafbe5a3}} 
+\index{wii/main.\+c@{wii/main.\+c}!tiltY@{tiltY}}
+\index{tiltY@{tiltY}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{tiltY}{tiltY}}
+{\footnotesize\ttfamily int32\+\_\+t tiltY\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a4d167ba02c1b5c802354cbe61ddc93bb}\label{wii_2main_8c_a4d167ba02c1b5c802354cbe61ddc93bb}} 
+\index{wii/main.\+c@{wii/main.\+c}!video\+Mode@{video\+Mode}}
+\index{video\+Mode@{video\+Mode}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{video\+Mode}{videoMode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149}{Video\+Mode}}  video\+Mode = \mbox{\hyperlink{wii_2main_8c_a1e46218ee302fcc8c77e4ea0968ea149a0f311ebc6ad3c70f0b43caf81d22ebf2}{V\+M\+\_\+\+A\+U\+T\+O\+D\+E\+T\+E\+CT}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a34a8db1f85827092bbc7df06abde3fd2}\label{wii_2main_8c_a34a8db1f85827092bbc7df06abde3fd2}} 
+\index{wii/main.\+c@{wii/main.\+c}!view@{view}}
+\index{view@{view}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{view}{view}}
+{\footnotesize\ttfamily Mtx view\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a143f3eb6984006ae81af6e8878b8562f}\label{wii_2main_8c_a143f3eb6984006ae81af6e8878b8562f}} 
+\index{wii/main.\+c@{wii/main.\+c}!vmode@{vmode}}
+\index{vmode@{vmode}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{vmode}{vmode}}
+{\footnotesize\ttfamily G\+X\+R\+Mode\+Obj$\ast$ vmode\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a3020321452a57ce3e153e08d6e92cecf}\label{wii_2main_8c_a3020321452a57ce3e153e08d6e92cecf}} 
+\index{wii/main.\+c@{wii/main.\+c}!w\+Adjust@{w\+Adjust}}
+\index{w\+Adjust@{w\+Adjust}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{w\+Adjust}{wAdjust}}
+{\footnotesize\ttfamily float w\+Adjust\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a7173698d639000892d41c02a374bb5aa}\label{wii_2main_8c_a7173698d639000892d41c02a374bb5aa}} 
+\index{wii/main.\+c@{wii/main.\+c}!which\+Fb@{which\+Fb}}
+\index{which\+Fb@{which\+Fb}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{which\+Fb}{whichFb}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} which\+Fb = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{wii_2main_8c_a48aa8f40aaf1b014e72a56ec5f6de844}\label{wii_2main_8c_a48aa8f40aaf1b014e72a56ec5f6de844}} 
+\index{wii/main.\+c@{wii/main.\+c}!w\+Stretch@{w\+Stretch}}
+\index{w\+Stretch@{w\+Stretch}!wii/main.\+c@{wii/main.\+c}}
+\subsubsection{\texorpdfstring{w\+Stretch}{wStretch}}
+{\footnotesize\ttfamily float w\+Stretch = 1.\+0f\hspace{0.3cm}{\ttfamily [static]}}
+

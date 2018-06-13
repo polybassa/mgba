@@ -1,0 +1,154 @@
+\hypertarget{lr35902_2debugger_2cli-debugger_8c}{}\section{src/lr35902/debugger/cli-\/debugger.c File Reference}
+\label{lr35902_2debugger_2cli-debugger_8c}\index{src/lr35902/debugger/cli-\/debugger.\+c@{src/lr35902/debugger/cli-\/debugger.\+c}}
+{\ttfamily \#include $<$mgba/internal/lr35902/debugger/cli-\/debugger.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/debugger/cli-\/debugger.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/lr35902/decoder.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/lr35902/debugger/debugger.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/lr35902/lr35902.\+h$>$}\newline
+Include dependency graph for cli-\/debugger.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_2debugger_2cli-debugger_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{lr35902_2debugger_2cli-debugger_8c_a1bce4490785068fd42fca65db1fb21ad}{\+\_\+print\+Status}} (struct C\+L\+I\+Debugger\+System $\ast$)
+\item 
+static void \mbox{\hyperlink{lr35902_2debugger_2cli-debugger_8c_ab744a20db75c627a6cf552eee9339cc0}{\+\_\+disassemble}} (struct C\+L\+I\+Debugger\+System $\ast$debugger, struct C\+L\+I\+Debug\+Vector $\ast$dv)
+\item 
+static uint16\+\_\+t \mbox{\hyperlink{lr35902_2debugger_2cli-debugger_8c_a565a93fd2698bb6df9b06c322025a6cc}{\+\_\+print\+Line}} (struct C\+L\+I\+Debugger $\ast$debugger, uint16\+\_\+t address, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} segment)
+\item 
+static void \mbox{\hyperlink{lr35902_2debugger_2cli-debugger_8c_a6f66f89891de505acabfc2381290bd70}{\+\_\+print\+Flags}} (struct C\+L\+I\+Debugger\+Backend $\ast$be, union Flag\+Register \mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}})
+\item 
+void \mbox{\hyperlink{lr35902_2debugger_2cli-debugger_8c_ac552e15579f9549416a7d86250b83460}{L\+R35902\+C\+L\+I\+Debugger\+Create}} (struct C\+L\+I\+Debugger\+System $\ast$debugger)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static struct C\+L\+I\+Debugger\+Command\+Summary \mbox{\hyperlink{lr35902_2debugger_2cli-debugger_8c_aa99e2662f04c0ce3b3973ab1da121f71}{\+\_\+lr35902\+Commands}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{lr35902_2debugger_2cli-debugger_8c_ab744a20db75c627a6cf552eee9339cc0}\label{lr35902_2debugger_2cli-debugger_8c_ab744a20db75c627a6cf552eee9339cc0}} 
+\index{lr35902/debugger/cli-\/debugger.\+c@{lr35902/debugger/cli-\/debugger.\+c}!\+\_\+disassemble@{\+\_\+disassemble}}
+\index{\+\_\+disassemble@{\+\_\+disassemble}!lr35902/debugger/cli-\/debugger.\+c@{lr35902/debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+disassemble()}{\_disassemble()}}
+{\footnotesize\ttfamily static void \+\_\+disassemble (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger\+System $\ast$}]{debugger,  }\item[{struct C\+L\+I\+Debug\+Vector $\ast$}]{dv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_2debugger_2cli-debugger_8c_ab744a20db75c627a6cf552eee9339cc0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_2debugger_2cli-debugger_8c_ab744a20db75c627a6cf552eee9339cc0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lr35902_2debugger_2cli-debugger_8c_a6f66f89891de505acabfc2381290bd70}\label{lr35902_2debugger_2cli-debugger_8c_a6f66f89891de505acabfc2381290bd70}} 
+\index{lr35902/debugger/cli-\/debugger.\+c@{lr35902/debugger/cli-\/debugger.\+c}!\+\_\+print\+Flags@{\+\_\+print\+Flags}}
+\index{\+\_\+print\+Flags@{\+\_\+print\+Flags}!lr35902/debugger/cli-\/debugger.\+c@{lr35902/debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+print\+Flags()}{\_printFlags()}}
+{\footnotesize\ttfamily static void \+\_\+print\+Flags (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger\+Backend $\ast$}]{be,  }\item[{union Flag\+Register}]{f }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_2debugger_2cli-debugger_8c_a6f66f89891de505acabfc2381290bd70_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lr35902_2debugger_2cli-debugger_8c_a565a93fd2698bb6df9b06c322025a6cc}\label{lr35902_2debugger_2cli-debugger_8c_a565a93fd2698bb6df9b06c322025a6cc}} 
+\index{lr35902/debugger/cli-\/debugger.\+c@{lr35902/debugger/cli-\/debugger.\+c}!\+\_\+print\+Line@{\+\_\+print\+Line}}
+\index{\+\_\+print\+Line@{\+\_\+print\+Line}!lr35902/debugger/cli-\/debugger.\+c@{lr35902/debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+print\+Line()}{\_printLine()}}
+{\footnotesize\ttfamily static uint16\+\_\+t \+\_\+print\+Line (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger $\ast$}]{debugger,  }\item[{uint16\+\_\+t}]{address,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{segment }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_2debugger_2cli-debugger_8c_a565a93fd2698bb6df9b06c322025a6cc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_2debugger_2cli-debugger_8c_a565a93fd2698bb6df9b06c322025a6cc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lr35902_2debugger_2cli-debugger_8c_a1bce4490785068fd42fca65db1fb21ad}\label{lr35902_2debugger_2cli-debugger_8c_a1bce4490785068fd42fca65db1fb21ad}} 
+\index{lr35902/debugger/cli-\/debugger.\+c@{lr35902/debugger/cli-\/debugger.\+c}!\+\_\+print\+Status@{\+\_\+print\+Status}}
+\index{\+\_\+print\+Status@{\+\_\+print\+Status}!lr35902/debugger/cli-\/debugger.\+c@{lr35902/debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+print\+Status()}{\_printStatus()}}
+{\footnotesize\ttfamily static void \+\_\+print\+Status (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger\+System $\ast$}]{debugger }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_2debugger_2cli-debugger_8c_a1bce4490785068fd42fca65db1fb21ad_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_2debugger_2cli-debugger_8c_a1bce4490785068fd42fca65db1fb21ad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{lr35902_2debugger_2cli-debugger_8c_ac552e15579f9549416a7d86250b83460}\label{lr35902_2debugger_2cli-debugger_8c_ac552e15579f9549416a7d86250b83460}} 
+\index{lr35902/debugger/cli-\/debugger.\+c@{lr35902/debugger/cli-\/debugger.\+c}!L\+R35902\+C\+L\+I\+Debugger\+Create@{L\+R35902\+C\+L\+I\+Debugger\+Create}}
+\index{L\+R35902\+C\+L\+I\+Debugger\+Create@{L\+R35902\+C\+L\+I\+Debugger\+Create}!lr35902/debugger/cli-\/debugger.\+c@{lr35902/debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{L\+R35902\+C\+L\+I\+Debugger\+Create()}{LR35902CLIDebuggerCreate()}}
+{\footnotesize\ttfamily void L\+R35902\+C\+L\+I\+Debugger\+Create (\begin{DoxyParamCaption}\item[{struct C\+L\+I\+Debugger\+System $\ast$}]{debugger }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_2debugger_2cli-debugger_8c_ac552e15579f9549416a7d86250b83460_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{lr35902_2debugger_2cli-debugger_8c_ac552e15579f9549416a7d86250b83460_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{lr35902_2debugger_2cli-debugger_8c_aa99e2662f04c0ce3b3973ab1da121f71}\label{lr35902_2debugger_2cli-debugger_8c_aa99e2662f04c0ce3b3973ab1da121f71}} 
+\index{lr35902/debugger/cli-\/debugger.\+c@{lr35902/debugger/cli-\/debugger.\+c}!\+\_\+lr35902\+Commands@{\+\_\+lr35902\+Commands}}
+\index{\+\_\+lr35902\+Commands@{\+\_\+lr35902\+Commands}!lr35902/debugger/cli-\/debugger.\+c@{lr35902/debugger/cli-\/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+lr35902\+Commands}{\_lr35902Commands}}
+{\footnotesize\ttfamily struct C\+L\+I\+Debugger\+Command\+Summary \+\_\+lr35902\+Commands\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    \{ 0, 0, 0, 0 \}
+\}
+\end{DoxyCode}

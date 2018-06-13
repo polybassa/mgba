@@ -1,0 +1,445 @@
+\hypertarget{infcover_8c}{}\section{src/third-\/party/zlib/test/infcover.c File Reference}
+\label{infcover_8c}\index{src/third-\/party/zlib/test/infcover.\+c@{src/third-\/party/zlib/test/infcover.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}zlib.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}inftrees.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}inflate.\+h\char`\"{}}\newline
+Include dependency graph for infcover.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infcover_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{infcover_8c_a59d4d7ef4d73655c759211ec33a5d44f}{Z\+L\+I\+B\+\_\+\+I\+N\+T\+E\+R\+N\+AL}}
+\item 
+\#define \mbox{\hyperlink{infcover_8c_a08023ea6765c99d60a6a3840cd07156e}{local}}~static
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void $\ast$ \mbox{\hyperlink{infcover_8c_ab93f6cc4d3046ad6ac014a441ea3448d}{mem\+\_\+alloc}} (void $\ast$mem, unsigned \mbox{\hyperlink{enough_8c_ab25137bc309ccde185e2628bf4403ec7}{count}}, unsigned \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{infcover_8c_a33c826a3df42f52377fa549e839565df}{mem\+\_\+free}} (void $\ast$mem, void $\ast$ptr)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{infcover_8c_af589da86b9faacd1e54034a86cca60ba}{mem\+\_\+setup}} (\mbox{\hyperlink{zlib_8h_afa60092f4e0b9bc4f23b41c6930463f0}{z\+\_\+stream}} $\ast$strm)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{infcover_8c_a02c639521b6c3cb70328ca95d3e94440}{mem\+\_\+limit}} (\mbox{\hyperlink{zlib_8h_afa60092f4e0b9bc4f23b41c6930463f0}{z\+\_\+stream}} $\ast$strm, size\+\_\+t limit)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{infcover_8c_a4fed0cd283ee10e88dee4caf11eda1dd}{mem\+\_\+used}} (\mbox{\hyperlink{zlib_8h_afa60092f4e0b9bc4f23b41c6930463f0}{z\+\_\+stream}} $\ast$strm, char $\ast$\mbox{\hyperlink{gun_8c_ada2f6550a9ffe8e311af824df31c6064}{prefix}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{infcover_8c_a643c6bce856c13ef1177205e10fc99d1}{mem\+\_\+high}} (\mbox{\hyperlink{zlib_8h_afa60092f4e0b9bc4f23b41c6930463f0}{z\+\_\+stream}} $\ast$strm, char $\ast$\mbox{\hyperlink{gun_8c_ada2f6550a9ffe8e311af824df31c6064}{prefix}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{infcover_8c_adf5ea85e55e88942bfe496d6a54fec91}{mem\+\_\+done}} (\mbox{\hyperlink{zlib_8h_afa60092f4e0b9bc4f23b41c6930463f0}{z\+\_\+stream}} $\ast$strm, char $\ast$\mbox{\hyperlink{gun_8c_ada2f6550a9ffe8e311af824df31c6064}{prefix}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} unsigned char $\ast$ \mbox{\hyperlink{infcover_8c_a1c1cc68d18e94636d9ea74d0074f097e}{h2b}} (const char $\ast$hex, unsigned $\ast$len)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{infcover_8c_a3424d37b1bdf91bb4d1f6dfb71d710d1}{inf}} (char $\ast$hex, char $\ast$what, unsigned step, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} win, unsigned len, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} err)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{infcover_8c_aa981bab4ccf8850dafbea7af47072c99}{cover\+\_\+support}} (void)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{infcover_8c_ae1725f2d6f00d2ed82f27da373a682d3}{cover\+\_\+wrap}} (void)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} unsigned \mbox{\hyperlink{infcover_8c_a62932e271931e3ac800a9e3b9c608700}{pull}} (void $\ast$desc, unsigned char $\ast$$\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{infcover_8c_a7b2cec1766439f01103c2d03a81978c8}{push}} (void $\ast$desc, unsigned char $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, unsigned len)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{infcover_8c_a86ea7268809921588689661ef8a6a4d8}{cover\+\_\+back}} (void)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{infcover_8c_a91ed9f3d2ceca920b4501a030b27a3e4}{try}} (char $\ast$hex, char $\ast$id, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} err)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{infcover_8c_a6db8eec612ad481a8246c0d275fb55e7}{cover\+\_\+inflate}} (void)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{infcover_8c_a4580193f91e0d618537cf8e38a61d1ba}{cover\+\_\+trees}} (void)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{infcover_8c_ab3f65a56bed64f2b52fc1e4dafecc523}{cover\+\_\+fast}} (void)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{infcover_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{infcover_8c_a08023ea6765c99d60a6a3840cd07156e}\label{infcover_8c_a08023ea6765c99d60a6a3840cd07156e}} 
+\index{infcover.\+c@{infcover.\+c}!local@{local}}
+\index{local@{local}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{local}{local}}
+{\footnotesize\ttfamily \#define local~static}
+
+\mbox{\Hypertarget{infcover_8c_a59d4d7ef4d73655c759211ec33a5d44f}\label{infcover_8c_a59d4d7ef4d73655c759211ec33a5d44f}} 
+\index{infcover.\+c@{infcover.\+c}!Z\+L\+I\+B\+\_\+\+I\+N\+T\+E\+R\+N\+AL@{Z\+L\+I\+B\+\_\+\+I\+N\+T\+E\+R\+N\+AL}}
+\index{Z\+L\+I\+B\+\_\+\+I\+N\+T\+E\+R\+N\+AL@{Z\+L\+I\+B\+\_\+\+I\+N\+T\+E\+R\+N\+AL}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{Z\+L\+I\+B\+\_\+\+I\+N\+T\+E\+R\+N\+AL}{ZLIB\_INTERNAL}}
+{\footnotesize\ttfamily \#define Z\+L\+I\+B\+\_\+\+I\+N\+T\+E\+R\+N\+AL}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{infcover_8c_a86ea7268809921588689661ef8a6a4d8}\label{infcover_8c_a86ea7268809921588689661ef8a6a4d8}} 
+\index{infcover.\+c@{infcover.\+c}!cover\+\_\+back@{cover\+\_\+back}}
+\index{cover\+\_\+back@{cover\+\_\+back}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{cover\+\_\+back()}{cover\_back()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void cover\+\_\+back (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infcover_8c_a86ea7268809921588689661ef8a6a4d8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{infcover_8c_a86ea7268809921588689661ef8a6a4d8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infcover_8c_ab3f65a56bed64f2b52fc1e4dafecc523}\label{infcover_8c_ab3f65a56bed64f2b52fc1e4dafecc523}} 
+\index{infcover.\+c@{infcover.\+c}!cover\+\_\+fast@{cover\+\_\+fast}}
+\index{cover\+\_\+fast@{cover\+\_\+fast}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{cover\+\_\+fast()}{cover\_fast()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void cover\+\_\+fast (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infcover_8c_ab3f65a56bed64f2b52fc1e4dafecc523_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{infcover_8c_ab3f65a56bed64f2b52fc1e4dafecc523_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infcover_8c_a6db8eec612ad481a8246c0d275fb55e7}\label{infcover_8c_a6db8eec612ad481a8246c0d275fb55e7}} 
+\index{infcover.\+c@{infcover.\+c}!cover\+\_\+inflate@{cover\+\_\+inflate}}
+\index{cover\+\_\+inflate@{cover\+\_\+inflate}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{cover\+\_\+inflate()}{cover\_inflate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void cover\+\_\+inflate (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infcover_8c_a6db8eec612ad481a8246c0d275fb55e7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{infcover_8c_a6db8eec612ad481a8246c0d275fb55e7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infcover_8c_aa981bab4ccf8850dafbea7af47072c99}\label{infcover_8c_aa981bab4ccf8850dafbea7af47072c99}} 
+\index{infcover.\+c@{infcover.\+c}!cover\+\_\+support@{cover\+\_\+support}}
+\index{cover\+\_\+support@{cover\+\_\+support}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{cover\+\_\+support()}{cover\_support()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void cover\+\_\+support (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infcover_8c_aa981bab4ccf8850dafbea7af47072c99_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{infcover_8c_aa981bab4ccf8850dafbea7af47072c99_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infcover_8c_a4580193f91e0d618537cf8e38a61d1ba}\label{infcover_8c_a4580193f91e0d618537cf8e38a61d1ba}} 
+\index{infcover.\+c@{infcover.\+c}!cover\+\_\+trees@{cover\+\_\+trees}}
+\index{cover\+\_\+trees@{cover\+\_\+trees}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{cover\+\_\+trees()}{cover\_trees()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void cover\+\_\+trees (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infcover_8c_a4580193f91e0d618537cf8e38a61d1ba_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{infcover_8c_a4580193f91e0d618537cf8e38a61d1ba_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infcover_8c_ae1725f2d6f00d2ed82f27da373a682d3}\label{infcover_8c_ae1725f2d6f00d2ed82f27da373a682d3}} 
+\index{infcover.\+c@{infcover.\+c}!cover\+\_\+wrap@{cover\+\_\+wrap}}
+\index{cover\+\_\+wrap@{cover\+\_\+wrap}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{cover\+\_\+wrap()}{cover\_wrap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void cover\+\_\+wrap (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infcover_8c_ae1725f2d6f00d2ed82f27da373a682d3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{infcover_8c_ae1725f2d6f00d2ed82f27da373a682d3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infcover_8c_a1c1cc68d18e94636d9ea74d0074f097e}\label{infcover_8c_a1c1cc68d18e94636d9ea74d0074f097e}} 
+\index{infcover.\+c@{infcover.\+c}!h2b@{h2b}}
+\index{h2b@{h2b}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{h2b()}{h2b()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} unsigned char$\ast$ h2b (\begin{DoxyParamCaption}\item[{const char $\ast$}]{hex,  }\item[{unsigned $\ast$}]{len }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infcover_8c_a1c1cc68d18e94636d9ea74d0074f097e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infcover_8c_a1c1cc68d18e94636d9ea74d0074f097e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infcover_8c_a3424d37b1bdf91bb4d1f6dfb71d710d1}\label{infcover_8c_a3424d37b1bdf91bb4d1f6dfb71d710d1}} 
+\index{infcover.\+c@{infcover.\+c}!inf@{inf}}
+\index{inf@{inf}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{inf()}{inf()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void inf (\begin{DoxyParamCaption}\item[{char $\ast$}]{hex,  }\item[{char $\ast$}]{what,  }\item[{unsigned}]{step,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{win,  }\item[{unsigned}]{len,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{err }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infcover_8c_a3424d37b1bdf91bb4d1f6dfb71d710d1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{infcover_8c_a3424d37b1bdf91bb4d1f6dfb71d710d1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infcover_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{infcover_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{infcover.\+c@{infcover.\+c}!main@{main}}
+\index{main@{main}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infcover_8c_a840291bc02cba5474a4cb46a9b9566fe_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infcover_8c_ab93f6cc4d3046ad6ac014a441ea3448d}\label{infcover_8c_ab93f6cc4d3046ad6ac014a441ea3448d}} 
+\index{infcover.\+c@{infcover.\+c}!mem\+\_\+alloc@{mem\+\_\+alloc}}
+\index{mem\+\_\+alloc@{mem\+\_\+alloc}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{mem\+\_\+alloc()}{mem\_alloc()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void$\ast$ mem\+\_\+alloc (\begin{DoxyParamCaption}\item[{void $\ast$}]{mem,  }\item[{unsigned}]{count,  }\item[{unsigned}]{size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{infcover_8c_ab93f6cc4d3046ad6ac014a441ea3448d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infcover_8c_ab93f6cc4d3046ad6ac014a441ea3448d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infcover_8c_adf5ea85e55e88942bfe496d6a54fec91}\label{infcover_8c_adf5ea85e55e88942bfe496d6a54fec91}} 
+\index{infcover.\+c@{infcover.\+c}!mem\+\_\+done@{mem\+\_\+done}}
+\index{mem\+\_\+done@{mem\+\_\+done}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{mem\+\_\+done()}{mem\_done()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void mem\+\_\+done (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_afa60092f4e0b9bc4f23b41c6930463f0}{z\+\_\+stream}} $\ast$}]{strm,  }\item[{char $\ast$}]{prefix }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{infcover_8c_adf5ea85e55e88942bfe496d6a54fec91_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infcover_8c_adf5ea85e55e88942bfe496d6a54fec91_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infcover_8c_a33c826a3df42f52377fa549e839565df}\label{infcover_8c_a33c826a3df42f52377fa549e839565df}} 
+\index{infcover.\+c@{infcover.\+c}!mem\+\_\+free@{mem\+\_\+free}}
+\index{mem\+\_\+free@{mem\+\_\+free}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{mem\+\_\+free()}{mem\_free()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void mem\+\_\+free (\begin{DoxyParamCaption}\item[{void $\ast$}]{mem,  }\item[{void $\ast$}]{ptr }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=219pt]{infcover_8c_a33c826a3df42f52377fa549e839565df_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infcover_8c_a33c826a3df42f52377fa549e839565df_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infcover_8c_a643c6bce856c13ef1177205e10fc99d1}\label{infcover_8c_a643c6bce856c13ef1177205e10fc99d1}} 
+\index{infcover.\+c@{infcover.\+c}!mem\+\_\+high@{mem\+\_\+high}}
+\index{mem\+\_\+high@{mem\+\_\+high}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{mem\+\_\+high()}{mem\_high()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void mem\+\_\+high (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_afa60092f4e0b9bc4f23b41c6930463f0}{z\+\_\+stream}} $\ast$}]{strm,  }\item[{char $\ast$}]{prefix }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infcover_8c_a643c6bce856c13ef1177205e10fc99d1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infcover_8c_a02c639521b6c3cb70328ca95d3e94440}\label{infcover_8c_a02c639521b6c3cb70328ca95d3e94440}} 
+\index{infcover.\+c@{infcover.\+c}!mem\+\_\+limit@{mem\+\_\+limit}}
+\index{mem\+\_\+limit@{mem\+\_\+limit}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{mem\+\_\+limit()}{mem\_limit()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void mem\+\_\+limit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_afa60092f4e0b9bc4f23b41c6930463f0}{z\+\_\+stream}} $\ast$}]{strm,  }\item[{size\+\_\+t}]{limit }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infcover_8c_a02c639521b6c3cb70328ca95d3e94440_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infcover_8c_af589da86b9faacd1e54034a86cca60ba}\label{infcover_8c_af589da86b9faacd1e54034a86cca60ba}} 
+\index{infcover.\+c@{infcover.\+c}!mem\+\_\+setup@{mem\+\_\+setup}}
+\index{mem\+\_\+setup@{mem\+\_\+setup}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{mem\+\_\+setup()}{mem\_setup()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void mem\+\_\+setup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_afa60092f4e0b9bc4f23b41c6930463f0}{z\+\_\+stream}} $\ast$}]{strm }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{infcover_8c_af589da86b9faacd1e54034a86cca60ba_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infcover_8c_af589da86b9faacd1e54034a86cca60ba_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infcover_8c_a4fed0cd283ee10e88dee4caf11eda1dd}\label{infcover_8c_a4fed0cd283ee10e88dee4caf11eda1dd}} 
+\index{infcover.\+c@{infcover.\+c}!mem\+\_\+used@{mem\+\_\+used}}
+\index{mem\+\_\+used@{mem\+\_\+used}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{mem\+\_\+used()}{mem\_used()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void mem\+\_\+used (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{zlib_8h_afa60092f4e0b9bc4f23b41c6930463f0}{z\+\_\+stream}} $\ast$}]{strm,  }\item[{char $\ast$}]{prefix }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infcover_8c_a4fed0cd283ee10e88dee4caf11eda1dd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infcover_8c_a62932e271931e3ac800a9e3b9c608700}\label{infcover_8c_a62932e271931e3ac800a9e3b9c608700}} 
+\index{infcover.\+c@{infcover.\+c}!pull@{pull}}
+\index{pull@{pull}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{pull()}{pull()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} unsigned pull (\begin{DoxyParamCaption}\item[{void $\ast$}]{desc,  }\item[{unsigned char $\ast$$\ast$}]{buf }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{infcover_8c_a62932e271931e3ac800a9e3b9c608700_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infcover_8c_a7b2cec1766439f01103c2d03a81978c8}\label{infcover_8c_a7b2cec1766439f01103c2d03a81978c8}} 
+\index{infcover.\+c@{infcover.\+c}!push@{push}}
+\index{push@{push}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{push()}{push()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} push (\begin{DoxyParamCaption}\item[{void $\ast$}]{desc,  }\item[{unsigned char $\ast$}]{buf,  }\item[{unsigned}]{len }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{infcover_8c_a7b2cec1766439f01103c2d03a81978c8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{infcover_8c_a91ed9f3d2ceca920b4501a030b27a3e4}\label{infcover_8c_a91ed9f3d2ceca920b4501a030b27a3e4}} 
+\index{infcover.\+c@{infcover.\+c}!try@{try}}
+\index{try@{try}!infcover.\+c@{infcover.\+c}}
+\subsubsection{\texorpdfstring{try()}{try()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} try (\begin{DoxyParamCaption}\item[{char $\ast$}]{hex,  }\item[{char $\ast$}]{id,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{err }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{infcover_8c_a91ed9f3d2ceca920b4501a030b27a3e4_cgraph}
+\end{center}
+\end{figure}

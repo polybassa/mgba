@@ -1,0 +1,123 @@
+\hypertarget{sdl_2main_8c}{}\section{src/platform/sdl/main.c File Reference}
+\label{sdl_2main_8c}\index{src/platform/sdl/main.\+c@{src/platform/sdl/main.\+c}}
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba/internal/debugger/cli-\/debugger.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/cheats.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/config.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/input.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/thread.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/input.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/feature/commandline.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+{\ttfamily \#include $<$S\+D\+L.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+Include dependency graph for main.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl_2main_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{sdl_2main_8c_a614217d263be1fb1a5f76e2ff7be19a2}{P\+O\+RT}}~\char`\"{}sdl\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{sdl_2main_8c_a15d00855bf50f3e95beec80ba076420e}{m\+S\+D\+L\+Init}} (struct \mbox{\hyperlink{structm_s_d_l_renderer}{m\+S\+D\+L\+Renderer}} $\ast$renderer)
+\item 
+static void \mbox{\hyperlink{sdl_2main_8c_a1954377c149b0e8bec2a89d4f6910002}{m\+S\+D\+L\+Deinit}} (struct \mbox{\hyperlink{structm_s_d_l_renderer}{m\+S\+D\+L\+Renderer}} $\ast$renderer)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{sdl_2main_8c_aad86a71174ca8777f738c1d58e815190}{m\+S\+D\+L\+Run}} (struct \mbox{\hyperlink{structm_s_d_l_renderer}{m\+S\+D\+L\+Renderer}} $\ast$renderer, struct m\+Arguments $\ast$args)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{sdl_2main_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{sdl_2main_8c_a614217d263be1fb1a5f76e2ff7be19a2}\label{sdl_2main_8c_a614217d263be1fb1a5f76e2ff7be19a2}} 
+\index{sdl/main.\+c@{sdl/main.\+c}!P\+O\+RT@{P\+O\+RT}}
+\index{P\+O\+RT@{P\+O\+RT}!sdl/main.\+c@{sdl/main.\+c}}
+\subsubsection{\texorpdfstring{P\+O\+RT}{PORT}}
+{\footnotesize\ttfamily \#define P\+O\+RT~\char`\"{}sdl\char`\"{}}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{sdl_2main_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{sdl_2main_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{sdl/main.\+c@{sdl/main.\+c}!main@{main}}
+\index{main@{main}!sdl/main.\+c@{sdl/main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{sdl_2main_8c_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl_2main_8c_a1954377c149b0e8bec2a89d4f6910002}\label{sdl_2main_8c_a1954377c149b0e8bec2a89d4f6910002}} 
+\index{sdl/main.\+c@{sdl/main.\+c}!m\+S\+D\+L\+Deinit@{m\+S\+D\+L\+Deinit}}
+\index{m\+S\+D\+L\+Deinit@{m\+S\+D\+L\+Deinit}!sdl/main.\+c@{sdl/main.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Deinit()}{mSDLDeinit()}}
+{\footnotesize\ttfamily static void m\+S\+D\+L\+Deinit (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_s_d_l_renderer}{m\+S\+D\+L\+Renderer}} $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{sdl_2main_8c_a1954377c149b0e8bec2a89d4f6910002_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{sdl_2main_8c_a1954377c149b0e8bec2a89d4f6910002_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl_2main_8c_a15d00855bf50f3e95beec80ba076420e}\label{sdl_2main_8c_a15d00855bf50f3e95beec80ba076420e}} 
+\index{sdl/main.\+c@{sdl/main.\+c}!m\+S\+D\+L\+Init@{m\+S\+D\+L\+Init}}
+\index{m\+S\+D\+L\+Init@{m\+S\+D\+L\+Init}!sdl/main.\+c@{sdl/main.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Init()}{mSDLInit()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+S\+D\+L\+Init (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_s_d_l_renderer}{m\+S\+D\+L\+Renderer}} $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{sdl_2main_8c_a15d00855bf50f3e95beec80ba076420e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sdl_2main_8c_aad86a71174ca8777f738c1d58e815190}\label{sdl_2main_8c_aad86a71174ca8777f738c1d58e815190}} 
+\index{sdl/main.\+c@{sdl/main.\+c}!m\+S\+D\+L\+Run@{m\+S\+D\+L\+Run}}
+\index{m\+S\+D\+L\+Run@{m\+S\+D\+L\+Run}!sdl/main.\+c@{sdl/main.\+c}}
+\subsubsection{\texorpdfstring{m\+S\+D\+L\+Run()}{mSDLRun()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} m\+S\+D\+L\+Run (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_s_d_l_renderer}{m\+S\+D\+L\+Renderer}} $\ast$}]{renderer,  }\item[{struct m\+Arguments $\ast$}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sdl_2main_8c_aad86a71174ca8777f738c1d58e815190_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{sdl_2main_8c_aad86a71174ca8777f738c1d58e815190_icgraph}
+\end{center}
+\end{figure}

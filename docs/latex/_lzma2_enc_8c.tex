@@ -1,0 +1,546 @@
+\hypertarget{_lzma2_enc_8c}{}\section{src/third-\/party/lzma/\+Lzma2\+Enc.c File Reference}
+\label{_lzma2_enc_8c}\index{src/third-\/party/lzma/\+Lzma2\+Enc.\+c@{src/third-\/party/lzma/\+Lzma2\+Enc.\+c}}
+{\ttfamily \#include \char`\"{}Precomp.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Lzma2\+Enc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Mt\+Coder.\+h\char`\"{}}\newline
+Include dependency graph for Lzma2\+Enc.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_lzma2_enc_8c_a9877f0d833987304396987a1f2989cb2}{L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+L\+Z\+MA}}~(1 $<$$<$ 7)
+\item 
+\#define \mbox{\hyperlink{_lzma2_enc_8c_a027b06982752a91738352aa2cf5a5b83}{L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+C\+O\+P\+Y\+\_\+\+N\+O\+\_\+\+R\+E\+S\+ET}}~2
+\item 
+\#define \mbox{\hyperlink{_lzma2_enc_8c_a6ddc0ae411d3597bae0184f638dc6a94}{L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+C\+O\+P\+Y\+\_\+\+R\+E\+S\+E\+T\+\_\+\+D\+IC}}~1
+\item 
+\#define \mbox{\hyperlink{_lzma2_enc_8c_ab97968b2411efb32c359e66ee37cc70d}{L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+E\+OF}}~0
+\item 
+\#define \mbox{\hyperlink{_lzma2_enc_8c_ab29d3bf2fef2b2e128c9ef9582868bc4}{L\+Z\+M\+A2\+\_\+\+L\+C\+L\+P\+\_\+\+M\+AX}}~4
+\item 
+\#define \mbox{\hyperlink{_lzma2_enc_8c_aaa12970e443d54553d075f0049e51949}{L\+Z\+M\+A2\+\_\+\+D\+I\+C\+\_\+\+S\+I\+Z\+E\+\_\+\+F\+R\+O\+M\+\_\+\+P\+R\+OP}}(p)~(((\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}})2 $\vert$ ((p) \& 1)) $<$$<$ ((p) / 2 + 11))
+\item 
+\#define \mbox{\hyperlink{_lzma2_enc_8c_a2b7baa8cce68521917582428744cef3e}{L\+Z\+M\+A2\+\_\+\+P\+A\+C\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX}}~(1 $<$$<$ 16)
+\item 
+\#define \mbox{\hyperlink{_lzma2_enc_8c_a7b305097273e457d1c2df0f1ebc573d5}{L\+Z\+M\+A2\+\_\+\+C\+O\+P\+Y\+\_\+\+C\+H\+U\+N\+K\+\_\+\+S\+I\+ZE}}~\mbox{\hyperlink{_lzma2_enc_8c_a2b7baa8cce68521917582428744cef3e}{L\+Z\+M\+A2\+\_\+\+P\+A\+C\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX}}
+\item 
+\#define \mbox{\hyperlink{_lzma2_enc_8c_aedf44426a220bcb08b578095db2eb6e9}{L\+Z\+M\+A2\+\_\+\+U\+N\+P\+A\+C\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX}}~(1 $<$$<$ 21)
+\item 
+\#define \mbox{\hyperlink{_lzma2_enc_8c_a522a2ec1b5870696f52ed5ce858316af}{L\+Z\+M\+A2\+\_\+\+K\+E\+E\+P\+\_\+\+W\+I\+N\+D\+O\+W\+\_\+\+S\+I\+ZE}}~\mbox{\hyperlink{_lzma2_enc_8c_aedf44426a220bcb08b578095db2eb6e9}{L\+Z\+M\+A2\+\_\+\+U\+N\+P\+A\+C\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX}}
+\item 
+\#define \mbox{\hyperlink{_lzma2_enc_8c_a84a2a40d2b4947f232432f6a90d22863}{L\+Z\+M\+A2\+\_\+\+C\+H\+U\+N\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D\+\_\+\+M\+AX}}~((1 $<$$<$ 16) + 16)
+\item 
+\#define \mbox{\hyperlink{_lzma2_enc_8c_abf7dbba120babe0bf44dd2568f433add}{P\+RF}}(x)~/$\ast$ x $\ast$/
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_lzma2_enc_8c_acdf2e525e2e54a952ddfb079fc36c1a7}{Lzma2\+Enc\+Int\+\_\+\+Init}} (C\+Lzma2\+Enc\+Int $\ast$p, const \mbox{\hyperlink{_lzma2_enc_8h_struct_c_lzma2_enc_props}{C\+Lzma2\+Enc\+Props}} $\ast$props)
+\item 
+\mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_lzma2_enc_8c_a89736c2cf8f62084d2d18dd3a63cc42d}{Lzma\+Enc\+\_\+\+Prepare\+For\+Lzma2}} (\mbox{\hyperlink{_lzma_enc_8h_a8918974dc58e65ece361825e560a91f3}{C\+Lzma\+Enc\+Handle}} pp, \mbox{\hyperlink{struct_i_seq_in_stream}{I\+Seq\+In\+Stream}} $\ast$in\+Stream, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} keep\+Window\+Size, \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$alloc, \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$alloc\+Big)
+\item 
+\mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_lzma2_enc_8c_a0a78075f9383a55278fadd356c8eb8a4}{Lzma\+Enc\+\_\+\+Mem\+Prepare}} (\mbox{\hyperlink{_lzma_enc_8h_a8918974dc58e65ece361825e560a91f3}{C\+Lzma\+Enc\+Handle}} pp, const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$src, \mbox{\hyperlink{7z_types_8h_a4f8e2163e01de507a0ac376e8ec2b796}{SizeT}} src\+Len, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} keep\+Window\+Size, \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$alloc, \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$alloc\+Big)
+\item 
+\mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_lzma2_enc_8c_a24569ad9c5f56430cdc35362f0a7f402}{Lzma\+Enc\+\_\+\+Code\+One\+Mem\+Block}} (\mbox{\hyperlink{_lzma_enc_8h_a8918974dc58e65ece361825e560a91f3}{C\+Lzma\+Enc\+Handle}} pp, \mbox{\hyperlink{7z_types_8h_afdcfe6db5bea87bd493a3fe2c513d5ef}{Bool}} re\+Init, \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$dest, size\+\_\+t $\ast$dest\+Len, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} desired\+Pack\+Size, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$unpack\+Size)
+\item 
+const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$ \mbox{\hyperlink{_lzma2_enc_8c_acc3e959d6d393afdff49cda6479562e8}{Lzma\+Enc\+\_\+\+Get\+Cur\+Buf}} (\mbox{\hyperlink{_lzma_enc_8h_a8918974dc58e65ece361825e560a91f3}{C\+Lzma\+Enc\+Handle}} pp)
+\item 
+void \mbox{\hyperlink{_lzma2_enc_8c_a2686436c7efca3ce0b2c9f66d14f10ea}{Lzma\+Enc\+\_\+\+Finish}} (\mbox{\hyperlink{_lzma_enc_8h_a8918974dc58e65ece361825e560a91f3}{C\+Lzma\+Enc\+Handle}} pp)
+\item 
+void \mbox{\hyperlink{_lzma2_enc_8c_ac7b660e200ae042d57c0ad0a50b721a9}{Lzma\+Enc\+\_\+\+Save\+State}} (\mbox{\hyperlink{_lzma_enc_8h_a8918974dc58e65ece361825e560a91f3}{C\+Lzma\+Enc\+Handle}} pp)
+\item 
+void \mbox{\hyperlink{_lzma2_enc_8c_a65edbb93a6f7f8e5cecb84ecad868fec}{Lzma\+Enc\+\_\+\+Restore\+State}} (\mbox{\hyperlink{_lzma_enc_8h_a8918974dc58e65ece361825e560a91f3}{C\+Lzma\+Enc\+Handle}} pp)
+\item 
+static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_lzma2_enc_8c_a0f8ac96b150bbf4cd32e099d9c5a061b}{Lzma2\+Enc\+Int\+\_\+\+Encode\+Subblock}} (C\+Lzma2\+Enc\+Int $\ast$p, \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$out\+Buf, size\+\_\+t $\ast$pack\+Size\+Res, \mbox{\hyperlink{struct_i_seq_out_stream}{I\+Seq\+Out\+Stream}} $\ast$out\+Stream)
+\item 
+void \mbox{\hyperlink{_lzma2_enc_8c_aa469c26b2c311f339a14d74f1facc215}{Lzma2\+Enc\+Props\+\_\+\+Init}} (\mbox{\hyperlink{_lzma2_enc_8h_struct_c_lzma2_enc_props}{C\+Lzma2\+Enc\+Props}} $\ast$p)
+\item 
+void \mbox{\hyperlink{_lzma2_enc_8c_aa0fcc54e233854fa823413099092dad5}{Lzma2\+Enc\+Props\+\_\+\+Normalize}} (\mbox{\hyperlink{_lzma2_enc_8h_struct_c_lzma2_enc_props}{C\+Lzma2\+Enc\+Props}} $\ast$p)
+\item 
+static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_lzma2_enc_8c_a953edecc8125ef5596e1571377a97e1a}{Progress}} (\mbox{\hyperlink{struct_i_compress_progress}{I\+Compress\+Progress}} $\ast$p, \mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} in\+Size, \mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} out\+Size)
+\item 
+static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_lzma2_enc_8c_a73b14fb3152840d6d6872cddc7c713bb}{Lzma2\+Enc\+\_\+\+Encode\+Mt1}} (C\+Lzma2\+Enc\+Int $\ast$p, C\+Lzma2\+Enc $\ast$main\+Encoder, \mbox{\hyperlink{struct_i_seq_out_stream}{I\+Seq\+Out\+Stream}} $\ast$out\+Stream, \mbox{\hyperlink{struct_i_seq_in_stream}{I\+Seq\+In\+Stream}} $\ast$in\+Stream, \mbox{\hyperlink{struct_i_compress_progress}{I\+Compress\+Progress}} $\ast$progress)
+\item 
+static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_lzma2_enc_8c_ac72a55553c8a1d60c12893871fe58e80}{Mt\+Callback\+Imp\+\_\+\+Code}} (void $\ast$pp, unsigned \mbox{\hyperlink{isa-lr35902_8c_ac9ee548085af12859cb52a6c757cf73a}{index}}, \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$dest, size\+\_\+t $\ast$dest\+Size, const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$src, size\+\_\+t src\+Size, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} finished)
+\item 
+\mbox{\hyperlink{_lzma2_enc_8h_a169d5724fa5b8c5e6e8c82f55f3b04e2}{C\+Lzma2\+Enc\+Handle}} \mbox{\hyperlink{_lzma2_enc_8c_a2eb5947dbe08efd0c85f4bd55705b484}{Lzma2\+Enc\+\_\+\+Create}} (\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$alloc, \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$alloc\+Big)
+\item 
+void \mbox{\hyperlink{_lzma2_enc_8c_a5948da7e414b7972988440de1e128948}{Lzma2\+Enc\+\_\+\+Destroy}} (\mbox{\hyperlink{_lzma2_enc_8h_a169d5724fa5b8c5e6e8c82f55f3b04e2}{C\+Lzma2\+Enc\+Handle}} pp)
+\item 
+\mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_lzma2_enc_8c_ab64794ba2c2cafc6571fcc3df25157f3}{Lzma2\+Enc\+\_\+\+Set\+Props}} (\mbox{\hyperlink{_lzma2_enc_8h_a169d5724fa5b8c5e6e8c82f55f3b04e2}{C\+Lzma2\+Enc\+Handle}} pp, const \mbox{\hyperlink{_lzma2_enc_8h_struct_c_lzma2_enc_props}{C\+Lzma2\+Enc\+Props}} $\ast$props)
+\item 
+\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} \mbox{\hyperlink{_lzma2_enc_8c_a63f7e034d6978dac7b6cf02ab9ed123f}{Lzma2\+Enc\+\_\+\+Write\+Properties}} (\mbox{\hyperlink{_lzma2_enc_8h_a169d5724fa5b8c5e6e8c82f55f3b04e2}{C\+Lzma2\+Enc\+Handle}} pp)
+\item 
+\mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{_lzma2_enc_8c_aadec8ca5f2b37b561aa9ceb4182d61b3}{Lzma2\+Enc\+\_\+\+Encode}} (\mbox{\hyperlink{_lzma2_enc_8h_a169d5724fa5b8c5e6e8c82f55f3b04e2}{C\+Lzma2\+Enc\+Handle}} pp, \mbox{\hyperlink{struct_i_seq_out_stream}{I\+Seq\+Out\+Stream}} $\ast$out\+Stream, \mbox{\hyperlink{struct_i_seq_in_stream}{I\+Seq\+In\+Stream}} $\ast$in\+Stream, \mbox{\hyperlink{struct_i_compress_progress}{I\+Compress\+Progress}} $\ast$progress)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_lzma2_enc_8c_a84a2a40d2b4947f232432f6a90d22863}\label{_lzma2_enc_8c_a84a2a40d2b4947f232432f6a90d22863}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!L\+Z\+M\+A2\+\_\+\+C\+H\+U\+N\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D\+\_\+\+M\+AX@{L\+Z\+M\+A2\+\_\+\+C\+H\+U\+N\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D\+\_\+\+M\+AX}}
+\index{L\+Z\+M\+A2\+\_\+\+C\+H\+U\+N\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D\+\_\+\+M\+AX@{L\+Z\+M\+A2\+\_\+\+C\+H\+U\+N\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D\+\_\+\+M\+AX}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{L\+Z\+M\+A2\+\_\+\+C\+H\+U\+N\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D\+\_\+\+M\+AX}{LZMA2\_CHUNK\_SIZE\_COMPRESSED\_MAX}}
+{\footnotesize\ttfamily \#define L\+Z\+M\+A2\+\_\+\+C\+H\+U\+N\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D\+\_\+\+M\+AX~((1 $<$$<$ 16) + 16)}
+
+\mbox{\Hypertarget{_lzma2_enc_8c_a027b06982752a91738352aa2cf5a5b83}\label{_lzma2_enc_8c_a027b06982752a91738352aa2cf5a5b83}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+C\+O\+P\+Y\+\_\+\+N\+O\+\_\+\+R\+E\+S\+ET@{L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+C\+O\+P\+Y\+\_\+\+N\+O\+\_\+\+R\+E\+S\+ET}}
+\index{L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+C\+O\+P\+Y\+\_\+\+N\+O\+\_\+\+R\+E\+S\+ET@{L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+C\+O\+P\+Y\+\_\+\+N\+O\+\_\+\+R\+E\+S\+ET}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+C\+O\+P\+Y\+\_\+\+N\+O\+\_\+\+R\+E\+S\+ET}{LZMA2\_CONTROL\_COPY\_NO\_RESET}}
+{\footnotesize\ttfamily \#define L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+C\+O\+P\+Y\+\_\+\+N\+O\+\_\+\+R\+E\+S\+ET~2}
+
+\mbox{\Hypertarget{_lzma2_enc_8c_a6ddc0ae411d3597bae0184f638dc6a94}\label{_lzma2_enc_8c_a6ddc0ae411d3597bae0184f638dc6a94}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+C\+O\+P\+Y\+\_\+\+R\+E\+S\+E\+T\+\_\+\+D\+IC@{L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+C\+O\+P\+Y\+\_\+\+R\+E\+S\+E\+T\+\_\+\+D\+IC}}
+\index{L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+C\+O\+P\+Y\+\_\+\+R\+E\+S\+E\+T\+\_\+\+D\+IC@{L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+C\+O\+P\+Y\+\_\+\+R\+E\+S\+E\+T\+\_\+\+D\+IC}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+C\+O\+P\+Y\+\_\+\+R\+E\+S\+E\+T\+\_\+\+D\+IC}{LZMA2\_CONTROL\_COPY\_RESET\_DIC}}
+{\footnotesize\ttfamily \#define L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+C\+O\+P\+Y\+\_\+\+R\+E\+S\+E\+T\+\_\+\+D\+IC~1}
+
+\mbox{\Hypertarget{_lzma2_enc_8c_ab97968b2411efb32c359e66ee37cc70d}\label{_lzma2_enc_8c_ab97968b2411efb32c359e66ee37cc70d}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+E\+OF@{L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+E\+OF}}
+\index{L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+E\+OF@{L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+E\+OF}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+E\+OF}{LZMA2\_CONTROL\_EOF}}
+{\footnotesize\ttfamily \#define L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+E\+OF~0}
+
+\mbox{\Hypertarget{_lzma2_enc_8c_a9877f0d833987304396987a1f2989cb2}\label{_lzma2_enc_8c_a9877f0d833987304396987a1f2989cb2}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+L\+Z\+MA@{L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+L\+Z\+MA}}
+\index{L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+L\+Z\+MA@{L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+L\+Z\+MA}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+L\+Z\+MA}{LZMA2\_CONTROL\_LZMA}}
+{\footnotesize\ttfamily \#define L\+Z\+M\+A2\+\_\+\+C\+O\+N\+T\+R\+O\+L\+\_\+\+L\+Z\+MA~(1 $<$$<$ 7)}
+
+\mbox{\Hypertarget{_lzma2_enc_8c_a7b305097273e457d1c2df0f1ebc573d5}\label{_lzma2_enc_8c_a7b305097273e457d1c2df0f1ebc573d5}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!L\+Z\+M\+A2\+\_\+\+C\+O\+P\+Y\+\_\+\+C\+H\+U\+N\+K\+\_\+\+S\+I\+ZE@{L\+Z\+M\+A2\+\_\+\+C\+O\+P\+Y\+\_\+\+C\+H\+U\+N\+K\+\_\+\+S\+I\+ZE}}
+\index{L\+Z\+M\+A2\+\_\+\+C\+O\+P\+Y\+\_\+\+C\+H\+U\+N\+K\+\_\+\+S\+I\+ZE@{L\+Z\+M\+A2\+\_\+\+C\+O\+P\+Y\+\_\+\+C\+H\+U\+N\+K\+\_\+\+S\+I\+ZE}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{L\+Z\+M\+A2\+\_\+\+C\+O\+P\+Y\+\_\+\+C\+H\+U\+N\+K\+\_\+\+S\+I\+ZE}{LZMA2\_COPY\_CHUNK\_SIZE}}
+{\footnotesize\ttfamily \#define L\+Z\+M\+A2\+\_\+\+C\+O\+P\+Y\+\_\+\+C\+H\+U\+N\+K\+\_\+\+S\+I\+ZE~\mbox{\hyperlink{_lzma2_enc_8c_a2b7baa8cce68521917582428744cef3e}{L\+Z\+M\+A2\+\_\+\+P\+A\+C\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX}}}
+
+\mbox{\Hypertarget{_lzma2_enc_8c_aaa12970e443d54553d075f0049e51949}\label{_lzma2_enc_8c_aaa12970e443d54553d075f0049e51949}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!L\+Z\+M\+A2\+\_\+\+D\+I\+C\+\_\+\+S\+I\+Z\+E\+\_\+\+F\+R\+O\+M\+\_\+\+P\+R\+OP@{L\+Z\+M\+A2\+\_\+\+D\+I\+C\+\_\+\+S\+I\+Z\+E\+\_\+\+F\+R\+O\+M\+\_\+\+P\+R\+OP}}
+\index{L\+Z\+M\+A2\+\_\+\+D\+I\+C\+\_\+\+S\+I\+Z\+E\+\_\+\+F\+R\+O\+M\+\_\+\+P\+R\+OP@{L\+Z\+M\+A2\+\_\+\+D\+I\+C\+\_\+\+S\+I\+Z\+E\+\_\+\+F\+R\+O\+M\+\_\+\+P\+R\+OP}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{L\+Z\+M\+A2\+\_\+\+D\+I\+C\+\_\+\+S\+I\+Z\+E\+\_\+\+F\+R\+O\+M\+\_\+\+P\+R\+OP}{LZMA2\_DIC\_SIZE\_FROM\_PROP}}
+{\footnotesize\ttfamily \#define L\+Z\+M\+A2\+\_\+\+D\+I\+C\+\_\+\+S\+I\+Z\+E\+\_\+\+F\+R\+O\+M\+\_\+\+P\+R\+OP(\begin{DoxyParamCaption}\item[{}]{p }\end{DoxyParamCaption})~(((\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}})2 $\vert$ ((p) \& 1)) $<$$<$ ((p) / 2 + 11))}
+
+\mbox{\Hypertarget{_lzma2_enc_8c_a522a2ec1b5870696f52ed5ce858316af}\label{_lzma2_enc_8c_a522a2ec1b5870696f52ed5ce858316af}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!L\+Z\+M\+A2\+\_\+\+K\+E\+E\+P\+\_\+\+W\+I\+N\+D\+O\+W\+\_\+\+S\+I\+ZE@{L\+Z\+M\+A2\+\_\+\+K\+E\+E\+P\+\_\+\+W\+I\+N\+D\+O\+W\+\_\+\+S\+I\+ZE}}
+\index{L\+Z\+M\+A2\+\_\+\+K\+E\+E\+P\+\_\+\+W\+I\+N\+D\+O\+W\+\_\+\+S\+I\+ZE@{L\+Z\+M\+A2\+\_\+\+K\+E\+E\+P\+\_\+\+W\+I\+N\+D\+O\+W\+\_\+\+S\+I\+ZE}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{L\+Z\+M\+A2\+\_\+\+K\+E\+E\+P\+\_\+\+W\+I\+N\+D\+O\+W\+\_\+\+S\+I\+ZE}{LZMA2\_KEEP\_WINDOW\_SIZE}}
+{\footnotesize\ttfamily \#define L\+Z\+M\+A2\+\_\+\+K\+E\+E\+P\+\_\+\+W\+I\+N\+D\+O\+W\+\_\+\+S\+I\+ZE~\mbox{\hyperlink{_lzma2_enc_8c_aedf44426a220bcb08b578095db2eb6e9}{L\+Z\+M\+A2\+\_\+\+U\+N\+P\+A\+C\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX}}}
+
+\mbox{\Hypertarget{_lzma2_enc_8c_ab29d3bf2fef2b2e128c9ef9582868bc4}\label{_lzma2_enc_8c_ab29d3bf2fef2b2e128c9ef9582868bc4}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!L\+Z\+M\+A2\+\_\+\+L\+C\+L\+P\+\_\+\+M\+AX@{L\+Z\+M\+A2\+\_\+\+L\+C\+L\+P\+\_\+\+M\+AX}}
+\index{L\+Z\+M\+A2\+\_\+\+L\+C\+L\+P\+\_\+\+M\+AX@{L\+Z\+M\+A2\+\_\+\+L\+C\+L\+P\+\_\+\+M\+AX}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{L\+Z\+M\+A2\+\_\+\+L\+C\+L\+P\+\_\+\+M\+AX}{LZMA2\_LCLP\_MAX}}
+{\footnotesize\ttfamily \#define L\+Z\+M\+A2\+\_\+\+L\+C\+L\+P\+\_\+\+M\+AX~4}
+
+\mbox{\Hypertarget{_lzma2_enc_8c_a2b7baa8cce68521917582428744cef3e}\label{_lzma2_enc_8c_a2b7baa8cce68521917582428744cef3e}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!L\+Z\+M\+A2\+\_\+\+P\+A\+C\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX@{L\+Z\+M\+A2\+\_\+\+P\+A\+C\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX}}
+\index{L\+Z\+M\+A2\+\_\+\+P\+A\+C\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX@{L\+Z\+M\+A2\+\_\+\+P\+A\+C\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{L\+Z\+M\+A2\+\_\+\+P\+A\+C\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX}{LZMA2\_PACK\_SIZE\_MAX}}
+{\footnotesize\ttfamily \#define L\+Z\+M\+A2\+\_\+\+P\+A\+C\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX~(1 $<$$<$ 16)}
+
+\mbox{\Hypertarget{_lzma2_enc_8c_aedf44426a220bcb08b578095db2eb6e9}\label{_lzma2_enc_8c_aedf44426a220bcb08b578095db2eb6e9}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!L\+Z\+M\+A2\+\_\+\+U\+N\+P\+A\+C\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX@{L\+Z\+M\+A2\+\_\+\+U\+N\+P\+A\+C\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX}}
+\index{L\+Z\+M\+A2\+\_\+\+U\+N\+P\+A\+C\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX@{L\+Z\+M\+A2\+\_\+\+U\+N\+P\+A\+C\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{L\+Z\+M\+A2\+\_\+\+U\+N\+P\+A\+C\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX}{LZMA2\_UNPACK\_SIZE\_MAX}}
+{\footnotesize\ttfamily \#define L\+Z\+M\+A2\+\_\+\+U\+N\+P\+A\+C\+K\+\_\+\+S\+I\+Z\+E\+\_\+\+M\+AX~(1 $<$$<$ 21)}
+
+\mbox{\Hypertarget{_lzma2_enc_8c_abf7dbba120babe0bf44dd2568f433add}\label{_lzma2_enc_8c_abf7dbba120babe0bf44dd2568f433add}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!P\+RF@{P\+RF}}
+\index{P\+RF@{P\+RF}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{P\+RF}{PRF}}
+{\footnotesize\ttfamily \#define P\+RF(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~/$\ast$ x $\ast$/}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_lzma2_enc_8c_a2eb5947dbe08efd0c85f4bd55705b484}\label{_lzma2_enc_8c_a2eb5947dbe08efd0c85f4bd55705b484}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!Lzma2\+Enc\+\_\+\+Create@{Lzma2\+Enc\+\_\+\+Create}}
+\index{Lzma2\+Enc\+\_\+\+Create@{Lzma2\+Enc\+\_\+\+Create}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Lzma2\+Enc\+\_\+\+Create()}{Lzma2Enc\_Create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_lzma2_enc_8h_a169d5724fa5b8c5e6e8c82f55f3b04e2}{C\+Lzma2\+Enc\+Handle}} Lzma2\+Enc\+\_\+\+Create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$}]{alloc,  }\item[{\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$}]{alloc\+Big }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_a2eb5947dbe08efd0c85f4bd55705b484_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_a2eb5947dbe08efd0c85f4bd55705b484_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma2_enc_8c_a5948da7e414b7972988440de1e128948}\label{_lzma2_enc_8c_a5948da7e414b7972988440de1e128948}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!Lzma2\+Enc\+\_\+\+Destroy@{Lzma2\+Enc\+\_\+\+Destroy}}
+\index{Lzma2\+Enc\+\_\+\+Destroy@{Lzma2\+Enc\+\_\+\+Destroy}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Lzma2\+Enc\+\_\+\+Destroy()}{Lzma2Enc\_Destroy()}}
+{\footnotesize\ttfamily void Lzma2\+Enc\+\_\+\+Destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lzma2_enc_8h_a169d5724fa5b8c5e6e8c82f55f3b04e2}{C\+Lzma2\+Enc\+Handle}}}]{pp }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_a5948da7e414b7972988440de1e128948_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_a5948da7e414b7972988440de1e128948_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma2_enc_8c_aadec8ca5f2b37b561aa9ceb4182d61b3}\label{_lzma2_enc_8c_aadec8ca5f2b37b561aa9ceb4182d61b3}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!Lzma2\+Enc\+\_\+\+Encode@{Lzma2\+Enc\+\_\+\+Encode}}
+\index{Lzma2\+Enc\+\_\+\+Encode@{Lzma2\+Enc\+\_\+\+Encode}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Lzma2\+Enc\+\_\+\+Encode()}{Lzma2Enc\_Encode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Lzma2\+Enc\+\_\+\+Encode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lzma2_enc_8h_a169d5724fa5b8c5e6e8c82f55f3b04e2}{C\+Lzma2\+Enc\+Handle}}}]{pp,  }\item[{\mbox{\hyperlink{struct_i_seq_out_stream}{I\+Seq\+Out\+Stream}} $\ast$}]{out\+Stream,  }\item[{\mbox{\hyperlink{struct_i_seq_in_stream}{I\+Seq\+In\+Stream}} $\ast$}]{in\+Stream,  }\item[{\mbox{\hyperlink{struct_i_compress_progress}{I\+Compress\+Progress}} $\ast$}]{progress }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_aadec8ca5f2b37b561aa9ceb4182d61b3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_aadec8ca5f2b37b561aa9ceb4182d61b3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma2_enc_8c_a73b14fb3152840d6d6872cddc7c713bb}\label{_lzma2_enc_8c_a73b14fb3152840d6d6872cddc7c713bb}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!Lzma2\+Enc\+\_\+\+Encode\+Mt1@{Lzma2\+Enc\+\_\+\+Encode\+Mt1}}
+\index{Lzma2\+Enc\+\_\+\+Encode\+Mt1@{Lzma2\+Enc\+\_\+\+Encode\+Mt1}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Lzma2\+Enc\+\_\+\+Encode\+Mt1()}{Lzma2Enc\_EncodeMt1()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Lzma2\+Enc\+\_\+\+Encode\+Mt1 (\begin{DoxyParamCaption}\item[{C\+Lzma2\+Enc\+Int $\ast$}]{p,  }\item[{C\+Lzma2\+Enc $\ast$}]{main\+Encoder,  }\item[{\mbox{\hyperlink{struct_i_seq_out_stream}{I\+Seq\+Out\+Stream}} $\ast$}]{out\+Stream,  }\item[{\mbox{\hyperlink{struct_i_seq_in_stream}{I\+Seq\+In\+Stream}} $\ast$}]{in\+Stream,  }\item[{\mbox{\hyperlink{struct_i_compress_progress}{I\+Compress\+Progress}} $\ast$}]{progress }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_a73b14fb3152840d6d6872cddc7c713bb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_a73b14fb3152840d6d6872cddc7c713bb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma2_enc_8c_ab64794ba2c2cafc6571fcc3df25157f3}\label{_lzma2_enc_8c_ab64794ba2c2cafc6571fcc3df25157f3}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!Lzma2\+Enc\+\_\+\+Set\+Props@{Lzma2\+Enc\+\_\+\+Set\+Props}}
+\index{Lzma2\+Enc\+\_\+\+Set\+Props@{Lzma2\+Enc\+\_\+\+Set\+Props}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Lzma2\+Enc\+\_\+\+Set\+Props()}{Lzma2Enc\_SetProps()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Lzma2\+Enc\+\_\+\+Set\+Props (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lzma2_enc_8h_a169d5724fa5b8c5e6e8c82f55f3b04e2}{C\+Lzma2\+Enc\+Handle}}}]{pp,  }\item[{const \mbox{\hyperlink{_lzma2_enc_8h_struct_c_lzma2_enc_props}{C\+Lzma2\+Enc\+Props}} $\ast$}]{props }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_ab64794ba2c2cafc6571fcc3df25157f3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_ab64794ba2c2cafc6571fcc3df25157f3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma2_enc_8c_a63f7e034d6978dac7b6cf02ab9ed123f}\label{_lzma2_enc_8c_a63f7e034d6978dac7b6cf02ab9ed123f}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!Lzma2\+Enc\+\_\+\+Write\+Properties@{Lzma2\+Enc\+\_\+\+Write\+Properties}}
+\index{Lzma2\+Enc\+\_\+\+Write\+Properties@{Lzma2\+Enc\+\_\+\+Write\+Properties}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Lzma2\+Enc\+\_\+\+Write\+Properties()}{Lzma2Enc\_WriteProperties()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} Lzma2\+Enc\+\_\+\+Write\+Properties (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lzma2_enc_8h_a169d5724fa5b8c5e6e8c82f55f3b04e2}{C\+Lzma2\+Enc\+Handle}}}]{pp }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_a63f7e034d6978dac7b6cf02ab9ed123f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_a63f7e034d6978dac7b6cf02ab9ed123f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma2_enc_8c_a0f8ac96b150bbf4cd32e099d9c5a061b}\label{_lzma2_enc_8c_a0f8ac96b150bbf4cd32e099d9c5a061b}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!Lzma2\+Enc\+Int\+\_\+\+Encode\+Subblock@{Lzma2\+Enc\+Int\+\_\+\+Encode\+Subblock}}
+\index{Lzma2\+Enc\+Int\+\_\+\+Encode\+Subblock@{Lzma2\+Enc\+Int\+\_\+\+Encode\+Subblock}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Lzma2\+Enc\+Int\+\_\+\+Encode\+Subblock()}{Lzma2EncInt\_EncodeSubblock()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Lzma2\+Enc\+Int\+\_\+\+Encode\+Subblock (\begin{DoxyParamCaption}\item[{C\+Lzma2\+Enc\+Int $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$}]{out\+Buf,  }\item[{size\+\_\+t $\ast$}]{pack\+Size\+Res,  }\item[{\mbox{\hyperlink{struct_i_seq_out_stream}{I\+Seq\+Out\+Stream}} $\ast$}]{out\+Stream }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_a0f8ac96b150bbf4cd32e099d9c5a061b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_a0f8ac96b150bbf4cd32e099d9c5a061b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma2_enc_8c_acdf2e525e2e54a952ddfb079fc36c1a7}\label{_lzma2_enc_8c_acdf2e525e2e54a952ddfb079fc36c1a7}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!Lzma2\+Enc\+Int\+\_\+\+Init@{Lzma2\+Enc\+Int\+\_\+\+Init}}
+\index{Lzma2\+Enc\+Int\+\_\+\+Init@{Lzma2\+Enc\+Int\+\_\+\+Init}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Lzma2\+Enc\+Int\+\_\+\+Init()}{Lzma2EncInt\_Init()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Lzma2\+Enc\+Int\+\_\+\+Init (\begin{DoxyParamCaption}\item[{C\+Lzma2\+Enc\+Int $\ast$}]{p,  }\item[{const \mbox{\hyperlink{_lzma2_enc_8h_struct_c_lzma2_enc_props}{C\+Lzma2\+Enc\+Props}} $\ast$}]{props }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_acdf2e525e2e54a952ddfb079fc36c1a7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_acdf2e525e2e54a952ddfb079fc36c1a7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma2_enc_8c_aa469c26b2c311f339a14d74f1facc215}\label{_lzma2_enc_8c_aa469c26b2c311f339a14d74f1facc215}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!Lzma2\+Enc\+Props\+\_\+\+Init@{Lzma2\+Enc\+Props\+\_\+\+Init}}
+\index{Lzma2\+Enc\+Props\+\_\+\+Init@{Lzma2\+Enc\+Props\+\_\+\+Init}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Lzma2\+Enc\+Props\+\_\+\+Init()}{Lzma2EncProps\_Init()}}
+{\footnotesize\ttfamily void Lzma2\+Enc\+Props\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lzma2_enc_8h_struct_c_lzma2_enc_props}{C\+Lzma2\+Enc\+Props}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{_lzma2_enc_8c_aa469c26b2c311f339a14d74f1facc215_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_aa469c26b2c311f339a14d74f1facc215_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma2_enc_8c_aa0fcc54e233854fa823413099092dad5}\label{_lzma2_enc_8c_aa0fcc54e233854fa823413099092dad5}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!Lzma2\+Enc\+Props\+\_\+\+Normalize@{Lzma2\+Enc\+Props\+\_\+\+Normalize}}
+\index{Lzma2\+Enc\+Props\+\_\+\+Normalize@{Lzma2\+Enc\+Props\+\_\+\+Normalize}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Lzma2\+Enc\+Props\+\_\+\+Normalize()}{Lzma2EncProps\_Normalize()}}
+{\footnotesize\ttfamily void Lzma2\+Enc\+Props\+\_\+\+Normalize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lzma2_enc_8h_struct_c_lzma2_enc_props}{C\+Lzma2\+Enc\+Props}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_aa0fcc54e233854fa823413099092dad5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_aa0fcc54e233854fa823413099092dad5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma2_enc_8c_a24569ad9c5f56430cdc35362f0a7f402}\label{_lzma2_enc_8c_a24569ad9c5f56430cdc35362f0a7f402}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!Lzma\+Enc\+\_\+\+Code\+One\+Mem\+Block@{Lzma\+Enc\+\_\+\+Code\+One\+Mem\+Block}}
+\index{Lzma\+Enc\+\_\+\+Code\+One\+Mem\+Block@{Lzma\+Enc\+\_\+\+Code\+One\+Mem\+Block}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Lzma\+Enc\+\_\+\+Code\+One\+Mem\+Block()}{LzmaEnc\_CodeOneMemBlock()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Lzma\+Enc\+\_\+\+Code\+One\+Mem\+Block (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lzma_enc_8h_a8918974dc58e65ece361825e560a91f3}{C\+Lzma\+Enc\+Handle}}}]{pp,  }\item[{\mbox{\hyperlink{7z_types_8h_afdcfe6db5bea87bd493a3fe2c513d5ef}{Bool}}}]{re\+Init,  }\item[{\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$}]{dest,  }\item[{size\+\_\+t $\ast$}]{dest\+Len,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{desired\+Pack\+Size,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$}]{unpack\+Size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_a24569ad9c5f56430cdc35362f0a7f402_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_a24569ad9c5f56430cdc35362f0a7f402_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma2_enc_8c_a2686436c7efca3ce0b2c9f66d14f10ea}\label{_lzma2_enc_8c_a2686436c7efca3ce0b2c9f66d14f10ea}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!Lzma\+Enc\+\_\+\+Finish@{Lzma\+Enc\+\_\+\+Finish}}
+\index{Lzma\+Enc\+\_\+\+Finish@{Lzma\+Enc\+\_\+\+Finish}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Lzma\+Enc\+\_\+\+Finish()}{LzmaEnc\_Finish()}}
+{\footnotesize\ttfamily void Lzma\+Enc\+\_\+\+Finish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lzma_enc_8h_a8918974dc58e65ece361825e560a91f3}{C\+Lzma\+Enc\+Handle}}}]{pp }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_a2686436c7efca3ce0b2c9f66d14f10ea_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_a2686436c7efca3ce0b2c9f66d14f10ea_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma2_enc_8c_acc3e959d6d393afdff49cda6479562e8}\label{_lzma2_enc_8c_acc3e959d6d393afdff49cda6479562e8}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!Lzma\+Enc\+\_\+\+Get\+Cur\+Buf@{Lzma\+Enc\+\_\+\+Get\+Cur\+Buf}}
+\index{Lzma\+Enc\+\_\+\+Get\+Cur\+Buf@{Lzma\+Enc\+\_\+\+Get\+Cur\+Buf}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Lzma\+Enc\+\_\+\+Get\+Cur\+Buf()}{LzmaEnc\_GetCurBuf()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}}$\ast$ Lzma\+Enc\+\_\+\+Get\+Cur\+Buf (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lzma_enc_8h_a8918974dc58e65ece361825e560a91f3}{C\+Lzma\+Enc\+Handle}}}]{pp }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_acc3e959d6d393afdff49cda6479562e8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma2_enc_8c_a0a78075f9383a55278fadd356c8eb8a4}\label{_lzma2_enc_8c_a0a78075f9383a55278fadd356c8eb8a4}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!Lzma\+Enc\+\_\+\+Mem\+Prepare@{Lzma\+Enc\+\_\+\+Mem\+Prepare}}
+\index{Lzma\+Enc\+\_\+\+Mem\+Prepare@{Lzma\+Enc\+\_\+\+Mem\+Prepare}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Lzma\+Enc\+\_\+\+Mem\+Prepare()}{LzmaEnc\_MemPrepare()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Lzma\+Enc\+\_\+\+Mem\+Prepare (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lzma_enc_8h_a8918974dc58e65ece361825e560a91f3}{C\+Lzma\+Enc\+Handle}}}]{pp,  }\item[{const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$}]{src,  }\item[{\mbox{\hyperlink{7z_types_8h_a4f8e2163e01de507a0ac376e8ec2b796}{SizeT}}}]{src\+Len,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{keep\+Window\+Size,  }\item[{\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$}]{alloc,  }\item[{\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$}]{alloc\+Big }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_a0a78075f9383a55278fadd356c8eb8a4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_a0a78075f9383a55278fadd356c8eb8a4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma2_enc_8c_a89736c2cf8f62084d2d18dd3a63cc42d}\label{_lzma2_enc_8c_a89736c2cf8f62084d2d18dd3a63cc42d}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!Lzma\+Enc\+\_\+\+Prepare\+For\+Lzma2@{Lzma\+Enc\+\_\+\+Prepare\+For\+Lzma2}}
+\index{Lzma\+Enc\+\_\+\+Prepare\+For\+Lzma2@{Lzma\+Enc\+\_\+\+Prepare\+For\+Lzma2}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Lzma\+Enc\+\_\+\+Prepare\+For\+Lzma2()}{LzmaEnc\_PrepareForLzma2()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Lzma\+Enc\+\_\+\+Prepare\+For\+Lzma2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lzma_enc_8h_a8918974dc58e65ece361825e560a91f3}{C\+Lzma\+Enc\+Handle}}}]{pp,  }\item[{\mbox{\hyperlink{struct_i_seq_in_stream}{I\+Seq\+In\+Stream}} $\ast$}]{in\+Stream,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{keep\+Window\+Size,  }\item[{\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$}]{alloc,  }\item[{\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$}]{alloc\+Big }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_a89736c2cf8f62084d2d18dd3a63cc42d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_a89736c2cf8f62084d2d18dd3a63cc42d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma2_enc_8c_a65edbb93a6f7f8e5cecb84ecad868fec}\label{_lzma2_enc_8c_a65edbb93a6f7f8e5cecb84ecad868fec}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!Lzma\+Enc\+\_\+\+Restore\+State@{Lzma\+Enc\+\_\+\+Restore\+State}}
+\index{Lzma\+Enc\+\_\+\+Restore\+State@{Lzma\+Enc\+\_\+\+Restore\+State}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Lzma\+Enc\+\_\+\+Restore\+State()}{LzmaEnc\_RestoreState()}}
+{\footnotesize\ttfamily void Lzma\+Enc\+\_\+\+Restore\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lzma_enc_8h_a8918974dc58e65ece361825e560a91f3}{C\+Lzma\+Enc\+Handle}}}]{pp }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_a65edbb93a6f7f8e5cecb84ecad868fec_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma2_enc_8c_ac7b660e200ae042d57c0ad0a50b721a9}\label{_lzma2_enc_8c_ac7b660e200ae042d57c0ad0a50b721a9}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!Lzma\+Enc\+\_\+\+Save\+State@{Lzma\+Enc\+\_\+\+Save\+State}}
+\index{Lzma\+Enc\+\_\+\+Save\+State@{Lzma\+Enc\+\_\+\+Save\+State}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Lzma\+Enc\+\_\+\+Save\+State()}{LzmaEnc\_SaveState()}}
+{\footnotesize\ttfamily void Lzma\+Enc\+\_\+\+Save\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_lzma_enc_8h_a8918974dc58e65ece361825e560a91f3}{C\+Lzma\+Enc\+Handle}}}]{pp }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_ac7b660e200ae042d57c0ad0a50b721a9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma2_enc_8c_ac72a55553c8a1d60c12893871fe58e80}\label{_lzma2_enc_8c_ac72a55553c8a1d60c12893871fe58e80}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!Mt\+Callback\+Imp\+\_\+\+Code@{Mt\+Callback\+Imp\+\_\+\+Code}}
+\index{Mt\+Callback\+Imp\+\_\+\+Code@{Mt\+Callback\+Imp\+\_\+\+Code}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Mt\+Callback\+Imp\+\_\+\+Code()}{MtCallbackImp\_Code()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Mt\+Callback\+Imp\+\_\+\+Code (\begin{DoxyParamCaption}\item[{void $\ast$}]{pp,  }\item[{unsigned}]{index,  }\item[{\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$}]{dest,  }\item[{size\+\_\+t $\ast$}]{dest\+Size,  }\item[{const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$}]{src,  }\item[{size\+\_\+t}]{src\+Size,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{finished }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_ac72a55553c8a1d60c12893871fe58e80_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_ac72a55553c8a1d60c12893871fe58e80_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma2_enc_8c_a953edecc8125ef5596e1571377a97e1a}\label{_lzma2_enc_8c_a953edecc8125ef5596e1571377a97e1a}} 
+\index{Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}!Progress@{Progress}}
+\index{Progress@{Progress}!Lzma2\+Enc.\+c@{Lzma2\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Progress()}{Progress()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Progress (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_i_compress_progress}{I\+Compress\+Progress}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}}}]{in\+Size,  }\item[{\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}}}]{out\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma2_enc_8c_a953edecc8125ef5596e1571377a97e1a_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,557 @@
+\hypertarget{video-software_8c}{}\section{src/gba/renderers/video-\/software.c File Reference}
+\label{video-software_8c}\index{src/gba/renderers/video-\/software.\+c@{src/gba/renderers/video-\/software.\+c}}
+{\ttfamily \#include \char`\"{}gba/renderers/software-\/private.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba/core/cache-\/set.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/arm/macros.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/io.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/renderers/cache-\/set.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/arm-\/algo.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/memory.\+h$>$}\newline
+Include dependency graph for video-\/software.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{video-software_8c_aa31b1a31e923ffc3e630f105c0a4d218}{D\+I\+R\+T\+Y\+\_\+\+S\+C\+A\+N\+L\+I\+NE}}(\mbox{\hyperlink{_sha256_8c_ae076917a1bc8cbea6ed0af47d7c897fe}{R}},  Y)~\mbox{\hyperlink{_sha256_8c_ae076917a1bc8cbea6ed0af47d7c897fe}{R}}-\/$>$scanline\+Dirty\mbox{[}Y $>$$>$ 5\mbox{]} $\vert$= (1 $<$$<$ (Y \& 0x1\+F))
+\item 
+\#define \mbox{\hyperlink{video-software_8c_a087b8a593da2195f587787e34d25137d}{C\+L\+E\+A\+N\+\_\+\+S\+C\+A\+N\+L\+I\+NE}}(\mbox{\hyperlink{_sha256_8c_ae076917a1bc8cbea6ed0af47d7c897fe}{R}},  Y)~\mbox{\hyperlink{_sha256_8c_ae076917a1bc8cbea6ed0af47d7c897fe}{R}}-\/$>$scanline\+Dirty\mbox{[}Y $>$$>$ 5\mbox{]} \&= $\sim$(1 $<$$<$ (Y \& 0x1\+F))
+\item 
+\#define \mbox{\hyperlink{video-software_8c_a37efa221ca9eb62b754a8177fdff392a}{T\+E\+S\+T\+\_\+\+L\+A\+Y\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED}}(X)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{video-software_8c_af96caae6a353b68c77615b83bfee10cb}{G\+B\+A\+Video\+Software\+Renderer\+Init}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer)
+\item 
+static void \mbox{\hyperlink{video-software_8c_ac2c59bbe64e1453e725a61a739187a6b}{G\+B\+A\+Video\+Software\+Renderer\+Deinit}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer)
+\item 
+static void \mbox{\hyperlink{video-software_8c_ad9b2accf87f8b85ec8976ac94bc5b6d1}{G\+B\+A\+Video\+Software\+Renderer\+Reset}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer)
+\item 
+static void \mbox{\hyperlink{video-software_8c_aa5af01915ee7706cdbf55fd4295192f6}{G\+B\+A\+Video\+Software\+Renderer\+Write\+V\+R\+AM}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, uint32\+\_\+t address)
+\item 
+static void \mbox{\hyperlink{video-software_8c_a3e1a51d28182f9f3b3e2db089e275e2a}{G\+B\+A\+Video\+Software\+Renderer\+Write\+O\+AM}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, uint32\+\_\+t oam)
+\item 
+static void \mbox{\hyperlink{video-software_8c_acc8c3b30451a006f57fbfd75bc9582b7}{G\+B\+A\+Video\+Software\+Renderer\+Write\+Palette}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, uint32\+\_\+t address, uint16\+\_\+t value)
+\item 
+static uint16\+\_\+t \mbox{\hyperlink{video-software_8c_abf56bee96b521193690fc647929cd43b}{G\+B\+A\+Video\+Software\+Renderer\+Write\+Video\+Register}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, uint32\+\_\+t address, uint16\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{video-software_8c_a114a0223dfad6a2dcb0ad90c763ca781}{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Scanline}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} y)
+\item 
+static void \mbox{\hyperlink{video-software_8c_ab3f71de0216af2e138ddf948622ffc2f}{G\+B\+A\+Video\+Software\+Renderer\+Finish\+Frame}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer)
+\item 
+static void \mbox{\hyperlink{video-software_8c_a1f3ab2c0fe8d2b4179230c474a0e8ee8}{G\+B\+A\+Video\+Software\+Renderer\+Get\+Pixels}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, size\+\_\+t $\ast$stride, const void $\ast$$\ast$pixels)
+\item 
+static void \mbox{\hyperlink{video-software_8c_a6b275066e87074226e4be5673be71dbc}{G\+B\+A\+Video\+Software\+Renderer\+Put\+Pixels}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, size\+\_\+t stride, const void $\ast$pixels)
+\item 
+static void \mbox{\hyperlink{video-software_8c_af42a52538b50022349db835033b5a120}{G\+B\+A\+Video\+Software\+Renderer\+Update\+D\+I\+S\+P\+C\+NT}} (struct G\+B\+A\+Video\+Software\+Renderer $\ast$renderer)
+\item 
+static void \mbox{\hyperlink{video-software_8c_a4adca13f5c1896b8401ab6282c639828}{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+C\+NT}} (struct G\+B\+A\+Video\+Software\+Renderer $\ast$renderer, struct G\+B\+A\+Video\+Software\+Background $\ast$\mbox{\hyperlink{rpng2-x_8c_a808fa6d3573a86afa3ba7698a65b1ef6}{bg}}, uint16\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{video-software_8c_abe569d881e965273d28bf508dcf8bf02}{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+X\+\_\+\+LO}} (struct G\+B\+A\+Video\+Software\+Background $\ast$\mbox{\hyperlink{rpng2-x_8c_a808fa6d3573a86afa3ba7698a65b1ef6}{bg}}, uint16\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{video-software_8c_a5b0eb6b521c462fc68c3a3f9d869d3b3}{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+X\+\_\+\+HI}} (struct G\+B\+A\+Video\+Software\+Background $\ast$\mbox{\hyperlink{rpng2-x_8c_a808fa6d3573a86afa3ba7698a65b1ef6}{bg}}, uint16\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{video-software_8c_ad03c2cccd53cadd12d62c3ac7c89e8df}{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+Y\+\_\+\+LO}} (struct G\+B\+A\+Video\+Software\+Background $\ast$\mbox{\hyperlink{rpng2-x_8c_a808fa6d3573a86afa3ba7698a65b1ef6}{bg}}, uint16\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{video-software_8c_ab554a768bf9f03c8ca9b30c56f50809d}{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+Y\+\_\+\+HI}} (struct G\+B\+A\+Video\+Software\+Background $\ast$\mbox{\hyperlink{rpng2-x_8c_a808fa6d3573a86afa3ba7698a65b1ef6}{bg}}, uint16\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{video-software_8c_a2de98467eb997a1977e7e69846dc8a67}{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+L\+D\+C\+NT}} (struct G\+B\+A\+Video\+Software\+Renderer $\ast$renderer, uint16\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{video-software_8c_aa04dd06c1885063ab95ea424682c6fd2}{\+\_\+clean\+O\+AM}} (struct G\+B\+A\+Video\+Software\+Renderer $\ast$renderer)
+\item 
+static void \mbox{\hyperlink{video-software_8c_a1bd325c93d45a428fbddba65a83a87e0}{\+\_\+draw\+Scanline}} (struct G\+B\+A\+Video\+Software\+Renderer $\ast$renderer, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} y)
+\item 
+static void \mbox{\hyperlink{video-software_8c_afacc87d619eca46b04d8996790e302ef}{\+\_\+update\+Palettes}} (struct G\+B\+A\+Video\+Software\+Renderer $\ast$renderer)
+\item 
+static void \mbox{\hyperlink{video-software_8c_ad5aac057b5c5042d19b07e0e0bca757f}{\+\_\+break\+Window}} (struct G\+B\+A\+Video\+Software\+Renderer $\ast$software\+Renderer, struct WindowN $\ast$win, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} y)
+\item 
+static void \mbox{\hyperlink{video-software_8c_a1c60f25e3fc0fbe382de9e93c7bc9336}{\+\_\+break\+Window\+Inner}} (struct G\+B\+A\+Video\+Software\+Renderer $\ast$software\+Renderer, struct WindowN $\ast$win)
+\item 
+void \mbox{\hyperlink{video-software_8c_ac2fa4723211d9affabf42dafa0dc56c1}{G\+B\+A\+Video\+Software\+Renderer\+Create}} (struct G\+B\+A\+Video\+Software\+Renderer $\ast$renderer)
+\item 
+static void \mbox{\hyperlink{video-software_8c_af16bb0ab0d2ab6f5aa0ce3a57c1fd43b}{\+\_\+enable\+Bg}} (struct G\+B\+A\+Video\+Software\+Renderer $\ast$renderer, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{rpng2-x_8c_a808fa6d3573a86afa3ba7698a65b1ef6}{bg}}, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} active)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{video-software_8c_a087b8a593da2195f587787e34d25137d}\label{video-software_8c_a087b8a593da2195f587787e34d25137d}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!C\+L\+E\+A\+N\+\_\+\+S\+C\+A\+N\+L\+I\+NE@{C\+L\+E\+A\+N\+\_\+\+S\+C\+A\+N\+L\+I\+NE}}
+\index{C\+L\+E\+A\+N\+\_\+\+S\+C\+A\+N\+L\+I\+NE@{C\+L\+E\+A\+N\+\_\+\+S\+C\+A\+N\+L\+I\+NE}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{C\+L\+E\+A\+N\+\_\+\+S\+C\+A\+N\+L\+I\+NE}{CLEAN\_SCANLINE}}
+{\footnotesize\ttfamily \#define C\+L\+E\+A\+N\+\_\+\+S\+C\+A\+N\+L\+I\+NE(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{_sha256_8c_ae076917a1bc8cbea6ed0af47d7c897fe}{R}},  }\item[{}]{Y }\end{DoxyParamCaption})~\mbox{\hyperlink{_sha256_8c_ae076917a1bc8cbea6ed0af47d7c897fe}{R}}-\/$>$scanline\+Dirty\mbox{[}Y $>$$>$ 5\mbox{]} \&= $\sim$(1 $<$$<$ (Y \& 0x1\+F))}
+
+\mbox{\Hypertarget{video-software_8c_aa31b1a31e923ffc3e630f105c0a4d218}\label{video-software_8c_aa31b1a31e923ffc3e630f105c0a4d218}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!D\+I\+R\+T\+Y\+\_\+\+S\+C\+A\+N\+L\+I\+NE@{D\+I\+R\+T\+Y\+\_\+\+S\+C\+A\+N\+L\+I\+NE}}
+\index{D\+I\+R\+T\+Y\+\_\+\+S\+C\+A\+N\+L\+I\+NE@{D\+I\+R\+T\+Y\+\_\+\+S\+C\+A\+N\+L\+I\+NE}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{D\+I\+R\+T\+Y\+\_\+\+S\+C\+A\+N\+L\+I\+NE}{DIRTY\_SCANLINE}}
+{\footnotesize\ttfamily \#define D\+I\+R\+T\+Y\+\_\+\+S\+C\+A\+N\+L\+I\+NE(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{_sha256_8c_ae076917a1bc8cbea6ed0af47d7c897fe}{R}},  }\item[{}]{Y }\end{DoxyParamCaption})~\mbox{\hyperlink{_sha256_8c_ae076917a1bc8cbea6ed0af47d7c897fe}{R}}-\/$>$scanline\+Dirty\mbox{[}Y $>$$>$ 5\mbox{]} $\vert$= (1 $<$$<$ (Y \& 0x1\+F))}
+
+\mbox{\Hypertarget{video-software_8c_a37efa221ca9eb62b754a8177fdff392a}\label{video-software_8c_a37efa221ca9eb62b754a8177fdff392a}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!T\+E\+S\+T\+\_\+\+L\+A\+Y\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED@{T\+E\+S\+T\+\_\+\+L\+A\+Y\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED}}
+\index{T\+E\+S\+T\+\_\+\+L\+A\+Y\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED@{T\+E\+S\+T\+\_\+\+L\+A\+Y\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{T\+E\+S\+T\+\_\+\+L\+A\+Y\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED}{TEST\_LAYER\_ENABLED}}
+{\footnotesize\ttfamily \#define T\+E\+S\+T\+\_\+\+L\+A\+Y\+E\+R\+\_\+\+E\+N\+A\+B\+L\+ED(\begin{DoxyParamCaption}\item[{}]{X }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+(renderer->bg[X].enabled == 4 && \(\backslash\)
+    (GBAWindowControlIsBg ## X ## Enable(renderer->currentWindow.packed) || \(\backslash\)
+    (GBARegisterDISPCNTIsObjwinEnable(renderer->dispcnt) && GBAWindowControlIsBg ## X ## Enable (renderer->
+      objwin.packed))) && \(\backslash\)
+    renderer->bg[X].priority == priority)
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{video-software_8c_ad5aac057b5c5042d19b07e0e0bca757f}\label{video-software_8c_ad5aac057b5c5042d19b07e0e0bca757f}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!\+\_\+break\+Window@{\+\_\+break\+Window}}
+\index{\+\_\+break\+Window@{\+\_\+break\+Window}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+break\+Window()}{\_breakWindow()}}
+{\footnotesize\ttfamily static void \+\_\+break\+Window (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Renderer $\ast$}]{software\+Renderer,  }\item[{struct WindowN $\ast$}]{win,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{video-software_8c_ad5aac057b5c5042d19b07e0e0bca757f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_ad5aac057b5c5042d19b07e0e0bca757f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_a1c60f25e3fc0fbe382de9e93c7bc9336}\label{video-software_8c_a1c60f25e3fc0fbe382de9e93c7bc9336}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!\+\_\+break\+Window\+Inner@{\+\_\+break\+Window\+Inner}}
+\index{\+\_\+break\+Window\+Inner@{\+\_\+break\+Window\+Inner}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+break\+Window\+Inner()}{\_breakWindowInner()}}
+{\footnotesize\ttfamily static void \+\_\+break\+Window\+Inner (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Renderer $\ast$}]{software\+Renderer,  }\item[{struct WindowN $\ast$}]{win }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_a1c60f25e3fc0fbe382de9e93c7bc9336_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_aa04dd06c1885063ab95ea424682c6fd2}\label{video-software_8c_aa04dd06c1885063ab95ea424682c6fd2}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!\+\_\+clean\+O\+AM@{\+\_\+clean\+O\+AM}}
+\index{\+\_\+clean\+O\+AM@{\+\_\+clean\+O\+AM}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+clean\+O\+A\+M()}{\_cleanOAM()}}
+{\footnotesize\ttfamily static void \+\_\+clean\+O\+AM (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_aa04dd06c1885063ab95ea424682c6fd2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_a1bd325c93d45a428fbddba65a83a87e0}\label{video-software_8c_a1bd325c93d45a428fbddba65a83a87e0}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!\+\_\+draw\+Scanline@{\+\_\+draw\+Scanline}}
+\index{\+\_\+draw\+Scanline@{\+\_\+draw\+Scanline}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+draw\+Scanline()}{\_drawScanline()}}
+{\footnotesize\ttfamily static void \+\_\+draw\+Scanline (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Renderer $\ast$}]{renderer,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_a1bd325c93d45a428fbddba65a83a87e0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_a1bd325c93d45a428fbddba65a83a87e0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_af16bb0ab0d2ab6f5aa0ce3a57c1fd43b}\label{video-software_8c_af16bb0ab0d2ab6f5aa0ce3a57c1fd43b}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!\+\_\+enable\+Bg@{\+\_\+enable\+Bg}}
+\index{\+\_\+enable\+Bg@{\+\_\+enable\+Bg}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+enable\+Bg()}{\_enableBg()}}
+{\footnotesize\ttfamily static void \+\_\+enable\+Bg (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Renderer $\ast$}]{renderer,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{bg,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{active }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_af16bb0ab0d2ab6f5aa0ce3a57c1fd43b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_afacc87d619eca46b04d8996790e302ef}\label{video-software_8c_afacc87d619eca46b04d8996790e302ef}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!\+\_\+update\+Palettes@{\+\_\+update\+Palettes}}
+\index{\+\_\+update\+Palettes@{\+\_\+update\+Palettes}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+update\+Palettes()}{\_updatePalettes()}}
+{\footnotesize\ttfamily static void \+\_\+update\+Palettes (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{video-software_8c_afacc87d619eca46b04d8996790e302ef_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_afacc87d619eca46b04d8996790e302ef_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_ac2fa4723211d9affabf42dafa0dc56c1}\label{video-software_8c_ac2fa4723211d9affabf42dafa0dc56c1}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Create@{G\+B\+A\+Video\+Software\+Renderer\+Create}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Create@{G\+B\+A\+Video\+Software\+Renderer\+Create}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Create()}{GBAVideoSoftwareRendererCreate()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Software\+Renderer\+Create (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_ac2fa4723211d9affabf42dafa0dc56c1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_ac2fa4723211d9affabf42dafa0dc56c1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_ac2c59bbe64e1453e725a61a739187a6b}\label{video-software_8c_ac2c59bbe64e1453e725a61a739187a6b}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Deinit@{G\+B\+A\+Video\+Software\+Renderer\+Deinit}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Deinit@{G\+B\+A\+Video\+Software\+Renderer\+Deinit}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Deinit()}{GBAVideoSoftwareRendererDeinit()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Software\+Renderer\+Deinit (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_ac2c59bbe64e1453e725a61a739187a6b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_a114a0223dfad6a2dcb0ad90c763ca781}\label{video-software_8c_a114a0223dfad6a2dcb0ad90c763ca781}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Draw\+Scanline@{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Scanline}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Scanline@{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Scanline}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Scanline()}{GBAVideoSoftwareRendererDrawScanline()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Software\+Renderer\+Draw\+Scanline (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_a114a0223dfad6a2dcb0ad90c763ca781_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_a114a0223dfad6a2dcb0ad90c763ca781_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_ab3f71de0216af2e138ddf948622ffc2f}\label{video-software_8c_ab3f71de0216af2e138ddf948622ffc2f}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Finish\+Frame@{G\+B\+A\+Video\+Software\+Renderer\+Finish\+Frame}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Finish\+Frame@{G\+B\+A\+Video\+Software\+Renderer\+Finish\+Frame}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Finish\+Frame()}{GBAVideoSoftwareRendererFinishFrame()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Software\+Renderer\+Finish\+Frame (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_ab3f71de0216af2e138ddf948622ffc2f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_ab3f71de0216af2e138ddf948622ffc2f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_a1f3ab2c0fe8d2b4179230c474a0e8ee8}\label{video-software_8c_a1f3ab2c0fe8d2b4179230c474a0e8ee8}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Get\+Pixels@{G\+B\+A\+Video\+Software\+Renderer\+Get\+Pixels}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Get\+Pixels@{G\+B\+A\+Video\+Software\+Renderer\+Get\+Pixels}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Get\+Pixels()}{GBAVideoSoftwareRendererGetPixels()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Software\+Renderer\+Get\+Pixels (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{size\+\_\+t $\ast$}]{stride,  }\item[{const void $\ast$$\ast$}]{pixels }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_a1f3ab2c0fe8d2b4179230c474a0e8ee8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_af96caae6a353b68c77615b83bfee10cb}\label{video-software_8c_af96caae6a353b68c77615b83bfee10cb}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Init@{G\+B\+A\+Video\+Software\+Renderer\+Init}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Init@{G\+B\+A\+Video\+Software\+Renderer\+Init}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Init()}{GBAVideoSoftwareRendererInit()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Software\+Renderer\+Init (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_af96caae6a353b68c77615b83bfee10cb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_af96caae6a353b68c77615b83bfee10cb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_a6b275066e87074226e4be5673be71dbc}\label{video-software_8c_a6b275066e87074226e4be5673be71dbc}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Put\+Pixels@{G\+B\+A\+Video\+Software\+Renderer\+Put\+Pixels}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Put\+Pixels@{G\+B\+A\+Video\+Software\+Renderer\+Put\+Pixels}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Put\+Pixels()}{GBAVideoSoftwareRendererPutPixels()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Software\+Renderer\+Put\+Pixels (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{size\+\_\+t}]{stride,  }\item[{const void $\ast$}]{pixels }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_a6b275066e87074226e4be5673be71dbc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_ad9b2accf87f8b85ec8976ac94bc5b6d1}\label{video-software_8c_ad9b2accf87f8b85ec8976ac94bc5b6d1}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Reset@{G\+B\+A\+Video\+Software\+Renderer\+Reset}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Reset@{G\+B\+A\+Video\+Software\+Renderer\+Reset}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Reset()}{GBAVideoSoftwareRendererReset()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Software\+Renderer\+Reset (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_ad9b2accf87f8b85ec8976ac94bc5b6d1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_ad9b2accf87f8b85ec8976ac94bc5b6d1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_af42a52538b50022349db835033b5a120}\label{video-software_8c_af42a52538b50022349db835033b5a120}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Update\+D\+I\+S\+P\+C\+NT@{G\+B\+A\+Video\+Software\+Renderer\+Update\+D\+I\+S\+P\+C\+NT}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Update\+D\+I\+S\+P\+C\+NT@{G\+B\+A\+Video\+Software\+Renderer\+Update\+D\+I\+S\+P\+C\+NT}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Update\+D\+I\+S\+P\+C\+N\+T()}{GBAVideoSoftwareRendererUpdateDISPCNT()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Software\+Renderer\+Update\+D\+I\+S\+P\+C\+NT (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{video-software_8c_af42a52538b50022349db835033b5a120_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_af42a52538b50022349db835033b5a120_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_a4adca13f5c1896b8401ab6282c639828}\label{video-software_8c_a4adca13f5c1896b8401ab6282c639828}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+C\+NT@{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+C\+NT}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+C\+NT@{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+C\+NT}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+C\+N\+T()}{GBAVideoSoftwareRendererWriteBGCNT()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+C\+NT (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Renderer $\ast$}]{renderer,  }\item[{struct G\+B\+A\+Video\+Software\+Background $\ast$}]{bg,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_a4adca13f5c1896b8401ab6282c639828_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_a5b0eb6b521c462fc68c3a3f9d869d3b3}\label{video-software_8c_a5b0eb6b521c462fc68c3a3f9d869d3b3}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+X\+\_\+\+HI@{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+X\+\_\+\+HI}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+X\+\_\+\+HI@{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+X\+\_\+\+HI}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+X\+\_\+\+H\+I()}{GBAVideoSoftwareRendererWriteBGX\_HI()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+X\+\_\+\+HI (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Background $\ast$}]{bg,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_a5b0eb6b521c462fc68c3a3f9d869d3b3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_abe569d881e965273d28bf508dcf8bf02}\label{video-software_8c_abe569d881e965273d28bf508dcf8bf02}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+X\+\_\+\+LO@{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+X\+\_\+\+LO}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+X\+\_\+\+LO@{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+X\+\_\+\+LO}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+X\+\_\+\+L\+O()}{GBAVideoSoftwareRendererWriteBGX\_LO()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+X\+\_\+\+LO (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Background $\ast$}]{bg,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_abe569d881e965273d28bf508dcf8bf02_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_ab554a768bf9f03c8ca9b30c56f50809d}\label{video-software_8c_ab554a768bf9f03c8ca9b30c56f50809d}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+Y\+\_\+\+HI@{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+Y\+\_\+\+HI}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+Y\+\_\+\+HI@{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+Y\+\_\+\+HI}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+Y\+\_\+\+H\+I()}{GBAVideoSoftwareRendererWriteBGY\_HI()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+Y\+\_\+\+HI (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Background $\ast$}]{bg,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_ab554a768bf9f03c8ca9b30c56f50809d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_ad03c2cccd53cadd12d62c3ac7c89e8df}\label{video-software_8c_ad03c2cccd53cadd12d62c3ac7c89e8df}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+Y\+\_\+\+LO@{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+Y\+\_\+\+LO}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+Y\+\_\+\+LO@{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+Y\+\_\+\+LO}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+Y\+\_\+\+L\+O()}{GBAVideoSoftwareRendererWriteBGY\_LO()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+G\+Y\+\_\+\+LO (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Background $\ast$}]{bg,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_ad03c2cccd53cadd12d62c3ac7c89e8df_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_a2de98467eb997a1977e7e69846dc8a67}\label{video-software_8c_a2de98467eb997a1977e7e69846dc8a67}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+L\+D\+C\+NT@{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+L\+D\+C\+NT}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+L\+D\+C\+NT@{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+L\+D\+C\+NT}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+L\+D\+C\+N\+T()}{GBAVideoSoftwareRendererWriteBLDCNT()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Software\+Renderer\+Write\+B\+L\+D\+C\+NT (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Renderer $\ast$}]{renderer,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_a2de98467eb997a1977e7e69846dc8a67_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_a3e1a51d28182f9f3b3e2db089e275e2a}\label{video-software_8c_a3e1a51d28182f9f3b3e2db089e275e2a}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Write\+O\+AM@{G\+B\+A\+Video\+Software\+Renderer\+Write\+O\+AM}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Write\+O\+AM@{G\+B\+A\+Video\+Software\+Renderer\+Write\+O\+AM}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Write\+O\+A\+M()}{GBAVideoSoftwareRendererWriteOAM()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Software\+Renderer\+Write\+O\+AM (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{uint32\+\_\+t}]{oam }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_a3e1a51d28182f9f3b3e2db089e275e2a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_acc8c3b30451a006f57fbfd75bc9582b7}\label{video-software_8c_acc8c3b30451a006f57fbfd75bc9582b7}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Write\+Palette@{G\+B\+A\+Video\+Software\+Renderer\+Write\+Palette}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Write\+Palette@{G\+B\+A\+Video\+Software\+Renderer\+Write\+Palette}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Write\+Palette()}{GBAVideoSoftwareRendererWritePalette()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Software\+Renderer\+Write\+Palette (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{uint32\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_acc8c3b30451a006f57fbfd75bc9582b7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_acc8c3b30451a006f57fbfd75bc9582b7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_abf56bee96b521193690fc647929cd43b}\label{video-software_8c_abf56bee96b521193690fc647929cd43b}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Write\+Video\+Register@{G\+B\+A\+Video\+Software\+Renderer\+Write\+Video\+Register}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Write\+Video\+Register@{G\+B\+A\+Video\+Software\+Renderer\+Write\+Video\+Register}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Write\+Video\+Register()}{GBAVideoSoftwareRendererWriteVideoRegister()}}
+{\footnotesize\ttfamily static uint16\+\_\+t G\+B\+A\+Video\+Software\+Renderer\+Write\+Video\+Register (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{uint32\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_abf56bee96b521193690fc647929cd43b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_abf56bee96b521193690fc647929cd43b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{video-software_8c_aa5af01915ee7706cdbf55fd4295192f6}\label{video-software_8c_aa5af01915ee7706cdbf55fd4295192f6}} 
+\index{video-\/software.\+c@{video-\/software.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Write\+V\+R\+AM@{G\+B\+A\+Video\+Software\+Renderer\+Write\+V\+R\+AM}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Write\+V\+R\+AM@{G\+B\+A\+Video\+Software\+Renderer\+Write\+V\+R\+AM}!video-\/software.\+c@{video-\/software.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Write\+V\+R\+A\+M()}{GBAVideoSoftwareRendererWriteVRAM()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Software\+Renderer\+Write\+V\+R\+AM (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{uint32\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_aa5af01915ee7706cdbf55fd4295192f6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{video-software_8c_aa5af01915ee7706cdbf55fd4295192f6_icgraph}
+\end{center}
+\end{figure}

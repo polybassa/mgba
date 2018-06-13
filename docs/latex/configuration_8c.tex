@@ -1,0 +1,534 @@
+\hypertarget{configuration_8c}{}\section{src/util/configuration.c File Reference}
+\label{configuration_8c}\index{src/util/configuration.\+c@{src/util/configuration.\+c}}
+{\ttfamily \#include $<$mgba-\/util/configuration.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/formatting.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}third-\/party/inih/ini.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$float.\+h$>$}\newline
+Include dependency graph for configuration.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{configuration_8c_a90ccddfe15fe5a3e20d14b63bd08b7e4}{\+\_\+table\+Deinit}} (void $\ast$table)
+\item 
+static void \mbox{\hyperlink{configuration_8c_a86531a57364ad38a509fe6ae589df917}{\+\_\+section\+Deinit}} (void $\ast$string)
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{configuration_8c_a2160fac2b68daf13645de58486dfb744}{\+\_\+ini\+Read}} (void $\ast$configuration, const char $\ast$section, const char $\ast$key, const char $\ast$value)
+\item 
+static void \mbox{\hyperlink{configuration_8c_aadade30ae9206a9dd734d85d1a426a17}{\+\_\+key\+Handler}} (const char $\ast$key, void $\ast$value, void $\ast$user)
+\item 
+static void \mbox{\hyperlink{configuration_8c_adde35adb409fb603065ccd318c13fc63}{\+\_\+section\+Handler}} (const char $\ast$key, void $\ast$section, void $\ast$user)
+\item 
+static void \mbox{\hyperlink{configuration_8c_add219de61b3676b27c056f2883d3d118}{\+\_\+section\+Enum\+Handler}} (const char $\ast$key, void $\ast$section, void $\ast$user)
+\item 
+static void \mbox{\hyperlink{configuration_8c_a12ace4dafe12bd1ad6bc118f8eb6cf04}{\+\_\+enum\+Handler}} (const char $\ast$key, void $\ast$value, void $\ast$user)
+\item 
+void \mbox{\hyperlink{configuration_8c_a15c83ef7340a98abef83b16feda4d670}{Configuration\+Init}} (struct Configuration $\ast$configuration)
+\item 
+void \mbox{\hyperlink{configuration_8c_a96c18f6142c5446dcb090e42142ddeef}{Configuration\+Deinit}} (struct Configuration $\ast$configuration)
+\item 
+void \mbox{\hyperlink{configuration_8c_ae69175eda933864eaad3fa477f750454}{Configuration\+Set\+Value}} (struct Configuration $\ast$configuration, const char $\ast$section, const char $\ast$key, const char $\ast$value)
+\item 
+void \mbox{\hyperlink{configuration_8c_a3859c336333e3adfb4b175a4e5784191}{Configuration\+Set\+Int\+Value}} (struct Configuration $\ast$configuration, const char $\ast$section, const char $\ast$key, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} value)
+\item 
+void \mbox{\hyperlink{configuration_8c_a07795b2227bad2dbb22f779c779d50b7}{Configuration\+Set\+U\+Int\+Value}} (struct Configuration $\ast$configuration, const char $\ast$section, const char $\ast$key, unsigned value)
+\item 
+void \mbox{\hyperlink{configuration_8c_a9e450194c36cb551178515e95090701f}{Configuration\+Set\+Float\+Value}} (struct Configuration $\ast$configuration, const char $\ast$section, const char $\ast$key, float value)
+\item 
+void \mbox{\hyperlink{configuration_8c_a220ce6baaad6dd008ac764e1135574ab}{Configuration\+Clear\+Value}} (struct Configuration $\ast$configuration, const char $\ast$section, const char $\ast$key)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{configuration_8c_a10e78259cab724a2aab9c8298bcf14fa}{Configuration\+Has\+Section}} (const struct Configuration $\ast$configuration, const char $\ast$section)
+\item 
+const char $\ast$ \mbox{\hyperlink{configuration_8c_af1de2c673559f91391abd7efe389c6bf}{Configuration\+Get\+Value}} (const struct Configuration $\ast$configuration, const char $\ast$section, const char $\ast$key)
+\item 
+static char $\ast$ \mbox{\hyperlink{configuration_8c_a462e7da9164f29463312a483d5a29c4e}{\+\_\+vfgets}} (char $\ast$\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}}, void $\ast$user)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{configuration_8c_a5629e679cb7b40d496db271535ac408f}{Configuration\+Read}} (struct Configuration $\ast$configuration, const char $\ast$path)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{configuration_8c_aaa1da56bc785a1d9a89548f7b8fa38fc}{Configuration\+Read\+V\+File}} (struct Configuration $\ast$configuration, struct V\+File $\ast$vf)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{configuration_8c_afb2d05d29f56f3fbea5dc6147d026c0f}{Configuration\+Write}} (const struct Configuration $\ast$configuration, const char $\ast$path)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{configuration_8c_a036885e9fe9e8a52c3077cfe1e3a445a}{Configuration\+Write\+Section}} (const struct Configuration $\ast$configuration, const char $\ast$path, const char $\ast$section)
+\item 
+void \mbox{\hyperlink{configuration_8c_a2b432eb818ebebd95ca58b797c27e447}{Configuration\+Enumerate\+Sections}} (const struct Configuration $\ast$configuration, void($\ast$handler)(const char $\ast$section\+Name, void $\ast$user), void $\ast$user)
+\item 
+void \mbox{\hyperlink{configuration_8c_aa2db311cf59417eb754dcd6f2f9d7728}{Configuration\+Enumerate}} (const struct Configuration $\ast$configuration, const char $\ast$section, void($\ast$handler)(const char $\ast$key, const char $\ast$value, void $\ast$user), void $\ast$user)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{configuration_8c_a12ace4dafe12bd1ad6bc118f8eb6cf04}\label{configuration_8c_a12ace4dafe12bd1ad6bc118f8eb6cf04}} 
+\index{configuration.\+c@{configuration.\+c}!\+\_\+enum\+Handler@{\+\_\+enum\+Handler}}
+\index{\+\_\+enum\+Handler@{\+\_\+enum\+Handler}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+enum\+Handler()}{\_enumHandler()}}
+{\footnotesize\ttfamily static void \+\_\+enum\+Handler (\begin{DoxyParamCaption}\item[{const char $\ast$}]{key,  }\item[{void $\ast$}]{value,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a12ace4dafe12bd1ad6bc118f8eb6cf04_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_a2160fac2b68daf13645de58486dfb744}\label{configuration_8c_a2160fac2b68daf13645de58486dfb744}} 
+\index{configuration.\+c@{configuration.\+c}!\+\_\+ini\+Read@{\+\_\+ini\+Read}}
+\index{\+\_\+ini\+Read@{\+\_\+ini\+Read}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+ini\+Read()}{\_iniRead()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \+\_\+ini\+Read (\begin{DoxyParamCaption}\item[{void $\ast$}]{configuration,  }\item[{const char $\ast$}]{section,  }\item[{const char $\ast$}]{key,  }\item[{const char $\ast$}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a2160fac2b68daf13645de58486dfb744_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a2160fac2b68daf13645de58486dfb744_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_aadade30ae9206a9dd734d85d1a426a17}\label{configuration_8c_aadade30ae9206a9dd734d85d1a426a17}} 
+\index{configuration.\+c@{configuration.\+c}!\+\_\+key\+Handler@{\+\_\+key\+Handler}}
+\index{\+\_\+key\+Handler@{\+\_\+key\+Handler}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+key\+Handler()}{\_keyHandler()}}
+{\footnotesize\ttfamily static void \+\_\+key\+Handler (\begin{DoxyParamCaption}\item[{const char $\ast$}]{key,  }\item[{void $\ast$}]{value,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_aadade30ae9206a9dd734d85d1a426a17_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_a86531a57364ad38a509fe6ae589df917}\label{configuration_8c_a86531a57364ad38a509fe6ae589df917}} 
+\index{configuration.\+c@{configuration.\+c}!\+\_\+section\+Deinit@{\+\_\+section\+Deinit}}
+\index{\+\_\+section\+Deinit@{\+\_\+section\+Deinit}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+section\+Deinit()}{\_sectionDeinit()}}
+{\footnotesize\ttfamily static void \+\_\+section\+Deinit (\begin{DoxyParamCaption}\item[{void $\ast$}]{string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{configuration_8c_a86531a57364ad38a509fe6ae589df917_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a86531a57364ad38a509fe6ae589df917_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_add219de61b3676b27c056f2883d3d118}\label{configuration_8c_add219de61b3676b27c056f2883d3d118}} 
+\index{configuration.\+c@{configuration.\+c}!\+\_\+section\+Enum\+Handler@{\+\_\+section\+Enum\+Handler}}
+\index{\+\_\+section\+Enum\+Handler@{\+\_\+section\+Enum\+Handler}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+section\+Enum\+Handler()}{\_sectionEnumHandler()}}
+{\footnotesize\ttfamily static void \+\_\+section\+Enum\+Handler (\begin{DoxyParamCaption}\item[{const char $\ast$}]{key,  }\item[{void $\ast$}]{section,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_add219de61b3676b27c056f2883d3d118_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_adde35adb409fb603065ccd318c13fc63}\label{configuration_8c_adde35adb409fb603065ccd318c13fc63}} 
+\index{configuration.\+c@{configuration.\+c}!\+\_\+section\+Handler@{\+\_\+section\+Handler}}
+\index{\+\_\+section\+Handler@{\+\_\+section\+Handler}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+section\+Handler()}{\_sectionHandler()}}
+{\footnotesize\ttfamily static void \+\_\+section\+Handler (\begin{DoxyParamCaption}\item[{const char $\ast$}]{key,  }\item[{void $\ast$}]{section,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{configuration_8c_adde35adb409fb603065ccd318c13fc63_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_adde35adb409fb603065ccd318c13fc63_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_a90ccddfe15fe5a3e20d14b63bd08b7e4}\label{configuration_8c_a90ccddfe15fe5a3e20d14b63bd08b7e4}} 
+\index{configuration.\+c@{configuration.\+c}!\+\_\+table\+Deinit@{\+\_\+table\+Deinit}}
+\index{\+\_\+table\+Deinit@{\+\_\+table\+Deinit}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+table\+Deinit()}{\_tableDeinit()}}
+{\footnotesize\ttfamily static void \+\_\+table\+Deinit (\begin{DoxyParamCaption}\item[{void $\ast$}]{table }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{configuration_8c_a90ccddfe15fe5a3e20d14b63bd08b7e4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a90ccddfe15fe5a3e20d14b63bd08b7e4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_a462e7da9164f29463312a483d5a29c4e}\label{configuration_8c_a462e7da9164f29463312a483d5a29c4e}} 
+\index{configuration.\+c@{configuration.\+c}!\+\_\+vfgets@{\+\_\+vfgets}}
+\index{\+\_\+vfgets@{\+\_\+vfgets}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vfgets()}{\_vfgets()}}
+{\footnotesize\ttfamily static char$\ast$ \+\_\+vfgets (\begin{DoxyParamCaption}\item[{char $\ast$}]{stream,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{size,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a462e7da9164f29463312a483d5a29c4e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_a220ce6baaad6dd008ac764e1135574ab}\label{configuration_8c_a220ce6baaad6dd008ac764e1135574ab}} 
+\index{configuration.\+c@{configuration.\+c}!Configuration\+Clear\+Value@{Configuration\+Clear\+Value}}
+\index{Configuration\+Clear\+Value@{Configuration\+Clear\+Value}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{Configuration\+Clear\+Value()}{ConfigurationClearValue()}}
+{\footnotesize\ttfamily void Configuration\+Clear\+Value (\begin{DoxyParamCaption}\item[{struct Configuration $\ast$}]{configuration,  }\item[{const char $\ast$}]{section,  }\item[{const char $\ast$}]{key }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a220ce6baaad6dd008ac764e1135574ab_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a220ce6baaad6dd008ac764e1135574ab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_a96c18f6142c5446dcb090e42142ddeef}\label{configuration_8c_a96c18f6142c5446dcb090e42142ddeef}} 
+\index{configuration.\+c@{configuration.\+c}!Configuration\+Deinit@{Configuration\+Deinit}}
+\index{Configuration\+Deinit@{Configuration\+Deinit}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{Configuration\+Deinit()}{ConfigurationDeinit()}}
+{\footnotesize\ttfamily void Configuration\+Deinit (\begin{DoxyParamCaption}\item[{struct Configuration $\ast$}]{configuration }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a96c18f6142c5446dcb090e42142ddeef_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a96c18f6142c5446dcb090e42142ddeef_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_aa2db311cf59417eb754dcd6f2f9d7728}\label{configuration_8c_aa2db311cf59417eb754dcd6f2f9d7728}} 
+\index{configuration.\+c@{configuration.\+c}!Configuration\+Enumerate@{Configuration\+Enumerate}}
+\index{Configuration\+Enumerate@{Configuration\+Enumerate}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{Configuration\+Enumerate()}{ConfigurationEnumerate()}}
+{\footnotesize\ttfamily void Configuration\+Enumerate (\begin{DoxyParamCaption}\item[{const struct Configuration $\ast$}]{configuration,  }\item[{const char $\ast$}]{section,  }\item[{void($\ast$)(const char $\ast$key, const char $\ast$value, void $\ast$user)}]{handler,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_aa2db311cf59417eb754dcd6f2f9d7728_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_aa2db311cf59417eb754dcd6f2f9d7728_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_a2b432eb818ebebd95ca58b797c27e447}\label{configuration_8c_a2b432eb818ebebd95ca58b797c27e447}} 
+\index{configuration.\+c@{configuration.\+c}!Configuration\+Enumerate\+Sections@{Configuration\+Enumerate\+Sections}}
+\index{Configuration\+Enumerate\+Sections@{Configuration\+Enumerate\+Sections}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{Configuration\+Enumerate\+Sections()}{ConfigurationEnumerateSections()}}
+{\footnotesize\ttfamily void Configuration\+Enumerate\+Sections (\begin{DoxyParamCaption}\item[{const struct Configuration $\ast$}]{configuration,  }\item[{void($\ast$)(const char $\ast$section\+Name, void $\ast$user)}]{handler,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a2b432eb818ebebd95ca58b797c27e447_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a2b432eb818ebebd95ca58b797c27e447_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_af1de2c673559f91391abd7efe389c6bf}\label{configuration_8c_af1de2c673559f91391abd7efe389c6bf}} 
+\index{configuration.\+c@{configuration.\+c}!Configuration\+Get\+Value@{Configuration\+Get\+Value}}
+\index{Configuration\+Get\+Value@{Configuration\+Get\+Value}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{Configuration\+Get\+Value()}{ConfigurationGetValue()}}
+{\footnotesize\ttfamily const char$\ast$ Configuration\+Get\+Value (\begin{DoxyParamCaption}\item[{const struct Configuration $\ast$}]{configuration,  }\item[{const char $\ast$}]{section,  }\item[{const char $\ast$}]{key }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_af1de2c673559f91391abd7efe389c6bf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_af1de2c673559f91391abd7efe389c6bf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_a10e78259cab724a2aab9c8298bcf14fa}\label{configuration_8c_a10e78259cab724a2aab9c8298bcf14fa}} 
+\index{configuration.\+c@{configuration.\+c}!Configuration\+Has\+Section@{Configuration\+Has\+Section}}
+\index{Configuration\+Has\+Section@{Configuration\+Has\+Section}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{Configuration\+Has\+Section()}{ConfigurationHasSection()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} Configuration\+Has\+Section (\begin{DoxyParamCaption}\item[{const struct Configuration $\ast$}]{configuration,  }\item[{const char $\ast$}]{section }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a10e78259cab724a2aab9c8298bcf14fa_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a10e78259cab724a2aab9c8298bcf14fa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_a15c83ef7340a98abef83b16feda4d670}\label{configuration_8c_a15c83ef7340a98abef83b16feda4d670}} 
+\index{configuration.\+c@{configuration.\+c}!Configuration\+Init@{Configuration\+Init}}
+\index{Configuration\+Init@{Configuration\+Init}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{Configuration\+Init()}{ConfigurationInit()}}
+{\footnotesize\ttfamily void Configuration\+Init (\begin{DoxyParamCaption}\item[{struct Configuration $\ast$}]{configuration }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a15c83ef7340a98abef83b16feda4d670_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a15c83ef7340a98abef83b16feda4d670_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_a5629e679cb7b40d496db271535ac408f}\label{configuration_8c_a5629e679cb7b40d496db271535ac408f}} 
+\index{configuration.\+c@{configuration.\+c}!Configuration\+Read@{Configuration\+Read}}
+\index{Configuration\+Read@{Configuration\+Read}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{Configuration\+Read()}{ConfigurationRead()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} Configuration\+Read (\begin{DoxyParamCaption}\item[{struct Configuration $\ast$}]{configuration,  }\item[{const char $\ast$}]{path }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a5629e679cb7b40d496db271535ac408f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a5629e679cb7b40d496db271535ac408f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_aaa1da56bc785a1d9a89548f7b8fa38fc}\label{configuration_8c_aaa1da56bc785a1d9a89548f7b8fa38fc}} 
+\index{configuration.\+c@{configuration.\+c}!Configuration\+Read\+V\+File@{Configuration\+Read\+V\+File}}
+\index{Configuration\+Read\+V\+File@{Configuration\+Read\+V\+File}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{Configuration\+Read\+V\+File()}{ConfigurationReadVFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} Configuration\+Read\+V\+File (\begin{DoxyParamCaption}\item[{struct Configuration $\ast$}]{configuration,  }\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_aaa1da56bc785a1d9a89548f7b8fa38fc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_aaa1da56bc785a1d9a89548f7b8fa38fc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_a9e450194c36cb551178515e95090701f}\label{configuration_8c_a9e450194c36cb551178515e95090701f}} 
+\index{configuration.\+c@{configuration.\+c}!Configuration\+Set\+Float\+Value@{Configuration\+Set\+Float\+Value}}
+\index{Configuration\+Set\+Float\+Value@{Configuration\+Set\+Float\+Value}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{Configuration\+Set\+Float\+Value()}{ConfigurationSetFloatValue()}}
+{\footnotesize\ttfamily void Configuration\+Set\+Float\+Value (\begin{DoxyParamCaption}\item[{struct Configuration $\ast$}]{configuration,  }\item[{const char $\ast$}]{section,  }\item[{const char $\ast$}]{key,  }\item[{float}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a9e450194c36cb551178515e95090701f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a9e450194c36cb551178515e95090701f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_a3859c336333e3adfb4b175a4e5784191}\label{configuration_8c_a3859c336333e3adfb4b175a4e5784191}} 
+\index{configuration.\+c@{configuration.\+c}!Configuration\+Set\+Int\+Value@{Configuration\+Set\+Int\+Value}}
+\index{Configuration\+Set\+Int\+Value@{Configuration\+Set\+Int\+Value}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{Configuration\+Set\+Int\+Value()}{ConfigurationSetIntValue()}}
+{\footnotesize\ttfamily void Configuration\+Set\+Int\+Value (\begin{DoxyParamCaption}\item[{struct Configuration $\ast$}]{configuration,  }\item[{const char $\ast$}]{section,  }\item[{const char $\ast$}]{key,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a3859c336333e3adfb4b175a4e5784191_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a3859c336333e3adfb4b175a4e5784191_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_a07795b2227bad2dbb22f779c779d50b7}\label{configuration_8c_a07795b2227bad2dbb22f779c779d50b7}} 
+\index{configuration.\+c@{configuration.\+c}!Configuration\+Set\+U\+Int\+Value@{Configuration\+Set\+U\+Int\+Value}}
+\index{Configuration\+Set\+U\+Int\+Value@{Configuration\+Set\+U\+Int\+Value}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{Configuration\+Set\+U\+Int\+Value()}{ConfigurationSetUIntValue()}}
+{\footnotesize\ttfamily void Configuration\+Set\+U\+Int\+Value (\begin{DoxyParamCaption}\item[{struct Configuration $\ast$}]{configuration,  }\item[{const char $\ast$}]{section,  }\item[{const char $\ast$}]{key,  }\item[{unsigned}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a07795b2227bad2dbb22f779c779d50b7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a07795b2227bad2dbb22f779c779d50b7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_ae69175eda933864eaad3fa477f750454}\label{configuration_8c_ae69175eda933864eaad3fa477f750454}} 
+\index{configuration.\+c@{configuration.\+c}!Configuration\+Set\+Value@{Configuration\+Set\+Value}}
+\index{Configuration\+Set\+Value@{Configuration\+Set\+Value}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{Configuration\+Set\+Value()}{ConfigurationSetValue()}}
+{\footnotesize\ttfamily void Configuration\+Set\+Value (\begin{DoxyParamCaption}\item[{struct Configuration $\ast$}]{configuration,  }\item[{const char $\ast$}]{section,  }\item[{const char $\ast$}]{key,  }\item[{const char $\ast$}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_ae69175eda933864eaad3fa477f750454_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_ae69175eda933864eaad3fa477f750454_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_afb2d05d29f56f3fbea5dc6147d026c0f}\label{configuration_8c_afb2d05d29f56f3fbea5dc6147d026c0f}} 
+\index{configuration.\+c@{configuration.\+c}!Configuration\+Write@{Configuration\+Write}}
+\index{Configuration\+Write@{Configuration\+Write}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{Configuration\+Write()}{ConfigurationWrite()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} Configuration\+Write (\begin{DoxyParamCaption}\item[{const struct Configuration $\ast$}]{configuration,  }\item[{const char $\ast$}]{path }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_afb2d05d29f56f3fbea5dc6147d026c0f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_afb2d05d29f56f3fbea5dc6147d026c0f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{configuration_8c_a036885e9fe9e8a52c3077cfe1e3a445a}\label{configuration_8c_a036885e9fe9e8a52c3077cfe1e3a445a}} 
+\index{configuration.\+c@{configuration.\+c}!Configuration\+Write\+Section@{Configuration\+Write\+Section}}
+\index{Configuration\+Write\+Section@{Configuration\+Write\+Section}!configuration.\+c@{configuration.\+c}}
+\subsubsection{\texorpdfstring{Configuration\+Write\+Section()}{ConfigurationWriteSection()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} Configuration\+Write\+Section (\begin{DoxyParamCaption}\item[{const struct Configuration $\ast$}]{configuration,  }\item[{const char $\ast$}]{path,  }\item[{const char $\ast$}]{section }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{configuration_8c_a036885e9fe9e8a52c3077cfe1e3a445a_cgraph}
+\end{center}
+\end{figure}

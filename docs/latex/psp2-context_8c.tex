@@ -1,0 +1,790 @@
+\hypertarget{psp2-context_8c}{}\section{src/platform/psp2/psp2-\/context.c File Reference}
+\label{psp2-context_8c}\index{src/platform/psp2/psp2-\/context.\+c@{src/platform/psp2/psp2-\/context.\+c}}
+{\ttfamily \#include \char`\"{}psp2-\/context.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba/core/blip\+\_\+buf.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}feature/gui/gui-\/runner.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba/internal/gba/input.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/memory.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/circle-\/buffer.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/math.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/threading.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/platform/psp2/sce-\/vfs.\+h$>$}\newline
+{\ttfamily \#include $<$psp2/audioout.\+h$>$}\newline
+{\ttfamily \#include $<$psp2/camera.\+h$>$}\newline
+{\ttfamily \#include $<$psp2/ctrl.\+h$>$}\newline
+{\ttfamily \#include $<$psp2/display.\+h$>$}\newline
+{\ttfamily \#include $<$psp2/gxm.\+h$>$}\newline
+{\ttfamily \#include $<$psp2/kernel/sysmem.\+h$>$}\newline
+{\ttfamily \#include $<$psp2/motion.\+h$>$}\newline
+{\ttfamily \#include $<$vita2d.\+h$>$}\newline
+Include dependency graph for psp2-\/context.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{psp2-context_8c_a78991a7c3d24f2e9931a9a40efe5e878}{R\+U\+M\+B\+L\+E\+\_\+\+P\+WM}}~8
+\item 
+\#define \mbox{\hyperlink{psp2-context_8c_af8036da621bc91932e6148bc6bf50643}{C\+D\+R\+A\+M\+\_\+\+A\+L\+I\+GN}}~0x40000
+\item 
+\#define \mbox{\hyperlink{psp2-context_8c_a2836712c7e6282747c6110a5f8a1d0cc}{P\+S\+P2\+\_\+\+S\+A\+M\+P\+L\+ES}}~512
+\item 
+\#define \mbox{\hyperlink{psp2-context_8c_ab405653a8fb99788f2f7cf61536fef78}{P\+S\+P2\+\_\+\+A\+U\+D\+I\+O\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}~(\mbox{\hyperlink{psp2-context_8c_a2836712c7e6282747c6110a5f8a1d0cc}{P\+S\+P2\+\_\+\+S\+A\+M\+P\+L\+ES}} $\ast$ 16)
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353}{Screen\+Mode}} \{ \newline
+\mbox{\hyperlink{3ds_2main_8c_aefe4cd50ac123b6c800eede74968a353aca1b3a55dbfddfeb68218984a19beb6d}{S\+M\+\_\+\+P\+A\+\_\+\+B\+O\+T\+T\+OM}}, 
+\mbox{\hyperlink{3ds_2main_8c_aefe4cd50ac123b6c800eede74968a353ab888ea2fc282030fb4c98ecefd32df0b}{S\+M\+\_\+\+A\+F\+\_\+\+B\+O\+T\+T\+OM}}, 
+\mbox{\hyperlink{3ds_2main_8c_aefe4cd50ac123b6c800eede74968a353a71678dabe149ea5dea6d4fcdc0fe5191}{S\+M\+\_\+\+S\+F\+\_\+\+B\+O\+T\+T\+OM}}, 
+\mbox{\hyperlink{3ds_2main_8c_aefe4cd50ac123b6c800eede74968a353a2b89cadbb7bad03c80ee30df158e3fe6}{S\+M\+\_\+\+P\+A\+\_\+\+T\+OP}}, 
+\newline
+\mbox{\hyperlink{3ds_2main_8c_aefe4cd50ac123b6c800eede74968a353aedcbb19a0f07eb4a265543ce1403c861}{S\+M\+\_\+\+A\+F\+\_\+\+T\+OP}}, 
+\mbox{\hyperlink{3ds_2main_8c_aefe4cd50ac123b6c800eede74968a353ad64f4dfe249dd2f73f30feab625fddff}{S\+M\+\_\+\+S\+F\+\_\+\+T\+OP}}, 
+\mbox{\hyperlink{3ds_2main_8c_aefe4cd50ac123b6c800eede74968a353aff08e32659fa560ad0a16f3d1b9fdacd}{S\+M\+\_\+\+M\+AX}}, 
+\mbox{\hyperlink{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353ae39f259ab834f2faa529cdac89da5c44}{S\+M\+\_\+\+B\+A\+C\+K\+D\+R\+OP}}, 
+\newline
+\mbox{\hyperlink{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353a55995b0aff33425170f54ee0e8c157df}{S\+M\+\_\+\+P\+L\+A\+IN}}, 
+\mbox{\hyperlink{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353af7279dea12e50376e0d062557101ccbd}{S\+M\+\_\+\+F\+U\+LL}}, 
+\mbox{\hyperlink{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353a2631fa1293eeebd798452c4a8e1bb939}{S\+M\+\_\+\+A\+S\+P\+E\+CT}}, 
+\mbox{\hyperlink{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353aff08e32659fa560ad0a16f3d1b9fdacd}{S\+M\+\_\+\+M\+AX}}, 
+\newline
+\mbox{\hyperlink{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353ac6c34f453cd57936b352cc0c2bf01601}{S\+M\+\_\+\+PA}}, 
+\mbox{\hyperlink{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353a631f5c9fb0a8107465664d09e6d8660f}{S\+M\+\_\+\+SF}}, 
+\mbox{\hyperlink{wii_2main_8c_aefe4cd50ac123b6c800eede74968a353aff08e32659fa560ad0a16f3d1b9fdacd}{S\+M\+\_\+\+M\+AX}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{psp2-context_8c_a0ff9569feeb9a2f318792b681331c9ab}{m\+P\+S\+P2\+Map\+Key}} (struct m\+Input\+Map $\ast$map, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} psp\+Key, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} key)
+\item 
+static T\+H\+R\+E\+A\+D\+\_\+\+E\+N\+T\+RY \mbox{\hyperlink{psp2-context_8c_adba523845bb9885cdad18a6753665635}{\+\_\+audio\+Thread}} (void $\ast$context)
+\item 
+static void \mbox{\hyperlink{psp2-context_8c_a3759fdba466d4f2b918e28ca2a72e02d}{\+\_\+sample\+Rotation}} (struct m\+Rotation\+Source $\ast$source)
+\item 
+static int32\+\_\+t \mbox{\hyperlink{psp2-context_8c_a6d9f679bac5e9209e4c39c332067448f}{\+\_\+read\+TiltX}} (struct m\+Rotation\+Source $\ast$source)
+\item 
+static int32\+\_\+t \mbox{\hyperlink{psp2-context_8c_a483456c7f026a79ac8b6f9f6bb3349e3}{\+\_\+read\+TiltY}} (struct m\+Rotation\+Source $\ast$source)
+\item 
+static int32\+\_\+t \mbox{\hyperlink{psp2-context_8c_aa764e37dc09625e703361dd3deb193ed}{\+\_\+read\+GyroZ}} (struct m\+Rotation\+Source $\ast$source)
+\item 
+static void \mbox{\hyperlink{psp2-context_8c_a95b8d13de5bec09567398f90454a054c}{\+\_\+set\+Rumble}} (struct m\+Rumble $\ast$source, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} enable)
+\item 
+static void \mbox{\hyperlink{psp2-context_8c_a523acbf5391e625edb0e8d8465ff6e51}{\+\_\+reset\+Camera}} (struct m\+Sce\+Image\+Source $\ast$image\+Source)
+\item 
+static void \mbox{\hyperlink{psp2-context_8c_a4623f2123706c3c47aeed159b0f08e58}{\+\_\+start\+Request\+Image}} (struct m\+Image\+Source $\ast$source, unsigned w, unsigned \mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} color\+Formats)
+\item 
+static void \mbox{\hyperlink{psp2-context_8c_af947cb220342f189826b8c971201d59b}{\+\_\+stop\+Request\+Image}} (struct m\+Image\+Source $\ast$source)
+\item 
+static void \mbox{\hyperlink{psp2-context_8c_afd6bb33399978f5ee1d82f3b905f8eec}{\+\_\+request\+Image}} (struct m\+Image\+Source $\ast$source, const void $\ast$$\ast$buffer, size\+\_\+t $\ast$stride, enum m\+Color\+Format $\ast$color\+Format)
+\item 
+static void \mbox{\hyperlink{psp2-context_8c_a2505e2cf7b8b3afbc22087cc337213ac}{\+\_\+post\+Audio\+Buffer}} (struct m\+A\+V\+Stream $\ast$\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, blip\+\_\+t $\ast$left, blip\+\_\+t $\ast$right)
+\item 
+uint16\+\_\+t \mbox{\hyperlink{psp2-context_8c_a29b280976db23268da118020f60ce728}{m\+P\+S\+P2\+Poll\+Input}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$runner)
+\item 
+void \mbox{\hyperlink{psp2-context_8c_a9a298ef5f14d11b2cf482a19a3a55d82}{m\+P\+S\+P2\+Set\+Frame\+Limiter}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$runner, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} limit)
+\item 
+void \mbox{\hyperlink{psp2-context_8c_a421c14012a9792c249822f943155921a}{m\+P\+S\+P2\+Setup}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$runner)
+\item 
+void \mbox{\hyperlink{psp2-context_8c_a6d1428d32dd856760fa94b6a08e54ab2}{m\+P\+S\+P2\+Load\+R\+OM}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$runner)
+\item 
+void \mbox{\hyperlink{psp2-context_8c_a94ad5d2964da6bad167ee85e5f021421}{m\+P\+S\+P2\+Unload\+R\+OM}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$runner)
+\item 
+void \mbox{\hyperlink{psp2-context_8c_a7f9c754e1ebf551ba6e39e76d7135f91}{m\+P\+S\+P2\+Paused}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$runner)
+\item 
+void \mbox{\hyperlink{psp2-context_8c_a02416ce4a85e3b948b2a1df34d901cb3}{m\+P\+S\+P2\+Unpaused}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$runner)
+\item 
+void \mbox{\hyperlink{psp2-context_8c_aaae5f4b3a42c091f809836cec74d1cd7}{m\+P\+S\+P2\+Teardown}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$runner)
+\item 
+void \mbox{\hyperlink{psp2-context_8c_a8c8e8d5d2406306e272f2388bb3a8e20}{\+\_\+draw\+Tex}} (vita2d\+\_\+texture $\ast$t, unsigned \mbox{\hyperlink{readppm_8c_a59b7c57bf1dc7c36ac7c8232cf5bb713}{width}}, unsigned \mbox{\hyperlink{readppm_8c_ac8b624a7354198da45f5797b93b883c9}{height}}, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} faded)
+\item 
+void \mbox{\hyperlink{psp2-context_8c_ac47f4c33aec2cd84a2236b2686d1ffbe}{m\+P\+S\+P2\+Draw}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$runner, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} faded)
+\item 
+void \mbox{\hyperlink{psp2-context_8c_aa75d847f3a6026f830eac71a87e59a3d}{m\+P\+S\+P2\+Draw\+Screenshot}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$runner, const uint32\+\_\+t $\ast$pixels, unsigned \mbox{\hyperlink{readppm_8c_a59b7c57bf1dc7c36ac7c8232cf5bb713}{width}}, unsigned \mbox{\hyperlink{readppm_8c_ac8b624a7354198da45f5797b93b883c9}{height}}, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} faded)
+\item 
+void \mbox{\hyperlink{psp2-context_8c_a88df7b81ae33955caa66f8f0516c8a2a}{m\+P\+S\+P2\+Increment\+Screen\+Mode}} (struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$runner)
+\item 
+\mbox{\hyperlink{psp2-context_8c_aa83416a22e1427905c8e5a0f3518205d}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}} ((noreturn, weak))
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static enum \mbox{\hyperlink{3ds_2main_8c_aefe4cd50ac123b6c800eede74968a353}{Screen\+Mode}} \mbox{\hyperlink{psp2-context_8c_aa6506f4016bae669706872ea621efd8c}{screen\+Mode}}
+\item 
+static void $\ast$ \mbox{\hyperlink{psp2-context_8c_a0779122b7156629157afcf1a35c372ef}{output\+Buffer}}
+\item 
+static vita2d\+\_\+texture $\ast$ \mbox{\hyperlink{psp2-context_8c_a8ee643382d084f154f1b1ff39df7b3b9}{tex}}
+\item 
+static vita2d\+\_\+texture $\ast$ \mbox{\hyperlink{psp2-context_8c_a0204020e80625e713fc729f653aa63de}{screenshot}}
+\item 
+static Thread \mbox{\hyperlink{psp2-context_8c_a98449c0540702b481c40de8a3918d342}{audio\+Thread}}
+\item 
+static struct m\+Sce\+Rotation\+Source \mbox{\hyperlink{psp2-context_8c_afe9e4b0b66378e39ad7095d01ab7b23b}{rotation}}
+\item 
+static struct m\+Sce\+Rumble \mbox{\hyperlink{psp2-context_8c_aeb7982d490fa2271fb0cea4c4d5200ee}{rumble}}
+\item 
+static struct m\+Sce\+Image\+Source \mbox{\hyperlink{psp2-context_8c_a87322b8f3ad7052507e06145194fe154}{camera}}
+\item 
+static struct m\+A\+V\+Stream \mbox{\hyperlink{psp2-context_8c_afcb178a8ee7853c424423b8601eeaa78}{stream}}
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{psp2-context_8c_a79ad80572fd8710aecd999faddccfed8}{frame\+Limiter}} = true
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{psp2-context_8c_a2365730f0a058820b7887cff8d39a829}{\+\_\+binary\+\_\+backdrop\+\_\+png\+\_\+start}} \mbox{[}$\,$\mbox{]}
+\item 
+static vita2d\+\_\+texture $\ast$ \mbox{\hyperlink{psp2-context_8c_a8dc5cadb8c411fc6334f22c3e6516e6a}{backdrop}} = 0
+\item 
+static struct m\+P\+S\+P2\+Audio\+Context \mbox{\hyperlink{psp2-context_8c_a659b36605d87e0119d74ca65de7dbf4c}{audio\+Context}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{psp2-context_8c_af8036da621bc91932e6148bc6bf50643}\label{psp2-context_8c_af8036da621bc91932e6148bc6bf50643}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!C\+D\+R\+A\+M\+\_\+\+A\+L\+I\+GN@{C\+D\+R\+A\+M\+\_\+\+A\+L\+I\+GN}}
+\index{C\+D\+R\+A\+M\+\_\+\+A\+L\+I\+GN@{C\+D\+R\+A\+M\+\_\+\+A\+L\+I\+GN}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{C\+D\+R\+A\+M\+\_\+\+A\+L\+I\+GN}{CDRAM\_ALIGN}}
+{\footnotesize\ttfamily \#define C\+D\+R\+A\+M\+\_\+\+A\+L\+I\+GN~0x40000}
+
+\mbox{\Hypertarget{psp2-context_8c_ab405653a8fb99788f2f7cf61536fef78}\label{psp2-context_8c_ab405653a8fb99788f2f7cf61536fef78}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!P\+S\+P2\+\_\+\+A\+U\+D\+I\+O\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{P\+S\+P2\+\_\+\+A\+U\+D\+I\+O\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}
+\index{P\+S\+P2\+\_\+\+A\+U\+D\+I\+O\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE@{P\+S\+P2\+\_\+\+A\+U\+D\+I\+O\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{P\+S\+P2\+\_\+\+A\+U\+D\+I\+O\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}{PSP2\_AUDIO\_BUFFER\_SIZE}}
+{\footnotesize\ttfamily \#define P\+S\+P2\+\_\+\+A\+U\+D\+I\+O\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE~(\mbox{\hyperlink{psp2-context_8c_a2836712c7e6282747c6110a5f8a1d0cc}{P\+S\+P2\+\_\+\+S\+A\+M\+P\+L\+ES}} $\ast$ 16)}
+
+\mbox{\Hypertarget{psp2-context_8c_a2836712c7e6282747c6110a5f8a1d0cc}\label{psp2-context_8c_a2836712c7e6282747c6110a5f8a1d0cc}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!P\+S\+P2\+\_\+\+S\+A\+M\+P\+L\+ES@{P\+S\+P2\+\_\+\+S\+A\+M\+P\+L\+ES}}
+\index{P\+S\+P2\+\_\+\+S\+A\+M\+P\+L\+ES@{P\+S\+P2\+\_\+\+S\+A\+M\+P\+L\+ES}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{P\+S\+P2\+\_\+\+S\+A\+M\+P\+L\+ES}{PSP2\_SAMPLES}}
+{\footnotesize\ttfamily \#define P\+S\+P2\+\_\+\+S\+A\+M\+P\+L\+ES~512}
+
+\mbox{\Hypertarget{psp2-context_8c_a78991a7c3d24f2e9931a9a40efe5e878}\label{psp2-context_8c_a78991a7c3d24f2e9931a9a40efe5e878}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!R\+U\+M\+B\+L\+E\+\_\+\+P\+WM@{R\+U\+M\+B\+L\+E\+\_\+\+P\+WM}}
+\index{R\+U\+M\+B\+L\+E\+\_\+\+P\+WM@{R\+U\+M\+B\+L\+E\+\_\+\+P\+WM}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{R\+U\+M\+B\+L\+E\+\_\+\+P\+WM}{RUMBLE\_PWM}}
+{\footnotesize\ttfamily \#define R\+U\+M\+B\+L\+E\+\_\+\+P\+WM~8}
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353}\label{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!Screen\+Mode@{Screen\+Mode}}
+\index{Screen\+Mode@{Screen\+Mode}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{Screen\+Mode}{ScreenMode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{3ds_2main_8c_aefe4cd50ac123b6c800eede74968a353}{Screen\+Mode}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+P\+A\+\_\+\+B\+O\+T\+T\+OM@{S\+M\+\_\+\+P\+A\+\_\+\+B\+O\+T\+T\+OM}!psp2-\/context.\+c@{psp2-\/context.\+c}}\index{psp2-\/context.\+c@{psp2-\/context.\+c}!S\+M\+\_\+\+P\+A\+\_\+\+B\+O\+T\+T\+OM@{S\+M\+\_\+\+P\+A\+\_\+\+B\+O\+T\+T\+OM}}}\mbox{\Hypertarget{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353aca1b3a55dbfddfeb68218984a19beb6d}\label{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353aca1b3a55dbfddfeb68218984a19beb6d}} 
+S\+M\+\_\+\+P\+A\+\_\+\+B\+O\+T\+T\+OM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+A\+F\+\_\+\+B\+O\+T\+T\+OM@{S\+M\+\_\+\+A\+F\+\_\+\+B\+O\+T\+T\+OM}!psp2-\/context.\+c@{psp2-\/context.\+c}}\index{psp2-\/context.\+c@{psp2-\/context.\+c}!S\+M\+\_\+\+A\+F\+\_\+\+B\+O\+T\+T\+OM@{S\+M\+\_\+\+A\+F\+\_\+\+B\+O\+T\+T\+OM}}}\mbox{\Hypertarget{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353ab888ea2fc282030fb4c98ecefd32df0b}\label{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353ab888ea2fc282030fb4c98ecefd32df0b}} 
+S\+M\+\_\+\+A\+F\+\_\+\+B\+O\+T\+T\+OM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+S\+F\+\_\+\+B\+O\+T\+T\+OM@{S\+M\+\_\+\+S\+F\+\_\+\+B\+O\+T\+T\+OM}!psp2-\/context.\+c@{psp2-\/context.\+c}}\index{psp2-\/context.\+c@{psp2-\/context.\+c}!S\+M\+\_\+\+S\+F\+\_\+\+B\+O\+T\+T\+OM@{S\+M\+\_\+\+S\+F\+\_\+\+B\+O\+T\+T\+OM}}}\mbox{\Hypertarget{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353a71678dabe149ea5dea6d4fcdc0fe5191}\label{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353a71678dabe149ea5dea6d4fcdc0fe5191}} 
+S\+M\+\_\+\+S\+F\+\_\+\+B\+O\+T\+T\+OM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+P\+A\+\_\+\+T\+OP@{S\+M\+\_\+\+P\+A\+\_\+\+T\+OP}!psp2-\/context.\+c@{psp2-\/context.\+c}}\index{psp2-\/context.\+c@{psp2-\/context.\+c}!S\+M\+\_\+\+P\+A\+\_\+\+T\+OP@{S\+M\+\_\+\+P\+A\+\_\+\+T\+OP}}}\mbox{\Hypertarget{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353a2b89cadbb7bad03c80ee30df158e3fe6}\label{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353a2b89cadbb7bad03c80ee30df158e3fe6}} 
+S\+M\+\_\+\+P\+A\+\_\+\+T\+OP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+A\+F\+\_\+\+T\+OP@{S\+M\+\_\+\+A\+F\+\_\+\+T\+OP}!psp2-\/context.\+c@{psp2-\/context.\+c}}\index{psp2-\/context.\+c@{psp2-\/context.\+c}!S\+M\+\_\+\+A\+F\+\_\+\+T\+OP@{S\+M\+\_\+\+A\+F\+\_\+\+T\+OP}}}\mbox{\Hypertarget{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353aedcbb19a0f07eb4a265543ce1403c861}\label{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353aedcbb19a0f07eb4a265543ce1403c861}} 
+S\+M\+\_\+\+A\+F\+\_\+\+T\+OP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+S\+F\+\_\+\+T\+OP@{S\+M\+\_\+\+S\+F\+\_\+\+T\+OP}!psp2-\/context.\+c@{psp2-\/context.\+c}}\index{psp2-\/context.\+c@{psp2-\/context.\+c}!S\+M\+\_\+\+S\+F\+\_\+\+T\+OP@{S\+M\+\_\+\+S\+F\+\_\+\+T\+OP}}}\mbox{\Hypertarget{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353ad64f4dfe249dd2f73f30feab625fddff}\label{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353ad64f4dfe249dd2f73f30feab625fddff}} 
+S\+M\+\_\+\+S\+F\+\_\+\+T\+OP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+M\+AX@{S\+M\+\_\+\+M\+AX}!psp2-\/context.\+c@{psp2-\/context.\+c}}\index{psp2-\/context.\+c@{psp2-\/context.\+c}!S\+M\+\_\+\+M\+AX@{S\+M\+\_\+\+M\+AX}}}\mbox{\Hypertarget{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353aff08e32659fa560ad0a16f3d1b9fdacd}\label{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353aff08e32659fa560ad0a16f3d1b9fdacd}} 
+S\+M\+\_\+\+M\+AX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+B\+A\+C\+K\+D\+R\+OP@{S\+M\+\_\+\+B\+A\+C\+K\+D\+R\+OP}!psp2-\/context.\+c@{psp2-\/context.\+c}}\index{psp2-\/context.\+c@{psp2-\/context.\+c}!S\+M\+\_\+\+B\+A\+C\+K\+D\+R\+OP@{S\+M\+\_\+\+B\+A\+C\+K\+D\+R\+OP}}}\mbox{\Hypertarget{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353ae39f259ab834f2faa529cdac89da5c44}\label{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353ae39f259ab834f2faa529cdac89da5c44}} 
+S\+M\+\_\+\+B\+A\+C\+K\+D\+R\+OP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+P\+L\+A\+IN@{S\+M\+\_\+\+P\+L\+A\+IN}!psp2-\/context.\+c@{psp2-\/context.\+c}}\index{psp2-\/context.\+c@{psp2-\/context.\+c}!S\+M\+\_\+\+P\+L\+A\+IN@{S\+M\+\_\+\+P\+L\+A\+IN}}}\mbox{\Hypertarget{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353a55995b0aff33425170f54ee0e8c157df}\label{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353a55995b0aff33425170f54ee0e8c157df}} 
+S\+M\+\_\+\+P\+L\+A\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+F\+U\+LL@{S\+M\+\_\+\+F\+U\+LL}!psp2-\/context.\+c@{psp2-\/context.\+c}}\index{psp2-\/context.\+c@{psp2-\/context.\+c}!S\+M\+\_\+\+F\+U\+LL@{S\+M\+\_\+\+F\+U\+LL}}}\mbox{\Hypertarget{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353af7279dea12e50376e0d062557101ccbd}\label{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353af7279dea12e50376e0d062557101ccbd}} 
+S\+M\+\_\+\+F\+U\+LL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+A\+S\+P\+E\+CT@{S\+M\+\_\+\+A\+S\+P\+E\+CT}!psp2-\/context.\+c@{psp2-\/context.\+c}}\index{psp2-\/context.\+c@{psp2-\/context.\+c}!S\+M\+\_\+\+A\+S\+P\+E\+CT@{S\+M\+\_\+\+A\+S\+P\+E\+CT}}}\mbox{\Hypertarget{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353a2631fa1293eeebd798452c4a8e1bb939}\label{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353a2631fa1293eeebd798452c4a8e1bb939}} 
+S\+M\+\_\+\+A\+S\+P\+E\+CT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+M\+AX@{S\+M\+\_\+\+M\+AX}!psp2-\/context.\+c@{psp2-\/context.\+c}}\index{psp2-\/context.\+c@{psp2-\/context.\+c}!S\+M\+\_\+\+M\+AX@{S\+M\+\_\+\+M\+AX}}}\mbox{\Hypertarget{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353aff08e32659fa560ad0a16f3d1b9fdacd}\label{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353aff08e32659fa560ad0a16f3d1b9fdacd}} 
+S\+M\+\_\+\+M\+AX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+PA@{S\+M\+\_\+\+PA}!psp2-\/context.\+c@{psp2-\/context.\+c}}\index{psp2-\/context.\+c@{psp2-\/context.\+c}!S\+M\+\_\+\+PA@{S\+M\+\_\+\+PA}}}\mbox{\Hypertarget{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353ac6c34f453cd57936b352cc0c2bf01601}\label{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353ac6c34f453cd57936b352cc0c2bf01601}} 
+S\+M\+\_\+\+PA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+SF@{S\+M\+\_\+\+SF}!psp2-\/context.\+c@{psp2-\/context.\+c}}\index{psp2-\/context.\+c@{psp2-\/context.\+c}!S\+M\+\_\+\+SF@{S\+M\+\_\+\+SF}}}\mbox{\Hypertarget{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353a631f5c9fb0a8107465664d09e6d8660f}\label{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353a631f5c9fb0a8107465664d09e6d8660f}} 
+S\+M\+\_\+\+SF&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\+M\+\_\+\+M\+AX@{S\+M\+\_\+\+M\+AX}!psp2-\/context.\+c@{psp2-\/context.\+c}}\index{psp2-\/context.\+c@{psp2-\/context.\+c}!S\+M\+\_\+\+M\+AX@{S\+M\+\_\+\+M\+AX}}}\mbox{\Hypertarget{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353aff08e32659fa560ad0a16f3d1b9fdacd}\label{psp2-context_8c_aefe4cd50ac123b6c800eede74968a353aff08e32659fa560ad0a16f3d1b9fdacd}} 
+S\+M\+\_\+\+M\+AX&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{psp2-context_8c_aa83416a22e1427905c8e5a0f3518205d}\label{psp2-context_8c_aa83416a22e1427905c8e5a0f3518205d}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+attribute\+\_\+\+\_\+@{\+\_\+\+\_\+attribute\+\_\+\+\_\+}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+attribute\+\_\+\+\_\+()}{\_\_attribute\_\_()}}
+{\footnotesize\ttfamily \+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(noreturn, weak)}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_aa83416a22e1427905c8e5a0f3518205d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_adba523845bb9885cdad18a6753665635}\label{psp2-context_8c_adba523845bb9885cdad18a6753665635}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!\+\_\+audio\+Thread@{\+\_\+audio\+Thread}}
+\index{\+\_\+audio\+Thread@{\+\_\+audio\+Thread}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+audio\+Thread()}{\_audioThread()}}
+{\footnotesize\ttfamily static T\+H\+R\+E\+A\+D\+\_\+\+E\+N\+T\+RY \+\_\+audio\+Thread (\begin{DoxyParamCaption}\item[{void $\ast$}]{context }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_adba523845bb9885cdad18a6753665635_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_a8c8e8d5d2406306e272f2388bb3a8e20}\label{psp2-context_8c_a8c8e8d5d2406306e272f2388bb3a8e20}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!\+\_\+draw\+Tex@{\+\_\+draw\+Tex}}
+\index{\+\_\+draw\+Tex@{\+\_\+draw\+Tex}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+draw\+Tex()}{\_drawTex()}}
+{\footnotesize\ttfamily void \+\_\+draw\+Tex (\begin{DoxyParamCaption}\item[{vita2d\+\_\+texture $\ast$}]{t,  }\item[{unsigned}]{width,  }\item[{unsigned}]{height,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{faded }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{psp2-context_8c_a8c8e8d5d2406306e272f2388bb3a8e20_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_a8c8e8d5d2406306e272f2388bb3a8e20_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_a2505e2cf7b8b3afbc22087cc337213ac}\label{psp2-context_8c_a2505e2cf7b8b3afbc22087cc337213ac}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!\+\_\+post\+Audio\+Buffer@{\+\_\+post\+Audio\+Buffer}}
+\index{\+\_\+post\+Audio\+Buffer@{\+\_\+post\+Audio\+Buffer}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+post\+Audio\+Buffer()}{\_postAudioBuffer()}}
+{\footnotesize\ttfamily static void \+\_\+post\+Audio\+Buffer (\begin{DoxyParamCaption}\item[{struct m\+A\+V\+Stream $\ast$}]{stream,  }\item[{blip\+\_\+t $\ast$}]{left,  }\item[{blip\+\_\+t $\ast$}]{right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_a2505e2cf7b8b3afbc22087cc337213ac_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_a2505e2cf7b8b3afbc22087cc337213ac_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_aa764e37dc09625e703361dd3deb193ed}\label{psp2-context_8c_aa764e37dc09625e703361dd3deb193ed}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!\+\_\+read\+GyroZ@{\+\_\+read\+GyroZ}}
+\index{\+\_\+read\+GyroZ@{\+\_\+read\+GyroZ}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Gyro\+Z()}{\_readGyroZ()}}
+{\footnotesize\ttfamily static int32\+\_\+t \+\_\+read\+GyroZ (\begin{DoxyParamCaption}\item[{struct m\+Rotation\+Source $\ast$}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{psp2-context_8c_aa764e37dc09625e703361dd3deb193ed_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_a6d9f679bac5e9209e4c39c332067448f}\label{psp2-context_8c_a6d9f679bac5e9209e4c39c332067448f}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!\+\_\+read\+TiltX@{\+\_\+read\+TiltX}}
+\index{\+\_\+read\+TiltX@{\+\_\+read\+TiltX}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Tilt\+X()}{\_readTiltX()}}
+{\footnotesize\ttfamily static int32\+\_\+t \+\_\+read\+TiltX (\begin{DoxyParamCaption}\item[{struct m\+Rotation\+Source $\ast$}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=337pt]{psp2-context_8c_a6d9f679bac5e9209e4c39c332067448f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_a483456c7f026a79ac8b6f9f6bb3349e3}\label{psp2-context_8c_a483456c7f026a79ac8b6f9f6bb3349e3}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!\+\_\+read\+TiltY@{\+\_\+read\+TiltY}}
+\index{\+\_\+read\+TiltY@{\+\_\+read\+TiltY}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+read\+Tilt\+Y()}{\_readTiltY()}}
+{\footnotesize\ttfamily static int32\+\_\+t \+\_\+read\+TiltY (\begin{DoxyParamCaption}\item[{struct m\+Rotation\+Source $\ast$}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{psp2-context_8c_a483456c7f026a79ac8b6f9f6bb3349e3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_afd6bb33399978f5ee1d82f3b905f8eec}\label{psp2-context_8c_afd6bb33399978f5ee1d82f3b905f8eec}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!\+\_\+request\+Image@{\+\_\+request\+Image}}
+\index{\+\_\+request\+Image@{\+\_\+request\+Image}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+request\+Image()}{\_requestImage()}}
+{\footnotesize\ttfamily static void \+\_\+request\+Image (\begin{DoxyParamCaption}\item[{struct m\+Image\+Source $\ast$}]{source,  }\item[{const void $\ast$$\ast$}]{buffer,  }\item[{size\+\_\+t $\ast$}]{stride,  }\item[{enum m\+Color\+Format $\ast$}]{color\+Format }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_afd6bb33399978f5ee1d82f3b905f8eec_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_afd6bb33399978f5ee1d82f3b905f8eec_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_a523acbf5391e625edb0e8d8465ff6e51}\label{psp2-context_8c_a523acbf5391e625edb0e8d8465ff6e51}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!\+\_\+reset\+Camera@{\+\_\+reset\+Camera}}
+\index{\+\_\+reset\+Camera@{\+\_\+reset\+Camera}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+reset\+Camera()}{\_resetCamera()}}
+{\footnotesize\ttfamily static void \+\_\+reset\+Camera (\begin{DoxyParamCaption}\item[{struct m\+Sce\+Image\+Source $\ast$}]{image\+Source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_a523acbf5391e625edb0e8d8465ff6e51_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_a3759fdba466d4f2b918e28ca2a72e02d}\label{psp2-context_8c_a3759fdba466d4f2b918e28ca2a72e02d}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!\+\_\+sample\+Rotation@{\+\_\+sample\+Rotation}}
+\index{\+\_\+sample\+Rotation@{\+\_\+sample\+Rotation}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+sample\+Rotation()}{\_sampleRotation()}}
+{\footnotesize\ttfamily static void \+\_\+sample\+Rotation (\begin{DoxyParamCaption}\item[{struct m\+Rotation\+Source $\ast$}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_a3759fdba466d4f2b918e28ca2a72e02d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_a95b8d13de5bec09567398f90454a054c}\label{psp2-context_8c_a95b8d13de5bec09567398f90454a054c}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!\+\_\+set\+Rumble@{\+\_\+set\+Rumble}}
+\index{\+\_\+set\+Rumble@{\+\_\+set\+Rumble}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+set\+Rumble()}{\_setRumble()}}
+{\footnotesize\ttfamily static void \+\_\+set\+Rumble (\begin{DoxyParamCaption}\item[{struct m\+Rumble $\ast$}]{source,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{enable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_a95b8d13de5bec09567398f90454a054c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{psp2-context_8c_a95b8d13de5bec09567398f90454a054c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_a4623f2123706c3c47aeed159b0f08e58}\label{psp2-context_8c_a4623f2123706c3c47aeed159b0f08e58}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!\+\_\+start\+Request\+Image@{\+\_\+start\+Request\+Image}}
+\index{\+\_\+start\+Request\+Image@{\+\_\+start\+Request\+Image}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+start\+Request\+Image()}{\_startRequestImage()}}
+{\footnotesize\ttfamily static void \+\_\+start\+Request\+Image (\begin{DoxyParamCaption}\item[{struct m\+Image\+Source $\ast$}]{source,  }\item[{unsigned}]{w,  }\item[{unsigned}]{h,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{color\+Formats }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_a4623f2123706c3c47aeed159b0f08e58_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_a4623f2123706c3c47aeed159b0f08e58_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_af947cb220342f189826b8c971201d59b}\label{psp2-context_8c_af947cb220342f189826b8c971201d59b}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!\+\_\+stop\+Request\+Image@{\+\_\+stop\+Request\+Image}}
+\index{\+\_\+stop\+Request\+Image@{\+\_\+stop\+Request\+Image}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+stop\+Request\+Image()}{\_stopRequestImage()}}
+{\footnotesize\ttfamily static void \+\_\+stop\+Request\+Image (\begin{DoxyParamCaption}\item[{struct m\+Image\+Source $\ast$}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_af947cb220342f189826b8c971201d59b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_ac47f4c33aec2cd84a2236b2686d1ffbe}\label{psp2-context_8c_ac47f4c33aec2cd84a2236b2686d1ffbe}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!m\+P\+S\+P2\+Draw@{m\+P\+S\+P2\+Draw}}
+\index{m\+P\+S\+P2\+Draw@{m\+P\+S\+P2\+Draw}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{m\+P\+S\+P2\+Draw()}{mPSP2Draw()}}
+{\footnotesize\ttfamily void m\+P\+S\+P2\+Draw (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{runner,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{faded }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{psp2-context_8c_ac47f4c33aec2cd84a2236b2686d1ffbe_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{psp2-context_8c_ac47f4c33aec2cd84a2236b2686d1ffbe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_aa75d847f3a6026f830eac71a87e59a3d}\label{psp2-context_8c_aa75d847f3a6026f830eac71a87e59a3d}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!m\+P\+S\+P2\+Draw\+Screenshot@{m\+P\+S\+P2\+Draw\+Screenshot}}
+\index{m\+P\+S\+P2\+Draw\+Screenshot@{m\+P\+S\+P2\+Draw\+Screenshot}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{m\+P\+S\+P2\+Draw\+Screenshot()}{mPSP2DrawScreenshot()}}
+{\footnotesize\ttfamily void m\+P\+S\+P2\+Draw\+Screenshot (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{runner,  }\item[{const uint32\+\_\+t $\ast$}]{pixels,  }\item[{unsigned}]{width,  }\item[{unsigned}]{height,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{faded }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_aa75d847f3a6026f830eac71a87e59a3d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=287pt]{psp2-context_8c_aa75d847f3a6026f830eac71a87e59a3d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_a88df7b81ae33955caa66f8f0516c8a2a}\label{psp2-context_8c_a88df7b81ae33955caa66f8f0516c8a2a}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!m\+P\+S\+P2\+Increment\+Screen\+Mode@{m\+P\+S\+P2\+Increment\+Screen\+Mode}}
+\index{m\+P\+S\+P2\+Increment\+Screen\+Mode@{m\+P\+S\+P2\+Increment\+Screen\+Mode}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{m\+P\+S\+P2\+Increment\+Screen\+Mode()}{mPSP2IncrementScreenMode()}}
+{\footnotesize\ttfamily void m\+P\+S\+P2\+Increment\+Screen\+Mode (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{runner }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_a88df7b81ae33955caa66f8f0516c8a2a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{psp2-context_8c_a88df7b81ae33955caa66f8f0516c8a2a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_a6d1428d32dd856760fa94b6a08e54ab2}\label{psp2-context_8c_a6d1428d32dd856760fa94b6a08e54ab2}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!m\+P\+S\+P2\+Load\+R\+OM@{m\+P\+S\+P2\+Load\+R\+OM}}
+\index{m\+P\+S\+P2\+Load\+R\+OM@{m\+P\+S\+P2\+Load\+R\+OM}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{m\+P\+S\+P2\+Load\+R\+O\+M()}{mPSP2LoadROM()}}
+{\footnotesize\ttfamily void m\+P\+S\+P2\+Load\+R\+OM (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{runner }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{psp2-context_8c_a6d1428d32dd856760fa94b6a08e54ab2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=253pt]{psp2-context_8c_a6d1428d32dd856760fa94b6a08e54ab2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_a0ff9569feeb9a2f318792b681331c9ab}\label{psp2-context_8c_a0ff9569feeb9a2f318792b681331c9ab}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!m\+P\+S\+P2\+Map\+Key@{m\+P\+S\+P2\+Map\+Key}}
+\index{m\+P\+S\+P2\+Map\+Key@{m\+P\+S\+P2\+Map\+Key}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{m\+P\+S\+P2\+Map\+Key()}{mPSP2MapKey()}}
+{\footnotesize\ttfamily void m\+P\+S\+P2\+Map\+Key (\begin{DoxyParamCaption}\item[{struct m\+Input\+Map $\ast$}]{map,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{psp\+Key,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{key }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_a0ff9569feeb9a2f318792b681331c9ab_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_a0ff9569feeb9a2f318792b681331c9ab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_a7f9c754e1ebf551ba6e39e76d7135f91}\label{psp2-context_8c_a7f9c754e1ebf551ba6e39e76d7135f91}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!m\+P\+S\+P2\+Paused@{m\+P\+S\+P2\+Paused}}
+\index{m\+P\+S\+P2\+Paused@{m\+P\+S\+P2\+Paused}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{m\+P\+S\+P2\+Paused()}{mPSP2Paused()}}
+{\footnotesize\ttfamily void m\+P\+S\+P2\+Paused (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{runner }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{psp2-context_8c_a7f9c754e1ebf551ba6e39e76d7135f91_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_a29b280976db23268da118020f60ce728}\label{psp2-context_8c_a29b280976db23268da118020f60ce728}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!m\+P\+S\+P2\+Poll\+Input@{m\+P\+S\+P2\+Poll\+Input}}
+\index{m\+P\+S\+P2\+Poll\+Input@{m\+P\+S\+P2\+Poll\+Input}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{m\+P\+S\+P2\+Poll\+Input()}{mPSP2PollInput()}}
+{\footnotesize\ttfamily uint16\+\_\+t m\+P\+S\+P2\+Poll\+Input (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{runner }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_a29b280976db23268da118020f60ce728_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=250pt]{psp2-context_8c_a29b280976db23268da118020f60ce728_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_a9a298ef5f14d11b2cf482a19a3a55d82}\label{psp2-context_8c_a9a298ef5f14d11b2cf482a19a3a55d82}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!m\+P\+S\+P2\+Set\+Frame\+Limiter@{m\+P\+S\+P2\+Set\+Frame\+Limiter}}
+\index{m\+P\+S\+P2\+Set\+Frame\+Limiter@{m\+P\+S\+P2\+Set\+Frame\+Limiter}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{m\+P\+S\+P2\+Set\+Frame\+Limiter()}{mPSP2SetFrameLimiter()}}
+{\footnotesize\ttfamily void m\+P\+S\+P2\+Set\+Frame\+Limiter (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{runner,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{limit }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{psp2-context_8c_a9a298ef5f14d11b2cf482a19a3a55d82_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_a421c14012a9792c249822f943155921a}\label{psp2-context_8c_a421c14012a9792c249822f943155921a}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!m\+P\+S\+P2\+Setup@{m\+P\+S\+P2\+Setup}}
+\index{m\+P\+S\+P2\+Setup@{m\+P\+S\+P2\+Setup}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{m\+P\+S\+P2\+Setup()}{mPSP2Setup()}}
+{\footnotesize\ttfamily void m\+P\+S\+P2\+Setup (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{runner }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_a421c14012a9792c249822f943155921a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{psp2-context_8c_a421c14012a9792c249822f943155921a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_aaae5f4b3a42c091f809836cec74d1cd7}\label{psp2-context_8c_aaae5f4b3a42c091f809836cec74d1cd7}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!m\+P\+S\+P2\+Teardown@{m\+P\+S\+P2\+Teardown}}
+\index{m\+P\+S\+P2\+Teardown@{m\+P\+S\+P2\+Teardown}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{m\+P\+S\+P2\+Teardown()}{mPSP2Teardown()}}
+{\footnotesize\ttfamily void m\+P\+S\+P2\+Teardown (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{runner }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_aaae5f4b3a42c091f809836cec74d1cd7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{psp2-context_8c_aaae5f4b3a42c091f809836cec74d1cd7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_a94ad5d2964da6bad167ee85e5f021421}\label{psp2-context_8c_a94ad5d2964da6bad167ee85e5f021421}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!m\+P\+S\+P2\+Unload\+R\+OM@{m\+P\+S\+P2\+Unload\+R\+OM}}
+\index{m\+P\+S\+P2\+Unload\+R\+OM@{m\+P\+S\+P2\+Unload\+R\+OM}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{m\+P\+S\+P2\+Unload\+R\+O\+M()}{mPSP2UnloadROM()}}
+{\footnotesize\ttfamily void m\+P\+S\+P2\+Unload\+R\+OM (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{runner }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{psp2-context_8c_a94ad5d2964da6bad167ee85e5f021421_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{psp2-context_8c_a02416ce4a85e3b948b2a1df34d901cb3}\label{psp2-context_8c_a02416ce4a85e3b948b2a1df34d901cb3}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!m\+P\+S\+P2\+Unpaused@{m\+P\+S\+P2\+Unpaused}}
+\index{m\+P\+S\+P2\+Unpaused@{m\+P\+S\+P2\+Unpaused}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{m\+P\+S\+P2\+Unpaused()}{mPSP2Unpaused()}}
+{\footnotesize\ttfamily void m\+P\+S\+P2\+Unpaused (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structm_g_u_i_runner}{m\+G\+U\+I\+Runner}} $\ast$}]{runner }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{psp2-context_8c_a02416ce4a85e3b948b2a1df34d901cb3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{psp2-context_8c_a02416ce4a85e3b948b2a1df34d901cb3_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{psp2-context_8c_a2365730f0a058820b7887cff8d39a829}\label{psp2-context_8c_a2365730f0a058820b7887cff8d39a829}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!\+\_\+binary\+\_\+backdrop\+\_\+png\+\_\+start@{\+\_\+binary\+\_\+backdrop\+\_\+png\+\_\+start}}
+\index{\+\_\+binary\+\_\+backdrop\+\_\+png\+\_\+start@{\+\_\+binary\+\_\+backdrop\+\_\+png\+\_\+start}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+binary\+\_\+backdrop\+\_\+png\+\_\+start}{\_binary\_backdrop\_png\_start}}
+{\footnotesize\ttfamily const uint8\+\_\+t \+\_\+binary\+\_\+backdrop\+\_\+png\+\_\+start\mbox{[}$\,$\mbox{]}}
+
+\mbox{\Hypertarget{psp2-context_8c_a659b36605d87e0119d74ca65de7dbf4c}\label{psp2-context_8c_a659b36605d87e0119d74ca65de7dbf4c}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!audio\+Context@{audio\+Context}}
+\index{audio\+Context@{audio\+Context}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{audio\+Context}{audioContext}}
+{\footnotesize\ttfamily struct m\+P\+S\+P2\+Audio\+Context  audio\+Context\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{psp2-context_8c_a98449c0540702b481c40de8a3918d342}\label{psp2-context_8c_a98449c0540702b481c40de8a3918d342}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!audio\+Thread@{audio\+Thread}}
+\index{audio\+Thread@{audio\+Thread}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{audio\+Thread}{audioThread}}
+{\footnotesize\ttfamily Thread audio\+Thread\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{psp2-context_8c_a8dc5cadb8c411fc6334f22c3e6516e6a}\label{psp2-context_8c_a8dc5cadb8c411fc6334f22c3e6516e6a}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!backdrop@{backdrop}}
+\index{backdrop@{backdrop}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{backdrop}{backdrop}}
+{\footnotesize\ttfamily vita2d\+\_\+texture$\ast$ backdrop = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{psp2-context_8c_a87322b8f3ad7052507e06145194fe154}\label{psp2-context_8c_a87322b8f3ad7052507e06145194fe154}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!camera@{camera}}
+\index{camera@{camera}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{camera}{camera}}
+{\footnotesize\ttfamily struct m\+Sce\+Image\+Source  camera\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{psp2-context_8c_a79ad80572fd8710aecd999faddccfed8}\label{psp2-context_8c_a79ad80572fd8710aecd999faddccfed8}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!frame\+Limiter@{frame\+Limiter}}
+\index{frame\+Limiter@{frame\+Limiter}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{frame\+Limiter}{frameLimiter}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} frame\+Limiter = true}
+
+\mbox{\Hypertarget{psp2-context_8c_a0779122b7156629157afcf1a35c372ef}\label{psp2-context_8c_a0779122b7156629157afcf1a35c372ef}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!output\+Buffer@{output\+Buffer}}
+\index{output\+Buffer@{output\+Buffer}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{output\+Buffer}{outputBuffer}}
+{\footnotesize\ttfamily void$\ast$ output\+Buffer\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{psp2-context_8c_afe9e4b0b66378e39ad7095d01ab7b23b}\label{psp2-context_8c_afe9e4b0b66378e39ad7095d01ab7b23b}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!rotation@{rotation}}
+\index{rotation@{rotation}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{rotation}{rotation}}
+{\footnotesize\ttfamily struct m\+Sce\+Rotation\+Source  rotation\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{psp2-context_8c_aeb7982d490fa2271fb0cea4c4d5200ee}\label{psp2-context_8c_aeb7982d490fa2271fb0cea4c4d5200ee}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!rumble@{rumble}}
+\index{rumble@{rumble}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{rumble}{rumble}}
+{\footnotesize\ttfamily struct m\+Sce\+Rumble  rumble\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{psp2-context_8c_aa6506f4016bae669706872ea621efd8c}\label{psp2-context_8c_aa6506f4016bae669706872ea621efd8c}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!screen\+Mode@{screen\+Mode}}
+\index{screen\+Mode@{screen\+Mode}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{screen\+Mode}{screenMode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{3ds_2main_8c_aefe4cd50ac123b6c800eede74968a353}{Screen\+Mode}}  screen\+Mode\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{psp2-context_8c_a0204020e80625e713fc729f653aa63de}\label{psp2-context_8c_a0204020e80625e713fc729f653aa63de}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!screenshot@{screenshot}}
+\index{screenshot@{screenshot}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{screenshot}{screenshot}}
+{\footnotesize\ttfamily vita2d\+\_\+texture$\ast$ screenshot\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{psp2-context_8c_afcb178a8ee7853c424423b8601eeaa78}\label{psp2-context_8c_afcb178a8ee7853c424423b8601eeaa78}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!stream@{stream}}
+\index{stream@{stream}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{stream}{stream}}
+{\footnotesize\ttfamily struct m\+A\+V\+Stream \mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{psp2-context_8c_a8ee643382d084f154f1b1ff39df7b3b9}\label{psp2-context_8c_a8ee643382d084f154f1b1ff39df7b3b9}} 
+\index{psp2-\/context.\+c@{psp2-\/context.\+c}!tex@{tex}}
+\index{tex@{tex}!psp2-\/context.\+c@{psp2-\/context.\+c}}
+\subsubsection{\texorpdfstring{tex}{tex}}
+{\footnotesize\ttfamily vita2d\+\_\+texture$\ast$ tex\hspace{0.3cm}{\ttfamily [static]}}
+

@@ -1,0 +1,248 @@
+\hypertarget{class_q_g_b_a_1_1_sensor_view}{}\section{Q\+G\+BA\+:\+:Sensor\+View Class Reference}
+\label{class_q_g_b_a_1_1_sensor_view}\index{Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}}
+
+
+{\ttfamily \#include $<$Sensor\+View.\+h$>$}
+
+
+
+Inheritance diagram for Q\+G\+BA\+:\+:Sensor\+View\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{class_q_g_b_a_1_1_sensor_view__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Q\+G\+BA\+:\+:Sensor\+View\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_q_g_b_a_1_1_sensor_view__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_q_g_b_a_1_1_sensor_view_a35d0e03e33ccb200c6c20c22db1950cd}{Sensor\+View}} (\mbox{\hyperlink{class_q_g_b_a_1_1_input_controller}{Input\+Controller}} $\ast$input, Q\+Widget $\ast$parent=nullptr)
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_sensor_view_aef94bd97606a185f823636106bd0b2ca}{set\+Controller}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_q_g_b_a_1_1_core_controller}{Core\+Controller}} $>$)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{class_q_g_b_a_1_1_sensor_view_ac36eccf225760726c912ab688ef41270}{event\+Filter}} (Q\+Object $\ast$, Q\+Event $\ast$\mbox{\hyperlink{class_q_g_b_a_1_1_sensor_view_a058b4e2baa8ca5f86d6335bc698da284}{event}}) override
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{class_q_g_b_a_1_1_sensor_view_a058b4e2baa8ca5f86d6335bc698da284}{event}} (Q\+Event $\ast$event) override
+\end{DoxyCompactItemize}
+\subsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_sensor_view_aa80d32096bbd1abb428d05cf4124c1ba}{update\+Sensors}} ()
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_sensor_view_ad6dec39ee47c69c736c18293da18527c}{set\+Luminance\+Value}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}})
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_sensor_view_a76f391e13618d7f97f37076ce16ebd64}{luminance\+Value\+Changed}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}})
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_sensor_view_a2747614dc92dfe149fff8cc532063fe6}{jiggerer}} (Q\+Abstract\+Button $\ast$, void(Input\+Controller\+::$\ast$)(\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}))
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Ui\+::\+Sensor\+View \mbox{\hyperlink{class_q_g_b_a_1_1_sensor_view_afb7afd03aacdba7deada6ce9481552f2}{m\+\_\+ui}}
+\item 
+std\+::function$<$ void(\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}})$>$ \mbox{\hyperlink{class_q_g_b_a_1_1_sensor_view_af8c4a7add1c4ab506e7a53db6eafedd0}{m\+\_\+jiggered}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_q_g_b_a_1_1_core_controller}{Core\+Controller}} $>$ \mbox{\hyperlink{class_q_g_b_a_1_1_sensor_view_a52ee47a033d621a39ea6112f2a1573c4}{m\+\_\+controller}}
+\item 
+\mbox{\hyperlink{class_q_g_b_a_1_1_input_controller}{Input\+Controller}} $\ast$ \mbox{\hyperlink{class_q_g_b_a_1_1_sensor_view_a63f23abbafe3aa495edf52a786329052}{m\+\_\+input}}
+\item 
+m\+Rotation\+Source $\ast$ \mbox{\hyperlink{class_q_g_b_a_1_1_sensor_view_aff3e71b31a52e2dc432f014b3a101541}{m\+\_\+rotation}}
+\item 
+Q\+Timer \mbox{\hyperlink{class_q_g_b_a_1_1_sensor_view_a1cdba6194ed17cfe40947c059982cc03}{m\+\_\+timer}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_sensor_view_a35d0e03e33ccb200c6c20c22db1950cd}\label{class_q_g_b_a_1_1_sensor_view_a35d0e03e33ccb200c6c20c22db1950cd}} 
+\index{Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}!Sensor\+View@{Sensor\+View}}
+\index{Sensor\+View@{Sensor\+View}!Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}}
+\subsubsection{\texorpdfstring{Sensor\+View()}{SensorView()}}
+{\footnotesize\ttfamily Sensor\+View\+::\+Sensor\+View (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_q_g_b_a_1_1_input_controller}{Input\+Controller}} $\ast$}]{input,  }\item[{Q\+Widget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_sensor_view_a35d0e03e33ccb200c6c20c22db1950cd_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_sensor_view_a058b4e2baa8ca5f86d6335bc698da284}\label{class_q_g_b_a_1_1_sensor_view_a058b4e2baa8ca5f86d6335bc698da284}} 
+\index{Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}!event@{event}}
+\index{event@{event}!Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}}
+\subsubsection{\texorpdfstring{event()}{event()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} Sensor\+View\+::event (\begin{DoxyParamCaption}\item[{Q\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_sensor_view_a058b4e2baa8ca5f86d6335bc698da284_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_sensor_view_a058b4e2baa8ca5f86d6335bc698da284_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_sensor_view_ac36eccf225760726c912ab688ef41270}\label{class_q_g_b_a_1_1_sensor_view_ac36eccf225760726c912ab688ef41270}} 
+\index{Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}!event\+Filter@{event\+Filter}}
+\index{event\+Filter@{event\+Filter}!Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}}
+\subsubsection{\texorpdfstring{event\+Filter()}{eventFilter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} Sensor\+View\+::event\+Filter (\begin{DoxyParamCaption}\item[{Q\+Object $\ast$}]{,  }\item[{Q\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_sensor_view_ac36eccf225760726c912ab688ef41270_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_sensor_view_a2747614dc92dfe149fff8cc532063fe6}\label{class_q_g_b_a_1_1_sensor_view_a2747614dc92dfe149fff8cc532063fe6}} 
+\index{Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}!jiggerer@{jiggerer}}
+\index{jiggerer@{jiggerer}!Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}}
+\subsubsection{\texorpdfstring{jiggerer()}{jiggerer()}}
+{\footnotesize\ttfamily void Sensor\+View\+::jiggerer (\begin{DoxyParamCaption}\item[{Q\+Abstract\+Button $\ast$}]{button,  }\item[{void(Input\+Controller\+::$\ast$)(\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}})}]{setter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_sensor_view_a2747614dc92dfe149fff8cc532063fe6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_sensor_view_a76f391e13618d7f97f37076ce16ebd64}\label{class_q_g_b_a_1_1_sensor_view_a76f391e13618d7f97f37076ce16ebd64}} 
+\index{Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}!luminance\+Value\+Changed@{luminance\+Value\+Changed}}
+\index{luminance\+Value\+Changed@{luminance\+Value\+Changed}!Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}}
+\subsubsection{\texorpdfstring{luminance\+Value\+Changed}{luminanceValueChanged}}
+{\footnotesize\ttfamily void Sensor\+View\+::luminance\+Value\+Changed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_sensor_view_a76f391e13618d7f97f37076ce16ebd64_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_sensor_view_aef94bd97606a185f823636106bd0b2ca}\label{class_q_g_b_a_1_1_sensor_view_aef94bd97606a185f823636106bd0b2ca}} 
+\index{Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}!set\+Controller@{set\+Controller}}
+\index{set\+Controller@{set\+Controller}!Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}}
+\subsubsection{\texorpdfstring{set\+Controller()}{setController()}}
+{\footnotesize\ttfamily void Sensor\+View\+::set\+Controller (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_q_g_b_a_1_1_core_controller}{Core\+Controller}} $>$}]{controller }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_sensor_view_aef94bd97606a185f823636106bd0b2ca_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_sensor_view_ad6dec39ee47c69c736c18293da18527c}\label{class_q_g_b_a_1_1_sensor_view_ad6dec39ee47c69c736c18293da18527c}} 
+\index{Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}!set\+Luminance\+Value@{set\+Luminance\+Value}}
+\index{set\+Luminance\+Value@{set\+Luminance\+Value}!Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}}
+\subsubsection{\texorpdfstring{set\+Luminance\+Value}{setLuminanceValue}}
+{\footnotesize\ttfamily void Sensor\+View\+::set\+Luminance\+Value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_sensor_view_ad6dec39ee47c69c736c18293da18527c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_sensor_view_ad6dec39ee47c69c736c18293da18527c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_sensor_view_aa80d32096bbd1abb428d05cf4124c1ba}\label{class_q_g_b_a_1_1_sensor_view_aa80d32096bbd1abb428d05cf4124c1ba}} 
+\index{Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}!update\+Sensors@{update\+Sensors}}
+\index{update\+Sensors@{update\+Sensors}!Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}}
+\subsubsection{\texorpdfstring{update\+Sensors}{updateSensors}}
+{\footnotesize\ttfamily void Sensor\+View\+::update\+Sensors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_sensor_view_aa80d32096bbd1abb428d05cf4124c1ba_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_sensor_view_a52ee47a033d621a39ea6112f2a1573c4}\label{class_q_g_b_a_1_1_sensor_view_a52ee47a033d621a39ea6112f2a1573c4}} 
+\index{Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}!m\+\_\+controller@{m\+\_\+controller}}
+\index{m\+\_\+controller@{m\+\_\+controller}!Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}}
+\subsubsection{\texorpdfstring{m\+\_\+controller}{m\_controller}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_q_g_b_a_1_1_core_controller}{Core\+Controller}}$>$ Q\+G\+B\+A\+::\+Sensor\+View\+::m\+\_\+controller\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_sensor_view_a63f23abbafe3aa495edf52a786329052}\label{class_q_g_b_a_1_1_sensor_view_a63f23abbafe3aa495edf52a786329052}} 
+\index{Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}!m\+\_\+input@{m\+\_\+input}}
+\index{m\+\_\+input@{m\+\_\+input}!Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}}
+\subsubsection{\texorpdfstring{m\+\_\+input}{m\_input}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_q_g_b_a_1_1_input_controller}{Input\+Controller}}$\ast$ Q\+G\+B\+A\+::\+Sensor\+View\+::m\+\_\+input\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_sensor_view_af8c4a7add1c4ab506e7a53db6eafedd0}\label{class_q_g_b_a_1_1_sensor_view_af8c4a7add1c4ab506e7a53db6eafedd0}} 
+\index{Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}!m\+\_\+jiggered@{m\+\_\+jiggered}}
+\index{m\+\_\+jiggered@{m\+\_\+jiggered}!Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}}
+\subsubsection{\texorpdfstring{m\+\_\+jiggered}{m\_jiggered}}
+{\footnotesize\ttfamily std\+::function$<$void(\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}})$>$ Q\+G\+B\+A\+::\+Sensor\+View\+::m\+\_\+jiggered\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_sensor_view_aff3e71b31a52e2dc432f014b3a101541}\label{class_q_g_b_a_1_1_sensor_view_aff3e71b31a52e2dc432f014b3a101541}} 
+\index{Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}!m\+\_\+rotation@{m\+\_\+rotation}}
+\index{m\+\_\+rotation@{m\+\_\+rotation}!Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}}
+\subsubsection{\texorpdfstring{m\+\_\+rotation}{m\_rotation}}
+{\footnotesize\ttfamily m\+Rotation\+Source$\ast$ Q\+G\+B\+A\+::\+Sensor\+View\+::m\+\_\+rotation\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_sensor_view_a1cdba6194ed17cfe40947c059982cc03}\label{class_q_g_b_a_1_1_sensor_view_a1cdba6194ed17cfe40947c059982cc03}} 
+\index{Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}!m\+\_\+timer@{m\+\_\+timer}}
+\index{m\+\_\+timer@{m\+\_\+timer}!Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}}
+\subsubsection{\texorpdfstring{m\+\_\+timer}{m\_timer}}
+{\footnotesize\ttfamily Q\+Timer Q\+G\+B\+A\+::\+Sensor\+View\+::m\+\_\+timer\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_sensor_view_afb7afd03aacdba7deada6ce9481552f2}\label{class_q_g_b_a_1_1_sensor_view_afb7afd03aacdba7deada6ce9481552f2}} 
+\index{Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}!m\+\_\+ui@{m\+\_\+ui}}
+\index{m\+\_\+ui@{m\+\_\+ui}!Q\+G\+B\+A\+::\+Sensor\+View@{Q\+G\+B\+A\+::\+Sensor\+View}}
+\subsubsection{\texorpdfstring{m\+\_\+ui}{m\_ui}}
+{\footnotesize\ttfamily Ui\+::\+Sensor\+View Q\+G\+B\+A\+::\+Sensor\+View\+::m\+\_\+ui\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/platform/qt/\mbox{\hyperlink{_sensor_view_8h}{Sensor\+View.\+h}}\item 
+src/platform/qt/\mbox{\hyperlink{_sensor_view_8cpp}{Sensor\+View.\+cpp}}\end{DoxyCompactItemize}

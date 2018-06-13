@@ -1,0 +1,327 @@
+\hypertarget{core_2log_8c}{}\section{src/core/log.c File Reference}
+\label{core_2log_8c}\index{src/core/log.\+c@{src/core/log.\+c}}
+{\ttfamily \#include $<$mgba/core/log.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/config.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/thread.\+h$>$}\newline
+Include dependency graph for log.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2log_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{core_2log_8c_a48a7acb6850168cf4ee361f21741951f}{M\+A\+X\+\_\+\+C\+A\+T\+E\+G\+O\+RY}}~64
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct m\+Logger $\ast$ \mbox{\hyperlink{core_2log_8c_a8f2b545dd69a464a10add7272d2bbd0b}{m\+Log\+Get\+Context}} (void)
+\item 
+void \mbox{\hyperlink{core_2log_8c_a39b368118867c1a54504225d9ec6d909}{m\+Log\+Set\+Default\+Logger}} (struct m\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}})
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{core_2log_8c_a533fe2b8c207451ff2f786804f772e9a}{m\+Log\+Generate\+Category}} (const char $\ast$name, const char $\ast$id)
+\item 
+const char $\ast$ \mbox{\hyperlink{core_2log_8c_ac985e12d55dc657249866b9e8e426083}{m\+Log\+Category\+Name}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} category)
+\item 
+const char $\ast$ \mbox{\hyperlink{core_2log_8c_aa84dcbee9b250968732fb502836dfb76}{m\+Log\+Category\+Id}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} category)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{core_2log_8c_a5c3d737b96c1e5d6f43ccb559da54938}{m\+Log\+Category\+By\+Id}} (const char $\ast$id)
+\item 
+void \mbox{\hyperlink{core_2log_8c_a1a1a2fafcb505492014dbb17f224723d}{m\+Log}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} category, enum m\+Log\+Level level, const char $\ast$format,...)
+\item 
+void \mbox{\hyperlink{core_2log_8c_a5aa1940b996b02797147592fffb96eaf}{m\+Log\+Filter\+Init}} (struct m\+Log\+Filter $\ast$filter)
+\item 
+void \mbox{\hyperlink{core_2log_8c_ad7aec236bad8b81182057b6c14cb8f20}{m\+Log\+Filter\+Deinit}} (struct m\+Log\+Filter $\ast$filter)
+\item 
+static void \mbox{\hyperlink{core_2log_8c_a3e27591b3dbbed7a43364ef03cdcb6c8}{\+\_\+set\+Filter\+Level}} (const char $\ast$key, const char $\ast$value, enum m\+Core\+Config\+Level level, void $\ast$user)
+\item 
+void \mbox{\hyperlink{core_2log_8c_aa2941d5993491733d0bbc0f68845223a}{m\+Log\+Filter\+Load}} (struct m\+Log\+Filter $\ast$filter, const struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+void \mbox{\hyperlink{core_2log_8c_aef243cc11d98136ce592946b430f2091}{m\+Log\+Filter\+Set}} (struct m\+Log\+Filter $\ast$filter, const char $\ast$category, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} levels)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2log_8c_a3b80ea4d6661ffa102fd17bd1c9b7d59}{m\+Log\+Filter\+Test}} (struct m\+Log\+Filter $\ast$filter, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} category, enum m\+Log\+Level level)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static struct m\+Logger $\ast$ \mbox{\hyperlink{core_2log_8c_acc2e3e9be223d92cb66077fa730d496d}{\+\_\+default\+Logger}} = N\+U\+LL
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{core_2log_8c_a61ed1f7af30108dc84d7ac9daf3f4a1b}{\+\_\+category}} = 0
+\item 
+static const char $\ast$ \mbox{\hyperlink{core_2log_8c_a8004610fc387fe476a28420fc0cf3c87}{\+\_\+category\+Names}} \mbox{[}\mbox{\hyperlink{core_2log_8c_a48a7acb6850168cf4ee361f21741951f}{M\+A\+X\+\_\+\+C\+A\+T\+E\+G\+O\+RY}}\mbox{]}
+\item 
+static const char $\ast$ \mbox{\hyperlink{core_2log_8c_a3f2b66f87bb068ac160a3bca01bece2f}{\+\_\+category\+Ids}} \mbox{[}\mbox{\hyperlink{core_2log_8c_a48a7acb6850168cf4ee361f21741951f}{M\+A\+X\+\_\+\+C\+A\+T\+E\+G\+O\+RY}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{core_2log_8c_a48a7acb6850168cf4ee361f21741951f}\label{core_2log_8c_a48a7acb6850168cf4ee361f21741951f}} 
+\index{core/log.\+c@{core/log.\+c}!M\+A\+X\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{M\+A\+X\+\_\+\+C\+A\+T\+E\+G\+O\+RY}}
+\index{M\+A\+X\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{M\+A\+X\+\_\+\+C\+A\+T\+E\+G\+O\+RY}!core/log.\+c@{core/log.\+c}}
+\subsubsection{\texorpdfstring{M\+A\+X\+\_\+\+C\+A\+T\+E\+G\+O\+RY}{MAX\_CATEGORY}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+C\+A\+T\+E\+G\+O\+RY~64}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{core_2log_8c_a3e27591b3dbbed7a43364ef03cdcb6c8}\label{core_2log_8c_a3e27591b3dbbed7a43364ef03cdcb6c8}} 
+\index{core/log.\+c@{core/log.\+c}!\+\_\+set\+Filter\+Level@{\+\_\+set\+Filter\+Level}}
+\index{\+\_\+set\+Filter\+Level@{\+\_\+set\+Filter\+Level}!core/log.\+c@{core/log.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+set\+Filter\+Level()}{\_setFilterLevel()}}
+{\footnotesize\ttfamily static void \+\_\+set\+Filter\+Level (\begin{DoxyParamCaption}\item[{const char $\ast$}]{key,  }\item[{const char $\ast$}]{value,  }\item[{enum m\+Core\+Config\+Level}]{level,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2log_8c_a3e27591b3dbbed7a43364ef03cdcb6c8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2log_8c_a3e27591b3dbbed7a43364ef03cdcb6c8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2log_8c_a1a1a2fafcb505492014dbb17f224723d}\label{core_2log_8c_a1a1a2fafcb505492014dbb17f224723d}} 
+\index{core/log.\+c@{core/log.\+c}!m\+Log@{m\+Log}}
+\index{m\+Log@{m\+Log}!core/log.\+c@{core/log.\+c}}
+\subsubsection{\texorpdfstring{m\+Log()}{mLog()}}
+{\footnotesize\ttfamily void m\+Log (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{category,  }\item[{enum m\+Log\+Level}]{level,  }\item[{const char $\ast$}]{format,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2log_8c_a1a1a2fafcb505492014dbb17f224723d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2log_8c_a1a1a2fafcb505492014dbb17f224723d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2log_8c_a5c3d737b96c1e5d6f43ccb559da54938}\label{core_2log_8c_a5c3d737b96c1e5d6f43ccb559da54938}} 
+\index{core/log.\+c@{core/log.\+c}!m\+Log\+Category\+By\+Id@{m\+Log\+Category\+By\+Id}}
+\index{m\+Log\+Category\+By\+Id@{m\+Log\+Category\+By\+Id}!core/log.\+c@{core/log.\+c}}
+\subsubsection{\texorpdfstring{m\+Log\+Category\+By\+Id()}{mLogCategoryById()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} m\+Log\+Category\+By\+Id (\begin{DoxyParamCaption}\item[{const char $\ast$}]{id }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2log_8c_a5c3d737b96c1e5d6f43ccb559da54938_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2log_8c_aa84dcbee9b250968732fb502836dfb76}\label{core_2log_8c_aa84dcbee9b250968732fb502836dfb76}} 
+\index{core/log.\+c@{core/log.\+c}!m\+Log\+Category\+Id@{m\+Log\+Category\+Id}}
+\index{m\+Log\+Category\+Id@{m\+Log\+Category\+Id}!core/log.\+c@{core/log.\+c}}
+\subsubsection{\texorpdfstring{m\+Log\+Category\+Id()}{mLogCategoryId()}}
+{\footnotesize\ttfamily const char$\ast$ m\+Log\+Category\+Id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{category }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2log_8c_aa84dcbee9b250968732fb502836dfb76_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2log_8c_ac985e12d55dc657249866b9e8e426083}\label{core_2log_8c_ac985e12d55dc657249866b9e8e426083}} 
+\index{core/log.\+c@{core/log.\+c}!m\+Log\+Category\+Name@{m\+Log\+Category\+Name}}
+\index{m\+Log\+Category\+Name@{m\+Log\+Category\+Name}!core/log.\+c@{core/log.\+c}}
+\subsubsection{\texorpdfstring{m\+Log\+Category\+Name()}{mLogCategoryName()}}
+{\footnotesize\ttfamily const char$\ast$ m\+Log\+Category\+Name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{category }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2log_8c_ac985e12d55dc657249866b9e8e426083_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2log_8c_ad7aec236bad8b81182057b6c14cb8f20}\label{core_2log_8c_ad7aec236bad8b81182057b6c14cb8f20}} 
+\index{core/log.\+c@{core/log.\+c}!m\+Log\+Filter\+Deinit@{m\+Log\+Filter\+Deinit}}
+\index{m\+Log\+Filter\+Deinit@{m\+Log\+Filter\+Deinit}!core/log.\+c@{core/log.\+c}}
+\subsubsection{\texorpdfstring{m\+Log\+Filter\+Deinit()}{mLogFilterDeinit()}}
+{\footnotesize\ttfamily void m\+Log\+Filter\+Deinit (\begin{DoxyParamCaption}\item[{struct m\+Log\+Filter $\ast$}]{filter }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2log_8c_ad7aec236bad8b81182057b6c14cb8f20_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2log_8c_a5aa1940b996b02797147592fffb96eaf}\label{core_2log_8c_a5aa1940b996b02797147592fffb96eaf}} 
+\index{core/log.\+c@{core/log.\+c}!m\+Log\+Filter\+Init@{m\+Log\+Filter\+Init}}
+\index{m\+Log\+Filter\+Init@{m\+Log\+Filter\+Init}!core/log.\+c@{core/log.\+c}}
+\subsubsection{\texorpdfstring{m\+Log\+Filter\+Init()}{mLogFilterInit()}}
+{\footnotesize\ttfamily void m\+Log\+Filter\+Init (\begin{DoxyParamCaption}\item[{struct m\+Log\+Filter $\ast$}]{filter }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2log_8c_a5aa1940b996b02797147592fffb96eaf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2log_8c_a5aa1940b996b02797147592fffb96eaf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2log_8c_aa2941d5993491733d0bbc0f68845223a}\label{core_2log_8c_aa2941d5993491733d0bbc0f68845223a}} 
+\index{core/log.\+c@{core/log.\+c}!m\+Log\+Filter\+Load@{m\+Log\+Filter\+Load}}
+\index{m\+Log\+Filter\+Load@{m\+Log\+Filter\+Load}!core/log.\+c@{core/log.\+c}}
+\subsubsection{\texorpdfstring{m\+Log\+Filter\+Load()}{mLogFilterLoad()}}
+{\footnotesize\ttfamily void m\+Log\+Filter\+Load (\begin{DoxyParamCaption}\item[{struct m\+Log\+Filter $\ast$}]{filter,  }\item[{const struct m\+Core\+Config $\ast$}]{config }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2log_8c_aa2941d5993491733d0bbc0f68845223a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2log_8c_aa2941d5993491733d0bbc0f68845223a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2log_8c_aef243cc11d98136ce592946b430f2091}\label{core_2log_8c_aef243cc11d98136ce592946b430f2091}} 
+\index{core/log.\+c@{core/log.\+c}!m\+Log\+Filter\+Set@{m\+Log\+Filter\+Set}}
+\index{m\+Log\+Filter\+Set@{m\+Log\+Filter\+Set}!core/log.\+c@{core/log.\+c}}
+\subsubsection{\texorpdfstring{m\+Log\+Filter\+Set()}{mLogFilterSet()}}
+{\footnotesize\ttfamily void m\+Log\+Filter\+Set (\begin{DoxyParamCaption}\item[{struct m\+Log\+Filter $\ast$}]{filter,  }\item[{const char $\ast$}]{category,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{levels }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2log_8c_aef243cc11d98136ce592946b430f2091_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2log_8c_aef243cc11d98136ce592946b430f2091_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2log_8c_a3b80ea4d6661ffa102fd17bd1c9b7d59}\label{core_2log_8c_a3b80ea4d6661ffa102fd17bd1c9b7d59}} 
+\index{core/log.\+c@{core/log.\+c}!m\+Log\+Filter\+Test@{m\+Log\+Filter\+Test}}
+\index{m\+Log\+Filter\+Test@{m\+Log\+Filter\+Test}!core/log.\+c@{core/log.\+c}}
+\subsubsection{\texorpdfstring{m\+Log\+Filter\+Test()}{mLogFilterTest()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Log\+Filter\+Test (\begin{DoxyParamCaption}\item[{struct m\+Log\+Filter $\ast$}]{filter,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{category,  }\item[{enum m\+Log\+Level}]{level }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2log_8c_a3b80ea4d6661ffa102fd17bd1c9b7d59_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2log_8c_a3b80ea4d6661ffa102fd17bd1c9b7d59_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2log_8c_a533fe2b8c207451ff2f786804f772e9a}\label{core_2log_8c_a533fe2b8c207451ff2f786804f772e9a}} 
+\index{core/log.\+c@{core/log.\+c}!m\+Log\+Generate\+Category@{m\+Log\+Generate\+Category}}
+\index{m\+Log\+Generate\+Category@{m\+Log\+Generate\+Category}!core/log.\+c@{core/log.\+c}}
+\subsubsection{\texorpdfstring{m\+Log\+Generate\+Category()}{mLogGenerateCategory()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} m\+Log\+Generate\+Category (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name,  }\item[{const char $\ast$}]{id }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{core_2log_8c_a8f2b545dd69a464a10add7272d2bbd0b}\label{core_2log_8c_a8f2b545dd69a464a10add7272d2bbd0b}} 
+\index{core/log.\+c@{core/log.\+c}!m\+Log\+Get\+Context@{m\+Log\+Get\+Context}}
+\index{m\+Log\+Get\+Context@{m\+Log\+Get\+Context}!core/log.\+c@{core/log.\+c}}
+\subsubsection{\texorpdfstring{m\+Log\+Get\+Context()}{mLogGetContext()}}
+{\footnotesize\ttfamily struct m\+Logger$\ast$ m\+Log\+Get\+Context (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2log_8c_a8f2b545dd69a464a10add7272d2bbd0b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2log_8c_a8f2b545dd69a464a10add7272d2bbd0b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2log_8c_a39b368118867c1a54504225d9ec6d909}\label{core_2log_8c_a39b368118867c1a54504225d9ec6d909}} 
+\index{core/log.\+c@{core/log.\+c}!m\+Log\+Set\+Default\+Logger@{m\+Log\+Set\+Default\+Logger}}
+\index{m\+Log\+Set\+Default\+Logger@{m\+Log\+Set\+Default\+Logger}!core/log.\+c@{core/log.\+c}}
+\subsubsection{\texorpdfstring{m\+Log\+Set\+Default\+Logger()}{mLogSetDefaultLogger()}}
+{\footnotesize\ttfamily void m\+Log\+Set\+Default\+Logger (\begin{DoxyParamCaption}\item[{struct m\+Logger $\ast$}]{logger }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2log_8c_a39b368118867c1a54504225d9ec6d909_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{core_2log_8c_a61ed1f7af30108dc84d7ac9daf3f4a1b}\label{core_2log_8c_a61ed1f7af30108dc84d7ac9daf3f4a1b}} 
+\index{core/log.\+c@{core/log.\+c}!\+\_\+category@{\+\_\+category}}
+\index{\+\_\+category@{\+\_\+category}!core/log.\+c@{core/log.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+category}{\_category}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \+\_\+category = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{core_2log_8c_a3f2b66f87bb068ac160a3bca01bece2f}\label{core_2log_8c_a3f2b66f87bb068ac160a3bca01bece2f}} 
+\index{core/log.\+c@{core/log.\+c}!\+\_\+category\+Ids@{\+\_\+category\+Ids}}
+\index{\+\_\+category\+Ids@{\+\_\+category\+Ids}!core/log.\+c@{core/log.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+category\+Ids}{\_categoryIds}}
+{\footnotesize\ttfamily const char$\ast$ \+\_\+category\+Ids\mbox{[}\mbox{\hyperlink{core_2log_8c_a48a7acb6850168cf4ee361f21741951f}{M\+A\+X\+\_\+\+C\+A\+T\+E\+G\+O\+RY}}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{core_2log_8c_a8004610fc387fe476a28420fc0cf3c87}\label{core_2log_8c_a8004610fc387fe476a28420fc0cf3c87}} 
+\index{core/log.\+c@{core/log.\+c}!\+\_\+category\+Names@{\+\_\+category\+Names}}
+\index{\+\_\+category\+Names@{\+\_\+category\+Names}!core/log.\+c@{core/log.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+category\+Names}{\_categoryNames}}
+{\footnotesize\ttfamily const char$\ast$ \+\_\+category\+Names\mbox{[}\mbox{\hyperlink{core_2log_8c_a48a7acb6850168cf4ee361f21741951f}{M\+A\+X\+\_\+\+C\+A\+T\+E\+G\+O\+RY}}\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{core_2log_8c_acc2e3e9be223d92cb66077fa730d496d}\label{core_2log_8c_acc2e3e9be223d92cb66077fa730d496d}} 
+\index{core/log.\+c@{core/log.\+c}!\+\_\+default\+Logger@{\+\_\+default\+Logger}}
+\index{\+\_\+default\+Logger@{\+\_\+default\+Logger}!core/log.\+c@{core/log.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+default\+Logger}{\_defaultLogger}}
+{\footnotesize\ttfamily struct m\+Logger$\ast$ \+\_\+default\+Logger = N\+U\+LL\hspace{0.3cm}{\ttfamily [static]}}
+

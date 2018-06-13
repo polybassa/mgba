@@ -1,0 +1,447 @@
+\hypertarget{arm_2debugger_2debugger_8c}{}\section{src/arm/debugger/debugger.c File Reference}
+\label{arm_2debugger_2debugger_8c}\index{src/arm/debugger/debugger.\+c@{src/arm/debugger/debugger.\+c}}
+{\ttfamily \#include $<$mgba/internal/arm/debugger/debugger.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/arm/arm.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/arm/decoder.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/arm/isa-\/inlines.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/arm/debugger/memory-\/debugger.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/debugger/parser.\+h$>$}\newline
+Include dependency graph for debugger.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{arm_2debugger_2debugger_8c_a9b4df9753c754ee92c128d51c44e0c51}{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}} (A\+R\+M\+Debug\+Breakpoint\+List, struct A\+R\+M\+Debug\+Breakpoint)
+\item 
+\mbox{\hyperlink{arm_2debugger_2debugger_8c_ab4ebfa6487ae89e94a918d9cacff9e2f}{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}} (A\+R\+M\+Debug\+Watchpoint\+List, struct A\+R\+M\+Debug\+Watchpoint)
+\item 
+static struct A\+R\+M\+Debug\+Breakpoint $\ast$ \mbox{\hyperlink{arm_2debugger_2debugger_8c_a9fa8f10baf54ae74057e4219b92ab208}{\+\_\+lookup\+Breakpoint}} (struct A\+R\+M\+Debug\+Breakpoint\+List $\ast$breakpoints, uint32\+\_\+t address)
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2debugger_8c_a9f1e7a57c939838c0ebc8410161f28f1}{\+\_\+destroy\+Breakpoint}} (struct A\+R\+M\+Debug\+Breakpoint $\ast$breakpoint)
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2debugger_8c_a28d0d1e39b0040980ac4183c04698cbc}{\+\_\+destroy\+Watchpoint}} (struct A\+R\+M\+Debug\+Watchpoint $\ast$watchpoint)
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2debugger_8c_ae8af13ac17256b1dc18b4832c88683d9}{A\+R\+M\+Debugger\+Check\+Breakpoints}} (struct m\+Debugger\+Platform $\ast$\mbox{\hyperlink{isa-thumb_8c_a6f364afbe132c4ecfea48bde1b0618ba}{d}})
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2debugger_8c_a48858ede91805bdef82b0fe46f712bc4}{A\+R\+M\+Debugger\+Init}} (void $\ast$cpu, struct m\+Debugger\+Platform $\ast$platform)
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2debugger_8c_affa2eb6c3a84044dd0a6287c1ebf30bc}{A\+R\+M\+Debugger\+Deinit}} (struct m\+Debugger\+Platform $\ast$platform)
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2debugger_8c_a701e188d380581dcd884ef947fd29b6c}{A\+R\+M\+Debugger\+Enter}} (struct m\+Debugger\+Platform $\ast$\mbox{\hyperlink{isa-thumb_8c_a6f364afbe132c4ecfea48bde1b0618ba}{d}}, enum m\+Debugger\+Entry\+Reason reason, struct m\+Debugger\+Entry\+Info $\ast$\mbox{\hyperlink{libretro_8h_a283ad41e4809f9c0ebe736a9861d8a91}{info}})
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2debugger_8c_a0961c29d53cc10e509287b5b9e561a0d}{A\+R\+M\+Debugger\+Set\+Breakpoint}} (struct m\+Debugger\+Platform $\ast$, uint32\+\_\+t address, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} segment)
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2debugger_8c_a28f895e6c3a3987ffa97ae01f5c6a1db}{A\+R\+M\+Debugger\+Set\+Conditional\+Breakpoint}} (struct m\+Debugger\+Platform $\ast$, uint32\+\_\+t address, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} segment, struct Parse\+Tree $\ast$\mbox{\hyperlink{isa-lr35902_8c_a9cc5e499f71726f3a653debd7bf9ccc7}{condition}})
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2debugger_8c_a28cde0fb233d16ccd39ae178959ca842}{A\+R\+M\+Debugger\+Clear\+Breakpoint}} (struct m\+Debugger\+Platform $\ast$, uint32\+\_\+t address, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} segment)
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2debugger_8c_a72edd718f588f73bbab96b4e3b42587f}{A\+R\+M\+Debugger\+Set\+Watchpoint}} (struct m\+Debugger\+Platform $\ast$, uint32\+\_\+t address, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} segment, enum m\+Watchpoint\+Type type)
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2debugger_8c_ac2d535cc47b79a435073b0d61762dcd4}{A\+R\+M\+Debugger\+Set\+Conditional\+Watchpoint}} (struct m\+Debugger\+Platform $\ast$, uint32\+\_\+t address, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} segment, enum m\+Watchpoint\+Type type, struct Parse\+Tree $\ast$\mbox{\hyperlink{isa-lr35902_8c_a9cc5e499f71726f3a653debd7bf9ccc7}{condition}})
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2debugger_8c_a8efb2ede0f8515316bbb2a98beb9b06c}{A\+R\+M\+Debugger\+Clear\+Watchpoint}} (struct m\+Debugger\+Platform $\ast$, uint32\+\_\+t address, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} segment)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{arm_2debugger_2debugger_8c_aedccbfa8599aac0fc0cc6800c8b35906}{A\+R\+M\+Debugger\+Has\+Breakpoints}} (struct m\+Debugger\+Platform $\ast$)
+\item 
+static void \mbox{\hyperlink{arm_2debugger_2debugger_8c_a6b04d5bd95a58b660adc8d7141be4e58}{A\+R\+M\+Debugger\+Trace}} (struct m\+Debugger\+Platform $\ast$, char $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}}, size\+\_\+t $\ast$length)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{arm_2debugger_2debugger_8c_add8c098ff762d6e993deb7c4114fbf4e}{A\+R\+M\+Debugger\+Get\+Register}} (struct m\+Debugger\+Platform $\ast$, const char $\ast$name, int32\+\_\+t $\ast$value)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{arm_2debugger_2debugger_8c_a6d6e2132cbc1973dfdc30077fad9907b}{A\+R\+M\+Debugger\+Set\+Register}} (struct m\+Debugger\+Platform $\ast$, const char $\ast$name, int32\+\_\+t value)
+\item 
+struct m\+Debugger\+Platform $\ast$ \mbox{\hyperlink{arm_2debugger_2debugger_8c_ae4881a824302abbae557d1b180e6a588}{A\+R\+M\+Debugger\+Platform\+Create}} (void)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{arm_2debugger_2debugger_8c_a986d2f6c0be1536c7c2caf0fef587a83}{A\+R\+M\+Debugger\+Set\+Software\+Breakpoint}} (struct m\+Debugger\+Platform $\ast$\mbox{\hyperlink{isa-thumb_8c_a6f364afbe132c4ecfea48bde1b0618ba}{d}}, uint32\+\_\+t address, enum Execution\+Mode \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})
+\item 
+void \mbox{\hyperlink{arm_2debugger_2debugger_8c_abbcbef87b26b1a1c23c4c1a6e60adcac}{A\+R\+M\+Debugger\+Clear\+Software\+Breakpoint}} (struct m\+Debugger\+Platform $\ast$\mbox{\hyperlink{isa-thumb_8c_a6f364afbe132c4ecfea48bde1b0618ba}{d}}, uint32\+\_\+t address)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_a9f1e7a57c939838c0ebc8410161f28f1}\label{arm_2debugger_2debugger_8c_a9f1e7a57c939838c0ebc8410161f28f1}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!\+\_\+destroy\+Breakpoint@{\+\_\+destroy\+Breakpoint}}
+\index{\+\_\+destroy\+Breakpoint@{\+\_\+destroy\+Breakpoint}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+destroy\+Breakpoint()}{\_destroyBreakpoint()}}
+{\footnotesize\ttfamily static void \+\_\+destroy\+Breakpoint (\begin{DoxyParamCaption}\item[{struct A\+R\+M\+Debug\+Breakpoint $\ast$}]{breakpoint }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_a9f1e7a57c939838c0ebc8410161f28f1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_a9f1e7a57c939838c0ebc8410161f28f1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_a28d0d1e39b0040980ac4183c04698cbc}\label{arm_2debugger_2debugger_8c_a28d0d1e39b0040980ac4183c04698cbc}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!\+\_\+destroy\+Watchpoint@{\+\_\+destroy\+Watchpoint}}
+\index{\+\_\+destroy\+Watchpoint@{\+\_\+destroy\+Watchpoint}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+destroy\+Watchpoint()}{\_destroyWatchpoint()}}
+{\footnotesize\ttfamily static void \+\_\+destroy\+Watchpoint (\begin{DoxyParamCaption}\item[{struct A\+R\+M\+Debug\+Watchpoint $\ast$}]{watchpoint }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_a28d0d1e39b0040980ac4183c04698cbc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_a28d0d1e39b0040980ac4183c04698cbc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_a9fa8f10baf54ae74057e4219b92ab208}\label{arm_2debugger_2debugger_8c_a9fa8f10baf54ae74057e4219b92ab208}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!\+\_\+lookup\+Breakpoint@{\+\_\+lookup\+Breakpoint}}
+\index{\+\_\+lookup\+Breakpoint@{\+\_\+lookup\+Breakpoint}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+lookup\+Breakpoint()}{\_lookupBreakpoint()}}
+{\footnotesize\ttfamily static struct A\+R\+M\+Debug\+Breakpoint$\ast$ \+\_\+lookup\+Breakpoint (\begin{DoxyParamCaption}\item[{struct A\+R\+M\+Debug\+Breakpoint\+List $\ast$}]{breakpoints,  }\item[{uint32\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_a9fa8f10baf54ae74057e4219b92ab208_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_ae8af13ac17256b1dc18b4832c88683d9}\label{arm_2debugger_2debugger_8c_ae8af13ac17256b1dc18b4832c88683d9}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!A\+R\+M\+Debugger\+Check\+Breakpoints@{A\+R\+M\+Debugger\+Check\+Breakpoints}}
+\index{A\+R\+M\+Debugger\+Check\+Breakpoints@{A\+R\+M\+Debugger\+Check\+Breakpoints}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Debugger\+Check\+Breakpoints()}{ARMDebuggerCheckBreakpoints()}}
+{\footnotesize\ttfamily static void A\+R\+M\+Debugger\+Check\+Breakpoints (\begin{DoxyParamCaption}\item[{struct m\+Debugger\+Platform $\ast$}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_ae8af13ac17256b1dc18b4832c88683d9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_ae8af13ac17256b1dc18b4832c88683d9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_a28cde0fb233d16ccd39ae178959ca842}\label{arm_2debugger_2debugger_8c_a28cde0fb233d16ccd39ae178959ca842}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!A\+R\+M\+Debugger\+Clear\+Breakpoint@{A\+R\+M\+Debugger\+Clear\+Breakpoint}}
+\index{A\+R\+M\+Debugger\+Clear\+Breakpoint@{A\+R\+M\+Debugger\+Clear\+Breakpoint}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Debugger\+Clear\+Breakpoint()}{ARMDebuggerClearBreakpoint()}}
+{\footnotesize\ttfamily static void A\+R\+M\+Debugger\+Clear\+Breakpoint (\begin{DoxyParamCaption}\item[{struct m\+Debugger\+Platform $\ast$}]{d,  }\item[{uint32\+\_\+t}]{address,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{segment }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_a28cde0fb233d16ccd39ae178959ca842_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_a28cde0fb233d16ccd39ae178959ca842_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_abbcbef87b26b1a1c23c4c1a6e60adcac}\label{arm_2debugger_2debugger_8c_abbcbef87b26b1a1c23c4c1a6e60adcac}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!A\+R\+M\+Debugger\+Clear\+Software\+Breakpoint@{A\+R\+M\+Debugger\+Clear\+Software\+Breakpoint}}
+\index{A\+R\+M\+Debugger\+Clear\+Software\+Breakpoint@{A\+R\+M\+Debugger\+Clear\+Software\+Breakpoint}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Debugger\+Clear\+Software\+Breakpoint()}{ARMDebuggerClearSoftwareBreakpoint()}}
+{\footnotesize\ttfamily void A\+R\+M\+Debugger\+Clear\+Software\+Breakpoint (\begin{DoxyParamCaption}\item[{struct m\+Debugger\+Platform $\ast$}]{d,  }\item[{uint32\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_abbcbef87b26b1a1c23c4c1a6e60adcac_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_a8efb2ede0f8515316bbb2a98beb9b06c}\label{arm_2debugger_2debugger_8c_a8efb2ede0f8515316bbb2a98beb9b06c}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!A\+R\+M\+Debugger\+Clear\+Watchpoint@{A\+R\+M\+Debugger\+Clear\+Watchpoint}}
+\index{A\+R\+M\+Debugger\+Clear\+Watchpoint@{A\+R\+M\+Debugger\+Clear\+Watchpoint}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Debugger\+Clear\+Watchpoint()}{ARMDebuggerClearWatchpoint()}}
+{\footnotesize\ttfamily static void A\+R\+M\+Debugger\+Clear\+Watchpoint (\begin{DoxyParamCaption}\item[{struct m\+Debugger\+Platform $\ast$}]{d,  }\item[{uint32\+\_\+t}]{address,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{segment }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_a8efb2ede0f8515316bbb2a98beb9b06c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_a8efb2ede0f8515316bbb2a98beb9b06c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_affa2eb6c3a84044dd0a6287c1ebf30bc}\label{arm_2debugger_2debugger_8c_affa2eb6c3a84044dd0a6287c1ebf30bc}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!A\+R\+M\+Debugger\+Deinit@{A\+R\+M\+Debugger\+Deinit}}
+\index{A\+R\+M\+Debugger\+Deinit@{A\+R\+M\+Debugger\+Deinit}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Debugger\+Deinit()}{ARMDebuggerDeinit()}}
+{\footnotesize\ttfamily void A\+R\+M\+Debugger\+Deinit (\begin{DoxyParamCaption}\item[{struct m\+Debugger\+Platform $\ast$}]{platform }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_affa2eb6c3a84044dd0a6287c1ebf30bc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_affa2eb6c3a84044dd0a6287c1ebf30bc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_a701e188d380581dcd884ef947fd29b6c}\label{arm_2debugger_2debugger_8c_a701e188d380581dcd884ef947fd29b6c}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!A\+R\+M\+Debugger\+Enter@{A\+R\+M\+Debugger\+Enter}}
+\index{A\+R\+M\+Debugger\+Enter@{A\+R\+M\+Debugger\+Enter}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Debugger\+Enter()}{ARMDebuggerEnter()}}
+{\footnotesize\ttfamily static void A\+R\+M\+Debugger\+Enter (\begin{DoxyParamCaption}\item[{struct m\+Debugger\+Platform $\ast$}]{d,  }\item[{enum m\+Debugger\+Entry\+Reason}]{reason,  }\item[{struct m\+Debugger\+Entry\+Info $\ast$}]{info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{arm_2debugger_2debugger_8c_a701e188d380581dcd884ef947fd29b6c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_a701e188d380581dcd884ef947fd29b6c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_add8c098ff762d6e993deb7c4114fbf4e}\label{arm_2debugger_2debugger_8c_add8c098ff762d6e993deb7c4114fbf4e}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!A\+R\+M\+Debugger\+Get\+Register@{A\+R\+M\+Debugger\+Get\+Register}}
+\index{A\+R\+M\+Debugger\+Get\+Register@{A\+R\+M\+Debugger\+Get\+Register}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Debugger\+Get\+Register()}{ARMDebuggerGetRegister()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} A\+R\+M\+Debugger\+Get\+Register (\begin{DoxyParamCaption}\item[{struct m\+Debugger\+Platform $\ast$}]{d,  }\item[{const char $\ast$}]{name,  }\item[{int32\+\_\+t $\ast$}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_add8c098ff762d6e993deb7c4114fbf4e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_aedccbfa8599aac0fc0cc6800c8b35906}\label{arm_2debugger_2debugger_8c_aedccbfa8599aac0fc0cc6800c8b35906}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!A\+R\+M\+Debugger\+Has\+Breakpoints@{A\+R\+M\+Debugger\+Has\+Breakpoints}}
+\index{A\+R\+M\+Debugger\+Has\+Breakpoints@{A\+R\+M\+Debugger\+Has\+Breakpoints}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Debugger\+Has\+Breakpoints()}{ARMDebuggerHasBreakpoints()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} A\+R\+M\+Debugger\+Has\+Breakpoints (\begin{DoxyParamCaption}\item[{struct m\+Debugger\+Platform $\ast$}]{d }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_aedccbfa8599aac0fc0cc6800c8b35906_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_a48858ede91805bdef82b0fe46f712bc4}\label{arm_2debugger_2debugger_8c_a48858ede91805bdef82b0fe46f712bc4}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!A\+R\+M\+Debugger\+Init@{A\+R\+M\+Debugger\+Init}}
+\index{A\+R\+M\+Debugger\+Init@{A\+R\+M\+Debugger\+Init}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Debugger\+Init()}{ARMDebuggerInit()}}
+{\footnotesize\ttfamily void A\+R\+M\+Debugger\+Init (\begin{DoxyParamCaption}\item[{void $\ast$}]{cpu,  }\item[{struct m\+Debugger\+Platform $\ast$}]{platform }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_a48858ede91805bdef82b0fe46f712bc4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_ae4881a824302abbae557d1b180e6a588}\label{arm_2debugger_2debugger_8c_ae4881a824302abbae557d1b180e6a588}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!A\+R\+M\+Debugger\+Platform\+Create@{A\+R\+M\+Debugger\+Platform\+Create}}
+\index{A\+R\+M\+Debugger\+Platform\+Create@{A\+R\+M\+Debugger\+Platform\+Create}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Debugger\+Platform\+Create()}{ARMDebuggerPlatformCreate()}}
+{\footnotesize\ttfamily struct m\+Debugger\+Platform$\ast$ A\+R\+M\+Debugger\+Platform\+Create (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_ae4881a824302abbae557d1b180e6a588_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_a0961c29d53cc10e509287b5b9e561a0d}\label{arm_2debugger_2debugger_8c_a0961c29d53cc10e509287b5b9e561a0d}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!A\+R\+M\+Debugger\+Set\+Breakpoint@{A\+R\+M\+Debugger\+Set\+Breakpoint}}
+\index{A\+R\+M\+Debugger\+Set\+Breakpoint@{A\+R\+M\+Debugger\+Set\+Breakpoint}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Debugger\+Set\+Breakpoint()}{ARMDebuggerSetBreakpoint()}}
+{\footnotesize\ttfamily static void A\+R\+M\+Debugger\+Set\+Breakpoint (\begin{DoxyParamCaption}\item[{struct m\+Debugger\+Platform $\ast$}]{d,  }\item[{uint32\+\_\+t}]{address,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{segment }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_a0961c29d53cc10e509287b5b9e561a0d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_a0961c29d53cc10e509287b5b9e561a0d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_a28f895e6c3a3987ffa97ae01f5c6a1db}\label{arm_2debugger_2debugger_8c_a28f895e6c3a3987ffa97ae01f5c6a1db}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!A\+R\+M\+Debugger\+Set\+Conditional\+Breakpoint@{A\+R\+M\+Debugger\+Set\+Conditional\+Breakpoint}}
+\index{A\+R\+M\+Debugger\+Set\+Conditional\+Breakpoint@{A\+R\+M\+Debugger\+Set\+Conditional\+Breakpoint}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Debugger\+Set\+Conditional\+Breakpoint()}{ARMDebuggerSetConditionalBreakpoint()}}
+{\footnotesize\ttfamily static void A\+R\+M\+Debugger\+Set\+Conditional\+Breakpoint (\begin{DoxyParamCaption}\item[{struct m\+Debugger\+Platform $\ast$}]{d,  }\item[{uint32\+\_\+t}]{address,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{segment,  }\item[{struct Parse\+Tree $\ast$}]{condition }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_a28f895e6c3a3987ffa97ae01f5c6a1db_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_ac2d535cc47b79a435073b0d61762dcd4}\label{arm_2debugger_2debugger_8c_ac2d535cc47b79a435073b0d61762dcd4}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!A\+R\+M\+Debugger\+Set\+Conditional\+Watchpoint@{A\+R\+M\+Debugger\+Set\+Conditional\+Watchpoint}}
+\index{A\+R\+M\+Debugger\+Set\+Conditional\+Watchpoint@{A\+R\+M\+Debugger\+Set\+Conditional\+Watchpoint}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Debugger\+Set\+Conditional\+Watchpoint()}{ARMDebuggerSetConditionalWatchpoint()}}
+{\footnotesize\ttfamily static void A\+R\+M\+Debugger\+Set\+Conditional\+Watchpoint (\begin{DoxyParamCaption}\item[{struct m\+Debugger\+Platform $\ast$}]{d,  }\item[{uint32\+\_\+t}]{address,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{segment,  }\item[{enum m\+Watchpoint\+Type}]{type,  }\item[{struct Parse\+Tree $\ast$}]{condition }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_ac2d535cc47b79a435073b0d61762dcd4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_ac2d535cc47b79a435073b0d61762dcd4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_a6d6e2132cbc1973dfdc30077fad9907b}\label{arm_2debugger_2debugger_8c_a6d6e2132cbc1973dfdc30077fad9907b}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!A\+R\+M\+Debugger\+Set\+Register@{A\+R\+M\+Debugger\+Set\+Register}}
+\index{A\+R\+M\+Debugger\+Set\+Register@{A\+R\+M\+Debugger\+Set\+Register}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Debugger\+Set\+Register()}{ARMDebuggerSetRegister()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} A\+R\+M\+Debugger\+Set\+Register (\begin{DoxyParamCaption}\item[{struct m\+Debugger\+Platform $\ast$}]{d,  }\item[{const char $\ast$}]{name,  }\item[{int32\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_a6d6e2132cbc1973dfdc30077fad9907b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_a986d2f6c0be1536c7c2caf0fef587a83}\label{arm_2debugger_2debugger_8c_a986d2f6c0be1536c7c2caf0fef587a83}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!A\+R\+M\+Debugger\+Set\+Software\+Breakpoint@{A\+R\+M\+Debugger\+Set\+Software\+Breakpoint}}
+\index{A\+R\+M\+Debugger\+Set\+Software\+Breakpoint@{A\+R\+M\+Debugger\+Set\+Software\+Breakpoint}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Debugger\+Set\+Software\+Breakpoint()}{ARMDebuggerSetSoftwareBreakpoint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} A\+R\+M\+Debugger\+Set\+Software\+Breakpoint (\begin{DoxyParamCaption}\item[{struct m\+Debugger\+Platform $\ast$}]{d,  }\item[{uint32\+\_\+t}]{address,  }\item[{enum Execution\+Mode}]{mode }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_a986d2f6c0be1536c7c2caf0fef587a83_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_a72edd718f588f73bbab96b4e3b42587f}\label{arm_2debugger_2debugger_8c_a72edd718f588f73bbab96b4e3b42587f}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!A\+R\+M\+Debugger\+Set\+Watchpoint@{A\+R\+M\+Debugger\+Set\+Watchpoint}}
+\index{A\+R\+M\+Debugger\+Set\+Watchpoint@{A\+R\+M\+Debugger\+Set\+Watchpoint}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Debugger\+Set\+Watchpoint()}{ARMDebuggerSetWatchpoint()}}
+{\footnotesize\ttfamily static void A\+R\+M\+Debugger\+Set\+Watchpoint (\begin{DoxyParamCaption}\item[{struct m\+Debugger\+Platform $\ast$}]{d,  }\item[{uint32\+\_\+t}]{address,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{segment,  }\item[{enum m\+Watchpoint\+Type}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_a72edd718f588f73bbab96b4e3b42587f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_a72edd718f588f73bbab96b4e3b42587f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_a6b04d5bd95a58b660adc8d7141be4e58}\label{arm_2debugger_2debugger_8c_a6b04d5bd95a58b660adc8d7141be4e58}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!A\+R\+M\+Debugger\+Trace@{A\+R\+M\+Debugger\+Trace}}
+\index{A\+R\+M\+Debugger\+Trace@{A\+R\+M\+Debugger\+Trace}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{A\+R\+M\+Debugger\+Trace()}{ARMDebuggerTrace()}}
+{\footnotesize\ttfamily static void A\+R\+M\+Debugger\+Trace (\begin{DoxyParamCaption}\item[{struct m\+Debugger\+Platform $\ast$}]{d,  }\item[{char $\ast$}]{out,  }\item[{size\+\_\+t $\ast$}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_a6b04d5bd95a58b660adc8d7141be4e58_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arm_2debugger_2debugger_8c_a6b04d5bd95a58b660adc8d7141be4e58_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_a9b4df9753c754ee92c128d51c44e0c51}\label{arm_2debugger_2debugger_8c_a9b4df9753c754ee92c128d51c44e0c51}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}}
+\index{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+O\+R()}{DEFINE\_VECTOR()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR (\begin{DoxyParamCaption}\item[{A\+R\+M\+Debug\+Breakpoint\+List}]{,  }\item[{struct A\+R\+M\+Debug\+Breakpoint}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{arm_2debugger_2debugger_8c_ab4ebfa6487ae89e94a918d9cacff9e2f}\label{arm_2debugger_2debugger_8c_ab4ebfa6487ae89e94a918d9cacff9e2f}} 
+\index{arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}!D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}}
+\index{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}!arm/debugger/debugger.\+c@{arm/debugger/debugger.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+O\+R()}{DEFINE\_VECTOR()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR (\begin{DoxyParamCaption}\item[{A\+R\+M\+Debug\+Watchpoint\+List}]{,  }\item[{struct A\+R\+M\+Debug\+Watchpoint}]{ }\end{DoxyParamCaption})}
+

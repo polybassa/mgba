@@ -1,0 +1,436 @@
+\hypertarget{_2extra_2proxy_8c}{}\section{src/gba/extra/proxy.c File Reference}
+\label{_2extra_2proxy_8c}\index{src/gba/extra/proxy.\+c@{src/gba/extra/proxy.\+c}}
+{\ttfamily \#include $<$mgba/internal/gba/renderers/proxy.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/cache-\/set.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/gba.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/io.\+h$>$}\newline
+Include dependency graph for proxy.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{_2extra_2proxy_8c_ac2da75acee412cf629b36973ec6cb581}{G\+B\+A\+Video\+Proxy\+Renderer\+Init}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer)
+\item 
+static void \mbox{\hyperlink{_2extra_2proxy_8c_a76f2828cf630782d05da110fd2e47db9}{G\+B\+A\+Video\+Proxy\+Renderer\+Reset}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer)
+\item 
+static void \mbox{\hyperlink{_2extra_2proxy_8c_aafa9ff2e349333c26112067fcd3897d1}{G\+B\+A\+Video\+Proxy\+Renderer\+Deinit}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer)
+\item 
+static uint16\+\_\+t \mbox{\hyperlink{_2extra_2proxy_8c_a1caf1c1fe31f8fc632d39a648d1f85d8}{G\+B\+A\+Video\+Proxy\+Renderer\+Write\+Video\+Register}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, uint32\+\_\+t address, uint16\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{_2extra_2proxy_8c_ac25b0de8895afdc18201dc18295c35b8}{G\+B\+A\+Video\+Proxy\+Renderer\+Write\+V\+R\+AM}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, uint32\+\_\+t address)
+\item 
+static void \mbox{\hyperlink{_2extra_2proxy_8c_a2294e9b9ca9b34d4b1be2f1ea4289ef0}{G\+B\+A\+Video\+Proxy\+Renderer\+Write\+Palette}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, uint32\+\_\+t address, uint16\+\_\+t value)
+\item 
+static void \mbox{\hyperlink{_2extra_2proxy_8c_aaafcb7a4c7fb1f8c07f7c1c83f9f8a9f}{G\+B\+A\+Video\+Proxy\+Renderer\+Write\+O\+AM}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, uint32\+\_\+t oam)
+\item 
+static void \mbox{\hyperlink{_2extra_2proxy_8c_a5628c425255a2f8f42ff5eff2c60eef6}{G\+B\+A\+Video\+Proxy\+Renderer\+Draw\+Scanline}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} y)
+\item 
+static void \mbox{\hyperlink{_2extra_2proxy_8c_a9de2b3be564ca5b8ed09fea924a53df4}{G\+B\+A\+Video\+Proxy\+Renderer\+Finish\+Frame}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer)
+\item 
+static void \mbox{\hyperlink{_2extra_2proxy_8c_a6d249f7e1443ed6b6faddb467680e40d}{G\+B\+A\+Video\+Proxy\+Renderer\+Get\+Pixels}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, size\+\_\+t $\ast$stride, const void $\ast$$\ast$pixels)
+\item 
+static void \mbox{\hyperlink{_2extra_2proxy_8c_af4ca0d7c3ebdfd07ac291d973a5f3f95}{G\+B\+A\+Video\+Proxy\+Renderer\+Put\+Pixels}} (struct G\+B\+A\+Video\+Renderer $\ast$renderer, size\+\_\+t stride, const void $\ast$pixels)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{_2extra_2proxy_8c_a0858e61f0d0828ec860a3f879a74f60e}{\+\_\+parse\+Packet}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}, const struct m\+Video\+Logger\+Dirty\+Info $\ast$packet)
+\item 
+static uint16\+\_\+t $\ast$ \mbox{\hyperlink{_2extra_2proxy_8c_a3a66341717ffeec5325c57c6ee596336}{\+\_\+vram\+Block}} (struct m\+Video\+Logger $\ast$\mbox{\hyperlink{libretro_8c_a370b093d59813e9620a3b73b831162c2}{logger}}, uint32\+\_\+t address)
+\item 
+void \mbox{\hyperlink{_2extra_2proxy_8c_aac1612e8b80aa55ed3b32d21554de533}{G\+B\+A\+Video\+Proxy\+Renderer\+Create}} (struct G\+B\+A\+Video\+Proxy\+Renderer $\ast$renderer, struct G\+B\+A\+Video\+Renderer $\ast$backend)
+\item 
+static void \mbox{\hyperlink{_2extra_2proxy_8c_a7c54a6cd56eaf3915daf586136249665}{\+\_\+init}} (struct G\+B\+A\+Video\+Proxy\+Renderer $\ast$proxy\+Renderer)
+\item 
+static void \mbox{\hyperlink{_2extra_2proxy_8c_a72fba8f1c9f1c8d2fe4f854945150163}{\+\_\+reset}} (struct G\+B\+A\+Video\+Proxy\+Renderer $\ast$proxy\+Renderer)
+\item 
+void \mbox{\hyperlink{_2extra_2proxy_8c_a5fd969b7681c4499431fcbf8251b4d5e}{G\+B\+A\+Video\+Proxy\+Renderer\+Shim}} (struct G\+B\+A\+Video $\ast$video, struct G\+B\+A\+Video\+Proxy\+Renderer $\ast$renderer)
+\item 
+void \mbox{\hyperlink{_2extra_2proxy_8c_a56d27b6c87cef2ff8fe6c34e8e5fc921}{G\+B\+A\+Video\+Proxy\+Renderer\+Unshim}} (struct G\+B\+A\+Video $\ast$video, struct G\+B\+A\+Video\+Proxy\+Renderer $\ast$renderer)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_2extra_2proxy_8c_a7c54a6cd56eaf3915daf586136249665}\label{_2extra_2proxy_8c_a7c54a6cd56eaf3915daf586136249665}} 
+\index{/extra/proxy.\+c@{/extra/proxy.\+c}!\+\_\+init@{\+\_\+init}}
+\index{\+\_\+init@{\+\_\+init}!/extra/proxy.\+c@{/extra/proxy.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+init()}{\_init()}}
+{\footnotesize\ttfamily static void \+\_\+init (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Proxy\+Renderer $\ast$}]{proxy\+Renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a7c54a6cd56eaf3915daf586136249665_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a7c54a6cd56eaf3915daf586136249665_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2extra_2proxy_8c_a0858e61f0d0828ec860a3f879a74f60e}\label{_2extra_2proxy_8c_a0858e61f0d0828ec860a3f879a74f60e}} 
+\index{/extra/proxy.\+c@{/extra/proxy.\+c}!\+\_\+parse\+Packet@{\+\_\+parse\+Packet}}
+\index{\+\_\+parse\+Packet@{\+\_\+parse\+Packet}!/extra/proxy.\+c@{/extra/proxy.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+parse\+Packet()}{\_parsePacket()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+parse\+Packet (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger,  }\item[{const struct m\+Video\+Logger\+Dirty\+Info $\ast$}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a0858e61f0d0828ec860a3f879a74f60e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2extra_2proxy_8c_a72fba8f1c9f1c8d2fe4f854945150163}\label{_2extra_2proxy_8c_a72fba8f1c9f1c8d2fe4f854945150163}} 
+\index{/extra/proxy.\+c@{/extra/proxy.\+c}!\+\_\+reset@{\+\_\+reset}}
+\index{\+\_\+reset@{\+\_\+reset}!/extra/proxy.\+c@{/extra/proxy.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+reset()}{\_reset()}}
+{\footnotesize\ttfamily static void \+\_\+reset (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Proxy\+Renderer $\ast$}]{proxy\+Renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a72fba8f1c9f1c8d2fe4f854945150163_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a72fba8f1c9f1c8d2fe4f854945150163_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2extra_2proxy_8c_a3a66341717ffeec5325c57c6ee596336}\label{_2extra_2proxy_8c_a3a66341717ffeec5325c57c6ee596336}} 
+\index{/extra/proxy.\+c@{/extra/proxy.\+c}!\+\_\+vram\+Block@{\+\_\+vram\+Block}}
+\index{\+\_\+vram\+Block@{\+\_\+vram\+Block}!/extra/proxy.\+c@{/extra/proxy.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vram\+Block()}{\_vramBlock()}}
+{\footnotesize\ttfamily static uint16\+\_\+t $\ast$ \+\_\+vram\+Block (\begin{DoxyParamCaption}\item[{struct m\+Video\+Logger $\ast$}]{logger,  }\item[{uint32\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a3a66341717ffeec5325c57c6ee596336_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2extra_2proxy_8c_aac1612e8b80aa55ed3b32d21554de533}\label{_2extra_2proxy_8c_aac1612e8b80aa55ed3b32d21554de533}} 
+\index{/extra/proxy.\+c@{/extra/proxy.\+c}!G\+B\+A\+Video\+Proxy\+Renderer\+Create@{G\+B\+A\+Video\+Proxy\+Renderer\+Create}}
+\index{G\+B\+A\+Video\+Proxy\+Renderer\+Create@{G\+B\+A\+Video\+Proxy\+Renderer\+Create}!/extra/proxy.\+c@{/extra/proxy.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Proxy\+Renderer\+Create()}{GBAVideoProxyRendererCreate()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Proxy\+Renderer\+Create (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Proxy\+Renderer $\ast$}]{renderer,  }\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{backend }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_aac1612e8b80aa55ed3b32d21554de533_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_aac1612e8b80aa55ed3b32d21554de533_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2extra_2proxy_8c_aafa9ff2e349333c26112067fcd3897d1}\label{_2extra_2proxy_8c_aafa9ff2e349333c26112067fcd3897d1}} 
+\index{/extra/proxy.\+c@{/extra/proxy.\+c}!G\+B\+A\+Video\+Proxy\+Renderer\+Deinit@{G\+B\+A\+Video\+Proxy\+Renderer\+Deinit}}
+\index{G\+B\+A\+Video\+Proxy\+Renderer\+Deinit@{G\+B\+A\+Video\+Proxy\+Renderer\+Deinit}!/extra/proxy.\+c@{/extra/proxy.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Proxy\+Renderer\+Deinit()}{GBAVideoProxyRendererDeinit()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Proxy\+Renderer\+Deinit (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_aafa9ff2e349333c26112067fcd3897d1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_aafa9ff2e349333c26112067fcd3897d1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2extra_2proxy_8c_a5628c425255a2f8f42ff5eff2c60eef6}\label{_2extra_2proxy_8c_a5628c425255a2f8f42ff5eff2c60eef6}} 
+\index{/extra/proxy.\+c@{/extra/proxy.\+c}!G\+B\+A\+Video\+Proxy\+Renderer\+Draw\+Scanline@{G\+B\+A\+Video\+Proxy\+Renderer\+Draw\+Scanline}}
+\index{G\+B\+A\+Video\+Proxy\+Renderer\+Draw\+Scanline@{G\+B\+A\+Video\+Proxy\+Renderer\+Draw\+Scanline}!/extra/proxy.\+c@{/extra/proxy.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Proxy\+Renderer\+Draw\+Scanline()}{GBAVideoProxyRendererDrawScanline()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Proxy\+Renderer\+Draw\+Scanline (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a5628c425255a2f8f42ff5eff2c60eef6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a5628c425255a2f8f42ff5eff2c60eef6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2extra_2proxy_8c_a9de2b3be564ca5b8ed09fea924a53df4}\label{_2extra_2proxy_8c_a9de2b3be564ca5b8ed09fea924a53df4}} 
+\index{/extra/proxy.\+c@{/extra/proxy.\+c}!G\+B\+A\+Video\+Proxy\+Renderer\+Finish\+Frame@{G\+B\+A\+Video\+Proxy\+Renderer\+Finish\+Frame}}
+\index{G\+B\+A\+Video\+Proxy\+Renderer\+Finish\+Frame@{G\+B\+A\+Video\+Proxy\+Renderer\+Finish\+Frame}!/extra/proxy.\+c@{/extra/proxy.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Proxy\+Renderer\+Finish\+Frame()}{GBAVideoProxyRendererFinishFrame()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Proxy\+Renderer\+Finish\+Frame (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a9de2b3be564ca5b8ed09fea924a53df4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a9de2b3be564ca5b8ed09fea924a53df4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2extra_2proxy_8c_a6d249f7e1443ed6b6faddb467680e40d}\label{_2extra_2proxy_8c_a6d249f7e1443ed6b6faddb467680e40d}} 
+\index{/extra/proxy.\+c@{/extra/proxy.\+c}!G\+B\+A\+Video\+Proxy\+Renderer\+Get\+Pixels@{G\+B\+A\+Video\+Proxy\+Renderer\+Get\+Pixels}}
+\index{G\+B\+A\+Video\+Proxy\+Renderer\+Get\+Pixels@{G\+B\+A\+Video\+Proxy\+Renderer\+Get\+Pixels}!/extra/proxy.\+c@{/extra/proxy.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Proxy\+Renderer\+Get\+Pixels()}{GBAVideoProxyRendererGetPixels()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Proxy\+Renderer\+Get\+Pixels (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{size\+\_\+t $\ast$}]{stride,  }\item[{const void $\ast$$\ast$}]{pixels }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a6d249f7e1443ed6b6faddb467680e40d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a6d249f7e1443ed6b6faddb467680e40d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2extra_2proxy_8c_ac2da75acee412cf629b36973ec6cb581}\label{_2extra_2proxy_8c_ac2da75acee412cf629b36973ec6cb581}} 
+\index{/extra/proxy.\+c@{/extra/proxy.\+c}!G\+B\+A\+Video\+Proxy\+Renderer\+Init@{G\+B\+A\+Video\+Proxy\+Renderer\+Init}}
+\index{G\+B\+A\+Video\+Proxy\+Renderer\+Init@{G\+B\+A\+Video\+Proxy\+Renderer\+Init}!/extra/proxy.\+c@{/extra/proxy.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Proxy\+Renderer\+Init()}{GBAVideoProxyRendererInit()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Proxy\+Renderer\+Init (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_ac2da75acee412cf629b36973ec6cb581_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_ac2da75acee412cf629b36973ec6cb581_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2extra_2proxy_8c_af4ca0d7c3ebdfd07ac291d973a5f3f95}\label{_2extra_2proxy_8c_af4ca0d7c3ebdfd07ac291d973a5f3f95}} 
+\index{/extra/proxy.\+c@{/extra/proxy.\+c}!G\+B\+A\+Video\+Proxy\+Renderer\+Put\+Pixels@{G\+B\+A\+Video\+Proxy\+Renderer\+Put\+Pixels}}
+\index{G\+B\+A\+Video\+Proxy\+Renderer\+Put\+Pixels@{G\+B\+A\+Video\+Proxy\+Renderer\+Put\+Pixels}!/extra/proxy.\+c@{/extra/proxy.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Proxy\+Renderer\+Put\+Pixels()}{GBAVideoProxyRendererPutPixels()}}
+{\footnotesize\ttfamily static void G\+B\+A\+Video\+Proxy\+Renderer\+Put\+Pixels (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{size\+\_\+t}]{stride,  }\item[{const void $\ast$}]{pixels }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_af4ca0d7c3ebdfd07ac291d973a5f3f95_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_af4ca0d7c3ebdfd07ac291d973a5f3f95_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2extra_2proxy_8c_a76f2828cf630782d05da110fd2e47db9}\label{_2extra_2proxy_8c_a76f2828cf630782d05da110fd2e47db9}} 
+\index{/extra/proxy.\+c@{/extra/proxy.\+c}!G\+B\+A\+Video\+Proxy\+Renderer\+Reset@{G\+B\+A\+Video\+Proxy\+Renderer\+Reset}}
+\index{G\+B\+A\+Video\+Proxy\+Renderer\+Reset@{G\+B\+A\+Video\+Proxy\+Renderer\+Reset}!/extra/proxy.\+c@{/extra/proxy.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Proxy\+Renderer\+Reset()}{GBAVideoProxyRendererReset()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Proxy\+Renderer\+Reset (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a76f2828cf630782d05da110fd2e47db9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a76f2828cf630782d05da110fd2e47db9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2extra_2proxy_8c_a5fd969b7681c4499431fcbf8251b4d5e}\label{_2extra_2proxy_8c_a5fd969b7681c4499431fcbf8251b4d5e}} 
+\index{/extra/proxy.\+c@{/extra/proxy.\+c}!G\+B\+A\+Video\+Proxy\+Renderer\+Shim@{G\+B\+A\+Video\+Proxy\+Renderer\+Shim}}
+\index{G\+B\+A\+Video\+Proxy\+Renderer\+Shim@{G\+B\+A\+Video\+Proxy\+Renderer\+Shim}!/extra/proxy.\+c@{/extra/proxy.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Proxy\+Renderer\+Shim()}{GBAVideoProxyRendererShim()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Proxy\+Renderer\+Shim (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video $\ast$}]{video,  }\item[{struct G\+B\+A\+Video\+Proxy\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a5fd969b7681c4499431fcbf8251b4d5e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a5fd969b7681c4499431fcbf8251b4d5e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2extra_2proxy_8c_a56d27b6c87cef2ff8fe6c34e8e5fc921}\label{_2extra_2proxy_8c_a56d27b6c87cef2ff8fe6c34e8e5fc921}} 
+\index{/extra/proxy.\+c@{/extra/proxy.\+c}!G\+B\+A\+Video\+Proxy\+Renderer\+Unshim@{G\+B\+A\+Video\+Proxy\+Renderer\+Unshim}}
+\index{G\+B\+A\+Video\+Proxy\+Renderer\+Unshim@{G\+B\+A\+Video\+Proxy\+Renderer\+Unshim}!/extra/proxy.\+c@{/extra/proxy.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Proxy\+Renderer\+Unshim()}{GBAVideoProxyRendererUnshim()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Proxy\+Renderer\+Unshim (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video $\ast$}]{video,  }\item[{struct G\+B\+A\+Video\+Proxy\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a56d27b6c87cef2ff8fe6c34e8e5fc921_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a56d27b6c87cef2ff8fe6c34e8e5fc921_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2extra_2proxy_8c_aaafcb7a4c7fb1f8c07f7c1c83f9f8a9f}\label{_2extra_2proxy_8c_aaafcb7a4c7fb1f8c07f7c1c83f9f8a9f}} 
+\index{/extra/proxy.\+c@{/extra/proxy.\+c}!G\+B\+A\+Video\+Proxy\+Renderer\+Write\+O\+AM@{G\+B\+A\+Video\+Proxy\+Renderer\+Write\+O\+AM}}
+\index{G\+B\+A\+Video\+Proxy\+Renderer\+Write\+O\+AM@{G\+B\+A\+Video\+Proxy\+Renderer\+Write\+O\+AM}!/extra/proxy.\+c@{/extra/proxy.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Proxy\+Renderer\+Write\+O\+A\+M()}{GBAVideoProxyRendererWriteOAM()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Proxy\+Renderer\+Write\+O\+AM (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{uint32\+\_\+t}]{oam }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_aaafcb7a4c7fb1f8c07f7c1c83f9f8a9f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_aaafcb7a4c7fb1f8c07f7c1c83f9f8a9f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2extra_2proxy_8c_a2294e9b9ca9b34d4b1be2f1ea4289ef0}\label{_2extra_2proxy_8c_a2294e9b9ca9b34d4b1be2f1ea4289ef0}} 
+\index{/extra/proxy.\+c@{/extra/proxy.\+c}!G\+B\+A\+Video\+Proxy\+Renderer\+Write\+Palette@{G\+B\+A\+Video\+Proxy\+Renderer\+Write\+Palette}}
+\index{G\+B\+A\+Video\+Proxy\+Renderer\+Write\+Palette@{G\+B\+A\+Video\+Proxy\+Renderer\+Write\+Palette}!/extra/proxy.\+c@{/extra/proxy.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Proxy\+Renderer\+Write\+Palette()}{GBAVideoProxyRendererWritePalette()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Proxy\+Renderer\+Write\+Palette (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{uint32\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a2294e9b9ca9b34d4b1be2f1ea4289ef0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a2294e9b9ca9b34d4b1be2f1ea4289ef0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2extra_2proxy_8c_a1caf1c1fe31f8fc632d39a648d1f85d8}\label{_2extra_2proxy_8c_a1caf1c1fe31f8fc632d39a648d1f85d8}} 
+\index{/extra/proxy.\+c@{/extra/proxy.\+c}!G\+B\+A\+Video\+Proxy\+Renderer\+Write\+Video\+Register@{G\+B\+A\+Video\+Proxy\+Renderer\+Write\+Video\+Register}}
+\index{G\+B\+A\+Video\+Proxy\+Renderer\+Write\+Video\+Register@{G\+B\+A\+Video\+Proxy\+Renderer\+Write\+Video\+Register}!/extra/proxy.\+c@{/extra/proxy.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Proxy\+Renderer\+Write\+Video\+Register()}{GBAVideoProxyRendererWriteVideoRegister()}}
+{\footnotesize\ttfamily uint16\+\_\+t G\+B\+A\+Video\+Proxy\+Renderer\+Write\+Video\+Register (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{uint32\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a1caf1c1fe31f8fc632d39a648d1f85d8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_a1caf1c1fe31f8fc632d39a648d1f85d8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_2extra_2proxy_8c_ac25b0de8895afdc18201dc18295c35b8}\label{_2extra_2proxy_8c_ac25b0de8895afdc18201dc18295c35b8}} 
+\index{/extra/proxy.\+c@{/extra/proxy.\+c}!G\+B\+A\+Video\+Proxy\+Renderer\+Write\+V\+R\+AM@{G\+B\+A\+Video\+Proxy\+Renderer\+Write\+V\+R\+AM}}
+\index{G\+B\+A\+Video\+Proxy\+Renderer\+Write\+V\+R\+AM@{G\+B\+A\+Video\+Proxy\+Renderer\+Write\+V\+R\+AM}!/extra/proxy.\+c@{/extra/proxy.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Proxy\+Renderer\+Write\+V\+R\+A\+M()}{GBAVideoProxyRendererWriteVRAM()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Proxy\+Renderer\+Write\+V\+R\+AM (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Renderer $\ast$}]{renderer,  }\item[{uint32\+\_\+t}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_ac25b0de8895afdc18201dc18295c35b8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_2extra_2proxy_8c_ac25b0de8895afdc18201dc18295c35b8_icgraph}
+\end{center}
+\end{figure}

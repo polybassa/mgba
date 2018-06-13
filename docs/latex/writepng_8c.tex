@@ -1,0 +1,140 @@
+\hypertarget{writepng_8c}{}\section{src/third-\/party/libpng/contrib/gregbook/writepng.c File Reference}
+\label{writepng_8c}\index{src/third-\/party/libpng/contrib/gregbook/writepng.\+c@{src/third-\/party/libpng/contrib/gregbook/writepng.\+c}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$zlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}png.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}writepng.\+h\char`\"{}}\newline
+Include dependency graph for writepng.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{writepng_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{writepng_8c_aecbf2ab37b87d3d01dfedc6677470cf8}{writepng\+\_\+error\+\_\+handler}} (\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}} \mbox{\hyperlink{_png_file_8c_a55aeeb404d5f026787361dda7a4f1cb8}{png\+\_\+ptr}}, \mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}} \mbox{\hyperlink{_png_file_8c_a4e8f3041f859c6e44551174061b83012}{msg}})
+\item 
+void \mbox{\hyperlink{writepng_8c_aa5d3ab6077ab4ed0b4fa2df60e47f638}{writepng\+\_\+version\+\_\+info}} (void)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{writepng_8c_a0c879564159de413d5b04337f37c311a}{writepng\+\_\+init}} (\mbox{\hyperlink{readpng2_8h_a1b06d069c8b16f46dd13c65e745bbdcb}{mainprog\+\_\+info}} $\ast$mainprog\+\_\+ptr)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{writepng_8c_a8b70239522f4b443f7ebd2a69a4e98c4}{writepng\+\_\+encode\+\_\+image}} (\mbox{\hyperlink{readpng2_8h_a1b06d069c8b16f46dd13c65e745bbdcb}{mainprog\+\_\+info}} $\ast$mainprog\+\_\+ptr)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{writepng_8c_a51f034814e768179a9f519095381267f}{writepng\+\_\+encode\+\_\+row}} (\mbox{\hyperlink{readpng2_8h_a1b06d069c8b16f46dd13c65e745bbdcb}{mainprog\+\_\+info}} $\ast$mainprog\+\_\+ptr)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{writepng_8c_a5054e13cb5cd445ad93d6740ae7973f0}{writepng\+\_\+encode\+\_\+finish}} (\mbox{\hyperlink{readpng2_8h_a1b06d069c8b16f46dd13c65e745bbdcb}{mainprog\+\_\+info}} $\ast$mainprog\+\_\+ptr)
+\item 
+void \mbox{\hyperlink{writepng_8c_a914263a1d913c350482d90f440422070}{writepng\+\_\+cleanup}} (\mbox{\hyperlink{readpng2_8h_a1b06d069c8b16f46dd13c65e745bbdcb}{mainprog\+\_\+info}} $\ast$mainprog\+\_\+ptr)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{writepng_8c_a914263a1d913c350482d90f440422070}\label{writepng_8c_a914263a1d913c350482d90f440422070}} 
+\index{writepng.\+c@{writepng.\+c}!writepng\+\_\+cleanup@{writepng\+\_\+cleanup}}
+\index{writepng\+\_\+cleanup@{writepng\+\_\+cleanup}!writepng.\+c@{writepng.\+c}}
+\subsubsection{\texorpdfstring{writepng\+\_\+cleanup()}{writepng\_cleanup()}}
+{\footnotesize\ttfamily void writepng\+\_\+cleanup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{readpng2_8h_a1b06d069c8b16f46dd13c65e745bbdcb}{mainprog\+\_\+info}} $\ast$}]{mainprog\+\_\+ptr }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{writepng_8c_a914263a1d913c350482d90f440422070_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{writepng_8c_a5054e13cb5cd445ad93d6740ae7973f0}\label{writepng_8c_a5054e13cb5cd445ad93d6740ae7973f0}} 
+\index{writepng.\+c@{writepng.\+c}!writepng\+\_\+encode\+\_\+finish@{writepng\+\_\+encode\+\_\+finish}}
+\index{writepng\+\_\+encode\+\_\+finish@{writepng\+\_\+encode\+\_\+finish}!writepng.\+c@{writepng.\+c}}
+\subsubsection{\texorpdfstring{writepng\+\_\+encode\+\_\+finish()}{writepng\_encode\_finish()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} writepng\+\_\+encode\+\_\+finish (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{readpng2_8h_a1b06d069c8b16f46dd13c65e745bbdcb}{mainprog\+\_\+info}} $\ast$}]{mainprog\+\_\+ptr }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{writepng_8c_a5054e13cb5cd445ad93d6740ae7973f0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{writepng_8c_a8b70239522f4b443f7ebd2a69a4e98c4}\label{writepng_8c_a8b70239522f4b443f7ebd2a69a4e98c4}} 
+\index{writepng.\+c@{writepng.\+c}!writepng\+\_\+encode\+\_\+image@{writepng\+\_\+encode\+\_\+image}}
+\index{writepng\+\_\+encode\+\_\+image@{writepng\+\_\+encode\+\_\+image}!writepng.\+c@{writepng.\+c}}
+\subsubsection{\texorpdfstring{writepng\+\_\+encode\+\_\+image()}{writepng\_encode\_image()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} writepng\+\_\+encode\+\_\+image (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{readpng2_8h_a1b06d069c8b16f46dd13c65e745bbdcb}{mainprog\+\_\+info}} $\ast$}]{mainprog\+\_\+ptr }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=293pt]{writepng_8c_a8b70239522f4b443f7ebd2a69a4e98c4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{writepng_8c_a51f034814e768179a9f519095381267f}\label{writepng_8c_a51f034814e768179a9f519095381267f}} 
+\index{writepng.\+c@{writepng.\+c}!writepng\+\_\+encode\+\_\+row@{writepng\+\_\+encode\+\_\+row}}
+\index{writepng\+\_\+encode\+\_\+row@{writepng\+\_\+encode\+\_\+row}!writepng.\+c@{writepng.\+c}}
+\subsubsection{\texorpdfstring{writepng\+\_\+encode\+\_\+row()}{writepng\_encode\_row()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} writepng\+\_\+encode\+\_\+row (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{readpng2_8h_a1b06d069c8b16f46dd13c65e745bbdcb}{mainprog\+\_\+info}} $\ast$}]{mainprog\+\_\+ptr }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=280pt]{writepng_8c_a51f034814e768179a9f519095381267f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{writepng_8c_aecbf2ab37b87d3d01dfedc6677470cf8}\label{writepng_8c_aecbf2ab37b87d3d01dfedc6677470cf8}} 
+\index{writepng.\+c@{writepng.\+c}!writepng\+\_\+error\+\_\+handler@{writepng\+\_\+error\+\_\+handler}}
+\index{writepng\+\_\+error\+\_\+handler@{writepng\+\_\+error\+\_\+handler}!writepng.\+c@{writepng.\+c}}
+\subsubsection{\texorpdfstring{writepng\+\_\+error\+\_\+handler()}{writepng\_error\_handler()}}
+{\footnotesize\ttfamily static void writepng\+\_\+error\+\_\+handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{png_8h_a05b958915368d6bbd797ef70f24b9ff6}{png\+\_\+structp}}}]{png\+\_\+ptr,  }\item[{\mbox{\hyperlink{pngconf_8h_adee13ff9d091a8ae795d650a4be82b80}{png\+\_\+const\+\_\+charp}}}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{writepng_8c_aecbf2ab37b87d3d01dfedc6677470cf8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{writepng_8c_a0c879564159de413d5b04337f37c311a}\label{writepng_8c_a0c879564159de413d5b04337f37c311a}} 
+\index{writepng.\+c@{writepng.\+c}!writepng\+\_\+init@{writepng\+\_\+init}}
+\index{writepng\+\_\+init@{writepng\+\_\+init}!writepng.\+c@{writepng.\+c}}
+\subsubsection{\texorpdfstring{writepng\+\_\+init()}{writepng\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} writepng\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{readpng2_8h_a1b06d069c8b16f46dd13c65e745bbdcb}{mainprog\+\_\+info}} $\ast$}]{mainprog\+\_\+ptr }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{writepng_8c_a0c879564159de413d5b04337f37c311a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{writepng_8c_a0c879564159de413d5b04337f37c311a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{writepng_8c_aa5d3ab6077ab4ed0b4fa2df60e47f638}\label{writepng_8c_aa5d3ab6077ab4ed0b4fa2df60e47f638}} 
+\index{writepng.\+c@{writepng.\+c}!writepng\+\_\+version\+\_\+info@{writepng\+\_\+version\+\_\+info}}
+\index{writepng\+\_\+version\+\_\+info@{writepng\+\_\+version\+\_\+info}!writepng.\+c@{writepng.\+c}}
+\subsubsection{\texorpdfstring{writepng\+\_\+version\+\_\+info()}{writepng\_version\_info()}}
+{\footnotesize\ttfamily void writepng\+\_\+version\+\_\+info (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{writepng_8c_aa5d3ab6077ab4ed0b4fa2df60e47f638_icgraph}
+\end{center}
+\end{figure}

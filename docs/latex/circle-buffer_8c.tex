@@ -1,0 +1,321 @@
+\hypertarget{circle-buffer_8c}{}\section{src/util/circle-\/buffer.c File Reference}
+\label{circle-buffer_8c}\index{src/util/circle-\/buffer.\+c@{src/util/circle-\/buffer.\+c}}
+{\ttfamily \#include $<$mgba-\/util/circle-\/buffer.\+h$>$}\newline
+Include dependency graph for circle-\/buffer.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{circle-buffer_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{circle-buffer_8c_a2916ab7c3aec1de4db02d13b1c6bf197}{\+\_\+check\+Integrity}} (struct Circle\+Buffer $\ast$buffer)
+\item 
+void \mbox{\hyperlink{circle-buffer_8c_afaa8d0d895fcf4ce976a956ef6cc97bb}{Circle\+Buffer\+Init}} (struct Circle\+Buffer $\ast$buffer, unsigned capacity)
+\item 
+void \mbox{\hyperlink{circle-buffer_8c_ace75de8785dd1b075cab547bf6f81563}{Circle\+Buffer\+Deinit}} (struct Circle\+Buffer $\ast$buffer)
+\item 
+size\+\_\+t \mbox{\hyperlink{circle-buffer_8c_a3cd592fc508fc16e0687ef249a7985f6}{Circle\+Buffer\+Size}} (const struct Circle\+Buffer $\ast$buffer)
+\item 
+size\+\_\+t \mbox{\hyperlink{circle-buffer_8c_a5ebad1136fc47aa3316b61c8efdd1ac4}{Circle\+Buffer\+Capacity}} (const struct Circle\+Buffer $\ast$buffer)
+\item 
+void \mbox{\hyperlink{circle-buffer_8c_a7f5170ef02fb49586dea9482e562c400}{Circle\+Buffer\+Clear}} (struct Circle\+Buffer $\ast$buffer)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{circle-buffer_8c_aa1562239ba1cf3c0e7d570a184bcbd7b}{Circle\+Buffer\+Write8}} (struct Circle\+Buffer $\ast$buffer, int8\+\_\+t value)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{circle-buffer_8c_a056daa52414e0ab9796fa8079100bd82}{Circle\+Buffer\+Write32}} (struct Circle\+Buffer $\ast$buffer, int32\+\_\+t value)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{circle-buffer_8c_ababcf59a66d885ec2f94f1f189c49f9e}{Circle\+Buffer\+Write16}} (struct Circle\+Buffer $\ast$buffer, int16\+\_\+t value)
+\item 
+size\+\_\+t \mbox{\hyperlink{circle-buffer_8c_a296b8a91ed215aae7b8627c4f42ece8b}{Circle\+Buffer\+Write}} (struct Circle\+Buffer $\ast$buffer, const void $\ast$input, size\+\_\+t length)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{circle-buffer_8c_a715de2b8c3a6b466d1a2fd2f7efae286}{Circle\+Buffer\+Read8}} (struct Circle\+Buffer $\ast$buffer, int8\+\_\+t $\ast$value)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{circle-buffer_8c_a6379e58465082beba80dc4da5885e39f}{Circle\+Buffer\+Read16}} (struct Circle\+Buffer $\ast$buffer, int16\+\_\+t $\ast$value)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{circle-buffer_8c_a3f1b62ccdf61258172c305dcb525e31c}{Circle\+Buffer\+Read32}} (struct Circle\+Buffer $\ast$buffer, int32\+\_\+t $\ast$value)
+\item 
+size\+\_\+t \mbox{\hyperlink{circle-buffer_8c_a1707584743172130e8ad7069926d985d}{Circle\+Buffer\+Read}} (struct Circle\+Buffer $\ast$buffer, void $\ast$output, size\+\_\+t length)
+\item 
+size\+\_\+t \mbox{\hyperlink{circle-buffer_8c_a13bf863d3a10d3b22cffbe60c1706c33}{Circle\+Buffer\+Dump}} (const struct Circle\+Buffer $\ast$buffer, void $\ast$output, size\+\_\+t length)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{circle-buffer_8c_a2916ab7c3aec1de4db02d13b1c6bf197}\label{circle-buffer_8c_a2916ab7c3aec1de4db02d13b1c6bf197}} 
+\index{circle-\/buffer.\+c@{circle-\/buffer.\+c}!\+\_\+check\+Integrity@{\+\_\+check\+Integrity}}
+\index{\+\_\+check\+Integrity@{\+\_\+check\+Integrity}!circle-\/buffer.\+c@{circle-\/buffer.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+check\+Integrity()}{\_checkIntegrity()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \+\_\+check\+Integrity (\begin{DoxyParamCaption}\item[{struct Circle\+Buffer $\ast$}]{buffer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{circle-buffer_8c_a2916ab7c3aec1de4db02d13b1c6bf197_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{circle-buffer_8c_a5ebad1136fc47aa3316b61c8efdd1ac4}\label{circle-buffer_8c_a5ebad1136fc47aa3316b61c8efdd1ac4}} 
+\index{circle-\/buffer.\+c@{circle-\/buffer.\+c}!Circle\+Buffer\+Capacity@{Circle\+Buffer\+Capacity}}
+\index{Circle\+Buffer\+Capacity@{Circle\+Buffer\+Capacity}!circle-\/buffer.\+c@{circle-\/buffer.\+c}}
+\subsubsection{\texorpdfstring{Circle\+Buffer\+Capacity()}{CircleBufferCapacity()}}
+{\footnotesize\ttfamily size\+\_\+t Circle\+Buffer\+Capacity (\begin{DoxyParamCaption}\item[{const struct Circle\+Buffer $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{circle-buffer_8c_a5ebad1136fc47aa3316b61c8efdd1ac4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{circle-buffer_8c_a7f5170ef02fb49586dea9482e562c400}\label{circle-buffer_8c_a7f5170ef02fb49586dea9482e562c400}} 
+\index{circle-\/buffer.\+c@{circle-\/buffer.\+c}!Circle\+Buffer\+Clear@{Circle\+Buffer\+Clear}}
+\index{Circle\+Buffer\+Clear@{Circle\+Buffer\+Clear}!circle-\/buffer.\+c@{circle-\/buffer.\+c}}
+\subsubsection{\texorpdfstring{Circle\+Buffer\+Clear()}{CircleBufferClear()}}
+{\footnotesize\ttfamily void Circle\+Buffer\+Clear (\begin{DoxyParamCaption}\item[{struct Circle\+Buffer $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{circle-buffer_8c_a7f5170ef02fb49586dea9482e562c400_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{circle-buffer_8c_ace75de8785dd1b075cab547bf6f81563}\label{circle-buffer_8c_ace75de8785dd1b075cab547bf6f81563}} 
+\index{circle-\/buffer.\+c@{circle-\/buffer.\+c}!Circle\+Buffer\+Deinit@{Circle\+Buffer\+Deinit}}
+\index{Circle\+Buffer\+Deinit@{Circle\+Buffer\+Deinit}!circle-\/buffer.\+c@{circle-\/buffer.\+c}}
+\subsubsection{\texorpdfstring{Circle\+Buffer\+Deinit()}{CircleBufferDeinit()}}
+{\footnotesize\ttfamily void Circle\+Buffer\+Deinit (\begin{DoxyParamCaption}\item[{struct Circle\+Buffer $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{circle-buffer_8c_ace75de8785dd1b075cab547bf6f81563_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{circle-buffer_8c_ace75de8785dd1b075cab547bf6f81563_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{circle-buffer_8c_a13bf863d3a10d3b22cffbe60c1706c33}\label{circle-buffer_8c_a13bf863d3a10d3b22cffbe60c1706c33}} 
+\index{circle-\/buffer.\+c@{circle-\/buffer.\+c}!Circle\+Buffer\+Dump@{Circle\+Buffer\+Dump}}
+\index{Circle\+Buffer\+Dump@{Circle\+Buffer\+Dump}!circle-\/buffer.\+c@{circle-\/buffer.\+c}}
+\subsubsection{\texorpdfstring{Circle\+Buffer\+Dump()}{CircleBufferDump()}}
+{\footnotesize\ttfamily size\+\_\+t Circle\+Buffer\+Dump (\begin{DoxyParamCaption}\item[{const struct Circle\+Buffer $\ast$}]{buffer,  }\item[{void $\ast$}]{output,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{circle-buffer_8c_a13bf863d3a10d3b22cffbe60c1706c33_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{circle-buffer_8c_afaa8d0d895fcf4ce976a956ef6cc97bb}\label{circle-buffer_8c_afaa8d0d895fcf4ce976a956ef6cc97bb}} 
+\index{circle-\/buffer.\+c@{circle-\/buffer.\+c}!Circle\+Buffer\+Init@{Circle\+Buffer\+Init}}
+\index{Circle\+Buffer\+Init@{Circle\+Buffer\+Init}!circle-\/buffer.\+c@{circle-\/buffer.\+c}}
+\subsubsection{\texorpdfstring{Circle\+Buffer\+Init()}{CircleBufferInit()}}
+{\footnotesize\ttfamily void Circle\+Buffer\+Init (\begin{DoxyParamCaption}\item[{struct Circle\+Buffer $\ast$}]{buffer,  }\item[{unsigned}]{capacity }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{circle-buffer_8c_afaa8d0d895fcf4ce976a956ef6cc97bb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{circle-buffer_8c_afaa8d0d895fcf4ce976a956ef6cc97bb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{circle-buffer_8c_a1707584743172130e8ad7069926d985d}\label{circle-buffer_8c_a1707584743172130e8ad7069926d985d}} 
+\index{circle-\/buffer.\+c@{circle-\/buffer.\+c}!Circle\+Buffer\+Read@{Circle\+Buffer\+Read}}
+\index{Circle\+Buffer\+Read@{Circle\+Buffer\+Read}!circle-\/buffer.\+c@{circle-\/buffer.\+c}}
+\subsubsection{\texorpdfstring{Circle\+Buffer\+Read()}{CircleBufferRead()}}
+{\footnotesize\ttfamily size\+\_\+t Circle\+Buffer\+Read (\begin{DoxyParamCaption}\item[{struct Circle\+Buffer $\ast$}]{buffer,  }\item[{void $\ast$}]{output,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=307pt]{circle-buffer_8c_a1707584743172130e8ad7069926d985d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{circle-buffer_8c_a1707584743172130e8ad7069926d985d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{circle-buffer_8c_a6379e58465082beba80dc4da5885e39f}\label{circle-buffer_8c_a6379e58465082beba80dc4da5885e39f}} 
+\index{circle-\/buffer.\+c@{circle-\/buffer.\+c}!Circle\+Buffer\+Read16@{Circle\+Buffer\+Read16}}
+\index{Circle\+Buffer\+Read16@{Circle\+Buffer\+Read16}!circle-\/buffer.\+c@{circle-\/buffer.\+c}}
+\subsubsection{\texorpdfstring{Circle\+Buffer\+Read16()}{CircleBufferRead16()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Circle\+Buffer\+Read16 (\begin{DoxyParamCaption}\item[{struct Circle\+Buffer $\ast$}]{buffer,  }\item[{int16\+\_\+t $\ast$}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{circle-buffer_8c_a6379e58465082beba80dc4da5885e39f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{circle-buffer_8c_a3f1b62ccdf61258172c305dcb525e31c}\label{circle-buffer_8c_a3f1b62ccdf61258172c305dcb525e31c}} 
+\index{circle-\/buffer.\+c@{circle-\/buffer.\+c}!Circle\+Buffer\+Read32@{Circle\+Buffer\+Read32}}
+\index{Circle\+Buffer\+Read32@{Circle\+Buffer\+Read32}!circle-\/buffer.\+c@{circle-\/buffer.\+c}}
+\subsubsection{\texorpdfstring{Circle\+Buffer\+Read32()}{CircleBufferRead32()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Circle\+Buffer\+Read32 (\begin{DoxyParamCaption}\item[{struct Circle\+Buffer $\ast$}]{buffer,  }\item[{int32\+\_\+t $\ast$}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{circle-buffer_8c_a3f1b62ccdf61258172c305dcb525e31c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{circle-buffer_8c_a3f1b62ccdf61258172c305dcb525e31c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{circle-buffer_8c_a715de2b8c3a6b466d1a2fd2f7efae286}\label{circle-buffer_8c_a715de2b8c3a6b466d1a2fd2f7efae286}} 
+\index{circle-\/buffer.\+c@{circle-\/buffer.\+c}!Circle\+Buffer\+Read8@{Circle\+Buffer\+Read8}}
+\index{Circle\+Buffer\+Read8@{Circle\+Buffer\+Read8}!circle-\/buffer.\+c@{circle-\/buffer.\+c}}
+\subsubsection{\texorpdfstring{Circle\+Buffer\+Read8()}{CircleBufferRead8()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Circle\+Buffer\+Read8 (\begin{DoxyParamCaption}\item[{struct Circle\+Buffer $\ast$}]{buffer,  }\item[{int8\+\_\+t $\ast$}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{circle-buffer_8c_a715de2b8c3a6b466d1a2fd2f7efae286_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{circle-buffer_8c_a715de2b8c3a6b466d1a2fd2f7efae286_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{circle-buffer_8c_a3cd592fc508fc16e0687ef249a7985f6}\label{circle-buffer_8c_a3cd592fc508fc16e0687ef249a7985f6}} 
+\index{circle-\/buffer.\+c@{circle-\/buffer.\+c}!Circle\+Buffer\+Size@{Circle\+Buffer\+Size}}
+\index{Circle\+Buffer\+Size@{Circle\+Buffer\+Size}!circle-\/buffer.\+c@{circle-\/buffer.\+c}}
+\subsubsection{\texorpdfstring{Circle\+Buffer\+Size()}{CircleBufferSize()}}
+{\footnotesize\ttfamily size\+\_\+t Circle\+Buffer\+Size (\begin{DoxyParamCaption}\item[{const struct Circle\+Buffer $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{circle-buffer_8c_a3cd592fc508fc16e0687ef249a7985f6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{circle-buffer_8c_a296b8a91ed215aae7b8627c4f42ece8b}\label{circle-buffer_8c_a296b8a91ed215aae7b8627c4f42ece8b}} 
+\index{circle-\/buffer.\+c@{circle-\/buffer.\+c}!Circle\+Buffer\+Write@{Circle\+Buffer\+Write}}
+\index{Circle\+Buffer\+Write@{Circle\+Buffer\+Write}!circle-\/buffer.\+c@{circle-\/buffer.\+c}}
+\subsubsection{\texorpdfstring{Circle\+Buffer\+Write()}{CircleBufferWrite()}}
+{\footnotesize\ttfamily size\+\_\+t Circle\+Buffer\+Write (\begin{DoxyParamCaption}\item[{struct Circle\+Buffer $\ast$}]{buffer,  }\item[{const void $\ast$}]{input,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{circle-buffer_8c_a296b8a91ed215aae7b8627c4f42ece8b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{circle-buffer_8c_a296b8a91ed215aae7b8627c4f42ece8b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{circle-buffer_8c_ababcf59a66d885ec2f94f1f189c49f9e}\label{circle-buffer_8c_ababcf59a66d885ec2f94f1f189c49f9e}} 
+\index{circle-\/buffer.\+c@{circle-\/buffer.\+c}!Circle\+Buffer\+Write16@{Circle\+Buffer\+Write16}}
+\index{Circle\+Buffer\+Write16@{Circle\+Buffer\+Write16}!circle-\/buffer.\+c@{circle-\/buffer.\+c}}
+\subsubsection{\texorpdfstring{Circle\+Buffer\+Write16()}{CircleBufferWrite16()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Circle\+Buffer\+Write16 (\begin{DoxyParamCaption}\item[{struct Circle\+Buffer $\ast$}]{buffer,  }\item[{int16\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{circle-buffer_8c_ababcf59a66d885ec2f94f1f189c49f9e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{circle-buffer_8c_a056daa52414e0ab9796fa8079100bd82}\label{circle-buffer_8c_a056daa52414e0ab9796fa8079100bd82}} 
+\index{circle-\/buffer.\+c@{circle-\/buffer.\+c}!Circle\+Buffer\+Write32@{Circle\+Buffer\+Write32}}
+\index{Circle\+Buffer\+Write32@{Circle\+Buffer\+Write32}!circle-\/buffer.\+c@{circle-\/buffer.\+c}}
+\subsubsection{\texorpdfstring{Circle\+Buffer\+Write32()}{CircleBufferWrite32()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Circle\+Buffer\+Write32 (\begin{DoxyParamCaption}\item[{struct Circle\+Buffer $\ast$}]{buffer,  }\item[{int32\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{circle-buffer_8c_a056daa52414e0ab9796fa8079100bd82_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{circle-buffer_8c_a056daa52414e0ab9796fa8079100bd82_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{circle-buffer_8c_aa1562239ba1cf3c0e7d570a184bcbd7b}\label{circle-buffer_8c_aa1562239ba1cf3c0e7d570a184bcbd7b}} 
+\index{circle-\/buffer.\+c@{circle-\/buffer.\+c}!Circle\+Buffer\+Write8@{Circle\+Buffer\+Write8}}
+\index{Circle\+Buffer\+Write8@{Circle\+Buffer\+Write8}!circle-\/buffer.\+c@{circle-\/buffer.\+c}}
+\subsubsection{\texorpdfstring{Circle\+Buffer\+Write8()}{CircleBufferWrite8()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Circle\+Buffer\+Write8 (\begin{DoxyParamCaption}\item[{struct Circle\+Buffer $\ast$}]{buffer,  }\item[{int8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{circle-buffer_8c_aa1562239ba1cf3c0e7d570a184bcbd7b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{circle-buffer_8c_aa1562239ba1cf3c0e7d570a184bcbd7b_icgraph}
+\end{center}
+\end{figure}

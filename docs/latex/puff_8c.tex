@@ -1,0 +1,248 @@
+\hypertarget{puff_8c}{}\section{src/third-\/party/zlib/contrib/puff/puff.c File Reference}
+\label{puff_8c}\index{src/third-\/party/zlib/contrib/puff/puff.\+c@{src/third-\/party/zlib/contrib/puff/puff.\+c}}
+{\ttfamily \#include $<$setjmp.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}puff.\+h\char`\"{}}\newline
+Include dependency graph for puff.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{puff_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{puff_8c_a08023ea6765c99d60a6a3840cd07156e}{local}}~static            /$\ast$ for local function definitions $\ast$/
+\item 
+\#define \mbox{\hyperlink{puff_8c_a6fcad31e688110d9d61bdcc99b2a59d7}{M\+A\+X\+B\+I\+TS}}~15              /$\ast$ maximum \mbox{\hyperlink{puff_8c_af23433d9d58fb31d4a1ac224e3bc46e8}{bits}} \mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}} \mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}} \mbox{\hyperlink{inftrees_8h_structcode}{code}} $\ast$/
+\item 
+\#define \mbox{\hyperlink{puff_8c_a882cea3ad6d6a7b1af23998cca38fff8}{M\+A\+X\+L\+C\+O\+D\+ES}}~286           /$\ast$ maximum number of literal/length \mbox{\hyperlink{puff_8c_a9251a2dbe9d416cf6485572defe42220}{codes}} $\ast$/
+\item 
+\#define \mbox{\hyperlink{puff_8c_a1caf3c3995675a37b8db90112ac276bb}{M\+A\+X\+D\+C\+O\+D\+ES}}~30            /$\ast$ maximum number of distance \mbox{\hyperlink{puff_8c_a9251a2dbe9d416cf6485572defe42220}{codes}} $\ast$/
+\item 
+\#define \mbox{\hyperlink{puff_8c_a4b99f94b98defb9b267ea98c2b7ed35b}{M\+A\+X\+C\+O\+D\+ES}}~(\mbox{\hyperlink{puff_8c_a882cea3ad6d6a7b1af23998cca38fff8}{M\+A\+X\+L\+C\+O\+D\+ES}}+\mbox{\hyperlink{puff_8c_a1caf3c3995675a37b8db90112ac276bb}{M\+A\+X\+D\+C\+O\+D\+ES}})  /$\ast$ maximum \mbox{\hyperlink{puff_8c_a9251a2dbe9d416cf6485572defe42220}{codes}} lengths to \mbox{\hyperlink{zstream_8h_afe0bb0c451d445ad18368c4f7cf7cd2e}{read}} $\ast$/
+\item 
+\#define \mbox{\hyperlink{puff_8c_a07f2d271bc15402e50a75a2b580ccb38}{F\+I\+X\+L\+C\+O\+D\+ES}}~288           /$\ast$ number of \mbox{\hyperlink{puff_8c_af3340594bb80768552b17efb18581c98}{fixed}} literal/length \mbox{\hyperlink{puff_8c_a9251a2dbe9d416cf6485572defe42220}{codes}} $\ast$/
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{puff_8c_af23433d9d58fb31d4a1ac224e3bc46e8}{bits}} (struct state $\ast$s, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} need)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{puff_8c_a2c157e80e65abde8e3f64853a41bfecc}{stored}} (struct state $\ast$s)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{puff_8c_a226cd632d2d1d565d2e7c6e16f9dc837}{decode}} (struct state $\ast$s, const struct huffman $\ast$\mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{puff_8c_a9992feabb3d1b3381503dfb89222251f}{construct}} (struct huffman $\ast$\mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}}, const short $\ast$length, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{puff_8c_a9251a2dbe9d416cf6485572defe42220}{codes}} (struct state $\ast$s, const struct huffman $\ast$lencode, const struct huffman $\ast$distcode)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{puff_8c_af3340594bb80768552b17efb18581c98}{fixed}} (struct state $\ast$s)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{puff_8c_a5f81f35c5fef404a03c7059b39ab45f1}{dynamic}} (struct state $\ast$s)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{puff_8c_a37210080eeb63cf5200b5fd61ca89d06}{puff}} (unsigned char $\ast$dest, unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} $\ast$destlen, const unsigned char $\ast$source, unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} $\ast$sourcelen)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{puff_8c_a07f2d271bc15402e50a75a2b580ccb38}\label{puff_8c_a07f2d271bc15402e50a75a2b580ccb38}} 
+\index{puff.\+c@{puff.\+c}!F\+I\+X\+L\+C\+O\+D\+ES@{F\+I\+X\+L\+C\+O\+D\+ES}}
+\index{F\+I\+X\+L\+C\+O\+D\+ES@{F\+I\+X\+L\+C\+O\+D\+ES}!puff.\+c@{puff.\+c}}
+\subsubsection{\texorpdfstring{F\+I\+X\+L\+C\+O\+D\+ES}{FIXLCODES}}
+{\footnotesize\ttfamily \#define F\+I\+X\+L\+C\+O\+D\+ES~288           /$\ast$ number of \mbox{\hyperlink{puff_8c_af3340594bb80768552b17efb18581c98}{fixed}} literal/length \mbox{\hyperlink{puff_8c_a9251a2dbe9d416cf6485572defe42220}{codes}} $\ast$/}
+
+\mbox{\Hypertarget{puff_8c_a08023ea6765c99d60a6a3840cd07156e}\label{puff_8c_a08023ea6765c99d60a6a3840cd07156e}} 
+\index{puff.\+c@{puff.\+c}!local@{local}}
+\index{local@{local}!puff.\+c@{puff.\+c}}
+\subsubsection{\texorpdfstring{local}{local}}
+{\footnotesize\ttfamily \#define local~static            /$\ast$ for local function definitions $\ast$/}
+
+\mbox{\Hypertarget{puff_8c_a6fcad31e688110d9d61bdcc99b2a59d7}\label{puff_8c_a6fcad31e688110d9d61bdcc99b2a59d7}} 
+\index{puff.\+c@{puff.\+c}!M\+A\+X\+B\+I\+TS@{M\+A\+X\+B\+I\+TS}}
+\index{M\+A\+X\+B\+I\+TS@{M\+A\+X\+B\+I\+TS}!puff.\+c@{puff.\+c}}
+\subsubsection{\texorpdfstring{M\+A\+X\+B\+I\+TS}{MAXBITS}}
+{\footnotesize\ttfamily \#define M\+A\+X\+B\+I\+TS~15              /$\ast$ maximum \mbox{\hyperlink{puff_8c_af23433d9d58fb31d4a1ac224e3bc46e8}{bits}} \mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}} \mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}} \mbox{\hyperlink{inftrees_8h_structcode}{code}} $\ast$/}
+
+\mbox{\Hypertarget{puff_8c_a4b99f94b98defb9b267ea98c2b7ed35b}\label{puff_8c_a4b99f94b98defb9b267ea98c2b7ed35b}} 
+\index{puff.\+c@{puff.\+c}!M\+A\+X\+C\+O\+D\+ES@{M\+A\+X\+C\+O\+D\+ES}}
+\index{M\+A\+X\+C\+O\+D\+ES@{M\+A\+X\+C\+O\+D\+ES}!puff.\+c@{puff.\+c}}
+\subsubsection{\texorpdfstring{M\+A\+X\+C\+O\+D\+ES}{MAXCODES}}
+{\footnotesize\ttfamily \#define M\+A\+X\+C\+O\+D\+ES~(\mbox{\hyperlink{puff_8c_a882cea3ad6d6a7b1af23998cca38fff8}{M\+A\+X\+L\+C\+O\+D\+ES}}+\mbox{\hyperlink{puff_8c_a1caf3c3995675a37b8db90112ac276bb}{M\+A\+X\+D\+C\+O\+D\+ES}})  /$\ast$ maximum \mbox{\hyperlink{puff_8c_a9251a2dbe9d416cf6485572defe42220}{codes}} lengths to \mbox{\hyperlink{zstream_8h_afe0bb0c451d445ad18368c4f7cf7cd2e}{read}} $\ast$/}
+
+\mbox{\Hypertarget{puff_8c_a1caf3c3995675a37b8db90112ac276bb}\label{puff_8c_a1caf3c3995675a37b8db90112ac276bb}} 
+\index{puff.\+c@{puff.\+c}!M\+A\+X\+D\+C\+O\+D\+ES@{M\+A\+X\+D\+C\+O\+D\+ES}}
+\index{M\+A\+X\+D\+C\+O\+D\+ES@{M\+A\+X\+D\+C\+O\+D\+ES}!puff.\+c@{puff.\+c}}
+\subsubsection{\texorpdfstring{M\+A\+X\+D\+C\+O\+D\+ES}{MAXDCODES}}
+{\footnotesize\ttfamily \#define M\+A\+X\+D\+C\+O\+D\+ES~30            /$\ast$ maximum number of distance \mbox{\hyperlink{puff_8c_a9251a2dbe9d416cf6485572defe42220}{codes}} $\ast$/}
+
+\mbox{\Hypertarget{puff_8c_a882cea3ad6d6a7b1af23998cca38fff8}\label{puff_8c_a882cea3ad6d6a7b1af23998cca38fff8}} 
+\index{puff.\+c@{puff.\+c}!M\+A\+X\+L\+C\+O\+D\+ES@{M\+A\+X\+L\+C\+O\+D\+ES}}
+\index{M\+A\+X\+L\+C\+O\+D\+ES@{M\+A\+X\+L\+C\+O\+D\+ES}!puff.\+c@{puff.\+c}}
+\subsubsection{\texorpdfstring{M\+A\+X\+L\+C\+O\+D\+ES}{MAXLCODES}}
+{\footnotesize\ttfamily \#define M\+A\+X\+L\+C\+O\+D\+ES~286           /$\ast$ maximum number of literal/length \mbox{\hyperlink{puff_8c_a9251a2dbe9d416cf6485572defe42220}{codes}} $\ast$/}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{puff_8c_af23433d9d58fb31d4a1ac224e3bc46e8}\label{puff_8c_af23433d9d58fb31d4a1ac224e3bc46e8}} 
+\index{puff.\+c@{puff.\+c}!bits@{bits}}
+\index{bits@{bits}!puff.\+c@{puff.\+c}}
+\subsubsection{\texorpdfstring{bits()}{bits()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} bits (\begin{DoxyParamCaption}\item[{struct state $\ast$}]{s,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{need }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{puff_8c_af23433d9d58fb31d4a1ac224e3bc46e8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{puff_8c_af23433d9d58fb31d4a1ac224e3bc46e8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{puff_8c_a9251a2dbe9d416cf6485572defe42220}\label{puff_8c_a9251a2dbe9d416cf6485572defe42220}} 
+\index{puff.\+c@{puff.\+c}!codes@{codes}}
+\index{codes@{codes}!puff.\+c@{puff.\+c}}
+\subsubsection{\texorpdfstring{codes()}{codes()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} codes (\begin{DoxyParamCaption}\item[{struct state $\ast$}]{s,  }\item[{const struct huffman $\ast$}]{lencode,  }\item[{const struct huffman $\ast$}]{distcode }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=293pt]{puff_8c_a9251a2dbe9d416cf6485572defe42220_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{puff_8c_a9251a2dbe9d416cf6485572defe42220_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{puff_8c_a9992feabb3d1b3381503dfb89222251f}\label{puff_8c_a9992feabb3d1b3381503dfb89222251f}} 
+\index{puff.\+c@{puff.\+c}!construct@{construct}}
+\index{construct@{construct}!puff.\+c@{puff.\+c}}
+\subsubsection{\texorpdfstring{construct()}{construct()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} construct (\begin{DoxyParamCaption}\item[{struct huffman $\ast$}]{h,  }\item[{const short $\ast$}]{length,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{n }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{puff_8c_a9992feabb3d1b3381503dfb89222251f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{puff_8c_a226cd632d2d1d565d2e7c6e16f9dc837}\label{puff_8c_a226cd632d2d1d565d2e7c6e16f9dc837}} 
+\index{puff.\+c@{puff.\+c}!decode@{decode}}
+\index{decode@{decode}!puff.\+c@{puff.\+c}}
+\subsubsection{\texorpdfstring{decode()}{decode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} decode (\begin{DoxyParamCaption}\item[{struct state $\ast$}]{s,  }\item[{const struct huffman $\ast$}]{h }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{puff_8c_a226cd632d2d1d565d2e7c6e16f9dc837_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{puff_8c_a226cd632d2d1d565d2e7c6e16f9dc837_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{puff_8c_a5f81f35c5fef404a03c7059b39ab45f1}\label{puff_8c_a5f81f35c5fef404a03c7059b39ab45f1}} 
+\index{puff.\+c@{puff.\+c}!dynamic@{dynamic}}
+\index{dynamic@{dynamic}!puff.\+c@{puff.\+c}}
+\subsubsection{\texorpdfstring{dynamic()}{dynamic()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} dynamic (\begin{DoxyParamCaption}\item[{struct state $\ast$}]{s }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{puff_8c_a5f81f35c5fef404a03c7059b39ab45f1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{puff_8c_a5f81f35c5fef404a03c7059b39ab45f1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{puff_8c_af3340594bb80768552b17efb18581c98}\label{puff_8c_af3340594bb80768552b17efb18581c98}} 
+\index{puff.\+c@{puff.\+c}!fixed@{fixed}}
+\index{fixed@{fixed}!puff.\+c@{puff.\+c}}
+\subsubsection{\texorpdfstring{fixed()}{fixed()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} fixed (\begin{DoxyParamCaption}\item[{struct state $\ast$}]{s }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{puff_8c_af3340594bb80768552b17efb18581c98_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{puff_8c_af3340594bb80768552b17efb18581c98_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{puff_8c_a37210080eeb63cf5200b5fd61ca89d06}\label{puff_8c_a37210080eeb63cf5200b5fd61ca89d06}} 
+\index{puff.\+c@{puff.\+c}!puff@{puff}}
+\index{puff@{puff}!puff.\+c@{puff.\+c}}
+\subsubsection{\texorpdfstring{puff()}{puff()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} puff (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{dest,  }\item[{unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} $\ast$}]{destlen,  }\item[{const unsigned char $\ast$}]{source,  }\item[{unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} $\ast$}]{sourcelen }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{puff_8c_a37210080eeb63cf5200b5fd61ca89d06_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{puff_8c_a37210080eeb63cf5200b5fd61ca89d06_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{puff_8c_a2c157e80e65abde8e3f64853a41bfecc}\label{puff_8c_a2c157e80e65abde8e3f64853a41bfecc}} 
+\index{puff.\+c@{puff.\+c}!stored@{stored}}
+\index{stored@{stored}!puff.\+c@{puff.\+c}}
+\subsubsection{\texorpdfstring{stored()}{stored()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} stored (\begin{DoxyParamCaption}\item[{struct state $\ast$}]{s }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{puff_8c_a2c157e80e65abde8e3f64853a41bfecc_icgraph}
+\end{center}
+\end{figure}

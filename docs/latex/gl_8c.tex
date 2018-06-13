@@ -1,0 +1,194 @@
+\hypertarget{gl_8c}{}\section{src/platform/opengl/gl.c File Reference}
+\label{gl_8c}\index{src/platform/opengl/gl.\+c@{src/platform/opengl/gl.\+c}}
+{\ttfamily \#include \char`\"{}gl.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba-\/util/math.\+h$>$}\newline
+Include dependency graph for gl.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{gl_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{gl_8c_a056552ba63c13068aef94e00ecb6a2da}{m\+G\+L\+Context\+Init}} (struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$v, \mbox{\hyperlink{video-backend_8h_aaa69bc83f36b455578d1f29b125741d9}{W\+Handle}} handle)
+\item 
+static void \mbox{\hyperlink{gl_8c_a7790d79f2597134cb536290f344a2ec1}{m\+G\+L\+Context\+Set\+Dimensions}} (struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$v, unsigned \mbox{\hyperlink{readppm_8c_a59b7c57bf1dc7c36ac7c8232cf5bb713}{width}}, unsigned \mbox{\hyperlink{readppm_8c_ac8b624a7354198da45f5797b93b883c9}{height}})
+\item 
+static void \mbox{\hyperlink{gl_8c_a9d3240fabadaa243ef49c709cd79ad3c}{m\+G\+L\+Context\+Deinit}} (struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$v)
+\item 
+static void \mbox{\hyperlink{gl_8c_ae454153ef3597d66af48f0f2f6f39713}{m\+G\+L\+Context\+Resized}} (struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$v, unsigned w, unsigned \mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}})
+\item 
+static void \mbox{\hyperlink{gl_8c_a078aa64730efd93a53e9d06c9288cf20}{m\+G\+L\+Context\+Clear}} (struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$v)
+\item 
+void \mbox{\hyperlink{gl_8c_afaa325df95ca809eddfd4dfd1c79ef31}{m\+G\+L\+Context\+Draw\+Frame}} (struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$v)
+\item 
+void \mbox{\hyperlink{gl_8c_a30cf51cb73507b5965f278b35ed575b2}{m\+G\+L\+Context\+Post\+Frame}} (struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$v, const void $\ast$frame)
+\item 
+void \mbox{\hyperlink{gl_8c_ae2b072a863e70de36b2adee07056475d}{m\+G\+L\+Context\+Create}} (struct \mbox{\hyperlink{gl_8h_structm_g_l_context}{m\+G\+L\+Context}} $\ast$context)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const G\+Lint \mbox{\hyperlink{gl_8c_a6cefdf7d3a8ab8a6d0f36451ac6aff07}{\+\_\+gl\+Vertices}} \mbox{[}$\,$\mbox{]}
+\item 
+static const G\+Lint \mbox{\hyperlink{gl_8c_a67a35887776673996e9c6c06dba5309f}{\+\_\+gl\+Tex\+Coords}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{gl_8c_a078aa64730efd93a53e9d06c9288cf20}\label{gl_8c_a078aa64730efd93a53e9d06c9288cf20}} 
+\index{gl.\+c@{gl.\+c}!m\+G\+L\+Context\+Clear@{m\+G\+L\+Context\+Clear}}
+\index{m\+G\+L\+Context\+Clear@{m\+G\+L\+Context\+Clear}!gl.\+c@{gl.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+Context\+Clear()}{mGLContextClear()}}
+{\footnotesize\ttfamily static void m\+G\+L\+Context\+Clear (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gl_8c_a078aa64730efd93a53e9d06c9288cf20_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gl_8c_ae2b072a863e70de36b2adee07056475d}\label{gl_8c_ae2b072a863e70de36b2adee07056475d}} 
+\index{gl.\+c@{gl.\+c}!m\+G\+L\+Context\+Create@{m\+G\+L\+Context\+Create}}
+\index{m\+G\+L\+Context\+Create@{m\+G\+L\+Context\+Create}!gl.\+c@{gl.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+Context\+Create()}{mGLContextCreate()}}
+{\footnotesize\ttfamily void m\+G\+L\+Context\+Create (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{gl_8h_structm_g_l_context}{m\+G\+L\+Context}} $\ast$}]{context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gl_8c_ae2b072a863e70de36b2adee07056475d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gl_8c_ae2b072a863e70de36b2adee07056475d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gl_8c_a9d3240fabadaa243ef49c709cd79ad3c}\label{gl_8c_a9d3240fabadaa243ef49c709cd79ad3c}} 
+\index{gl.\+c@{gl.\+c}!m\+G\+L\+Context\+Deinit@{m\+G\+L\+Context\+Deinit}}
+\index{m\+G\+L\+Context\+Deinit@{m\+G\+L\+Context\+Deinit}!gl.\+c@{gl.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+Context\+Deinit()}{mGLContextDeinit()}}
+{\footnotesize\ttfamily static void m\+G\+L\+Context\+Deinit (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gl_8c_a9d3240fabadaa243ef49c709cd79ad3c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gl_8c_afaa325df95ca809eddfd4dfd1c79ef31}\label{gl_8c_afaa325df95ca809eddfd4dfd1c79ef31}} 
+\index{gl.\+c@{gl.\+c}!m\+G\+L\+Context\+Draw\+Frame@{m\+G\+L\+Context\+Draw\+Frame}}
+\index{m\+G\+L\+Context\+Draw\+Frame@{m\+G\+L\+Context\+Draw\+Frame}!gl.\+c@{gl.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+Context\+Draw\+Frame()}{mGLContextDrawFrame()}}
+{\footnotesize\ttfamily void m\+G\+L\+Context\+Draw\+Frame (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$}]{v }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gl_8c_afaa325df95ca809eddfd4dfd1c79ef31_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gl_8c_a056552ba63c13068aef94e00ecb6a2da}\label{gl_8c_a056552ba63c13068aef94e00ecb6a2da}} 
+\index{gl.\+c@{gl.\+c}!m\+G\+L\+Context\+Init@{m\+G\+L\+Context\+Init}}
+\index{m\+G\+L\+Context\+Init@{m\+G\+L\+Context\+Init}!gl.\+c@{gl.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+Context\+Init()}{mGLContextInit()}}
+{\footnotesize\ttfamily static void m\+G\+L\+Context\+Init (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$}]{v,  }\item[{\mbox{\hyperlink{video-backend_8h_aaa69bc83f36b455578d1f29b125741d9}{W\+Handle}}}]{handle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gl_8c_a056552ba63c13068aef94e00ecb6a2da_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gl_8c_a30cf51cb73507b5965f278b35ed575b2}\label{gl_8c_a30cf51cb73507b5965f278b35ed575b2}} 
+\index{gl.\+c@{gl.\+c}!m\+G\+L\+Context\+Post\+Frame@{m\+G\+L\+Context\+Post\+Frame}}
+\index{m\+G\+L\+Context\+Post\+Frame@{m\+G\+L\+Context\+Post\+Frame}!gl.\+c@{gl.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+Context\+Post\+Frame()}{mGLContextPostFrame()}}
+{\footnotesize\ttfamily void m\+G\+L\+Context\+Post\+Frame (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$}]{v,  }\item[{const void $\ast$}]{frame }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gl_8c_a30cf51cb73507b5965f278b35ed575b2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gl_8c_ae454153ef3597d66af48f0f2f6f39713}\label{gl_8c_ae454153ef3597d66af48f0f2f6f39713}} 
+\index{gl.\+c@{gl.\+c}!m\+G\+L\+Context\+Resized@{m\+G\+L\+Context\+Resized}}
+\index{m\+G\+L\+Context\+Resized@{m\+G\+L\+Context\+Resized}!gl.\+c@{gl.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+Context\+Resized()}{mGLContextResized()}}
+{\footnotesize\ttfamily static void m\+G\+L\+Context\+Resized (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$}]{v,  }\item[{unsigned}]{w,  }\item[{unsigned}]{h }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gl_8c_ae454153ef3597d66af48f0f2f6f39713_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gl_8c_a7790d79f2597134cb536290f344a2ec1}\label{gl_8c_a7790d79f2597134cb536290f344a2ec1}} 
+\index{gl.\+c@{gl.\+c}!m\+G\+L\+Context\+Set\+Dimensions@{m\+G\+L\+Context\+Set\+Dimensions}}
+\index{m\+G\+L\+Context\+Set\+Dimensions@{m\+G\+L\+Context\+Set\+Dimensions}!gl.\+c@{gl.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+Context\+Set\+Dimensions()}{mGLContextSetDimensions()}}
+{\footnotesize\ttfamily static void m\+G\+L\+Context\+Set\+Dimensions (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$}]{v,  }\item[{unsigned}]{width,  }\item[{unsigned}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gl_8c_a7790d79f2597134cb536290f344a2ec1_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{gl_8c_a67a35887776673996e9c6c06dba5309f}\label{gl_8c_a67a35887776673996e9c6c06dba5309f}} 
+\index{gl.\+c@{gl.\+c}!\+\_\+gl\+Tex\+Coords@{\+\_\+gl\+Tex\+Coords}}
+\index{\+\_\+gl\+Tex\+Coords@{\+\_\+gl\+Tex\+Coords}!gl.\+c@{gl.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+gl\+Tex\+Coords}{\_glTexCoords}}
+{\footnotesize\ttfamily const G\+Lint \+\_\+gl\+Tex\+Coords\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    0, 0,
+    1, 0,
+    1, 1,
+    0, 1
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{gl_8c_a6cefdf7d3a8ab8a6d0f36451ac6aff07}\label{gl_8c_a6cefdf7d3a8ab8a6d0f36451ac6aff07}} 
+\index{gl.\+c@{gl.\+c}!\+\_\+gl\+Vertices@{\+\_\+gl\+Vertices}}
+\index{\+\_\+gl\+Vertices@{\+\_\+gl\+Vertices}!gl.\+c@{gl.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+gl\+Vertices}{\_glVertices}}
+{\footnotesize\ttfamily const G\+Lint \+\_\+gl\+Vertices\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    0, 0,
+    256, 0,
+    256, 256,
+    0, 256
+\}
+\end{DoxyCode}

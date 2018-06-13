@@ -1,0 +1,458 @@
+\hypertarget{core_2core_8c}{}\section{src/core/core.c File Reference}
+\label{core_2core_8c}\index{src/core/core.\+c@{src/core/core.\+c}}
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/cheats.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/log.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/serialize.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/debugger/symbols.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/feature/video-\/logger.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/png-\/io.\+h$>$}\newline
+Include dependency graph for core.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct m\+Core $\ast$ \mbox{\hyperlink{core_2core_8c_a38e2754803523ccfd0f64e3a5fe10b74}{m\+Core\+Find\+VF}} (struct V\+File $\ast$vf)
+\item 
+enum m\+Platform \mbox{\hyperlink{core_2core_8c_a9c5eae1d4d36056f51252d75299afe44}{m\+Core\+Is\+Compatible}} (struct V\+File $\ast$vf)
+\item 
+struct m\+Core $\ast$ \mbox{\hyperlink{core_2core_8c_a24aff492e3e031e765a746833bbb5e70}{m\+Core\+Find}} (const char $\ast$path)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2core_8c_ad06475dc282b1a5472a45451be9760b4}{m\+Core\+Load\+File}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, const char $\ast$path)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2core_8c_af1c36bae9d2eb7654d9e567f904856f1}{m\+Core\+Preload\+VF}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, struct V\+File $\ast$vf)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2core_8c_a6eb952bf34d7a9e0c09891be2b6ddb03}{m\+Core\+Preload\+File}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, const char $\ast$path)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2core_8c_a5939ae8280d635607cce07591cb4341f}{m\+Core\+Autoload\+Save}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}})
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2core_8c_a64f5c6ff03f82548538bc3a79967c8c2}{m\+Core\+Autoload\+Patch}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}})
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2core_8c_ad7606179be281a6b5b31be6a338f9dbe}{m\+Core\+Autoload\+Cheats}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}})
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2core_8c_a642e87dcb5c2ed3a75c341036d08ad2e}{m\+Core\+Save\+State}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} slot, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{lr35902_2decoder_8c_a11f29eea941556f0630cfd3285f565c0}{flags}})
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{core_2core_8c_a15da21d0eee032e290607a679ce20b57}{m\+Core\+Load\+State}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} slot, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{lr35902_2decoder_8c_a11f29eea941556f0630cfd3285f565c0}{flags}})
+\item 
+struct V\+File $\ast$ \mbox{\hyperlink{core_2core_8c_a8e793e1b8d16c9d8145683707d968f08}{m\+Core\+Get\+State}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} slot, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{zstream_8h_a734527d08852c736d737b94507d5a521}{write}})
+\item 
+void \mbox{\hyperlink{core_2core_8c_a56f77a0e04fd297e64c65f1908706828}{m\+Core\+Delete\+State}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} slot)
+\item 
+void \mbox{\hyperlink{core_2core_8c_abd75cb70f413512637193f3b2b3d66a1}{m\+Core\+Take\+Screenshot}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}})
+\item 
+void \mbox{\hyperlink{core_2core_8c_a2300b9b467499467ed624eaf6cdec120}{m\+Core\+Init\+Config}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, const char $\ast$port)
+\item 
+void \mbox{\hyperlink{core_2core_8c_a43f162c497aa8b14aad7086892877393}{m\+Core\+Load\+Config}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}})
+\item 
+void \mbox{\hyperlink{core_2core_8c_a8a7705563c45e725f003bc79de61a950}{m\+Core\+Load\+Foreign\+Config}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, const struct m\+Core\+Config $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}})
+\item 
+void \mbox{\hyperlink{core_2core_8c_a670d139f274f75d16cb8ca4aa1dabdf0}{m\+Core\+Set\+R\+TC}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, struct m\+R\+T\+C\+Source $\ast$rtc)
+\item 
+void $\ast$ \mbox{\hyperlink{core_2core_8c_a412b22d3ffaf3d9067ecc8784233281b}{m\+Core\+Get\+Memory\+Block}} (struct m\+Core $\ast$\mbox{\hyperlink{libretro_8c_a0fa20029c1b76361c88b7c2b13e89aff}{core}}, uint32\+\_\+t \mbox{\hyperlink{tarith_8c_a7b8af9b9d992acd1d81caf9bb377f6c2a0e97c69c73117f6c0109b2d7d1d9cedc}{start}}, size\+\_\+t $\ast$\mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const struct m\+Core\+Filter \mbox{\hyperlink{core_2core_8c_a5424f60f5da96d9af73c4cdd3b59fc14}{\+\_\+filters}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{core_2core_8c_ad7606179be281a6b5b31be6a338f9dbe}\label{core_2core_8c_ad7606179be281a6b5b31be6a338f9dbe}} 
+\index{core/core.\+c@{core/core.\+c}!m\+Core\+Autoload\+Cheats@{m\+Core\+Autoload\+Cheats}}
+\index{m\+Core\+Autoload\+Cheats@{m\+Core\+Autoload\+Cheats}!core/core.\+c@{core/core.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Autoload\+Cheats()}{mCoreAutoloadCheats()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Autoload\+Cheats (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_ad7606179be281a6b5b31be6a338f9dbe_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_ad7606179be281a6b5b31be6a338f9dbe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2core_8c_a64f5c6ff03f82548538bc3a79967c8c2}\label{core_2core_8c_a64f5c6ff03f82548538bc3a79967c8c2}} 
+\index{core/core.\+c@{core/core.\+c}!m\+Core\+Autoload\+Patch@{m\+Core\+Autoload\+Patch}}
+\index{m\+Core\+Autoload\+Patch@{m\+Core\+Autoload\+Patch}!core/core.\+c@{core/core.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Autoload\+Patch()}{mCoreAutoloadPatch()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Autoload\+Patch (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a64f5c6ff03f82548538bc3a79967c8c2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a64f5c6ff03f82548538bc3a79967c8c2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2core_8c_a5939ae8280d635607cce07591cb4341f}\label{core_2core_8c_a5939ae8280d635607cce07591cb4341f}} 
+\index{core/core.\+c@{core/core.\+c}!m\+Core\+Autoload\+Save@{m\+Core\+Autoload\+Save}}
+\index{m\+Core\+Autoload\+Save@{m\+Core\+Autoload\+Save}!core/core.\+c@{core/core.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Autoload\+Save()}{mCoreAutoloadSave()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Autoload\+Save (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a5939ae8280d635607cce07591cb4341f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a5939ae8280d635607cce07591cb4341f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2core_8c_a56f77a0e04fd297e64c65f1908706828}\label{core_2core_8c_a56f77a0e04fd297e64c65f1908706828}} 
+\index{core/core.\+c@{core/core.\+c}!m\+Core\+Delete\+State@{m\+Core\+Delete\+State}}
+\index{m\+Core\+Delete\+State@{m\+Core\+Delete\+State}!core/core.\+c@{core/core.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Delete\+State()}{mCoreDeleteState()}}
+{\footnotesize\ttfamily void m\+Core\+Delete\+State (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{slot }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{core_2core_8c_a24aff492e3e031e765a746833bbb5e70}\label{core_2core_8c_a24aff492e3e031e765a746833bbb5e70}} 
+\index{core/core.\+c@{core/core.\+c}!m\+Core\+Find@{m\+Core\+Find}}
+\index{m\+Core\+Find@{m\+Core\+Find}!core/core.\+c@{core/core.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Find()}{mCoreFind()}}
+{\footnotesize\ttfamily struct m\+Core$\ast$ m\+Core\+Find (\begin{DoxyParamCaption}\item[{const char $\ast$}]{path }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a24aff492e3e031e765a746833bbb5e70_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a24aff492e3e031e765a746833bbb5e70_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2core_8c_a38e2754803523ccfd0f64e3a5fe10b74}\label{core_2core_8c_a38e2754803523ccfd0f64e3a5fe10b74}} 
+\index{core/core.\+c@{core/core.\+c}!m\+Core\+Find\+VF@{m\+Core\+Find\+VF}}
+\index{m\+Core\+Find\+VF@{m\+Core\+Find\+VF}!core/core.\+c@{core/core.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Find\+V\+F()}{mCoreFindVF()}}
+{\footnotesize\ttfamily struct m\+Core$\ast$ m\+Core\+Find\+VF (\begin{DoxyParamCaption}\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a38e2754803523ccfd0f64e3a5fe10b74_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a38e2754803523ccfd0f64e3a5fe10b74_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2core_8c_a412b22d3ffaf3d9067ecc8784233281b}\label{core_2core_8c_a412b22d3ffaf3d9067ecc8784233281b}} 
+\index{core/core.\+c@{core/core.\+c}!m\+Core\+Get\+Memory\+Block@{m\+Core\+Get\+Memory\+Block}}
+\index{m\+Core\+Get\+Memory\+Block@{m\+Core\+Get\+Memory\+Block}!core/core.\+c@{core/core.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Get\+Memory\+Block()}{mCoreGetMemoryBlock()}}
+{\footnotesize\ttfamily void$\ast$ m\+Core\+Get\+Memory\+Block (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{uint32\+\_\+t}]{start,  }\item[{size\+\_\+t $\ast$}]{size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a412b22d3ffaf3d9067ecc8784233281b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2core_8c_a8e793e1b8d16c9d8145683707d968f08}\label{core_2core_8c_a8e793e1b8d16c9d8145683707d968f08}} 
+\index{core/core.\+c@{core/core.\+c}!m\+Core\+Get\+State@{m\+Core\+Get\+State}}
+\index{m\+Core\+Get\+State@{m\+Core\+Get\+State}!core/core.\+c@{core/core.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Get\+State()}{mCoreGetState()}}
+{\footnotesize\ttfamily struct V\+File$\ast$ m\+Core\+Get\+State (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{slot,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{write }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a8e793e1b8d16c9d8145683707d968f08_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a8e793e1b8d16c9d8145683707d968f08_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2core_8c_a2300b9b467499467ed624eaf6cdec120}\label{core_2core_8c_a2300b9b467499467ed624eaf6cdec120}} 
+\index{core/core.\+c@{core/core.\+c}!m\+Core\+Init\+Config@{m\+Core\+Init\+Config}}
+\index{m\+Core\+Init\+Config@{m\+Core\+Init\+Config}!core/core.\+c@{core/core.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Init\+Config()}{mCoreInitConfig()}}
+{\footnotesize\ttfamily void m\+Core\+Init\+Config (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{const char $\ast$}]{port }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a2300b9b467499467ed624eaf6cdec120_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a2300b9b467499467ed624eaf6cdec120_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2core_8c_a9c5eae1d4d36056f51252d75299afe44}\label{core_2core_8c_a9c5eae1d4d36056f51252d75299afe44}} 
+\index{core/core.\+c@{core/core.\+c}!m\+Core\+Is\+Compatible@{m\+Core\+Is\+Compatible}}
+\index{m\+Core\+Is\+Compatible@{m\+Core\+Is\+Compatible}!core/core.\+c@{core/core.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Is\+Compatible()}{mCoreIsCompatible()}}
+{\footnotesize\ttfamily enum m\+Platform m\+Core\+Is\+Compatible (\begin{DoxyParamCaption}\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a9c5eae1d4d36056f51252d75299afe44_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2core_8c_a43f162c497aa8b14aad7086892877393}\label{core_2core_8c_a43f162c497aa8b14aad7086892877393}} 
+\index{core/core.\+c@{core/core.\+c}!m\+Core\+Load\+Config@{m\+Core\+Load\+Config}}
+\index{m\+Core\+Load\+Config@{m\+Core\+Load\+Config}!core/core.\+c@{core/core.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Load\+Config()}{mCoreLoadConfig()}}
+{\footnotesize\ttfamily void m\+Core\+Load\+Config (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a43f162c497aa8b14aad7086892877393_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a43f162c497aa8b14aad7086892877393_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2core_8c_ad06475dc282b1a5472a45451be9760b4}\label{core_2core_8c_ad06475dc282b1a5472a45451be9760b4}} 
+\index{core/core.\+c@{core/core.\+c}!m\+Core\+Load\+File@{m\+Core\+Load\+File}}
+\index{m\+Core\+Load\+File@{m\+Core\+Load\+File}!core/core.\+c@{core/core.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Load\+File()}{mCoreLoadFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Load\+File (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{const char $\ast$}]{path }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_ad06475dc282b1a5472a45451be9760b4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_ad06475dc282b1a5472a45451be9760b4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2core_8c_a8a7705563c45e725f003bc79de61a950}\label{core_2core_8c_a8a7705563c45e725f003bc79de61a950}} 
+\index{core/core.\+c@{core/core.\+c}!m\+Core\+Load\+Foreign\+Config@{m\+Core\+Load\+Foreign\+Config}}
+\index{m\+Core\+Load\+Foreign\+Config@{m\+Core\+Load\+Foreign\+Config}!core/core.\+c@{core/core.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Load\+Foreign\+Config()}{mCoreLoadForeignConfig()}}
+{\footnotesize\ttfamily void m\+Core\+Load\+Foreign\+Config (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{const struct m\+Core\+Config $\ast$}]{config }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a8a7705563c45e725f003bc79de61a950_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a8a7705563c45e725f003bc79de61a950_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2core_8c_a15da21d0eee032e290607a679ce20b57}\label{core_2core_8c_a15da21d0eee032e290607a679ce20b57}} 
+\index{core/core.\+c@{core/core.\+c}!m\+Core\+Load\+State@{m\+Core\+Load\+State}}
+\index{m\+Core\+Load\+State@{m\+Core\+Load\+State}!core/core.\+c@{core/core.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Load\+State()}{mCoreLoadState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Load\+State (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{slot,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{flags }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a15da21d0eee032e290607a679ce20b57_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a15da21d0eee032e290607a679ce20b57_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2core_8c_a6eb952bf34d7a9e0c09891be2b6ddb03}\label{core_2core_8c_a6eb952bf34d7a9e0c09891be2b6ddb03}} 
+\index{core/core.\+c@{core/core.\+c}!m\+Core\+Preload\+File@{m\+Core\+Preload\+File}}
+\index{m\+Core\+Preload\+File@{m\+Core\+Preload\+File}!core/core.\+c@{core/core.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Preload\+File()}{mCorePreloadFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Preload\+File (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{const char $\ast$}]{path }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a6eb952bf34d7a9e0c09891be2b6ddb03_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2core_8c_af1c36bae9d2eb7654d9e567f904856f1}\label{core_2core_8c_af1c36bae9d2eb7654d9e567f904856f1}} 
+\index{core/core.\+c@{core/core.\+c}!m\+Core\+Preload\+VF@{m\+Core\+Preload\+VF}}
+\index{m\+Core\+Preload\+VF@{m\+Core\+Preload\+VF}!core/core.\+c@{core/core.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Preload\+V\+F()}{mCorePreloadVF()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Preload\+VF (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_af1c36bae9d2eb7654d9e567f904856f1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{core_2core_8c_af1c36bae9d2eb7654d9e567f904856f1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2core_8c_a642e87dcb5c2ed3a75c341036d08ad2e}\label{core_2core_8c_a642e87dcb5c2ed3a75c341036d08ad2e}} 
+\index{core/core.\+c@{core/core.\+c}!m\+Core\+Save\+State@{m\+Core\+Save\+State}}
+\index{m\+Core\+Save\+State@{m\+Core\+Save\+State}!core/core.\+c@{core/core.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Save\+State()}{mCoreSaveState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Core\+Save\+State (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{slot,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{flags }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a642e87dcb5c2ed3a75c341036d08ad2e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_a642e87dcb5c2ed3a75c341036d08ad2e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2core_8c_a670d139f274f75d16cb8ca4aa1dabdf0}\label{core_2core_8c_a670d139f274f75d16cb8ca4aa1dabdf0}} 
+\index{core/core.\+c@{core/core.\+c}!m\+Core\+Set\+R\+TC@{m\+Core\+Set\+R\+TC}}
+\index{m\+Core\+Set\+R\+TC@{m\+Core\+Set\+R\+TC}!core/core.\+c@{core/core.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Set\+R\+T\+C()}{mCoreSetRTC()}}
+{\footnotesize\ttfamily void m\+Core\+Set\+R\+TC (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core,  }\item[{struct m\+R\+T\+C\+Source $\ast$}]{rtc }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{core_2core_8c_a670d139f274f75d16cb8ca4aa1dabdf0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{core_2core_8c_abd75cb70f413512637193f3b2b3d66a1}\label{core_2core_8c_abd75cb70f413512637193f3b2b3d66a1}} 
+\index{core/core.\+c@{core/core.\+c}!m\+Core\+Take\+Screenshot@{m\+Core\+Take\+Screenshot}}
+\index{m\+Core\+Take\+Screenshot@{m\+Core\+Take\+Screenshot}!core/core.\+c@{core/core.\+c}}
+\subsubsection{\texorpdfstring{m\+Core\+Take\+Screenshot()}{mCoreTakeScreenshot()}}
+{\footnotesize\ttfamily void m\+Core\+Take\+Screenshot (\begin{DoxyParamCaption}\item[{struct m\+Core $\ast$}]{core }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_abd75cb70f413512637193f3b2b3d66a1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{core_2core_8c_abd75cb70f413512637193f3b2b3d66a1_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{core_2core_8c_a5424f60f5da96d9af73c4cdd3b59fc14}\label{core_2core_8c_a5424f60f5da96d9af73c4cdd3b59fc14}} 
+\index{core/core.\+c@{core/core.\+c}!\+\_\+filters@{\+\_\+filters}}
+\index{\+\_\+filters@{\+\_\+filters}!core/core.\+c@{core/core.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+filters}{\_filters}}
+{\footnotesize\ttfamily const struct m\+Core\+Filter  \+\_\+filters\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+
+
+
+
+
+
+    \{ 0, 0, PLATFORM\_NONE \}
+\}
+\end{DoxyCode}

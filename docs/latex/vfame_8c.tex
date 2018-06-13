@@ -1,0 +1,329 @@
+\hypertarget{vfame_8c}{}\section{src/gba/vfame.c File Reference}
+\label{vfame_8c}\index{src/gba/vfame.\+c@{src/gba/vfame.\+c}}
+{\ttfamily \#include $<$mgba/internal/gba/vfame.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/gba.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/memory.\+h$>$}\newline
+Include dependency graph for vfame.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfame_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{vfame_8c_a0122e6477216315ea47869795cfa8307}{\+\_\+is\+In\+Mirrored\+Area}} (uint32\+\_\+t address, size\+\_\+t rom\+Size)
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{vfame_8c_a6b50165e0de3f62fd31cb4d075d2d661}{\+\_\+get\+Pattern\+Value}} (uint32\+\_\+t addr)
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{vfame_8c_a55e8d258343d8961a93e0bdb62a85c82}{\+\_\+pattern\+Right\+Shift2}} (uint32\+\_\+t addr)
+\item 
+static int8\+\_\+t \mbox{\hyperlink{vfame_8c_a2c46c7bce902f441d5410f963c03d332}{\+\_\+modify\+Sram\+Value}} (enum G\+B\+A\+V\+Fame\+Cart\+Type type, uint8\+\_\+t value, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{vfame_8c_a22558283a94eaaa6c96b1b0d4bbae635}{\+\_\+modify\+Sram\+Address}} (enum G\+B\+A\+V\+Fame\+Cart\+Type type, uint32\+\_\+t address, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})
+\item 
+static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{vfame_8c_a076c13f2239ccdfb8992554de8da9b23}{\+\_\+reorder\+Bits}} (uint32\+\_\+t value, const uint8\+\_\+t $\ast$reordering, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} reorder\+Length)
+\item 
+void \mbox{\hyperlink{vfame_8c_acd3dd8b9447103398c70d4c44dd16ee8}{G\+B\+A\+V\+Fame\+Init}} (struct G\+B\+A\+V\+Fame\+Cart $\ast$cart)
+\item 
+void \mbox{\hyperlink{vfame_8c_a7f62b7998a9424fd21d667f0e26f5007}{G\+B\+A\+V\+Fame\+Detect}} (struct G\+B\+A\+V\+Fame\+Cart $\ast$cart, uint32\+\_\+t $\ast$rom, size\+\_\+t rom\+Size)
+\item 
+uint32\+\_\+t \mbox{\hyperlink{vfame_8c_a017579fbd55353237f540e043f89f73e}{G\+B\+A\+V\+Fame\+Modify\+Rom\+Address}} (struct G\+B\+A\+V\+Fame\+Cart $\ast$cart, uint32\+\_\+t address, size\+\_\+t rom\+Size)
+\item 
+uint32\+\_\+t \mbox{\hyperlink{vfame_8c_a658721a30a70a5caa75fb213666ba1c7}{G\+B\+A\+V\+Fame\+Get\+Pattern\+Value}} (uint32\+\_\+t address, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{puff_8c_af23433d9d58fb31d4a1ac224e3bc46e8}{bits}})
+\item 
+void \mbox{\hyperlink{vfame_8c_a64cb955275ef9712184302cc7696425c}{G\+B\+A\+V\+Fame\+Sram\+Write}} (struct G\+B\+A\+V\+Fame\+Cart $\ast$cart, uint32\+\_\+t address, uint8\+\_\+t value, uint8\+\_\+t $\ast$sram\+Data)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const uint8\+\_\+t \mbox{\hyperlink{vfame_8c_aff6a8c987def99319928a4a1dbdf13c0}{A\+D\+D\+R\+E\+S\+S\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+NG}} \mbox{[}4\mbox{]}\mbox{[}16\mbox{]}
+\item 
+static const uint8\+\_\+t \mbox{\hyperlink{vfame_8c_a2a50b1b64db5a0929a216fc3b73c661e}{A\+D\+D\+R\+E\+S\+S\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+N\+G\+\_\+\+G\+E\+O\+R\+GE}} \mbox{[}4\mbox{]}\mbox{[}16\mbox{]}
+\item 
+static const uint8\+\_\+t \mbox{\hyperlink{vfame_8c_aebcd0081ac3ea93c202993dd9ecf8d40}{V\+A\+L\+U\+E\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+NG}} \mbox{[}4\mbox{]}\mbox{[}16\mbox{]}
+\item 
+static const uint8\+\_\+t \mbox{\hyperlink{vfame_8c_a74c23788a48bad9cdb597e8f2bc32cff}{V\+A\+L\+U\+E\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+N\+G\+\_\+\+G\+E\+O\+R\+GE}} \mbox{[}4\mbox{]}\mbox{[}16\mbox{]}
+\item 
+static const int8\+\_\+t \mbox{\hyperlink{vfame_8c_a1ffee50298edc153cbdbb5ef385c879a}{M\+O\+D\+E\+\_\+\+C\+H\+A\+N\+G\+E\+\_\+\+S\+T\+A\+R\+T\+\_\+\+S\+E\+Q\+U\+E\+N\+CE}} \mbox{[}5\mbox{]} = \{ 0x99, 0x02, 0x05, 0x02, 0x03 \}
+\item 
+static const int8\+\_\+t \mbox{\hyperlink{vfame_8c_acc8cb106ce7b1cd966098f6f7b96e099}{M\+O\+D\+E\+\_\+\+C\+H\+A\+N\+G\+E\+\_\+\+E\+N\+D\+\_\+\+S\+E\+Q\+U\+E\+N\+CE}} \mbox{[}5\mbox{]} = \{ 0x99, 0x03, 0x62, 0x02, 0x56 \}
+\item 
+static const char \mbox{\hyperlink{vfame_8c_ad416b89a734673defe9016cdfa9c97c8}{I\+N\+I\+T\+\_\+\+S\+E\+Q\+U\+E\+N\+CE}} \mbox{[}16\mbox{]} = \{ 0x\+B4, 0x00, 0x9\+F, 0x\+E5, 0x99, 0x10, 0x\+A0, 0x\+E3, 0x00, 0x10, 0x\+C0, 0x\+E5, 0x\+A\+C, 0x00, 0x9\+F, 0x\+E5 \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{vfame_8c_a6b50165e0de3f62fd31cb4d075d2d661}\label{vfame_8c_a6b50165e0de3f62fd31cb4d075d2d661}} 
+\index{vfame.\+c@{vfame.\+c}!\+\_\+get\+Pattern\+Value@{\+\_\+get\+Pattern\+Value}}
+\index{\+\_\+get\+Pattern\+Value@{\+\_\+get\+Pattern\+Value}!vfame.\+c@{vfame.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+get\+Pattern\+Value()}{\_getPatternValue()}}
+{\footnotesize\ttfamily static uint32\+\_\+t \+\_\+get\+Pattern\+Value (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{addr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{vfame_8c_a6b50165e0de3f62fd31cb4d075d2d661_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfame_8c_a6b50165e0de3f62fd31cb4d075d2d661_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfame_8c_a0122e6477216315ea47869795cfa8307}\label{vfame_8c_a0122e6477216315ea47869795cfa8307}} 
+\index{vfame.\+c@{vfame.\+c}!\+\_\+is\+In\+Mirrored\+Area@{\+\_\+is\+In\+Mirrored\+Area}}
+\index{\+\_\+is\+In\+Mirrored\+Area@{\+\_\+is\+In\+Mirrored\+Area}!vfame.\+c@{vfame.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+is\+In\+Mirrored\+Area()}{\_isInMirroredArea()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+is\+In\+Mirrored\+Area (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{address,  }\item[{size\+\_\+t}]{rom\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfame_8c_a0122e6477216315ea47869795cfa8307_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfame_8c_a22558283a94eaaa6c96b1b0d4bbae635}\label{vfame_8c_a22558283a94eaaa6c96b1b0d4bbae635}} 
+\index{vfame.\+c@{vfame.\+c}!\+\_\+modify\+Sram\+Address@{\+\_\+modify\+Sram\+Address}}
+\index{\+\_\+modify\+Sram\+Address@{\+\_\+modify\+Sram\+Address}!vfame.\+c@{vfame.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+modify\+Sram\+Address()}{\_modifySramAddress()}}
+{\footnotesize\ttfamily static uint32\+\_\+t \+\_\+modify\+Sram\+Address (\begin{DoxyParamCaption}\item[{enum G\+B\+A\+V\+Fame\+Cart\+Type}]{type,  }\item[{uint32\+\_\+t}]{address,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{vfame_8c_a22558283a94eaaa6c96b1b0d4bbae635_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfame_8c_a22558283a94eaaa6c96b1b0d4bbae635_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfame_8c_a2c46c7bce902f441d5410f963c03d332}\label{vfame_8c_a2c46c7bce902f441d5410f963c03d332}} 
+\index{vfame.\+c@{vfame.\+c}!\+\_\+modify\+Sram\+Value@{\+\_\+modify\+Sram\+Value}}
+\index{\+\_\+modify\+Sram\+Value@{\+\_\+modify\+Sram\+Value}!vfame.\+c@{vfame.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+modify\+Sram\+Value()}{\_modifySramValue()}}
+{\footnotesize\ttfamily static int8\+\_\+t \+\_\+modify\+Sram\+Value (\begin{DoxyParamCaption}\item[{enum G\+B\+A\+V\+Fame\+Cart\+Type}]{type,  }\item[{uint8\+\_\+t}]{value,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{vfame_8c_a2c46c7bce902f441d5410f963c03d332_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfame_8c_a2c46c7bce902f441d5410f963c03d332_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfame_8c_a55e8d258343d8961a93e0bdb62a85c82}\label{vfame_8c_a55e8d258343d8961a93e0bdb62a85c82}} 
+\index{vfame.\+c@{vfame.\+c}!\+\_\+pattern\+Right\+Shift2@{\+\_\+pattern\+Right\+Shift2}}
+\index{\+\_\+pattern\+Right\+Shift2@{\+\_\+pattern\+Right\+Shift2}!vfame.\+c@{vfame.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+pattern\+Right\+Shift2()}{\_patternRightShift2()}}
+{\footnotesize\ttfamily static uint32\+\_\+t \+\_\+pattern\+Right\+Shift2 (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{addr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfame_8c_a55e8d258343d8961a93e0bdb62a85c82_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfame_8c_a076c13f2239ccdfb8992554de8da9b23}\label{vfame_8c_a076c13f2239ccdfb8992554de8da9b23}} 
+\index{vfame.\+c@{vfame.\+c}!\+\_\+reorder\+Bits@{\+\_\+reorder\+Bits}}
+\index{\+\_\+reorder\+Bits@{\+\_\+reorder\+Bits}!vfame.\+c@{vfame.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+reorder\+Bits()}{\_reorderBits()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \+\_\+reorder\+Bits (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{value,  }\item[{const uint8\+\_\+t $\ast$}]{reordering,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{reorder\+Length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfame_8c_a076c13f2239ccdfb8992554de8da9b23_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfame_8c_a7f62b7998a9424fd21d667f0e26f5007}\label{vfame_8c_a7f62b7998a9424fd21d667f0e26f5007}} 
+\index{vfame.\+c@{vfame.\+c}!G\+B\+A\+V\+Fame\+Detect@{G\+B\+A\+V\+Fame\+Detect}}
+\index{G\+B\+A\+V\+Fame\+Detect@{G\+B\+A\+V\+Fame\+Detect}!vfame.\+c@{vfame.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+V\+Fame\+Detect()}{GBAVFameDetect()}}
+{\footnotesize\ttfamily void G\+B\+A\+V\+Fame\+Detect (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+V\+Fame\+Cart $\ast$}]{cart,  }\item[{uint32\+\_\+t $\ast$}]{rom,  }\item[{size\+\_\+t}]{rom\+Size }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfame_8c_a7f62b7998a9424fd21d667f0e26f5007_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfame_8c_a658721a30a70a5caa75fb213666ba1c7}\label{vfame_8c_a658721a30a70a5caa75fb213666ba1c7}} 
+\index{vfame.\+c@{vfame.\+c}!G\+B\+A\+V\+Fame\+Get\+Pattern\+Value@{G\+B\+A\+V\+Fame\+Get\+Pattern\+Value}}
+\index{G\+B\+A\+V\+Fame\+Get\+Pattern\+Value@{G\+B\+A\+V\+Fame\+Get\+Pattern\+Value}!vfame.\+c@{vfame.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+V\+Fame\+Get\+Pattern\+Value()}{GBAVFameGetPatternValue()}}
+{\footnotesize\ttfamily uint32\+\_\+t G\+B\+A\+V\+Fame\+Get\+Pattern\+Value (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{address,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{bits }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfame_8c_a658721a30a70a5caa75fb213666ba1c7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfame_8c_a658721a30a70a5caa75fb213666ba1c7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfame_8c_acd3dd8b9447103398c70d4c44dd16ee8}\label{vfame_8c_acd3dd8b9447103398c70d4c44dd16ee8}} 
+\index{vfame.\+c@{vfame.\+c}!G\+B\+A\+V\+Fame\+Init@{G\+B\+A\+V\+Fame\+Init}}
+\index{G\+B\+A\+V\+Fame\+Init@{G\+B\+A\+V\+Fame\+Init}!vfame.\+c@{vfame.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+V\+Fame\+Init()}{GBAVFameInit()}}
+{\footnotesize\ttfamily void G\+B\+A\+V\+Fame\+Init (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+V\+Fame\+Cart $\ast$}]{cart }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfame_8c_acd3dd8b9447103398c70d4c44dd16ee8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfame_8c_a017579fbd55353237f540e043f89f73e}\label{vfame_8c_a017579fbd55353237f540e043f89f73e}} 
+\index{vfame.\+c@{vfame.\+c}!G\+B\+A\+V\+Fame\+Modify\+Rom\+Address@{G\+B\+A\+V\+Fame\+Modify\+Rom\+Address}}
+\index{G\+B\+A\+V\+Fame\+Modify\+Rom\+Address@{G\+B\+A\+V\+Fame\+Modify\+Rom\+Address}!vfame.\+c@{vfame.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+V\+Fame\+Modify\+Rom\+Address()}{GBAVFameModifyRomAddress()}}
+{\footnotesize\ttfamily uint32\+\_\+t G\+B\+A\+V\+Fame\+Modify\+Rom\+Address (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+V\+Fame\+Cart $\ast$}]{cart,  }\item[{uint32\+\_\+t}]{address,  }\item[{size\+\_\+t}]{rom\+Size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfame_8c_a017579fbd55353237f540e043f89f73e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{vfame_8c_a64cb955275ef9712184302cc7696425c}\label{vfame_8c_a64cb955275ef9712184302cc7696425c}} 
+\index{vfame.\+c@{vfame.\+c}!G\+B\+A\+V\+Fame\+Sram\+Write@{G\+B\+A\+V\+Fame\+Sram\+Write}}
+\index{G\+B\+A\+V\+Fame\+Sram\+Write@{G\+B\+A\+V\+Fame\+Sram\+Write}!vfame.\+c@{vfame.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+V\+Fame\+Sram\+Write()}{GBAVFameSramWrite()}}
+{\footnotesize\ttfamily void G\+B\+A\+V\+Fame\+Sram\+Write (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+V\+Fame\+Cart $\ast$}]{cart,  }\item[{uint32\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{value,  }\item[{uint8\+\_\+t $\ast$}]{sram\+Data }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfame_8c_a64cb955275ef9712184302cc7696425c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{vfame_8c_a64cb955275ef9712184302cc7696425c_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{vfame_8c_aff6a8c987def99319928a4a1dbdf13c0}\label{vfame_8c_aff6a8c987def99319928a4a1dbdf13c0}} 
+\index{vfame.\+c@{vfame.\+c}!A\+D\+D\+R\+E\+S\+S\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+NG@{A\+D\+D\+R\+E\+S\+S\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+NG}}
+\index{A\+D\+D\+R\+E\+S\+S\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+NG@{A\+D\+D\+R\+E\+S\+S\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+NG}!vfame.\+c@{vfame.\+c}}
+\subsubsection{\texorpdfstring{A\+D\+D\+R\+E\+S\+S\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+NG}{ADDRESS\_REORDERING}}
+{\footnotesize\ttfamily const uint8\+\_\+t A\+D\+D\+R\+E\+S\+S\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+NG\mbox{[}4\mbox{]}\mbox{[}16\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    \{ 15, 14, 9, 1, 8, 10, 7, 3, 5, 11, 4, 0, 13, 12, 2, 6 \},
+    \{ 15, 7, 13, 5, 11, 6, 0, 9, 12, 2, 10, 14, 3, 1, 8, 4 \},
+    \{ 15, 0, 3, 12, 2, 4, 14, 13, 1, 8, 6, 7, 9, 5, 11, 10 \}
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{vfame_8c_a2a50b1b64db5a0929a216fc3b73c661e}\label{vfame_8c_a2a50b1b64db5a0929a216fc3b73c661e}} 
+\index{vfame.\+c@{vfame.\+c}!A\+D\+D\+R\+E\+S\+S\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+N\+G\+\_\+\+G\+E\+O\+R\+GE@{A\+D\+D\+R\+E\+S\+S\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+N\+G\+\_\+\+G\+E\+O\+R\+GE}}
+\index{A\+D\+D\+R\+E\+S\+S\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+N\+G\+\_\+\+G\+E\+O\+R\+GE@{A\+D\+D\+R\+E\+S\+S\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+N\+G\+\_\+\+G\+E\+O\+R\+GE}!vfame.\+c@{vfame.\+c}}
+\subsubsection{\texorpdfstring{A\+D\+D\+R\+E\+S\+S\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+N\+G\+\_\+\+G\+E\+O\+R\+GE}{ADDRESS\_REORDERING\_GEORGE}}
+{\footnotesize\ttfamily const uint8\+\_\+t A\+D\+D\+R\+E\+S\+S\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+N\+G\+\_\+\+G\+E\+O\+R\+GE\mbox{[}4\mbox{]}\mbox{[}16\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    \{ 15, 7, 13, 1, 11, 10, 14, 9, 12, 2, 4, 0, 3, 5, 8, 6 \},
+    \{ 15, 14, 3, 12, 8, 4, 0, 13, 5, 11, 6, 7, 9, 1, 2, 10 \},
+    \{ 15, 0, 9, 5, 2, 6, 7, 3, 1, 8, 10, 14, 13, 12, 11, 4 \}
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{vfame_8c_ad416b89a734673defe9016cdfa9c97c8}\label{vfame_8c_ad416b89a734673defe9016cdfa9c97c8}} 
+\index{vfame.\+c@{vfame.\+c}!I\+N\+I\+T\+\_\+\+S\+E\+Q\+U\+E\+N\+CE@{I\+N\+I\+T\+\_\+\+S\+E\+Q\+U\+E\+N\+CE}}
+\index{I\+N\+I\+T\+\_\+\+S\+E\+Q\+U\+E\+N\+CE@{I\+N\+I\+T\+\_\+\+S\+E\+Q\+U\+E\+N\+CE}!vfame.\+c@{vfame.\+c}}
+\subsubsection{\texorpdfstring{I\+N\+I\+T\+\_\+\+S\+E\+Q\+U\+E\+N\+CE}{INIT\_SEQUENCE}}
+{\footnotesize\ttfamily const char I\+N\+I\+T\+\_\+\+S\+E\+Q\+U\+E\+N\+CE\mbox{[}16\mbox{]} = \{ 0x\+B4, 0x00, 0x9\+F, 0x\+E5, 0x99, 0x10, 0x\+A0, 0x\+E3, 0x00, 0x10, 0x\+C0, 0x\+E5, 0x\+A\+C, 0x00, 0x9\+F, 0x\+E5 \}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{vfame_8c_acc8cb106ce7b1cd966098f6f7b96e099}\label{vfame_8c_acc8cb106ce7b1cd966098f6f7b96e099}} 
+\index{vfame.\+c@{vfame.\+c}!M\+O\+D\+E\+\_\+\+C\+H\+A\+N\+G\+E\+\_\+\+E\+N\+D\+\_\+\+S\+E\+Q\+U\+E\+N\+CE@{M\+O\+D\+E\+\_\+\+C\+H\+A\+N\+G\+E\+\_\+\+E\+N\+D\+\_\+\+S\+E\+Q\+U\+E\+N\+CE}}
+\index{M\+O\+D\+E\+\_\+\+C\+H\+A\+N\+G\+E\+\_\+\+E\+N\+D\+\_\+\+S\+E\+Q\+U\+E\+N\+CE@{M\+O\+D\+E\+\_\+\+C\+H\+A\+N\+G\+E\+\_\+\+E\+N\+D\+\_\+\+S\+E\+Q\+U\+E\+N\+CE}!vfame.\+c@{vfame.\+c}}
+\subsubsection{\texorpdfstring{M\+O\+D\+E\+\_\+\+C\+H\+A\+N\+G\+E\+\_\+\+E\+N\+D\+\_\+\+S\+E\+Q\+U\+E\+N\+CE}{MODE\_CHANGE\_END\_SEQUENCE}}
+{\footnotesize\ttfamily const int8\+\_\+t M\+O\+D\+E\+\_\+\+C\+H\+A\+N\+G\+E\+\_\+\+E\+N\+D\+\_\+\+S\+E\+Q\+U\+E\+N\+CE\mbox{[}5\mbox{]} = \{ 0x99, 0x03, 0x62, 0x02, 0x56 \}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{vfame_8c_a1ffee50298edc153cbdbb5ef385c879a}\label{vfame_8c_a1ffee50298edc153cbdbb5ef385c879a}} 
+\index{vfame.\+c@{vfame.\+c}!M\+O\+D\+E\+\_\+\+C\+H\+A\+N\+G\+E\+\_\+\+S\+T\+A\+R\+T\+\_\+\+S\+E\+Q\+U\+E\+N\+CE@{M\+O\+D\+E\+\_\+\+C\+H\+A\+N\+G\+E\+\_\+\+S\+T\+A\+R\+T\+\_\+\+S\+E\+Q\+U\+E\+N\+CE}}
+\index{M\+O\+D\+E\+\_\+\+C\+H\+A\+N\+G\+E\+\_\+\+S\+T\+A\+R\+T\+\_\+\+S\+E\+Q\+U\+E\+N\+CE@{M\+O\+D\+E\+\_\+\+C\+H\+A\+N\+G\+E\+\_\+\+S\+T\+A\+R\+T\+\_\+\+S\+E\+Q\+U\+E\+N\+CE}!vfame.\+c@{vfame.\+c}}
+\subsubsection{\texorpdfstring{M\+O\+D\+E\+\_\+\+C\+H\+A\+N\+G\+E\+\_\+\+S\+T\+A\+R\+T\+\_\+\+S\+E\+Q\+U\+E\+N\+CE}{MODE\_CHANGE\_START\_SEQUENCE}}
+{\footnotesize\ttfamily const int8\+\_\+t M\+O\+D\+E\+\_\+\+C\+H\+A\+N\+G\+E\+\_\+\+S\+T\+A\+R\+T\+\_\+\+S\+E\+Q\+U\+E\+N\+CE\mbox{[}5\mbox{]} = \{ 0x99, 0x02, 0x05, 0x02, 0x03 \}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{vfame_8c_aebcd0081ac3ea93c202993dd9ecf8d40}\label{vfame_8c_aebcd0081ac3ea93c202993dd9ecf8d40}} 
+\index{vfame.\+c@{vfame.\+c}!V\+A\+L\+U\+E\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+NG@{V\+A\+L\+U\+E\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+NG}}
+\index{V\+A\+L\+U\+E\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+NG@{V\+A\+L\+U\+E\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+NG}!vfame.\+c@{vfame.\+c}}
+\subsubsection{\texorpdfstring{V\+A\+L\+U\+E\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+NG}{VALUE\_REORDERING}}
+{\footnotesize\ttfamily const uint8\+\_\+t V\+A\+L\+U\+E\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+NG\mbox{[}4\mbox{]}\mbox{[}16\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    \{ 5, 4, 3, 2, 1, 0, 7, 6 \},
+    \{ 3, 2, 1, 0, 7, 6, 5, 4 \},
+    \{ 1, 0, 7, 6, 5, 4, 3, 2 \}
+\}
+\end{DoxyCode}
+\mbox{\Hypertarget{vfame_8c_a74c23788a48bad9cdb597e8f2bc32cff}\label{vfame_8c_a74c23788a48bad9cdb597e8f2bc32cff}} 
+\index{vfame.\+c@{vfame.\+c}!V\+A\+L\+U\+E\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+N\+G\+\_\+\+G\+E\+O\+R\+GE@{V\+A\+L\+U\+E\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+N\+G\+\_\+\+G\+E\+O\+R\+GE}}
+\index{V\+A\+L\+U\+E\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+N\+G\+\_\+\+G\+E\+O\+R\+GE@{V\+A\+L\+U\+E\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+N\+G\+\_\+\+G\+E\+O\+R\+GE}!vfame.\+c@{vfame.\+c}}
+\subsubsection{\texorpdfstring{V\+A\+L\+U\+E\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+N\+G\+\_\+\+G\+E\+O\+R\+GE}{VALUE\_REORDERING\_GEORGE}}
+{\footnotesize\ttfamily const uint8\+\_\+t V\+A\+L\+U\+E\+\_\+\+R\+E\+O\+R\+D\+E\+R\+I\+N\+G\+\_\+\+G\+E\+O\+R\+GE\mbox{[}4\mbox{]}\mbox{[}16\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    \{ 3, 0, 7, 2, 1, 4, 5, 6 \},
+    \{ 1, 4, 3, 0, 5, 6, 7, 2 \},
+    \{ 5, 2, 1, 6, 7, 0, 3, 4 \}
+\}
+\end{DoxyCode}

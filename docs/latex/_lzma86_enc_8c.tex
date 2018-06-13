@@ -1,0 +1,100 @@
+\hypertarget{_lzma86_enc_8c}{}\section{src/third-\/party/lzma/\+Lzma86\+Enc.c File Reference}
+\label{_lzma86_enc_8c}\index{src/third-\/party/lzma/\+Lzma86\+Enc.\+c@{src/third-\/party/lzma/\+Lzma86\+Enc.\+c}}
+{\ttfamily \#include \char`\"{}Precomp.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Lzma86.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Alloc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Bra.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Lzma\+Enc.\+h\char`\"{}}\newline
+Include dependency graph for Lzma86\+Enc.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma86_enc_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_lzma86_enc_8c_a4ec5e9bd59d94d967ff34edab3f4c9a0}{S\+Z\+E\+\_\+\+O\+U\+T\+\_\+\+O\+V\+E\+R\+F\+L\+OW}}~S\+Z\+E\+\_\+\+D\+A\+T\+A\+\_\+\+E\+R\+R\+OR
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void $\ast$ \mbox{\hyperlink{_lzma86_enc_8c_aa5eb67bbaed541a0795a758720369b7e}{Sz\+Alloc}} (void $\ast$p, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+static void \mbox{\hyperlink{_lzma86_enc_8c_a8c236bdc930def0eed59b90777a2bab3}{Sz\+Free}} (void $\ast$p, void $\ast$address)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{_lzma86_enc_8c_a318acd3bacdf541c7185c44af08d8959}{Lzma86\+\_\+\+Encode}} (\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$dest, size\+\_\+t $\ast$dest\+Len, const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$src, size\+\_\+t src\+Len, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} level, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} dict\+Size, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{wii_2main_8c_a2140810dd6359607526cf84442057094}{filter\+Mode}})
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_lzma86_enc_8c_a4ec5e9bd59d94d967ff34edab3f4c9a0}\label{_lzma86_enc_8c_a4ec5e9bd59d94d967ff34edab3f4c9a0}} 
+\index{Lzma86\+Enc.\+c@{Lzma86\+Enc.\+c}!S\+Z\+E\+\_\+\+O\+U\+T\+\_\+\+O\+V\+E\+R\+F\+L\+OW@{S\+Z\+E\+\_\+\+O\+U\+T\+\_\+\+O\+V\+E\+R\+F\+L\+OW}}
+\index{S\+Z\+E\+\_\+\+O\+U\+T\+\_\+\+O\+V\+E\+R\+F\+L\+OW@{S\+Z\+E\+\_\+\+O\+U\+T\+\_\+\+O\+V\+E\+R\+F\+L\+OW}!Lzma86\+Enc.\+c@{Lzma86\+Enc.\+c}}
+\subsubsection{\texorpdfstring{S\+Z\+E\+\_\+\+O\+U\+T\+\_\+\+O\+V\+E\+R\+F\+L\+OW}{SZE\_OUT\_OVERFLOW}}
+{\footnotesize\ttfamily \#define S\+Z\+E\+\_\+\+O\+U\+T\+\_\+\+O\+V\+E\+R\+F\+L\+OW~S\+Z\+E\+\_\+\+D\+A\+T\+A\+\_\+\+E\+R\+R\+OR}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_lzma86_enc_8c_a318acd3bacdf541c7185c44af08d8959}\label{_lzma86_enc_8c_a318acd3bacdf541c7185c44af08d8959}} 
+\index{Lzma86\+Enc.\+c@{Lzma86\+Enc.\+c}!Lzma86\+\_\+\+Encode@{Lzma86\+\_\+\+Encode}}
+\index{Lzma86\+\_\+\+Encode@{Lzma86\+\_\+\+Encode}!Lzma86\+Enc.\+c@{Lzma86\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Lzma86\+\_\+\+Encode()}{Lzma86\_Encode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Lzma86\+\_\+\+Encode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$}]{dest,  }\item[{size\+\_\+t $\ast$}]{dest\+Len,  }\item[{const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$}]{src,  }\item[{size\+\_\+t}]{src\+Len,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{level,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{dict\+Size,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{filter\+Mode }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_lzma86_enc_8c_a318acd3bacdf541c7185c44af08d8959_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma86_enc_8c_aa5eb67bbaed541a0795a758720369b7e}\label{_lzma86_enc_8c_aa5eb67bbaed541a0795a758720369b7e}} 
+\index{Lzma86\+Enc.\+c@{Lzma86\+Enc.\+c}!Sz\+Alloc@{Sz\+Alloc}}
+\index{Sz\+Alloc@{Sz\+Alloc}!Lzma86\+Enc.\+c@{Lzma86\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Sz\+Alloc()}{SzAlloc()}}
+{\footnotesize\ttfamily static void$\ast$ Sz\+Alloc (\begin{DoxyParamCaption}\item[{void $\ast$}]{p,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{_lzma86_enc_8c_aa5eb67bbaed541a0795a758720369b7e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{_lzma86_enc_8c_aa5eb67bbaed541a0795a758720369b7e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_lzma86_enc_8c_a8c236bdc930def0eed59b90777a2bab3}\label{_lzma86_enc_8c_a8c236bdc930def0eed59b90777a2bab3}} 
+\index{Lzma86\+Enc.\+c@{Lzma86\+Enc.\+c}!Sz\+Free@{Sz\+Free}}
+\index{Sz\+Free@{Sz\+Free}!Lzma86\+Enc.\+c@{Lzma86\+Enc.\+c}}
+\subsubsection{\texorpdfstring{Sz\+Free()}{SzFree()}}
+{\footnotesize\ttfamily static void Sz\+Free (\begin{DoxyParamCaption}\item[{void $\ast$}]{p,  }\item[{void $\ast$}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{_lzma86_enc_8c_a8c236bdc930def0eed59b90777a2bab3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{_lzma86_enc_8c_a8c236bdc930def0eed59b90777a2bab3_icgraph}
+\end{center}
+\end{figure}

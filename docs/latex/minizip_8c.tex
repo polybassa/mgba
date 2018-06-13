@@ -1,0 +1,225 @@
+\hypertarget{minizip_8c}{}\section{src/third-\/party/zlib/contrib/minizip/minizip.c File Reference}
+\label{minizip_8c}\index{src/third-\/party/zlib/contrib/minizip/minizip.\+c@{src/third-\/party/zlib/contrib/minizip/minizip.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$utime.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}zip.\+h\char`\"{}}\newline
+Include dependency graph for minizip.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{minizip_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{minizip_8c_aa873b7168492eebce909df8415cac735}{\+\_\+\+\_\+\+U\+S\+E\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T64}}
+\item 
+\#define \mbox{\hyperlink{minizip_8c_a285ae8236e7a984a6692acf6530cd505}{\+\_\+\+\_\+\+U\+S\+E\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64}}
+\item 
+\#define \mbox{\hyperlink{minizip_8c_a0e6d20c5075b52b0f0bc4858d51c8591}{\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64\+\_\+\+S\+O\+U\+R\+CE}}
+\item 
+\#define \mbox{\hyperlink{minizip_8c_ac86701761e1b32d5d7a3358a6c726efa}{\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+B\+IT}}~64
+\item 
+\#define \mbox{\hyperlink{minizip_8c_a522a01bfc7c0429ab53987e50458fe8c}{F\+O\+P\+E\+N\+\_\+\+F\+U\+NC}}(\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}},  \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})~fopen64(\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}}, \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})
+\item 
+\#define \mbox{\hyperlink{minizip_8c_ae84e3319767599bbef3ccbdeb4b0a3e4}{F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC}}(\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}})~ftello64(\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}})
+\item 
+\#define \mbox{\hyperlink{minizip_8c_a0e74e519db7ea2da026a7da7eac65c7c}{F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC}}(\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}},  \mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}},  \mbox{\hyperlink{ioapi_8h_a5f189a59b66f135978bce54f9d0fcade}{origin}})~fseeko64(\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, \mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}}, \mbox{\hyperlink{ioapi_8h_a5f189a59b66f135978bce54f9d0fcade}{origin}})
+\item 
+\#define \mbox{\hyperlink{minizip_8c_adfe72f5b8aa1cbe610fc54d4e701fee4}{W\+R\+I\+T\+E\+B\+U\+F\+F\+E\+R\+S\+I\+ZE}}~(16384)
+\item 
+\#define \mbox{\hyperlink{minizip_8c_a0947c0a3d28c188caa4497cce08539c9}{M\+A\+X\+F\+I\+L\+E\+N\+A\+ME}}~(256)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} \mbox{\hyperlink{minizip_8c_a96f1668be385cfc6ab295d2d97a23d8c}{filetime}} (char $\ast$\mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}}, \mbox{\hyperlink{zip_8h_a93b9012a85479327c6da966108d8f743}{tm\+\_\+zip}} $\ast$tmzip, \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} $\ast$dt)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{minizip_8c_a0548ffcc68cdc9515f14b8c0f7e3482a}{check\+\_\+exist\+\_\+file}} (char $\ast$\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}}) const
+\item 
+void \mbox{\hyperlink{minizip_8c_ac13e8406027ba27328f38a29b8853ee1}{do\+\_\+banner}} ()
+\item 
+void \mbox{\hyperlink{minizip_8c_a82ccff470e09e8da8a6c92961643c943}{do\+\_\+help}} ()
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{minizip_8c_a2ba7c541e8ed9cd5fee07aeb92df333b}{get\+File\+Crc}} (const char $\ast$filenameinzip, void $\ast$\mbox{\hyperlink{ioapi_8h_a8ad8a13c88886b9f623034ff88570adb}{buf}}, unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} size\+\_\+buf, unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} $\ast$result\+\_\+crc)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{minizip_8c_a60eb9f83f55dd774427e03d406d575de}{is\+Large\+File}} (const char $\ast$\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}})
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{minizip_8c_afced8478b91af5c169926dfa4426333d}{main}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, argv)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{minizip_8c_aa873b7168492eebce909df8415cac735}\label{minizip_8c_aa873b7168492eebce909df8415cac735}} 
+\index{minizip.\+c@{minizip.\+c}!\+\_\+\+\_\+\+U\+S\+E\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T64@{\+\_\+\+\_\+\+U\+S\+E\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T64}}
+\index{\+\_\+\+\_\+\+U\+S\+E\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T64@{\+\_\+\+\_\+\+U\+S\+E\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T64}!minizip.\+c@{minizip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+\+U\+S\+E\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T64}{\_\_USE\_FILE\_OFFSET64}}
+{\footnotesize\ttfamily \#define \+\_\+\+\_\+\+U\+S\+E\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T64}
+
+\mbox{\Hypertarget{minizip_8c_a285ae8236e7a984a6692acf6530cd505}\label{minizip_8c_a285ae8236e7a984a6692acf6530cd505}} 
+\index{minizip.\+c@{minizip.\+c}!\+\_\+\+\_\+\+U\+S\+E\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64@{\+\_\+\+\_\+\+U\+S\+E\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64}}
+\index{\+\_\+\+\_\+\+U\+S\+E\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64@{\+\_\+\+\_\+\+U\+S\+E\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64}!minizip.\+c@{minizip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+\+U\+S\+E\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64}{\_\_USE\_LARGEFILE64}}
+{\footnotesize\ttfamily \#define \+\_\+\+\_\+\+U\+S\+E\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64}
+
+\mbox{\Hypertarget{minizip_8c_ac86701761e1b32d5d7a3358a6c726efa}\label{minizip_8c_ac86701761e1b32d5d7a3358a6c726efa}} 
+\index{minizip.\+c@{minizip.\+c}!\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+B\+IT@{\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+B\+IT}}
+\index{\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+B\+IT@{\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+B\+IT}!minizip.\+c@{minizip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+B\+IT}{\_FILE\_OFFSET\_BIT}}
+{\footnotesize\ttfamily \#define \+\_\+\+F\+I\+L\+E\+\_\+\+O\+F\+F\+S\+E\+T\+\_\+\+B\+IT~64}
+
+\mbox{\Hypertarget{minizip_8c_a0e6d20c5075b52b0f0bc4858d51c8591}\label{minizip_8c_a0e6d20c5075b52b0f0bc4858d51c8591}} 
+\index{minizip.\+c@{minizip.\+c}!\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64\+\_\+\+S\+O\+U\+R\+CE@{\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64\+\_\+\+S\+O\+U\+R\+CE}}
+\index{\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64\+\_\+\+S\+O\+U\+R\+CE@{\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64\+\_\+\+S\+O\+U\+R\+CE}!minizip.\+c@{minizip.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64\+\_\+\+S\+O\+U\+R\+CE}{\_LARGEFILE64\_SOURCE}}
+{\footnotesize\ttfamily \#define \+\_\+\+L\+A\+R\+G\+E\+F\+I\+L\+E64\+\_\+\+S\+O\+U\+R\+CE}
+
+\mbox{\Hypertarget{minizip_8c_a522a01bfc7c0429ab53987e50458fe8c}\label{minizip_8c_a522a01bfc7c0429ab53987e50458fe8c}} 
+\index{minizip.\+c@{minizip.\+c}!F\+O\+P\+E\+N\+\_\+\+F\+U\+NC@{F\+O\+P\+E\+N\+\_\+\+F\+U\+NC}}
+\index{F\+O\+P\+E\+N\+\_\+\+F\+U\+NC@{F\+O\+P\+E\+N\+\_\+\+F\+U\+NC}!minizip.\+c@{minizip.\+c}}
+\subsubsection{\texorpdfstring{F\+O\+P\+E\+N\+\_\+\+F\+U\+NC}{FOPEN\_FUNC}}
+{\footnotesize\ttfamily \#define F\+O\+P\+E\+N\+\_\+\+F\+U\+NC(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}},  }\item[{}]{\mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}} }\end{DoxyParamCaption})~fopen64(\mbox{\hyperlink{ioapi_8h_a2c8e3f833d9ea6f106973ebe4391bf0f}{filename}}, \mbox{\hyperlink{ioapi_8h_a7e43d41c2fe013a373b540cba02505cf}{mode}})}
+
+\mbox{\Hypertarget{minizip_8c_a0e74e519db7ea2da026a7da7eac65c7c}\label{minizip_8c_a0e74e519db7ea2da026a7da7eac65c7c}} 
+\index{minizip.\+c@{minizip.\+c}!F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC@{F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC}}
+\index{F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC@{F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC}!minizip.\+c@{minizip.\+c}}
+\subsubsection{\texorpdfstring{F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC}{FSEEKO\_FUNC}}
+{\footnotesize\ttfamily \#define F\+S\+E\+E\+K\+O\+\_\+\+F\+U\+NC(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}},  }\item[{}]{\mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}},  }\item[{}]{\mbox{\hyperlink{ioapi_8h_a5f189a59b66f135978bce54f9d0fcade}{origin}} }\end{DoxyParamCaption})~fseeko64(\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, \mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}}, \mbox{\hyperlink{ioapi_8h_a5f189a59b66f135978bce54f9d0fcade}{origin}})}
+
+\mbox{\Hypertarget{minizip_8c_ae84e3319767599bbef3ccbdeb4b0a3e4}\label{minizip_8c_ae84e3319767599bbef3ccbdeb4b0a3e4}} 
+\index{minizip.\+c@{minizip.\+c}!F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC@{F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC}}
+\index{F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC@{F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC}!minizip.\+c@{minizip.\+c}}
+\subsubsection{\texorpdfstring{F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC}{FTELLO\_FUNC}}
+{\footnotesize\ttfamily \#define F\+T\+E\+L\+L\+O\+\_\+\+F\+U\+NC(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}} }\end{DoxyParamCaption})~ftello64(\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}})}
+
+\mbox{\Hypertarget{minizip_8c_a0947c0a3d28c188caa4497cce08539c9}\label{minizip_8c_a0947c0a3d28c188caa4497cce08539c9}} 
+\index{minizip.\+c@{minizip.\+c}!M\+A\+X\+F\+I\+L\+E\+N\+A\+ME@{M\+A\+X\+F\+I\+L\+E\+N\+A\+ME}}
+\index{M\+A\+X\+F\+I\+L\+E\+N\+A\+ME@{M\+A\+X\+F\+I\+L\+E\+N\+A\+ME}!minizip.\+c@{minizip.\+c}}
+\subsubsection{\texorpdfstring{M\+A\+X\+F\+I\+L\+E\+N\+A\+ME}{MAXFILENAME}}
+{\footnotesize\ttfamily \#define M\+A\+X\+F\+I\+L\+E\+N\+A\+ME~(256)}
+
+\mbox{\Hypertarget{minizip_8c_adfe72f5b8aa1cbe610fc54d4e701fee4}\label{minizip_8c_adfe72f5b8aa1cbe610fc54d4e701fee4}} 
+\index{minizip.\+c@{minizip.\+c}!W\+R\+I\+T\+E\+B\+U\+F\+F\+E\+R\+S\+I\+ZE@{W\+R\+I\+T\+E\+B\+U\+F\+F\+E\+R\+S\+I\+ZE}}
+\index{W\+R\+I\+T\+E\+B\+U\+F\+F\+E\+R\+S\+I\+ZE@{W\+R\+I\+T\+E\+B\+U\+F\+F\+E\+R\+S\+I\+ZE}!minizip.\+c@{minizip.\+c}}
+\subsubsection{\texorpdfstring{W\+R\+I\+T\+E\+B\+U\+F\+F\+E\+R\+S\+I\+ZE}{WRITEBUFFERSIZE}}
+{\footnotesize\ttfamily \#define W\+R\+I\+T\+E\+B\+U\+F\+F\+E\+R\+S\+I\+ZE~(16384)}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{minizip_8c_a0548ffcc68cdc9515f14b8c0f7e3482a}\label{minizip_8c_a0548ffcc68cdc9515f14b8c0f7e3482a}} 
+\index{minizip.\+c@{minizip.\+c}!check\+\_\+exist\+\_\+file@{check\+\_\+exist\+\_\+file}}
+\index{check\+\_\+exist\+\_\+file@{check\+\_\+exist\+\_\+file}!minizip.\+c@{minizip.\+c}}
+\subsubsection{\texorpdfstring{check\+\_\+exist\+\_\+file()}{check\_exist\_file()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} check\+\_\+exist\+\_\+file (\begin{DoxyParamCaption}\item[{char$\ast$}]{filename }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{minizip_8c_a0548ffcc68cdc9515f14b8c0f7e3482a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{minizip_8c_ac13e8406027ba27328f38a29b8853ee1}\label{minizip_8c_ac13e8406027ba27328f38a29b8853ee1}} 
+\index{minizip.\+c@{minizip.\+c}!do\+\_\+banner@{do\+\_\+banner}}
+\index{do\+\_\+banner@{do\+\_\+banner}!minizip.\+c@{minizip.\+c}}
+\subsubsection{\texorpdfstring{do\+\_\+banner()}{do\_banner()}}
+{\footnotesize\ttfamily void do\+\_\+banner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{minizip_8c_ac13e8406027ba27328f38a29b8853ee1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{minizip_8c_a82ccff470e09e8da8a6c92961643c943}\label{minizip_8c_a82ccff470e09e8da8a6c92961643c943}} 
+\index{minizip.\+c@{minizip.\+c}!do\+\_\+help@{do\+\_\+help}}
+\index{do\+\_\+help@{do\+\_\+help}!minizip.\+c@{minizip.\+c}}
+\subsubsection{\texorpdfstring{do\+\_\+help()}{do\_help()}}
+{\footnotesize\ttfamily void do\+\_\+help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{minizip_8c_a82ccff470e09e8da8a6c92961643c943_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{minizip_8c_a96f1668be385cfc6ab295d2d97a23d8c}\label{minizip_8c_a96f1668be385cfc6ab295d2d97a23d8c}} 
+\index{minizip.\+c@{minizip.\+c}!filetime@{filetime}}
+\index{filetime@{filetime}!minizip.\+c@{minizip.\+c}}
+\subsubsection{\texorpdfstring{filetime()}{filetime()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} filetime (\begin{DoxyParamCaption}\item[{char $\ast$}]{f,  }\item[{\mbox{\hyperlink{zip_8h_a93b9012a85479327c6da966108d8f743}{tm\+\_\+zip}} $\ast$}]{tmzip,  }\item[{\mbox{\hyperlink{ioapi_8h_a50e9e9d5c30e481de822ad68fe537986}{u\+Long}} $\ast$}]{dt }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{minizip_8c_a96f1668be385cfc6ab295d2d97a23d8c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{minizip_8c_a2ba7c541e8ed9cd5fee07aeb92df333b}\label{minizip_8c_a2ba7c541e8ed9cd5fee07aeb92df333b}} 
+\index{minizip.\+c@{minizip.\+c}!get\+File\+Crc@{get\+File\+Crc}}
+\index{get\+File\+Crc@{get\+File\+Crc}!minizip.\+c@{minizip.\+c}}
+\subsubsection{\texorpdfstring{get\+File\+Crc()}{getFileCrc()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} get\+File\+Crc (\begin{DoxyParamCaption}\item[{const char $\ast$}]{filenameinzip,  }\item[{void $\ast$}]{buf,  }\item[{unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}}}]{size\+\_\+buf,  }\item[{unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} $\ast$}]{result\+\_\+crc }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{minizip_8c_a2ba7c541e8ed9cd5fee07aeb92df333b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{minizip_8c_a2ba7c541e8ed9cd5fee07aeb92df333b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{minizip_8c_a60eb9f83f55dd774427e03d406d575de}\label{minizip_8c_a60eb9f83f55dd774427e03d406d575de}} 
+\index{minizip.\+c@{minizip.\+c}!is\+Large\+File@{is\+Large\+File}}
+\index{is\+Large\+File@{is\+Large\+File}!minizip.\+c@{minizip.\+c}}
+\subsubsection{\texorpdfstring{is\+Large\+File()}{isLargeFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} is\+Large\+File (\begin{DoxyParamCaption}\item[{const char $\ast$}]{filename }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{minizip_8c_a60eb9f83f55dd774427e03d406d575de_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{minizip_8c_afced8478b91af5c169926dfa4426333d}\label{minizip_8c_afced8478b91af5c169926dfa4426333d}} 
+\index{minizip.\+c@{minizip.\+c}!main@{main}}
+\index{main@{main}!minizip.\+c@{minizip.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{argv}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{minizip_8c_afced8478b91af5c169926dfa4426333d_cgraph}
+\end{center}
+\end{figure}

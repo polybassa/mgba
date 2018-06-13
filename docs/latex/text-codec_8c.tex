@@ -1,0 +1,236 @@
+\hypertarget{text-codec_8c}{}\section{src/util/text-\/codec.c File Reference}
+\label{text-codec_8c}\index{src/util/text-\/codec.\+c@{src/util/text-\/codec.\+c}}
+{\ttfamily \#include $<$mgba-\/util/text-\/codec.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/table.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+Include dependency graph for text-\/codec.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{text-codec_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{text-codec_8c_a0ed19a171f0f782872686bc021d9f74e}{\+\_\+clean\+Tree}} (void $\ast$value)
+\item 
+static struct Text\+Codec\+Node $\ast$ \mbox{\hyperlink{text-codec_8c_a2a8c8d4c442ca97dc71895c2304b04ef}{\+\_\+create\+Node}} (void)
+\item 
+static void \mbox{\hyperlink{text-codec_8c_ad10dba7b4d43d411ba0c4edbfe5d203c}{\+\_\+insert\+Leaf}} (struct Text\+Codec\+Node $\ast$node, uint8\+\_\+t $\ast$word, size\+\_\+t word\+Length, uint8\+\_\+t $\ast$output, size\+\_\+t output\+Length)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{text-codec_8c_a64c21801885c3ff4c5d2d8c5377c1cd5}{Text\+Codec\+Load\+T\+BL}} (struct Text\+Codec $\ast$codec, struct V\+File $\ast$vf, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} create\+Reverse)
+\item 
+void \mbox{\hyperlink{text-codec_8c_afbd19db66f87e92647579c2b63c941cc}{Text\+Codec\+Deinit}} (struct Text\+Codec $\ast$codec)
+\item 
+void \mbox{\hyperlink{text-codec_8c_a8a637ebd50ab6b36d4eb5a4c2a9bf55b}{Text\+Codec\+Start\+Decode}} (struct Text\+Codec $\ast$codec, struct Text\+Codec\+Iterator $\ast$iter)
+\item 
+void \mbox{\hyperlink{text-codec_8c_a18c3e0575eb28af2d9eda669df015a74}{Text\+Codec\+Start\+Encode}} (struct Text\+Codec $\ast$codec, struct Text\+Codec\+Iterator $\ast$iter)
+\item 
+static ssize\+\_\+t \mbox{\hyperlink{text-codec_8c_ac88972a459e050dd63076e077babffd0}{\+\_\+\+Text\+Codec\+Finish\+Internal}} (struct Text\+Codec\+Node $\ast$node, uint8\+\_\+t $\ast$output, size\+\_\+t output\+Length)
+\item 
+ssize\+\_\+t \mbox{\hyperlink{text-codec_8c_a7090f20c2a664b7bf30416d0275e6b25}{Text\+Codec\+Advance}} (struct Text\+Codec\+Iterator $\ast$iter, uint8\+\_\+t byte, uint8\+\_\+t $\ast$output, size\+\_\+t output\+Length)
+\item 
+ssize\+\_\+t \mbox{\hyperlink{text-codec_8c_a9aeee69d7c95b369f219d0f5eb65a075}{Text\+Codec\+Finish}} (struct Text\+Codec\+Iterator $\ast$iter, uint8\+\_\+t $\ast$output, size\+\_\+t output\+Length)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{text-codec_8c_a0ed19a171f0f782872686bc021d9f74e}\label{text-codec_8c_a0ed19a171f0f782872686bc021d9f74e}} 
+\index{text-\/codec.\+c@{text-\/codec.\+c}!\+\_\+clean\+Tree@{\+\_\+clean\+Tree}}
+\index{\+\_\+clean\+Tree@{\+\_\+clean\+Tree}!text-\/codec.\+c@{text-\/codec.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+clean\+Tree()}{\_cleanTree()}}
+{\footnotesize\ttfamily static void \+\_\+clean\+Tree (\begin{DoxyParamCaption}\item[{void $\ast$}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{text-codec_8c_a0ed19a171f0f782872686bc021d9f74e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{text-codec_8c_a0ed19a171f0f782872686bc021d9f74e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{text-codec_8c_a2a8c8d4c442ca97dc71895c2304b04ef}\label{text-codec_8c_a2a8c8d4c442ca97dc71895c2304b04ef}} 
+\index{text-\/codec.\+c@{text-\/codec.\+c}!\+\_\+create\+Node@{\+\_\+create\+Node}}
+\index{\+\_\+create\+Node@{\+\_\+create\+Node}!text-\/codec.\+c@{text-\/codec.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+create\+Node()}{\_createNode()}}
+{\footnotesize\ttfamily static struct Text\+Codec\+Node$\ast$ \+\_\+create\+Node (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{text-codec_8c_a2a8c8d4c442ca97dc71895c2304b04ef_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{text-codec_8c_a2a8c8d4c442ca97dc71895c2304b04ef_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{text-codec_8c_ad10dba7b4d43d411ba0c4edbfe5d203c}\label{text-codec_8c_ad10dba7b4d43d411ba0c4edbfe5d203c}} 
+\index{text-\/codec.\+c@{text-\/codec.\+c}!\+\_\+insert\+Leaf@{\+\_\+insert\+Leaf}}
+\index{\+\_\+insert\+Leaf@{\+\_\+insert\+Leaf}!text-\/codec.\+c@{text-\/codec.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+insert\+Leaf()}{\_insertLeaf()}}
+{\footnotesize\ttfamily static void \+\_\+insert\+Leaf (\begin{DoxyParamCaption}\item[{struct Text\+Codec\+Node $\ast$}]{node,  }\item[{uint8\+\_\+t $\ast$}]{word,  }\item[{size\+\_\+t}]{word\+Length,  }\item[{uint8\+\_\+t $\ast$}]{output,  }\item[{size\+\_\+t}]{output\+Length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{text-codec_8c_ad10dba7b4d43d411ba0c4edbfe5d203c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{text-codec_8c_ad10dba7b4d43d411ba0c4edbfe5d203c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{text-codec_8c_ac88972a459e050dd63076e077babffd0}\label{text-codec_8c_ac88972a459e050dd63076e077babffd0}} 
+\index{text-\/codec.\+c@{text-\/codec.\+c}!\+\_\+\+Text\+Codec\+Finish\+Internal@{\+\_\+\+Text\+Codec\+Finish\+Internal}}
+\index{\+\_\+\+Text\+Codec\+Finish\+Internal@{\+\_\+\+Text\+Codec\+Finish\+Internal}!text-\/codec.\+c@{text-\/codec.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+Text\+Codec\+Finish\+Internal()}{\_TextCodecFinishInternal()}}
+{\footnotesize\ttfamily static ssize\+\_\+t \+\_\+\+Text\+Codec\+Finish\+Internal (\begin{DoxyParamCaption}\item[{struct Text\+Codec\+Node $\ast$}]{node,  }\item[{uint8\+\_\+t $\ast$}]{output,  }\item[{size\+\_\+t}]{output\+Length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{text-codec_8c_ac88972a459e050dd63076e077babffd0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{text-codec_8c_a7090f20c2a664b7bf30416d0275e6b25}\label{text-codec_8c_a7090f20c2a664b7bf30416d0275e6b25}} 
+\index{text-\/codec.\+c@{text-\/codec.\+c}!Text\+Codec\+Advance@{Text\+Codec\+Advance}}
+\index{Text\+Codec\+Advance@{Text\+Codec\+Advance}!text-\/codec.\+c@{text-\/codec.\+c}}
+\subsubsection{\texorpdfstring{Text\+Codec\+Advance()}{TextCodecAdvance()}}
+{\footnotesize\ttfamily ssize\+\_\+t Text\+Codec\+Advance (\begin{DoxyParamCaption}\item[{struct Text\+Codec\+Iterator $\ast$}]{iter,  }\item[{uint8\+\_\+t}]{byte,  }\item[{uint8\+\_\+t $\ast$}]{output,  }\item[{size\+\_\+t}]{output\+Length }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{text-codec_8c_a7090f20c2a664b7bf30416d0275e6b25_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{text-codec_8c_a7090f20c2a664b7bf30416d0275e6b25_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{text-codec_8c_afbd19db66f87e92647579c2b63c941cc}\label{text-codec_8c_afbd19db66f87e92647579c2b63c941cc}} 
+\index{text-\/codec.\+c@{text-\/codec.\+c}!Text\+Codec\+Deinit@{Text\+Codec\+Deinit}}
+\index{Text\+Codec\+Deinit@{Text\+Codec\+Deinit}!text-\/codec.\+c@{text-\/codec.\+c}}
+\subsubsection{\texorpdfstring{Text\+Codec\+Deinit()}{TextCodecDeinit()}}
+{\footnotesize\ttfamily void Text\+Codec\+Deinit (\begin{DoxyParamCaption}\item[{struct Text\+Codec $\ast$}]{codec }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{text-codec_8c_afbd19db66f87e92647579c2b63c941cc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{text-codec_8c_afbd19db66f87e92647579c2b63c941cc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{text-codec_8c_a9aeee69d7c95b369f219d0f5eb65a075}\label{text-codec_8c_a9aeee69d7c95b369f219d0f5eb65a075}} 
+\index{text-\/codec.\+c@{text-\/codec.\+c}!Text\+Codec\+Finish@{Text\+Codec\+Finish}}
+\index{Text\+Codec\+Finish@{Text\+Codec\+Finish}!text-\/codec.\+c@{text-\/codec.\+c}}
+\subsubsection{\texorpdfstring{Text\+Codec\+Finish()}{TextCodecFinish()}}
+{\footnotesize\ttfamily ssize\+\_\+t Text\+Codec\+Finish (\begin{DoxyParamCaption}\item[{struct Text\+Codec\+Iterator $\ast$}]{iter,  }\item[{uint8\+\_\+t $\ast$}]{output,  }\item[{size\+\_\+t}]{output\+Length }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{text-codec_8c_a9aeee69d7c95b369f219d0f5eb65a075_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{text-codec_8c_a9aeee69d7c95b369f219d0f5eb65a075_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{text-codec_8c_a64c21801885c3ff4c5d2d8c5377c1cd5}\label{text-codec_8c_a64c21801885c3ff4c5d2d8c5377c1cd5}} 
+\index{text-\/codec.\+c@{text-\/codec.\+c}!Text\+Codec\+Load\+T\+BL@{Text\+Codec\+Load\+T\+BL}}
+\index{Text\+Codec\+Load\+T\+BL@{Text\+Codec\+Load\+T\+BL}!text-\/codec.\+c@{text-\/codec.\+c}}
+\subsubsection{\texorpdfstring{Text\+Codec\+Load\+T\+B\+L()}{TextCodecLoadTBL()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} Text\+Codec\+Load\+T\+BL (\begin{DoxyParamCaption}\item[{struct Text\+Codec $\ast$}]{codec,  }\item[{struct V\+File $\ast$}]{vf,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{create\+Reverse }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{text-codec_8c_a64c21801885c3ff4c5d2d8c5377c1cd5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{text-codec_8c_a64c21801885c3ff4c5d2d8c5377c1cd5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{text-codec_8c_a8a637ebd50ab6b36d4eb5a4c2a9bf55b}\label{text-codec_8c_a8a637ebd50ab6b36d4eb5a4c2a9bf55b}} 
+\index{text-\/codec.\+c@{text-\/codec.\+c}!Text\+Codec\+Start\+Decode@{Text\+Codec\+Start\+Decode}}
+\index{Text\+Codec\+Start\+Decode@{Text\+Codec\+Start\+Decode}!text-\/codec.\+c@{text-\/codec.\+c}}
+\subsubsection{\texorpdfstring{Text\+Codec\+Start\+Decode()}{TextCodecStartDecode()}}
+{\footnotesize\ttfamily void Text\+Codec\+Start\+Decode (\begin{DoxyParamCaption}\item[{struct Text\+Codec $\ast$}]{codec,  }\item[{struct Text\+Codec\+Iterator $\ast$}]{iter }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{text-codec_8c_a8a637ebd50ab6b36d4eb5a4c2a9bf55b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{text-codec_8c_a18c3e0575eb28af2d9eda669df015a74}\label{text-codec_8c_a18c3e0575eb28af2d9eda669df015a74}} 
+\index{text-\/codec.\+c@{text-\/codec.\+c}!Text\+Codec\+Start\+Encode@{Text\+Codec\+Start\+Encode}}
+\index{Text\+Codec\+Start\+Encode@{Text\+Codec\+Start\+Encode}!text-\/codec.\+c@{text-\/codec.\+c}}
+\subsubsection{\texorpdfstring{Text\+Codec\+Start\+Encode()}{TextCodecStartEncode()}}
+{\footnotesize\ttfamily void Text\+Codec\+Start\+Encode (\begin{DoxyParamCaption}\item[{struct Text\+Codec $\ast$}]{codec,  }\item[{struct Text\+Codec\+Iterator $\ast$}]{iter }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{text-codec_8c_a18c3e0575eb28af2d9eda669df015a74_icgraph}
+\end{center}
+\end{figure}

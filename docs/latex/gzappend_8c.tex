@@ -1,0 +1,313 @@
+\hypertarget{gzappend_8c}{}\section{src/third-\/party/zlib/examples/gzappend.c File Reference}
+\label{gzappend_8c}\index{src/third-\/party/zlib/examples/gzappend.\+c@{src/third-\/party/zlib/examples/gzappend.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}zlib.\+h\char`\"{}}\newline
+Include dependency graph for gzappend.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzappend_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gzappend_8c_a08023ea6765c99d60a6a3840cd07156e}{local}}~static
+\item 
+\#define \mbox{\hyperlink{gzappend_8c_a9ff81f68cbd2c773a6c9e8a72bd9e5e6}{L\+G\+C\+H\+U\+NK}}~14
+\item 
+\#define \mbox{\hyperlink{gzappend_8c_a25022864dfc8ec428e7128282e57b136}{C\+H\+U\+NK}}~(1\+U $<$$<$ L\+G\+C\+H\+U\+N\+K)
+\item 
+\#define \mbox{\hyperlink{gzappend_8c_a5961fe5ed1cedbe60fcbdc97623f0ac2}{D\+S\+I\+ZE}}~32768U
+\item 
+\#define \mbox{\hyperlink{gzappend_8c_a5fddaa7746819fd99e8fc5e8f91706dc}{read1}}(\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}})
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{gzappend_8c_a355a7b66c6a35db52db69dfb55e40a8b}{bye}} (char $\ast$msg1, char $\ast$msg2)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} unsigned \mbox{\hyperlink{gzappend_8c_aab2f4ce94c55eee75c730ef29348b822}{gcd}} (unsigned \mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}}, unsigned b)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{gzappend_8c_a4f13e4c742e47380cfb3aa6744ff89a7}{rotate}} (unsigned char $\ast$list, unsigned len, unsigned rot)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzappend_8c_a1cb1b33dccef1abf6de9d873cc45c234}{readin}} (file $\ast$\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzappend_8c_adc077b2ce84e52cf6cf5a9a435371257}{readmore}} (file $\ast$\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{gzappend_8c_ab3ed01aa0272a6da17923faad217d3bd}{skip}} (file $\ast$\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}, unsigned \mbox{\hyperlink{isa-lr35902_8c_ae54e54065504090672c92ef62a1c5f05}{n}})
+\item 
+unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} \mbox{\hyperlink{gzappend_8c_a7a80796bb5b7f9891fcb2a57d7aff0bf}{read4}} (file $\ast$\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{gzappend_8c_a4324fdde25721c9213ba77c86bc25c89}{gzheader}} (file $\ast$\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}})
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzappend_8c_ac867b637486dd9902d2939130cc26f5d}{gzscan}} (char $\ast$name, \mbox{\hyperlink{zlib_8h_afa60092f4e0b9bc4f23b41c6930463f0}{z\+\_\+stream}} $\ast$strm, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} level)
+\item 
+\mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void \mbox{\hyperlink{gzappend_8c_a00052bd14d0258425de7561880408955}{gztack}} (char $\ast$name, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} gd, \mbox{\hyperlink{zlib_8h_afa60092f4e0b9bc4f23b41c6930463f0}{z\+\_\+stream}} $\ast$strm, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} last)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{gzappend_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{gzappend_8c_a25022864dfc8ec428e7128282e57b136}\label{gzappend_8c_a25022864dfc8ec428e7128282e57b136}} 
+\index{gzappend.\+c@{gzappend.\+c}!C\+H\+U\+NK@{C\+H\+U\+NK}}
+\index{C\+H\+U\+NK@{C\+H\+U\+NK}!gzappend.\+c@{gzappend.\+c}}
+\subsubsection{\texorpdfstring{C\+H\+U\+NK}{CHUNK}}
+{\footnotesize\ttfamily \#define C\+H\+U\+NK~(1\+U $<$$<$ L\+G\+C\+H\+U\+N\+K)}
+
+\mbox{\Hypertarget{gzappend_8c_a5961fe5ed1cedbe60fcbdc97623f0ac2}\label{gzappend_8c_a5961fe5ed1cedbe60fcbdc97623f0ac2}} 
+\index{gzappend.\+c@{gzappend.\+c}!D\+S\+I\+ZE@{D\+S\+I\+ZE}}
+\index{D\+S\+I\+ZE@{D\+S\+I\+ZE}!gzappend.\+c@{gzappend.\+c}}
+\subsubsection{\texorpdfstring{D\+S\+I\+ZE}{DSIZE}}
+{\footnotesize\ttfamily \#define D\+S\+I\+ZE~32768U}
+
+\mbox{\Hypertarget{gzappend_8c_a9ff81f68cbd2c773a6c9e8a72bd9e5e6}\label{gzappend_8c_a9ff81f68cbd2c773a6c9e8a72bd9e5e6}} 
+\index{gzappend.\+c@{gzappend.\+c}!L\+G\+C\+H\+U\+NK@{L\+G\+C\+H\+U\+NK}}
+\index{L\+G\+C\+H\+U\+NK@{L\+G\+C\+H\+U\+NK}!gzappend.\+c@{gzappend.\+c}}
+\subsubsection{\texorpdfstring{L\+G\+C\+H\+U\+NK}{LGCHUNK}}
+{\footnotesize\ttfamily \#define L\+G\+C\+H\+U\+NK~14}
+
+\mbox{\Hypertarget{gzappend_8c_a08023ea6765c99d60a6a3840cd07156e}\label{gzappend_8c_a08023ea6765c99d60a6a3840cd07156e}} 
+\index{gzappend.\+c@{gzappend.\+c}!local@{local}}
+\index{local@{local}!gzappend.\+c@{gzappend.\+c}}
+\subsubsection{\texorpdfstring{local}{local}}
+{\footnotesize\ttfamily \#define local~static}
+
+\mbox{\Hypertarget{gzappend_8c_a5fddaa7746819fd99e8fc5e8f91706dc}\label{gzappend_8c_a5fddaa7746819fd99e8fc5e8f91706dc}} 
+\index{gzappend.\+c@{gzappend.\+c}!read1@{read1}}
+\index{read1@{read1}!gzappend.\+c@{gzappend.\+c}}
+\subsubsection{\texorpdfstring{read1}{read1}}
+{\footnotesize\ttfamily \#define read1(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+(\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}->left == 0 ? \mbox{\hyperlink{gzappend_8c_adc077b2ce84e52cf6cf5a9a435371257}{readmore}}(\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}) : 0, \(\backslash\)
+                   \mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}->left--, *(\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}->next)++)
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{gzappend_8c_a355a7b66c6a35db52db69dfb55e40a8b}\label{gzappend_8c_a355a7b66c6a35db52db69dfb55e40a8b}} 
+\index{gzappend.\+c@{gzappend.\+c}!bye@{bye}}
+\index{bye@{bye}!gzappend.\+c@{gzappend.\+c}}
+\subsubsection{\texorpdfstring{bye()}{bye()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void bye (\begin{DoxyParamCaption}\item[{char $\ast$}]{msg1,  }\item[{char $\ast$}]{msg2 }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzappend_8c_a355a7b66c6a35db52db69dfb55e40a8b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzappend_8c_aab2f4ce94c55eee75c730ef29348b822}\label{gzappend_8c_aab2f4ce94c55eee75c730ef29348b822}} 
+\index{gzappend.\+c@{gzappend.\+c}!gcd@{gcd}}
+\index{gcd@{gcd}!gzappend.\+c@{gzappend.\+c}}
+\subsubsection{\texorpdfstring{gcd()}{gcd()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} unsigned gcd (\begin{DoxyParamCaption}\item[{unsigned}]{a,  }\item[{unsigned}]{b }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzappend_8c_aab2f4ce94c55eee75c730ef29348b822_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzappend_8c_a4324fdde25721c9213ba77c86bc25c89}\label{gzappend_8c_a4324fdde25721c9213ba77c86bc25c89}} 
+\index{gzappend.\+c@{gzappend.\+c}!gzheader@{gzheader}}
+\index{gzheader@{gzheader}!gzappend.\+c@{gzappend.\+c}}
+\subsubsection{\texorpdfstring{gzheader()}{gzheader()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void gzheader (\begin{DoxyParamCaption}\item[{file $\ast$}]{in }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzappend_8c_a4324fdde25721c9213ba77c86bc25c89_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{gzappend_8c_a4324fdde25721c9213ba77c86bc25c89_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzappend_8c_ac867b637486dd9902d2939130cc26f5d}\label{gzappend_8c_ac867b637486dd9902d2939130cc26f5d}} 
+\index{gzappend.\+c@{gzappend.\+c}!gzscan@{gzscan}}
+\index{gzscan@{gzscan}!gzappend.\+c@{gzappend.\+c}}
+\subsubsection{\texorpdfstring{gzscan()}{gzscan()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} gzscan (\begin{DoxyParamCaption}\item[{char $\ast$}]{name,  }\item[{\mbox{\hyperlink{zlib_8h_afa60092f4e0b9bc4f23b41c6930463f0}{z\+\_\+stream}} $\ast$}]{strm,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{level }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzappend_8c_ac867b637486dd9902d2939130cc26f5d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{gzappend_8c_ac867b637486dd9902d2939130cc26f5d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzappend_8c_a00052bd14d0258425de7561880408955}\label{gzappend_8c_a00052bd14d0258425de7561880408955}} 
+\index{gzappend.\+c@{gzappend.\+c}!gztack@{gztack}}
+\index{gztack@{gztack}!gzappend.\+c@{gzappend.\+c}}
+\subsubsection{\texorpdfstring{gztack()}{gztack()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void gztack (\begin{DoxyParamCaption}\item[{char $\ast$}]{name,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{gd,  }\item[{\mbox{\hyperlink{zlib_8h_afa60092f4e0b9bc4f23b41c6930463f0}{z\+\_\+stream}} $\ast$}]{strm,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{last }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzappend_8c_a00052bd14d0258425de7561880408955_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{gzappend_8c_a00052bd14d0258425de7561880408955_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzappend_8c_a3c04138a5bfe5d72780bb7e82a18e627}\label{gzappend_8c_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{gzappend.\+c@{gzappend.\+c}!main@{main}}
+\index{main@{main}!gzappend.\+c@{gzappend.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} main (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzappend_8c_a3c04138a5bfe5d72780bb7e82a18e627_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzappend_8c_a7a80796bb5b7f9891fcb2a57d7aff0bf}\label{gzappend_8c_a7a80796bb5b7f9891fcb2a57d7aff0bf}} 
+\index{gzappend.\+c@{gzappend.\+c}!read4@{read4}}
+\index{read4@{read4}!gzappend.\+c@{gzappend.\+c}}
+\subsubsection{\texorpdfstring{read4()}{read4()}}
+{\footnotesize\ttfamily unsigned \mbox{\hyperlink{ioapi_8h_a3c7b35ad9dab18b8310343c201f7b27e}{long}} read4 (\begin{DoxyParamCaption}\item[{file $\ast$}]{in }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzappend_8c_a7a80796bb5b7f9891fcb2a57d7aff0bf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=287pt]{gzappend_8c_a7a80796bb5b7f9891fcb2a57d7aff0bf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzappend_8c_a1cb1b33dccef1abf6de9d873cc45c234}\label{gzappend_8c_a1cb1b33dccef1abf6de9d873cc45c234}} 
+\index{gzappend.\+c@{gzappend.\+c}!readin@{readin}}
+\index{readin@{readin}!gzappend.\+c@{gzappend.\+c}}
+\subsubsection{\texorpdfstring{readin()}{readin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} readin (\begin{DoxyParamCaption}\item[{file $\ast$}]{in }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzappend_8c_a1cb1b33dccef1abf6de9d873cc45c234_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzappend_8c_a1cb1b33dccef1abf6de9d873cc45c234_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzappend_8c_adc077b2ce84e52cf6cf5a9a435371257}\label{gzappend_8c_adc077b2ce84e52cf6cf5a9a435371257}} 
+\index{gzappend.\+c@{gzappend.\+c}!readmore@{readmore}}
+\index{readmore@{readmore}!gzappend.\+c@{gzappend.\+c}}
+\subsubsection{\texorpdfstring{readmore()}{readmore()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} readmore (\begin{DoxyParamCaption}\item[{file $\ast$}]{in }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzappend_8c_adc077b2ce84e52cf6cf5a9a435371257_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzappend_8c_adc077b2ce84e52cf6cf5a9a435371257_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzappend_8c_a4f13e4c742e47380cfb3aa6744ff89a7}\label{gzappend_8c_a4f13e4c742e47380cfb3aa6744ff89a7}} 
+\index{gzappend.\+c@{gzappend.\+c}!rotate@{rotate}}
+\index{rotate@{rotate}!gzappend.\+c@{gzappend.\+c}}
+\subsubsection{\texorpdfstring{rotate()}{rotate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void rotate (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{list,  }\item[{unsigned}]{len,  }\item[{unsigned}]{rot }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{gzappend_8c_a4f13e4c742e47380cfb3aa6744ff89a7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{gzappend_8c_a4f13e4c742e47380cfb3aa6744ff89a7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gzappend_8c_ab3ed01aa0272a6da17923faad217d3bd}\label{gzappend_8c_ab3ed01aa0272a6da17923faad217d3bd}} 
+\index{gzappend.\+c@{gzappend.\+c}!skip@{skip}}
+\index{skip@{skip}!gzappend.\+c@{gzappend.\+c}}
+\subsubsection{\texorpdfstring{skip()}{skip()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{zutil_8h_a08023ea6765c99d60a6a3840cd07156e}{local}} void skip (\begin{DoxyParamCaption}\item[{file $\ast$}]{in,  }\item[{unsigned}]{n }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzappend_8c_ab3ed01aa0272a6da17923faad217d3bd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gzappend_8c_ab3ed01aa0272a6da17923faad217d3bd_icgraph}
+\end{center}
+\end{figure}

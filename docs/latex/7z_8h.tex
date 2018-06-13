@@ -1,0 +1,738 @@
+\hypertarget{7z_8h}{}\section{src/third-\/party/lzma/7z.h File Reference}
+\label{7z_8h}\index{src/third-\/party/lzma/7z.\+h@{src/third-\/party/lzma/7z.\+h}}
+{\ttfamily \#include \char`\"{}7z\+Types.\+h\char`\"{}}\newline
+Include dependency graph for 7z.h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{7z_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{7z_8h_struct_c_sz_data}{C\+Sz\+Data}}
+\item 
+struct \mbox{\hyperlink{7z_8h_struct_c_sz_coder_info}{C\+Sz\+Coder\+Info}}
+\item 
+struct \mbox{\hyperlink{7z_8h_struct_c_sz_bond}{C\+Sz\+Bond}}
+\item 
+struct \mbox{\hyperlink{7z_8h_struct_c_sz_folder}{C\+Sz\+Folder}}
+\item 
+struct \mbox{\hyperlink{7z_8h_struct_c_ntfs_file_time}{C\+Ntfs\+File\+Time}}
+\item 
+struct \mbox{\hyperlink{7z_8h_struct_c_sz_bit_ui32s}{C\+Sz\+Bit\+Ui32s}}
+\item 
+struct \mbox{\hyperlink{7z_8h_struct_c_sz_bit_ui64s}{C\+Sz\+Bit\+Ui64s}}
+\item 
+struct \mbox{\hyperlink{7z_8h_struct_c_sz_ar}{C\+Sz\+Ar}}
+\item 
+struct \mbox{\hyperlink{7z_8h_struct_c_sz_ar_ex}{C\+Sz\+Ar\+Ex}}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{7z_8h_aac47ad9965beebefceee5982a9487509}{k7z\+Start\+Header\+Size}}~0x20
+\item 
+\#define \mbox{\hyperlink{7z_8h_aa4cb5196a375fc76e1143a7e9882a8e0}{k7z\+Signature\+Size}}~6
+\item 
+\#define \mbox{\hyperlink{7z_8h_aeb8a773f05ff485174f99d43a95b078f}{S\+Z\+\_\+\+N\+U\+M\+\_\+\+C\+O\+D\+E\+R\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX}}~4
+\item 
+\#define \mbox{\hyperlink{7z_8h_ac385d08a818851d352a58f4b5a046b24}{S\+Z\+\_\+\+N\+U\+M\+\_\+\+B\+O\+N\+D\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX}}~3
+\item 
+\#define \mbox{\hyperlink{7z_8h_a1a5d0d72ed869f17e916dae1c9d66e08}{S\+Z\+\_\+\+N\+U\+M\+\_\+\+P\+A\+C\+K\+\_\+\+S\+T\+R\+E\+A\+M\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX}}~4
+\item 
+\#define \mbox{\hyperlink{7z_8h_aa21f072ea013b3add8fe08ab34c408e1}{Sz\+Bit\+Array\+\_\+\+Check}}(p,  i)~(((p)\mbox{[}(i) $>$$>$ 3\mbox{]} \& (0x80 $>$$>$ ((i) \& 7))) != 0)
+\item 
+\#define \mbox{\hyperlink{7z_8h_a90590314ebe11c96285b5b933e894b7a}{Sz\+Bit\+With\+Vals\+\_\+\+Check}}(p,  i)~((p)-\/$>$Defs \&\& ((p)-\/$>$Defs\mbox{[}(i) $>$$>$ 3\mbox{]} \& (0x80 $>$$>$ ((i) \& 7))) != 0)
+\item 
+\#define \mbox{\hyperlink{7z_8h_a5f33fbf0cb485aaefbb64e1a256a18c9}{Sz\+Ar\+Ex\+\_\+\+Is\+Dir}}(p,  i)~(\mbox{\hyperlink{7z_8h_aa21f072ea013b3add8fe08ab34c408e1}{Sz\+Bit\+Array\+\_\+\+Check}}((p)-\/$>$Is\+Dirs, i))
+\item 
+\#define \mbox{\hyperlink{7z_8h_a3e75c66b59c163033641e8e16bad99e9}{Sz\+Ar\+Ex\+\_\+\+Get\+File\+Size}}(p,  i)~((p)-\/$>$Unpack\+Positions\mbox{[}(i) + 1\mbox{]} -\/ (p)-\/$>$Unpack\+Positions\mbox{[}i\mbox{]})
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{7z_8h_a1ad7846b70e8d80edecb12fdad04ffa2}{Sz\+Get\+Next\+Folder\+Item}} (\mbox{\hyperlink{7z_8h_struct_c_sz_folder}{C\+Sz\+Folder}} $\ast$\mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}}, \mbox{\hyperlink{7z_8h_struct_c_sz_data}{C\+Sz\+Data}} $\ast$sd)
+\item 
+\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} \mbox{\hyperlink{7z_8h_a6156e7c6b7e735c930c645079ddcfbf6}{Sz\+Ar\+\_\+\+Get\+Folder\+Unpack\+Size}} (const \mbox{\hyperlink{7z_8h_struct_c_sz_ar}{C\+Sz\+Ar}} $\ast$p, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} folder\+Index)
+\item 
+\mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{7z_8h_a251df83852a9663deaed5ae4a2c8c933}{Sz\+Ar\+\_\+\+Decode\+Folder}} (const \mbox{\hyperlink{7z_8h_struct_c_sz_ar}{C\+Sz\+Ar}} $\ast$p, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} folder\+Index, \mbox{\hyperlink{struct_i_look_in_stream}{I\+Look\+In\+Stream}} $\ast$\mbox{\hyperlink{ioapi_8h_a4ed0a20697a8c37f8af699a8ec6d76a8}{stream}}, \mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} start\+Pos, \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$out\+Buffer, size\+\_\+t out\+Size, \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$alloc\+Main)
+\item 
+void \mbox{\hyperlink{7z_8h_af80a540d57d9fb82547404b8a1b2031b}{Sz\+Ar\+Ex\+\_\+\+Init}} (\mbox{\hyperlink{7z_8h_struct_c_sz_ar_ex}{C\+Sz\+Ar\+Ex}} $\ast$p)
+\item 
+void \mbox{\hyperlink{7z_8h_a66aec5e19e1d6558c54db816468b421d}{Sz\+Ar\+Ex\+\_\+\+Free}} (\mbox{\hyperlink{7z_8h_struct_c_sz_ar_ex}{C\+Sz\+Ar\+Ex}} $\ast$p, \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$alloc)
+\item 
+\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} \mbox{\hyperlink{7z_8h_ab731ce378606d16df3d2128459bf11b6}{Sz\+Ar\+Ex\+\_\+\+Get\+Folder\+Stream\+Pos}} (const \mbox{\hyperlink{7z_8h_struct_c_sz_ar_ex}{C\+Sz\+Ar\+Ex}} $\ast$p, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} folder\+Index, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} index\+In\+Folder)
+\item 
+\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{7z_8h_ac093f6c52075a18e6b674c939433c518}{Sz\+Ar\+Ex\+\_\+\+Get\+Folder\+Full\+Pack\+Size}} (const \mbox{\hyperlink{7z_8h_struct_c_sz_ar_ex}{C\+Sz\+Ar\+Ex}} $\ast$p, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} folder\+Index, \mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} $\ast$res\+Size)
+\item 
+size\+\_\+t \mbox{\hyperlink{7z_8h_a3c51f5a63d4179e78d488e758b4cac62}{Sz\+Ar\+Ex\+\_\+\+Get\+File\+Name\+Utf16}} (const \mbox{\hyperlink{7z_8h_struct_c_sz_ar_ex}{C\+Sz\+Ar\+Ex}} $\ast$p, size\+\_\+t file\+Index, \mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}} $\ast$dest)
+\item 
+\mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{7z_8h_a16287793aa894572d22cc2e9a055a753}{Sz\+Ar\+Ex\+\_\+\+Extract}} (const \mbox{\hyperlink{7z_8h_struct_c_sz_ar_ex}{C\+Sz\+Ar\+Ex}} $\ast$db, \mbox{\hyperlink{struct_i_look_in_stream}{I\+Look\+In\+Stream}} $\ast$in\+Stream, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} file\+Index, \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$block\+Index, \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$$\ast$out\+Buffer, size\+\_\+t $\ast$out\+Buffer\+Size, size\+\_\+t $\ast$\mbox{\hyperlink{ioapi_8h_a601c4660e8a1a14a1b87fe387e934d19}{offset}}, size\+\_\+t $\ast$out\+Size\+Processed, \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$alloc\+Main, \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$alloc\+Temp)
+\item 
+\mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} \mbox{\hyperlink{7z_8h_a341cbca250c4f5d36b20eabe44e7e4cb}{Sz\+Ar\+Ex\+\_\+\+Open}} (\mbox{\hyperlink{7z_8h_struct_c_sz_ar_ex}{C\+Sz\+Ar\+Ex}} $\ast$p, \mbox{\hyperlink{struct_i_look_in_stream}{I\+Look\+In\+Stream}} $\ast$in\+Stream, \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$alloc\+Main, \mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$alloc\+Temp)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} \mbox{\hyperlink{7z_8h_a7cef633a88b21ff9664785a8b5861c0b}{k7z\+Signature}} \mbox{[}\mbox{\hyperlink{7z_8h_aa4cb5196a375fc76e1143a7e9882a8e0}{k7z\+Signature\+Size}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Class Documentation}
+\index{C\+Sz\+Data@{C\+Sz\+Data}}\label{struct_c_sz_data}
+\Hypertarget{7z_8h_struct_c_sz_data}
+\subsubsection{struct C\+Sz\+Data}
+
+
+Collaboration diagram for C\+Sz\+Data\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=138pt]{struct_c_sz_data__coll__graph}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\mbox{\Hypertarget{7z_8h_a96c1bd3a4bdc9c2e7af0004d95efd131}\label{7z_8h_a96c1bd3a4bdc9c2e7af0004d95efd131}} 
+const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$&
+Data&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a233581b5afef9fcf066acdd8d0180de7}\label{7z_8h_a233581b5afef9fcf066acdd8d0180de7}} 
+size\_t&
+Size&
+\\
+\hline
+
+\end{DoxyFields}
+\index{C\+Sz\+Coder\+Info@{C\+Sz\+Coder\+Info}}\label{struct_c_sz_coder_info}
+\Hypertarget{7z_8h_struct_c_sz_coder_info}
+\subsubsection{struct C\+Sz\+Coder\+Info}
+
+
+Collaboration diagram for C\+Sz\+Coder\+Info\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=172pt]{struct_c_sz_coder_info__coll__graph}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\mbox{\Hypertarget{7z_8h_a9965e9494e0af6dd0f574f52e41f8be8}\label{7z_8h_a9965e9494e0af6dd0f574f52e41f8be8}} 
+\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}}&
+MethodID&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_acdb659df3b9705713ed3139aafcd7df9}\label{7z_8h_acdb659df3b9705713ed3139aafcd7df9}} 
+\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}}&
+NumStreams&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a6a3898d9e39a13f31d8aebb6c5ddfbf0}\label{7z_8h_a6a3898d9e39a13f31d8aebb6c5ddfbf0}} 
+size\_t&
+PropsOffset&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_aaff826c90b5cab3fd0435d0b7b913e61}\label{7z_8h_aaff826c90b5cab3fd0435d0b7b913e61}} 
+\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}}&
+PropsSize&
+\\
+\hline
+
+\end{DoxyFields}
+\index{C\+Sz\+Bond@{C\+Sz\+Bond}}\label{struct_c_sz_bond}
+\Hypertarget{7z_8h_struct_c_sz_bond}
+\subsubsection{struct C\+Sz\+Bond}
+
+
+Collaboration diagram for C\+Sz\+Bond\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{struct_c_sz_bond__coll__graph}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\mbox{\Hypertarget{7z_8h_a9e3831526f1f9f9cd5de9be14e32c3d2}\label{7z_8h_a9e3831526f1f9f9cd5de9be14e32c3d2}} 
+\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}}&
+InIndex&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a35fcb4c079bad57b727d6be5f7a46cb7}\label{7z_8h_a35fcb4c079bad57b727d6be5f7a46cb7}} 
+\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}}&
+OutIndex&
+\\
+\hline
+
+\end{DoxyFields}
+\index{C\+Sz\+Folder@{C\+Sz\+Folder}}\label{struct_c_sz_folder}
+\Hypertarget{7z_8h_struct_c_sz_folder}
+\subsubsection{struct C\+Sz\+Folder}
+
+
+Collaboration diagram for C\+Sz\+Folder\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{struct_c_sz_folder__coll__graph}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\mbox{\Hypertarget{7z_8h_a6466b2b10de63e86323b4463ebc5306d}\label{7z_8h_a6466b2b10de63e86323b4463ebc5306d}} 
+\mbox{\hyperlink{7z_8h_struct_c_sz_bond}{CSzBond}}&
+Bonds\mbox{[}\mbox{\hyperlink{7z_8h_ac385d08a818851d352a58f4b5a046b24}{SZ\_NUM\_BONDS\_IN\_FOLDER\_MAX}}\mbox{]}&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a4d30407fb9e9fc7dd4d440c9c8b534e5}\label{7z_8h_a4d30407fb9e9fc7dd4d440c9c8b534e5}} 
+\mbox{\hyperlink{7z_8h_struct_c_sz_coder_info}{CSzCoderInfo}}&
+Coders\mbox{[}\mbox{\hyperlink{7z_8h_aeb8a773f05ff485174f99d43a95b078f}{SZ\_NUM\_CODERS\_IN\_FOLDER\_MAX}}\mbox{]}&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a1b0804d53d06736d775f3b99e1d77587}\label{7z_8h_a1b0804d53d06736d775f3b99e1d77587}} 
+\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}}&
+NumBonds&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a76b6c6d6f6bed12250dd0342cb66c989}\label{7z_8h_a76b6c6d6f6bed12250dd0342cb66c989}} 
+\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}}&
+NumCoders&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a4dfdb1a34b80264e4df116ccb267e1fa}\label{7z_8h_a4dfdb1a34b80264e4df116ccb267e1fa}} 
+\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}}&
+NumPackStreams&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a6b24822dad11f1deb45a2cd79b7d457c}\label{7z_8h_a6b24822dad11f1deb45a2cd79b7d457c}} 
+\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}}&
+PackStreams\mbox{[}\mbox{\hyperlink{7z_8h_a1a5d0d72ed869f17e916dae1c9d66e08}{SZ\_NUM\_PACK\_STREAMS\_IN\_FOLDER\_MAX}}\mbox{]}&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a40ccee97b4ba52a975aa03b14f6c3e15}\label{7z_8h_a40ccee97b4ba52a975aa03b14f6c3e15}} 
+\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}}&
+UnpackStream&
+\\
+\hline
+
+\end{DoxyFields}
+\index{C\+Ntfs\+File\+Time@{C\+Ntfs\+File\+Time}}\label{struct_c_ntfs_file_time}
+\Hypertarget{7z_8h_struct_c_ntfs_file_time}
+\subsubsection{struct C\+Ntfs\+File\+Time}
+
+
+Collaboration diagram for C\+Ntfs\+File\+Time\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{struct_c_ntfs_file_time__coll__graph}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\mbox{\Hypertarget{7z_8h_ad7a3c53f192ddcf6a161dd067b50b453}\label{7z_8h_ad7a3c53f192ddcf6a161dd067b50b453}} 
+\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}}&
+High&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a990772cc6a6e4d732145fe6e6aa12bc3}\label{7z_8h_a990772cc6a6e4d732145fe6e6aa12bc3}} 
+\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}}&
+Low&
+\\
+\hline
+
+\end{DoxyFields}
+\index{C\+Sz\+Bit\+Ui32s@{C\+Sz\+Bit\+Ui32s}}\label{struct_c_sz_bit_ui32s}
+\Hypertarget{7z_8h_struct_c_sz_bit_ui32s}
+\subsubsection{struct C\+Sz\+Bit\+Ui32s}
+
+
+Collaboration diagram for C\+Sz\+Bit\+Ui32s\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=156pt]{struct_c_sz_bit_ui32s__coll__graph}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\mbox{\Hypertarget{7z_8h_aa9cdc96f74565819b1d6b87ca7ef78c1}\label{7z_8h_aa9cdc96f74565819b1d6b87ca7ef78c1}} 
+\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$&
+Defs&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a01b44fbadbd112fa50cdb763a79efc77}\label{7z_8h_a01b44fbadbd112fa50cdb763a79efc77}} 
+\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}} $\ast$&
+Vals&
+\\
+\hline
+
+\end{DoxyFields}
+\index{C\+Sz\+Bit\+Ui64s@{C\+Sz\+Bit\+Ui64s}}\label{struct_c_sz_bit_ui64s}
+\Hypertarget{7z_8h_struct_c_sz_bit_ui64s}
+\subsubsection{struct C\+Sz\+Bit\+Ui64s}
+
+
+Collaboration diagram for C\+Sz\+Bit\+Ui64s\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{struct_c_sz_bit_ui64s__coll__graph}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\mbox{\Hypertarget{7z_8h_a7d22e2aae218fd9fc1d690894edfe00c}\label{7z_8h_a7d22e2aae218fd9fc1d690894edfe00c}} 
+\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$&
+Defs&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a7682354d7fc11aeda80e5abb02a18ec9}\label{7z_8h_a7682354d7fc11aeda80e5abb02a18ec9}} 
+\mbox{\hyperlink{7z_8h_struct_c_ntfs_file_time}{CNtfsFileTime}} $\ast$&
+Vals&
+\\
+\hline
+
+\end{DoxyFields}
+\index{C\+Sz\+Ar@{C\+Sz\+Ar}}\label{struct_c_sz_ar}
+\Hypertarget{7z_8h_struct_c_sz_ar}
+\subsubsection{struct C\+Sz\+Ar}
+
+
+Collaboration diagram for C\+Sz\+Ar\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{struct_c_sz_ar__coll__graph}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\mbox{\Hypertarget{7z_8h_a5d475d0e07b7a1bca1ec082c417424b8}\label{7z_8h_a5d475d0e07b7a1bca1ec082c417424b8}} 
+\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$&
+CodersData&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a0eb1cb759ffa945ec58ff4ca25eae247}\label{7z_8h_a0eb1cb759ffa945ec58ff4ca25eae247}} 
+\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{UInt64}} $\ast$&
+CoderUnpackSizes&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a1b8888b2ecbf4fe426df91c3fc3a8497}\label{7z_8h_a1b8888b2ecbf4fe426df91c3fc3a8497}} 
+size\_t $\ast$&
+FoCodersOffsets&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a7e5177d8e1c2f16481c3c99264938e18}\label{7z_8h_a7e5177d8e1c2f16481c3c99264938e18}} 
+\mbox{\hyperlink{7z_8h_struct_c_sz_bit_ui32s}{CSzBitUi32s}}&
+FolderCRCs&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a6a07e0aa393e2e2b51068e905970f6c2}\label{7z_8h_a6a07e0aa393e2e2b51068e905970f6c2}} 
+\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}} $\ast$&
+FoStartPackStreamIndex&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a9522b2bc8e819dbebef38138ca3ca507}\label{7z_8h_a9522b2bc8e819dbebef38138ca3ca507}} 
+\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}} $\ast$&
+FoToCoderUnpackSizes&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_abcca90d045a1b4d643e1511bbd02819e}\label{7z_8h_abcca90d045a1b4d643e1511bbd02819e}} 
+\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$&
+FoToMainUnpackSizeIndex&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a022aa834272eb16b04b07720fc2e90dd}\label{7z_8h_a022aa834272eb16b04b07720fc2e90dd}} 
+\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}}&
+NumFolders&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a78417e7e47b8193229b62d4e95ae7d46}\label{7z_8h_a78417e7e47b8193229b62d4e95ae7d46}} 
+\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}}&
+NumPackStreams&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_ac5cf8656e4ca39b9f90fc75af07c58d2}\label{7z_8h_ac5cf8656e4ca39b9f90fc75af07c58d2}} 
+\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{UInt64}} $\ast$&
+PackPositions&
+\\
+\hline
+
+\end{DoxyFields}
+\index{C\+Sz\+Ar\+Ex@{C\+Sz\+Ar\+Ex}}\label{struct_c_sz_ar_ex}
+\Hypertarget{7z_8h_struct_c_sz_ar_ex}
+\subsubsection{struct C\+Sz\+Ar\+Ex}
+
+
+Collaboration diagram for C\+Sz\+Ar\+Ex\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_c_sz_ar_ex__coll__graph}
+\end{center}
+\end{figure}
+\begin{DoxyFields}{Class Members}
+\mbox{\Hypertarget{7z_8h_a02531717a08d15c3bdf70bc7d6c00058}\label{7z_8h_a02531717a08d15c3bdf70bc7d6c00058}} 
+\mbox{\hyperlink{7z_8h_struct_c_sz_bit_ui32s}{CSzBitUi32s}}&
+Attribs&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a78cb891db10911da38f30b9349a2c816}\label{7z_8h_a78cb891db10911da38f30b9349a2c816}} 
+\mbox{\hyperlink{7z_8h_struct_c_sz_bit_ui32s}{CSzBitUi32s}}&
+CRCs&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a06c8bae404c4004d0b9f353e455a674e}\label{7z_8h_a06c8bae404c4004d0b9f353e455a674e}} 
+\mbox{\hyperlink{7z_8h_struct_c_sz_bit_ui64s}{CSzBitUi64s}}&
+CTime&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a472dafd36ca4ac97bd3a6128489d4b91}\label{7z_8h_a472dafd36ca4ac97bd3a6128489d4b91}} 
+\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{UInt64}}&
+dataPos&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a82a021902c592eb9b2b87612d022e801}\label{7z_8h_a82a021902c592eb9b2b87612d022e801}} 
+\mbox{\hyperlink{7z_8h_struct_c_sz_ar}{CSzAr}}&
+db&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_acd58b41b67565799d0c9624b0e3ae628}\label{7z_8h_acd58b41b67565799d0c9624b0e3ae628}} 
+size\_t $\ast$&
+FileNameOffsets&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a8003d4809bb93cd3e7d3bba3aec77be7}\label{7z_8h_a8003d4809bb93cd3e7d3bba3aec77be7}} 
+\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$&
+FileNames&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_af46ec9d0336e9e35f90ee326d1b31764}\label{7z_8h_af46ec9d0336e9e35f90ee326d1b31764}} 
+\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}} $\ast$&
+FileToFolder&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a09ac04f1a6b9d11c32d8306e9859d349}\label{7z_8h_a09ac04f1a6b9d11c32d8306e9859d349}} 
+\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}} $\ast$&
+FolderToFile&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a90ab7ca20302f0687a1dbd72a31f7eeb}\label{7z_8h_a90ab7ca20302f0687a1dbd72a31f7eeb}} 
+\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$&
+IsDirs&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a4148d7bec18de8c0b26a0493b1c279f3}\label{7z_8h_a4148d7bec18de8c0b26a0493b1c279f3}} 
+\mbox{\hyperlink{7z_8h_struct_c_sz_bit_ui64s}{CSzBitUi64s}}&
+MTime&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a873a36ff5abf39032a93a5bddbde89fc}\label{7z_8h_a873a36ff5abf39032a93a5bddbde89fc}} 
+\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{UInt32}}&
+NumFiles&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_af829ffceba02a5d96ddaf2869ee13de9}\label{7z_8h_af829ffceba02a5d96ddaf2869ee13de9}} 
+\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{UInt64}}&
+startPosAfterHeader&
+\\
+\hline
+
+\mbox{\Hypertarget{7z_8h_a827a3aa2f61e70c1bafa7f3a024dbc00}\label{7z_8h_a827a3aa2f61e70c1bafa7f3a024dbc00}} 
+\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{UInt64}} $\ast$&
+UnpackPositions&
+\\
+\hline
+
+\end{DoxyFields}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{7z_8h_aa4cb5196a375fc76e1143a7e9882a8e0}\label{7z_8h_aa4cb5196a375fc76e1143a7e9882a8e0}} 
+\index{7z.\+h@{7z.\+h}!k7z\+Signature\+Size@{k7z\+Signature\+Size}}
+\index{k7z\+Signature\+Size@{k7z\+Signature\+Size}!7z.\+h@{7z.\+h}}
+\subsubsection{\texorpdfstring{k7z\+Signature\+Size}{k7zSignatureSize}}
+{\footnotesize\ttfamily \#define k7z\+Signature\+Size~6}
+
+\mbox{\Hypertarget{7z_8h_aac47ad9965beebefceee5982a9487509}\label{7z_8h_aac47ad9965beebefceee5982a9487509}} 
+\index{7z.\+h@{7z.\+h}!k7z\+Start\+Header\+Size@{k7z\+Start\+Header\+Size}}
+\index{k7z\+Start\+Header\+Size@{k7z\+Start\+Header\+Size}!7z.\+h@{7z.\+h}}
+\subsubsection{\texorpdfstring{k7z\+Start\+Header\+Size}{k7zStartHeaderSize}}
+{\footnotesize\ttfamily \#define k7z\+Start\+Header\+Size~0x20}
+
+\mbox{\Hypertarget{7z_8h_ac385d08a818851d352a58f4b5a046b24}\label{7z_8h_ac385d08a818851d352a58f4b5a046b24}} 
+\index{7z.\+h@{7z.\+h}!S\+Z\+\_\+\+N\+U\+M\+\_\+\+B\+O\+N\+D\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX@{S\+Z\+\_\+\+N\+U\+M\+\_\+\+B\+O\+N\+D\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX}}
+\index{S\+Z\+\_\+\+N\+U\+M\+\_\+\+B\+O\+N\+D\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX@{S\+Z\+\_\+\+N\+U\+M\+\_\+\+B\+O\+N\+D\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX}!7z.\+h@{7z.\+h}}
+\subsubsection{\texorpdfstring{S\+Z\+\_\+\+N\+U\+M\+\_\+\+B\+O\+N\+D\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX}{SZ\_NUM\_BONDS\_IN\_FOLDER\_MAX}}
+{\footnotesize\ttfamily \#define S\+Z\+\_\+\+N\+U\+M\+\_\+\+B\+O\+N\+D\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX~3}
+
+\mbox{\Hypertarget{7z_8h_aeb8a773f05ff485174f99d43a95b078f}\label{7z_8h_aeb8a773f05ff485174f99d43a95b078f}} 
+\index{7z.\+h@{7z.\+h}!S\+Z\+\_\+\+N\+U\+M\+\_\+\+C\+O\+D\+E\+R\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX@{S\+Z\+\_\+\+N\+U\+M\+\_\+\+C\+O\+D\+E\+R\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX}}
+\index{S\+Z\+\_\+\+N\+U\+M\+\_\+\+C\+O\+D\+E\+R\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX@{S\+Z\+\_\+\+N\+U\+M\+\_\+\+C\+O\+D\+E\+R\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX}!7z.\+h@{7z.\+h}}
+\subsubsection{\texorpdfstring{S\+Z\+\_\+\+N\+U\+M\+\_\+\+C\+O\+D\+E\+R\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX}{SZ\_NUM\_CODERS\_IN\_FOLDER\_MAX}}
+{\footnotesize\ttfamily \#define S\+Z\+\_\+\+N\+U\+M\+\_\+\+C\+O\+D\+E\+R\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX~4}
+
+\mbox{\Hypertarget{7z_8h_a1a5d0d72ed869f17e916dae1c9d66e08}\label{7z_8h_a1a5d0d72ed869f17e916dae1c9d66e08}} 
+\index{7z.\+h@{7z.\+h}!S\+Z\+\_\+\+N\+U\+M\+\_\+\+P\+A\+C\+K\+\_\+\+S\+T\+R\+E\+A\+M\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX@{S\+Z\+\_\+\+N\+U\+M\+\_\+\+P\+A\+C\+K\+\_\+\+S\+T\+R\+E\+A\+M\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX}}
+\index{S\+Z\+\_\+\+N\+U\+M\+\_\+\+P\+A\+C\+K\+\_\+\+S\+T\+R\+E\+A\+M\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX@{S\+Z\+\_\+\+N\+U\+M\+\_\+\+P\+A\+C\+K\+\_\+\+S\+T\+R\+E\+A\+M\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX}!7z.\+h@{7z.\+h}}
+\subsubsection{\texorpdfstring{S\+Z\+\_\+\+N\+U\+M\+\_\+\+P\+A\+C\+K\+\_\+\+S\+T\+R\+E\+A\+M\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX}{SZ\_NUM\_PACK\_STREAMS\_IN\_FOLDER\_MAX}}
+{\footnotesize\ttfamily \#define S\+Z\+\_\+\+N\+U\+M\+\_\+\+P\+A\+C\+K\+\_\+\+S\+T\+R\+E\+A\+M\+S\+\_\+\+I\+N\+\_\+\+F\+O\+L\+D\+E\+R\+\_\+\+M\+AX~4}
+
+\mbox{\Hypertarget{7z_8h_a3e75c66b59c163033641e8e16bad99e9}\label{7z_8h_a3e75c66b59c163033641e8e16bad99e9}} 
+\index{7z.\+h@{7z.\+h}!Sz\+Ar\+Ex\+\_\+\+Get\+File\+Size@{Sz\+Ar\+Ex\+\_\+\+Get\+File\+Size}}
+\index{Sz\+Ar\+Ex\+\_\+\+Get\+File\+Size@{Sz\+Ar\+Ex\+\_\+\+Get\+File\+Size}!7z.\+h@{7z.\+h}}
+\subsubsection{\texorpdfstring{Sz\+Ar\+Ex\+\_\+\+Get\+File\+Size}{SzArEx\_GetFileSize}}
+{\footnotesize\ttfamily \#define Sz\+Ar\+Ex\+\_\+\+Get\+File\+Size(\begin{DoxyParamCaption}\item[{}]{p,  }\item[{}]{i }\end{DoxyParamCaption})~((p)-\/$>$Unpack\+Positions\mbox{[}(i) + 1\mbox{]} -\/ (p)-\/$>$Unpack\+Positions\mbox{[}i\mbox{]})}
+
+\mbox{\Hypertarget{7z_8h_a5f33fbf0cb485aaefbb64e1a256a18c9}\label{7z_8h_a5f33fbf0cb485aaefbb64e1a256a18c9}} 
+\index{7z.\+h@{7z.\+h}!Sz\+Ar\+Ex\+\_\+\+Is\+Dir@{Sz\+Ar\+Ex\+\_\+\+Is\+Dir}}
+\index{Sz\+Ar\+Ex\+\_\+\+Is\+Dir@{Sz\+Ar\+Ex\+\_\+\+Is\+Dir}!7z.\+h@{7z.\+h}}
+\subsubsection{\texorpdfstring{Sz\+Ar\+Ex\+\_\+\+Is\+Dir}{SzArEx\_IsDir}}
+{\footnotesize\ttfamily \#define Sz\+Ar\+Ex\+\_\+\+Is\+Dir(\begin{DoxyParamCaption}\item[{}]{p,  }\item[{}]{i }\end{DoxyParamCaption})~(\mbox{\hyperlink{7z_8h_aa21f072ea013b3add8fe08ab34c408e1}{Sz\+Bit\+Array\+\_\+\+Check}}((p)-\/$>$Is\+Dirs, i))}
+
+\mbox{\Hypertarget{7z_8h_aa21f072ea013b3add8fe08ab34c408e1}\label{7z_8h_aa21f072ea013b3add8fe08ab34c408e1}} 
+\index{7z.\+h@{7z.\+h}!Sz\+Bit\+Array\+\_\+\+Check@{Sz\+Bit\+Array\+\_\+\+Check}}
+\index{Sz\+Bit\+Array\+\_\+\+Check@{Sz\+Bit\+Array\+\_\+\+Check}!7z.\+h@{7z.\+h}}
+\subsubsection{\texorpdfstring{Sz\+Bit\+Array\+\_\+\+Check}{SzBitArray\_Check}}
+{\footnotesize\ttfamily \#define Sz\+Bit\+Array\+\_\+\+Check(\begin{DoxyParamCaption}\item[{}]{p,  }\item[{}]{i }\end{DoxyParamCaption})~(((p)\mbox{[}(i) $>$$>$ 3\mbox{]} \& (0x80 $>$$>$ ((i) \& 7))) != 0)}
+
+\mbox{\Hypertarget{7z_8h_a90590314ebe11c96285b5b933e894b7a}\label{7z_8h_a90590314ebe11c96285b5b933e894b7a}} 
+\index{7z.\+h@{7z.\+h}!Sz\+Bit\+With\+Vals\+\_\+\+Check@{Sz\+Bit\+With\+Vals\+\_\+\+Check}}
+\index{Sz\+Bit\+With\+Vals\+\_\+\+Check@{Sz\+Bit\+With\+Vals\+\_\+\+Check}!7z.\+h@{7z.\+h}}
+\subsubsection{\texorpdfstring{Sz\+Bit\+With\+Vals\+\_\+\+Check}{SzBitWithVals\_Check}}
+{\footnotesize\ttfamily \#define Sz\+Bit\+With\+Vals\+\_\+\+Check(\begin{DoxyParamCaption}\item[{}]{p,  }\item[{}]{i }\end{DoxyParamCaption})~((p)-\/$>$Defs \&\& ((p)-\/$>$Defs\mbox{[}(i) $>$$>$ 3\mbox{]} \& (0x80 $>$$>$ ((i) \& 7))) != 0)}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{7z_8h_a251df83852a9663deaed5ae4a2c8c933}\label{7z_8h_a251df83852a9663deaed5ae4a2c8c933}} 
+\index{7z.\+h@{7z.\+h}!Sz\+Ar\+\_\+\+Decode\+Folder@{Sz\+Ar\+\_\+\+Decode\+Folder}}
+\index{Sz\+Ar\+\_\+\+Decode\+Folder@{Sz\+Ar\+\_\+\+Decode\+Folder}!7z.\+h@{7z.\+h}}
+\subsubsection{\texorpdfstring{Sz\+Ar\+\_\+\+Decode\+Folder()}{SzAr\_DecodeFolder()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Sz\+Ar\+\_\+\+Decode\+Folder (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{7z_8h_struct_c_sz_ar}{C\+Sz\+Ar}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{folder\+Index,  }\item[{\mbox{\hyperlink{struct_i_look_in_stream}{I\+Look\+In\+Stream}} $\ast$}]{stream,  }\item[{\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}}}]{start\+Pos,  }\item[{\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$}]{out\+Buffer,  }\item[{size\+\_\+t}]{out\+Size,  }\item[{\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$}]{alloc\+Main }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_8h_a251df83852a9663deaed5ae4a2c8c933_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_8h_a251df83852a9663deaed5ae4a2c8c933_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_8h_a6156e7c6b7e735c930c645079ddcfbf6}\label{7z_8h_a6156e7c6b7e735c930c645079ddcfbf6}} 
+\index{7z.\+h@{7z.\+h}!Sz\+Ar\+\_\+\+Get\+Folder\+Unpack\+Size@{Sz\+Ar\+\_\+\+Get\+Folder\+Unpack\+Size}}
+\index{Sz\+Ar\+\_\+\+Get\+Folder\+Unpack\+Size@{Sz\+Ar\+\_\+\+Get\+Folder\+Unpack\+Size}!7z.\+h@{7z.\+h}}
+\subsubsection{\texorpdfstring{Sz\+Ar\+\_\+\+Get\+Folder\+Unpack\+Size()}{SzAr\_GetFolderUnpackSize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} Sz\+Ar\+\_\+\+Get\+Folder\+Unpack\+Size (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{7z_8h_struct_c_sz_ar}{C\+Sz\+Ar}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{folder\+Index }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_8h_a6156e7c6b7e735c930c645079ddcfbf6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_8h_a16287793aa894572d22cc2e9a055a753}\label{7z_8h_a16287793aa894572d22cc2e9a055a753}} 
+\index{7z.\+h@{7z.\+h}!Sz\+Ar\+Ex\+\_\+\+Extract@{Sz\+Ar\+Ex\+\_\+\+Extract}}
+\index{Sz\+Ar\+Ex\+\_\+\+Extract@{Sz\+Ar\+Ex\+\_\+\+Extract}!7z.\+h@{7z.\+h}}
+\subsubsection{\texorpdfstring{Sz\+Ar\+Ex\+\_\+\+Extract()}{SzArEx\_Extract()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Sz\+Ar\+Ex\+\_\+\+Extract (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{7z_8h_struct_c_sz_ar_ex}{C\+Sz\+Ar\+Ex}} $\ast$}]{db,  }\item[{\mbox{\hyperlink{struct_i_look_in_stream}{I\+Look\+In\+Stream}} $\ast$}]{in\+Stream,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{file\+Index,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} $\ast$}]{block\+Index,  }\item[{\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$$\ast$}]{out\+Buffer,  }\item[{size\+\_\+t $\ast$}]{out\+Buffer\+Size,  }\item[{size\+\_\+t $\ast$}]{offset,  }\item[{size\+\_\+t $\ast$}]{out\+Size\+Processed,  }\item[{\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$}]{alloc\+Main,  }\item[{\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$}]{alloc\+Temp }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_8h_a16287793aa894572d22cc2e9a055a753_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{7z_8h_a16287793aa894572d22cc2e9a055a753_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_8h_a66aec5e19e1d6558c54db816468b421d}\label{7z_8h_a66aec5e19e1d6558c54db816468b421d}} 
+\index{7z.\+h@{7z.\+h}!Sz\+Ar\+Ex\+\_\+\+Free@{Sz\+Ar\+Ex\+\_\+\+Free}}
+\index{Sz\+Ar\+Ex\+\_\+\+Free@{Sz\+Ar\+Ex\+\_\+\+Free}!7z.\+h@{7z.\+h}}
+\subsubsection{\texorpdfstring{Sz\+Ar\+Ex\+\_\+\+Free()}{SzArEx\_Free()}}
+{\footnotesize\ttfamily void Sz\+Ar\+Ex\+\_\+\+Free (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{7z_8h_struct_c_sz_ar_ex}{C\+Sz\+Ar\+Ex}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$}]{alloc }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_8h_a66aec5e19e1d6558c54db816468b421d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_8h_a66aec5e19e1d6558c54db816468b421d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_8h_a3c51f5a63d4179e78d488e758b4cac62}\label{7z_8h_a3c51f5a63d4179e78d488e758b4cac62}} 
+\index{7z.\+h@{7z.\+h}!Sz\+Ar\+Ex\+\_\+\+Get\+File\+Name\+Utf16@{Sz\+Ar\+Ex\+\_\+\+Get\+File\+Name\+Utf16}}
+\index{Sz\+Ar\+Ex\+\_\+\+Get\+File\+Name\+Utf16@{Sz\+Ar\+Ex\+\_\+\+Get\+File\+Name\+Utf16}!7z.\+h@{7z.\+h}}
+\subsubsection{\texorpdfstring{Sz\+Ar\+Ex\+\_\+\+Get\+File\+Name\+Utf16()}{SzArEx\_GetFileNameUtf16()}}
+{\footnotesize\ttfamily size\+\_\+t Sz\+Ar\+Ex\+\_\+\+Get\+File\+Name\+Utf16 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{7z_8h_struct_c_sz_ar_ex}{C\+Sz\+Ar\+Ex}} $\ast$}]{p,  }\item[{size\+\_\+t}]{file\+Index,  }\item[{\mbox{\hyperlink{7z_types_8h_accc14a7c843716dfed734f3a03e8d2b6}{U\+Int16}} $\ast$}]{dest }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{7z_8h_a3c51f5a63d4179e78d488e758b4cac62_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_8h_ac093f6c52075a18e6b674c939433c518}\label{7z_8h_ac093f6c52075a18e6b674c939433c518}} 
+\index{7z.\+h@{7z.\+h}!Sz\+Ar\+Ex\+\_\+\+Get\+Folder\+Full\+Pack\+Size@{Sz\+Ar\+Ex\+\_\+\+Get\+Folder\+Full\+Pack\+Size}}
+\index{Sz\+Ar\+Ex\+\_\+\+Get\+Folder\+Full\+Pack\+Size@{Sz\+Ar\+Ex\+\_\+\+Get\+Folder\+Full\+Pack\+Size}!7z.\+h@{7z.\+h}}
+\subsubsection{\texorpdfstring{Sz\+Ar\+Ex\+\_\+\+Get\+Folder\+Full\+Pack\+Size()}{SzArEx\_GetFolderFullPackSize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} Sz\+Ar\+Ex\+\_\+\+Get\+Folder\+Full\+Pack\+Size (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{7z_8h_struct_c_sz_ar_ex}{C\+Sz\+Ar\+Ex}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{folder\+Index,  }\item[{\mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} $\ast$}]{res\+Size }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{7z_8h_ab731ce378606d16df3d2128459bf11b6}\label{7z_8h_ab731ce378606d16df3d2128459bf11b6}} 
+\index{7z.\+h@{7z.\+h}!Sz\+Ar\+Ex\+\_\+\+Get\+Folder\+Stream\+Pos@{Sz\+Ar\+Ex\+\_\+\+Get\+Folder\+Stream\+Pos}}
+\index{Sz\+Ar\+Ex\+\_\+\+Get\+Folder\+Stream\+Pos@{Sz\+Ar\+Ex\+\_\+\+Get\+Folder\+Stream\+Pos}!7z.\+h@{7z.\+h}}
+\subsubsection{\texorpdfstring{Sz\+Ar\+Ex\+\_\+\+Get\+Folder\+Stream\+Pos()}{SzArEx\_GetFolderStreamPos()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_aabaf3d1eda66282f591e56707437c48e}{U\+Int64}} Sz\+Ar\+Ex\+\_\+\+Get\+Folder\+Stream\+Pos (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{7z_8h_struct_c_sz_ar_ex}{C\+Sz\+Ar\+Ex}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{folder\+Index,  }\item[{\mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}}}]{index\+In\+Folder }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{7z_8h_af80a540d57d9fb82547404b8a1b2031b}\label{7z_8h_af80a540d57d9fb82547404b8a1b2031b}} 
+\index{7z.\+h@{7z.\+h}!Sz\+Ar\+Ex\+\_\+\+Init@{Sz\+Ar\+Ex\+\_\+\+Init}}
+\index{Sz\+Ar\+Ex\+\_\+\+Init@{Sz\+Ar\+Ex\+\_\+\+Init}!7z.\+h@{7z.\+h}}
+\subsubsection{\texorpdfstring{Sz\+Ar\+Ex\+\_\+\+Init()}{SzArEx\_Init()}}
+{\footnotesize\ttfamily void Sz\+Ar\+Ex\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{7z_8h_struct_c_sz_ar_ex}{C\+Sz\+Ar\+Ex}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{7z_8h_af80a540d57d9fb82547404b8a1b2031b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_8h_af80a540d57d9fb82547404b8a1b2031b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_8h_a341cbca250c4f5d36b20eabe44e7e4cb}\label{7z_8h_a341cbca250c4f5d36b20eabe44e7e4cb}} 
+\index{7z.\+h@{7z.\+h}!Sz\+Ar\+Ex\+\_\+\+Open@{Sz\+Ar\+Ex\+\_\+\+Open}}
+\index{Sz\+Ar\+Ex\+\_\+\+Open@{Sz\+Ar\+Ex\+\_\+\+Open}!7z.\+h@{7z.\+h}}
+\subsubsection{\texorpdfstring{Sz\+Ar\+Ex\+\_\+\+Open()}{SzArEx\_Open()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Sz\+Ar\+Ex\+\_\+\+Open (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{7z_8h_struct_c_sz_ar_ex}{C\+Sz\+Ar\+Ex}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{struct_i_look_in_stream}{I\+Look\+In\+Stream}} $\ast$}]{in\+Stream,  }\item[{\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$}]{alloc\+Main,  }\item[{\mbox{\hyperlink{struct_i_sz_alloc}{I\+Sz\+Alloc}} $\ast$}]{alloc\+Temp }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_8h_a341cbca250c4f5d36b20eabe44e7e4cb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{7z_8h_a341cbca250c4f5d36b20eabe44e7e4cb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{7z_8h_a1ad7846b70e8d80edecb12fdad04ffa2}\label{7z_8h_a1ad7846b70e8d80edecb12fdad04ffa2}} 
+\index{7z.\+h@{7z.\+h}!Sz\+Get\+Next\+Folder\+Item@{Sz\+Get\+Next\+Folder\+Item}}
+\index{Sz\+Get\+Next\+Folder\+Item@{Sz\+Get\+Next\+Folder\+Item}!7z.\+h@{7z.\+h}}
+\subsubsection{\texorpdfstring{Sz\+Get\+Next\+Folder\+Item()}{SzGetNextFolderItem()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{7z_types_8h_acc0053eeb62726b68b22e8c7d9e91367}{S\+Res}} Sz\+Get\+Next\+Folder\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{7z_8h_struct_c_sz_folder}{C\+Sz\+Folder}} $\ast$}]{f,  }\item[{\mbox{\hyperlink{7z_8h_struct_c_sz_data}{C\+Sz\+Data}} $\ast$}]{sd }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_8h_a1ad7846b70e8d80edecb12fdad04ffa2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{7z_8h_a1ad7846b70e8d80edecb12fdad04ffa2_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{7z_8h_a7cef633a88b21ff9664785a8b5861c0b}\label{7z_8h_a7cef633a88b21ff9664785a8b5861c0b}} 
+\index{7z.\+h@{7z.\+h}!k7z\+Signature@{k7z\+Signature}}
+\index{k7z\+Signature@{k7z\+Signature}!7z.\+h@{7z.\+h}}
+\subsubsection{\texorpdfstring{k7z\+Signature}{k7zSignature}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} k7z\+Signature\mbox{[}\mbox{\hyperlink{7z_8h_aa4cb5196a375fc76e1143a7e9882a8e0}{k7z\+Signature\+Size}}\mbox{]}}
+

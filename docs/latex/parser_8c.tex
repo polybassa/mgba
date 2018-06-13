@@ -1,0 +1,358 @@
+\hypertarget{parser_8c}{}\section{src/debugger/parser.c File Reference}
+\label{parser_8c}\index{src/debugger/parser.\+c@{src/debugger/parser.\+c}}
+{\ttfamily \#include $<$mgba/internal/debugger/parser.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/debugger/debugger.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+Include dependency graph for parser.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parser_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{parser_8c_afc6c36c7e3238c5427bfd2975204b613}{Lex\+State}} \{ \newline
+\mbox{\hyperlink{parser_8c_afc6c36c7e3238c5427bfd2975204b613acd3f7ec03ccc2259462f2068f9714bee}{L\+E\+X\+\_\+\+E\+R\+R\+OR}} = -\/1, 
+\mbox{\hyperlink{parser_8c_afc6c36c7e3238c5427bfd2975204b613a76adce1525766cb740becaee3d8b84df}{L\+E\+X\+\_\+\+R\+O\+OT}} = 0, 
+\mbox{\hyperlink{parser_8c_afc6c36c7e3238c5427bfd2975204b613a24548fa290c1bb6498af1c893c5e3771}{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+ER}}, 
+\mbox{\hyperlink{parser_8c_afc6c36c7e3238c5427bfd2975204b613a25d9a04ea0fe8db0bae6df50418edffc}{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+B\+I\+N\+A\+R\+Y\+\_\+\+F\+I\+R\+ST}}, 
+\newline
+\mbox{\hyperlink{parser_8c_afc6c36c7e3238c5427bfd2975204b613aed438d3af97d95226e389f7fbfa2bbe9}{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+B\+I\+N\+A\+RY}}, 
+\mbox{\hyperlink{parser_8c_afc6c36c7e3238c5427bfd2975204b613a5f90ee679a58eec114a50ac617fb01af}{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+E\+C\+I\+M\+AL}}, 
+\mbox{\hyperlink{parser_8c_afc6c36c7e3238c5427bfd2975204b613a0331e231b74975877d85f81296926b88}{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+H\+E\+X\+\_\+\+F\+I\+R\+ST}}, 
+\mbox{\hyperlink{parser_8c_afc6c36c7e3238c5427bfd2975204b613a7acde9c3e70229d021cc493300a46671}{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+H\+EX}}, 
+\newline
+\mbox{\hyperlink{parser_8c_afc6c36c7e3238c5427bfd2975204b613a0a91b6b557d7dcf0d74c22a262ddcd3e}{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+P\+R\+E\+F\+IX}}, 
+\mbox{\hyperlink{parser_8c_afc6c36c7e3238c5427bfd2975204b613a779d7407f5410c0bbf2d1f292eb15973}{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+O\+P\+E\+R\+A\+T\+OR}}, 
+\mbox{\hyperlink{parser_8c_afc6c36c7e3238c5427bfd2975204b613a7a343d9440590a04a0dd3c0c42a4e3ba}{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+O\+P\+E\+R\+A\+T\+O\+R2}}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{parser_8c_addd53dcd8d9db3e0ff254d12d19564bb}{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}} (Lex\+Vector, struct \mbox{\hyperlink{sqlite3_8c_ae88d5c0259051080fda097b92d99d7ee}{Token}})
+\item 
+static void \mbox{\hyperlink{parser_8c_a783f480e96d7a33330f0d9b8091f77cc}{\+\_\+lex\+Operator}} (struct Lex\+Vector $\ast$lv, char operator, enum \mbox{\hyperlink{parser_8c_afc6c36c7e3238c5427bfd2975204b613}{Lex\+State}} $\ast$state)
+\item 
+static void \mbox{\hyperlink{parser_8c_ad4e6ab1478ed79fa1f1179646970bd0c}{\+\_\+lex\+Value}} (struct Lex\+Vector $\ast$lv, char token, uint32\+\_\+t next, enum \mbox{\hyperlink{parser_8c_afc6c36c7e3238c5427bfd2975204b613}{Lex\+State}} $\ast$state)
+\item 
+size\+\_\+t \mbox{\hyperlink{parser_8c_adc07269ab3d5869da42482428fcb6f99}{lex\+Expression}} (struct Lex\+Vector $\ast$lv, const char $\ast$string, size\+\_\+t length, const char $\ast$eol)
+\item 
+static struct Parse\+Tree $\ast$ \mbox{\hyperlink{parser_8c_aae5c24498d107f86def1dc7e1863d506}{\+\_\+parse\+Tree\+Create}} ()
+\item 
+static size\+\_\+t \mbox{\hyperlink{parser_8c_a3d43f535d3cec4b991cf0feb3cb5c0f0}{\+\_\+parse\+Expression}} (struct Parse\+Tree $\ast$tree, struct Lex\+Vector $\ast$lv, size\+\_\+t i, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} precedence, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$open\+Parens)
+\item 
+void \mbox{\hyperlink{parser_8c_ab4f953ccc8bc671ad3a6943cdef6a865}{parse\+Lexed\+Expression}} (struct Parse\+Tree $\ast$tree, struct Lex\+Vector $\ast$lv)
+\item 
+void \mbox{\hyperlink{parser_8c_af4cbaafaf73341bc2c57d83802c51caf}{lex\+Free}} (struct Lex\+Vector $\ast$lv)
+\item 
+void \mbox{\hyperlink{parser_8c_a6da386a6c337c2ebbe6366bae01c538d}{parse\+Free}} (struct Parse\+Tree $\ast$tree)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{parser_8c_aca580a274d7080b31695fa31b149dc24}{\+\_\+perform\+Operation}} (enum Operation operation, int32\+\_\+t current, int32\+\_\+t next, int32\+\_\+t $\ast$value)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{parser_8c_afa692a94c9976cf2a6061327e4909f3c}{m\+Debugger\+Evaluate\+Parse\+Tree}} (struct m\+Debugger $\ast$debugger, struct Parse\+Tree $\ast$tree, int32\+\_\+t $\ast$value, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$segment)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{parser_8c_a57073261ad0ec1f72b485b6ab60ff18f}{\+\_\+operator\+Precedence}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{parser_8c_afc6c36c7e3238c5427bfd2975204b613}\label{parser_8c_afc6c36c7e3238c5427bfd2975204b613}} 
+\index{parser.\+c@{parser.\+c}!Lex\+State@{Lex\+State}}
+\index{Lex\+State@{Lex\+State}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{Lex\+State}{LexState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{parser_8c_afc6c36c7e3238c5427bfd2975204b613}{Lex\+State}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+E\+X\+\_\+\+E\+R\+R\+OR@{L\+E\+X\+\_\+\+E\+R\+R\+OR}!parser.\+c@{parser.\+c}}\index{parser.\+c@{parser.\+c}!L\+E\+X\+\_\+\+E\+R\+R\+OR@{L\+E\+X\+\_\+\+E\+R\+R\+OR}}}\mbox{\Hypertarget{parser_8c_afc6c36c7e3238c5427bfd2975204b613acd3f7ec03ccc2259462f2068f9714bee}\label{parser_8c_afc6c36c7e3238c5427bfd2975204b613acd3f7ec03ccc2259462f2068f9714bee}} 
+L\+E\+X\+\_\+\+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+E\+X\+\_\+\+R\+O\+OT@{L\+E\+X\+\_\+\+R\+O\+OT}!parser.\+c@{parser.\+c}}\index{parser.\+c@{parser.\+c}!L\+E\+X\+\_\+\+R\+O\+OT@{L\+E\+X\+\_\+\+R\+O\+OT}}}\mbox{\Hypertarget{parser_8c_afc6c36c7e3238c5427bfd2975204b613a76adce1525766cb740becaee3d8b84df}\label{parser_8c_afc6c36c7e3238c5427bfd2975204b613a76adce1525766cb740becaee3d8b84df}} 
+L\+E\+X\+\_\+\+R\+O\+OT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+ER@{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+ER}!parser.\+c@{parser.\+c}}\index{parser.\+c@{parser.\+c}!L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+ER@{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+ER}}}\mbox{\Hypertarget{parser_8c_afc6c36c7e3238c5427bfd2975204b613a24548fa290c1bb6498af1c893c5e3771}\label{parser_8c_afc6c36c7e3238c5427bfd2975204b613a24548fa290c1bb6498af1c893c5e3771}} 
+L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+I\+D\+E\+N\+T\+I\+F\+I\+ER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+B\+I\+N\+A\+R\+Y\+\_\+\+F\+I\+R\+ST@{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+B\+I\+N\+A\+R\+Y\+\_\+\+F\+I\+R\+ST}!parser.\+c@{parser.\+c}}\index{parser.\+c@{parser.\+c}!L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+B\+I\+N\+A\+R\+Y\+\_\+\+F\+I\+R\+ST@{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+B\+I\+N\+A\+R\+Y\+\_\+\+F\+I\+R\+ST}}}\mbox{\Hypertarget{parser_8c_afc6c36c7e3238c5427bfd2975204b613a25d9a04ea0fe8db0bae6df50418edffc}\label{parser_8c_afc6c36c7e3238c5427bfd2975204b613a25d9a04ea0fe8db0bae6df50418edffc}} 
+L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+B\+I\+N\+A\+R\+Y\+\_\+\+F\+I\+R\+ST&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+B\+I\+N\+A\+RY@{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+B\+I\+N\+A\+RY}!parser.\+c@{parser.\+c}}\index{parser.\+c@{parser.\+c}!L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+B\+I\+N\+A\+RY@{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+B\+I\+N\+A\+RY}}}\mbox{\Hypertarget{parser_8c_afc6c36c7e3238c5427bfd2975204b613aed438d3af97d95226e389f7fbfa2bbe9}\label{parser_8c_afc6c36c7e3238c5427bfd2975204b613aed438d3af97d95226e389f7fbfa2bbe9}} 
+L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+B\+I\+N\+A\+RY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+E\+C\+I\+M\+AL@{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+E\+C\+I\+M\+AL}!parser.\+c@{parser.\+c}}\index{parser.\+c@{parser.\+c}!L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+E\+C\+I\+M\+AL@{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+E\+C\+I\+M\+AL}}}\mbox{\Hypertarget{parser_8c_afc6c36c7e3238c5427bfd2975204b613a5f90ee679a58eec114a50ac617fb01af}\label{parser_8c_afc6c36c7e3238c5427bfd2975204b613a5f90ee679a58eec114a50ac617fb01af}} 
+L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+D\+E\+C\+I\+M\+AL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+H\+E\+X\+\_\+\+F\+I\+R\+ST@{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+H\+E\+X\+\_\+\+F\+I\+R\+ST}!parser.\+c@{parser.\+c}}\index{parser.\+c@{parser.\+c}!L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+H\+E\+X\+\_\+\+F\+I\+R\+ST@{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+H\+E\+X\+\_\+\+F\+I\+R\+ST}}}\mbox{\Hypertarget{parser_8c_afc6c36c7e3238c5427bfd2975204b613a0331e231b74975877d85f81296926b88}\label{parser_8c_afc6c36c7e3238c5427bfd2975204b613a0331e231b74975877d85f81296926b88}} 
+L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+H\+E\+X\+\_\+\+F\+I\+R\+ST&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+H\+EX@{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+H\+EX}!parser.\+c@{parser.\+c}}\index{parser.\+c@{parser.\+c}!L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+H\+EX@{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+H\+EX}}}\mbox{\Hypertarget{parser_8c_afc6c36c7e3238c5427bfd2975204b613a7acde9c3e70229d021cc493300a46671}\label{parser_8c_afc6c36c7e3238c5427bfd2975204b613a7acde9c3e70229d021cc493300a46671}} 
+L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+H\+EX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+P\+R\+E\+F\+IX@{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+P\+R\+E\+F\+IX}!parser.\+c@{parser.\+c}}\index{parser.\+c@{parser.\+c}!L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+P\+R\+E\+F\+IX@{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+P\+R\+E\+F\+IX}}}\mbox{\Hypertarget{parser_8c_afc6c36c7e3238c5427bfd2975204b613a0a91b6b557d7dcf0d74c22a262ddcd3e}\label{parser_8c_afc6c36c7e3238c5427bfd2975204b613a0a91b6b557d7dcf0d74c22a262ddcd3e}} 
+L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+P\+R\+E\+F\+IX&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+O\+P\+E\+R\+A\+T\+OR@{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+O\+P\+E\+R\+A\+T\+OR}!parser.\+c@{parser.\+c}}\index{parser.\+c@{parser.\+c}!L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+O\+P\+E\+R\+A\+T\+OR@{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+O\+P\+E\+R\+A\+T\+OR}}}\mbox{\Hypertarget{parser_8c_afc6c36c7e3238c5427bfd2975204b613a779d7407f5410c0bbf2d1f292eb15973}\label{parser_8c_afc6c36c7e3238c5427bfd2975204b613a779d7407f5410c0bbf2d1f292eb15973}} 
+L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+O\+P\+E\+R\+A\+T\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+O\+P\+E\+R\+A\+T\+O\+R2@{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+O\+P\+E\+R\+A\+T\+O\+R2}!parser.\+c@{parser.\+c}}\index{parser.\+c@{parser.\+c}!L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+O\+P\+E\+R\+A\+T\+O\+R2@{L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+O\+P\+E\+R\+A\+T\+O\+R2}}}\mbox{\Hypertarget{parser_8c_afc6c36c7e3238c5427bfd2975204b613a7a343d9440590a04a0dd3c0c42a4e3ba}\label{parser_8c_afc6c36c7e3238c5427bfd2975204b613a7a343d9440590a04a0dd3c0c42a4e3ba}} 
+L\+E\+X\+\_\+\+E\+X\+P\+E\+C\+T\+\_\+\+O\+P\+E\+R\+A\+T\+O\+R2&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{parser_8c_a783f480e96d7a33330f0d9b8091f77cc}\label{parser_8c_a783f480e96d7a33330f0d9b8091f77cc}} 
+\index{parser.\+c@{parser.\+c}!\+\_\+lex\+Operator@{\+\_\+lex\+Operator}}
+\index{\+\_\+lex\+Operator@{\+\_\+lex\+Operator}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+lex\+Operator()}{\_lexOperator()}}
+{\footnotesize\ttfamily static void \+\_\+lex\+Operator (\begin{DoxyParamCaption}\item[{struct Lex\+Vector $\ast$}]{lv,  }\item[{char}]{operator,  }\item[{enum \mbox{\hyperlink{parser_8c_afc6c36c7e3238c5427bfd2975204b613}{Lex\+State}} $\ast$}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parser_8c_a783f480e96d7a33330f0d9b8091f77cc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{parser_8c_ad4e6ab1478ed79fa1f1179646970bd0c}\label{parser_8c_ad4e6ab1478ed79fa1f1179646970bd0c}} 
+\index{parser.\+c@{parser.\+c}!\+\_\+lex\+Value@{\+\_\+lex\+Value}}
+\index{\+\_\+lex\+Value@{\+\_\+lex\+Value}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+lex\+Value()}{\_lexValue()}}
+{\footnotesize\ttfamily static void \+\_\+lex\+Value (\begin{DoxyParamCaption}\item[{struct Lex\+Vector $\ast$}]{lv,  }\item[{char}]{token,  }\item[{uint32\+\_\+t}]{next,  }\item[{enum \mbox{\hyperlink{parser_8c_afc6c36c7e3238c5427bfd2975204b613}{Lex\+State}} $\ast$}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{parser_8c_ad4e6ab1478ed79fa1f1179646970bd0c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parser_8c_ad4e6ab1478ed79fa1f1179646970bd0c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{parser_8c_a3d43f535d3cec4b991cf0feb3cb5c0f0}\label{parser_8c_a3d43f535d3cec4b991cf0feb3cb5c0f0}} 
+\index{parser.\+c@{parser.\+c}!\+\_\+parse\+Expression@{\+\_\+parse\+Expression}}
+\index{\+\_\+parse\+Expression@{\+\_\+parse\+Expression}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+parse\+Expression()}{\_parseExpression()}}
+{\footnotesize\ttfamily static size\+\_\+t \+\_\+parse\+Expression (\begin{DoxyParamCaption}\item[{struct Parse\+Tree $\ast$}]{tree,  }\item[{struct Lex\+Vector $\ast$}]{lv,  }\item[{size\+\_\+t}]{i,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{precedence,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{open\+Parens }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parser_8c_a3d43f535d3cec4b991cf0feb3cb5c0f0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parser_8c_a3d43f535d3cec4b991cf0feb3cb5c0f0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{parser_8c_aae5c24498d107f86def1dc7e1863d506}\label{parser_8c_aae5c24498d107f86def1dc7e1863d506}} 
+\index{parser.\+c@{parser.\+c}!\+\_\+parse\+Tree\+Create@{\+\_\+parse\+Tree\+Create}}
+\index{\+\_\+parse\+Tree\+Create@{\+\_\+parse\+Tree\+Create}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+parse\+Tree\+Create()}{\_parseTreeCreate()}}
+{\footnotesize\ttfamily static struct Parse\+Tree$\ast$ \+\_\+parse\+Tree\+Create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parser_8c_aae5c24498d107f86def1dc7e1863d506_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{parser_8c_aca580a274d7080b31695fa31b149dc24}\label{parser_8c_aca580a274d7080b31695fa31b149dc24}} 
+\index{parser.\+c@{parser.\+c}!\+\_\+perform\+Operation@{\+\_\+perform\+Operation}}
+\index{\+\_\+perform\+Operation@{\+\_\+perform\+Operation}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+perform\+Operation()}{\_performOperation()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+perform\+Operation (\begin{DoxyParamCaption}\item[{enum Operation}]{operation,  }\item[{int32\+\_\+t}]{current,  }\item[{int32\+\_\+t}]{next,  }\item[{int32\+\_\+t $\ast$}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parser_8c_aca580a274d7080b31695fa31b149dc24_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{parser_8c_addd53dcd8d9db3e0ff254d12d19564bb}\label{parser_8c_addd53dcd8d9db3e0ff254d12d19564bb}} 
+\index{parser.\+c@{parser.\+c}!D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}}
+\index{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+O\+R()}{DEFINE\_VECTOR()}}
+{\footnotesize\ttfamily D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR (\begin{DoxyParamCaption}\item[{Lex\+Vector}]{,  }\item[{struct \mbox{\hyperlink{sqlite3_8c_ae88d5c0259051080fda097b92d99d7ee}{Token}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{parser_8c_adc07269ab3d5869da42482428fcb6f99}\label{parser_8c_adc07269ab3d5869da42482428fcb6f99}} 
+\index{parser.\+c@{parser.\+c}!lex\+Expression@{lex\+Expression}}
+\index{lex\+Expression@{lex\+Expression}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{lex\+Expression()}{lexExpression()}}
+{\footnotesize\ttfamily size\+\_\+t lex\+Expression (\begin{DoxyParamCaption}\item[{struct Lex\+Vector $\ast$}]{lv,  }\item[{const char $\ast$}]{string,  }\item[{size\+\_\+t}]{length,  }\item[{const char $\ast$}]{eol }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parser_8c_adc07269ab3d5869da42482428fcb6f99_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parser_8c_adc07269ab3d5869da42482428fcb6f99_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{parser_8c_af4cbaafaf73341bc2c57d83802c51caf}\label{parser_8c_af4cbaafaf73341bc2c57d83802c51caf}} 
+\index{parser.\+c@{parser.\+c}!lex\+Free@{lex\+Free}}
+\index{lex\+Free@{lex\+Free}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{lex\+Free()}{lexFree()}}
+{\footnotesize\ttfamily void lex\+Free (\begin{DoxyParamCaption}\item[{struct Lex\+Vector $\ast$}]{lv }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{parser_8c_af4cbaafaf73341bc2c57d83802c51caf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parser_8c_af4cbaafaf73341bc2c57d83802c51caf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{parser_8c_afa692a94c9976cf2a6061327e4909f3c}\label{parser_8c_afa692a94c9976cf2a6061327e4909f3c}} 
+\index{parser.\+c@{parser.\+c}!m\+Debugger\+Evaluate\+Parse\+Tree@{m\+Debugger\+Evaluate\+Parse\+Tree}}
+\index{m\+Debugger\+Evaluate\+Parse\+Tree@{m\+Debugger\+Evaluate\+Parse\+Tree}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{m\+Debugger\+Evaluate\+Parse\+Tree()}{mDebuggerEvaluateParseTree()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+Debugger\+Evaluate\+Parse\+Tree (\begin{DoxyParamCaption}\item[{struct m\+Debugger $\ast$}]{debugger,  }\item[{struct Parse\+Tree $\ast$}]{tree,  }\item[{int32\+\_\+t $\ast$}]{value,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{segment }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parser_8c_afa692a94c9976cf2a6061327e4909f3c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parser_8c_afa692a94c9976cf2a6061327e4909f3c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{parser_8c_a6da386a6c337c2ebbe6366bae01c538d}\label{parser_8c_a6da386a6c337c2ebbe6366bae01c538d}} 
+\index{parser.\+c@{parser.\+c}!parse\+Free@{parse\+Free}}
+\index{parse\+Free@{parse\+Free}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Free()}{parseFree()}}
+{\footnotesize\ttfamily void parse\+Free (\begin{DoxyParamCaption}\item[{struct Parse\+Tree $\ast$}]{tree }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{parser_8c_a6da386a6c337c2ebbe6366bae01c538d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parser_8c_a6da386a6c337c2ebbe6366bae01c538d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{parser_8c_ab4f953ccc8bc671ad3a6943cdef6a865}\label{parser_8c_ab4f953ccc8bc671ad3a6943cdef6a865}} 
+\index{parser.\+c@{parser.\+c}!parse\+Lexed\+Expression@{parse\+Lexed\+Expression}}
+\index{parse\+Lexed\+Expression@{parse\+Lexed\+Expression}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{parse\+Lexed\+Expression()}{parseLexedExpression()}}
+{\footnotesize\ttfamily void parse\+Lexed\+Expression (\begin{DoxyParamCaption}\item[{struct Parse\+Tree $\ast$}]{tree,  }\item[{struct Lex\+Vector $\ast$}]{lv }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parser_8c_ab4f953ccc8bc671ad3a6943cdef6a865_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{parser_8c_ab4f953ccc8bc671ad3a6943cdef6a865_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{parser_8c_a57073261ad0ec1f72b485b6ab60ff18f}\label{parser_8c_a57073261ad0ec1f72b485b6ab60ff18f}} 
+\index{parser.\+c@{parser.\+c}!\+\_\+operator\+Precedence@{\+\_\+operator\+Precedence}}
+\index{\+\_\+operator\+Precedence@{\+\_\+operator\+Precedence}!parser.\+c@{parser.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+operator\+Precedence}{\_operatorPrecedence}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \+\_\+operator\+Precedence\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    [OP\_ASSIGN] = 14,
+    [OP\_ADD] = 4,
+    [OP\_SUBTRACT] = 4,
+    [OP\_MULTIPLY] = 3,
+    [OP\_DIVIDE] = 3,
+    [OP\_MODULO] = 3,
+    [OP\_AND] = 8,
+    [OP\_OR] = 10,
+    [OP\_XOR] = 9,
+    [OP\_LESS] = 6,
+    [OP\_GREATER] = 6,
+    [OP\_EQUAL] = 7,
+    [OP\_NOT\_EQUAL] = 7,
+    [OP\_LE] = 6,
+    [OP\_GE] = 6,
+    [OP\_LOGICAL\_AND] = 11,
+    [OP\_LOGICAL\_OR] = 12,
+    [OP\_NEGATE] = 2,
+    [OP\_FLIP] = 2,
+    [OP\_NOT] = 2,
+    [OP\_SHIFT\_L] = 5,
+    [OP\_SHIFT\_R] = 5,
+\}
+\end{DoxyCode}

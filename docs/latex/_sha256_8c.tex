@@ -1,0 +1,263 @@
+\hypertarget{_sha256_8c}{}\section{src/third-\/party/lzma/\+Sha256.c File Reference}
+\label{_sha256_8c}\index{src/third-\/party/lzma/\+Sha256.\+c@{src/third-\/party/lzma/\+Sha256.\+c}}
+{\ttfamily \#include \char`\"{}Precomp.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Cpu\+Arch.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Rotate\+Defs.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Sha256.\+h\char`\"{}}\newline
+Include dependency graph for Sha256.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_sha256_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_sha256_8c_a2daa99b144a6fe3e03c0902957b2b26b}{\+\_\+\+S\+H\+A256\+\_\+\+U\+N\+R\+O\+LL}}
+\item 
+\#define \mbox{\hyperlink{_sha256_8c_a22490e7bfa485bbd7ae1bd39de72c7d8}{\+\_\+\+S\+H\+A256\+\_\+\+U\+N\+R\+O\+L\+L2}}
+\item 
+\#define \mbox{\hyperlink{_sha256_8c_a4fe3c738087e923a3174ad2a116e3be5}{S0}}(x)~(\mbox{\hyperlink{_rotate_defs_8h_ac469e580e82dde00e1b263107fe6b6a8}{rotr\+Fixed}}(x, 2) $^\wedge$ \mbox{\hyperlink{_rotate_defs_8h_ac469e580e82dde00e1b263107fe6b6a8}{rotr\+Fixed}}(x,13) $^\wedge$ \mbox{\hyperlink{_rotate_defs_8h_ac469e580e82dde00e1b263107fe6b6a8}{rotr\+Fixed}}(x, 22))
+\item 
+\#define \mbox{\hyperlink{_sha256_8c_a59c41bcd16cbf3247d426429c3bf8e08}{S1}}(x)~(\mbox{\hyperlink{_rotate_defs_8h_ac469e580e82dde00e1b263107fe6b6a8}{rotr\+Fixed}}(x, 6) $^\wedge$ \mbox{\hyperlink{_rotate_defs_8h_ac469e580e82dde00e1b263107fe6b6a8}{rotr\+Fixed}}(x,11) $^\wedge$ \mbox{\hyperlink{_rotate_defs_8h_ac469e580e82dde00e1b263107fe6b6a8}{rotr\+Fixed}}(x, 25))
+\item 
+\#define \mbox{\hyperlink{_sha256_8c_aa4074fe219868f65efa393f656020fed}{s0}}(x)~(\mbox{\hyperlink{_rotate_defs_8h_ac469e580e82dde00e1b263107fe6b6a8}{rotr\+Fixed}}(x, 7) $^\wedge$ \mbox{\hyperlink{_rotate_defs_8h_ac469e580e82dde00e1b263107fe6b6a8}{rotr\+Fixed}}(x,18) $^\wedge$ (x $>$$>$ 3))
+\item 
+\#define \mbox{\hyperlink{_sha256_8c_ac1e4ed4e56436a432900cad5a1225731}{s1}}(x)~(\mbox{\hyperlink{_rotate_defs_8h_ac469e580e82dde00e1b263107fe6b6a8}{rotr\+Fixed}}(x,17) $^\wedge$ \mbox{\hyperlink{_rotate_defs_8h_ac469e580e82dde00e1b263107fe6b6a8}{rotr\+Fixed}}(x,19) $^\wedge$ (x $>$$>$ 10))
+\item 
+\#define \mbox{\hyperlink{_sha256_8c_a1a75de24d0277c5319098c218efaef2d}{blk0}}(i)~(W\mbox{[}i\mbox{]})
+\item 
+\#define \mbox{\hyperlink{_sha256_8c_adbe8c231d3e02ee92deb523592868e5c}{blk2}}(i)~(W\mbox{[}i\mbox{]} += \mbox{\hyperlink{_sha256_8c_ac1e4ed4e56436a432900cad5a1225731}{s1}}(W\mbox{[}((i)-\/2)\&15\mbox{]}) + W\mbox{[}((i)-\/7)\&15\mbox{]} + \mbox{\hyperlink{_sha256_8c_aa4074fe219868f65efa393f656020fed}{s0}}(W\mbox{[}((i)-\/15)\&15\mbox{]}))
+\item 
+\#define \mbox{\hyperlink{_sha256_8c_ab0a0d1ad13c7e4d3cb38c89f7127c85a}{Ch}}(x,  y,  \mbox{\hyperlink{isa-lr35902_8c_a9bfcf38888761332515ae81f9c499233}{z}})~(\mbox{\hyperlink{isa-lr35902_8c_a9bfcf38888761332515ae81f9c499233}{z}}$^\wedge$(x\&(y$^\wedge$\mbox{\hyperlink{isa-lr35902_8c_a9bfcf38888761332515ae81f9c499233}{z}})))
+\item 
+\#define \mbox{\hyperlink{_sha256_8c_a447cd1d7fb703b62666400976be24bf3}{Maj}}(x,  y,  \mbox{\hyperlink{isa-lr35902_8c_a9bfcf38888761332515ae81f9c499233}{z}})~((x\&y)$\vert$(\mbox{\hyperlink{isa-lr35902_8c_a9bfcf38888761332515ae81f9c499233}{z}}\&(x$\vert$y)))
+\item 
+\#define \mbox{\hyperlink{_sha256_8c_ae076917a1bc8cbea6ed0af47d7c897fe}{R}}(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}},  b,  \mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}},  \mbox{\hyperlink{isa-thumb_8c_a6f364afbe132c4ecfea48bde1b0618ba}{d}},  e,  \mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}},  g,  \mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}},  i)
+\item 
+\#define \mbox{\hyperlink{_sha256_8c_a94a6fc58709875b6c1595f343546c241}{R\+X\+\_\+8}}(i)
+\item 
+\#define \mbox{\hyperlink{_sha256_8c_aa6d5493fed8f2f9cf4df24e6bd52dafa}{R\+X\+\_\+16}}~\mbox{\hyperlink{_sha256_8c_a94a6fc58709875b6c1595f343546c241}{R\+X\+\_\+8}}(0); \mbox{\hyperlink{_sha256_8c_a94a6fc58709875b6c1595f343546c241}{R\+X\+\_\+8}}(8);
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_sha256_8c_a1bd92d0f1c846be3b85821d3d7c843e1}{Sha256\+\_\+\+Init}} (\mbox{\hyperlink{_sha256_8h_struct_c_sha256}{C\+Sha256}} $\ast$p)
+\item 
+static void \mbox{\hyperlink{_sha256_8c_a0e6be864460afb1dede1c3cdd1b1984b}{Sha256\+\_\+\+Write\+Byte\+Block}} (\mbox{\hyperlink{_sha256_8h_struct_c_sha256}{C\+Sha256}} $\ast$p)
+\item 
+void \mbox{\hyperlink{_sha256_8c_ac632efca1b359f192018d756f85e3881}{Sha256\+\_\+\+Update}} (\mbox{\hyperlink{_sha256_8h_struct_c_sha256}{C\+Sha256}} $\ast$p, const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$\mbox{\hyperlink{libretro_8c_a735984d41155bc1032e09bece8f8d66d}{data}}, size\+\_\+t \mbox{\hyperlink{ioapi_8h_a014d89bd76f74ef3a29c8f04b473eb76}{size}})
+\item 
+void \mbox{\hyperlink{_sha256_8c_a86bcc06098c61639c7e66daa2e959dce}{Sha256\+\_\+\+Final}} (\mbox{\hyperlink{_sha256_8h_struct_c_sha256}{C\+Sha256}} $\ast$p, \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$digest)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} \mbox{\hyperlink{_sha256_8c_aee4bab9ce41f404a19e3232e60a321ad}{K}} \mbox{[}64\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_sha256_8c_a2daa99b144a6fe3e03c0902957b2b26b}\label{_sha256_8c_a2daa99b144a6fe3e03c0902957b2b26b}} 
+\index{Sha256.\+c@{Sha256.\+c}!\+\_\+\+S\+H\+A256\+\_\+\+U\+N\+R\+O\+LL@{\+\_\+\+S\+H\+A256\+\_\+\+U\+N\+R\+O\+LL}}
+\index{\+\_\+\+S\+H\+A256\+\_\+\+U\+N\+R\+O\+LL@{\+\_\+\+S\+H\+A256\+\_\+\+U\+N\+R\+O\+LL}!Sha256.\+c@{Sha256.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+S\+H\+A256\+\_\+\+U\+N\+R\+O\+LL}{\_SHA256\_UNROLL}}
+{\footnotesize\ttfamily \#define \+\_\+\+S\+H\+A256\+\_\+\+U\+N\+R\+O\+LL}
+
+\mbox{\Hypertarget{_sha256_8c_a22490e7bfa485bbd7ae1bd39de72c7d8}\label{_sha256_8c_a22490e7bfa485bbd7ae1bd39de72c7d8}} 
+\index{Sha256.\+c@{Sha256.\+c}!\+\_\+\+S\+H\+A256\+\_\+\+U\+N\+R\+O\+L\+L2@{\+\_\+\+S\+H\+A256\+\_\+\+U\+N\+R\+O\+L\+L2}}
+\index{\+\_\+\+S\+H\+A256\+\_\+\+U\+N\+R\+O\+L\+L2@{\+\_\+\+S\+H\+A256\+\_\+\+U\+N\+R\+O\+L\+L2}!Sha256.\+c@{Sha256.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+S\+H\+A256\+\_\+\+U\+N\+R\+O\+L\+L2}{\_SHA256\_UNROLL2}}
+{\footnotesize\ttfamily \#define \+\_\+\+S\+H\+A256\+\_\+\+U\+N\+R\+O\+L\+L2}
+
+\mbox{\Hypertarget{_sha256_8c_a1a75de24d0277c5319098c218efaef2d}\label{_sha256_8c_a1a75de24d0277c5319098c218efaef2d}} 
+\index{Sha256.\+c@{Sha256.\+c}!blk0@{blk0}}
+\index{blk0@{blk0}!Sha256.\+c@{Sha256.\+c}}
+\subsubsection{\texorpdfstring{blk0}{blk0}}
+{\footnotesize\ttfamily \#define blk0(\begin{DoxyParamCaption}\item[{}]{i }\end{DoxyParamCaption})~(W\mbox{[}i\mbox{]})}
+
+\mbox{\Hypertarget{_sha256_8c_adbe8c231d3e02ee92deb523592868e5c}\label{_sha256_8c_adbe8c231d3e02ee92deb523592868e5c}} 
+\index{Sha256.\+c@{Sha256.\+c}!blk2@{blk2}}
+\index{blk2@{blk2}!Sha256.\+c@{Sha256.\+c}}
+\subsubsection{\texorpdfstring{blk2}{blk2}}
+{\footnotesize\ttfamily \#define blk2(\begin{DoxyParamCaption}\item[{}]{i }\end{DoxyParamCaption})~(W\mbox{[}i\mbox{]} += \mbox{\hyperlink{_sha256_8c_ac1e4ed4e56436a432900cad5a1225731}{s1}}(W\mbox{[}((i)-\/2)\&15\mbox{]}) + W\mbox{[}((i)-\/7)\&15\mbox{]} + \mbox{\hyperlink{_sha256_8c_aa4074fe219868f65efa393f656020fed}{s0}}(W\mbox{[}((i)-\/15)\&15\mbox{]}))}
+
+\mbox{\Hypertarget{_sha256_8c_ab0a0d1ad13c7e4d3cb38c89f7127c85a}\label{_sha256_8c_ab0a0d1ad13c7e4d3cb38c89f7127c85a}} 
+\index{Sha256.\+c@{Sha256.\+c}!Ch@{Ch}}
+\index{Ch@{Ch}!Sha256.\+c@{Sha256.\+c}}
+\subsubsection{\texorpdfstring{Ch}{Ch}}
+{\footnotesize\ttfamily \#define Ch(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{y,  }\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_a9bfcf38888761332515ae81f9c499233}{z}} }\end{DoxyParamCaption})~(\mbox{\hyperlink{isa-lr35902_8c_a9bfcf38888761332515ae81f9c499233}{z}}$^\wedge$(x\&(y$^\wedge$\mbox{\hyperlink{isa-lr35902_8c_a9bfcf38888761332515ae81f9c499233}{z}})))}
+
+\mbox{\Hypertarget{_sha256_8c_a447cd1d7fb703b62666400976be24bf3}\label{_sha256_8c_a447cd1d7fb703b62666400976be24bf3}} 
+\index{Sha256.\+c@{Sha256.\+c}!Maj@{Maj}}
+\index{Maj@{Maj}!Sha256.\+c@{Sha256.\+c}}
+\subsubsection{\texorpdfstring{Maj}{Maj}}
+{\footnotesize\ttfamily \#define Maj(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{y,  }\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_a9bfcf38888761332515ae81f9c499233}{z}} }\end{DoxyParamCaption})~((x\&y)$\vert$(\mbox{\hyperlink{isa-lr35902_8c_a9bfcf38888761332515ae81f9c499233}{z}}\&(x$\vert$y)))}
+
+\mbox{\Hypertarget{_sha256_8c_ae076917a1bc8cbea6ed0af47d7c897fe}\label{_sha256_8c_ae076917a1bc8cbea6ed0af47d7c897fe}} 
+\index{Sha256.\+c@{Sha256.\+c}!R@{R}}
+\index{R@{R}!Sha256.\+c@{Sha256.\+c}}
+\subsubsection{\texorpdfstring{R}{R}}
+{\footnotesize\ttfamily \#define R(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}},  }\item[{}]{b,  }\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}},  }\item[{}]{\mbox{\hyperlink{isa-thumb_8c_a6f364afbe132c4ecfea48bde1b0618ba}{d}},  }\item[{}]{e,  }\item[{}]{\mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}},  }\item[{}]{g,  }\item[{}]{\mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}},  }\item[{}]{i }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}} += \mbox{\hyperlink{_sha256_8c_a59c41bcd16cbf3247d426429c3bf8e08}{S1}}(e) + \mbox{\hyperlink{_sha256_8c_ab0a0d1ad13c7e4d3cb38c89f7127c85a}{Ch}}(e,\mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}},g) + \mbox{\hyperlink{_sha256_8c_aee4bab9ce41f404a19e3232e60a321ad}{K}}[(i)+(j)] + (j ? \mbox{\hyperlink{_sha256_8c_adbe8c231d3e02ee92deb523592868e5c}{blk2}}(i) : \mbox{\hyperlink{_sha256_8c_a1a75de24d0277c5319098c218efaef2d}{blk0}}(i)); \(\backslash\)
+    d += \mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}}; \(\backslash\)
+    h += \mbox{\hyperlink{_sha256_8c_a4fe3c738087e923a3174ad2a116e3be5}{S0}}(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}}) + \mbox{\hyperlink{_sha256_8c_a447cd1d7fb703b62666400976be24bf3}{Maj}}(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}}, b, \mbox{\hyperlink{isa-arm_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}})
+\end{DoxyCode}
+\mbox{\Hypertarget{_sha256_8c_aa6d5493fed8f2f9cf4df24e6bd52dafa}\label{_sha256_8c_aa6d5493fed8f2f9cf4df24e6bd52dafa}} 
+\index{Sha256.\+c@{Sha256.\+c}!R\+X\+\_\+16@{R\+X\+\_\+16}}
+\index{R\+X\+\_\+16@{R\+X\+\_\+16}!Sha256.\+c@{Sha256.\+c}}
+\subsubsection{\texorpdfstring{R\+X\+\_\+16}{RX\_16}}
+{\footnotesize\ttfamily \#define R\+X\+\_\+16~\mbox{\hyperlink{_sha256_8c_a94a6fc58709875b6c1595f343546c241}{R\+X\+\_\+8}}(0); \mbox{\hyperlink{_sha256_8c_a94a6fc58709875b6c1595f343546c241}{R\+X\+\_\+8}}(8);}
+
+\mbox{\Hypertarget{_sha256_8c_a94a6fc58709875b6c1595f343546c241}\label{_sha256_8c_a94a6fc58709875b6c1595f343546c241}} 
+\index{Sha256.\+c@{Sha256.\+c}!R\+X\+\_\+8@{R\+X\+\_\+8}}
+\index{R\+X\+\_\+8@{R\+X\+\_\+8}!Sha256.\+c@{Sha256.\+c}}
+\subsubsection{\texorpdfstring{R\+X\+\_\+8}{RX\_8}}
+{\footnotesize\ttfamily \#define R\+X\+\_\+8(\begin{DoxyParamCaption}\item[{}]{i }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\mbox{\hyperlink{_sha256_8c_ae076917a1bc8cbea6ed0af47d7c897fe}{R}}(\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}},b,\mbox{\hyperlink{isa-arm_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}},\mbox{\hyperlink{isa-arm_8c_af25cf54a35472b6bdc2836d8e8ef4c6a}{d}},e,\mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}},g,\mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}}, i); \(\backslash\)
+  R(\mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}},\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}},b,\mbox{\hyperlink{isa-arm_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}},\mbox{\hyperlink{isa-arm_8c_af25cf54a35472b6bdc2836d8e8ef4c6a}{d}},e,\mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}},g, i+1); \(\backslash\)
+  R(g,\mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}},\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}},b,\mbox{\hyperlink{isa-arm_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}},\mbox{\hyperlink{isa-arm_8c_af25cf54a35472b6bdc2836d8e8ef4c6a}{d}},e,\mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}}, i+2); \(\backslash\)
+  R(\mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}},g,\mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}},\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}},b,\mbox{\hyperlink{isa-arm_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}},\mbox{\hyperlink{isa-arm_8c_af25cf54a35472b6bdc2836d8e8ef4c6a}{d}},e, i+3); \(\backslash\)
+  R(e,\mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}},g,\mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}},\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}},b,\mbox{\hyperlink{isa-arm_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}},\mbox{\hyperlink{isa-arm_8c_af25cf54a35472b6bdc2836d8e8ef4c6a}{d}}, i+4); \(\backslash\)
+  R(\mbox{\hyperlink{isa-arm_8c_af25cf54a35472b6bdc2836d8e8ef4c6a}{d}},e,\mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}},g,\mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}},\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}},b,\mbox{\hyperlink{isa-arm_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}}, i+5); \(\backslash\)
+  R(\mbox{\hyperlink{isa-arm_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}},\mbox{\hyperlink{isa-arm_8c_af25cf54a35472b6bdc2836d8e8ef4c6a}{d}},e,\mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}},g,\mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}},\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}},b, i+6); \(\backslash\)
+  R(b,\mbox{\hyperlink{isa-arm_8c_ab27f9f98dd173bfc694f5d161e839d6e}{c}},\mbox{\hyperlink{isa-arm_8c_af25cf54a35472b6bdc2836d8e8ef4c6a}{d}},e,\mbox{\hyperlink{isa-arm_8c_a362077c979b0bb65159c603270e40f70}{f}},g,\mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}},\mbox{\hyperlink{isa-lr35902_8c_a7015284d2957ab7cdf82d2535a2fa547}{a}}, i+7)
+\end{DoxyCode}
+\mbox{\Hypertarget{_sha256_8c_a4fe3c738087e923a3174ad2a116e3be5}\label{_sha256_8c_a4fe3c738087e923a3174ad2a116e3be5}} 
+\index{Sha256.\+c@{Sha256.\+c}!S0@{S0}}
+\index{S0@{S0}!Sha256.\+c@{Sha256.\+c}}
+\subsubsection{\texorpdfstring{S0}{S0}}
+{\footnotesize\ttfamily \#define S0(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~(\mbox{\hyperlink{_rotate_defs_8h_ac469e580e82dde00e1b263107fe6b6a8}{rotr\+Fixed}}(x, 2) $^\wedge$ \mbox{\hyperlink{_rotate_defs_8h_ac469e580e82dde00e1b263107fe6b6a8}{rotr\+Fixed}}(x,13) $^\wedge$ \mbox{\hyperlink{_rotate_defs_8h_ac469e580e82dde00e1b263107fe6b6a8}{rotr\+Fixed}}(x, 22))}
+
+\mbox{\Hypertarget{_sha256_8c_aa4074fe219868f65efa393f656020fed}\label{_sha256_8c_aa4074fe219868f65efa393f656020fed}} 
+\index{Sha256.\+c@{Sha256.\+c}!s0@{s0}}
+\index{s0@{s0}!Sha256.\+c@{Sha256.\+c}}
+\subsubsection{\texorpdfstring{s0}{s0}}
+{\footnotesize\ttfamily \#define s0(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~(\mbox{\hyperlink{_rotate_defs_8h_ac469e580e82dde00e1b263107fe6b6a8}{rotr\+Fixed}}(x, 7) $^\wedge$ \mbox{\hyperlink{_rotate_defs_8h_ac469e580e82dde00e1b263107fe6b6a8}{rotr\+Fixed}}(x,18) $^\wedge$ (x $>$$>$ 3))}
+
+\mbox{\Hypertarget{_sha256_8c_a59c41bcd16cbf3247d426429c3bf8e08}\label{_sha256_8c_a59c41bcd16cbf3247d426429c3bf8e08}} 
+\index{Sha256.\+c@{Sha256.\+c}!S1@{S1}}
+\index{S1@{S1}!Sha256.\+c@{Sha256.\+c}}
+\subsubsection{\texorpdfstring{S1}{S1}}
+{\footnotesize\ttfamily \#define S1(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~(\mbox{\hyperlink{_rotate_defs_8h_ac469e580e82dde00e1b263107fe6b6a8}{rotr\+Fixed}}(x, 6) $^\wedge$ \mbox{\hyperlink{_rotate_defs_8h_ac469e580e82dde00e1b263107fe6b6a8}{rotr\+Fixed}}(x,11) $^\wedge$ \mbox{\hyperlink{_rotate_defs_8h_ac469e580e82dde00e1b263107fe6b6a8}{rotr\+Fixed}}(x, 25))}
+
+\mbox{\Hypertarget{_sha256_8c_ac1e4ed4e56436a432900cad5a1225731}\label{_sha256_8c_ac1e4ed4e56436a432900cad5a1225731}} 
+\index{Sha256.\+c@{Sha256.\+c}!s1@{s1}}
+\index{s1@{s1}!Sha256.\+c@{Sha256.\+c}}
+\subsubsection{\texorpdfstring{s1}{s1}}
+{\footnotesize\ttfamily \#define s1(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~(\mbox{\hyperlink{_rotate_defs_8h_ac469e580e82dde00e1b263107fe6b6a8}{rotr\+Fixed}}(x,17) $^\wedge$ \mbox{\hyperlink{_rotate_defs_8h_ac469e580e82dde00e1b263107fe6b6a8}{rotr\+Fixed}}(x,19) $^\wedge$ (x $>$$>$ 10))}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_sha256_8c_a86bcc06098c61639c7e66daa2e959dce}\label{_sha256_8c_a86bcc06098c61639c7e66daa2e959dce}} 
+\index{Sha256.\+c@{Sha256.\+c}!Sha256\+\_\+\+Final@{Sha256\+\_\+\+Final}}
+\index{Sha256\+\_\+\+Final@{Sha256\+\_\+\+Final}!Sha256.\+c@{Sha256.\+c}}
+\subsubsection{\texorpdfstring{Sha256\+\_\+\+Final()}{Sha256\_Final()}}
+{\footnotesize\ttfamily void Sha256\+\_\+\+Final (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_sha256_8h_struct_c_sha256}{C\+Sha256}} $\ast$}]{p,  }\item[{\mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$}]{digest }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{_sha256_8c_a86bcc06098c61639c7e66daa2e959dce_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_sha256_8c_a86bcc06098c61639c7e66daa2e959dce_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_sha256_8c_a1bd92d0f1c846be3b85821d3d7c843e1}\label{_sha256_8c_a1bd92d0f1c846be3b85821d3d7c843e1}} 
+\index{Sha256.\+c@{Sha256.\+c}!Sha256\+\_\+\+Init@{Sha256\+\_\+\+Init}}
+\index{Sha256\+\_\+\+Init@{Sha256\+\_\+\+Init}!Sha256.\+c@{Sha256.\+c}}
+\subsubsection{\texorpdfstring{Sha256\+\_\+\+Init()}{Sha256\_Init()}}
+{\footnotesize\ttfamily void Sha256\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_sha256_8h_struct_c_sha256}{C\+Sha256}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_sha256_8c_a1bd92d0f1c846be3b85821d3d7c843e1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_sha256_8c_ac632efca1b359f192018d756f85e3881}\label{_sha256_8c_ac632efca1b359f192018d756f85e3881}} 
+\index{Sha256.\+c@{Sha256.\+c}!Sha256\+\_\+\+Update@{Sha256\+\_\+\+Update}}
+\index{Sha256\+\_\+\+Update@{Sha256\+\_\+\+Update}!Sha256.\+c@{Sha256.\+c}}
+\subsubsection{\texorpdfstring{Sha256\+\_\+\+Update()}{Sha256\_Update()}}
+{\footnotesize\ttfamily void Sha256\+\_\+\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_sha256_8h_struct_c_sha256}{C\+Sha256}} $\ast$}]{p,  }\item[{const \mbox{\hyperlink{7z_types_8h_ae3a497195d617519e5353ea7b417940f}{Byte}} $\ast$}]{data,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{_sha256_8c_ac632efca1b359f192018d756f85e3881_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_sha256_8c_ac632efca1b359f192018d756f85e3881_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_sha256_8c_a0e6be864460afb1dede1c3cdd1b1984b}\label{_sha256_8c_a0e6be864460afb1dede1c3cdd1b1984b}} 
+\index{Sha256.\+c@{Sha256.\+c}!Sha256\+\_\+\+Write\+Byte\+Block@{Sha256\+\_\+\+Write\+Byte\+Block}}
+\index{Sha256\+\_\+\+Write\+Byte\+Block@{Sha256\+\_\+\+Write\+Byte\+Block}!Sha256.\+c@{Sha256.\+c}}
+\subsubsection{\texorpdfstring{Sha256\+\_\+\+Write\+Byte\+Block()}{Sha256\_WriteByteBlock()}}
+{\footnotesize\ttfamily static void Sha256\+\_\+\+Write\+Byte\+Block (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_sha256_8h_struct_c_sha256}{C\+Sha256}} $\ast$}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_sha256_8c_a0e6be864460afb1dede1c3cdd1b1984b_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_sha256_8c_aee4bab9ce41f404a19e3232e60a321ad}\label{_sha256_8c_aee4bab9ce41f404a19e3232e60a321ad}} 
+\index{Sha256.\+c@{Sha256.\+c}!K@{K}}
+\index{K@{K}!Sha256.\+c@{Sha256.\+c}}
+\subsubsection{\texorpdfstring{K}{K}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{7z_types_8h_a4cd0dc7d33ac7a69204e8429ecea0f86}{U\+Int32}} K\mbox{[}64\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+  0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5,
+  0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
+  0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3,
+  0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
+  0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc,
+  0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+  0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7,
+  0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
+  0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13,
+  0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
+  0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3,
+  0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+  0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5,
+  0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+  0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
+  0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
+\}
+\end{DoxyCode}

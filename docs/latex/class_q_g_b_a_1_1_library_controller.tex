@@ -1,0 +1,403 @@
+\hypertarget{class_q_g_b_a_1_1_library_controller}{}\section{Q\+G\+BA\+:\+:Library\+Controller Class Reference}
+\label{class_q_g_b_a_1_1_library_controller}\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+
+
+{\ttfamily \#include $<$Library\+Controller.\+h$>$}
+
+
+
+Inheritance diagram for Q\+G\+BA\+:\+:Library\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{class_q_g_b_a_1_1_library_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Q\+G\+BA\+:\+:Library\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_q_g_b_a_1_1_library_controller__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_a71ee6910dd69a573702798a708f7d378}{clear}} ()
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_a6c95f8fb4c265787962284aa7835c899}{start\+Game}} ()
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_a5e615220cf4daf6560b4b15eb61d0298}{done\+Loading}} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_a1a01950f96642877fa96bf535c5bfd87}{Library\+Controller}} (Q\+Widget $\ast$parent=nullptr, const Q\+String \&path=Q\+String(), \mbox{\hyperlink{class_q_g_b_a_1_1_config_controller}{Config\+Controller}} $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}=nullptr)
+\item 
+\mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_ae35abb57acd9caa2d2380486d3fafd75}{$\sim$\+Library\+Controller}} ()
+\item 
+\mbox{\hyperlink{namespace_q_g_b_a_a4804d48d02699a2c1d2436e9269a8bb8}{Library\+Style}} \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_a1cfd9fa9822eee84bf488d1b56c84d4b}{view\+Style}} () const
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_a03b3f54bcf12e4be753ccceef5ee0937}{set\+View\+Style}} (\mbox{\hyperlink{namespace_q_g_b_a_a4804d48d02699a2c1d2436e9269a8bb8}{Library\+Style}} new\+Style)
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_ac226d6690f902db907fbd66c80c45582}{select\+Entry}} (\mbox{\hyperlink{namespace_q_g_b_a_a201fa9f2cb8f778666a134ba81909358}{Library\+Entry\+Ref}} entry)
+\item 
+\mbox{\hyperlink{namespace_q_g_b_a_a201fa9f2cb8f778666a134ba81909358}{Library\+Entry\+Ref}} \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_afa408861ab054246525f8d2b62610133}{selected\+Entry}} ()
+\item 
+V\+File $\ast$ \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_a5f99551f35fe696c168ab9a60f390874}{selected\+V\+File}} ()
+\item 
+Q\+Pair$<$ Q\+String, Q\+String $>$ \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_a3ab757f52f47c97e0e9b753d51e7a7bd}{selected\+Path}} ()
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_a31c1c6683f5f348b623da642dbd1f5e1}{select\+Last\+Booted\+Game}} ()
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_aa8c7e9e762d7740da86d3c6795e01742}{add\+Directory}} (const Q\+String \&dir)
+\end{DoxyCompactItemize}
+\subsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_a41b89cf89ef004789161172657410379}{refresh}} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_a39fcdba5deb72ca89a3d26cc967a62a6}{load\+Directory}} (const Q\+String \&)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_q_g_b_a_1_1_config_controller}{Config\+Controller}} $\ast$ \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_a202998e646d739275d3edc1f85e60037}{m\+\_\+config}} = nullptr
+\item 
+std\+::shared\+\_\+ptr$<$ m\+Library $>$ \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_a2907849f816d93078ebad93c4a899cf4}{m\+\_\+library}}
+\item 
+qint64 \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_a181b0ecf75af5d024e7e7fa4ee8a0111}{m\+\_\+library\+Job}} = -\/1
+\item 
+m\+Library\+Listing \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_af92b619ecb1b255a005264d98f5e5774}{m\+\_\+listing}}
+\item 
+Q\+Map$<$ Q\+String, \mbox{\hyperlink{namespace_q_g_b_a_a201fa9f2cb8f778666a134ba81909358}{Library\+Entry\+Ref}} $>$ \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_a8bfbc85d68cca4fe2cab1d5e8e4dca51}{m\+\_\+entries}}
+\item 
+\mbox{\hyperlink{namespace_q_g_b_a_a4804d48d02699a2c1d2436e9269a8bb8}{Library\+Style}} \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_ad063b193fb4825cca9fdb8aa2fdf0be6}{m\+\_\+current\+Style}}
+\item 
+\mbox{\hyperlink{class_q_g_b_a_1_1_abstract_game_list}{Abstract\+Game\+List}} $\ast$ \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_ab01f2f8a1d2f19a9f189100be180bc28}{m\+\_\+current\+List}} = nullptr
+\item 
+\mbox{\hyperlink{class_q_g_b_a_1_1_library_grid}{Library\+Grid}} $\ast$ \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_a948133621a760d2ed0f5526fe1aaa50c}{m\+\_\+library\+Grid}} = nullptr
+\item 
+\mbox{\hyperlink{class_q_g_b_a_1_1_library_tree}{Library\+Tree}} $\ast$ \mbox{\hyperlink{class_q_g_b_a_1_1_library_controller_a5e5555572a4417f4b99315aa81eb931a}{m\+\_\+library\+Tree}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_a1a01950f96642877fa96bf535c5bfd87}\label{class_q_g_b_a_1_1_library_controller_a1a01950f96642877fa96bf535c5bfd87}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!Library\+Controller@{Library\+Controller}}
+\index{Library\+Controller@{Library\+Controller}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{Library\+Controller()}{LibraryController()}}
+{\footnotesize\ttfamily Q\+G\+B\+A\+::\+Library\+Controller\+::\+Library\+Controller (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{parent = {\ttfamily nullptr},  }\item[{const Q\+String \&}]{path = {\ttfamily QString()},  }\item[{\mbox{\hyperlink{class_q_g_b_a_1_1_config_controller}{Config\+Controller}} $\ast$}]{config = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_library_controller_a1a01950f96642877fa96bf535c5bfd87_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_ae35abb57acd9caa2d2380486d3fafd75}\label{class_q_g_b_a_1_1_library_controller_ae35abb57acd9caa2d2380486d3fafd75}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!````~Library\+Controller@{$\sim$\+Library\+Controller}}
+\index{````~Library\+Controller@{$\sim$\+Library\+Controller}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{$\sim$\+Library\+Controller()}{~LibraryController()}}
+{\footnotesize\ttfamily Q\+G\+B\+A\+::\+Library\+Controller\+::$\sim$\+Library\+Controller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_aa8c7e9e762d7740da86d3c6795e01742}\label{class_q_g_b_a_1_1_library_controller_aa8c7e9e762d7740da86d3c6795e01742}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!add\+Directory@{add\+Directory}}
+\index{add\+Directory@{add\+Directory}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{add\+Directory()}{addDirectory()}}
+{\footnotesize\ttfamily void Q\+G\+B\+A\+::\+Library\+Controller\+::add\+Directory (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{dir }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_library_controller_aa8c7e9e762d7740da86d3c6795e01742_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_a71ee6910dd69a573702798a708f7d378}\label{class_q_g_b_a_1_1_library_controller_a71ee6910dd69a573702798a708f7d378}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!clear@{clear}}
+\index{clear@{clear}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{clear}{clear}}
+{\footnotesize\ttfamily void Q\+G\+B\+A\+::\+Library\+Controller\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_library_controller_a71ee6910dd69a573702798a708f7d378_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_library_controller_a71ee6910dd69a573702798a708f7d378_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_a5e615220cf4daf6560b4b15eb61d0298}\label{class_q_g_b_a_1_1_library_controller_a5e615220cf4daf6560b4b15eb61d0298}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!done\+Loading@{done\+Loading}}
+\index{done\+Loading@{done\+Loading}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{done\+Loading}{doneLoading}}
+{\footnotesize\ttfamily void Q\+G\+B\+A\+::\+Library\+Controller\+::done\+Loading (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_library_controller_a5e615220cf4daf6560b4b15eb61d0298_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_a39fcdba5deb72ca89a3d26cc967a62a6}\label{class_q_g_b_a_1_1_library_controller_a39fcdba5deb72ca89a3d26cc967a62a6}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!load\+Directory@{load\+Directory}}
+\index{load\+Directory@{load\+Directory}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{load\+Directory()}{loadDirectory()}}
+{\footnotesize\ttfamily void Q\+G\+B\+A\+::\+Library\+Controller\+::load\+Directory (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{dir }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_library_controller_a39fcdba5deb72ca89a3d26cc967a62a6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_a41b89cf89ef004789161172657410379}\label{class_q_g_b_a_1_1_library_controller_a41b89cf89ef004789161172657410379}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!refresh@{refresh}}
+\index{refresh@{refresh}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{refresh}{refresh}}
+{\footnotesize\ttfamily void Q\+G\+B\+A\+::\+Library\+Controller\+::refresh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_library_controller_a41b89cf89ef004789161172657410379_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_library_controller_a41b89cf89ef004789161172657410379_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_afa408861ab054246525f8d2b62610133}\label{class_q_g_b_a_1_1_library_controller_afa408861ab054246525f8d2b62610133}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!selected\+Entry@{selected\+Entry}}
+\index{selected\+Entry@{selected\+Entry}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{selected\+Entry()}{selectedEntry()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_q_g_b_a_a201fa9f2cb8f778666a134ba81909358}{Library\+Entry\+Ref}} Q\+G\+B\+A\+::\+Library\+Controller\+::selected\+Entry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_library_controller_afa408861ab054246525f8d2b62610133_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_library_controller_afa408861ab054246525f8d2b62610133_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_a3ab757f52f47c97e0e9b753d51e7a7bd}\label{class_q_g_b_a_1_1_library_controller_a3ab757f52f47c97e0e9b753d51e7a7bd}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!selected\+Path@{selected\+Path}}
+\index{selected\+Path@{selected\+Path}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{selected\+Path()}{selectedPath()}}
+{\footnotesize\ttfamily Q\+Pair$<$ Q\+String, Q\+String $>$ Q\+G\+B\+A\+::\+Library\+Controller\+::selected\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_library_controller_a3ab757f52f47c97e0e9b753d51e7a7bd_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_a5f99551f35fe696c168ab9a60f390874}\label{class_q_g_b_a_1_1_library_controller_a5f99551f35fe696c168ab9a60f390874}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!selected\+V\+File@{selected\+V\+File}}
+\index{selected\+V\+File@{selected\+V\+File}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{selected\+V\+File()}{selectedVFile()}}
+{\footnotesize\ttfamily V\+File $\ast$ Q\+G\+B\+A\+::\+Library\+Controller\+::selected\+V\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_library_controller_a5f99551f35fe696c168ab9a60f390874_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_ac226d6690f902db907fbd66c80c45582}\label{class_q_g_b_a_1_1_library_controller_ac226d6690f902db907fbd66c80c45582}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!select\+Entry@{select\+Entry}}
+\index{select\+Entry@{select\+Entry}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{select\+Entry()}{selectEntry()}}
+{\footnotesize\ttfamily void Q\+G\+B\+A\+::\+Library\+Controller\+::select\+Entry (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_q_g_b_a_a201fa9f2cb8f778666a134ba81909358}{Library\+Entry\+Ref}}}]{entry }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_library_controller_ac226d6690f902db907fbd66c80c45582_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_library_controller_ac226d6690f902db907fbd66c80c45582_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_a31c1c6683f5f348b623da642dbd1f5e1}\label{class_q_g_b_a_1_1_library_controller_a31c1c6683f5f348b623da642dbd1f5e1}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!select\+Last\+Booted\+Game@{select\+Last\+Booted\+Game}}
+\index{select\+Last\+Booted\+Game@{select\+Last\+Booted\+Game}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{select\+Last\+Booted\+Game()}{selectLastBootedGame()}}
+{\footnotesize\ttfamily void Q\+G\+B\+A\+::\+Library\+Controller\+::select\+Last\+Booted\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_library_controller_a31c1c6683f5f348b623da642dbd1f5e1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_library_controller_a31c1c6683f5f348b623da642dbd1f5e1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_a03b3f54bcf12e4be753ccceef5ee0937}\label{class_q_g_b_a_1_1_library_controller_a03b3f54bcf12e4be753ccceef5ee0937}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!set\+View\+Style@{set\+View\+Style}}
+\index{set\+View\+Style@{set\+View\+Style}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{set\+View\+Style()}{setViewStyle()}}
+{\footnotesize\ttfamily void Q\+G\+B\+A\+::\+Library\+Controller\+::set\+View\+Style (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_q_g_b_a_a4804d48d02699a2c1d2436e9269a8bb8}{Library\+Style}}}]{new\+Style }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_library_controller_a03b3f54bcf12e4be753ccceef5ee0937_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_library_controller_a03b3f54bcf12e4be753ccceef5ee0937_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_a6c95f8fb4c265787962284aa7835c899}\label{class_q_g_b_a_1_1_library_controller_a6c95f8fb4c265787962284aa7835c899}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!start\+Game@{start\+Game}}
+\index{start\+Game@{start\+Game}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{start\+Game}{startGame}}
+{\footnotesize\ttfamily void Q\+G\+B\+A\+::\+Library\+Controller\+::start\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_q_g_b_a_1_1_library_controller_a6c95f8fb4c265787962284aa7835c899_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_a1cfd9fa9822eee84bf488d1b56c84d4b}\label{class_q_g_b_a_1_1_library_controller_a1cfd9fa9822eee84bf488d1b56c84d4b}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!view\+Style@{view\+Style}}
+\index{view\+Style@{view\+Style}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{view\+Style()}{viewStyle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_q_g_b_a_a4804d48d02699a2c1d2436e9269a8bb8}{Library\+Style}} Q\+G\+B\+A\+::\+Library\+Controller\+::view\+Style (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_a202998e646d739275d3edc1f85e60037}\label{class_q_g_b_a_1_1_library_controller_a202998e646d739275d3edc1f85e60037}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!m\+\_\+config@{m\+\_\+config}}
+\index{m\+\_\+config@{m\+\_\+config}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{m\+\_\+config}{m\_config}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_q_g_b_a_1_1_config_controller}{Config\+Controller}}$\ast$ Q\+G\+B\+A\+::\+Library\+Controller\+::m\+\_\+config = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_ab01f2f8a1d2f19a9f189100be180bc28}\label{class_q_g_b_a_1_1_library_controller_ab01f2f8a1d2f19a9f189100be180bc28}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!m\+\_\+current\+List@{m\+\_\+current\+List}}
+\index{m\+\_\+current\+List@{m\+\_\+current\+List}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{m\+\_\+current\+List}{m\_currentList}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_q_g_b_a_1_1_abstract_game_list}{Abstract\+Game\+List}}$\ast$ Q\+G\+B\+A\+::\+Library\+Controller\+::m\+\_\+current\+List = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_ad063b193fb4825cca9fdb8aa2fdf0be6}\label{class_q_g_b_a_1_1_library_controller_ad063b193fb4825cca9fdb8aa2fdf0be6}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!m\+\_\+current\+Style@{m\+\_\+current\+Style}}
+\index{m\+\_\+current\+Style@{m\+\_\+current\+Style}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{m\+\_\+current\+Style}{m\_currentStyle}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_q_g_b_a_a4804d48d02699a2c1d2436e9269a8bb8}{Library\+Style}} Q\+G\+B\+A\+::\+Library\+Controller\+::m\+\_\+current\+Style\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_a8bfbc85d68cca4fe2cab1d5e8e4dca51}\label{class_q_g_b_a_1_1_library_controller_a8bfbc85d68cca4fe2cab1d5e8e4dca51}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!m\+\_\+entries@{m\+\_\+entries}}
+\index{m\+\_\+entries@{m\+\_\+entries}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{m\+\_\+entries}{m\_entries}}
+{\footnotesize\ttfamily Q\+Map$<$Q\+String, \mbox{\hyperlink{namespace_q_g_b_a_a201fa9f2cb8f778666a134ba81909358}{Library\+Entry\+Ref}}$>$ Q\+G\+B\+A\+::\+Library\+Controller\+::m\+\_\+entries\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_a2907849f816d93078ebad93c4a899cf4}\label{class_q_g_b_a_1_1_library_controller_a2907849f816d93078ebad93c4a899cf4}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!m\+\_\+library@{m\+\_\+library}}
+\index{m\+\_\+library@{m\+\_\+library}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{m\+\_\+library}{m\_library}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$m\+Library$>$ Q\+G\+B\+A\+::\+Library\+Controller\+::m\+\_\+library\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_a948133621a760d2ed0f5526fe1aaa50c}\label{class_q_g_b_a_1_1_library_controller_a948133621a760d2ed0f5526fe1aaa50c}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!m\+\_\+library\+Grid@{m\+\_\+library\+Grid}}
+\index{m\+\_\+library\+Grid@{m\+\_\+library\+Grid}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{m\+\_\+library\+Grid}{m\_libraryGrid}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_q_g_b_a_1_1_library_grid}{Library\+Grid}}$\ast$ Q\+G\+B\+A\+::\+Library\+Controller\+::m\+\_\+library\+Grid = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_a181b0ecf75af5d024e7e7fa4ee8a0111}\label{class_q_g_b_a_1_1_library_controller_a181b0ecf75af5d024e7e7fa4ee8a0111}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!m\+\_\+library\+Job@{m\+\_\+library\+Job}}
+\index{m\+\_\+library\+Job@{m\+\_\+library\+Job}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{m\+\_\+library\+Job}{m\_libraryJob}}
+{\footnotesize\ttfamily qint64 Q\+G\+B\+A\+::\+Library\+Controller\+::m\+\_\+library\+Job = -\/1\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_a5e5555572a4417f4b99315aa81eb931a}\label{class_q_g_b_a_1_1_library_controller_a5e5555572a4417f4b99315aa81eb931a}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!m\+\_\+library\+Tree@{m\+\_\+library\+Tree}}
+\index{m\+\_\+library\+Tree@{m\+\_\+library\+Tree}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{m\+\_\+library\+Tree}{m\_libraryTree}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_q_g_b_a_1_1_library_tree}{Library\+Tree}}$\ast$ Q\+G\+B\+A\+::\+Library\+Controller\+::m\+\_\+library\+Tree = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{class_q_g_b_a_1_1_library_controller_af92b619ecb1b255a005264d98f5e5774}\label{class_q_g_b_a_1_1_library_controller_af92b619ecb1b255a005264d98f5e5774}} 
+\index{Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}!m\+\_\+listing@{m\+\_\+listing}}
+\index{m\+\_\+listing@{m\+\_\+listing}!Q\+G\+B\+A\+::\+Library\+Controller@{Q\+G\+B\+A\+::\+Library\+Controller}}
+\subsubsection{\texorpdfstring{m\+\_\+listing}{m\_listing}}
+{\footnotesize\ttfamily m\+Library\+Listing Q\+G\+B\+A\+::\+Library\+Controller\+::m\+\_\+listing\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/platform/qt/library/\mbox{\hyperlink{_library_controller_8h}{Library\+Controller.\+h}}\item 
+src/platform/qt/library/\mbox{\hyperlink{_library_controller_8cpp}{Library\+Controller.\+cpp}}\end{DoxyCompactItemize}

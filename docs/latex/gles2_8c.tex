@@ -1,0 +1,620 @@
+\hypertarget{gles2_8c}{}\section{src/platform/opengl/gles2.c File Reference}
+\label{gles2_8c}\index{src/platform/opengl/gles2.\+c@{src/platform/opengl/gles2.\+c}}
+{\ttfamily \#include \char`\"{}gles2.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba/core/log.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/configuration.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/formatting.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/math.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vector.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+Include dependency graph for gles2.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gles2_8c_ac375c87c2a09616f10a6db6bd7dc45bb}{M\+A\+X\+\_\+\+P\+A\+S\+S\+ES}}~8
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gles2_8c_a7a97d1aef2f7605e6aee5e3e5c167513}{m\+L\+O\+G\+\_\+\+D\+E\+C\+L\+A\+R\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}} (O\+P\+E\+N\+GL)
+\item 
+\mbox{\hyperlink{gles2_8c_a93d62629a154ee21fa5e7476dca0bacc}{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}} (O\+P\+E\+N\+GL, \char`\"{}Open\+GL\char`\"{}, \char`\"{}video.\+ogl\char`\"{})
+\item 
+static void \mbox{\hyperlink{gles2_8c_ab369f710ea292c9b383f512c239e6bc0}{m\+G\+L\+E\+S2\+Context\+Init}} (struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$v, \mbox{\hyperlink{video-backend_8h_aaa69bc83f36b455578d1f29b125741d9}{W\+Handle}} handle)
+\item 
+static void \mbox{\hyperlink{gles2_8c_ae34518c56cc48582b9cfcbfda9d48a36}{m\+G\+L\+E\+S2\+Context\+Set\+Dimensions}} (struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$v, unsigned \mbox{\hyperlink{readppm_8c_a59b7c57bf1dc7c36ac7c8232cf5bb713}{width}}, unsigned \mbox{\hyperlink{readppm_8c_ac8b624a7354198da45f5797b93b883c9}{height}})
+\item 
+static void \mbox{\hyperlink{gles2_8c_aafaad59711863460ba7f3c48bf1f6f19}{m\+G\+L\+E\+S2\+Context\+Deinit}} (struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$v)
+\item 
+static void \mbox{\hyperlink{gles2_8c_a1b32959b8c8a74644102488649df0c0e}{m\+G\+L\+E\+S2\+Context\+Resized}} (struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$v, unsigned w, unsigned \mbox{\hyperlink{isa-lr35902_8c_a06a62682361411df32cf88f75a0b8da4}{h}})
+\item 
+static void \mbox{\hyperlink{gles2_8c_adcbe0574433dd27d45f519d30d8f40b1}{m\+G\+L\+E\+S2\+Context\+Clear}} (struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$v)
+\item 
+void \mbox{\hyperlink{gles2_8c_a054b381861ae3fdd621178bc2ffd83b2}{\+\_\+draw\+Shader}} (struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_context}{m\+G\+L\+E\+S2\+Context}} $\ast$context, struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_shader}{m\+G\+L\+E\+S2\+Shader}} $\ast$shader)
+\item 
+void \mbox{\hyperlink{gles2_8c_a339c5f62b78edb125d5139db3f30ea8c}{m\+G\+L\+E\+S2\+Context\+Draw\+Frame}} (struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$v)
+\item 
+void \mbox{\hyperlink{gles2_8c_ace3c6717b62af8d4c58a8bdbbbf61d60}{m\+G\+L\+E\+S2\+Context\+Post\+Frame}} (struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$v, const void $\ast$frame)
+\item 
+void \mbox{\hyperlink{gles2_8c_a892be7691b24381366f863dd5c7d2b75}{m\+G\+L\+E\+S2\+Context\+Create}} (struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_context}{m\+G\+L\+E\+S2\+Context}} $\ast$context)
+\item 
+void \mbox{\hyperlink{gles2_8c_afa491c96bc34f3b46298da4121217e95}{m\+G\+L\+E\+S2\+Shader\+Init}} (struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_shader}{m\+G\+L\+E\+S2\+Shader}} $\ast$shader, const char $\ast$vs, const char $\ast$fs, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_a59b7c57bf1dc7c36ac7c8232cf5bb713}{width}}, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} \mbox{\hyperlink{readppm_8c_ac8b624a7354198da45f5797b93b883c9}{height}}, \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} integer\+Scaling, struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_uniform}{m\+G\+L\+E\+S2\+Uniform}} $\ast$uniforms, size\+\_\+t n\+Uniforms)
+\item 
+void \mbox{\hyperlink{gles2_8c_af7b9ca4ca16a70c1308dca8972d50f9b}{m\+G\+L\+E\+S2\+Shader\+Deinit}} (struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_shader}{m\+G\+L\+E\+S2\+Shader}} $\ast$shader)
+\item 
+void \mbox{\hyperlink{gles2_8c_a5490a4c7aa86fb7109312cd65ff44f95}{m\+G\+L\+E\+S2\+Shader\+Attach}} (struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_context}{m\+G\+L\+E\+S2\+Context}} $\ast$context, struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_shader}{m\+G\+L\+E\+S2\+Shader}} $\ast$shaders, size\+\_\+t n\+Shaders)
+\item 
+void \mbox{\hyperlink{gles2_8c_a4968e41d3fe9320002edf24c87343eb9}{m\+G\+L\+E\+S2\+Shader\+Detach}} (struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_context}{m\+G\+L\+E\+S2\+Context}} $\ast$context)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{gles2_8c_ad1b9db23d2260740b73cd8135489156d}{\+\_\+lookup\+Int\+Value}} (const struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$section, const char $\ast$key, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{gles2_8c_abe47d19f61ad6c070d9d65818d8c5277}{\+\_\+lookup\+Float\+Value}} (const struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$section, const char $\ast$key, float $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{gles2_8c_a56b7175c4029bb0cc1fd13834d4f1811}{\+\_\+lookup\+Bool\+Value}} (const struct Configuration $\ast$\mbox{\hyperlink{deflate_8c_a4473b5227787415097004fd39f55185e}{config}}, const char $\ast$section, const char $\ast$key, G\+Lboolean $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}})
+\item 
+\mbox{\hyperlink{gles2_8c_a8d0aaf31994d1bad54293516d334893a}{D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+OR}} (m\+G\+L\+E\+S2\+Uniform\+List, struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_uniform}{m\+G\+L\+E\+S2\+Uniform}})
+\item 
+\mbox{\hyperlink{gles2_8c_ab4acc41c75825c49df8dbcbe96a6c11b}{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}} (m\+G\+L\+E\+S2\+Uniform\+List, struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_uniform}{m\+G\+L\+E\+S2\+Uniform}})
+\item 
+static void \mbox{\hyperlink{gles2_8c_a34c5e6180e182f9f183cab892985370c}{\+\_\+uniform\+Handler}} (const char $\ast$section\+Name, void $\ast$user)
+\item 
+static void \mbox{\hyperlink{gles2_8c_a0e1e8ddeb75a6652a0ac5ccf4748a4e1}{\+\_\+load\+Value}} (struct Configuration $\ast$description, const char $\ast$name, G\+Lenum type, const char $\ast$field, union \mbox{\hyperlink{gles2_8h_unionm_g_l_e_s2_uniform_value}{m\+G\+L\+E\+S2\+Uniform\+Value}} $\ast$value)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{gles2_8c_ac048dfbf389952305dbf10f10f411373}{\+\_\+load\+Uniform}} (struct Configuration $\ast$description, size\+\_\+t pass, struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_uniform}{m\+G\+L\+E\+S2\+Uniform}} $\ast$uniform)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{gles2_8c_a62ae0372fa61c9e41e5eccf5b0550617}{m\+G\+L\+E\+S2\+Shader\+Load}} (struct \mbox{\hyperlink{video-backend_8h_struct_video_shader}{Video\+Shader}} $\ast$shader, struct V\+Dir $\ast$dir)
+\item 
+void \mbox{\hyperlink{gles2_8c_a33cb1fbfeb651f8371846331feb268a2}{m\+G\+L\+E\+S2\+Shader\+Free}} (struct \mbox{\hyperlink{video-backend_8h_struct_video_shader}{Video\+Shader}} $\ast$shader)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const G\+Lchar $\ast$const \mbox{\hyperlink{gles2_8c_abc1d7a09eae1722ffb74342dc07c755e}{\+\_\+gles2\+Header}}
+\item 
+static const G\+Lchar $\ast$const \mbox{\hyperlink{gles2_8c_a701bff8a5c32455dca51b5d3eeae68ee}{\+\_\+gl3\+Header}}
+\item 
+static const char $\ast$const \mbox{\hyperlink{gles2_8c_a01d32e70fd9bb6fde546bb2e48691ac3}{\+\_\+vertex\+Shader}}
+\item 
+static const char $\ast$const \mbox{\hyperlink{gles2_8c_a8adf271c48cae080c29114654878284e}{\+\_\+null\+Vertex\+Shader}}
+\item 
+static const char $\ast$const \mbox{\hyperlink{gles2_8c_a9a0838aead1709c521beaa8cbec543be}{\+\_\+fragment\+Shader}}
+\item 
+static const char $\ast$const \mbox{\hyperlink{gles2_8c_a816f8609dc0ef68e99df33c7b6d23c55}{\+\_\+null\+Fragment\+Shader}}
+\item 
+static const G\+Lfloat \mbox{\hyperlink{gles2_8c_a410f19b559ff0a7712496adce2c873c2}{\+\_\+vertices}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{gles2_8c_ac375c87c2a09616f10a6db6bd7dc45bb}\label{gles2_8c_ac375c87c2a09616f10a6db6bd7dc45bb}} 
+\index{gles2.\+c@{gles2.\+c}!M\+A\+X\+\_\+\+P\+A\+S\+S\+ES@{M\+A\+X\+\_\+\+P\+A\+S\+S\+ES}}
+\index{M\+A\+X\+\_\+\+P\+A\+S\+S\+ES@{M\+A\+X\+\_\+\+P\+A\+S\+S\+ES}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{M\+A\+X\+\_\+\+P\+A\+S\+S\+ES}{MAX\_PASSES}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+P\+A\+S\+S\+ES~8}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{gles2_8c_a054b381861ae3fdd621178bc2ffd83b2}\label{gles2_8c_a054b381861ae3fdd621178bc2ffd83b2}} 
+\index{gles2.\+c@{gles2.\+c}!\+\_\+draw\+Shader@{\+\_\+draw\+Shader}}
+\index{\+\_\+draw\+Shader@{\+\_\+draw\+Shader}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+draw\+Shader()}{\_drawShader()}}
+{\footnotesize\ttfamily void \+\_\+draw\+Shader (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_context}{m\+G\+L\+E\+S2\+Context}} $\ast$}]{context,  }\item[{struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_shader}{m\+G\+L\+E\+S2\+Shader}} $\ast$}]{shader }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_a054b381861ae3fdd621178bc2ffd83b2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_ac048dfbf389952305dbf10f10f411373}\label{gles2_8c_ac048dfbf389952305dbf10f10f411373}} 
+\index{gles2.\+c@{gles2.\+c}!\+\_\+load\+Uniform@{\+\_\+load\+Uniform}}
+\index{\+\_\+load\+Uniform@{\+\_\+load\+Uniform}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+load\+Uniform()}{\_loadUniform()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+load\+Uniform (\begin{DoxyParamCaption}\item[{struct Configuration $\ast$}]{description,  }\item[{size\+\_\+t}]{pass,  }\item[{struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_uniform}{m\+G\+L\+E\+S2\+Uniform}} $\ast$}]{uniform }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_ac048dfbf389952305dbf10f10f411373_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{gles2_8c_ac048dfbf389952305dbf10f10f411373_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_a0e1e8ddeb75a6652a0ac5ccf4748a4e1}\label{gles2_8c_a0e1e8ddeb75a6652a0ac5ccf4748a4e1}} 
+\index{gles2.\+c@{gles2.\+c}!\+\_\+load\+Value@{\+\_\+load\+Value}}
+\index{\+\_\+load\+Value@{\+\_\+load\+Value}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+load\+Value()}{\_loadValue()}}
+{\footnotesize\ttfamily static void \+\_\+load\+Value (\begin{DoxyParamCaption}\item[{struct Configuration $\ast$}]{description,  }\item[{const char $\ast$}]{name,  }\item[{G\+Lenum}]{type,  }\item[{const char $\ast$}]{field,  }\item[{union \mbox{\hyperlink{gles2_8h_unionm_g_l_e_s2_uniform_value}{m\+G\+L\+E\+S2\+Uniform\+Value}} $\ast$}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_a0e1e8ddeb75a6652a0ac5ccf4748a4e1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_a0e1e8ddeb75a6652a0ac5ccf4748a4e1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_a56b7175c4029bb0cc1fd13834d4f1811}\label{gles2_8c_a56b7175c4029bb0cc1fd13834d4f1811}} 
+\index{gles2.\+c@{gles2.\+c}!\+\_\+lookup\+Bool\+Value@{\+\_\+lookup\+Bool\+Value}}
+\index{\+\_\+lookup\+Bool\+Value@{\+\_\+lookup\+Bool\+Value}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+lookup\+Bool\+Value()}{\_lookupBoolValue()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+lookup\+Bool\+Value (\begin{DoxyParamCaption}\item[{const struct Configuration $\ast$}]{config,  }\item[{const char $\ast$}]{section,  }\item[{const char $\ast$}]{key,  }\item[{G\+Lboolean $\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_a56b7175c4029bb0cc1fd13834d4f1811_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_a56b7175c4029bb0cc1fd13834d4f1811_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_abe47d19f61ad6c070d9d65818d8c5277}\label{gles2_8c_abe47d19f61ad6c070d9d65818d8c5277}} 
+\index{gles2.\+c@{gles2.\+c}!\+\_\+lookup\+Float\+Value@{\+\_\+lookup\+Float\+Value}}
+\index{\+\_\+lookup\+Float\+Value@{\+\_\+lookup\+Float\+Value}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+lookup\+Float\+Value()}{\_lookupFloatValue()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+lookup\+Float\+Value (\begin{DoxyParamCaption}\item[{const struct Configuration $\ast$}]{config,  }\item[{const char $\ast$}]{section,  }\item[{const char $\ast$}]{key,  }\item[{float $\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_abe47d19f61ad6c070d9d65818d8c5277_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_abe47d19f61ad6c070d9d65818d8c5277_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_ad1b9db23d2260740b73cd8135489156d}\label{gles2_8c_ad1b9db23d2260740b73cd8135489156d}} 
+\index{gles2.\+c@{gles2.\+c}!\+\_\+lookup\+Int\+Value@{\+\_\+lookup\+Int\+Value}}
+\index{\+\_\+lookup\+Int\+Value@{\+\_\+lookup\+Int\+Value}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+lookup\+Int\+Value()}{\_lookupIntValue()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+lookup\+Int\+Value (\begin{DoxyParamCaption}\item[{const struct Configuration $\ast$}]{config,  }\item[{const char $\ast$}]{section,  }\item[{const char $\ast$}]{key,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} $\ast$}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_ad1b9db23d2260740b73cd8135489156d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_ad1b9db23d2260740b73cd8135489156d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_a34c5e6180e182f9f183cab892985370c}\label{gles2_8c_a34c5e6180e182f9f183cab892985370c}} 
+\index{gles2.\+c@{gles2.\+c}!\+\_\+uniform\+Handler@{\+\_\+uniform\+Handler}}
+\index{\+\_\+uniform\+Handler@{\+\_\+uniform\+Handler}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+uniform\+Handler()}{\_uniformHandler()}}
+{\footnotesize\ttfamily static void \+\_\+uniform\+Handler (\begin{DoxyParamCaption}\item[{const char $\ast$}]{section\+Name,  }\item[{void $\ast$}]{user }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{gles2_8c_a34c5e6180e182f9f183cab892985370c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_a8d0aaf31994d1bad54293516d334893a}\label{gles2_8c_a8d0aaf31994d1bad54293516d334893a}} 
+\index{gles2.\+c@{gles2.\+c}!D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+OR}}
+\index{D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+OR}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+O\+R()}{DECLARE\_VECTOR()}}
+{\footnotesize\ttfamily D\+E\+C\+L\+A\+R\+E\+\_\+\+V\+E\+C\+T\+OR (\begin{DoxyParamCaption}\item[{m\+G\+L\+E\+S2\+Uniform\+List}]{,  }\item[{struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_uniform}{m\+G\+L\+E\+S2\+Uniform}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gles2_8c_ab4acc41c75825c49df8dbcbe96a6c11b}\label{gles2_8c_ab4acc41c75825c49df8dbcbe96a6c11b}} 
+\index{gles2.\+c@{gles2.\+c}!D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}}
+\index{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+O\+R()}{DEFINE\_VECTOR()}}
+{\footnotesize\ttfamily D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR (\begin{DoxyParamCaption}\item[{m\+G\+L\+E\+S2\+Uniform\+List}]{,  }\item[{struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_uniform}{m\+G\+L\+E\+S2\+Uniform}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gles2_8c_adcbe0574433dd27d45f519d30d8f40b1}\label{gles2_8c_adcbe0574433dd27d45f519d30d8f40b1}} 
+\index{gles2.\+c@{gles2.\+c}!m\+G\+L\+E\+S2\+Context\+Clear@{m\+G\+L\+E\+S2\+Context\+Clear}}
+\index{m\+G\+L\+E\+S2\+Context\+Clear@{m\+G\+L\+E\+S2\+Context\+Clear}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+E\+S2\+Context\+Clear()}{mGLES2ContextClear()}}
+{\footnotesize\ttfamily static void m\+G\+L\+E\+S2\+Context\+Clear (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_adcbe0574433dd27d45f519d30d8f40b1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_a892be7691b24381366f863dd5c7d2b75}\label{gles2_8c_a892be7691b24381366f863dd5c7d2b75}} 
+\index{gles2.\+c@{gles2.\+c}!m\+G\+L\+E\+S2\+Context\+Create@{m\+G\+L\+E\+S2\+Context\+Create}}
+\index{m\+G\+L\+E\+S2\+Context\+Create@{m\+G\+L\+E\+S2\+Context\+Create}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+E\+S2\+Context\+Create()}{mGLES2ContextCreate()}}
+{\footnotesize\ttfamily void m\+G\+L\+E\+S2\+Context\+Create (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_context}{m\+G\+L\+E\+S2\+Context}} $\ast$}]{context }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_a892be7691b24381366f863dd5c7d2b75_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_a892be7691b24381366f863dd5c7d2b75_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_aafaad59711863460ba7f3c48bf1f6f19}\label{gles2_8c_aafaad59711863460ba7f3c48bf1f6f19}} 
+\index{gles2.\+c@{gles2.\+c}!m\+G\+L\+E\+S2\+Context\+Deinit@{m\+G\+L\+E\+S2\+Context\+Deinit}}
+\index{m\+G\+L\+E\+S2\+Context\+Deinit@{m\+G\+L\+E\+S2\+Context\+Deinit}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+E\+S2\+Context\+Deinit()}{mGLES2ContextDeinit()}}
+{\footnotesize\ttfamily static void m\+G\+L\+E\+S2\+Context\+Deinit (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_aafaad59711863460ba7f3c48bf1f6f19_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_aafaad59711863460ba7f3c48bf1f6f19_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_a339c5f62b78edb125d5139db3f30ea8c}\label{gles2_8c_a339c5f62b78edb125d5139db3f30ea8c}} 
+\index{gles2.\+c@{gles2.\+c}!m\+G\+L\+E\+S2\+Context\+Draw\+Frame@{m\+G\+L\+E\+S2\+Context\+Draw\+Frame}}
+\index{m\+G\+L\+E\+S2\+Context\+Draw\+Frame@{m\+G\+L\+E\+S2\+Context\+Draw\+Frame}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+E\+S2\+Context\+Draw\+Frame()}{mGLES2ContextDrawFrame()}}
+{\footnotesize\ttfamily void m\+G\+L\+E\+S2\+Context\+Draw\+Frame (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$}]{v }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{gles2_8c_a339c5f62b78edb125d5139db3f30ea8c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_a339c5f62b78edb125d5139db3f30ea8c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_ab369f710ea292c9b383f512c239e6bc0}\label{gles2_8c_ab369f710ea292c9b383f512c239e6bc0}} 
+\index{gles2.\+c@{gles2.\+c}!m\+G\+L\+E\+S2\+Context\+Init@{m\+G\+L\+E\+S2\+Context\+Init}}
+\index{m\+G\+L\+E\+S2\+Context\+Init@{m\+G\+L\+E\+S2\+Context\+Init}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+E\+S2\+Context\+Init()}{mGLES2ContextInit()}}
+{\footnotesize\ttfamily static void m\+G\+L\+E\+S2\+Context\+Init (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$}]{v,  }\item[{\mbox{\hyperlink{video-backend_8h_aaa69bc83f36b455578d1f29b125741d9}{W\+Handle}}}]{handle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_ab369f710ea292c9b383f512c239e6bc0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_ab369f710ea292c9b383f512c239e6bc0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_ace3c6717b62af8d4c58a8bdbbbf61d60}\label{gles2_8c_ace3c6717b62af8d4c58a8bdbbbf61d60}} 
+\index{gles2.\+c@{gles2.\+c}!m\+G\+L\+E\+S2\+Context\+Post\+Frame@{m\+G\+L\+E\+S2\+Context\+Post\+Frame}}
+\index{m\+G\+L\+E\+S2\+Context\+Post\+Frame@{m\+G\+L\+E\+S2\+Context\+Post\+Frame}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+E\+S2\+Context\+Post\+Frame()}{mGLES2ContextPostFrame()}}
+{\footnotesize\ttfamily void m\+G\+L\+E\+S2\+Context\+Post\+Frame (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$}]{v,  }\item[{const void $\ast$}]{frame }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_ace3c6717b62af8d4c58a8bdbbbf61d60_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_a1b32959b8c8a74644102488649df0c0e}\label{gles2_8c_a1b32959b8c8a74644102488649df0c0e}} 
+\index{gles2.\+c@{gles2.\+c}!m\+G\+L\+E\+S2\+Context\+Resized@{m\+G\+L\+E\+S2\+Context\+Resized}}
+\index{m\+G\+L\+E\+S2\+Context\+Resized@{m\+G\+L\+E\+S2\+Context\+Resized}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+E\+S2\+Context\+Resized()}{mGLES2ContextResized()}}
+{\footnotesize\ttfamily static void m\+G\+L\+E\+S2\+Context\+Resized (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$}]{v,  }\item[{unsigned}]{w,  }\item[{unsigned}]{h }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_a1b32959b8c8a74644102488649df0c0e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_ae34518c56cc48582b9cfcbfda9d48a36}\label{gles2_8c_ae34518c56cc48582b9cfcbfda9d48a36}} 
+\index{gles2.\+c@{gles2.\+c}!m\+G\+L\+E\+S2\+Context\+Set\+Dimensions@{m\+G\+L\+E\+S2\+Context\+Set\+Dimensions}}
+\index{m\+G\+L\+E\+S2\+Context\+Set\+Dimensions@{m\+G\+L\+E\+S2\+Context\+Set\+Dimensions}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+E\+S2\+Context\+Set\+Dimensions()}{mGLES2ContextSetDimensions()}}
+{\footnotesize\ttfamily static void m\+G\+L\+E\+S2\+Context\+Set\+Dimensions (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{struct_video_backend}{Video\+Backend}} $\ast$}]{v,  }\item[{unsigned}]{width,  }\item[{unsigned}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_ae34518c56cc48582b9cfcbfda9d48a36_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_a5490a4c7aa86fb7109312cd65ff44f95}\label{gles2_8c_a5490a4c7aa86fb7109312cd65ff44f95}} 
+\index{gles2.\+c@{gles2.\+c}!m\+G\+L\+E\+S2\+Shader\+Attach@{m\+G\+L\+E\+S2\+Shader\+Attach}}
+\index{m\+G\+L\+E\+S2\+Shader\+Attach@{m\+G\+L\+E\+S2\+Shader\+Attach}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+E\+S2\+Shader\+Attach()}{mGLES2ShaderAttach()}}
+{\footnotesize\ttfamily void m\+G\+L\+E\+S2\+Shader\+Attach (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_context}{m\+G\+L\+E\+S2\+Context}} $\ast$}]{context,  }\item[{struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_shader}{m\+G\+L\+E\+S2\+Shader}} $\ast$}]{shaders,  }\item[{size\+\_\+t}]{n\+Shaders }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_a5490a4c7aa86fb7109312cd65ff44f95_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_af7b9ca4ca16a70c1308dca8972d50f9b}\label{gles2_8c_af7b9ca4ca16a70c1308dca8972d50f9b}} 
+\index{gles2.\+c@{gles2.\+c}!m\+G\+L\+E\+S2\+Shader\+Deinit@{m\+G\+L\+E\+S2\+Shader\+Deinit}}
+\index{m\+G\+L\+E\+S2\+Shader\+Deinit@{m\+G\+L\+E\+S2\+Shader\+Deinit}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+E\+S2\+Shader\+Deinit()}{mGLES2ShaderDeinit()}}
+{\footnotesize\ttfamily void m\+G\+L\+E\+S2\+Shader\+Deinit (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_shader}{m\+G\+L\+E\+S2\+Shader}} $\ast$}]{shader }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_af7b9ca4ca16a70c1308dca8972d50f9b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_a4968e41d3fe9320002edf24c87343eb9}\label{gles2_8c_a4968e41d3fe9320002edf24c87343eb9}} 
+\index{gles2.\+c@{gles2.\+c}!m\+G\+L\+E\+S2\+Shader\+Detach@{m\+G\+L\+E\+S2\+Shader\+Detach}}
+\index{m\+G\+L\+E\+S2\+Shader\+Detach@{m\+G\+L\+E\+S2\+Shader\+Detach}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+E\+S2\+Shader\+Detach()}{mGLES2ShaderDetach()}}
+{\footnotesize\ttfamily void m\+G\+L\+E\+S2\+Shader\+Detach (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_context}{m\+G\+L\+E\+S2\+Context}} $\ast$}]{context }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_a4968e41d3fe9320002edf24c87343eb9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_a33cb1fbfeb651f8371846331feb268a2}\label{gles2_8c_a33cb1fbfeb651f8371846331feb268a2}} 
+\index{gles2.\+c@{gles2.\+c}!m\+G\+L\+E\+S2\+Shader\+Free@{m\+G\+L\+E\+S2\+Shader\+Free}}
+\index{m\+G\+L\+E\+S2\+Shader\+Free@{m\+G\+L\+E\+S2\+Shader\+Free}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+E\+S2\+Shader\+Free()}{mGLES2ShaderFree()}}
+{\footnotesize\ttfamily void m\+G\+L\+E\+S2\+Shader\+Free (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{video-backend_8h_struct_video_shader}{Video\+Shader}} $\ast$}]{shader }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{gles2_8c_a33cb1fbfeb651f8371846331feb268a2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_afa491c96bc34f3b46298da4121217e95}\label{gles2_8c_afa491c96bc34f3b46298da4121217e95}} 
+\index{gles2.\+c@{gles2.\+c}!m\+G\+L\+E\+S2\+Shader\+Init@{m\+G\+L\+E\+S2\+Shader\+Init}}
+\index{m\+G\+L\+E\+S2\+Shader\+Init@{m\+G\+L\+E\+S2\+Shader\+Init}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+E\+S2\+Shader\+Init()}{mGLES2ShaderInit()}}
+{\footnotesize\ttfamily void m\+G\+L\+E\+S2\+Shader\+Init (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_shader}{m\+G\+L\+E\+S2\+Shader}} $\ast$}]{shader,  }\item[{const char $\ast$}]{vs,  }\item[{const char $\ast$}]{fs,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{width,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{height,  }\item[{\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}}}]{integer\+Scaling,  }\item[{struct \mbox{\hyperlink{gles2_8h_structm_g_l_e_s2_uniform}{m\+G\+L\+E\+S2\+Uniform}} $\ast$}]{uniforms,  }\item[{size\+\_\+t}]{n\+Uniforms }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{gles2_8c_afa491c96bc34f3b46298da4121217e95_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_afa491c96bc34f3b46298da4121217e95_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_a62ae0372fa61c9e41e5eccf5b0550617}\label{gles2_8c_a62ae0372fa61c9e41e5eccf5b0550617}} 
+\index{gles2.\+c@{gles2.\+c}!m\+G\+L\+E\+S2\+Shader\+Load@{m\+G\+L\+E\+S2\+Shader\+Load}}
+\index{m\+G\+L\+E\+S2\+Shader\+Load@{m\+G\+L\+E\+S2\+Shader\+Load}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{m\+G\+L\+E\+S2\+Shader\+Load()}{mGLES2ShaderLoad()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} m\+G\+L\+E\+S2\+Shader\+Load (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{video-backend_8h_struct_video_shader}{Video\+Shader}} $\ast$}]{shader,  }\item[{struct V\+Dir $\ast$}]{dir }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gles2_8c_a62ae0372fa61c9e41e5eccf5b0550617_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gles2_8c_a7a97d1aef2f7605e6aee5e3e5c167513}\label{gles2_8c_a7a97d1aef2f7605e6aee5e3e5c167513}} 
+\index{gles2.\+c@{gles2.\+c}!m\+L\+O\+G\+\_\+\+D\+E\+C\+L\+A\+R\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+C\+L\+A\+R\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}}
+\index{m\+L\+O\+G\+\_\+\+D\+E\+C\+L\+A\+R\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+C\+L\+A\+R\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{m\+L\+O\+G\+\_\+\+D\+E\+C\+L\+A\+R\+E\+\_\+\+C\+A\+T\+E\+G\+O\+R\+Y()}{mLOG\_DECLARE\_CATEGORY()}}
+{\footnotesize\ttfamily m\+L\+O\+G\+\_\+\+D\+E\+C\+L\+A\+R\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY (\begin{DoxyParamCaption}\item[{O\+P\+E\+N\+GL}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gles2_8c_a93d62629a154ee21fa5e7476dca0bacc}\label{gles2_8c_a93d62629a154ee21fa5e7476dca0bacc}} 
+\index{gles2.\+c@{gles2.\+c}!m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}}
+\index{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY@{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+R\+Y()}{mLOG\_DEFINE\_CATEGORY()}}
+{\footnotesize\ttfamily m\+L\+O\+G\+\_\+\+D\+E\+F\+I\+N\+E\+\_\+\+C\+A\+T\+E\+G\+O\+RY (\begin{DoxyParamCaption}\item[{O\+P\+E\+N\+GL}]{,  }\item[{\char`\"{}Open\+GL\char`\"{}}]{,  }\item[{\char`\"{}video.\+ogl\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{gles2_8c_a9a0838aead1709c521beaa8cbec543be}\label{gles2_8c_a9a0838aead1709c521beaa8cbec543be}} 
+\index{gles2.\+c@{gles2.\+c}!\+\_\+fragment\+Shader@{\+\_\+fragment\+Shader}}
+\index{\+\_\+fragment\+Shader@{\+\_\+fragment\+Shader}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+fragment\+Shader}{\_fragmentShader}}
+{\footnotesize\ttfamily const char$\ast$ const \+\_\+fragment\+Shader\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+    \textcolor{stringliteral}{"varying vec2 texCoord;\(\backslash\)n"}
+    \textcolor{stringliteral}{"uniform sampler2D tex;\(\backslash\)n"}
+    \textcolor{stringliteral}{"uniform float gamma;\(\backslash\)n"}
+    \textcolor{stringliteral}{"uniform vec3 desaturation;\(\backslash\)n"}
+    \textcolor{stringliteral}{"uniform vec3 scale;\(\backslash\)n"}
+    \textcolor{stringliteral}{"uniform vec3 bias;\(\backslash\)n"}
+
+    \textcolor{stringliteral}{"void main() \{\(\backslash\)n"}
+    \textcolor{stringliteral}{"   vec4 color = texture2D(tex, texCoord);\(\backslash\)n"}
+    \textcolor{stringliteral}{"   color.a = 1.;\(\backslash\)n"}
+    \textcolor{stringliteral}{"   float average = dot(color.rgb, vec3(1.)) / 3.;\(\backslash\)n"}
+    \textcolor{stringliteral}{"   color.rgb = mix(color.rgb, vec3(average), desaturation);\(\backslash\)n"}
+    \textcolor{stringliteral}{"   color.rgb = scale * pow(color.rgb, vec3(gamma, gamma, gamma)) + bias;\(\backslash\)n"}
+    \textcolor{stringliteral}{"   gl\_FragColor = color;\(\backslash\)n"}
+    \textcolor{stringliteral}{"\}"}
+\end{DoxyCode}
+\mbox{\Hypertarget{gles2_8c_a701bff8a5c32455dca51b5d3eeae68ee}\label{gles2_8c_a701bff8a5c32455dca51b5d3eeae68ee}} 
+\index{gles2.\+c@{gles2.\+c}!\+\_\+gl3\+Header@{\+\_\+gl3\+Header}}
+\index{\+\_\+gl3\+Header@{\+\_\+gl3\+Header}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+gl3\+Header}{\_gl3Header}}
+{\footnotesize\ttfamily const G\+Lchar$\ast$ const \+\_\+gl3\+Header\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+    \textcolor{stringliteral}{"#version 120\(\backslash\)n"}
+\end{DoxyCode}
+\mbox{\Hypertarget{gles2_8c_abc1d7a09eae1722ffb74342dc07c755e}\label{gles2_8c_abc1d7a09eae1722ffb74342dc07c755e}} 
+\index{gles2.\+c@{gles2.\+c}!\+\_\+gles2\+Header@{\+\_\+gles2\+Header}}
+\index{\+\_\+gles2\+Header@{\+\_\+gles2\+Header}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+gles2\+Header}{\_gles2Header}}
+{\footnotesize\ttfamily const G\+Lchar$\ast$ const \+\_\+gles2\+Header\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+    \textcolor{stringliteral}{"#version 100\(\backslash\)n"}
+    \textcolor{stringliteral}{"precision mediump float;\(\backslash\)n"}
+\end{DoxyCode}
+\mbox{\Hypertarget{gles2_8c_a816f8609dc0ef68e99df33c7b6d23c55}\label{gles2_8c_a816f8609dc0ef68e99df33c7b6d23c55}} 
+\index{gles2.\+c@{gles2.\+c}!\+\_\+null\+Fragment\+Shader@{\+\_\+null\+Fragment\+Shader}}
+\index{\+\_\+null\+Fragment\+Shader@{\+\_\+null\+Fragment\+Shader}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+null\+Fragment\+Shader}{\_nullFragmentShader}}
+{\footnotesize\ttfamily const char$\ast$ const \+\_\+null\+Fragment\+Shader\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+    \textcolor{stringliteral}{"varying vec2 texCoord;\(\backslash\)n"}
+    \textcolor{stringliteral}{"uniform sampler2D tex;\(\backslash\)n"}
+
+    \textcolor{stringliteral}{"void main() \{\(\backslash\)n"}
+    \textcolor{stringliteral}{"   vec4 color = texture2D(tex, texCoord);\(\backslash\)n"}
+    \textcolor{stringliteral}{"   color.a = 1.;\(\backslash\)n"}
+    \textcolor{stringliteral}{"   gl\_FragColor = color;\(\backslash\)n"}
+    \textcolor{stringliteral}{"\}"}
+\end{DoxyCode}
+\mbox{\Hypertarget{gles2_8c_a8adf271c48cae080c29114654878284e}\label{gles2_8c_a8adf271c48cae080c29114654878284e}} 
+\index{gles2.\+c@{gles2.\+c}!\+\_\+null\+Vertex\+Shader@{\+\_\+null\+Vertex\+Shader}}
+\index{\+\_\+null\+Vertex\+Shader@{\+\_\+null\+Vertex\+Shader}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+null\+Vertex\+Shader}{\_nullVertexShader}}
+{\footnotesize\ttfamily const char$\ast$ const \+\_\+null\+Vertex\+Shader\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+    \textcolor{stringliteral}{"attribute vec4 position;\(\backslash\)n"}
+    \textcolor{stringliteral}{"varying vec2 texCoord;\(\backslash\)n"}
+
+    \textcolor{stringliteral}{"void main() \{\(\backslash\)n"}
+    \textcolor{stringliteral}{"   gl\_Position = position;\(\backslash\)n"}
+    \textcolor{stringliteral}{"   texCoord = (position.st + vec2(1.0, 1.0)) * vec2(0.5, 0.5);\(\backslash\)n"}
+    \textcolor{stringliteral}{"\}"}
+\end{DoxyCode}
+\mbox{\Hypertarget{gles2_8c_a01d32e70fd9bb6fde546bb2e48691ac3}\label{gles2_8c_a01d32e70fd9bb6fde546bb2e48691ac3}} 
+\index{gles2.\+c@{gles2.\+c}!\+\_\+vertex\+Shader@{\+\_\+vertex\+Shader}}
+\index{\+\_\+vertex\+Shader@{\+\_\+vertex\+Shader}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vertex\+Shader}{\_vertexShader}}
+{\footnotesize\ttfamily const char$\ast$ const \+\_\+vertex\+Shader\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+    \textcolor{stringliteral}{"attribute vec4 position;\(\backslash\)n"}
+    \textcolor{stringliteral}{"varying vec2 texCoord;\(\backslash\)n"}
+
+    \textcolor{stringliteral}{"void main() \{\(\backslash\)n"}
+    \textcolor{stringliteral}{"   gl\_Position = position;\(\backslash\)n"}
+    \textcolor{stringliteral}{"   texCoord = (position.st + vec2(1.0, -1.0)) * vec2(0.5, -0.5);\(\backslash\)n"}
+    \textcolor{stringliteral}{"\}"}
+\end{DoxyCode}
+\mbox{\Hypertarget{gles2_8c_a410f19b559ff0a7712496adce2c873c2}\label{gles2_8c_a410f19b559ff0a7712496adce2c873c2}} 
+\index{gles2.\+c@{gles2.\+c}!\+\_\+vertices@{\+\_\+vertices}}
+\index{\+\_\+vertices@{\+\_\+vertices}!gles2.\+c@{gles2.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+vertices}{\_vertices}}
+{\footnotesize\ttfamily const G\+Lfloat \+\_\+vertices\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    -1.f, -1.f,
+    -1.f, 1.f,
+    1.f, 1.f,
+    1.f, -1.f,
+\}
+\end{DoxyCode}

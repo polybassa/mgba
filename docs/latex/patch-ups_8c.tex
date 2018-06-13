@@ -1,0 +1,161 @@
+\hypertarget{patch-ups_8c}{}\section{src/util/patch-\/ups.c File Reference}
+\label{patch-ups_8c}\index{src/util/patch-\/ups.\+c@{src/util/patch-\/ups.\+c}}
+{\ttfamily \#include $<$mgba-\/util/patch/ips.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/crc32.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/patch.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/vfs.\+h$>$}\newline
+Include dependency graph for patch-\/ups.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{patch-ups_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \mbox{\hyperlink{patch-ups_8c_af715e26dfffd1f8de1c18449e2770cffa49420c7c3a751b2ca0c39a615ecd0376}{I\+N\+\_\+\+C\+H\+E\+C\+K\+S\+UM}} = -\/12, 
+\mbox{\hyperlink{patch-ups_8c_af715e26dfffd1f8de1c18449e2770cffa948916e0e1d98aa8bc1d658ae49cf1be}{O\+U\+T\+\_\+\+C\+H\+E\+C\+K\+S\+UM}} = -\/8, 
+\mbox{\hyperlink{patch-ups_8c_af715e26dfffd1f8de1c18449e2770cffa429d0b2daf7cf823c93c928399acdd83}{P\+A\+T\+C\+H\+\_\+\+C\+H\+E\+C\+K\+S\+UM}} = -\/4
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static size\+\_\+t \mbox{\hyperlink{patch-ups_8c_a4a463d2dc2f7681f226214c02a505619}{\+\_\+\+U\+P\+S\+Output\+Size}} (struct Patch $\ast$patch, size\+\_\+t in\+Size)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{patch-ups_8c_ab17c39f3fe7102519b7d704a8722237e}{\+\_\+\+U\+P\+S\+Apply\+Patch}} (struct Patch $\ast$patch, const void $\ast$\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}, size\+\_\+t in\+Size, void $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}}, size\+\_\+t out\+Size)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{patch-ups_8c_afd9b5aebbeb07f9eb60a496daa6fe27f}{\+\_\+\+B\+P\+S\+Apply\+Patch}} (struct Patch $\ast$patch, const void $\ast$\mbox{\hyperlink{gun_8c_a8bab68b4d22f69428207fabb60dc4f5c}{in}}, size\+\_\+t in\+Size, void $\ast$\mbox{\hyperlink{gun_8c_acb2d4658684492100bc328998f52ae82}{out}}, size\+\_\+t out\+Size)
+\item 
+static size\+\_\+t \mbox{\hyperlink{patch-ups_8c_a44bc66fd8a8882bf88756a2e00a48af1}{\+\_\+decode\+Length}} (struct V\+File $\ast$vf)
+\item 
+\mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{patch-ups_8c_abf626a98cecfdfd5e6aa40bfa285e494}{load\+Patch\+U\+PS}} (struct Patch $\ast$patch)
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{patch-ups_8c_af715e26dfffd1f8de1c18449e2770cff}\label{patch-ups_8c_af715e26dfffd1f8de1c18449e2770cff}} 
+\subsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+N\+\_\+\+C\+H\+E\+C\+K\+S\+UM@{I\+N\+\_\+\+C\+H\+E\+C\+K\+S\+UM}!patch-\/ups.\+c@{patch-\/ups.\+c}}\index{patch-\/ups.\+c@{patch-\/ups.\+c}!I\+N\+\_\+\+C\+H\+E\+C\+K\+S\+UM@{I\+N\+\_\+\+C\+H\+E\+C\+K\+S\+UM}}}\mbox{\Hypertarget{patch-ups_8c_af715e26dfffd1f8de1c18449e2770cffa49420c7c3a751b2ca0c39a615ecd0376}\label{patch-ups_8c_af715e26dfffd1f8de1c18449e2770cffa49420c7c3a751b2ca0c39a615ecd0376}} 
+I\+N\+\_\+\+C\+H\+E\+C\+K\+S\+UM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{O\+U\+T\+\_\+\+C\+H\+E\+C\+K\+S\+UM@{O\+U\+T\+\_\+\+C\+H\+E\+C\+K\+S\+UM}!patch-\/ups.\+c@{patch-\/ups.\+c}}\index{patch-\/ups.\+c@{patch-\/ups.\+c}!O\+U\+T\+\_\+\+C\+H\+E\+C\+K\+S\+UM@{O\+U\+T\+\_\+\+C\+H\+E\+C\+K\+S\+UM}}}\mbox{\Hypertarget{patch-ups_8c_af715e26dfffd1f8de1c18449e2770cffa948916e0e1d98aa8bc1d658ae49cf1be}\label{patch-ups_8c_af715e26dfffd1f8de1c18449e2770cffa948916e0e1d98aa8bc1d658ae49cf1be}} 
+O\+U\+T\+\_\+\+C\+H\+E\+C\+K\+S\+UM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{P\+A\+T\+C\+H\+\_\+\+C\+H\+E\+C\+K\+S\+UM@{P\+A\+T\+C\+H\+\_\+\+C\+H\+E\+C\+K\+S\+UM}!patch-\/ups.\+c@{patch-\/ups.\+c}}\index{patch-\/ups.\+c@{patch-\/ups.\+c}!P\+A\+T\+C\+H\+\_\+\+C\+H\+E\+C\+K\+S\+UM@{P\+A\+T\+C\+H\+\_\+\+C\+H\+E\+C\+K\+S\+UM}}}\mbox{\Hypertarget{patch-ups_8c_af715e26dfffd1f8de1c18449e2770cffa429d0b2daf7cf823c93c928399acdd83}\label{patch-ups_8c_af715e26dfffd1f8de1c18449e2770cffa429d0b2daf7cf823c93c928399acdd83}} 
+P\+A\+T\+C\+H\+\_\+\+C\+H\+E\+C\+K\+S\+UM&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{patch-ups_8c_afd9b5aebbeb07f9eb60a496daa6fe27f}\label{patch-ups_8c_afd9b5aebbeb07f9eb60a496daa6fe27f}} 
+\index{patch-\/ups.\+c@{patch-\/ups.\+c}!\+\_\+\+B\+P\+S\+Apply\+Patch@{\+\_\+\+B\+P\+S\+Apply\+Patch}}
+\index{\+\_\+\+B\+P\+S\+Apply\+Patch@{\+\_\+\+B\+P\+S\+Apply\+Patch}!patch-\/ups.\+c@{patch-\/ups.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+B\+P\+S\+Apply\+Patch()}{\_BPSApplyPatch()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+\+B\+P\+S\+Apply\+Patch (\begin{DoxyParamCaption}\item[{struct Patch $\ast$}]{patch,  }\item[{const void $\ast$}]{in,  }\item[{size\+\_\+t}]{in\+Size,  }\item[{void $\ast$}]{out,  }\item[{size\+\_\+t}]{out\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{patch-ups_8c_afd9b5aebbeb07f9eb60a496daa6fe27f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{patch-ups_8c_afd9b5aebbeb07f9eb60a496daa6fe27f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{patch-ups_8c_a44bc66fd8a8882bf88756a2e00a48af1}\label{patch-ups_8c_a44bc66fd8a8882bf88756a2e00a48af1}} 
+\index{patch-\/ups.\+c@{patch-\/ups.\+c}!\+\_\+decode\+Length@{\+\_\+decode\+Length}}
+\index{\+\_\+decode\+Length@{\+\_\+decode\+Length}!patch-\/ups.\+c@{patch-\/ups.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+decode\+Length()}{\_decodeLength()}}
+{\footnotesize\ttfamily size\+\_\+t \+\_\+decode\+Length (\begin{DoxyParamCaption}\item[{struct V\+File $\ast$}]{vf }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{patch-ups_8c_a44bc66fd8a8882bf88756a2e00a48af1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{patch-ups_8c_ab17c39f3fe7102519b7d704a8722237e}\label{patch-ups_8c_ab17c39f3fe7102519b7d704a8722237e}} 
+\index{patch-\/ups.\+c@{patch-\/ups.\+c}!\+\_\+\+U\+P\+S\+Apply\+Patch@{\+\_\+\+U\+P\+S\+Apply\+Patch}}
+\index{\+\_\+\+U\+P\+S\+Apply\+Patch@{\+\_\+\+U\+P\+S\+Apply\+Patch}!patch-\/ups.\+c@{patch-\/ups.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+U\+P\+S\+Apply\+Patch()}{\_UPSApplyPatch()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \+\_\+\+U\+P\+S\+Apply\+Patch (\begin{DoxyParamCaption}\item[{struct Patch $\ast$}]{patch,  }\item[{const void $\ast$}]{in,  }\item[{size\+\_\+t}]{in\+Size,  }\item[{void $\ast$}]{out,  }\item[{size\+\_\+t}]{out\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{patch-ups_8c_ab17c39f3fe7102519b7d704a8722237e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{patch-ups_8c_ab17c39f3fe7102519b7d704a8722237e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{patch-ups_8c_a4a463d2dc2f7681f226214c02a505619}\label{patch-ups_8c_a4a463d2dc2f7681f226214c02a505619}} 
+\index{patch-\/ups.\+c@{patch-\/ups.\+c}!\+\_\+\+U\+P\+S\+Output\+Size@{\+\_\+\+U\+P\+S\+Output\+Size}}
+\index{\+\_\+\+U\+P\+S\+Output\+Size@{\+\_\+\+U\+P\+S\+Output\+Size}!patch-\/ups.\+c@{patch-\/ups.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+\+U\+P\+S\+Output\+Size()}{\_UPSOutputSize()}}
+{\footnotesize\ttfamily size\+\_\+t \+\_\+\+U\+P\+S\+Output\+Size (\begin{DoxyParamCaption}\item[{struct Patch $\ast$}]{patch,  }\item[{size\+\_\+t}]{in\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=301pt]{patch-ups_8c_a4a463d2dc2f7681f226214c02a505619_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{patch-ups_8c_a4a463d2dc2f7681f226214c02a505619_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{patch-ups_8c_abf626a98cecfdfd5e6aa40bfa285e494}\label{patch-ups_8c_abf626a98cecfdfd5e6aa40bfa285e494}} 
+\index{patch-\/ups.\+c@{patch-\/ups.\+c}!load\+Patch\+U\+PS@{load\+Patch\+U\+PS}}
+\index{load\+Patch\+U\+PS@{load\+Patch\+U\+PS}!patch-\/ups.\+c@{patch-\/ups.\+c}}
+\subsubsection{\texorpdfstring{load\+Patch\+U\+P\+S()}{loadPatchUPS()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} load\+Patch\+U\+PS (\begin{DoxyParamCaption}\item[{struct Patch $\ast$}]{patch }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{patch-ups_8c_abf626a98cecfdfd5e6aa40bfa285e494_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{patch-ups_8c_abf626a98cecfdfd5e6aa40bfa285e494_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,122 @@
+\hypertarget{test_2parser_8c}{}\section{src/debugger/test/parser.c File Reference}
+\label{test_2parser_8c}\index{src/debugger/test/parser.\+c@{src/debugger/test/parser.\+c}}
+{\ttfamily \#include \char`\"{}util/test/suite.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba/internal/debugger/parser.\+h$>$}\newline
+Include dependency graph for parser.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test_2parser_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{test_2parser_8c_a7def99827de2e980e7ff2a98ece5c245}{P\+A\+R\+SE}}(S\+TR)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{test_2parser_8c_a0b5202a10fb13a4f07773378f67ab4d0}{M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+S\+E\+T\+UP}} (Parser)
+\item 
+\mbox{\hyperlink{test_2parser_8c_a8ca324e6146809652a2d20b941e9a4e0}{M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+T\+E\+A\+R\+D\+O\+WN}} (Parser)
+\item 
+\mbox{\hyperlink{test_2parser_8c_ae8ef853b83e9519c27bf3c548343a1e5}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (parse\+Empty)
+\item 
+\mbox{\hyperlink{test_2parser_8c_a47fef9754b0b475aed76f83a995a3a06}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (parse\+Int)
+\item 
+\mbox{\hyperlink{test_2parser_8c_acd5ef846e64ab9e9281462366e8749c5}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (parse\+Lex\+Error)
+\item 
+\mbox{\hyperlink{test_2parser_8c_a645a0488f0bb39bab3f4583d7b337718}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (parse\+Simple\+Expression)
+\item 
+\mbox{\hyperlink{test_2parser_8c_ae272940201d3f5ab636dcaa67829133c}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (parse\+Add\+Multply\+Expression)
+\item 
+\mbox{\hyperlink{test_2parser_8c_aec65503470b470c53931ca99af31e90b}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (parse\+Parenthetical\+Expression)
+\item 
+\mbox{\hyperlink{test_2parser_8c_a702fd33b33a2045f8e4c107953d482ed}{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}} (parse\+Parenthetical\+Add\+Multply\+Expression)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{test_2parser_8c_a7def99827de2e980e7ff2a98ece5c245}\label{test_2parser_8c_a7def99827de2e980e7ff2a98ece5c245}} 
+\index{test/parser.\+c@{test/parser.\+c}!P\+A\+R\+SE@{P\+A\+R\+SE}}
+\index{P\+A\+R\+SE@{P\+A\+R\+SE}!test/parser.\+c@{test/parser.\+c}}
+\subsubsection{\texorpdfstring{P\+A\+R\+SE}{PARSE}}
+{\footnotesize\ttfamily \#define P\+A\+R\+SE(\begin{DoxyParamCaption}\item[{}]{S\+TR }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keyword}{struct }LPTest* lp = *state; \(\backslash\)
+    lexFree(&lp->lv); \(\backslash\)
+    LexVectorClear(&lp->lv); \(\backslash\)
+    size\_t adjusted = \mbox{\hyperlink{parser_8c_adc07269ab3d5869da42482428fcb6f99}{lexExpression}}(&lp->lv, STR, strlen(STR), \textcolor{stringliteral}{""}); \(\backslash\)
+    assert\_false(adjusted > strlen(STR)); \(\backslash\)
+    struct ParseTree* tree = &lp->tree; \(\backslash\)
+    parseLexedExpression(tree, &lp->lv)
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{test_2parser_8c_ae8ef853b83e9519c27bf3c548343a1e5}\label{test_2parser_8c_ae8ef853b83e9519c27bf3c548343a1e5}} 
+\index{test/parser.\+c@{test/parser.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!test/parser.\+c@{test/parser.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{parse\+Empty}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{test_2parser_8c_a47fef9754b0b475aed76f83a995a3a06}\label{test_2parser_8c_a47fef9754b0b475aed76f83a995a3a06}} 
+\index{test/parser.\+c@{test/parser.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!test/parser.\+c@{test/parser.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{parse\+Int}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{test_2parser_8c_acd5ef846e64ab9e9281462366e8749c5}\label{test_2parser_8c_acd5ef846e64ab9e9281462366e8749c5}} 
+\index{test/parser.\+c@{test/parser.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!test/parser.\+c@{test/parser.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{parse\+Lex\+Error}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{test_2parser_8c_a645a0488f0bb39bab3f4583d7b337718}\label{test_2parser_8c_a645a0488f0bb39bab3f4583d7b337718}} 
+\index{test/parser.\+c@{test/parser.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!test/parser.\+c@{test/parser.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{parse\+Simple\+Expression}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{test_2parser_8c_ae272940201d3f5ab636dcaa67829133c}\label{test_2parser_8c_ae272940201d3f5ab636dcaa67829133c}} 
+\index{test/parser.\+c@{test/parser.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!test/parser.\+c@{test/parser.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{parse\+Add\+Multply\+Expression}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{test_2parser_8c_aec65503470b470c53931ca99af31e90b}\label{test_2parser_8c_aec65503470b470c53931ca99af31e90b}} 
+\index{test/parser.\+c@{test/parser.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!test/parser.\+c@{test/parser.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{parse\+Parenthetical\+Expression}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{test_2parser_8c_a702fd33b33a2045f8e4c107953d482ed}\label{test_2parser_8c_a702fd33b33a2045f8e4c107953d482ed}} 
+\index{test/parser.\+c@{test/parser.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE@{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE}!test/parser.\+c@{test/parser.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+N\+E()}{M\_TEST\_DEFINE()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+D\+E\+F\+I\+NE (\begin{DoxyParamCaption}\item[{parse\+Parenthetical\+Add\+Multply\+Expression}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{test_2parser_8c_a0b5202a10fb13a4f07773378f67ab4d0}\label{test_2parser_8c_a0b5202a10fb13a4f07773378f67ab4d0}} 
+\index{test/parser.\+c@{test/parser.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+S\+E\+T\+UP@{M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+S\+E\+T\+UP}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+S\+E\+T\+UP@{M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+S\+E\+T\+UP}!test/parser.\+c@{test/parser.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+S\+E\+T\+U\+P()}{M\_TEST\_SUITE\_SETUP()}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+S\+E\+T\+UP (\begin{DoxyParamCaption}\item[{Parser}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{test_2parser_8c_a8ca324e6146809652a2d20b941e9a4e0}\label{test_2parser_8c_a8ca324e6146809652a2d20b941e9a4e0}} 
+\index{test/parser.\+c@{test/parser.\+c}!M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+T\+E\+A\+R\+D\+O\+WN@{M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+T\+E\+A\+R\+D\+O\+WN}}
+\index{M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+T\+E\+A\+R\+D\+O\+WN@{M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+T\+E\+A\+R\+D\+O\+WN}!test/parser.\+c@{test/parser.\+c}}
+\subsubsection{\texorpdfstring{M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+T\+E\+A\+R\+D\+O\+W\+N()}{M\_TEST\_SUITE\_TEARDOWN()}}
+{\footnotesize\ttfamily M\+\_\+\+T\+E\+S\+T\+\_\+\+S\+U\+I\+T\+E\+\_\+\+T\+E\+A\+R\+D\+O\+WN (\begin{DoxyParamCaption}\item[{Parser}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test_2parser_8c_a8ca324e6146809652a2d20b941e9a4e0_cgraph}
+\end{center}
+\end{figure}

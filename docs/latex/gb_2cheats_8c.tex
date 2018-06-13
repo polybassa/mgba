@@ -1,0 +1,397 @@
+\hypertarget{gb_2cheats_8c}{}\section{src/gb/cheats.c File Reference}
+\label{gb_2cheats_8c}\index{src/gb/cheats.\+c@{src/gb/cheats.\+c}}
+{\ttfamily \#include $<$mgba/internal/gb/cheats.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/core.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/gb.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/memory.\+h$>$}\newline
+{\ttfamily \#include $<$mgba-\/util/string.\+h$>$}\newline
+Include dependency graph for cheats.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gb_2cheats_8c_a356a5d02f5947088c7d886d88fdd309e}{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}} (G\+B\+Cheat\+Patch\+List, struct G\+B\+Cheat\+Patch)
+\item 
+static void \mbox{\hyperlink{gb_2cheats_8c_a85fe3fe72107e3983bab77e83a841aac}{\+\_\+patch\+R\+OM}} (struct m\+Cheat\+Device $\ast$device, struct G\+B\+Cheat\+Set $\ast$cheats)
+\item 
+static void \mbox{\hyperlink{gb_2cheats_8c_a61cdc08404800eccacf1cb7d1f86e191}{\+\_\+unpatch\+R\+OM}} (struct m\+Cheat\+Device $\ast$device, struct G\+B\+Cheat\+Set $\ast$cheats)
+\item 
+static void \mbox{\hyperlink{gb_2cheats_8c_a0237e3c375cfcf797ebb9520a64b67ef}{G\+B\+Cheat\+Set\+Deinit}} (struct m\+Cheat\+Set $\ast$set)
+\item 
+static void \mbox{\hyperlink{gb_2cheats_8c_a724f378694e01631b022b507434aecf7}{G\+B\+Cheat\+Add\+Set}} (struct m\+Cheat\+Set $\ast$cheats, struct m\+Cheat\+Device $\ast$device)
+\item 
+static void \mbox{\hyperlink{gb_2cheats_8c_aa9156c03c974ccda16f20eb28f68d7ae}{G\+B\+Cheat\+Remove\+Set}} (struct m\+Cheat\+Set $\ast$cheats, struct m\+Cheat\+Device $\ast$device)
+\item 
+static void \mbox{\hyperlink{gb_2cheats_8c_a57fab4f2e0593cfcac3b2bb7e085f31f}{G\+B\+Cheat\+Refresh}} (struct m\+Cheat\+Set $\ast$cheats, struct m\+Cheat\+Device $\ast$device)
+\item 
+static void \mbox{\hyperlink{gb_2cheats_8c_a72445a4c49cf8b40c3ab25bdc3576f73}{G\+B\+Cheat\+Set\+Copy\+Properties}} (struct m\+Cheat\+Set $\ast$set, struct m\+Cheat\+Set $\ast$old\+Set)
+\item 
+static void \mbox{\hyperlink{gb_2cheats_8c_a064551ed8d600b071a3f4fb30ba09aee}{G\+B\+Cheat\+Parse\+Directives}} (struct m\+Cheat\+Set $\ast$set, const struct String\+List $\ast$directives)
+\item 
+static void \mbox{\hyperlink{gb_2cheats_8c_aebd0c059fa241aaeb3f06fa91a0eb92c}{G\+B\+Cheat\+Dump\+Directives}} (struct m\+Cheat\+Set $\ast$set, struct String\+List $\ast$directives)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{gb_2cheats_8c_aa7245479329b72d3da1d98680fab4281}{G\+B\+Cheat\+Add\+Line}} (struct m\+Cheat\+Set $\ast$, const char $\ast$line, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} type)
+\item 
+static struct m\+Cheat\+Set $\ast$ \mbox{\hyperlink{gb_2cheats_8c_a29aecded5e38ddf0958398a1ed0f5253}{G\+B\+Cheat\+Set\+Create}} (struct m\+Cheat\+Device $\ast$device, const char $\ast$name)
+\item 
+struct m\+Cheat\+Device $\ast$ \mbox{\hyperlink{gb_2cheats_8c_a7a169a1ca7d3a9535d1bf10b64b54646}{G\+B\+Cheat\+Device\+Create}} (void)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{gb_2cheats_8c_ad2a266e11046957a7692e5b0b99f78aa}{G\+B\+Cheat\+Add\+Codebreaker}} (struct G\+B\+Cheat\+Set $\ast$cheats, uint16\+\_\+t address, uint8\+\_\+t \mbox{\hyperlink{libretro_8c_a735984d41155bc1032e09bece8f8d66d}{data}})
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{gb_2cheats_8c_aafdff6aa78f1b0cc1a5e5dc38bd2d3fe}{G\+B\+Cheat\+Add\+Game\+Shark}} (struct G\+B\+Cheat\+Set $\ast$cheats, uint32\+\_\+t op)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{gb_2cheats_8c_a3e17203221d904767e663e3c553974e2}{G\+B\+Cheat\+Add\+Game\+Shark\+Line}} (struct G\+B\+Cheat\+Set $\ast$cheats, const char $\ast$line)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{gb_2cheats_8c_ad9dd8ae38092fe427fd4376afa98a4bb}{G\+B\+Cheat\+Add\+Game\+Genie\+Line}} (struct G\+B\+Cheat\+Set $\ast$cheats, const char $\ast$line)
+\item 
+static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} \mbox{\hyperlink{gb_2cheats_8c_a0b8b68d5aafc7a156538a5dea7048f57}{G\+B\+Cheat\+Add\+V\+B\+A\+Line}} (struct G\+B\+Cheat\+Set $\ast$cheats, const char $\ast$line)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{gb_2cheats_8c_a85fe3fe72107e3983bab77e83a841aac}\label{gb_2cheats_8c_a85fe3fe72107e3983bab77e83a841aac}} 
+\index{gb/cheats.\+c@{gb/cheats.\+c}!\+\_\+patch\+R\+OM@{\+\_\+patch\+R\+OM}}
+\index{\+\_\+patch\+R\+OM@{\+\_\+patch\+R\+OM}!gb/cheats.\+c@{gb/cheats.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+patch\+R\+O\+M()}{\_patchROM()}}
+{\footnotesize\ttfamily static void \+\_\+patch\+R\+OM (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Device $\ast$}]{device,  }\item[{struct G\+B\+Cheat\+Set $\ast$}]{cheats }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_a85fe3fe72107e3983bab77e83a841aac_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_a85fe3fe72107e3983bab77e83a841aac_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2cheats_8c_a61cdc08404800eccacf1cb7d1f86e191}\label{gb_2cheats_8c_a61cdc08404800eccacf1cb7d1f86e191}} 
+\index{gb/cheats.\+c@{gb/cheats.\+c}!\+\_\+unpatch\+R\+OM@{\+\_\+unpatch\+R\+OM}}
+\index{\+\_\+unpatch\+R\+OM@{\+\_\+unpatch\+R\+OM}!gb/cheats.\+c@{gb/cheats.\+c}}
+\subsubsection{\texorpdfstring{\+\_\+unpatch\+R\+O\+M()}{\_unpatchROM()}}
+{\footnotesize\ttfamily static void \+\_\+unpatch\+R\+OM (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Device $\ast$}]{device,  }\item[{struct G\+B\+Cheat\+Set $\ast$}]{cheats }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_a61cdc08404800eccacf1cb7d1f86e191_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_a61cdc08404800eccacf1cb7d1f86e191_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2cheats_8c_a356a5d02f5947088c7d886d88fdd309e}\label{gb_2cheats_8c_a356a5d02f5947088c7d886d88fdd309e}} 
+\index{gb/cheats.\+c@{gb/cheats.\+c}!D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}}
+\index{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR@{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR}!gb/cheats.\+c@{gb/cheats.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+O\+R()}{DEFINE\_VECTOR()}}
+{\footnotesize\ttfamily D\+E\+F\+I\+N\+E\+\_\+\+V\+E\+C\+T\+OR (\begin{DoxyParamCaption}\item[{G\+B\+Cheat\+Patch\+List}]{,  }\item[{struct G\+B\+Cheat\+Patch}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gb_2cheats_8c_ad2a266e11046957a7692e5b0b99f78aa}\label{gb_2cheats_8c_ad2a266e11046957a7692e5b0b99f78aa}} 
+\index{gb/cheats.\+c@{gb/cheats.\+c}!G\+B\+Cheat\+Add\+Codebreaker@{G\+B\+Cheat\+Add\+Codebreaker}}
+\index{G\+B\+Cheat\+Add\+Codebreaker@{G\+B\+Cheat\+Add\+Codebreaker}!gb/cheats.\+c@{gb/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Cheat\+Add\+Codebreaker()}{GBCheatAddCodebreaker()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+Cheat\+Add\+Codebreaker (\begin{DoxyParamCaption}\item[{struct G\+B\+Cheat\+Set $\ast$}]{cheats,  }\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_ad2a266e11046957a7692e5b0b99f78aa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2cheats_8c_ad9dd8ae38092fe427fd4376afa98a4bb}\label{gb_2cheats_8c_ad9dd8ae38092fe427fd4376afa98a4bb}} 
+\index{gb/cheats.\+c@{gb/cheats.\+c}!G\+B\+Cheat\+Add\+Game\+Genie\+Line@{G\+B\+Cheat\+Add\+Game\+Genie\+Line}}
+\index{G\+B\+Cheat\+Add\+Game\+Genie\+Line@{G\+B\+Cheat\+Add\+Game\+Genie\+Line}!gb/cheats.\+c@{gb/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Cheat\+Add\+Game\+Genie\+Line()}{GBCheatAddGameGenieLine()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+Cheat\+Add\+Game\+Genie\+Line (\begin{DoxyParamCaption}\item[{struct G\+B\+Cheat\+Set $\ast$}]{cheats,  }\item[{const char $\ast$}]{line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_ad9dd8ae38092fe427fd4376afa98a4bb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_ad9dd8ae38092fe427fd4376afa98a4bb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2cheats_8c_aafdff6aa78f1b0cc1a5e5dc38bd2d3fe}\label{gb_2cheats_8c_aafdff6aa78f1b0cc1a5e5dc38bd2d3fe}} 
+\index{gb/cheats.\+c@{gb/cheats.\+c}!G\+B\+Cheat\+Add\+Game\+Shark@{G\+B\+Cheat\+Add\+Game\+Shark}}
+\index{G\+B\+Cheat\+Add\+Game\+Shark@{G\+B\+Cheat\+Add\+Game\+Shark}!gb/cheats.\+c@{gb/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Cheat\+Add\+Game\+Shark()}{GBCheatAddGameShark()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+Cheat\+Add\+Game\+Shark (\begin{DoxyParamCaption}\item[{struct G\+B\+Cheat\+Set $\ast$}]{cheats,  }\item[{uint32\+\_\+t}]{op }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_aafdff6aa78f1b0cc1a5e5dc38bd2d3fe_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_aafdff6aa78f1b0cc1a5e5dc38bd2d3fe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2cheats_8c_a3e17203221d904767e663e3c553974e2}\label{gb_2cheats_8c_a3e17203221d904767e663e3c553974e2}} 
+\index{gb/cheats.\+c@{gb/cheats.\+c}!G\+B\+Cheat\+Add\+Game\+Shark\+Line@{G\+B\+Cheat\+Add\+Game\+Shark\+Line}}
+\index{G\+B\+Cheat\+Add\+Game\+Shark\+Line@{G\+B\+Cheat\+Add\+Game\+Shark\+Line}!gb/cheats.\+c@{gb/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Cheat\+Add\+Game\+Shark\+Line()}{GBCheatAddGameSharkLine()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+Cheat\+Add\+Game\+Shark\+Line (\begin{DoxyParamCaption}\item[{struct G\+B\+Cheat\+Set $\ast$}]{cheats,  }\item[{const char $\ast$}]{line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_a3e17203221d904767e663e3c553974e2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_a3e17203221d904767e663e3c553974e2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2cheats_8c_aa7245479329b72d3da1d98680fab4281}\label{gb_2cheats_8c_aa7245479329b72d3da1d98680fab4281}} 
+\index{gb/cheats.\+c@{gb/cheats.\+c}!G\+B\+Cheat\+Add\+Line@{G\+B\+Cheat\+Add\+Line}}
+\index{G\+B\+Cheat\+Add\+Line@{G\+B\+Cheat\+Add\+Line}!gb/cheats.\+c@{gb/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Cheat\+Add\+Line()}{GBCheatAddLine()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+Cheat\+Add\+Line (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Set $\ast$}]{set,  }\item[{const char $\ast$}]{line,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_aa7245479329b72d3da1d98680fab4281_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_aa7245479329b72d3da1d98680fab4281_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2cheats_8c_a724f378694e01631b022b507434aecf7}\label{gb_2cheats_8c_a724f378694e01631b022b507434aecf7}} 
+\index{gb/cheats.\+c@{gb/cheats.\+c}!G\+B\+Cheat\+Add\+Set@{G\+B\+Cheat\+Add\+Set}}
+\index{G\+B\+Cheat\+Add\+Set@{G\+B\+Cheat\+Add\+Set}!gb/cheats.\+c@{gb/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Cheat\+Add\+Set()}{GBCheatAddSet()}}
+{\footnotesize\ttfamily static void G\+B\+Cheat\+Add\+Set (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Set $\ast$}]{cheats,  }\item[{struct m\+Cheat\+Device $\ast$}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_a724f378694e01631b022b507434aecf7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_a724f378694e01631b022b507434aecf7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2cheats_8c_a0b8b68d5aafc7a156538a5dea7048f57}\label{gb_2cheats_8c_a0b8b68d5aafc7a156538a5dea7048f57}} 
+\index{gb/cheats.\+c@{gb/cheats.\+c}!G\+B\+Cheat\+Add\+V\+B\+A\+Line@{G\+B\+Cheat\+Add\+V\+B\+A\+Line}}
+\index{G\+B\+Cheat\+Add\+V\+B\+A\+Line@{G\+B\+Cheat\+Add\+V\+B\+A\+Line}!gb/cheats.\+c@{gb/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Cheat\+Add\+V\+B\+A\+Line()}{GBCheatAddVBALine()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libretro_8h_a4a26dcae73fb7e1528214a068aca317e}{bool}} G\+B\+Cheat\+Add\+V\+B\+A\+Line (\begin{DoxyParamCaption}\item[{struct G\+B\+Cheat\+Set $\ast$}]{cheats,  }\item[{const char $\ast$}]{line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_a0b8b68d5aafc7a156538a5dea7048f57_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_a0b8b68d5aafc7a156538a5dea7048f57_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2cheats_8c_a7a169a1ca7d3a9535d1bf10b64b54646}\label{gb_2cheats_8c_a7a169a1ca7d3a9535d1bf10b64b54646}} 
+\index{gb/cheats.\+c@{gb/cheats.\+c}!G\+B\+Cheat\+Device\+Create@{G\+B\+Cheat\+Device\+Create}}
+\index{G\+B\+Cheat\+Device\+Create@{G\+B\+Cheat\+Device\+Create}!gb/cheats.\+c@{gb/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Cheat\+Device\+Create()}{GBCheatDeviceCreate()}}
+{\footnotesize\ttfamily struct m\+Cheat\+Device$\ast$ G\+B\+Cheat\+Device\+Create (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_a7a169a1ca7d3a9535d1bf10b64b54646_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_a7a169a1ca7d3a9535d1bf10b64b54646_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2cheats_8c_aebd0c059fa241aaeb3f06fa91a0eb92c}\label{gb_2cheats_8c_aebd0c059fa241aaeb3f06fa91a0eb92c}} 
+\index{gb/cheats.\+c@{gb/cheats.\+c}!G\+B\+Cheat\+Dump\+Directives@{G\+B\+Cheat\+Dump\+Directives}}
+\index{G\+B\+Cheat\+Dump\+Directives@{G\+B\+Cheat\+Dump\+Directives}!gb/cheats.\+c@{gb/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Cheat\+Dump\+Directives()}{GBCheatDumpDirectives()}}
+{\footnotesize\ttfamily static void G\+B\+Cheat\+Dump\+Directives (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Set $\ast$}]{set,  }\item[{struct String\+List $\ast$}]{directives }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_aebd0c059fa241aaeb3f06fa91a0eb92c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2cheats_8c_a064551ed8d600b071a3f4fb30ba09aee}\label{gb_2cheats_8c_a064551ed8d600b071a3f4fb30ba09aee}} 
+\index{gb/cheats.\+c@{gb/cheats.\+c}!G\+B\+Cheat\+Parse\+Directives@{G\+B\+Cheat\+Parse\+Directives}}
+\index{G\+B\+Cheat\+Parse\+Directives@{G\+B\+Cheat\+Parse\+Directives}!gb/cheats.\+c@{gb/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Cheat\+Parse\+Directives()}{GBCheatParseDirectives()}}
+{\footnotesize\ttfamily static void G\+B\+Cheat\+Parse\+Directives (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Set $\ast$}]{set,  }\item[{const struct String\+List $\ast$}]{directives }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_a064551ed8d600b071a3f4fb30ba09aee_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2cheats_8c_a57fab4f2e0593cfcac3b2bb7e085f31f}\label{gb_2cheats_8c_a57fab4f2e0593cfcac3b2bb7e085f31f}} 
+\index{gb/cheats.\+c@{gb/cheats.\+c}!G\+B\+Cheat\+Refresh@{G\+B\+Cheat\+Refresh}}
+\index{G\+B\+Cheat\+Refresh@{G\+B\+Cheat\+Refresh}!gb/cheats.\+c@{gb/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Cheat\+Refresh()}{GBCheatRefresh()}}
+{\footnotesize\ttfamily static void G\+B\+Cheat\+Refresh (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Set $\ast$}]{cheats,  }\item[{struct m\+Cheat\+Device $\ast$}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_a57fab4f2e0593cfcac3b2bb7e085f31f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_a57fab4f2e0593cfcac3b2bb7e085f31f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2cheats_8c_aa9156c03c974ccda16f20eb28f68d7ae}\label{gb_2cheats_8c_aa9156c03c974ccda16f20eb28f68d7ae}} 
+\index{gb/cheats.\+c@{gb/cheats.\+c}!G\+B\+Cheat\+Remove\+Set@{G\+B\+Cheat\+Remove\+Set}}
+\index{G\+B\+Cheat\+Remove\+Set@{G\+B\+Cheat\+Remove\+Set}!gb/cheats.\+c@{gb/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Cheat\+Remove\+Set()}{GBCheatRemoveSet()}}
+{\footnotesize\ttfamily static void G\+B\+Cheat\+Remove\+Set (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Set $\ast$}]{cheats,  }\item[{struct m\+Cheat\+Device $\ast$}]{device }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_aa9156c03c974ccda16f20eb28f68d7ae_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_aa9156c03c974ccda16f20eb28f68d7ae_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2cheats_8c_a72445a4c49cf8b40c3ab25bdc3576f73}\label{gb_2cheats_8c_a72445a4c49cf8b40c3ab25bdc3576f73}} 
+\index{gb/cheats.\+c@{gb/cheats.\+c}!G\+B\+Cheat\+Set\+Copy\+Properties@{G\+B\+Cheat\+Set\+Copy\+Properties}}
+\index{G\+B\+Cheat\+Set\+Copy\+Properties@{G\+B\+Cheat\+Set\+Copy\+Properties}!gb/cheats.\+c@{gb/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Cheat\+Set\+Copy\+Properties()}{GBCheatSetCopyProperties()}}
+{\footnotesize\ttfamily static void G\+B\+Cheat\+Set\+Copy\+Properties (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Set $\ast$}]{set,  }\item[{struct m\+Cheat\+Set $\ast$}]{old\+Set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_a72445a4c49cf8b40c3ab25bdc3576f73_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2cheats_8c_a29aecded5e38ddf0958398a1ed0f5253}\label{gb_2cheats_8c_a29aecded5e38ddf0958398a1ed0f5253}} 
+\index{gb/cheats.\+c@{gb/cheats.\+c}!G\+B\+Cheat\+Set\+Create@{G\+B\+Cheat\+Set\+Create}}
+\index{G\+B\+Cheat\+Set\+Create@{G\+B\+Cheat\+Set\+Create}!gb/cheats.\+c@{gb/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Cheat\+Set\+Create()}{GBCheatSetCreate()}}
+{\footnotesize\ttfamily static struct m\+Cheat\+Set$\ast$ G\+B\+Cheat\+Set\+Create (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Device $\ast$}]{device,  }\item[{const char $\ast$}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_a29aecded5e38ddf0958398a1ed0f5253_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_a29aecded5e38ddf0958398a1ed0f5253_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2cheats_8c_a0237e3c375cfcf797ebb9520a64b67ef}\label{gb_2cheats_8c_a0237e3c375cfcf797ebb9520a64b67ef}} 
+\index{gb/cheats.\+c@{gb/cheats.\+c}!G\+B\+Cheat\+Set\+Deinit@{G\+B\+Cheat\+Set\+Deinit}}
+\index{G\+B\+Cheat\+Set\+Deinit@{G\+B\+Cheat\+Set\+Deinit}!gb/cheats.\+c@{gb/cheats.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Cheat\+Set\+Deinit()}{GBCheatSetDeinit()}}
+{\footnotesize\ttfamily static void G\+B\+Cheat\+Set\+Deinit (\begin{DoxyParamCaption}\item[{struct m\+Cheat\+Set $\ast$}]{set }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2cheats_8c_a0237e3c375cfcf797ebb9520a64b67ef_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,157 @@
+\hypertarget{gb_2renderers_2cache-set_8c}{}\section{src/gb/renderers/cache-\/set.c File Reference}
+\label{gb_2renderers_2cache-set_8c}\index{src/gb/renderers/cache-\/set.\+c@{src/gb/renderers/cache-\/set.\+c}}
+{\ttfamily \#include $<$mgba/internal/gb/renderers/cache-\/set.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/core/cache-\/set.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/gb.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/io.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gb/video.\+h$>$}\newline
+Include dependency graph for cache-\/set.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2renderers_2cache-set_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gb_2renderers_2cache-set_8c_ae7e228e583d5f680af631188c85bdf5e}{G\+B\+Video\+Cache\+Init}} (struct m\+Cache\+Set $\ast$cache)
+\item 
+void \mbox{\hyperlink{gb_2renderers_2cache-set_8c_ab2420f444ebe87f2f01729e2a3f66e37}{G\+B\+Video\+Cache\+Associate}} (struct m\+Cache\+Set $\ast$cache, struct G\+B\+Video $\ast$video)
+\item 
+static void \mbox{\hyperlink{gb_2renderers_2cache-set_8c_a048d8d609b74b62fd9a0812bcb0474a0}{map\+Parser\+D\+M\+G0}} (struct m\+Map\+Cache $\ast$cache, struct m\+Map\+Cache\+Entry $\ast$entry, void $\ast$vram)
+\item 
+static void \mbox{\hyperlink{gb_2renderers_2cache-set_8c_a0a1e89b599746b796592de6e1eab8e2b}{map\+Parser\+D\+M\+G1}} (struct m\+Map\+Cache $\ast$cache, struct m\+Map\+Cache\+Entry $\ast$entry, void $\ast$vram)
+\item 
+static void \mbox{\hyperlink{gb_2renderers_2cache-set_8c_a7a94c69965062992b501b1ba7d9dfed3}{map\+Parser\+C\+G\+B0}} (struct m\+Map\+Cache $\ast$cache, struct m\+Map\+Cache\+Entry $\ast$entry, void $\ast$vram)
+\item 
+static void \mbox{\hyperlink{gb_2renderers_2cache-set_8c_a1120d205c5f595ef19ae432fc78b9d96}{map\+Parser\+C\+G\+B1}} (struct m\+Map\+Cache $\ast$cache, struct m\+Map\+Cache\+Entry $\ast$entry, void $\ast$vram)
+\item 
+void \mbox{\hyperlink{gb_2renderers_2cache-set_8c_a30ce6f53accfe469551fc0454c23d53c}{G\+B\+Video\+Cache\+Write\+Video\+Register}} (struct m\+Cache\+Set $\ast$cache, uint16\+\_\+t address, uint8\+\_\+t value)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{gb_2renderers_2cache-set_8c_ab2420f444ebe87f2f01729e2a3f66e37}\label{gb_2renderers_2cache-set_8c_ab2420f444ebe87f2f01729e2a3f66e37}} 
+\index{gb/renderers/cache-\/set.\+c@{gb/renderers/cache-\/set.\+c}!G\+B\+Video\+Cache\+Associate@{G\+B\+Video\+Cache\+Associate}}
+\index{G\+B\+Video\+Cache\+Associate@{G\+B\+Video\+Cache\+Associate}!gb/renderers/cache-\/set.\+c@{gb/renderers/cache-\/set.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Video\+Cache\+Associate()}{GBVideoCacheAssociate()}}
+{\footnotesize\ttfamily void G\+B\+Video\+Cache\+Associate (\begin{DoxyParamCaption}\item[{struct m\+Cache\+Set $\ast$}]{cache,  }\item[{struct G\+B\+Video $\ast$}]{video }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2renderers_2cache-set_8c_ab2420f444ebe87f2f01729e2a3f66e37_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2renderers_2cache-set_8c_ab2420f444ebe87f2f01729e2a3f66e37_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2renderers_2cache-set_8c_ae7e228e583d5f680af631188c85bdf5e}\label{gb_2renderers_2cache-set_8c_ae7e228e583d5f680af631188c85bdf5e}} 
+\index{gb/renderers/cache-\/set.\+c@{gb/renderers/cache-\/set.\+c}!G\+B\+Video\+Cache\+Init@{G\+B\+Video\+Cache\+Init}}
+\index{G\+B\+Video\+Cache\+Init@{G\+B\+Video\+Cache\+Init}!gb/renderers/cache-\/set.\+c@{gb/renderers/cache-\/set.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Video\+Cache\+Init()}{GBVideoCacheInit()}}
+{\footnotesize\ttfamily void G\+B\+Video\+Cache\+Init (\begin{DoxyParamCaption}\item[{struct m\+Cache\+Set $\ast$}]{cache }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2renderers_2cache-set_8c_ae7e228e583d5f680af631188c85bdf5e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{gb_2renderers_2cache-set_8c_ae7e228e583d5f680af631188c85bdf5e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2renderers_2cache-set_8c_a30ce6f53accfe469551fc0454c23d53c}\label{gb_2renderers_2cache-set_8c_a30ce6f53accfe469551fc0454c23d53c}} 
+\index{gb/renderers/cache-\/set.\+c@{gb/renderers/cache-\/set.\+c}!G\+B\+Video\+Cache\+Write\+Video\+Register@{G\+B\+Video\+Cache\+Write\+Video\+Register}}
+\index{G\+B\+Video\+Cache\+Write\+Video\+Register@{G\+B\+Video\+Cache\+Write\+Video\+Register}!gb/renderers/cache-\/set.\+c@{gb/renderers/cache-\/set.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+Video\+Cache\+Write\+Video\+Register()}{GBVideoCacheWriteVideoRegister()}}
+{\footnotesize\ttfamily void G\+B\+Video\+Cache\+Write\+Video\+Register (\begin{DoxyParamCaption}\item[{struct m\+Cache\+Set $\ast$}]{cache,  }\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2renderers_2cache-set_8c_a30ce6f53accfe469551fc0454c23d53c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2renderers_2cache-set_8c_a30ce6f53accfe469551fc0454c23d53c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2renderers_2cache-set_8c_a7a94c69965062992b501b1ba7d9dfed3}\label{gb_2renderers_2cache-set_8c_a7a94c69965062992b501b1ba7d9dfed3}} 
+\index{gb/renderers/cache-\/set.\+c@{gb/renderers/cache-\/set.\+c}!map\+Parser\+C\+G\+B0@{map\+Parser\+C\+G\+B0}}
+\index{map\+Parser\+C\+G\+B0@{map\+Parser\+C\+G\+B0}!gb/renderers/cache-\/set.\+c@{gb/renderers/cache-\/set.\+c}}
+\subsubsection{\texorpdfstring{map\+Parser\+C\+G\+B0()}{mapParserCGB0()}}
+{\footnotesize\ttfamily static void map\+Parser\+C\+G\+B0 (\begin{DoxyParamCaption}\item[{struct m\+Map\+Cache $\ast$}]{cache,  }\item[{struct m\+Map\+Cache\+Entry $\ast$}]{entry,  }\item[{void $\ast$}]{vram }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2renderers_2cache-set_8c_a7a94c69965062992b501b1ba7d9dfed3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2renderers_2cache-set_8c_a1120d205c5f595ef19ae432fc78b9d96}\label{gb_2renderers_2cache-set_8c_a1120d205c5f595ef19ae432fc78b9d96}} 
+\index{gb/renderers/cache-\/set.\+c@{gb/renderers/cache-\/set.\+c}!map\+Parser\+C\+G\+B1@{map\+Parser\+C\+G\+B1}}
+\index{map\+Parser\+C\+G\+B1@{map\+Parser\+C\+G\+B1}!gb/renderers/cache-\/set.\+c@{gb/renderers/cache-\/set.\+c}}
+\subsubsection{\texorpdfstring{map\+Parser\+C\+G\+B1()}{mapParserCGB1()}}
+{\footnotesize\ttfamily static void map\+Parser\+C\+G\+B1 (\begin{DoxyParamCaption}\item[{struct m\+Map\+Cache $\ast$}]{cache,  }\item[{struct m\+Map\+Cache\+Entry $\ast$}]{entry,  }\item[{void $\ast$}]{vram }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2renderers_2cache-set_8c_a1120d205c5f595ef19ae432fc78b9d96_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2renderers_2cache-set_8c_a048d8d609b74b62fd9a0812bcb0474a0}\label{gb_2renderers_2cache-set_8c_a048d8d609b74b62fd9a0812bcb0474a0}} 
+\index{gb/renderers/cache-\/set.\+c@{gb/renderers/cache-\/set.\+c}!map\+Parser\+D\+M\+G0@{map\+Parser\+D\+M\+G0}}
+\index{map\+Parser\+D\+M\+G0@{map\+Parser\+D\+M\+G0}!gb/renderers/cache-\/set.\+c@{gb/renderers/cache-\/set.\+c}}
+\subsubsection{\texorpdfstring{map\+Parser\+D\+M\+G0()}{mapParserDMG0()}}
+{\footnotesize\ttfamily static void map\+Parser\+D\+M\+G0 (\begin{DoxyParamCaption}\item[{struct m\+Map\+Cache $\ast$}]{cache,  }\item[{struct m\+Map\+Cache\+Entry $\ast$}]{entry,  }\item[{void $\ast$}]{vram }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2renderers_2cache-set_8c_a048d8d609b74b62fd9a0812bcb0474a0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{gb_2renderers_2cache-set_8c_a0a1e89b599746b796592de6e1eab8e2b}\label{gb_2renderers_2cache-set_8c_a0a1e89b599746b796592de6e1eab8e2b}} 
+\index{gb/renderers/cache-\/set.\+c@{gb/renderers/cache-\/set.\+c}!map\+Parser\+D\+M\+G1@{map\+Parser\+D\+M\+G1}}
+\index{map\+Parser\+D\+M\+G1@{map\+Parser\+D\+M\+G1}!gb/renderers/cache-\/set.\+c@{gb/renderers/cache-\/set.\+c}}
+\subsubsection{\texorpdfstring{map\+Parser\+D\+M\+G1()}{mapParserDMG1()}}
+{\footnotesize\ttfamily static void map\+Parser\+D\+M\+G1 (\begin{DoxyParamCaption}\item[{struct m\+Map\+Cache $\ast$}]{cache,  }\item[{struct m\+Map\+Cache\+Entry $\ast$}]{entry,  }\item[{void $\ast$}]{vram }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gb_2renderers_2cache-set_8c_a0a1e89b599746b796592de6e1eab8e2b_icgraph}
+\end{center}
+\end{figure}

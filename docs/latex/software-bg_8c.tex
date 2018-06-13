@@ -1,0 +1,225 @@
+\hypertarget{software-bg_8c}{}\section{src/gba/renderers/software-\/bg.c File Reference}
+\label{software-bg_8c}\index{src/gba/renderers/software-\/bg.\+c@{src/gba/renderers/software-\/bg.\+c}}
+{\ttfamily \#include \char`\"{}gba/renderers/software-\/private.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mgba/core/interface.\+h$>$}\newline
+{\ttfamily \#include $<$mgba/internal/gba/gba.\+h$>$}\newline
+Include dependency graph for software-\/bg.c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{software-bg_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{software-bg_8c_a4d650cc71d278fc9352c80391eb2243a}{M\+O\+D\+E\+\_\+2\+\_\+\+C\+O\+O\+R\+D\+\_\+\+O\+V\+E\+R\+F\+L\+OW}}
+\item 
+\#define \mbox{\hyperlink{software-bg_8c_a33b56251cddcc3943361a51d34aa7e6d}{M\+O\+D\+E\+\_\+2\+\_\+\+C\+O\+O\+R\+D\+\_\+\+N\+O\+\_\+\+O\+V\+E\+R\+F\+L\+OW}}
+\item 
+\#define \mbox{\hyperlink{software-bg_8c_af363f69e67cd850494fefb9983f83cfd}{M\+O\+D\+E\+\_\+2\+\_\+\+M\+O\+S\+A\+IC}}(C\+O\+O\+RD)
+\item 
+\#define \mbox{\hyperlink{software-bg_8c_a523cbe774cf992170ce1867f40de6981}{M\+O\+D\+E\+\_\+2\+\_\+\+N\+O\+\_\+\+M\+O\+S\+A\+IC}}(C\+O\+O\+RD)
+\item 
+\#define \mbox{\hyperlink{software-bg_8c_a86cd3da091252309dee9b6499831ba25}{M\+O\+D\+E\+\_\+2\+\_\+\+L\+O\+OP}}(M\+O\+S\+A\+IC,  C\+O\+O\+RD,  B\+L\+E\+ND,  O\+B\+J\+W\+IN)
+\item 
+\#define \mbox{\hyperlink{software-bg_8c_aeeccdce3997dcb6a4768873b8fbd1bdd}{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+2}}(B\+L\+E\+ND,  O\+B\+J\+W\+IN)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{software-bg_8c_ab7b1f357af479cc6de7fc7af27f6b1e5}{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode2}} (struct G\+B\+A\+Video\+Software\+Renderer $\ast$renderer, struct G\+B\+A\+Video\+Software\+Background $\ast$background, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} inY)
+\item 
+void \mbox{\hyperlink{software-bg_8c_acbe6dcdc03c214a314aeaaca61d44be6}{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode3}} (struct G\+B\+A\+Video\+Software\+Renderer $\ast$renderer, struct G\+B\+A\+Video\+Software\+Background $\ast$background, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} inY)
+\item 
+void \mbox{\hyperlink{software-bg_8c_a405f08b46da4ca30878baab466bd2175}{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode4}} (struct G\+B\+A\+Video\+Software\+Renderer $\ast$renderer, struct G\+B\+A\+Video\+Software\+Background $\ast$background, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} inY)
+\item 
+void \mbox{\hyperlink{software-bg_8c_a9d87077d27cf5f313462c78d226d1956}{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode5}} (struct G\+B\+A\+Video\+Software\+Renderer $\ast$renderer, struct G\+B\+A\+Video\+Software\+Background $\ast$background, \mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}} inY)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{software-bg_8c_aeeccdce3997dcb6a4768873b8fbd1bdd}\label{software-bg_8c_aeeccdce3997dcb6a4768873b8fbd1bdd}} 
+\index{software-\/bg.\+c@{software-\/bg.\+c}!D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+2@{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+2}}
+\index{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+2@{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+2}!software-\/bg.\+c@{software-\/bg.\+c}}
+\subsubsection{\texorpdfstring{D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+2}{DRAW\_BACKGROUND\_MODE\_2}}
+{\footnotesize\ttfamily \#define D\+R\+A\+W\+\_\+\+B\+A\+C\+K\+G\+R\+O\+U\+N\+D\+\_\+\+M\+O\+D\+E\+\_\+2(\begin{DoxyParamCaption}\item[{}]{B\+L\+E\+ND,  }\item[{}]{O\+B\+J\+W\+IN }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{if} (background->overflow) \{ \(\backslash\)
+        if (mosaicH > 1) \{ \(\backslash\)
+            MODE\_2\_LOOP(\mbox{\hyperlink{software-bg_8c_af363f69e67cd850494fefb9983f83cfd}{MODE\_2\_MOSAIC}}, \mbox{\hyperlink{software-bg_8c_a4d650cc71d278fc9352c80391eb2243a}{MODE\_2\_COORD\_OVERFLOW}}, BLEND, 
+      OBJWIN); \(\backslash\)
+        \} \textcolor{keywordflow}{else} \{ \(\backslash\)
+            MODE\_2\_LOOP(\mbox{\hyperlink{software-bg_8c_a523cbe774cf992170ce1867f40de6981}{MODE\_2\_NO\_MOSAIC}}, \mbox{\hyperlink{software-bg_8c_a4d650cc71d278fc9352c80391eb2243a}{MODE\_2\_COORD\_OVERFLOW}}, BLEND
+      , OBJWIN); \(\backslash\)
+        \} \(\backslash\)
+    \} \textcolor{keywordflow}{else} \{ \(\backslash\)
+        if (mosaicH > 1) \{ \(\backslash\)
+            MODE\_2\_LOOP(\mbox{\hyperlink{software-bg_8c_af363f69e67cd850494fefb9983f83cfd}{MODE\_2\_MOSAIC}}, \mbox{\hyperlink{software-bg_8c_a33b56251cddcc3943361a51d34aa7e6d}{MODE\_2\_COORD\_NO\_OVERFLOW}}, BLEND
+      , OBJWIN); \(\backslash\)
+        \} \textcolor{keywordflow}{else} \{ \(\backslash\)
+            MODE\_2\_LOOP(\mbox{\hyperlink{software-bg_8c_a523cbe774cf992170ce1867f40de6981}{MODE\_2\_NO\_MOSAIC}}, 
+      \mbox{\hyperlink{software-bg_8c_a33b56251cddcc3943361a51d34aa7e6d}{MODE\_2\_COORD\_NO\_OVERFLOW}}, BLEND, OBJWIN); \(\backslash\)
+        \} \(\backslash\)
+    \}
+\end{DoxyCode}
+\mbox{\Hypertarget{software-bg_8c_a33b56251cddcc3943361a51d34aa7e6d}\label{software-bg_8c_a33b56251cddcc3943361a51d34aa7e6d}} 
+\index{software-\/bg.\+c@{software-\/bg.\+c}!M\+O\+D\+E\+\_\+2\+\_\+\+C\+O\+O\+R\+D\+\_\+\+N\+O\+\_\+\+O\+V\+E\+R\+F\+L\+OW@{M\+O\+D\+E\+\_\+2\+\_\+\+C\+O\+O\+R\+D\+\_\+\+N\+O\+\_\+\+O\+V\+E\+R\+F\+L\+OW}}
+\index{M\+O\+D\+E\+\_\+2\+\_\+\+C\+O\+O\+R\+D\+\_\+\+N\+O\+\_\+\+O\+V\+E\+R\+F\+L\+OW@{M\+O\+D\+E\+\_\+2\+\_\+\+C\+O\+O\+R\+D\+\_\+\+N\+O\+\_\+\+O\+V\+E\+R\+F\+L\+OW}!software-\/bg.\+c@{software-\/bg.\+c}}
+\subsubsection{\texorpdfstring{M\+O\+D\+E\+\_\+2\+\_\+\+C\+O\+O\+R\+D\+\_\+\+N\+O\+\_\+\+O\+V\+E\+R\+F\+L\+OW}{MODE\_2\_COORD\_NO\_OVERFLOW}}
+{\footnotesize\ttfamily \#define M\+O\+D\+E\+\_\+2\+\_\+\+C\+O\+O\+R\+D\+\_\+\+N\+O\+\_\+\+O\+V\+E\+R\+F\+L\+OW}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{if} ((x | y) & ~(sizeAdjusted - 1)) \{ \(\backslash\)
+        continue; \(\backslash\)
+    \} \(\backslash\)
+    localX = x; \(\backslash\)
+    localY = y;
+\end{DoxyCode}
+\mbox{\Hypertarget{software-bg_8c_a4d650cc71d278fc9352c80391eb2243a}\label{software-bg_8c_a4d650cc71d278fc9352c80391eb2243a}} 
+\index{software-\/bg.\+c@{software-\/bg.\+c}!M\+O\+D\+E\+\_\+2\+\_\+\+C\+O\+O\+R\+D\+\_\+\+O\+V\+E\+R\+F\+L\+OW@{M\+O\+D\+E\+\_\+2\+\_\+\+C\+O\+O\+R\+D\+\_\+\+O\+V\+E\+R\+F\+L\+OW}}
+\index{M\+O\+D\+E\+\_\+2\+\_\+\+C\+O\+O\+R\+D\+\_\+\+O\+V\+E\+R\+F\+L\+OW@{M\+O\+D\+E\+\_\+2\+\_\+\+C\+O\+O\+R\+D\+\_\+\+O\+V\+E\+R\+F\+L\+OW}!software-\/bg.\+c@{software-\/bg.\+c}}
+\subsubsection{\texorpdfstring{M\+O\+D\+E\+\_\+2\+\_\+\+C\+O\+O\+R\+D\+\_\+\+O\+V\+E\+R\+F\+L\+OW}{MODE\_2\_COORD\_OVERFLOW}}
+{\footnotesize\ttfamily \#define M\+O\+D\+E\+\_\+2\+\_\+\+C\+O\+O\+R\+D\+\_\+\+O\+V\+E\+R\+F\+L\+OW}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+localX = x & (sizeAdjusted - 1); \(\backslash\)
+    localY = y & (sizeAdjusted - 1); \(\backslash\)
+\end{DoxyCode}
+\mbox{\Hypertarget{software-bg_8c_a86cd3da091252309dee9b6499831ba25}\label{software-bg_8c_a86cd3da091252309dee9b6499831ba25}} 
+\index{software-\/bg.\+c@{software-\/bg.\+c}!M\+O\+D\+E\+\_\+2\+\_\+\+L\+O\+OP@{M\+O\+D\+E\+\_\+2\+\_\+\+L\+O\+OP}}
+\index{M\+O\+D\+E\+\_\+2\+\_\+\+L\+O\+OP@{M\+O\+D\+E\+\_\+2\+\_\+\+L\+O\+OP}!software-\/bg.\+c@{software-\/bg.\+c}}
+\subsubsection{\texorpdfstring{M\+O\+D\+E\+\_\+2\+\_\+\+L\+O\+OP}{MODE\_2\_LOOP}}
+{\footnotesize\ttfamily \#define M\+O\+D\+E\+\_\+2\+\_\+\+L\+O\+OP(\begin{DoxyParamCaption}\item[{}]{M\+O\+S\+A\+IC,  }\item[{}]{C\+O\+O\+RD,  }\item[{}]{B\+L\+E\+ND,  }\item[{}]{O\+B\+J\+W\+IN }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{for} (outX = renderer->start, pixel = &renderer->row[outX]; outX < renderer->end; ++outX, ++pixel) \{ \(\backslash\)
+        x += background->dx; \(\backslash\)
+        y += background->dy; \(\backslash\)
+        \(\backslash\)
+        uint32\_t current = *pixel; \(\backslash\)
+        MOSAIC(COORD) \(\backslash\)
+        if (pixelData) \{ \(\backslash\)
+            COMPOSITE\_256\_ ## OBJWIN (BLEND, 0); \(\backslash\)
+        \} \(\backslash\)
+    \}
+\end{DoxyCode}
+\mbox{\Hypertarget{software-bg_8c_af363f69e67cd850494fefb9983f83cfd}\label{software-bg_8c_af363f69e67cd850494fefb9983f83cfd}} 
+\index{software-\/bg.\+c@{software-\/bg.\+c}!M\+O\+D\+E\+\_\+2\+\_\+\+M\+O\+S\+A\+IC@{M\+O\+D\+E\+\_\+2\+\_\+\+M\+O\+S\+A\+IC}}
+\index{M\+O\+D\+E\+\_\+2\+\_\+\+M\+O\+S\+A\+IC@{M\+O\+D\+E\+\_\+2\+\_\+\+M\+O\+S\+A\+IC}!software-\/bg.\+c@{software-\/bg.\+c}}
+\subsubsection{\texorpdfstring{M\+O\+D\+E\+\_\+2\+\_\+\+M\+O\+S\+A\+IC}{MODE\_2\_MOSAIC}}
+{\footnotesize\ttfamily \#define M\+O\+D\+E\+\_\+2\+\_\+\+M\+O\+S\+A\+IC(\begin{DoxyParamCaption}\item[{}]{C\+O\+O\+RD }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{if} (!mosaicWait) \{ \(\backslash\)
+            COORD \(\backslash\)
+            mapData = screenBase[(localX >> 11) + (((localY >> 7) & 0x7F0) << background->size)]; \(\backslash\)
+            pixelData = charBase[(mapData << 6) + ((localY & 0x700) >> 5) + ((localX & 0x700) >> 8)]; \(\backslash\)
+            \(\backslash\)
+            mosaicWait = mosaicH; \(\backslash\)
+        \} \textcolor{keywordflow}{else} \{ \(\backslash\)
+            --mosaicWait; \(\backslash\)
+        \}
+\end{DoxyCode}
+\mbox{\Hypertarget{software-bg_8c_a523cbe774cf992170ce1867f40de6981}\label{software-bg_8c_a523cbe774cf992170ce1867f40de6981}} 
+\index{software-\/bg.\+c@{software-\/bg.\+c}!M\+O\+D\+E\+\_\+2\+\_\+\+N\+O\+\_\+\+M\+O\+S\+A\+IC@{M\+O\+D\+E\+\_\+2\+\_\+\+N\+O\+\_\+\+M\+O\+S\+A\+IC}}
+\index{M\+O\+D\+E\+\_\+2\+\_\+\+N\+O\+\_\+\+M\+O\+S\+A\+IC@{M\+O\+D\+E\+\_\+2\+\_\+\+N\+O\+\_\+\+M\+O\+S\+A\+IC}!software-\/bg.\+c@{software-\/bg.\+c}}
+\subsubsection{\texorpdfstring{M\+O\+D\+E\+\_\+2\+\_\+\+N\+O\+\_\+\+M\+O\+S\+A\+IC}{MODE\_2\_NO\_MOSAIC}}
+{\footnotesize\ttfamily \#define M\+O\+D\+E\+\_\+2\+\_\+\+N\+O\+\_\+\+M\+O\+S\+A\+IC(\begin{DoxyParamCaption}\item[{}]{C\+O\+O\+RD }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+COORD \(\backslash\)
+    mapData = screenBase[(localX >> 11) + (((localY >> 7) & 0x7F0) << background->size)]; \(\backslash\)
+    pixelData = charBase[(mapData << 6) + ((localY & 0x700) >> 5) + ((localX & 0x700) >> 8)];
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{software-bg_8c_ab7b1f357af479cc6de7fc7af27f6b1e5}\label{software-bg_8c_ab7b1f357af479cc6de7fc7af27f6b1e5}} 
+\index{software-\/bg.\+c@{software-\/bg.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode2@{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode2}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode2@{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode2}!software-\/bg.\+c@{software-\/bg.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode2()}{GBAVideoSoftwareRendererDrawBackgroundMode2()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode2 (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Renderer $\ast$}]{renderer,  }\item[{struct G\+B\+A\+Video\+Software\+Background $\ast$}]{background,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{inY }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{software-bg_8c_ab7b1f357af479cc6de7fc7af27f6b1e5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{software-bg_8c_acbe6dcdc03c214a314aeaaca61d44be6}\label{software-bg_8c_acbe6dcdc03c214a314aeaaca61d44be6}} 
+\index{software-\/bg.\+c@{software-\/bg.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode3@{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode3}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode3@{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode3}!software-\/bg.\+c@{software-\/bg.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode3()}{GBAVideoSoftwareRendererDrawBackgroundMode3()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode3 (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Renderer $\ast$}]{renderer,  }\item[{struct G\+B\+A\+Video\+Software\+Background $\ast$}]{background,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{inY }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{software-bg_8c_acbe6dcdc03c214a314aeaaca61d44be6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{software-bg_8c_acbe6dcdc03c214a314aeaaca61d44be6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{software-bg_8c_a405f08b46da4ca30878baab466bd2175}\label{software-bg_8c_a405f08b46da4ca30878baab466bd2175}} 
+\index{software-\/bg.\+c@{software-\/bg.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode4@{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode4}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode4@{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode4}!software-\/bg.\+c@{software-\/bg.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode4()}{GBAVideoSoftwareRendererDrawBackgroundMode4()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode4 (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Renderer $\ast$}]{renderer,  }\item[{struct G\+B\+A\+Video\+Software\+Background $\ast$}]{background,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{inY }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{software-bg_8c_a405f08b46da4ca30878baab466bd2175_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{software-bg_8c_a405f08b46da4ca30878baab466bd2175_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{software-bg_8c_a9d87077d27cf5f313462c78d226d1956}\label{software-bg_8c_a9d87077d27cf5f313462c78d226d1956}} 
+\index{software-\/bg.\+c@{software-\/bg.\+c}!G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode5@{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode5}}
+\index{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode5@{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode5}!software-\/bg.\+c@{software-\/bg.\+c}}
+\subsubsection{\texorpdfstring{G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode5()}{GBAVideoSoftwareRendererDrawBackgroundMode5()}}
+{\footnotesize\ttfamily void G\+B\+A\+Video\+Software\+Renderer\+Draw\+Background\+Mode5 (\begin{DoxyParamCaption}\item[{struct G\+B\+A\+Video\+Software\+Renderer $\ast$}]{renderer,  }\item[{struct G\+B\+A\+Video\+Software\+Background $\ast$}]{background,  }\item[{\mbox{\hyperlink{ioapi_8h_a787fa3cf048117ba7123753c1e74fcd6}{int}}}]{inY }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{software-bg_8c_a9d87077d27cf5f313462c78d226d1956_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{software-bg_8c_a9d87077d27cf5f313462c78d226d1956_icgraph}
+\end{center}
+\end{figure}
